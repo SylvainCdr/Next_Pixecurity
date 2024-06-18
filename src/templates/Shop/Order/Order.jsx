@@ -39,7 +39,6 @@ export default function Order() {
       fee: "20",
     },
     orderDate: new Date().toLocaleDateString(),
-    status: "non payé",
     payment: {
       method: "",
       paid: false,
