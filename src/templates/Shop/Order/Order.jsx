@@ -40,7 +40,7 @@ export default function Order() {
     },
     orderDate: new Date().toLocaleDateString(),
     payment: {
-      method: "",
+      method: "stripe", // Ensure payment method is provided
       paid: false,
     },
     totalAmount: "",
@@ -61,6 +61,8 @@ export default function Order() {
         name: product.name,
         quantity: product.quantity,
         price: product.price,
+        ref: product.ref, // Ensure ref is provided
+        priceAtOrderTime: product.price, // Ensure priceAtOrderTime is provided
       })),
       totalAmount: calculatedTotalAmount,
     }));
@@ -148,7 +150,10 @@ export default function Order() {
         items: order.items,
         delivery: order.delivery,
         totalAmount: order.totalAmount,
-        payment: order.payment,
+        payment: {
+          method: 'stripe', // Provide payment method
+          paid: false
+        },
         status: 'pending'
       }),
     });
