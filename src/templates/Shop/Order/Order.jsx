@@ -136,7 +136,7 @@ export default function Order() {
       return;
     }
 
-    // Create the order with status 'non payé'
+    // Create the order with status 'pending'
     const orderResponse = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
       headers: {
