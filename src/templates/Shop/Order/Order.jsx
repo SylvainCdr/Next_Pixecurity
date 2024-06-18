@@ -148,7 +148,6 @@ export default function Order() {
         items: order.items,
         delivery: order.delivery,
         totalAmount: order.totalAmount,
-        status: 'non payé',
         payment: order.payment,
       }),
     });
