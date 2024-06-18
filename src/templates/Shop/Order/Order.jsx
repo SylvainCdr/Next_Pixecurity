@@ -158,11 +158,7 @@ export default function Order() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: user._id,
-        deliveryAddress: order.deliveryAddress,
-        items: order.items,
-        delivery: order.delivery,
-        totalAmount: order.totalAmount,
+        ...order,
         payment: {
           method: 'stripe', // Provide payment method
           paid: false
@@ -170,7 +166,6 @@ export default function Order() {
         status: 'pending'
       }),
     });
-
     const newOrder = await orderResponse.json();
 
     if (!orderResponse.ok) {
