@@ -93,7 +93,7 @@ const OrderConfirmation = () => {
   }
 
   return (
-    <div className={styles.orderCOnfirmation}>
+    <div className={styles.orderConfirmation}>
       <h1>Confirmation de commande</h1>
       {order ? (
         <div>
