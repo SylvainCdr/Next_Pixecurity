@@ -149,6 +149,7 @@ export default function Order() {
         delivery: order.delivery,
         totalAmount: order.totalAmount,
         payment: order.payment,
+        status: 'pending'
       }),
     });
 
