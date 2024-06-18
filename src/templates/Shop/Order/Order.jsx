@@ -1,392 +1,60 @@
-import React, { useState, useEffect } from "react";
-import useCart from "@/Components/useCart";
-import Swal from "sweetalert2";
-import { BASE_URL } from "@/url";
-import styles from "./style.module.scss";
-import { useGetUser } from "@/Components/useGetUser";
+const express = require('express');
+const router = express.Router();
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const User = require('../models/Users');
+const Order = require('../models/Orders'); // Assurez-vous d'importer votre modèle de commande
 
-export default function Order() {
-  const user = useGetUser();
-  const { cart } = useCart();
-  const [subTotal, setSubTotal] = useState(0);
-  const [tax, setTax] = useState(0);
-  const [shippingCost, setShippingCost] = useState(20);
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [billingAddress, setBillingAddress] = useState({
-    street: "",
-    zip: "",
-    city: "",
-    country: "",
-  });
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [company, setCompany] = useState("");
+// Webhook endpoint
+router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+  const sig = req.headers['stripe-signature'];
 
-  useEffect(() => {
-    if (user) {
-      setOrder((prevOrder) => ({
-        ...prevOrder,
-        user: user._id,
-      }));
-    }
-  }, [user]);
+  let event;
 
-  const [order, setOrder] = useState({
-    user: "",
-    deliveryAddress: { street: "", city: "", zip: "", country: "" },
-    items: [],
-    delivery: {
-      method: "",
-      fee: "20",
-    },
-    orderDate: new Date().toLocaleDateString(),
-    status: "pending",
-    payment: {
-      method: "",
-      paid: false,
-    },
-    totalAmount: "",
-  });
-
-  useEffect(() => {
-    const calculatedSubTotal = cart.reduce((acc, product) => {
-      return acc + product.quantity * product.price;
-    }, 0);
-    setSubTotal(calculatedSubTotal);
-    const calculatedTax = calculatedSubTotal * 0.2;
-    setTax(calculatedTax);
-    const calculatedTotalAmount = calculatedSubTotal + calculatedTax + shippingCost;
-    setTotalAmount(calculatedTotalAmount);
-    setOrder((prevOrder) => ({
-      ...prevOrder,
-      totalAmount: calculatedTotalAmount,
-    }));
-  }, [cart, shippingCost]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (["street", "city", "zip", "country"].includes(name)) {
-      setOrder((prev) => ({
-        ...prev,
-        deliveryAddress: {
-          ...prev.deliveryAddress,
-          [name]: value,
-        },
-      }));
-    } else if (name === "deliveryMethod") {
-      setOrder((prev) => ({
-        ...prev,
-        delivery: {
-          ...prev.delivery,
-          method: value,
-        },
-      }));
-    } else if (name === "phone") {
-      setPhoneNumber(value);
-    } else if (name === "company") {
-      setCompany(value);
-    } else {
-      // Mise à jour des informations de l'utilisateur
-      const updatedUser = { ...user, [name]: value };
-      fetch(`${BASE_URL}/users/${user._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to update user");
-          }
-        })
-        .catch((error) => {
-          console.error("Error updating user:", error);
-        });
-    }
-  };
-
-  const handleOrderSubmission = async (e) => {
-    e.preventDefault();
-    if (
-      !user?._id ||
-      !user?.firstName ||
-      !user?.lastName ||
-      !user?.email ||
-      !phoneNumber ||
-      !billingAddress.street ||
-      !billingAddress.zip ||
-      !billingAddress.city ||
-      !billingAddress.country ||
-      !order.deliveryAddress.street ||
-      !order.deliveryAddress.zip ||
-      !order.deliveryAddress.city ||
-      !order.deliveryAddress.country ||
-      !order.delivery.method 
-    ) {
-      Swal.fire({
-        icon: "error",
-        title: "Erreur",
-        text: "Veuillez remplir tous les champs obligatoires",
-        timer: 2000,
-      });
-      return;
-    }
-
-    const response = await fetch(`${BASE_URL}/create-checkout-session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: user._id,
-        amount: order.totalAmount, // Pass the total amount to the backend
-        currency: "eur",
-      }),
-    });
-
-    const session = await response.json();
-
-    if (response.ok) {
-      // Rediriger vers la page de paiement Stripe
-      window.location.href = session.url;
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Erreur",
-        text: "Erreur lors de la création de la session de paiement",
-      });
-    }
-  };
-
-  if (!user) {
-    return <div>Chargement...</div>;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    console.log(`⚠️  Webhook signature verification failed.`, err.message);
+    return res.sendStatus(400);
   }
 
-  return (
-    <div className={styles["order-container"]}>
-      <div className={styles["order-page"]}>
-        <h1>Commande</h1>
+  // Handle the event
+  switch (event.type) {
+    case 'checkout.session.completed':
+      const session = event.data.object;
 
-        <form onSubmit={handleOrderSubmission}>
-          <h2>
-            <i className="fa-solid fa-user"></i> ETAPE 1 : Informations personnelles
-          </h2>
-          <div className={styles["customer-infos"]}>
-            <div className={styles.details}>
-              Prénom :{" "}
-              <input
-                type="text"
-                name="firstName"
-                placeholder="Prénom"
-                value={user.firstName || ""}
-                onChange={handleChange}
-              />
-              Nom :{" "}
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Nom"
-                value={user.lastName || ""}
-                onChange={handleChange}
-              />
-              Entreprise:{" "}
-              <input
-                type="text"
-                name="company"
-                placeholder="Entreprise"
-                value={company || ""}
-                onChange={handleChange}
-              />
-            </div>
+      // Create order in your database
+      const userId = session.client_reference_id;
+      const amountTotal = session.amount_total / 100; // Convert from cents to euros
 
-            <div className={styles.contact}>
-              Email :{" "}
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={user.email || ""}
-                onChange={handleChange}
-              />
-              Téléphone :{" "}
-              <input
-                type="text"
-                name="phone"
-                placeholder="A renseigner"
-                value={phoneNumber || ""}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
+      const newOrder = new Order({
+        user: userId,
+        items: session.display_items, // You can customize this as per your order structure
+        totalAmount: amountTotal,
+        status: 'paid',
+        payment: {
+          method: 'stripe',
+          paid: true,
+        },
+        orderDate: new Date(),
+      });
 
-          <h2>
-            <i className="fa-solid fa-house"></i> ETAPE 2 : Adresses
-          </h2>
-          <div className={styles["address-details"]}>
-            <div className={styles["billing-address"]}>
-              <p>Adresse de facturation : </p>
-              <input
-                type="text"
-                name="street"
-                placeholder="Numéro et Rue"
-                value={billingAddress.street}
-                onChange={(e) =>
-                  setBillingAddress({
-                    ...billingAddress,
-                    street: e.target.value,
-                  })
-                }
-              />
-              <input
-                type="text"
-                name="zip"
-                placeholder="Code Postal"
-                value={billingAddress.zip}
-                onChange={(e) =>
-                  setBillingAddress({ ...billingAddress, zip: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                name="city"
-                placeholder="Ville"
-                value={billingAddress.city}
-                onChange={(e) =>
-                  setBillingAddress({ ...billingAddress, city: e.target.value })
-                }
-              />
+      try {
+        await newOrder.save();
+        // Reset the user's cart
+        await User.findByIdAndUpdate(userId, { cart: [] });
+        console.log('Order created and cart reset');
+      } catch (error) {
+        console.error('Error saving order:', error);
+      }
 
-              <select
-                name="country"
-                value={billingAddress.country}
-                onChange={(e) =>
-                  setBillingAddress({
-                    ...billingAddress,
-                    country: e.target.value,
-                  })
-                }
-              >
-                <option value="">Sélectionnez votre pays</option>
-                <option value="france">France</option>
-                <option value="belgique">Belgique</option>
-                <option value="suisse">Suisse</option>
-                <option value="luxembourg">Luxembourg</option>
-              </select>
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
 
-              <div className={styles["same-address"]}>
-                <input
-                  type="checkbox"
-                  id="same-address"
-                  name="same-address"
-                  className={styles.checkbox}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setOrder((prev) => ({
-                        ...prev,
-                        deliveryAddress: { ...billingAddress },
-                      }));
-                    } else {
-                      setOrder((prev) => ({
-                        ...prev,
-                        deliveryAddress: {
-                          street: "",
-                          city: "",
-                          zip: "",
-                          country: "",
-                        },
-                      }));
-                    }
-                  }}
-                />
-                <label htmlFor="same-address">
-                  Adresse de livraison identique
-                </label>
-              </div>
-            </div>
+  res.json({ received: true });
+});
 
-            <div className={styles["delivery-address"]}>
-              <p>Adresse de livraison : </p>
-              <input
-                type="text"
-                name="street"
-                placeholder="Numéro et Rue"
-                value={order.deliveryAddress.street}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="zip"
-                placeholder="Code Postal"
-                value={order.deliveryAddress.zip}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="city"
-                placeholder="Ville"
-                value={order.deliveryAddress.city}
-                onChange={handleChange}
-              />
-
-              <select
-                name="country"
-                value={order.deliveryAddress.country}
-                onChange={handleChange}
-              >
-                <option value="">Sélectionnez votre pays</option>
-                <option value="france">France</option>
-                <option value="belgique">Belgique</option>
-                <option value="suisse">Suisse</option>
-                <option value="luxembourg">Luxembourg</option>
-              </select>
-            </div>
-          </div>
-
-          <div className={styles.deliveryAndPayment}>
-            <div className={styles["delivery-options"]}>
-              <h2>
-                <i className="fa-solid fa-truck"></i> ETAPE 3 : Mode de livraison
-              </h2>
-              <select
-                name="deliveryMethod"
-                value={order.delivery.method}
-                onChange={handleChange}
-              >
-                <option value="">Sélectionnez le mode de livraison</option>
-                <option value="dhl">DHL</option>
-                <option value="chronopost">Chronopost</option>
-              </select>
-              <img
-                src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
-                className={styles.chrono}
-                alt="chronopost"
-              />
-              <img
-                src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
-                alt="DHL"
-              />
-            </div>
-
-            {/* <div className={styles["payment-options"]}>
-              <h2>
-                <i className="fa-regular fa-credit-card"></i> ETAPE 4 : Options de paiement
-              </h2>
-
-              <select
-                name="paymentMethod"
-                value={order.payment.method}
-                onChange={handleChange}
-              >
-                <option value="">Sélectionnez le mode de paiement</option>
-                <option value="carte">Carte</option>
-                <option value="virement">Virement</option>
-              </select>
-            </div> */}
-          </div>
-
-          <button type="submit">Passer au paiement</button>
-        </form>
-      </div>
-    </div>
-  );
-}
+module.exports = router;
