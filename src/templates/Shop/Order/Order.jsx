@@ -138,6 +138,19 @@ export default function Order() {
       return;
     }
 
+    console.log("Creating order with data:", {
+      user: user._id,
+      deliveryAddress: order.deliveryAddress,
+      items: order.items,
+      delivery: order.delivery,
+      totalAmount: order.totalAmount,
+      payment: {
+        method: 'stripe', // Provide payment method
+        paid: false
+      },
+      status: 'pending'
+    });
+
     // Create the order with status 'pending'
     const orderResponse = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
@@ -168,6 +181,8 @@ export default function Order() {
       });
       return;
     }
+
+    console.log("Order created successfully:", newOrder);
 
     // Create a Stripe Checkout session
     const response = await fetch(`${BASE_URL}/create-checkout-session`, {
