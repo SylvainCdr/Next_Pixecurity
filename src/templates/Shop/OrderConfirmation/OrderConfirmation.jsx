@@ -46,7 +46,7 @@ const OrderConfirmation = () => {
   }
 
   return (
-    <div>
+    <div className={styles.orderConfirmation} >
       <h1>Confirmation de commande</h1>
       {order ? (
         <div>
