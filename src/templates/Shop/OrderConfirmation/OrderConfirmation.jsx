@@ -51,7 +51,7 @@ const OrderConfirmation = () => {
         Swal.fire({
           icon: 'success',
           title: 'Paiement réussi',
-          text: 'Votre commande a été payée avec succès et votre panier a été réinitialisé.',
+          text: 'Votre commande a été payée avec succès. Un email de confirmation vous a été envoyé',
         });
       }
 
@@ -69,28 +69,28 @@ const OrderConfirmation = () => {
   };
 
   if (loading) {
-    return <div>Chargement...</div>;
+    return <div className={styles.loading}>Chargement...</div>;
   }
 
   if (error) {
-    return <div>Erreur: {error}</div>;
+    return <div className={styles.error}>Erreur: {error}</div>;
   }
 
   return (
     <div className={styles.orderConfirmation}>
       <h1>Confirmation de commande</h1>
       {order ? (
-        <div>
+        <div className={styles.orderDetails}>
           <p>Merci pour votre commande, {order.user.firstName} {order.user.lastName}.</p>
           <h2>Détails de la commande</h2>
-          <p>ID de commande: {order._id}</p>
+          <p>N° de commande: {order._id}</p>
           <p>Date de commande: {new Date(order.orderDate).toLocaleDateString()}</p>
-          <p>Montant total: {order.totalAmount} €</p>
+          <p>Montant total TTC: {order.totalAmount} €</p>
           <h3>Articles commandés:</h3>
           <ul>
             {order.items.map((item, index) => (
               <li key={index}>
-                {item.name} - {item.quantity} x {item.priceAtOrderTime} €
+                {item.name} - {item.quantity} x {item.priceAtOrderTime} € ht
               </li>
             ))}
           </ul>
