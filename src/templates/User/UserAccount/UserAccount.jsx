@@ -139,11 +139,11 @@ export default function UserAccount() {
                 )}
               </div>
               <div className={styles.address}>
-                <h4>Adresse de facturation</h4>
+                {/* <h4>Adresse de livraison</h4>
                 <p>Adresse : {user.billingAddress.street}</p>
                 <p>Ville : {user.billingAddress.city}</p>
                 <p>Code postal : {user.billingAddress.zip}</p>
-                <p>Pays : {user.billingAddress.country}</p>
+                <p>Pays : {user.billingAddress.country}</p> */}
               </div>
               <div className={styles.contact}>
                 <h4>Informations de contact</h4>

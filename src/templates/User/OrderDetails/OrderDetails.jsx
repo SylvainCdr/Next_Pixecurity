@@ -18,6 +18,7 @@ export default function OrderDetails() {
   const [status, setStatus] = useState("");
   const [orderDate, setOrderDate] = useState("");
   const [deliveryAddress, setDeliveryAddress] = useState({});
+  const [billingAddress, setBillingAddress] = useState({});
   const [deliveryMethod, setDeliveryMethod] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -36,6 +37,7 @@ export default function OrderDetails() {
         setStatus(data.status);
         setOrderDate(data.orderDate);
         setDeliveryAddress(data.deliveryAddress ?? {});
+        setBillingAddress(data.billingAddress ?? {});
         setDeliveryMethod(data.delivery.method);
         setDeliveryFee(data.delivery.fee);
         setPaymentMethod(data.payment.method);
@@ -67,6 +69,7 @@ export default function OrderDetails() {
             <h4>Livraison</h4>
             <p>Méthode de livraison : {deliveryMethod}</p>
             <p>Frais de livraison : {deliveryFee?.toFixed(2)} €</p>
+            <p> Adresse de Facturation : {billingAddress.street}, {billingAddress.zip} {billingAddress.city}, {billingAddress.country}</p>
             <p>
               Adresse de livraison : {deliveryAddress.street},{" "}
               {deliveryAddress.zip} {deliveryAddress.city},{" "}

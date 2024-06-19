@@ -20,12 +20,7 @@ export default function AdminOrderModal({ order, user, onClose }) {
       .then((data) => setUserDetails(data));
   }, [order]);
 
-  const [billingAddress, setBillingAddress] = useState({});
-  useEffect(() => {
-    fetch(`${BASE_URL}/users/${order.user}`)
-      .then((response) => response.json())
-      .then((data) => setBillingAddress(data.billingAddress));
-  }, [order]);
+
 
   return (
     <div className={styles["admin-order-modal"]}>
@@ -45,8 +40,8 @@ export default function AdminOrderModal({ order, user, onClose }) {
       </h3>
       <h4>Entreprise : {userDetails.company}</h4>
       <h4>
-        Adresse de facturation : {billingAddress.street}, {billingAddress.zip}{" "}
-        {billingAddress.city}, {billingAddress.country}
+        Adresse de facturation : {order.billingAddress.street}, {order.billingAddress.zip}{" "}
+        {order.billingAddress.city}, {order.billingAddress.country}
       </h4>
       <h4>
         Adresse de livraison : {order.deliveryAddress.street},{" "}

@@ -12,12 +12,6 @@ export default function Order() {
   const [tax, setTax] = useState(0);
   const [shippingCost, setShippingCost] = useState(20);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [billingAddress, setBillingAddress] = useState({
-    street: "",
-    zip: "",
-    city: "",
-    country: "",
-  });
   const [phoneNumber, setPhoneNumber] = useState("");
   const [company, setCompany] = useState("");
 
@@ -33,6 +27,7 @@ export default function Order() {
   const [order, setOrder] = useState({
     user: "",
     deliveryAddress: { street: "", city: "", zip: "", country: "" },
+    billingAddress: { street: "", city: "", zip: "", country: "" },
     items: [],
     delivery: {
       method: "",
@@ -77,6 +72,10 @@ export default function Order() {
           ...prev.deliveryAddress,
           [name]: value,
         },
+        billingAddress: {
+          ...prev.billingAddress,
+          [name]: value,
+        }
       }));
     } else if (name === "deliveryMethod") {
       setOrder((prev) => ({
@@ -119,14 +118,14 @@ export default function Order() {
       !user?.lastName ||
       !user?.email ||
       !phoneNumber ||
-      !billingAddress.street ||
-      !billingAddress.zip ||
-      !billingAddress.city ||
-      !billingAddress.country ||
       !order.deliveryAddress.street ||
       !order.deliveryAddress.zip ||
       !order.deliveryAddress.city ||
       !order.deliveryAddress.country ||
+      !order.billingAddress.street ||
+      !order.billingAddress.zip ||
+      !order.billingAddress.city ||
+      !order.billingAddress.country ||
       !order.delivery.method 
     ) {
       Swal.fire({
@@ -141,6 +140,7 @@ export default function Order() {
     console.log("Creating order with data:", {
       user: user._id,
       deliveryAddress: order.deliveryAddress,
+      billingAddress: order.billingAddress,
       items: order.items,
       delivery: order.delivery,
       totalAmount: order.totalAmount,
@@ -278,41 +278,59 @@ export default function Order() {
                 type="text"
                 name="street"
                 placeholder="Numéro et Rue"
-                value={billingAddress.street}
+                value={order.billingAddress.street}
                 onChange={(e) =>
-                  setBillingAddress({
-                    ...billingAddress,
-                    street: e.target.value,
-                  })
+                  setOrder((prev) => ({
+                    ...prev,
+                    billingAddress: {
+                      ...prev.billingAddress,
+                      street: e.target.value,
+                    }
+                  }))
                 }
               />
               <input
                 type="text"
                 name="zip"
                 placeholder="Code Postal"
-                value={billingAddress.zip}
+                value={order.billingAddress.zip}
                 onChange={(e) =>
-                  setBillingAddress({ ...billingAddress, zip: e.target.value })
+                  setOrder((prev) => ({
+                    ...prev,
+                    billingAddress: {
+                      ...prev.billingAddress,
+                      zip: e.target.value,
+                    }
+                  }))
                 }
               />
               <input
                 type="text"
                 name="city"
                 placeholder="Ville"
-                value={billingAddress.city}
+                value={order.billingAddress.city}
                 onChange={(e) =>
-                  setBillingAddress({ ...billingAddress, city: e.target.value })
+                  setOrder((prev) => ({
+                    ...prev,
+                    billingAddress: {
+                      ...prev.billingAddress,
+                      city: e.target.value,
+                    }
+                  }))
                 }
               />
 
               <select
                 name="country"
-                value={billingAddress.country}
+                value={order.billingAddress.country}
                 onChange={(e) =>
-                  setBillingAddress({
-                    ...billingAddress,
-                    country: e.target.value,
-                  })
+                  setOrder((prev) => ({
+                    ...prev,
+                    billingAddress: {
+                      ...prev.billingAddress,
+                      country: e.target.value,
+                    }
+                  }))
                 }
               >
                 <option value="">Sélectionnez votre pays</option>
@@ -332,7 +350,7 @@ export default function Order() {
                     if (e.target.checked) {
                       setOrder((prev) => ({
                         ...prev,
-                        deliveryAddress: { ...billingAddress },
+                        deliveryAddress: { ...prev.billingAddress },
                       }));
                     } else {
                       setOrder((prev) => ({
