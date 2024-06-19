@@ -26,49 +26,33 @@ const OrderConfirmation = () => {
       const orderData = await response.json();
 
       if (orderData.payment.method === 'stripe' && !orderData.payment.paid) {
-        await new Promise((resolve) => setTimeout(resolve, 2000)); // wait for 2 seconds
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        const paymentStatusResponse = await fetch(`${BASE_URL}/check-payment-status`, {
-          method: 'POST',
+        const updateResponse = await fetch(`${BASE_URL}/orders/${order_id}`, {
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ orderId: order_id }),
+          body: JSON.stringify({
+            ...orderData,
+            payment: { ...orderData.payment, paid: true },
+            status: 'paid',
+          }),
         });
 
-        if (!paymentStatusResponse.ok) {
-          throw new Error('Failed to check payment status');
+        if (!updateResponse.ok) {
+          throw new Error('Failed to update order status');
         }
 
-        const paymentStatusData = await paymentStatusResponse.json();
+        await fetch(`${BASE_URL}/users/${orderData.user}/reset-cart`, {
+          method: 'PUT',
+        });
 
-        if (paymentStatusData.paid) {
-          const updateResponse = await fetch(`${BASE_URL}/orders/${order_id}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              ...orderData,
-              payment: { ...orderData.payment, paid: true },
-              status: 'paid',
-            }),
-          });
-
-          if (!updateResponse.ok) {
-            throw new Error('Failed to update order status');
-          }
-
-          await fetch(`${BASE_URL}/users/${orderData.user}/reset-cart`, {
-            method: 'PUT',
-          });
-
-          Swal.fire({
-            icon: 'success',
-            title: 'Paiement réussi',
-            text: 'Votre commande a été payée avec succès et votre panier a été réinitialisé.',
-          });
-        }
+        Swal.fire({
+          icon: 'success',
+          title: 'Paiement réussi',
+          text: 'Votre commande a été payée avec succès et votre panier a été réinitialisé.',
+        });
       }
 
       setOrder(orderData);
