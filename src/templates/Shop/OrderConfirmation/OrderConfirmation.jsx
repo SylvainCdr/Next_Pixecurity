@@ -36,7 +36,7 @@ const OrderConfirmation = () => {
           body: JSON.stringify({
             ...orderData,
             payment: { ...orderData.payment, paid: true },
-            status: 'paid',
+            status: 'pending',
           }),
         });
 
