@@ -81,6 +81,55 @@ export default function AdminOrders() {
     setSelectedOrderId(orderId);
   };
 
+//   model :
+  
+// // Création d'un schéma pour les commandes
+// const OrderSchema = new Schema({
+//   // Création d'une référence à l'utilisateur qui a passé la commande
+//   user: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User',
+//     required: true
+//   },
+//   // Création d'un objet pour stocker l'adresse de livraison
+//   deliveryAddress: {
+//     street: { type: String, required: true },
+//     city: { type: String, required: true },
+//     zip: { type: String, required: true },
+//     country: { type: String, required: true },
+//   },
+//   // Création d'un objet pour stocker les produits commandés
+//   items: [{
+//     product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+//     name: { type: String, required: true },
+//     ref : { type: String, required: true },
+//     quantity: { type: Number, required: true },
+//     priceAtOrderTime: { type: Number, required: true },
+//   }],
+//   delivery: {
+//     method: { type: String, required: true, enum: ['dhl', 'chronopost'] },
+//     fee: { type: Number, default: 0 },
+//   },
+//   // Création d'une date de commande
+//   orderDate: {
+//     type: Date,
+//     default: Date.now
+
+//   },
+//   // Création d'un statut pour la commande
+//   status: {
+//     type: String,
+//     enum: ['pending', 'shipped', 'delivered'],
+//     default: 'pending'
+//   },
+//   payment: {
+//     method: { type: String, required: true },
+//     paid: { type: Boolean, default: false },
+//   },
+//   // Création d'un total pour la commande
+//     totalAmount: { type: Number, required: true },
+// });
+
   return (
     <div className={styles["admin-orders"]}>
       <h1>Commandes</h1>
@@ -96,6 +145,7 @@ export default function AdminOrders() {
             <th>Date</th>
             <th>Client</th>
             <th>Montant</th>
+            <th>Payée</th>
             <th>Statut</th>
             <th>Actions</th>
           </tr>
@@ -113,6 +163,7 @@ export default function AdminOrders() {
                 {users[order.user]?.firstName})
               </td>
               <td>{order.totalAmount.toFixed(2)} €</td>
+              <td>{order.payment.paid ? "Oui" : "Non"}</td>
               <td>{order.status}</td>
               <td>
                 {/* Au clic sur "Détails", on appelle la fonction handleDetails avec l'ID de la commande */}
