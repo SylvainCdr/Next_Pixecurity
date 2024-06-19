@@ -19,8 +19,8 @@ export default function AdminNav() {
 
       <article className={styles.promotions}>
         <p>Opérations commerciales</p>
-        <Link href="#">Liste des opérations </Link>
-        <Link href="#">Créer une opération </Link>
+        <Link href="/admin/operations">Liste des opérations </Link>
+        <Link href="/admin/operations/ajout">Créer une opération </Link>
       </article>
 
       <article className={styles.users}>

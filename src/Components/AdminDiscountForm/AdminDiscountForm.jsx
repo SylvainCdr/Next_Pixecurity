@@ -58,7 +58,7 @@ export default function AdminDiscountForm() {
     const { name, value } = e.target;
     setDiscountData({
       ...discountData,
-      [name]: value,
+      [name]: name === "discountValue" ? parseFloat(value) : value,
     });
   };
 
@@ -66,13 +66,7 @@ export default function AdminDiscountForm() {
     e.preventDefault();
     const discountPayload = {
       ...discountData,
-      products: selectedProducts.map(product => ({
-        product: product._id,
-        name: product.name,
-        ref: product.ref,
-        price: product.price,
-        discount: discountData.discountValue,
-      })),
+      products: selectedProducts.map(product => product._id),
     };
 
     try {
@@ -85,7 +79,8 @@ export default function AdminDiscountForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create discount");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to create discount");
       }
 
       Swal.fire({
@@ -104,14 +99,14 @@ export default function AdminDiscountForm() {
 
   return (
     <div className={styles.formContainer}>
-      <h1>Créer une réduction</h1>
+      <h1>Créer une opération commerciale</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label>Nom</label>
+          <label>Nom *</label>
           <input type="text" name="name" value={discountData.name} onChange={handleDiscountChange} required />
         </div>
         <div className={styles.formGroup}>
-          <label>Description</label>
+          <label>Description *</label>
           <textarea name="description" value={discountData.description} onChange={handleDiscountChange} required />
         </div>
         <div className={styles.formGroup}>
@@ -119,28 +114,28 @@ export default function AdminDiscountForm() {
           <input type="text" name="code" value={discountData.code} onChange={handleDiscountChange} />
         </div>
         <div className={styles.formGroup}>
-          <label>Type de remise</label>
+          <label>Type de remise *</label>
           <select name="discountType" value={discountData.discountType} onChange={handleDiscountChange}>
             <option value="percentage">Pourcentage</option>
             <option value="fixed">Fixe</option>
           </select>
         </div>
         <div className={styles.formGroup}>
-          <label>Valeur de la remise</label>
+          <label>Valeur de la remise *</label>
           <input type="number" name="discountValue" value={discountData.discountValue} onChange={handleDiscountChange} required />
         </div>
         <div className={styles.formGroup}>
-          <label>Date de début</label>
+          <label>Date de début *</label>
           <input type="date" name="startDate" value={discountData.startDate} onChange={handleDiscountChange} required />
         </div>
         <div className={styles.formGroup}>
-          <label>Date de fin</label>
+          <label>Date de fin *</label>
           <input type="date" name="endDate" value={discountData.endDate} onChange={handleDiscountChange} required />
         </div>
         <div className={styles.formGroup}>
           <label>Utilisateurs ciblés</label>
           <select multiple name="targetedUsers" value={discountData.targetedUsers} onChange={(e) => setDiscountData({ ...discountData, targetedUsers: [...e.target.selectedOptions].map(option => option.value) })}>
-            <option value="all">Tous les utilisateurs</option>
+            <option value="">Sélectionner des utilisateurs</option>
             {users.map(user => (
               <option key={user._id} value={user._id}>{user.firstName} {user.lastName}</option>
             ))}
@@ -148,7 +143,8 @@ export default function AdminDiscountForm() {
         </div>
         <div className={styles.formGroup}>
           <label>Catégories ciblées</label>
-          <select multiple name="targetedCategories" value={discountData.targetedCategories} onChange={(e) => setDiscountData({ ...discountData, targetedCategories: [...e.target.selectedOptions].map(option => option.value) })}>
+          <select name="targetedCategories" value={discountData.targetedCategories} onChange={(e) => setDiscountData({ ...discountData, targetedCategories: [e.target.value] })}>
+            <option value="">Sélectionner une catégorie</option>
             {categories.map(category => (
               <option key={category} value={category}>{category}</option>
             ))}
@@ -156,7 +152,8 @@ export default function AdminDiscountForm() {
         </div>
         <div className={styles.formGroup}>
           <label>Sous-catégories ciblées</label>
-          <select multiple name="targetedSubcategories" value={discountData.targetedSubcategories} onChange={(e) => setDiscountData({ ...discountData, targetedSubcategories: [...e.target.selectedOptions].map(option => option.value) })}>
+          <select name="targetedSubcategories" value={discountData.targetedSubcategories} onChange={(e) => setDiscountData({ ...discountData, targetedSubcategories: [e.target.value] })}>
+            <option value="">Sélectionner une sous-catégorie</option>
             {subcategories.map(subcategory => (
               <option key={subcategory} value={subcategory}>{subcategory}</option>
             ))}
@@ -164,7 +161,8 @@ export default function AdminDiscountForm() {
         </div>
         <div className={styles.formGroup}>
           <label>Marques ciblées</label>
-          <select multiple name="targetedBrands" value={discountData.targetedBrands} onChange={(e) => setDiscountData({ ...discountData, targetedBrands: [...e.target.selectedOptions].map(option => option.value) })}>
+          <select name="targetedBrands" value={discountData.targetedBrands} onChange={(e) => setDiscountData({ ...discountData, targetedBrands: [e.target.value] })}>
+            <option value="">Sélectionner une marque</option>
             {brands.map(brand => (
               <option key={brand} value={brand}>{brand}</option>
             ))}
