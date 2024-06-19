@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { BASE_URL } from '@/url';
 import Swal from 'sweetalert2';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 
 const OrderConfirmation = () => {
   const router = useRouter();
