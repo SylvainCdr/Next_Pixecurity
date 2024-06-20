@@ -26,7 +26,7 @@ export default function HomepageHero() {
 
       <div className={styles["hero-right"]}>
         <h1 data-aos="fade-up" data-aos-duration="3000">
-          Pixecurity : Votre partenaire en sécurité intelligente
+          Pixecurity : Votre partenaire en sûreté intelligente
         </h1>
         <Link href="/boutique">
           <button>Visiter la boutique</button>

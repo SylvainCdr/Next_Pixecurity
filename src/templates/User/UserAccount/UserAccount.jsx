@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import styles from "./style.module.scss";
 import useFavorites from "@/Components/useFavorites";
 import ProductCard from "@/Components/ProductCard/ProductCard";
@@ -17,10 +17,13 @@ export default function UserAccount() {
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [countFavorites, setCountFavorites] = useState(0);
+  const [countOrders, setCountOrders] = useState(0);
+  const [countCart, setCountCart] = useState(0);
 
   const { getFavorites, removeFromFavorites, checkFavorite, addToFavorites } =
     useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart, cartItemsCount } = useCart();
   const user = useGetUser();
   const userId = user?._id;
 
@@ -63,6 +66,17 @@ export default function UserAccount() {
     fetchOrders();
   }, [userId]);
 
+  // on compte le nombre de favoris du user
+
+  useEffect(() => {
+    setCountFavorites(favorites.length);
+  }, [favorites]);
+
+  // on compte le nombre de commandes du user
+  useEffect(() => {
+    setCountOrders(orders.length);
+  }, [orders]);
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -86,32 +100,25 @@ export default function UserAccount() {
       <div className={styles["user-menu"]}>
         <aside className={styles["user-account-nav"]}>
           <h2>Mon compte</h2>
-         
-            <button
-              className={styles.active}
-              onClick={() => handleTabClick("favoris")}
-            >
-            
-                <i class="fa-solid fa-heart"></i>
-              
-            </button>
-            <button
-              className={styles.active}
-              onClick={() => handleTabClick("infos")}
-            >
-           
-                <i class="fa-solid fa-user-pen"></i>
-              
-            </button>
-            <button
-              className={styles.active}
-              onClick={() => handleTabClick("commandes")}
-            >
-            
-                <i class="fa-solid fa-basket-shopping"></i>
-             
-            </button>
-         
+
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("favoris")}
+          >
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("infos")}
+          >
+            <i class="fa-solid fa-user-pen"></i>
+          </button>
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("commandes")}
+          >
+            <i class="fa-solid fa-basket-shopping"></i>
+          </button>
         </aside>
       </div>
 
@@ -125,6 +132,15 @@ export default function UserAccount() {
         {selectedTab === "infos" && (
           <div data-aos="fade-up" className={styles["user-infos"]}>
             <div className={styles["grid-infos"]}>
+            <div className={styles.activity}>
+                <h4>Activité</h4>
+                <p>Vous avez {countFavorites} produits dans vos favoris</p>
+                <p>Vous avez {cartItemsCount} produits dans votre panier</p>
+                <p>
+                  Vous avez passé {countOrders} commandes depuis votre
+                  inscription
+                </p>
+              </div>
               <div className={styles.perso}>
                 <h4>Informations personnelles</h4>
                 <p>Nom : {user.lastName}</p>
@@ -138,13 +154,7 @@ export default function UserAccount() {
                   <p>Remise accordée : {user.discount}%</p>
                 )}
               </div>
-              <div className={styles.address}>
-                {/* <h4>Adresse de livraison</h4>
-                <p>Adresse : {user.billingAddress.street}</p>
-                <p>Ville : {user.billingAddress.city}</p>
-                <p>Code postal : {user.billingAddress.zip}</p>
-                <p>Pays : {user.billingAddress.country}</p> */}
-              </div>
+             
               <div className={styles.contact}>
                 <h4>Informations de contact</h4>
                 <p>Email : {user.email}</p>

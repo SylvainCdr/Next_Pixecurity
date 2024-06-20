@@ -195,6 +195,12 @@ const useCart = () => {
     }
   }, [userId, isCartFetched]);
 
+  //Fonction pour compter le nombre d'articles dans le panier
+  useEffect(() => {
+    const count = cart.reduce((acc, product) => acc + product.quantity, 0);
+    setCartItemsCount(count);
+  }, [cart]);
+
   // Retourne les fonctions et états du hook
   return {
     cart,

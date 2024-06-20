@@ -24,7 +24,7 @@ export default function Home() {
 
         <div className={styles["section1-text"]}>
           <p>
-            La <strong>sécurité</strong> ne dépend plus de la force brute, mais
+            La <strong>sûreté</strong> ne dépend plus de la force brute, mais
             de <strong>l'intelligence</strong>. <br /> Chez{" "}
             <strong>Pixecurity</strong>, nous sommes les fournisseurs de
             systèmes de <strong>sûreté</strong> intelligents. <br />
