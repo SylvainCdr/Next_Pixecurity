@@ -390,7 +390,7 @@ export async function getServerSideProps({ params, query }) {
     props: {
       products: productsFiltered,
       category,
-      filters,
+      filters
     },
   };
 }

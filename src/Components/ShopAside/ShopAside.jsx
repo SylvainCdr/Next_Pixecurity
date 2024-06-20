@@ -1,14 +1,20 @@
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";  // Assuming you might have some effects
 
 export default function ShopAside({ filters }) {
   const filtersArray = Object.values(filters);
-  console.log({ filters, toto: Object.values(filters) });
+
+  useEffect(() => {
+    // Any side effects can be added here, e.g., setting initial filters, etc.
+  }, [filters]); // Add filters as a dependency
+
   return (
     <div className={styles.shopAside_container}>
-      {filtersArray.map((filter) => (
+      {filtersArray.map((filter, index) => (
         <ProductFilter
+          key={index} // Add a key prop here
           title={filter.title}
           queryKey={filter.queryKey}
           filters={filter.filters}
@@ -25,12 +31,13 @@ function ProductFilter({ title, queryKey, filters }) {
   const router = useRouter();
 
   if (!filters?.length) return null;
+
   return (
     <div className={styles.filter}>
       <h2>{title}</h2>
       <ul>
-        {filters.map((value) => (
-          <li key={value}>
+        {filters.map((value, index) => (
+          <li key={index}> {/* Ensure each item in the list has a unique key */}
             <label>
               <input
                 type="checkbox"
