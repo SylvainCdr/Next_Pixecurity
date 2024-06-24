@@ -13,6 +13,7 @@ export default function AdminDiscountForm() {
   const [selectedSubcategories, setSelectedSubcategories] = useState({});
   const [discountData, setDiscountData] = useState({
     name: "",
+    displayedName: "",
     description: "",
     code: "",
     discountType: "percentage",
@@ -153,6 +154,17 @@ export default function AdminDiscountForm() {
           />
         </div>
         <div className={styles.formGroup}>
+          <label>Nom affiché *</label>
+          <p>(Attribuer le nom qui sera affiché aux utilisateurs) </p>
+          <input
+            type="text"
+            name="displayedName"
+            value={discountData.displayedName}
+            onChange={handleDiscountChange}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
           <label>Description *</label>
           <p>(Attribuer une description claire de l'opération) </p>
           <textarea
@@ -163,6 +175,17 @@ export default function AdminDiscountForm() {
           />
         </div>
         <div className={styles.formGroup}>
+          <label>Image</label>
+          <input
+            type="text"
+            name="image"
+            value={discountData.image}
+            onChange={handleDiscountChange}
+          />
+        </div>
+        
+
+        {/* <div className={styles.formGroup}>
           <label>Code</label>
           <input
             type="text"
@@ -170,7 +193,7 @@ export default function AdminDiscountForm() {
             value={discountData.code}
             onChange={handleDiscountChange}
           />
-        </div>
+        </div> */}
         <div className={styles.formGroup}>
           <label>Type de remise *</label>
           <select

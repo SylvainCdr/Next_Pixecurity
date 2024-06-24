@@ -43,8 +43,7 @@
         -moz-border-radius: 0px;
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
-        i
-{
+        i {
           font-size: 2rem;
         }
       }
@@ -146,6 +145,70 @@
 
         button {
           padding: 0.6em 3.5em;
+        }
+      }
+    }
+
+    .user-discounts {
+      h4 {
+        background-color: var(--sunset1);
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        border-radius: 0.5rem;
+        -webkit-border-radius: 0.5rem;
+        -moz-border-radius: 0.5rem;
+        -ms-border-radius: 0.5rem;
+        -o-border-radius: 0.5rem;
+      }
+
+      .grid-discounts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 1rem;
+
+        .discount-card {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          background-color: white;
+          border-radius: 0.5rem;
+          -webkit-border-radius: 0.5rem;
+          -moz-border-radius: 0.5rem;
+          -ms-border-radius: 0.5rem;
+          -o-border-radius: 0.5rem;
+
+          h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+          }
+
+          p {
+            margin: 0.5rem 0;
+            color: rgba(19, 19, 19, 0.795);
+          }
+
+          .discountBadge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin:0 auto;
+            background-color: rgb(4, 165, 4);
+            padding: 0.5rem;
+            width: 5rem;
+            height: 3rem;
+            font-size: 1.5rem;
+            border-radius: 0.5em;
+            -webkit-border-radius: 0.5em;
+            -moz-border-radius: 0.5em;
+            -ms-border-radius: 0.5em;
+            -o-border-radius: 0.5em;
+}
         }
       }
     }

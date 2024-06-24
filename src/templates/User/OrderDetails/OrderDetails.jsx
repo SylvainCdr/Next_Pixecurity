@@ -23,6 +23,7 @@ export default function OrderDetails() {
   const [deliveryFee, setDeliveryFee] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [paid, setPaid] = useState(false);
+  const [discounts, setDiscounts] = useState({});
 
   useEffect(() => {
     fetch(`${BASE_URL}/orders/${orderId}`)
@@ -42,11 +43,34 @@ export default function OrderDetails() {
         setDeliveryFee(data.delivery.fee);
         setPaymentMethod(data.payment.method);
         setPaid(data.payment.paid);
+
+
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération de la commande :", error);
       });
   }, [orderId]);
+
+  useEffect(() => {
+    const fetchDiscounts = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/discounts`);
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des remises");
+        }
+        const data = await response.json();
+        const discountMap = data.reduce((acc, discount) => {
+          acc[discount._id] = discount;
+          return acc;
+        }, {});
+        setDiscounts(discountMap);
+      } catch (err) {
+        console.error("Error fetching discounts:", err);
+      }
+    };
+
+    fetchDiscounts();
+  }, []);
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
@@ -82,21 +106,36 @@ export default function OrderDetails() {
             <p>Statut du paiement : {paid ? "Payé" : "Non payé"}</p>
           </div>
           <div className={styles["order-details-items"]}>
-            <h4>Produits</h4>
-            <ul>
-              {items?.map((item) => (
-                <li key={item._id}>
-                  <p>
-                    {item.name} - {item.quantity} x{" "}
-                    {item?.priceAtOrderTime?.toFixed(2)} €
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <h4>Produits</h4>
+        <ul>
+          {items?.map((item) => (
+            <li key={item._id}>
+              <p>
+                {item.name} - {item.quantity} x {item?.priceAtOrderTime?.toFixed(2)} € ht
+                {item.discount.length > 0 && (
+                  <span>
+                    {" ("}
+                    {item.discount
+                      .map((discountId) => {
+                        const discount = discounts[discountId];
+                        return discount
+                          ? discount.discountType === "percentage"
+                            ? `${discount.discountValue}%`
+                            : `${discount.discountValue}€` 
+                          : "";
+                      })
+                      .join(" + ")}
+                    {" appliqué(s))"}
+                  </span>
+                )}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
           <div className={styles["order-details-total"]}>
-            <h4>Total</h4>
-            <p>Total de la commande : {totalAmount?.toFixed(2)} €</p>
+            <h4>Total </h4>
+            <p>Total de la commande TTC : {totalAmount?.toFixed(2)} €</p>
           </div>
         </div>
       </div>

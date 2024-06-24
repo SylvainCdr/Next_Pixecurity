@@ -15,6 +15,7 @@ export default function Order() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [company, setCompany] = useState("");
   const [discounts, setDiscounts] = useState([]);
+  const [totalDiscountAmount, setTotalDiscountAmount] = useState(0);
 
   useEffect(() => {
     if (user) {
@@ -44,8 +45,11 @@ export default function Order() {
 
   const applyDiscounts = (product) => {
     let finalPrice = product.price;
-    let highestDiscount = 0;
-    let highestDiscountType = null;
+    let globalDiscount = 0;
+    let specificDiscount = 0;
+    let highestSpecificDiscountType = null;
+    let appliedGlobalDiscount = null;
+    let appliedSpecificDiscount = null;
 
     discounts.forEach((discount) => {
       const isDateValid =
@@ -61,33 +65,51 @@ export default function Order() {
       const isProductTargeted = discount.products.includes(product.product_id);
       const isBrandTargeted = discount.targetedBrands.includes(product.brand);
 
+      if (isDateValid && isGlobalAndUserTargeted) {
+        if (discount.discountType === "percentage") {
+          globalDiscount += discount.discountValue;
+        } else if (discount.discountType === "fixed") {
+          globalDiscount += (discount.discountValue / product.price) * 100;
+        }
+        appliedGlobalDiscount = discount._id;
+      }
+
       if (
         isDateValid &&
-        (isGlobalAndUserTargeted ||
-          (isUserTargeted && (isProductTargeted || isBrandTargeted)))
+        (isUserTargeted && (isProductTargeted || isBrandTargeted))
       ) {
         if (discount.discountType === "percentage") {
-          if (discount.discountValue > highestDiscount && highestDiscountType !== "fixed") {
-            highestDiscount = discount.discountValue;
-            highestDiscountType = "percentage";
+          if (discount.discountValue > specificDiscount && highestSpecificDiscountType !== "fixed") {
+            specificDiscount = discount.discountValue;
+            highestSpecificDiscountType = "percentage";
+            appliedSpecificDiscount = discount._id;
           }
         } else if (discount.discountType === "fixed") {
           const fixedDiscountValue = (discount.discountValue / product.price) * 100;
-          if (fixedDiscountValue > highestDiscount) {
-            highestDiscount = fixedDiscountValue;
-            highestDiscountType = "fixed";
+          if (fixedDiscountValue > specificDiscount) {
+            specificDiscount = fixedDiscountValue;
+            highestSpecificDiscountType = "fixed";
+            appliedSpecificDiscount = discount._id;
           }
         }
       }
     });
 
-    if (highestDiscountType === "percentage") {
-      finalPrice -= (finalPrice * highestDiscount) / 100;
-    } else if (highestDiscountType === "fixed") {
-      finalPrice -= highestDiscount;
+    if (globalDiscount) {
+      finalPrice -= (finalPrice * globalDiscount) / 100;
     }
 
-    return finalPrice;
+    if (highestSpecificDiscountType === "percentage") {
+      finalPrice -= (finalPrice * specificDiscount) / 100;
+    } else if (highestSpecificDiscountType === "fixed") {
+      finalPrice -= specificDiscount;
+    }
+
+    return {
+      finalPrice,
+      appliedDiscounts: [appliedGlobalDiscount, appliedSpecificDiscount].filter(Boolean),
+      discountAmount: product.price - finalPrice,
+    };
   };
 
   const [order, setOrder] = useState({
@@ -105,28 +127,41 @@ export default function Order() {
       paid: false,
     },
     totalAmount: "",
+    totalDiscountAmount: 0,
   });
 
   useEffect(() => {
+    let totalDiscount = 0;
     const calculatedSubTotal = cart.reduce((acc, product) => {
-      const discountedPrice = applyDiscounts(product); // Appliquer le rabais au prix du produit
-      return acc + product.quantity * discountedPrice;
+      const { finalPrice, discountAmount } = applyDiscounts(product); // Appliquer le rabais au prix du produit
+      totalDiscount += discountAmount;
+      return acc + product.quantity * finalPrice;
     }, 0);
+
     setSubTotal(calculatedSubTotal);
     const calculatedTax = calculatedSubTotal * 0.2;
     setTax(calculatedTax);
     const calculatedTotalAmount = calculatedSubTotal + calculatedTax + shippingCost;
     setTotalAmount(calculatedTotalAmount);
+    setTotalDiscountAmount(totalDiscount);
+
     setOrder((prevOrder) => ({
       ...prevOrder,
-      items: cart.map((product) => ({
-        name: product.name,
-        quantity: product.quantity,
-        price: product.price,
-        ref: product.ref,
-        priceAtOrderTime: applyDiscounts(product),
-      })),
+      items: cart.map((product) => {
+        const { finalPrice, appliedDiscounts, discountAmount } = applyDiscounts(product);
+        return {
+          product: product.product_id,
+          name: product.name,
+          quantity: product.quantity,
+          price: product.price,
+          ref: product.ref,
+          priceAtOrderTime: finalPrice,
+          discount: appliedDiscounts,
+          discountAmount,
+        };
+      }),
       totalAmount: calculatedTotalAmount,
+      totalDiscountAmount: totalDiscount,
     }));
   }, [cart, shippingCost, discounts]);
 
@@ -142,7 +177,7 @@ export default function Order() {
         billingAddress: {
           ...prev.billingAddress,
           [name]: value,
-        }
+        },
       }));
     } else if (name === "deliveryMethod") {
       setOrder((prev) => ({
@@ -210,6 +245,7 @@ export default function Order() {
       items: order.items,
       delivery: order.delivery,
       totalAmount: order.totalAmount,
+      totalDiscountAmount: order.totalDiscountAmount,
       payment: {
         method: 'stripe',
         paid: false
@@ -348,7 +384,7 @@ export default function Order() {
                     billingAddress: {
                       ...prev.billingAddress,
                       street: e.target.value,
-                    }
+                    },
                   }))
                 }
               />
@@ -363,7 +399,7 @@ export default function Order() {
                     billingAddress: {
                       ...prev.billingAddress,
                       zip: e.target.value,
-                    }
+                    },
                   }))
                 }
               />
@@ -378,7 +414,7 @@ export default function Order() {
                     billingAddress: {
                       ...prev.billingAddress,
                       city: e.target.value,
-                    }
+                    },
                   }))
                 }
               />
@@ -392,7 +428,7 @@ export default function Order() {
                     billingAddress: {
                       ...prev.billingAddress,
                       country: e.target.value,
-                    }
+                    },
                   }))
                 }
               >

@@ -25,6 +25,10 @@ export default function AdminDiscounts() {
   const fetchDiscounts = async () => {
     const response = await fetch(`${BASE_URL}/discounts`);
     const data = await response.json();
+    data.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
+    for (const discount of data) {
+      await fetchDiscountDetails(discount);
+    }
     setDiscounts(data);
     setLoading(false);
   };
@@ -87,56 +91,58 @@ export default function AdminDiscounts() {
           <thead>
             <tr>
               <th>Nom</th>
-              <th>Code promo</th>
               <th>Type de remise</th>
-              <th>Valeur</th>
               <th>Globale</th>
+              <th>Valeur (%)</th>
               <th>Cible</th>
-              <th>Date de début</th>
-              <th>Date de fin</th>
-              <th>Statut</th>
+              <th>Validité</th>
+              {/* <th>Statut</th> */}
               <th>Actions</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {discounts.map((discount) => (
-              <tr key={discount._id}>
-                <td>{discount.name}</td>
-                <td>{discount.code}</td>
-                <td>{discount.discountType}</td>
-                <td>{discount.discountValue}</td>
-                <td>{discount.isGlobalDiscount ? "Oui" : "Non"}</td>
-                <td>
-                  {discount.targetedUsers.length > 0
-                    ? discount.targetedUsers.join(", ")
-                    : "Tous les utilisateurs"}
+            {discounts.map((discount) => {
+              const isValid =
+                new Date(discount.startDate) <= new Date() &&
+                new Date(discount.endDate) >= new Date();
+              return (
+                <tr key={discount._id}>
+                  <td>{discount.name}</td>
+                  <td>{discount.discountType}</td>
+                  <td>{discount.isGlobalDiscount ? "Oui" : "Non"}</td>
+                  <td>{discount.discountValue}</td>
+                  <td>
+                    {discount.userNames && discount.userNames.length > 0
+                      ? discount.userNames.join(", ")
+                      : "Tous les utilisateurs"}
                   </td>
-                <td>{new Date(discount.startDate).toLocaleDateString()}</td>
-                <td>{new Date(discount.endDate).toLocaleDateString()}</td>
-                <td>{discount.status}</td>
-                <td>
-                  <button
-                    className={styles.details}
-                    onClick={() => openModal(discount)}
-                  >
-                    Détails
-                  </button>
-                </td>
-                {/* <td>
-                  <button className={styles.edit}>Modifier</button>
-                </td> */}
-                <td>
-                  <button
-                    className={styles.delete}
-                    onClick={() => handleDeleteDiscount(discount._id)}
-                  >
-                    Supprimer
-                  </button>
-                </td>
-              </tr>
-            ))}
+                  <td style={{ color: isValid ? "green" : "red" }}>
+                    {new Date(discount.startDate).toLocaleDateString()} au{" "}
+                    {new Date(discount.endDate).toLocaleDateString()}
+                  </td>
+                  {/* <td>{discount.status}</td> */}
+                  <td>
+                    <button
+                      className={styles.details}
+                      onClick={() => openModal(discount)}
+                    >
+                      Détails
+                    </button>
+                  </td>
+        
+                  <td>
+                    <button
+                      className={styles.delete}
+                      onClick={() => handleDeleteDiscount(discount._id)}
+                    >
+                      Supprimer
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}

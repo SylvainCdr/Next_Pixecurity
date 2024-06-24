@@ -6,6 +6,7 @@ import { BASE_URL } from "../../url";
 export default function AdminOrderModal({ order, user, onClose }) {
   const [, setProducts] = useState([]);
   const [userDetails, setUserDetails] = useState({});
+  const [discounts, setDiscounts] = useState({});
 
   useEffect(() => {
     fetch(`${BASE_URL}/orders/${order._id}`)
@@ -13,14 +14,32 @@ export default function AdminOrderModal({ order, user, onClose }) {
       .then((data) => setProducts(data));
   }, [order]);
 
-  // on récupère les infos de l'utilisateur qui a passé la commande, notament la billingAddress
   useEffect(() => {
     fetch(`${BASE_URL}/users/${order.user}`)
       .then((response) => response.json())
       .then((data) => setUserDetails(data));
   }, [order]);
 
+  useEffect(() => {
+    const fetchDiscounts = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/discounts`);
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des remises");
+        }
+        const data = await response.json();
+        const discountMap = data.reduce((acc, discount) => {
+          acc[discount._id] = discount;
+          return acc;
+        }, {});
+        setDiscounts(discountMap);
+      } catch (err) {
+        console.error("Error fetching discounts:", err);
+      }
+    };
 
+    fetchDiscounts();
+  }, []);
 
   return (
     <div className={styles["admin-order-modal"]}>
@@ -29,12 +48,10 @@ export default function AdminOrderModal({ order, user, onClose }) {
       </button>
       <h2>Commande n°{order._id}</h2>
 
-      {/* Intégration de la timeline */}
       <DeliveryTimeline status={order.status} />
       <h4>
         Date de commande : {new Date(order.orderDate).toLocaleDateString()}
       </h4>
-      {/* <h3>Statut de la commande : {order.status}</h3> */}
       <h3>
         Client : {userDetails.lastName} {userDetails.firstName}
       </h3>
@@ -55,6 +72,7 @@ export default function AdminOrderModal({ order, user, onClose }) {
             <th>Produit</th>
             <th>Quantité</th>
             <th>Prix unitaire</th>
+            {/* <th>Remise</th> */}
             <th>Total</th>
           </tr>
         </thead>
@@ -63,7 +81,23 @@ export default function AdminOrderModal({ order, user, onClose }) {
             <tr key={item._id}>
               <td>{item.name}</td>
               <td>{item.quantity}</td>
-              <td>{item.priceAtOrderTime.toFixed(2)} €</td>
+              <td>{item.priceAtOrderTime.toFixed(2)} €    {item.discount.length > 0 && (
+                  <span>
+                    {" ("}
+                    {item.discount
+                      .map((discountId) => {
+                        const discount = discounts[discountId];
+                        return discount
+                          ? discount.discountType === "percentage"
+                            ? `${discount.discountValue}%`
+                            : `${discount.discountValue}€`
+                          : "";
+                      })
+                      .join(" + ")}
+                    {" apppliqué(s))"}
+                  </span>
+                )}</td>
+           
               <td>{(item.priceAtOrderTime * item.quantity).toFixed(2)} €</td>
             </tr>
           ))}

@@ -49,8 +49,11 @@ export default function Cart({ carouselProducts }) {
     }
 
     let finalPrice = product.price;
-    let highestDiscount = 0;
-    let highestDiscountType = null;
+    let globalDiscount = 0;
+    let globalDiscountType = null;
+
+    let specificDiscount = 0;
+    let specificDiscountType = null;
 
     discounts.forEach((discount) => {
       const isDateValid =
@@ -61,36 +64,47 @@ export default function Cart({ carouselProducts }) {
         (discount.targetedUsers.length === 0 ||
           discount.targetedUsers.includes(userId));
       const isUserTargeted =
-          
         discount.targetedUsers.length === 0 ||
         discount.targetedUsers.includes(userId);
       const isProductTargeted = discount.products.includes(product.product_id);
       const isBrandTargeted = discount.targetedBrands.includes(product.brand);
 
-      if (
-        isDateValid &&
-        (isGlobalAndUserTargeted ||
-          (isUserTargeted && (isProductTargeted || isBrandTargeted)))
-      ) {
+      if (isDateValid && isGlobalAndUserTargeted) {
         if (discount.discountType === "percentage") {
-          if (discount.discountValue > highestDiscount && highestDiscountType !== "fixed") {
-            highestDiscount = discount.discountValue;
-            highestDiscountType = "percentage";
+          globalDiscount += discount.discountValue;
+          globalDiscountType = "percentage";
+        } else if (discount.discountType === "fixed") {
+          globalDiscount += discount.discountValue;
+          globalDiscountType = "fixed";
+        }
+      }
+
+      if (isDateValid && (isUserTargeted && (isProductTargeted || isBrandTargeted))) {
+        if (discount.discountType === "percentage") {
+          if (discount.discountValue > specificDiscount && specificDiscountType !== "fixed") {
+            specificDiscount = discount.discountValue;
+            specificDiscountType = "percentage";
           }
         } else if (discount.discountType === "fixed") {
           const fixedDiscountValue = (discount.discountValue / product.price) * 100;
-          if (fixedDiscountValue > highestDiscount) {
-            highestDiscount = fixedDiscountValue;
-            highestDiscountType = "fixed";
+          if (fixedDiscountValue > specificDiscount) {
+            specificDiscount = fixedDiscountValue;
+            specificDiscountType = "fixed";
           }
         }
       }
     });
 
-    if (highestDiscountType === "percentage") {
-      finalPrice -= (finalPrice * highestDiscount) / 100;
-    } else if (highestDiscountType === "fixed") {
-      finalPrice -= highestDiscount;
+    if (globalDiscountType === "percentage") {
+      finalPrice -= (finalPrice * globalDiscount) / 100;
+    } else if (globalDiscountType === "fixed") {
+      finalPrice -= globalDiscount;
+    }
+
+    if (specificDiscountType === "percentage") {
+      finalPrice -= (finalPrice * specificDiscount) / 100;
+    } else if (specificDiscountType === "fixed") {
+      finalPrice -= specificDiscount;
     }
 
     return finalPrice;

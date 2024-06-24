@@ -20,6 +20,7 @@ export default function UserAccount() {
   const [countFavorites, setCountFavorites] = useState(0);
   const [countOrders, setCountOrders] = useState(0);
   const [countCart, setCountCart] = useState(0);
+  const [discounts, setDiscounts] = useState([]);
 
   const { getFavorites, removeFromFavorites, checkFavorite, addToFavorites } =
     useFavorites();
@@ -77,9 +78,39 @@ export default function UserAccount() {
     setCountOrders(orders.length);
   }, [orders]);
 
+  // on va chercher les remises actives et applicables pour l'utilisateur
   useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+    const fetchDiscounts = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/discounts`);
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des remises");
+        }
+        const data = await response.json();
+        const activeDiscounts = data.filter(
+          (discount) =>
+            new Date(discount.startDate) <= new Date() &&
+            new Date(discount.endDate) >= new Date()
+        );
+        const userDiscounts = activeDiscounts.filter(
+          (discount) =>
+            discount.targetedUsers.length === 0 ||
+            discount.targetedUsers.includes(userId)
+        );
+
+        const discountsMap = userDiscounts.reduce((acc, discount) => {
+          acc[discount._id] = discount;
+          return acc;
+        }, {});
+
+        setDiscounts(discountsMap);
+      } catch (err) {
+        console.error("Erreur lors de la récupération des remises :", err);
+      }
+    };
+
+    fetchDiscounts();
+  }, [userId]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
@@ -92,6 +123,10 @@ export default function UserAccount() {
       router.push(`/product/${product_id}`);
     }
   };
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   if (!user) return null; // Ou affichez un message de chargement si nécessaire
 
@@ -107,6 +142,14 @@ export default function UserAccount() {
           >
             <i class="fa-solid fa-heart"></i>
           </button>
+
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("discounts")}
+          >
+            <i class="fa-solid fa-percent"></i>
+          </button>
+
           <button
             className={styles.active}
             onClick={() => handleTabClick("infos")}
@@ -125,6 +168,7 @@ export default function UserAccount() {
       <div className={styles["user-dashboard"]}>
         <h3>
           {selectedTab === "favoris" && "Mes produits favoris"}
+          {selectedTab === "discounts" && "Mes remises & promotions"}
           {selectedTab === "infos" && "Mes informations"}
           {selectedTab === "commandes" && "Mes commandes"}
         </h3>
@@ -132,7 +176,7 @@ export default function UserAccount() {
         {selectedTab === "infos" && (
           <div data-aos="fade-up" className={styles["user-infos"]}>
             <div className={styles["grid-infos"]}>
-            <div className={styles.activity}>
+              <div className={styles.activity}>
                 <h4>Activité</h4>
                 <p>Vous avez {countFavorites} produits dans vos favoris</p>
                 <p>Vous avez {cartItemsCount} produits dans votre panier</p>
@@ -140,6 +184,8 @@ export default function UserAccount() {
                   Vous avez passé {countOrders} commandes depuis votre
                   inscription
                 </p>
+
+              
               </div>
               <div className={styles.perso}>
                 <h4>Informations personnelles</h4>
@@ -154,7 +200,7 @@ export default function UserAccount() {
                   <p>Remise accordée : {user.discount}%</p>
                 )}
               </div>
-             
+
               <div className={styles.contact}>
                 <h4>Informations de contact</h4>
                 <p>Email : {user.email}</p>
@@ -164,6 +210,38 @@ export default function UserAccount() {
             <Link href="/mon-compte/modification">
               <button>Modifier</button>
             </Link>
+          </div>
+        )}
+
+        {selectedTab === "discounts" && (
+          <div data-aos="fade-up" className={styles["user-discounts"]}>
+
+            <div className={styles["grid-discounts"]}>
+              {Object.values(discounts).map((discount) => (
+                <div key={discount._id} className={styles["discount-card"]}>
+                  <h4>{discount.displayedName || discount.name}</h4>
+                  <span className={styles.discountBadge}>
+                    {discount.discountType === "percentage"
+                      ? `${discount.discountValue}%`
+                      : `${discount.discountValue}€`}
+                  </span>
+                  <p>
+                    {discount.isGlobalDiscount
+                      ? "Remise sur toute la boutique"
+                      : "PROMOTION"}
+                  </p>
+                  {/* <p>
+                    {discount.targetedUsers.length > 0
+                     ? `Remise pour ${discount.targetedUsers.length} utilisateur(s)`
+                      : "PROMOTION"}
+                  </p> */}
+                  <p> Validité : {" "}
+                    {new Date(discount.startDate).toLocaleDateString()} au{" "}
+                    {new Date(discount.endDate).toLocaleDateString()}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -216,7 +294,7 @@ export default function UserAccount() {
                         <th>N° de commande</th>
                         <th>Date</th>
                         <th className={styles.mobile}>Produits</th>
-                        <th className={styles.mobile}>Total</th>
+                        <th className={styles.mobile}>Total TTC</th>
                         {/* <th>Statut</th> */}
                         <th>Détails</th>
                       </tr>
