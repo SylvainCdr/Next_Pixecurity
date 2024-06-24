@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
-import styles from "./style.module.scss";
-import ShopNav from "@/Components/ShopNav/ShopNav";
-import ShopSearch from "@/Components/ShopSearch/ShopSearch";
+import React, { useState, useEffect } from "react";
 import useFavorites from "@/Components/useFavorites";
 import useCart from "@/Components/useCart";
-import ProductCard from "@/Components/ProductCard/ProductCard";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import { logos } from "@/templates/Shop/Product/LogosData";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
+import useDiscount from "@/Components/useDiscount"; // Assurez-vous de l'importer
+
+import styles from "./style.module.scss";
+import ShopNav from "@/Components/ShopNav/ShopNav";
+import ShopSearch from "@/Components/ShopSearch/ShopSearch";
+import ProductCard from "@/Components/ProductCard/ProductCard";
 
 export default function Product({ product, id, suggestions }) {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
@@ -17,15 +19,12 @@ export default function Product({ product, id, suggestions }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
-  // Get the user and discount from the context
   const user = useGetUser();
-  // Destructure the user object to get the user ID and discount
   const userId = user?._id;
-  const discount = user?.discount ?? 0;
 
-  const calculateDiscount = (price, discount) => {
-    return price - (price * discount) / 100;
-  };
+  const { applyDiscounts} = useDiscount(userId);
+
+  const discountedPrice = applyDiscounts(product);
 
   const brandLogo = logos.find(
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
@@ -64,6 +63,7 @@ export default function Product({ product, id, suggestions }) {
   };
 
   const [isInFavorites, setIsInFavorites] = useState(false);
+
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
       if (userId && id) {
@@ -132,8 +132,7 @@ export default function Product({ product, id, suggestions }) {
   };
 
   const calculateDiscountedPrice = () => {
-    if (userId && product.price && discount) {
-      const discountedPrice = calculateDiscount(product.price, discount);
+    if (product.price && discountedPrice !== product.price) {
       return (
         <p className={styles.prices}>
           <span className={styles["original-price"]}>
@@ -165,9 +164,16 @@ export default function Product({ product, id, suggestions }) {
       <div className={styles["product-page"]}>
         <div className={styles["product-section1"]}>
           <div data-aos="zoom-in-right" className={styles["product-img"]}>
-            {discount !== 0 && (
+            {/* {discount !== 0 && (
               <span className={styles["discount-badge"]}>-{discount}%</span>
+            )} */}
+            {/* // on affiche la discountValue */}
+            {discountedPrice !== product.price && (
+              <span className={styles["discount-badge"]}>
+                -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
+              </span>
             )}
+
 
             <img
               src={

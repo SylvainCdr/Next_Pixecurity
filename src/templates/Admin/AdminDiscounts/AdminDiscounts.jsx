@@ -89,7 +89,9 @@ export default function AdminDiscounts() {
               <th>Nom</th>
               <th>Code promo</th>
               <th>Type de remise</th>
-              <th>Valeur (% ou €)</th>
+              <th>Valeur</th>
+              <th>Globale</th>
+              <th>Cible</th>
               <th>Date de début</th>
               <th>Date de fin</th>
               <th>Statut</th>
@@ -105,6 +107,12 @@ export default function AdminDiscounts() {
                 <td>{discount.code}</td>
                 <td>{discount.discountType}</td>
                 <td>{discount.discountValue}</td>
+                <td>{discount.isGlobalDiscount ? "Oui" : "Non"}</td>
+                <td>
+                  {discount.targetedUsers.length > 0
+                    ? discount.targetedUsers.join(", ")
+                    : "Tous les utilisateurs"}
+                  </td>
                 <td>{new Date(discount.startDate).toLocaleDateString()}</td>
                 <td>{new Date(discount.endDate).toLocaleDateString()}</td>
                 <td>{discount.status}</td>

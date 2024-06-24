@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link  from "next/link";
 import styles from "./style.module.scss";
-import { BASE_URL } from "../../url";
+import { BASE_URL } from "@/url";
 
 function ShopNav() {
   const [categories, setCategories] = useState([]);

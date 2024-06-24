@@ -146,12 +146,25 @@
       }
 
       .product-price {
-        color: rgb(1, 110, 1);
         font-weight: 500;
+
+        .original-price {
+          text-decoration: line-through;
+          color: rgb(250, 90, 90);
+          font-size: 0.9rem;
+          margin-right: 0.5rem;
+        }
+
+        .discounted-price {
+          color: rgb(1, 110, 1);
+        
+        }
+        
       }
       .discount-badge {
         color: rgb(252, 44, 44);
         font-weight: 500;
+       
       }
 
       .product-quantity {

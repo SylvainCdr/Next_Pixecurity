@@ -37,6 +37,10 @@ const useCart = () => {
     }
   };
 
+
+
+
+
   // Fonction pour modifier la quantité d'un produit dans le panier
   const editQuantity = async (userId, productId, quantity) => {
     try {

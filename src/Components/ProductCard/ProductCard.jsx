@@ -8,17 +8,20 @@ import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
 import useCart from "../useCart";
+import useDiscount from "../useDiscount"; // Importer le hook useDiscount
 
 const ProductCard = ({ product }) => {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCart();
   const [isInFavorites, setIsInFavorites] = useState(false);
 
-  const user = useGetUser();
-  const discount = user?.discount ?? 0;
-  const userId = user?._id;
 
-  // on vérifie si le produit est dans les favoris de l'utilisateur
+    const user = useGetUser();
+    const userId = user?._id;
+    const { applyDiscountsForProductsDisplay } = useDiscount(userId);
+  
+    const discountedPrice = applyDiscountsForProductsDisplay(product);
+
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
       if (userId) {
@@ -34,7 +37,6 @@ const ProductCard = ({ product }) => {
     fetchFavoriteStatus();
   }, [userId, product._id, checkFavorite]);
 
-  // on crée une fonction pour gérer l'ajout et la suppression des favoris
   const handleToggleFavoritesClick = async () => {
     console.log("Trying to remove product with ID:", product._id);
     try {
@@ -48,14 +50,11 @@ const ProductCard = ({ product }) => {
             product.name,
             product.price,
             product.ref,
-            product.image,
+            product.image
           );
         }
-
-        // Mettez à jour isInFavorites après le succès de l'opération
         setIsInFavorites(!isInFavorites);
       } else {
-        // Si l'user n'est pas authentifié alors afficher un message SweetAlert indiquant à l'utilisateur de se connecter ou de s'inscrire
         Swal.fire({
           icon: "info",
           title:
@@ -68,15 +67,34 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  // on crée une fonction pour calculer le prix après réduction
-  const calculateDiscount = (price, discount) => {
-    return price - (price * discount) / 100;
+  const handleAddToCartClick = async () => {
+    if (userId) {
+      const added = await addToCart(
+        userId,
+        product._id,
+        product.name,
+        product.ref,
+        1,
+        product.price,
+        product.image
+      );
+      if (added) {
+        console.log("Produit ajouté au panier avec succès!");
+      } else {
+        console.error("Erreur lors de l'ajout du produit au panier");
+      }
+    } else {
+      Swal.fire({
+        icon: "info",
+        title:
+          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        showConfirmButton: true,
+      });
+    }
   };
 
-  // on crée une fonction pour calculer le prix après réduction si l'utilisateur authentifié possède une réduction
   const calculateDiscountedPrice = () => {
-    if (userId && product.price && discount) {
-      const discountedPrice = calculateDiscount(product.price, discount);
+    if ( product.price && discountedPrice !== product.price) {
       return (
         <div className={styles["card-prices"]}>
           <p className={styles["original-price"]}>
@@ -89,7 +107,6 @@ const ProductCard = ({ product }) => {
       );
     } else {
       return (
-        // Si l'utilisateur n'est pas authentifié ou si le produit n'a pas de prix remisé, afficher le prix normal
         <span className={styles["card-price"]}>
           {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
         </span>
@@ -97,47 +114,20 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  // on crée une fonction pour ajouter un produit au panier
-  const handleAddToCartClick = async () => {
-    if (userId) {
-      const added = await addToCart(
-        userId,
-        product._id,
-        product.name,
-        product.ref,
-        1, // fix for quantity assignment
-        product.price,
-        product.image,
-      );
-      if (added) {
-        console.log("Produit ajouté au panier avec succès!");
-      } else {
-        console.error("Erreur lors de l'ajout du produit au panier");
-      }
-    } else {
-      // Afficher un message SweetAlert indiquant à l'utilisateur de se connecter ou de s'inscrire
-      Swal.fire({
-        icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
-        showConfirmButton: true,
-      });
-    }
-  };
-
-  //aos
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
 
   const brandLogo = logos.find(
-    (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase(),
+    (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
   );
 
   return (
     <div className={styles["product-card"]}>
-      {discount !== 0 && (
-        <span className={styles["discount-badge"]}>-{discount}%</span>
+      {discountedPrice !== product.price && (
+        <span className={styles["discount-badge"]}>
+          -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
+        </span>
       )}
       {product.image.startsWith("http") ? (
         <img src={product.image} alt="" className={styles["product-img"]} />

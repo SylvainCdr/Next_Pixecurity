@@ -14,6 +14,7 @@ export default function Order() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [company, setCompany] = useState("");
+  const [discounts, setDiscounts] = useState([]);
 
   useEffect(() => {
     if (user) {
@@ -23,6 +24,71 @@ export default function Order() {
       }));
     }
   }, [user]);
+
+  useEffect(() => {
+    const fetchDiscounts = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/discounts`);
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des remises");
+        }
+        const data = await response.json();
+        setDiscounts(data);
+      } catch (err) {
+        console.error("Error fetching discounts:", err);
+      }
+    };
+
+    fetchDiscounts();
+  }, []);
+
+  const applyDiscounts = (product) => {
+    let finalPrice = product.price;
+    let highestDiscount = 0;
+    let highestDiscountType = null;
+
+    discounts.forEach((discount) => {
+      const isDateValid =
+        new Date(discount.startDate) <= new Date() &&
+        new Date(discount.endDate) >= new Date();
+      const isGlobalAndUserTargeted =
+        discount.isGlobalDiscount &&
+        (discount.targetedUsers.length === 0 ||
+          discount.targetedUsers.includes(user?._id));
+      const isUserTargeted =
+        discount.targetedUsers.length === 0 ||
+        discount.targetedUsers.includes(user?._id);
+      const isProductTargeted = discount.products.includes(product.product_id);
+      const isBrandTargeted = discount.targetedBrands.includes(product.brand);
+
+      if (
+        isDateValid &&
+        (isGlobalAndUserTargeted ||
+          (isUserTargeted && (isProductTargeted || isBrandTargeted)))
+      ) {
+        if (discount.discountType === "percentage") {
+          if (discount.discountValue > highestDiscount && highestDiscountType !== "fixed") {
+            highestDiscount = discount.discountValue;
+            highestDiscountType = "percentage";
+          }
+        } else if (discount.discountType === "fixed") {
+          const fixedDiscountValue = (discount.discountValue / product.price) * 100;
+          if (fixedDiscountValue > highestDiscount) {
+            highestDiscount = fixedDiscountValue;
+            highestDiscountType = "fixed";
+          }
+        }
+      }
+    });
+
+    if (highestDiscountType === "percentage") {
+      finalPrice -= (finalPrice * highestDiscount) / 100;
+    } else if (highestDiscountType === "fixed") {
+      finalPrice -= highestDiscount;
+    }
+
+    return finalPrice;
+  };
 
   const [order, setOrder] = useState({
     user: "",
@@ -35,7 +101,7 @@ export default function Order() {
     },
     orderDate: new Date().toLocaleDateString(),
     payment: {
-      method: "stripe", // Ensure payment method is provided
+      method: "stripe",
       paid: false,
     },
     totalAmount: "",
@@ -43,7 +109,8 @@ export default function Order() {
 
   useEffect(() => {
     const calculatedSubTotal = cart.reduce((acc, product) => {
-      return acc + product.quantity * product.price;
+      const discountedPrice = applyDiscounts(product); // Appliquer le rabais au prix du produit
+      return acc + product.quantity * discountedPrice;
     }, 0);
     setSubTotal(calculatedSubTotal);
     const calculatedTax = calculatedSubTotal * 0.2;
@@ -56,12 +123,12 @@ export default function Order() {
         name: product.name,
         quantity: product.quantity,
         price: product.price,
-        ref: product.ref, // Ensure ref is provided
-        priceAtOrderTime: product.price, // Ensure priceAtOrderTime is provided
+        ref: product.ref,
+        priceAtOrderTime: applyDiscounts(product),
       })),
       totalAmount: calculatedTotalAmount,
     }));
-  }, [cart, shippingCost]);
+  }, [cart, shippingCost, discounts]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -90,7 +157,6 @@ export default function Order() {
     } else if (name === "company") {
       setCompany(value);
     } else {
-      // Mise à jour des informations de l'utilisateur
       const updatedUser = { ...user, [name]: value };
       fetch(`${BASE_URL}/users/${user._id}`, {
         method: "PUT",
@@ -145,13 +211,12 @@ export default function Order() {
       delivery: order.delivery,
       totalAmount: order.totalAmount,
       payment: {
-        method: 'stripe', // Provide payment method
+        method: 'stripe',
         paid: false
       },
       status: 'pending'
     });
 
-    // Create the order with status 'pending'
     const orderResponse = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
       headers: {
@@ -160,7 +225,7 @@ export default function Order() {
       body: JSON.stringify({
         ...order,
         payment: {
-          method: 'stripe', // Provide payment method
+          method: 'stripe',
           paid: false
         },
         status: 'pending'
@@ -179,7 +244,6 @@ export default function Order() {
 
     console.log("Order created successfully:", newOrder);
 
-    // Create a Stripe Checkout session
     const response = await fetch(`${BASE_URL}/create-checkout-session`, {
       method: "POST",
       headers: {
@@ -189,14 +253,13 @@ export default function Order() {
         userId: user._id,
         amount: order.totalAmount,
         currency: "eur",
-        orderId: newOrder._id, // Send the order ID to Stripe
+        orderId: newOrder._id,
       }),
     });
 
     const session = await response.json();
 
     if (response.ok) {
-      // Rediriger vers la page de paiement Stripe
       window.location.href = session.url;
     } else {
       Swal.fire({
