@@ -1,32 +1,39 @@
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";  // Assuming you might have some effects
+import { useRef, useState } from "react";
 
-export default function ShopAside({ filters }) {
+export default function ShopAside({ filters, subcategory }) {
   const filtersArray = Object.values(filters);
-
-  useEffect(() => {
-    // Any side effects can be added here, e.g., setting initial filters, etc.
-  }, [filters]); // Add filters as a dependency
+  const haveSubcat = Boolean(subcategory?.length);
 
   return (
     <div className={styles.shopAside_container}>
-      {filtersArray.map((filter, index) => (
-        <ProductFilter
-          key={index} // Add a key prop here
-          title={filter.title}
-          queryKey={filter.queryKey}
-          filters={filter.filters}
-        />
-      ))}
+      {filtersArray.map((filter, index) => {
+        if (filter.queryKey === "price")
+          return (
+            <PriceFilter
+              title={filter.title}
+              filters={filter.filters}
+              haveSubcat={haveSubcat}
+            />
+          );
 
-      <PriceFilter />
+        return (
+          <ProductFilter
+            key={index} // Add a key prop here
+            title={filter.title}
+            queryKey={filter.queryKey}
+            filters={filter.filters}
+            haveSubcat={haveSubcat}
+          />
+        );
+      })}
     </div>
   );
 }
 
-function ProductFilter({ title, queryKey, filters }) {
+function ProductFilter({ title, queryKey, filters, haveSubcat }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -37,7 +44,9 @@ function ProductFilter({ title, queryKey, filters }) {
       <h2>{title}</h2>
       <ul>
         {filters.map((value, index) => (
-          <li key={index}> {/* Ensure each item in the list has a unique key */}
+          <li key={index}>
+            {" "}
+            {/* Ensure each item in the list has a unique key */}
             <label>
               <input
                 type="checkbox"
@@ -49,7 +58,9 @@ function ProductFilter({ title, queryKey, filters }) {
                     values = values.filter((b) => String(b) !== String(value));
                   }
                   router.replace({
-                    pathname: "/boutique/[category]",
+                    pathname: haveSubcat
+                      ? "/boutique/[category]/[subcategory]"
+                      : "/boutique/[category]",
                     query: {
                       ...router.query,
                       [queryKey]: values,
@@ -67,18 +78,34 @@ function ProductFilter({ title, queryKey, filters }) {
   );
 }
 
-function PriceFilter() {
+function PriceFilter({ title, filters, haveSubcat }) {
+  const searchParams = useSearchParams();
+  const [price, setPrice] = useState(searchParams.get("price") ?? 0);
+  const router = useRouter();
+
   return (
     <div className={styles.filter}>
-      <h2>Prix</h2>
+      <h2>{title}</h2>
       <input
         type="range"
-        // min={priceRange.min}
-        // max={priceRange.max}
-        // value={price}
-        // onChange={handlePriceRangeChange}
+        min={filters?.min}
+        max={filters?.max}
+        value={price}
+        onChange={(e) => {
+          const value = e.target.value;
+          setPrice(value);
+          router.replace({
+            pathname: haveSubcat
+              ? "/boutique/[category]/[subcategory]"
+              : "/boutique/[category]",
+            query: {
+              ...router.query,
+              price: value,
+            },
+          });
+        }}
       />
-      {/* <span>{price} € HT</span> */}
+      <span>{price} € HT</span>
     </div>
   );
 }
