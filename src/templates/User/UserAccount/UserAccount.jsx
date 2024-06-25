@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function UserAccount() {
   const router = useRouter();
 
-  const [selectedTab, setSelectedTab] = useState("favoris");
+  const [selectedTab, setSelectedTab] = useState("discounts");
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -136,18 +136,18 @@ export default function UserAccount() {
         <aside className={styles["user-account-nav"]}>
           <h2>Mon compte</h2>
 
-          <button
-            className={styles.active}
-            onClick={() => handleTabClick("favoris")}
-          >
-            <i class="fa-solid fa-heart"></i>
-          </button>
 
           <button
             className={styles.active}
             onClick={() => handleTabClick("discounts")}
           >
             <i class="fa-solid fa-percent"></i>
+          </button>
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("favoris")}
+          >
+            <i class="fa-solid fa-heart"></i>
           </button>
 
           <button

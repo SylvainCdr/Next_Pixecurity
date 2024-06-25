@@ -1,4 +1,4 @@
-import { getProductsByCatSubCat } from "@/api/products";
+import { getProductsByCatSubCat } from "@/utils/api/products";
 import Products from "@/templates/Shop/Products/Products";
 
 const getProductMegapixels = (product) =>
@@ -390,7 +390,7 @@ export async function getServerSideProps({ params, query }) {
     props: {
       products: productsFiltered,
       category,
-      filters
+      filters,
     },
   };
 }

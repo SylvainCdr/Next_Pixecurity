@@ -1,4 +1,6 @@
 import { BASE_URL } from "@/url";
+import { useState } from "react";
+
 
 export async function getProducts() {
   const response = await fetch(`${BASE_URL}/products`);
@@ -6,14 +8,22 @@ export async function getProducts() {
   return data;
 }
 
+
+
 export async function getProductsByCatSubCat({ category, subcategory }) {
   const apiUrl = subcategory
     ? `${BASE_URL}/products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}`
     : `${BASE_URL}/products?category=${encodeURIComponent(category)}`;
 
+
+
   const response = await fetch(`${apiUrl}`);
   const data = await response.json();
   return data;
+
+
+
+
 }
 
 export async function getProductById(id) {

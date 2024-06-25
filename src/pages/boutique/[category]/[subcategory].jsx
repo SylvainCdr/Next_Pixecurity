@@ -1,4 +1,4 @@
-import { getProductsByCatSubCat } from "@/api/products";
+import { getProductsByCatSubCat } from "@/utils/api/products";
 import Products from "@/templates/Shop/Products/Products";
 
 export async function getServerSideProps({ params }) {
