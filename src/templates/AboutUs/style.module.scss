@@ -129,7 +129,7 @@
       display: grid;
       grid-template-columns: repeat(
         auto-fill,
-        minmax(var(--auto-grid-min-size, 15rem), 2fr)
+        minmax(var(--auto-grid-min-size, 18rem), 2fr)
       );
       // grid-gap: 1rem;
       padding: 0;
@@ -316,7 +316,7 @@
       .auto-grid {
         grid-template-columns: repeat(
           auto-fill,
-          minmax(var(--auto-grid-min-size, 10rem), 1fr)
+          minmax(var(--auto-grid-min-size, 14rem), 1fr)
         );
       }
     }
@@ -329,7 +329,7 @@
       .auto-grid {
         grid-template-columns: repeat(
           auto-fill,
-          minmax(var(--auto-grid-min-size, 10rem), 1fr)
+          minmax(var(--auto-grid-min-size, 13rem), 1fr)
         );
       }
     }

@@ -152,15 +152,15 @@ export default function UserAccount() {
 
           <button
             className={styles.active}
-            onClick={() => handleTabClick("infos")}
-          >
-            <i class="fa-solid fa-user-pen"></i>
-          </button>
-          <button
-            className={styles.active}
             onClick={() => handleTabClick("commandes")}
           >
             <i class="fa-solid fa-basket-shopping"></i>
+          </button>
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("infos")}
+          >
+            <i class="fa-solid fa-user-pen"></i>
           </button>
         </aside>
       </div>
@@ -219,12 +219,17 @@ export default function UserAccount() {
             <div className={styles["grid-discounts"]}>
               {Object.values(discounts).map((discount) => (
                 <div key={discount._id} className={styles["discount-card"]}>
-                  <h4>{discount.displayedName || discount.name}</h4>
-                  <span className={styles.discountBadge}>
+                  <h5>{discount.displayedName}</h5>
+                  <img
+                    src={discount.image}
+                    alt={discount.displayedName}
+                    className={styles.discountImage}
+                  />
+                  <p className={styles.discountBadge}>
                     {discount.discountType === "percentage"
                       ? `${discount.discountValue}%`
                       : `${discount.discountValue}€`}
-                  </span>
+                  </p>
                   <p>
                     {discount.isGlobalDiscount
                       ? "Remise sur toute la boutique"

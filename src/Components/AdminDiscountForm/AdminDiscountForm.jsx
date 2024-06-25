@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "@/url";
 import Swal from "sweetalert2";
 import styles from "./style.module.scss";
+import { useRouter } from "next/router";
 
 export default function AdminDiscountForm() {
+  const router = useRouter();
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -15,6 +17,7 @@ export default function AdminDiscountForm() {
     name: "",
     displayedName: "",
     description: "",
+    image: "",
     code: "",
     discountType: "percentage",
     discountValue: 0,
@@ -128,7 +131,11 @@ export default function AdminDiscountForm() {
         icon: "success",
         title: "Succès",
         text: "La réduction a été créée avec succès.",
+      
+      }).then(() => {
+        router.push("/admin/operations"); 
       });
+
     } catch (error) {
       Swal.fire({
         icon: "error",

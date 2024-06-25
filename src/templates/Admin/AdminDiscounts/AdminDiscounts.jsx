@@ -90,6 +90,7 @@ export default function AdminDiscounts() {
         <table className={styles.discountsTable}>
           <thead>
             <tr>
+              <th>Image</th>
               <th>Nom</th>
               <th>Type de remise</th>
               <th>Globale</th>
@@ -109,6 +110,13 @@ export default function AdminDiscounts() {
                 new Date(discount.endDate) >= new Date();
               return (
                 <tr key={discount._id}>
+                  <td>
+                    <img
+                      src={discount.image}
+                      alt="discount"
+                     className={styles.discountImage}
+                    />
+                  </td>
                   <td>{discount.name}</td>
                   <td>{discount.discountType}</td>
                   <td>{discount.isGlobalDiscount ? "Oui" : "Non"}</td>

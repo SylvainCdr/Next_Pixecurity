@@ -1,5 +1,5 @@
 .adminDiscountsContainer {
-    max-width: 1400px;
+    max-width: 1440px;
     min-height: 80vh;
     margin: 7rem auto;
     padding: 20px;
@@ -26,6 +26,12 @@
   
     th {
       background-color: #f2f2f2;
+    }
+
+    .discountImage {
+      width: 6.5rem;
+      height: 4rem;
+      object-fit: cover;
     }
   
     .details,

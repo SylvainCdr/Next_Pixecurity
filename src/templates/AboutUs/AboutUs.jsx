@@ -91,7 +91,7 @@ export default function AboutUs() {
               <p>CEO</p>
               <img
                 alt="Yann DUCHET"
-                src="https://www.pixecurity.com/wp-content/uploads/2022/04/Yann.png"
+                src="assets/team/YANN.jpg"
               />
             </div>
           </li>
@@ -99,28 +99,120 @@ export default function AboutUs() {
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Kenza GAUTIAM</h2>
               <p>Commerciale</p>
-              <img alt="Kenza GAUTIAM" src="assets/team/KENZA_.jpeg" />
+              <img alt="Kenza GAUTIAM" src="assets/team/KENZA.jpeg" />
             </div>
           </li>
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Fabien THOMAS</h2>
-              <p>Commerciale</p>
-              <img alt="Fabien THOMAS" src="assets/team/FABIEN_.jpg" />
+              <p>Brand Manager</p>
+              <img alt="Fabien THOMAS" src="assets/team/FABIEN.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Anaelle Souhaut</h2>
+              <p>Chargée d'affaires</p>
+              <img alt="Fabien THOMAS" src="assets/team/ANAELLE.jpg" />
             </div>
           </li>
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Fabrice VALLEE</h2>
               <p>Commercial grands comptes</p>
-              <img alt="Fabrice VALLEE" src="assets/team/FABRICE_.jpg" />
+              <img alt="Fabrice VALLEE" src="assets/team/FABRICE.jpg" />
             </div>
           </li>
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Yanis MEBARKI</h2>
               <p>Commercial</p>
-              <img alt="Yanis MEBARKI" src="assets/team/YANNIS_.jpg" />
+              <img alt="Yanis MEBARKI" src="assets/team/YANNIS.jpg" />
+            </div>
+          </li>
+          
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
+              <p>Chargée d'étude avant-vente</p>
+              <img alt="Dyhia LAGA" src="assets/team/DYHIA.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Jessica FILIALI</h2>
+              <p>Assistante de direction</p>
+              <img alt="Jessica FILIALI" src="assets/team/JESSICA.jpg" />
+            </div>
+          </li>
+         
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Élodie TENEUR</h2>
+              <p>Technicienne supérieure Systèmes & Réseaux</p>
+              <img alt="Élodie TENEUR" src="assets/team/ELODIE.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Miriem BOUSSAHA</h2>
+              <p>Développeuse</p>
+              <img
+                alt="Anaelle SOUHAUT"
+                src="assets/team/MIRIEM.jpg"
+              />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Alexis OTTINA</h2>
+              <p>Développeur</p>
+              <img alt="Alexis OTTINA" src="assets/team/ALEXIS.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
+              <p>Développeur</p>
+              <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
+              <p>Assistante de direction</p>
+              <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Yasmina AOUAM</h2>
+              <p>Chargée d'étude avant-vente</p>
+              <img alt="Yasmina AOUAM" src="assets/team/YASMINA.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Alex HUBERT</h2>
+              <p>Développeur</p>
+              <img alt="Alex HUBERT" src="assets/team/ALEX.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
+              <p>Développeur</p>
+              <img alt="Sylvain CADORET" src="assets/team/SYLVAIN.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Abdulrhaman SHOUGRI</h2>
+              <p>Commercial</p>
+              <img
+                alt="Abdulrhaman SHOUGRI"
+                src="assets/team/ABDULRAHMAN.jpg"
+              />
             </div>
           </li>
           <li>
@@ -160,89 +252,6 @@ export default function AboutUs() {
               <img
                 alt="Aziz ARJDAL"
                 src="https://www.pixecurity.com/wp-content/uploads/2023/02/Aziz.png"
-              />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Élodie TENEUR</h2>
-              <p>Technicienne supérieure Systèmes & Réseaux</p>
-              <img alt="Élodie TENEUR" src="assets/team/ELODIE_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Anaelle SOUHAUT</h2>
-              <p>Chargée d'affaires</p>
-              <img
-                alt="Anaelle SOUHAUT"
-                src="https://www.pixecurity.com/wp-content/uploads/2022/03/Anaelle.png"
-              />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
-              <p>Chargée d'étude avant-vente</p>
-              <img alt="Dyhia LAGA" src="assets/team/DYHIA_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Jessica FILIALI</h2>
-              <p>Assistante de direction</p>
-              <img alt="Jessica FILIALI" src="assets/team/JESSICA_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Alexis OTTINA</h2>
-              <p>Développeur</p>
-              <img alt="Alexis OTTINA" src="assets/team/ALEXIS_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
-              <p>Développeur</p>
-              <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
-              <p>Assistante de direction</p>
-              <img alt="Nathalie JANNOT" src="assets/team/NATHALIE_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Yasmina AOUAM</h2>
-              <p>Chargée d'étude avant-vente</p>
-              <img alt="Yasmina AOUAM" src="assets/team/YASMINA_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Alex HUBERT</h2>
-              <p>Développeur</p>
-              <img alt="Alex HUBERT" src="assets/team/ALEX_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
-              <p>Technicien Systèmes & Réseaux</p>
-              <img alt="Sylvain CADORET" src="assets/team/SYLVAIN_.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Abdulrhaman SHOUGRI</h2>
-              <p>Commercial</p>
-              <img
-                alt="Abdulrhaman SHOUGRI"
-                src="assets/team/ABDULRAHMAN_.jpg"
               />
             </div>
           </li>
