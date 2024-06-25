@@ -7,7 +7,6 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [discount, setDiscount] = useState("");
   const [updated, setUpdated] = useState("");
 
   useEffect(() => {
@@ -17,7 +16,6 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
       setCompany(userToEdit.company);
       setEmail(userToEdit.email);
       setRole(userToEdit.role);
-      setDiscount(userToEdit.discount);
       setUpdated(userToEdit.updated);
     }
   }, [userToEdit]);
@@ -31,7 +29,6 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
       company: company,
       email: email,
       role: role,
-      discount: discount,
       updated: updated,
     };
 
@@ -90,14 +87,6 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
           onChange={(e) => setRole(e.target.value)}
         />
 
-        <label htmlFor="discount">Remise (en %)</label>
-        <input
-          type="number"
-          name="discount"
-          id="discount"
-          value={discount}
-          onChange={(e) => setDiscount(e.target.value)}
-        />
 
         <label htmlFor="updated">Date de modification</label>
         <input

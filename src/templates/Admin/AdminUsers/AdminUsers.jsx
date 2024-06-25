@@ -9,11 +9,25 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // Récupère la liste des utilisateurs pour les afficher dans le tableau
+
   useEffect(() => {
     fetch(`${BASE_URL}/users`)
       .then((response) => response.json())
       .then((data) => setUsers(data.reverse()));
   }, []);
+
+  const [discounts, setDiscounts] = useState({});
+
+ 
+
+
+
+
+
+
+ 
+
 
   const deleteUser = (id) => {
     if (!id) {
@@ -83,7 +97,9 @@ export default function AdminUsers() {
                 Rôle <br />
                 (user / admin)
               </th>
-              <th>Remise</th>
+
+              <th>Remises actives</th>
+
               <th>
                 Création <br />
                 compte
@@ -104,7 +120,11 @@ export default function AdminUsers() {
                 <td>{user.company}</td>
                 <td>{user.email}</td>
                 <td>{user.role}</td>
-                <td>{user.discount} %</td>
+
+
+
+
+
                 <td>{new Date(user.created).toLocaleDateString()}</td>
                 {/* // Ajout de la date de modification si elle est différente de la date de création, sinon on affiche un tiret */}
                 <td>
