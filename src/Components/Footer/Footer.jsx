@@ -8,13 +8,13 @@ function Footer() {
       <div className={styles["section-1"]}>
         <img src="/assets/logo-dark.svg" alt="" />
         <p>
-          Pixecurity est un fournisseur de solutions de sureté intelligentes :
+          Fournisseur de solutions de sureté intelligentes :
           Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage
           des données, hypervision...
         </p>
       </div>
       <div className={styles["section-2"]}>
-        <img src="/assets/icons/mase.png" alt="" />
+        <img className={styles.mase} src="/assets/icons/mase.png" alt="" />
       </div>
       <div className={styles["section-3"]}>
         <h4>Plan du site </h4>
@@ -27,6 +27,9 @@ function Footer() {
           </Link>
           <Link href="/notre-expertise">
             <li>Notre expertise</li>
+          </Link>
+          <Link href="/inscription">
+            <li>Inscription / Connexion</li>
           </Link>
           <Link href="/a-propos">
             <li>Qui sommes-nous ?</li>

@@ -1,10 +1,10 @@
 .skills-container {
   max-width: 1440px;
-  margin: 8rem auto;
+  margin: 12em auto;
   padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5em;
+  gap: 6em;
 
   .skills-card {
     position: relative;

@@ -6,17 +6,8 @@ import { useGetUser } from "@/Components/useGetUser";
 // fonction withAuth pour protéger les routes si le role stocké dans le localStorage n est pas admin
 
 export default function withAuth(Component) {
-<<<<<<< HEAD
-  return () => {
-    const router = useRouter();
 
-    useEffect(() => {
-      const role = localStorage.getItem("role");
-      if (role !== "admin") {
-        router.push("/connexion");
-      }
-    }, []);
-=======
+
   return function Auth() {
     const user = useGetUser();
     const router = useRouter();
@@ -27,7 +18,7 @@ export default function withAuth(Component) {
         router.push("/connexion");
       }
     }, [role, router]);
->>>>>>> e895fee (PriceFilter)
+
 
     return <Component />;
   };

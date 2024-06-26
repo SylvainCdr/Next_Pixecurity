@@ -1,5 +1,5 @@
 .aboutUs-container {
-  margin: 8em auto;
+  margin: 10em auto;
   padding: 0 5rem;
   max-width: 1440px;
   display: flex;
@@ -15,7 +15,7 @@
   }
 
   .section-1 {
-    margin-bottom: 3em;
+    margin-bottom: 8em;
 
     p {
       font-size: 1.2rem;
@@ -88,14 +88,22 @@
   .section-3 {
     height: auto;
     width: 90%;
-    background-color: var(--sunset1);
-    margin: 4em auto;
-    padding: 2em;
+    // background-color: var(--sunset1);
+    background: linear-gradient(
+          153deg,
+          var(--sunset1) 7%,
+          var(--sunset1) 16%,
+          rgb(2, 73, 120) 40%,
+          rgb(1, 51, 100),
+          rgb(0, 22, 44) 94%
+        );
+    margin: 6em auto;
+    padding: 5em 2em;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 1px 1px 2px rgba(126, 126, 126, 0.613);
+    box-shadow: 1px 1px 2px rgba(126, 126, 126, 0.192);
 
     border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
@@ -104,8 +112,8 @@
     -o-border-radius: 0.5em;
 
     h3 {
-      font-size: 1.6rem;
-      font-weight: 400;
+      font-size: 2rem;
+      font-weight: 500;
       text-align: center;
       line-height: 1.5em;
       margin-bottom: 1rem;
@@ -114,6 +122,7 @@
     p {
       text-align: center;
       padding: 0.5em 0.5em;
+      font-size: 1.2rem;
     }
   }
 
@@ -129,7 +138,7 @@
       display: grid;
       grid-template-columns: repeat(
         auto-fill,
-        minmax(var(--auto-grid-min-size, 19rem), 2fr)
+        minmax(var(--auto-grid-min-size, 17rem), 2fr)
       );
       // grid-gap: 1rem;
       padding: 0;

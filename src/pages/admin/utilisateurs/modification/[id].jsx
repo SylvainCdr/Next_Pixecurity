@@ -1,3 +1,5 @@
 import EditUser from "@/templates/Admin/EditUser/EditUser";
+import withAuth from "@/utils/withAuth";
 
-export default EditUser;
+
+export default withAuth(EditUser);

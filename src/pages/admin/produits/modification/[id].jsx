@@ -1,3 +1,5 @@
 import EditProduct from "@/templates/Admin/EditProduct/EditProduct";
+import withAuth from "@/utils/withAuth";
 
-export default EditProduct;
+
+export default withAuth(EditProduct);

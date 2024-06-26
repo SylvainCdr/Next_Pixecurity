@@ -1,3 +1,5 @@
 import AdminOrders from "@/templates/Admin/AdminOrders/AdminOrders";
+import withAuth from "@/utils/withAuth";
 
-export default AdminOrders;
+
+export default withAuth(AdminOrders);

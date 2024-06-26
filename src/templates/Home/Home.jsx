@@ -19,28 +19,6 @@ export default function Home() {
     <div className={styles["homepage-container"]}>
       <Hero />
 
-      <div className={styles["section1-intro"]}>
-        <div className={styles["section1-img"]}></div>
-
-        <div className={styles["section1-text"]}>
-          <p>
-            La <strong>sûreté</strong> ne dépend plus de la force brute, mais
-            de <strong>l'intelligence</strong>. <br /> Chez{" "}
-            <strong>Pixecurity</strong>, nous sommes les fournisseurs de
-            systèmes de <strong>sûreté</strong> intelligents. <br />
-            Notre <strong>mission</strong> : vous accompagner avec les{" "}
-            <strong>meilleurs</strong> produits et des{" "}
-            <strong>solutions</strong> sur-mesure, repensant la sécurité selon
-            vos besoins.
-          </p>
-          <div data-aos="zoom-in" className={styles.icons}>
-            <img src="../assets/icons/ico3.png" alt="" />
-            <img src="../assets/icons/ico2.png" alt="" />
-            <img src="../assets/icons/ico1.png" alt="" />
-            <img src="../assets/icons/ico4.png" alt="" />
-          </div>
-        </div>
-      </div>
 
       <div className={styles["section2-offer"]}>
         <h2>Une offre pensée autrement</h2>

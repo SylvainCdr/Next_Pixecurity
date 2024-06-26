@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 import { partners } from "../../Components/HomepagePartners/PartnersData";
 import AOS from "aos";
 
 const Partners = () => {
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -15,6 +17,13 @@ const Partners = () => {
     (acc[partner.domain] = acc[partner.domain] || []).push(partner);
     return acc;
   }, {});
+
+  const toggleDescription = (index) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   return (
     <div className={styles["partners-container"]}>
@@ -51,28 +60,44 @@ const Partners = () => {
       {Object.keys(groupedPartners).map((domain, domainIndex) => (
         <div key={domainIndex} className={styles["domain-title"]}>
           <h2>{domain}</h2>
-          {groupedPartners[domain].map((partner, partnerIndex) => (
-            <div
-              key={partnerIndex}
-              className={`${styles["partners-section2"]} ${partnerIndex % 2 === 0 ? styles.left : styles.right}`}
-            >
-              <div className={styles["partner-logo"]}>
-                <a href={partner.website} target="_blank" rel="noreferrer">
-                  <img
-                    data-aos="zoom-in"
-                    src={partner.logo}
-                    alt={partner.name}
-                  />
-                </a>
+          {groupedPartners[domain].map((partner, partnerIndex) => {
+            const isExpanded = expandedDescriptions[`${domainIndex}-${partnerIndex}`];
+            const description = partner.description;
+            const shortDescription = description.slice(0, 300);
+
+            return (
+              <div
+                key={partnerIndex}
+                className={`${styles["partners-section2"]} ${partnerIndex % 2 === 0 ? styles.left : styles.right}`}
+              >
+                <div className={styles["partner-logo"]}>
+                  <a href={partner.website} target="_blank" rel="noreferrer">
+                    <img
+                      data-aos="zoom-in"
+                      src={partner.logo}
+                      alt={partner.name}
+                    />
+                  </a>
+                </div>
+                <div className={styles["partner-info"]}>
+                  <p>
+                    {isExpanded ? description : `${shortDescription}...`}
+                    {description.length > 100 && (
+                      <span
+                        className={styles["toggle-description"]}
+                        onClick={() => toggleDescription(`${domainIndex}-${partnerIndex}`)}
+                      >
+                        {isExpanded ? " moins" : " plus"}
+                      </span>
+                    )}
+                  </p>
+                  <a href={partner.website} target="_blank" rel="noreferrer">
+                    {partner.website}
+                  </a>
+                </div>
               </div>
-              <div className={styles["partner-info"]}>
-                <p>{partner.description}</p>
-                <a href={partner.website} target="_blank" rel="noreferrer">
-                  {partner.website}
-                </a>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ))}
     </div>

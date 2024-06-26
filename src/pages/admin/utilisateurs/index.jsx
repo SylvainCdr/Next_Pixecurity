@@ -1,3 +1,5 @@
 import AdminUsers from "@/templates/Admin/AdminUsers/AdminUsers";
+import withAuth from "@/utils/withAuth";
 
-export default AdminUsers;
+
+export default withAuth(AdminUsers);

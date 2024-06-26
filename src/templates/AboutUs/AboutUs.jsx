@@ -75,7 +75,7 @@ export default function AboutUs() {
       </div>
       <div className={styles["section-3"]}>
         <h3>
-          "Notre but ? Répondre aux exigences et anticiper les besoins de nos
+          "Notre but ?  <br />Répondre aux exigences et anticiper les besoins de nos
           clients. <br />
           Simplifier la compréhension de la sécurité "
         </h3>
@@ -145,6 +145,16 @@ export default function AboutUs() {
               <img alt="Jessica FILIALI" src="assets/team/JESSICA.jpg" />
             </div>
           </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Abdulrhaman SHOUGRI</h2>
+              <p>Commercial</p>
+              <img
+                alt="Abdulrhaman SHOUGRI"
+                src="assets/team/ABDULRAHMAN.jpg"
+              />
+            </div>
+          </li>
          
           <li>
             <div className={styles.profile}>
@@ -203,16 +213,6 @@ export default function AboutUs() {
               <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
               <p>Développeur</p>
               <img alt="Sylvain CADORET" src="assets/team/SYLVAIN.jpg" />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Abdulrhaman SHOUGRI</h2>
-              <p>Commercial</p>
-              <img
-                alt="Abdulrhaman SHOUGRI"
-                src="assets/team/ABDULRAHMAN.jpg"
-              />
             </div>
           </li>
           <li>

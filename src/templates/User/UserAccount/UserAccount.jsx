@@ -134,7 +134,7 @@ export default function UserAccount() {
     <div className={styles["user-account-container"]}>
       <div className={styles["user-menu"]}>
         <aside className={styles["user-account-nav"]}>
-          <h2>Mon compte</h2>
+          <h2>MENU</h2>
 
 
           <button
@@ -277,7 +277,7 @@ export default function UserAccount() {
                   );
                 })
               ) : (
-                <div className={styles["no-favorites-orders-msg"]}>
+                <div className={styles["no-favorites-msg"]}>
                   <p>Vous n'avez pas encore de produits favoris.</p>
                   <Link href="/boutique">
                     <button>Visiter la boutique</button>
@@ -344,8 +344,8 @@ export default function UserAccount() {
                 </div>
               ))
             ) : (
-              <div className={styles["no-favorites-orders-msg"]}>
-                <p>Vous n'avez pas encore de commandes.</p>
+              <div className={styles["no-orders-msg"]}>
+                <p>Vous n'avez pas encore effectué de commande.</p>
                 <Link href="/boutique">
                   <button>Visiter la boutique</button>
                 </Link>

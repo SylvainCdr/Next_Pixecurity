@@ -1,3 +1,4 @@
 import EditUserCart from "@/templates/Admin/EditUserCart/EditUserCart";
+import withAuth from "@/utils/withAuth";
 
-export default EditUserCart;
+export default withAuth(EditUserCart);
