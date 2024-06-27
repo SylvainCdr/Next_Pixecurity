@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
-import useCart from "@/Components/useCart";
 import Link from "next/link";
 import AOS from "aos";
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
+import { useCartContext } from "@/Components/cartContext";
 
 function useGetDiscount() {
   const [discounts, setDiscounts] = useState([]);
@@ -35,13 +35,9 @@ function useGetDiscount() {
 }
 
 export default function Cart({ carouselProducts }) {
-  const { cart: carts, fetchCart, addToCart, removeFromCart } = useCart();
+  const { carts, addToCart, removeFromCart } = useCartContext();
   const user = useGetUser();
-  const userId = user?._id; // Assurez-vous d'utiliser _id car c'est probablement la clé correcte.
-
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  const userId = user?._id;
 
   const { discounts, loading, error } = useGetDiscount();
 

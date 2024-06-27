@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
-import useCart from "@/Components/useCart";
+import { useCartContext } from "@/Components/cartContext";
 import { BASE_URL } from "@/url";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
@@ -9,7 +9,7 @@ export default function EditUserCart() {
   const params = useParams();
   const userId = params?.id;
   const router = useRouter();
-  const { cart, addToCart, fetchCart, removeFromCart } = useCart();
+  const { cart, fetchCart } = useCartContext();
 
   const [user, setUser] = useState({});
   const [availableProducts, setAvailableProducts] = useState([]);
@@ -104,7 +104,9 @@ export default function EditUserCart() {
   const handlePriceChange = (productId, newValue) => {
     if (newValue >= 0) {
       const updatedCart = localCart.map((product) =>
-        product.product_id === productId ? { ...product, price: newValue } : product
+        product.product_id === productId
+          ? { ...product, price: newValue }
+          : product
       );
       setLocalCart(updatedCart);
     }
@@ -115,35 +117,41 @@ export default function EditUserCart() {
       for (const product of localCart) {
         if (product.isNew) {
           // Ajouter le nouveau produit au panier sur le serveur
-          const response = await fetch(`${BASE_URL}/users/${userId}/add-cart/${product.product_id}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              product_id: product.product_id,
-              name: product.name,
-              ref: product.ref,
-              quantity: product.quantity,
-              price: product.price,
-              image: product.image,
-            }),
-          });
+          const response = await fetch(
+            `${BASE_URL}/users/${userId}/add-cart/${product.product_id}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                product_id: product.product_id,
+                name: product.name,
+                ref: product.ref,
+                quantity: product.quantity,
+                price: product.price,
+                image: product.image,
+              }),
+            }
+          );
           if (!response.ok) {
             throw new Error("Failed to add product to cart");
           }
         } else {
           // Mettre à jour la quantité et le prix des produits existants
-          const response = await fetch(`${BASE_URL}/users/${userId}/edit-cart/${product.product_id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              quantity: product.quantity,
-              price: product.price,
-            }),
-          });
+          const response = await fetch(
+            `${BASE_URL}/users/${userId}/edit-cart/${product.product_id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                quantity: product.quantity,
+                price: product.price,
+              }),
+            }
+          );
           if (!response.ok) {
             throw new Error("Failed to update cart");
           }
@@ -196,7 +204,10 @@ export default function EditUserCart() {
                   type="number"
                   value={product.quantity}
                   onChange={(e) =>
-                    handleQuantityChange(product.product_id, parseInt(e.target.value))
+                    handleQuantityChange(
+                      product.product_id,
+                      parseInt(e.target.value)
+                    )
                   }
                 />
               </td>
@@ -206,15 +217,16 @@ export default function EditUserCart() {
                   step="0.01"
                   value={product.price}
                   onChange={(e) =>
-                    handlePriceChange(product.product_id, parseFloat(e.target.value))
+                    handlePriceChange(
+                      product.product_id,
+                      parseFloat(e.target.value)
+                    )
                   }
                 />
               </td>
               <td>{(product.quantity * product.price).toFixed(2)} €</td>
               <td>
-                <button
-                  onClick={() => handleRemoveProduct(product.product_id)}
-                >
+                <button onClick={() => handleRemoveProduct(product.product_id)}>
                   Supprimer
                 </button>
               </td>

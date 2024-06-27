@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "./style.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 import useFavorites from "../useFavorites";
-import useCart from "../useCart";
+import { useCartContext } from "../cartContext";
 import { useGetUser } from "../useGetUser";
 
 const ShopProductsCarousel = ({ carouselProducts }) => {
@@ -56,15 +56,13 @@ const ShopProductsCarousel = ({ carouselProducts }) => {
   };
 
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
 
-  const user =  useGetUser();
-  const userId =  user?._id;
-  console.log("ID de l'utilisateur:", userId);
+  const user = useGetUser();
+  const userId = user?._id;
 
   // Retrieve discount from user data
   const discount = user ? user?.discount : 0;
-  console.log("Discount:", discount);
 
   const calculateDiscount = (price, discount) => {
     return price - (price * discount) / 100;
@@ -78,7 +76,7 @@ const ShopProductsCarousel = ({ carouselProducts }) => {
         {carouselProducts?.map((carouselProduct, index) => {
           const discountedPrice = calculateDiscount(
             carouselProduct.price,
-            discount,
+            discount
           );
           return (
             <div className={styles["product-item"]} key={index}>

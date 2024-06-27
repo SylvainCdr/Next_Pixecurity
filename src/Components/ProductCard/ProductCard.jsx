@@ -7,12 +7,12 @@ import { logos } from "../../templates/Shop/Product/LogosData";
 import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
-import useCart from "../useCart";
 import useDiscount from "../useDiscount"; // Importer le hook useDiscount
+import { useCartContext } from "@/Components/cartContext";
 
 const ProductCard = ({ product }) => {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const [isInFavorites, setIsInFavorites] = useState(false);
 
   const user = useGetUser();
@@ -67,16 +67,7 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCartClick = async () => {
-    const added = await addToCart(product);
-    console.log({ added });
-    if (added) {
-      console.log("Produit ajouté au panier avec succès!");
-      Swal.fire({
-        icon: "info",
-        title: "Produit ajouté au panier avec succès!",
-        showConfirmButton: true,
-      });
-    }
+    await addToCart(product);
   };
 
   const calculateDiscountedPrice = () => {

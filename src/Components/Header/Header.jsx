@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./style.module.scss";
-import  Link from "next/link";
-import { useUser } from "../../templates/appContext";
+import Link from "next/link";
 import Swal from "sweetalert2";
 import { usePathname } from "next/navigation";
+import { useGetUser } from "../useGetUser";
+import { useCartContext } from "@/Components/cartContext";
 
 function Header() {
-  const user = useUser();
-  console.log(user);
+  const user = useGetUser();
 
   function burgerToggle() {
     const nav = document.querySelector(`.${styles.header__nav}`);
@@ -46,8 +46,7 @@ function Header() {
     }, 2000);
   };
 
-  const pathname = usePathname()
-
+  const pathname = usePathname();
 
   return (
     <div className={styles.header_container}>
@@ -59,9 +58,7 @@ function Header() {
         </div>
 
         <ul>
-          <li
-            className={pathname === "/boutique" ? styles.active : ""}
-          >
+          <li className={pathname === "/boutique" ? styles.active : ""}>
             <Link
               href="/boutique"
               className={styles.shop}
@@ -70,18 +67,12 @@ function Header() {
               Boutique
             </Link>
           </li>
-          <li
-            className={
-              pathname === "/notre-expertise" ? styles.active : ""
-            }
-          >
+          <li className={pathname === "/notre-expertise" ? styles.active : ""}>
             <Link href="/notre-expertise" onClick={handleLinkClick}>
               Notre expertise
             </Link>
           </li>
-          <li
-            className={pathname === "/a-propos" ? styles.active : ""}
-          >
+          <li className={pathname === "/a-propos" ? styles.active : ""}>
             <Link href="/a-propos" onClick={handleLinkClick}>
               Qui sommes-nous ?
             </Link>
@@ -94,8 +85,7 @@ function Header() {
           {!user && (
             <li
               className={
-                pathname === "/inscription" ||
-                pathname === "/connexion"
+                pathname === "/inscription" || pathname === "/connexion"
                   ? styles.active
                   : ""
               }
@@ -106,11 +96,7 @@ function Header() {
             </li>
           )}
           {user?.role === "user" && (
-            <li
-              className={
-                pathname === "/mon-compte" ? styles.active : ""
-              }
-            >
+            <li className={pathname === "/mon-compte" ? styles.active : ""}>
               <Link href="/mon-compte" onClick={handleLinkClick}>
                 Mon compte
               </Link>
@@ -118,9 +104,7 @@ function Header() {
           )}
           {user?.role === "admin" && (
             <li
-              className={
-                pathname === "/admin/dashboard" ? styles.active : ""
-              }
+              className={pathname === "/admin/dashboard" ? styles.active : ""}
             >
               <Link href="/admin/dashboard" onClick={handleLinkClick}>
                 Administration
@@ -136,17 +120,21 @@ function Header() {
           )}
         </ul>
 
-        <div className={styles.header__burgerMenu} onClick={burgerToggle}></div>
+        <div className={styles.header__burgerMenu} onClick={burgerToggle} />
 
-        {user?.role === "user" && (
-          <div className={styles.cart}>
-            <Link href="/panier">
-              <i className="fa-solid fa-cart-shopping"></i>
-            </Link>
-          </div>
-        )}
+        {user?.role === "user" && <CartLink />}
       </nav>
     </div>
+  );
+}
+
+function CartLink() {
+  const { cartItemsCount } = useCartContext();
+  return (
+    <Link className={styles.cart} href="/panier">
+      <p className={styles.count}>{cartItemsCount}</p>
+      <i className="fa-solid fa-cart-shopping"></i>
+    </Link>
   );
 }
 

@@ -61,11 +61,11 @@
       }
 
       .shop {
-       background-color: #6c1b74;
+        background-color: #6c1b74;
         // background-color: rgb(234, 130, 11);
-       color: white;
-       font-weight: 500;
-       font-size: 1.35rem;
+        color: white;
+        font-weight: 500;
+        font-size: 1.35rem;
         padding: 0.3em 0.9em;
         box-shadow: 0 0 2px rgba(255, 254, 254, 0.5);
         border-radius: 0.3rem;
@@ -75,6 +75,21 @@
         -o-border-radius: 0.3rem;
       }
     }
+  }
+
+  .count {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: -15px;
+    right: -18px;
   }
 
   .cart {
@@ -87,13 +102,9 @@
     padding: 0.5em 0.5em;
     box-shadow: 0 0 2px rgba(255, 254, 254, 0.5);
     border-radius: 0.3rem;
-    -webkit-border-radius: 0.3rem;
-    -moz-border-radius: 0.3rem;
-    -ms-border-radius: 0.3rem;
-    -o-border-radius: 0.3rem;
+    position: relative;
 
     a {
-      width: 100%;
       font-size: 1.3rem;
       color: white;
     }

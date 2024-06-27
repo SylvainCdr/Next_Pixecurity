@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import styles from "./style.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 import useFavorites from "../useFavorites";
-import useCart from "../useCart";
+import { useCartContext } from "../cartContext";
 import { BASE_URL } from "../../url";
 import ShopHeroCarousel from "../ShopHeroCarousel/ShopHeroCarousel";
 
-function ShopSearch({isHero = true}) {
+function ShopSearch({ isHero = true }) {
   const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
 
   // créer une fonction pour gérer la recherche
   const handleSearch = (e) => {
@@ -55,7 +55,6 @@ function ShopSearch({isHero = true}) {
       </form>
 
       {searching && <p>Recherche en cours...</p>}
-
 
       {isHero && searchResults.length === 0 && (
         <div className={styles["shop-hero-carousel"]}>

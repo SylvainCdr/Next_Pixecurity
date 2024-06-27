@@ -2,7 +2,7 @@ import React, { useState, useEffect, use } from "react";
 import styles from "./style.module.scss";
 import useFavorites from "@/Components/useFavorites";
 import ProductCard from "@/Components/ProductCard/ProductCard";
-import useCart from "@/Components/useCart";
+import { useCartContext } from "@/Components/cartContext";
 import DeliveryTimeline from "@/Components/DeliveryTimeline/DeliveryTimeline";
 import AOS from "aos";
 import { BASE_URL } from "@/url";
@@ -24,7 +24,7 @@ export default function UserAccount() {
 
   const { getFavorites, removeFromFavorites, checkFavorite, addToFavorites } =
     useFavorites();
-  const { addToCart, cartItemsCount } = useCart();
+  const { addToCart, cartItemsCount } = useCartContext();
   const user = useGetUser();
   const userId = user?._id;
 
@@ -136,7 +136,6 @@ export default function UserAccount() {
         <aside className={styles["user-account-nav"]}>
           <h2>MENU</h2>
 
-
           <button
             className={styles.active}
             onClick={() => handleTabClick("discounts")}
@@ -184,8 +183,6 @@ export default function UserAccount() {
                   Vous avez passé {countOrders} commandes depuis votre
                   inscription
                 </p>
-
-              
               </div>
               <div className={styles.perso}>
                 <h4>Informations personnelles</h4>
@@ -215,7 +212,6 @@ export default function UserAccount() {
 
         {selectedTab === "discounts" && (
           <div data-aos="fade-up" className={styles["user-discounts"]}>
-
             <div className={styles["grid-discounts"]}>
               {Object.values(discounts).map((discount) => (
                 <div key={discount._id} className={styles["discount-card"]}>
@@ -240,7 +236,9 @@ export default function UserAccount() {
                      ? `Remise pour ${discount.targetedUsers.length} utilisateur(s)`
                       : "PROMOTION"}
                   </p> */}
-                  <p> Validité : {" "}
+                  <p>
+                    {" "}
+                    Validité :{" "}
                     {new Date(discount.startDate).toLocaleDateString()} au{" "}
                     {new Date(discount.endDate).toLocaleDateString()}
                   </p>

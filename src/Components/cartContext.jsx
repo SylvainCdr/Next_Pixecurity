@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { BASE_URL } from "../url";
 import { useGetUser } from "./useGetUser";
+import Swal from "sweetalert2";
 
 const getCartId = () => {
   const cartId = localStorage.getItem("cartId");
@@ -12,12 +13,12 @@ const getCartId = () => {
 };
 
 const useCart = () => {
-  const [cart, setCart] = useState([]); // Contient les produits dans le panier
+  const [carts, setCarts] = useState([]); // Contient les produits dans le panier
   const [isCartFetched, setIsCartFetched] = useState(false); // Indique si le panier a été récupéré depuis le serveur
-
   const user = useGetUser();
+
   const userId = user?._id;
-  const cartItemsCount = cart?.length;
+  const cartItemsCount = carts?.length;
 
   const fetchCart = async () => {
     try {
@@ -26,7 +27,7 @@ const useCart = () => {
       if (response.ok) {
         const data = await response.json();
         console.log({ data });
-        setCart(data);
+        setCarts(data);
         setIsCartFetched(true);
       } else {
         console.error("Réponse du serveur:", response.status);
@@ -35,6 +36,10 @@ const useCart = () => {
       console.error("Erreur réseau:", error);
     }
   };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   // Fonction pour ajouter un produit au panier
   const addToCart = async (product, quantity = 1) => {
@@ -49,6 +54,21 @@ const useCart = () => {
         quantity,
       };
 
+      // Optimistic update
+      setCarts((cs) => {
+        const cartFound = cs.find((c) => c.product._id === product._id);
+        if (cartFound)
+          return cs.map((c) => {
+            if (c.product.id === product._id) {
+              c.quantity = quantity;
+              return cartFound;
+            }
+            return c;
+          });
+
+        return [...cs, body];
+      });
+
       const response = await fetch(`${BASE_URL}/cart`, {
         method: "POST",
         headers: {
@@ -61,8 +81,14 @@ const useCart = () => {
         console.error("Erreur lors de l'ajout du produit au panier");
       }
       const _carts = await response.json();
-      console.log({ _carts });
-      setCart(_carts);
+      setCarts(_carts);
+      if (quantity === 1) {
+        Swal.fire({
+          icon: "info",
+          title: "Produit ajouté au panier avec succès!",
+          showConfirmButton: true,
+        });
+      }
     } catch (error) {
       console.error("Erreur réseau:", error);
     }
@@ -71,7 +97,9 @@ const useCart = () => {
   // Fonction pour supprimer un produit du panier
   const removeFromCart = async (cart) => {
     try {
-      setCart((cs) => cs.filter((c) => c._id !== cart._id));
+      // Optimistic update
+      setCarts((cs) => cs.filter((c) => c._id !== cart._id));
+
       const response = await fetch(`${BASE_URL}/carts/${cart?._id}`, {
         method: "DELETE",
         headers: {
@@ -80,8 +108,7 @@ const useCart = () => {
       });
       if (response.ok) {
         const _carts = await response.json();
-        console.log({ _carts });
-        setCart(_carts);
+        setCarts(_carts);
       } else {
         console.error(
           "Erreur lors de la suppression du produit du panier:",
@@ -98,7 +125,7 @@ const useCart = () => {
 
   return {
     isCartFetched,
-    cart,
+    carts,
     cartItemsCount,
 
     fetchCart,
@@ -107,4 +134,35 @@ const useCart = () => {
   };
 };
 
-export default useCart;
+// Hook pour récupérer le token de l'utilisateur connecté
+const CartContext = createContext();
+
+// Hook pour récupérer le panier
+export const useCartContext = () => useContext(CartContext);
+
+// Provider pour le panier
+export const CartProvider = ({ children }) => {
+  const {
+    isCartFetched,
+    carts,
+    cartItemsCount,
+    fetchCart,
+    addToCart,
+    removeFromCart,
+  } = useCart();
+
+  return (
+    <CartContext.Provider
+      value={{
+        isCartFetched,
+        carts,
+        cartItemsCount,
+        fetchCart,
+        addToCart,
+        removeFromCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};

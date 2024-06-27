@@ -2,12 +2,12 @@ import React from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Template({children}) {
+function Template({ children }) {
   return (
     <>
       <Header />
-        {children}
-       <Footer />
+      {children}
+      <Footer />
     </>
   );
 }

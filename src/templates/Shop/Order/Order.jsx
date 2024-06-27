@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useCart from "@/Components/useCart";
+import { useCartContext } from "@/Components/cartContext";
 import Swal from "sweetalert2";
 import { BASE_URL } from "@/url";
 import styles from "./style.module.scss";
@@ -7,7 +7,7 @@ import { useGetUser } from "@/Components/useGetUser";
 
 export default function Order() {
   const user = useGetUser();
-  const { cart } = useCart();
+  const { cart } = useCartContext();
   const [subTotal, setSubTotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [shippingCost, setShippingCost] = useState(20);
@@ -76,16 +76,21 @@ export default function Order() {
 
       if (
         isDateValid &&
-        (isUserTargeted && (isProductTargeted || isBrandTargeted))
+        isUserTargeted &&
+        (isProductTargeted || isBrandTargeted)
       ) {
         if (discount.discountType === "percentage") {
-          if (discount.discountValue > specificDiscount && highestSpecificDiscountType !== "fixed") {
+          if (
+            discount.discountValue > specificDiscount &&
+            highestSpecificDiscountType !== "fixed"
+          ) {
             specificDiscount = discount.discountValue;
             highestSpecificDiscountType = "percentage";
             appliedSpecificDiscount = discount._id;
           }
         } else if (discount.discountType === "fixed") {
-          const fixedDiscountValue = (discount.discountValue / product.price) * 100;
+          const fixedDiscountValue =
+            (discount.discountValue / product.price) * 100;
           if (fixedDiscountValue > specificDiscount) {
             specificDiscount = fixedDiscountValue;
             highestSpecificDiscountType = "fixed";
@@ -107,7 +112,9 @@ export default function Order() {
 
     return {
       finalPrice,
-      appliedDiscounts: [appliedGlobalDiscount, appliedSpecificDiscount].filter(Boolean),
+      appliedDiscounts: [appliedGlobalDiscount, appliedSpecificDiscount].filter(
+        Boolean
+      ),
       discountAmount: product.price - finalPrice,
     };
   };
@@ -141,14 +148,16 @@ export default function Order() {
     setSubTotal(calculatedSubTotal);
     const calculatedTax = calculatedSubTotal * 0.2;
     setTax(calculatedTax);
-    const calculatedTotalAmount = calculatedSubTotal + calculatedTax + shippingCost;
+    const calculatedTotalAmount =
+      calculatedSubTotal + calculatedTax + shippingCost;
     setTotalAmount(calculatedTotalAmount);
     setTotalDiscountAmount(totalDiscount);
 
     setOrder((prevOrder) => ({
       ...prevOrder,
       items: cart.map((product) => {
-        const { finalPrice, appliedDiscounts, discountAmount } = applyDiscounts(product);
+        const { finalPrice, appliedDiscounts, discountAmount } =
+          applyDiscounts(product);
         return {
           product: product.product_id,
           name: product.name,
@@ -227,7 +236,7 @@ export default function Order() {
       !order.billingAddress.zip ||
       !order.billingAddress.city ||
       !order.billingAddress.country ||
-      !order.delivery.method 
+      !order.delivery.method
     ) {
       Swal.fire({
         icon: "error",
@@ -247,10 +256,10 @@ export default function Order() {
       totalAmount: order.totalAmount,
       totalDiscountAmount: order.totalDiscountAmount,
       payment: {
-        method: 'stripe',
-        paid: false
+        method: "stripe",
+        paid: false,
       },
-      status: 'pending'
+      status: "pending",
     });
 
     const orderResponse = await fetch(`${BASE_URL}/orders`, {
@@ -261,10 +270,10 @@ export default function Order() {
       body: JSON.stringify({
         ...order,
         payment: {
-          method: 'stripe',
-          paid: false
+          method: "stripe",
+          paid: false,
         },
-        status: 'pending'
+        status: "pending",
       }),
     });
     const newOrder = await orderResponse.json();
@@ -317,7 +326,8 @@ export default function Order() {
 
         <form onSubmit={handleOrderSubmission}>
           <h2>
-            <i className="fa-solid fa-user"></i> ETAPE 1 : Informations personnelles
+            <i className="fa-solid fa-user"></i> ETAPE 1 : Informations
+            personnelles
           </h2>
           <div className={styles["customer-infos"]}>
             <div className={styles.details}>
@@ -511,7 +521,8 @@ export default function Order() {
           <div className={styles.deliveryAndPayment}>
             <div className={styles["delivery-options"]}>
               <h2>
-                <i className="fa-solid fa-truck"></i> ETAPE 3 : Mode de livraison
+                <i className="fa-solid fa-truck"></i> ETAPE 3 : Mode de
+                livraison
               </h2>
               <select
                 name="deliveryMethod"

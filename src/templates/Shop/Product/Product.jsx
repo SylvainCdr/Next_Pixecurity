@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import useFavorites from "@/Components/useFavorites";
-import useCart from "@/Components/useCart";
+import { useCartContext } from "@/Components/cartContext";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import { logos } from "@/templates/Shop/Product/LogosData";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
 import useDiscount from "@/Components/useDiscount"; // Assurez-vous de l'importer
-
-
 
 import styles from "./style.module.scss";
 import ShopNav from "@/Components/ShopNav/ShopNav";
@@ -18,17 +16,15 @@ import ProductCard from "@/Components/ProductCard/ProductCard";
 export default function Product({ product, id, suggestions }) {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
     useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
 
   const user = useGetUser();
   const userId = user?._id;
 
-  const {applyDiscountsForProductsDisplay} = useDiscount(userId);
+  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
 
   const discountedPrice = applyDiscountsForProductsDisplay(product);
-
-
 
   const brandLogo = logos.find(
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
@@ -177,7 +173,6 @@ export default function Product({ product, id, suggestions }) {
                 -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
               </span>
             )}
-
 
             <img
               src={
