@@ -1,5 +1,5 @@
 // utils/withAuth.js
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useGetUser } from "@/Components/useGetUser";
 
@@ -12,9 +12,9 @@ export default function withAuth(Component) {
     const user = useGetUser();
     const router = useRouter();
     const role = user?.role;
-    console.log("role", role);
+    console.log("role", );
 
-    useLayoutEffect(() => {
+    useEffect(() => {
       if (role !== "admin") {
         router.push("/connexion");
       }
