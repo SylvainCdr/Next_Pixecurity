@@ -3,8 +3,9 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 import AOS from "aos";
 
+
 export default function HomepageHero() {
-  const videoRef = useRef(null);
+
 
   useEffect(() => {
     AOS.init({

@@ -1,4 +1,5 @@
 import "@/index.css";
+import "aos/dist/aos.css";
 import useLocalStorage from "use-local-storage";
 import { Provider, CartProvider } from "@/templates/appContext";
 import Template from "@/Components/Template/Template";
