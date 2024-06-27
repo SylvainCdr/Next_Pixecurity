@@ -15,7 +15,7 @@ export default function withAuth(Component) {
     console.log("role", );
 
     useEffect(() => {
-      if (role !== "admin") {
+      if (role && role !== "admin") {
         router.push("/connexion");
       }
     }, [role, router]);
