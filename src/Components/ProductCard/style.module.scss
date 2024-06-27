@@ -23,9 +23,9 @@
   border-radius: 0.3rem;
   box-shadow: 0.1rem 0.1rem 0.2rem 0rem rgba(217, 217, 217, 0.798);
   min-height: 24em;
-  max-height:25em ;
+  max-height: 25em;
   padding: 0.5rem;
-  margin-left : 0.5rem;
+  margin-left: 0.5rem;
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
@@ -67,7 +67,7 @@
   .card-brand {
     border-bottom: 0.1rem solid #d9d9d9;
     margin-bottom: 1rem;
-    height : 2rem;
+    height: 2rem;
 
     .brand-logo {
       padding-bottom: 1rem;
@@ -131,12 +131,16 @@
       width: 50%;
       display: flex;
       justify-content: flex-end;
+      gap: 12px;
+      margin-right: 12px;
 
       .heart {
+        background: none;
+        padding: 0;
+        box-shadow: none;
+
         i {
           font-size: 1.4rem;
-          margin-right: 0.9rem;
-          cursor: pointer;
 
           &:active {
             animation: clickAnimation 0.3s ease;
@@ -144,16 +148,17 @@
           }
         }
         i:hover {
-          // color: #f74f4f;
           scale: 1.2;
         }
       }
 
       .cart {
+        background: none;
+        padding: 0;
+        box-shadow: none;
         i {
           font-size: 1.4rem;
           color: #838485;
-          margin-right: 0.8rem;
           cursor: pointer;
 
           &:active {

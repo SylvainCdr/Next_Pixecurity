@@ -15,12 +15,11 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   const [isInFavorites, setIsInFavorites] = useState(false);
 
+  const user = useGetUser();
+  const userId = user?._id;
+  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
 
-    const user = useGetUser();
-    const userId = user?._id;
-    const { applyDiscountsForProductsDisplay } = useDiscount(userId);
-  
-    const discountedPrice = applyDiscountsForProductsDisplay(product);
+  const discountedPrice = applyDiscountsForProductsDisplay(product);
 
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
@@ -68,33 +67,20 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCartClick = async () => {
-    if (userId) {
-      const added = await addToCart(
-        userId,
-        product._id,
-        product.name,
-        product.ref,
-        1,
-        product.price,
-        product.image
-      );
-      if (added) {
-        console.log("Produit ajouté au panier avec succès!");
-      } else {
-        console.error("Erreur lors de l'ajout du produit au panier");
-      }
-    } else {
+    const added = await addToCart(product);
+    console.log({ added });
+    if (added) {
+      console.log("Produit ajouté au panier avec succès!");
       Swal.fire({
         icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        title: "Produit ajouté au panier avec succès!",
         showConfirmButton: true,
       });
     }
   };
 
   const calculateDiscountedPrice = () => {
-    if ( product.price && discountedPrice !== product.price) {
+    if (product.price && discountedPrice !== product.price) {
       return (
         <div className={styles["card-prices"]}>
           <p className={styles["original-price"]}>
@@ -156,24 +142,18 @@ const ProductCard = ({ product }) => {
       <div className={styles["card-bottom"]}>
         {calculateDiscountedPrice()}
         <div className={styles["CTA"]}>
-          <p
-            data-aos="zoom-in-down"
+          <button
             className={styles["heart"]}
             onClick={handleToggleFavoritesClick}
-            style={{ cursor: "pointer" }}
           >
             <i
               className="fa-solid fa-heart"
               style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
-            ></i>
-          </p>
-          <p data-aos="zoom-in-down" className={styles["cart"]}>
-            <i
-              className="fa-solid fa-cart-plus"
-              onClick={handleAddToCartClick}
-              style={{ cursor: "pointer" }}
-            ></i>
-          </p>
+            />
+          </button>
+          <button className={styles.cart} onClick={handleAddToCartClick}>
+            <i className="fa-solid fa-cart-plus" />
+          </button>
         </div>
       </div>
     </div>

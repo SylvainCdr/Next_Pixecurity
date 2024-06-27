@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from "react";
-import styles from "./style.module.scss"; // Import des styles CSS Modules
+import styles from "./style.module.scss";
 import useCart from "@/Components/useCart";
 import Link from "next/link";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import des styles d'AOS
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 import { BASE_URL } from "@/url";
-import { useRouter } from "next/router";
 import { useGetUser } from "@/Components/useGetUser";
 
-export default function Cart({ carouselProducts }) {
-  const router = useRouter();
-  const { fetchCart, editQuantity, removeFromCart, cart } = useCart();
-  const user = useGetUser();
-  const userId = user?._id; // Assurez-vous d'utiliser _id car c'est probablement la clé correcte.
-
+function useGetDiscount() {
   const [discounts, setDiscounts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // useEffect pour récupérer le panier de l'utilisateur grâce à son ID stocké dans le localStorage
-  useEffect(() => {
-    if (userId) fetchCart(userId);
-  }, [userId]);
 
   useEffect(() => {
     const fetchDiscounts = async () => {
@@ -42,6 +30,20 @@ export default function Cart({ carouselProducts }) {
 
     fetchDiscounts();
   }, []);
+
+  return { discounts, loading, error };
+}
+
+export default function Cart({ carouselProducts }) {
+  const { cart: carts, fetchCart, addToCart, removeFromCart } = useCart();
+  const user = useGetUser();
+  const userId = user?._id; // Assurez-vous d'utiliser _id car c'est probablement la clé correcte.
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
+  const { discounts, loading, error } = useGetDiscount();
 
   const applyDiscounts = (product) => {
     if (loading || error) {
@@ -79,14 +81,22 @@ export default function Cart({ carouselProducts }) {
         }
       }
 
-      if (isDateValid && (isUserTargeted && (isProductTargeted || isBrandTargeted))) {
+      if (
+        isDateValid &&
+        isUserTargeted &&
+        (isProductTargeted || isBrandTargeted)
+      ) {
         if (discount.discountType === "percentage") {
-          if (discount.discountValue > specificDiscount && specificDiscountType !== "fixed") {
+          if (
+            discount.discountValue > specificDiscount &&
+            specificDiscountType !== "fixed"
+          ) {
             specificDiscount = discount.discountValue;
             specificDiscountType = "percentage";
           }
         } else if (discount.discountType === "fixed") {
-          const fixedDiscountValue = (discount.discountValue / product.price) * 100;
+          const fixedDiscountValue =
+            (discount.discountValue / product.price) * 100;
           if (fixedDiscountValue > specificDiscount) {
             specificDiscount = fixedDiscountValue;
             specificDiscountType = "fixed";
@@ -110,40 +120,34 @@ export default function Cart({ carouselProducts }) {
     return finalPrice;
   };
 
-  const calculatedSubTotal = cart?.reduce((acc, product) => {
-    const discountedPrice = applyDiscounts(product);
-    return acc + product.quantity * discountedPrice;
-  }, 0) ?? 0;
-
+  const calculatedSubTotal =
+    carts?.reduce((acc, c) => {
+      const product = c.product;
+      const discountedPrice = applyDiscounts(product);
+      return acc + c.quantity * discountedPrice;
+    }, 0) ?? 0;
   const tax = calculatedSubTotal * 0.2;
   const shippingCost = 20;
   const totalAmount = calculatedSubTotal + tax + shippingCost;
-
-  const handleOrder = () => {
-    router.push("/commande");
-  };
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const handleQuantityChange = (product, newValue) => {
-    if (userId && newValue >= 1) {
-      editQuantity(userId, product.product_id, newValue);
-    } else {
-      console.error("User ID is missing or invalid quantity");
+  const handleQuantityChange = (cart, quantity) => {
+    if (quantity >= 1) {
+      addToCart(cart.product, quantity);
+    }
+    if (quantity === 0) {
+      removeFromCart(cart);
     }
   };
 
-  const handleRemoveFromCart = (product) => {
-    if (userId) {
-      removeFromCart(userId, product.product_id);
-    } else {
-      console.error("User ID is missing");
-    }
+  const handleRemoveFromCart = (cart) => {
+    removeFromCart(cart);
   };
 
-  if (!cart || cart.length === 0) {
+  if (!carts || carts?.length === 0) {
     return (
       <div className={styles["cart-container"]}>
         <h1>Panier</h1>
@@ -164,18 +168,19 @@ export default function Cart({ carouselProducts }) {
         <h1>Panier</h1>
         <div className={styles["shopping-cart"]}>
           <div className={styles["column-labels"]}>
-            <label className={styles["product-image"]}>Image</label>
-            <label className={styles["product-details"]}>Produit</label>
-            <label className={styles["product-price"]}>Prix HT</label>
-            <label className={styles["product-quantity"]}>Quantité</label>
-            <label className={styles["product-removal"]}>Supprimer</label>
-            <label className={styles["product-line-price"]}>Total HT</label>
+            <p className={styles["product-image"]}>Image</p>
+            <p className={styles["product-details"]}>Produit</p>
+            <p className={styles["product-price"]}>Prix HT</p>
+            <p className={styles["product-quantity"]}>Quantité</p>
+            <p className={styles["product-removal"]}>Supprimer</p>
+            <p className={styles["product-line-price"]}>Total HT</p>
           </div>
 
-          {cart?.map((product, index) => {
+          {carts?.map((cart) => {
+            const product = cart.product;
             const discountedPrice = applyDiscounts(product);
             return (
-              <div className={styles["product"]} key={index}>
+              <div className={styles["product"]} key={cart._id}>
                 <div className={styles["product-image"]}>
                   <img
                     src={
@@ -196,15 +201,15 @@ export default function Cart({ carouselProducts }) {
                   </p>
                 </div>
                 {discountedPrice < product.price && (
-                  <div className={styles["discount-badge"]}>
+                  <p className={styles["discount-badge"]}>
                     -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
-                  </div>
+                  </p>
                 )}
                 <div className={styles["product-price"]}>
                   {discountedPrice < product.price ? (
                     <>
                       <span className={styles["original-price"]}>
-                        {product.price.toFixed(2)}€
+                        {product.price}€
                       </span>
                       <span className={styles["discounted-price"]}>
                         {discountedPrice.toFixed(2)} €
@@ -212,49 +217,49 @@ export default function Cart({ carouselProducts }) {
                     </>
                   ) : (
                     <span className={styles["base-price"]}>
-                      {product.price.toFixed(2)} €
+                      {product.price} €
                     </span>
                   )}
                 </div>
                 <div className={styles["product-quantity"]}>
                   <input
                     type="number"
-                    value={product.quantity}
+                    defaultValue={cart.quantity}
                     onChange={(e) =>
-                      handleQuantityChange(product, parseInt(e.target.value))
+                      handleQuantityChange(cart, parseInt(e.target.value))
                     }
                   />
                 </div>
                 <div className={styles["product-removal"]}>
                   <a
                     className={styles["remove-product"]}
-                    onClick={() => handleRemoveFromCart(product)}
+                    onClick={() => handleRemoveFromCart(cart)}
                   >
                     Supprimer
                   </a>
                 </div>
-                <div className={styles["product-line-price"]}>
-                  {(product.quantity * discountedPrice).toFixed(2)} €
-                </div>
+                <p className={styles["product-line-price"]}>
+                  {(cart.quantity * discountedPrice).toFixed(2)} €
+                </p>
               </div>
             );
           })}
 
           <div className={styles["totals"]}>
             <div className={styles["totals-item"]}>
-              <label>Sous-total</label>
+              <p>Sous-total</p>
               <div className={styles["totals-value"]} id="cart-subtotal">
                 {calculatedSubTotal.toFixed(2)} €
               </div>
             </div>
             <div className={styles["totals-item"]} id="cart-tax">
-              <label>TVA (20%)</label>
+              <p>TVA (20%)</p>
               <div className={styles["totals-value"]} id="cart-tax">
                 {tax.toFixed(2)} €
               </div>
             </div>
             <div className={styles["totals-item"]} id="cart-shipping">
-              <label>Frais de livraison</label>
+              <p>Frais de livraison</p>
               <div className={styles["totals-value"]} id="cart-shipping">
                 {shippingCost.toFixed(2)} €
               </div>
@@ -263,16 +268,20 @@ export default function Cart({ carouselProducts }) {
               className={`${styles["totals-item"]} ${styles["totals-item-total"]}`}
               id="cart-total"
             >
-              <label>Total</label>
+              <p>Total</p>
               <div className={styles["totals-value"]} id="cart-total">
                 {totalAmount.toFixed(2)} €
               </div>
             </div>
           </div>
 
-          <button onClick={handleOrder} className={styles["checkout"]}>
+          <Link
+            href="/commande"
+            className={styles["checkout"]}
+            style={{ textDecoration: "none" }}
+          >
             Commander
-          </button>
+          </Link>
         </div>
       </div>
     </div>
