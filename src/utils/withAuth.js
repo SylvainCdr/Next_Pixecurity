@@ -12,6 +12,7 @@ export default function withAuth(Component) {
     const user = useGetUser();
     const router = useRouter();
     const role = user?.role;
+    console.log("role", role);
 
     useLayoutEffect(() => {
       if (role !== "admin") {
