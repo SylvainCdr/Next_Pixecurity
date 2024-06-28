@@ -38,9 +38,16 @@ const useDiscount = (userId) => {
     let specificDiscountType = null;
 
     discounts.forEach((discount) => {
-      const isDateValid = new Date(discount.startDate) <= new Date() && new Date(discount.endDate) >= new Date();
-      const isGlobalAndUserTargeted = discount.isGlobalDiscount && (discount.targetedUsers.length === 0 || discount.targetedUsers.includes(userId));
-      const isUserTargeted = discount.targetedUsers.length === 0 || discount.targetedUsers.includes(userId);
+      const isDateValid =
+        new Date(discount.startDate) <= new Date() &&
+        new Date(discount.endDate) >= new Date();
+      const isGlobalAndUserTargeted =
+        discount.isGlobalDiscount &&
+        (discount.targetedUsers.length === 0 ||
+          discount.targetedUsers.includes(userId));
+      const isUserTargeted =
+        discount.targetedUsers.length === 0 ||
+        discount.targetedUsers.includes(userId);
       const isProductTargeted = discount.products.includes(product._id);
       const isBrandTargeted = discount.targetedBrands.includes(product.brand);
 
@@ -54,14 +61,22 @@ const useDiscount = (userId) => {
         }
       }
 
-      if (isDateValid && (isUserTargeted && (isProductTargeted || isBrandTargeted))) {
+      if (
+        isDateValid &&
+        isUserTargeted &&
+        (isProductTargeted || isBrandTargeted)
+      ) {
         if (discount.discountType === "percentage") {
-          if (discount.discountValue > specificDiscount && specificDiscountType !== "fixed") {
+          if (
+            discount.discountValue > specificDiscount &&
+            specificDiscountType !== "fixed"
+          ) {
             specificDiscount = discount.discountValue;
             specificDiscountType = "percentage";
           }
         } else if (discount.discountType === "fixed") {
-          const fixedDiscountValue = (discount.discountValue / product.price) * 100;
+          const fixedDiscountValue =
+            (discount.discountValue / product.price) * 100;
           if (fixedDiscountValue > specificDiscount) {
             specificDiscount = fixedDiscountValue;
             specificDiscountType = "fixed";

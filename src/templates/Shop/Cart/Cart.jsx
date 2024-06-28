@@ -35,12 +35,11 @@ function useGetDiscount() {
 }
 
 export default function Cart({ carouselProducts }) {
-  const { carts, addToCart, removeFromCart } = useCartContext();
+  const { carts } = useCartContext();
   const user = useGetUser();
   const userId = user?._id;
 
   const { discounts, loading, error } = useGetDiscount();
-
   const applyDiscounts = (product) => {
     if (loading || error) {
       return product.price;
@@ -116,47 +115,12 @@ export default function Cart({ carouselProducts }) {
     return finalPrice;
   };
 
-  const calculatedSubTotal =
-    carts?.reduce((acc, c) => {
-      const product = c.product;
-      const discountedPrice = applyDiscounts(product);
-      return acc + c.quantity * discountedPrice;
-    }, 0) ?? 0;
-  const tax = calculatedSubTotal * 0.2;
-  const shippingCost = 20;
-  const totalAmount = calculatedSubTotal + tax + shippingCost;
-
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const handleQuantityChange = (cart, quantity) => {
-    if (quantity >= 1) {
-      addToCart(cart.product, quantity);
-    }
-    if (quantity === 0) {
-      removeFromCart(cart);
-    }
-  };
-
-  const handleRemoveFromCart = (cart) => {
-    removeFromCart(cart);
-  };
-
-  if (!carts || carts?.length === 0) {
-    return (
-      <div className={styles["cart-container"]}>
-        <h1>Panier</h1>
-        <div className={styles["empty-cart-message"]}>
-          <p>Vous n'avez pas encore de produits dans votre panier.</p>
-          <Link href="/boutique">
-            <button>Visiter la boutique</button>
-          </Link>
-          <ShopProductsCarousel carouselProducts={carouselProducts} />
-        </div>
-      </div>
-    );
-  }
+  if (!carts || carts?.length === 0)
+    return <EmptyCart carouselProducts={carouselProducts} />;
 
   return (
     <div className={styles["cart-container"]}>
@@ -172,105 +136,15 @@ export default function Cart({ carouselProducts }) {
             <p className={styles["product-line-price"]}>Total HT</p>
           </div>
 
-          {carts?.map((cart) => {
-            const product = cart.product;
-            const discountedPrice = applyDiscounts(product);
-            return (
-              <div className={styles["product"]} key={cart._id}>
-                <div className={styles["product-image"]}>
-                  <img
-                    src={
-                      product.image && product.image.startsWith("http")
-                        ? product.image
-                        : `${BASE_URL}${product.image}`
-                    }
-                    alt={product.name}
-                  />
-                </div>
-                <div className={styles["product-details"]}>
-                  <div className={styles["product-title"]}>
-                    {product.name}
-                    <p>Réf : {product.ref}</p>
-                  </div>
-                  {/* <p className={styles["product-description"]}>
-                    {product.description}
-                  </p> */}
-                </div>
-                {discountedPrice < product.price && (
-                  <p className={styles["discount-badge"]}>
-                    -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
-                  </p>
-                )}
-                <div className={styles["product-price"]}>
-                  {discountedPrice < product.price ? (
-                    <>
-                      <span className={styles["original-price"]}>
-                        {product.price}€
-                      </span>
-                      <span className={styles["discounted-price"]}>
-                        {discountedPrice.toFixed(2)} €
-                      </span>
-                    </>
-                  ) : (
-                    <span className={styles["base-price"]}>
-                      {product.price} €
-                    </span>
-                  )}
-                </div>
-                <div className={styles["product-quantity"]}>
-                  <input
-                    type="number"
-                    defaultValue={cart.quantity}
-                    onChange={(e) =>
-                      handleQuantityChange(cart, parseInt(e.target.value))
-                    }
-                  />
-                </div>
-                <div className={styles["product-removal"]}>
-                  <a
-                    className={styles["remove-product"]}
-                    onClick={() => handleRemoveFromCart(cart)}
-                  >
-                    Supprimer
-                  </a>
-                </div>
-                <p className={styles["product-line-price"]}>
-                  {(cart.quantity * discountedPrice).toFixed(2)} €
-                </p>
-              </div>
-            );
-          })}
+          {carts?.map((cart) => (
+            <CartItem
+              key={cart._id}
+              cart={cart}
+              discountedPrice={applyDiscounts(cart.product)}
+            />
+          ))}
 
-          <div className={styles["totals"]}>
-            <div className={styles["totals-item"]}>
-              <p>Sous-total</p>
-              <div className={styles["totals-value"]} id="cart-subtotal">
-                {calculatedSubTotal.toFixed(2)} €
-              </div>
-            </div>
-            <div className={styles["totals-item"]} id="cart-tax">
-              <p>TVA (20%)</p>
-              <div className={styles["totals-value"]} id="cart-tax">
-                {tax.toFixed(2)} €
-              </div>
-            </div>
-            <div className={styles["totals-item"]} id="cart-shipping">
-              <p>Frais de livraison</p>
-              <div className={styles["totals-value"]} id="cart-shipping">
-                {shippingCost.toFixed(2)} €
-              </div>
-            </div>
-            <div
-              className={`${styles["totals-item"]} ${styles["totals-item-total"]}`}
-              id="cart-total"
-            >
-              <p>Total</p>
-              <div className={styles["totals-value"]} id="cart-total">
-                {totalAmount.toFixed(2)} €
-              </div>
-            </div>
-          </div>
-
+          <Totals carts={carts} applyDiscounts={applyDiscounts} />
           <Link
             href="/commande"
             className={styles["checkout"]}
@@ -279,6 +153,135 @@ export default function Cart({ carouselProducts }) {
             Commander
           </Link>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function CartItem({ cart, discountedPrice }) {
+  const product = cart.product;
+  const { addToCart, removeFromCart } = useCartContext();
+
+  const totalPrice = (cart.quantity * discountedPrice).toFixed(2);
+
+  const handleQuantityChange = (quantity) => {
+    if (quantity < 1) return;
+
+    addToCart(cart.product, quantity);
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(cart);
+  };
+
+  return (
+    <div className={styles["product"]} key={cart._id}>
+      <div className={styles["product-image"]}>
+        <img
+          src={
+            product.image && product.image.startsWith("http")
+              ? product.image
+              : `${BASE_URL}${product.image}`
+          }
+          alt={product.name}
+        />
+      </div>
+      <div className={styles["product-details"]}>
+        <div className={styles["product-title"]}>
+          {product.name}
+          <p>Réf : {product.ref}</p>
+        </div>
+        <p className={styles["product-description"]}>{product.description}</p>
+      </div>
+      {discountedPrice < product.price && (
+        <p className={styles["discount-badge"]}>
+          -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
+        </p>
+      )}
+      <div className={styles["product-price"]}>
+        {discountedPrice < product.price ? (
+          <>
+            <span className={styles["original-price"]}>{product.price}€</span>
+            <span className={styles["discounted-price"]}>
+              {discountedPrice.toFixed(2)} €
+            </span>
+          </>
+        ) : (
+          <span className={styles["base-price"]}>{product.price} €</span>
+        )}
+      </div>
+      <div className={styles["product-quantity"]}>
+        <input
+          type="number"
+          min={1}
+          defaultValue={cart.quantity}
+          onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
+        />
+      </div>
+      <div className={styles["product-removal"]}>
+        <a className={styles["remove-product"]} onClick={handleRemoveFromCart}>
+          Supprimer
+        </a>
+      </div>
+      <p className={styles["product-line-price"]}>{totalPrice} €</p>
+    </div>
+  );
+}
+
+function Totals({ carts, applyDiscounts }) {
+  const calculatedSubTotal =
+    carts?.reduce((acc, c) => {
+      const product = c.product;
+      const discountedPrice = applyDiscounts(product);
+      return acc + c.quantity * discountedPrice;
+    }, 0) ?? 0;
+  const tax = calculatedSubTotal * 0.2;
+  const shippingCost = 20;
+  const totalAmount = calculatedSubTotal + tax + shippingCost;
+
+  return (
+    <div className={styles["totals"]}>
+      <div className={styles["totals-item"]}>
+        <p>Sous-total</p>
+        <div className={styles["totals-value"]} id="cart-subtotal">
+          {calculatedSubTotal.toFixed(2)} €
+        </div>
+      </div>
+      <div className={styles["totals-item"]} id="cart-tax">
+        <p>TVA (20%)</p>
+        <div className={styles["totals-value"]} id="cart-tax">
+          {tax.toFixed(2)} €
+        </div>
+      </div>
+      <div className={styles["totals-item"]} id="cart-shipping">
+        <p>Frais de livraison</p>
+        <div className={styles["totals-value"]} id="cart-shipping">
+          {shippingCost.toFixed(2)} €
+        </div>
+      </div>
+      <div
+        className={`${styles["totals-item"]} ${styles["totals-item-total"]}`}
+        id="cart-total"
+      >
+        <p>Total</p>
+        <div className={styles["totals-value"]} id="cart-total">
+          {totalAmount.toFixed(2)} €
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EmptyCart({ carouselProducts }) {
+  return (
+    <div className={styles["cart-container"]}>
+      <h1>Panier</h1>
+      <div className={styles["empty-cart-message"]}>
+        <p>Vous n'avez pas encore de produits dans votre panier.</p>
+        <Link href="/boutique">
+          <button>Visiter la boutique</button>
+        </Link>
+        <ShopProductsCarousel carouselProducts={carouselProducts} />
       </div>
     </div>
   );

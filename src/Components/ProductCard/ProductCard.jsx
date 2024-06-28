@@ -7,36 +7,122 @@ import { logos } from "../../templates/Shop/Product/LogosData";
 import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
-import useDiscount from "../useDiscount"; // Importer le hook useDiscount
+import useDiscount from "../useDiscount";
 import { useCartContext } from "@/Components/cartContext";
 
-const ProductCard = ({ product }) => {
-  const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
-  const { addToCart } = useCartContext();
-  const [isInFavorites, setIsInFavorites] = useState(false);
+function ProductCard({ product }) {
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
+  const brandLogo = logos.find(
+    (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
+  );
+
+  return (
+    <div className={styles["product-card"]}>
+      <Link
+        href={`/boutique/produit/${product._id}`}
+        style={{ textDecoration: "none" }}
+      >
+        <DiscountBadge product={product} />
+
+        {product.image.startsWith("http") ? (
+          <img src={product.image} alt="" className={styles["product-img"]} />
+        ) : (
+          <img
+            src={`${BASE_URL}${product.image}`}
+            alt=""
+            className={styles["product-img"]}
+          />
+        )}
+        <h2 className={styles["card-title"]}>{product.name}</h2>
+        <div className={styles["card-brand"]}>
+          {brandLogo && (
+            <img
+              src={brandLogo.logo}
+              alt={brandLogo.name}
+              className={styles["brand-logo"]}
+            />
+          )}
+        </div>
+      </Link>
+      <div className={styles["card-bottom"]}>
+        <Prices product={product} />
+        <div className={styles.CTA}>
+          <ButtonAddToFavorite product={product} />
+          <ButtonAddToCart product={product} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DiscountBadge({ product }) {
   const user = useGetUser();
   const userId = user?._id;
   const { applyDiscountsForProductsDisplay } = useDiscount(userId);
-
   const discountedPrice = applyDiscountsForProductsDisplay(product);
 
+  if (discountedPrice === product.price) return null;
+
+  return (
+    <p className={styles["discount-badge"]}>
+      -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
+    </p>
+  );
+}
+
+function Prices({ product }) {
+  const user = useGetUser();
+  const userId = user?._id;
+  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
+  const discountedPrice = applyDiscountsForProductsDisplay(product);
+
+  if (product.price && discountedPrice !== product.price) {
+    return (
+      <div className={styles["card-prices"]}>
+        <p className={styles["original-price"]}>
+          {product.price.toFixed(2)} €{" "}
+        </p>
+        <p className={styles["discounted-price"]}>
+          {discountedPrice.toFixed(2)} € <span>HT</span>{" "}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <p className={styles["card-price"]}>
+      {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
+    </p>
+  );
+}
+
+function ButtonAddToFavorite({ product }) {
+  const prouductId = product._id;
+  const user = useGetUser();
+  const userId = user?._id;
+
+  const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
+
+  const [isInFavorites, setIsInFavorites] = useState(false);
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
-      if (userId) {
-        try {
-          const isInFavs = await checkFavorite(userId, product._id);
-          setIsInFavorites(isInFavs);
-        } catch (error) {
-          console.error("Error in fetchFavoriteStatus:", error);
-        }
+      if (!userId) return;
+
+      try {
+        const isInFavs = await checkFavorite(userId, prouductId);
+        setIsInFavorites(isInFavs);
+      } catch (error) {
+        console.error("Error in fetchFavoriteStatus:", error);
       }
     };
 
     fetchFavoriteStatus();
-  }, [userId, product._id, checkFavorite]);
+  }, [userId, prouductId, checkFavorite]);
 
-  const handleToggleFavoritesClick = async () => {
+  const handleToggleFavorites = async () => {
     console.log("Trying to remove product with ID:", product._id);
     try {
       if (userId) {
@@ -66,89 +152,34 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  const handleAddToCartClick = async () => {
-    await addToCart(product);
-  };
-
-  const calculateDiscountedPrice = () => {
-    if (product.price && discountedPrice !== product.price) {
-      return (
-        <div className={styles["card-prices"]}>
-          <p className={styles["original-price"]}>
-            {product.price.toFixed(2)} €{" "}
-          </p>
-          <p className={styles["discounted-price"]}>
-            {discountedPrice.toFixed(2)} € <span>HT</span>{" "}
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <span className={styles["card-price"]}>
-          {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
-        </span>
-      );
-    }
-  };
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
-
-  const brandLogo = logos.find(
-    (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
+  return (
+    <button className={styles.heart} onClick={handleToggleFavorites}>
+      <i
+        className="fa-solid fa-heart"
+        style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
+      />
+    </button>
   );
+}
+
+function ButtonAddToCart({ product }) {
+  const { addToCart } = useCartContext();
 
   return (
-    <div className={styles["product-card"]}>
-      {discountedPrice !== product.price && (
-        <span className={styles["discount-badge"]}>
-          -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
-        </span>
-      )}
-      {product.image.startsWith("http") ? (
-        <img src={product.image} alt="" className={styles["product-img"]} />
-      ) : (
-        <img
-          src={`${BASE_URL}${product.image}`}
-          alt=""
-          className={styles["product-img"]}
-        />
-      )}
-
-      <div className={styles["card-title"]}>
-        <Link href={`/boutique/produit/${product._id}`}>
-          <h2>{product.name}</h2>
-        </Link>
-      </div>
-      <div className={styles["card-brand"]}>
-        {brandLogo && (
-          <img
-            src={brandLogo.logo}
-            alt={brandLogo.name}
-            className={styles["brand-logo"]}
-          />
-        )}
-      </div>
-      <div className={styles["card-bottom"]}>
-        {calculateDiscountedPrice()}
-        <div className={styles["CTA"]}>
-          <button
-            className={styles["heart"]}
-            onClick={handleToggleFavoritesClick}
-          >
-            <i
-              className="fa-solid fa-heart"
-              style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
-            />
-          </button>
-          <button className={styles.cart} onClick={handleAddToCartClick}>
-            <i className="fa-solid fa-cart-plus" />
-          </button>
-        </div>
-      </div>
-    </div>
+    <button
+      className={styles.cart}
+      onClick={async () => {
+        await addToCart(product);
+        Swal.fire({
+          icon: "info",
+          title: "Produit ajouté au panier avec succès!",
+          showConfirmButton: true,
+        });
+      }}
+    >
+      <i className="fa-solid fa-cart-plus" />
+    </button>
   );
-};
+}
 
 export default ProductCard;

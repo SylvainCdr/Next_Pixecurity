@@ -12,13 +12,18 @@ const getCartId = () => {
   return cartIdGenered;
 };
 
+const sum = (arrayNumbers) =>
+  arrayNumbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+
 const useCart = () => {
   const [carts, setCarts] = useState([]); // Contient les produits dans le panier
   const [isCartFetched, setIsCartFetched] = useState(false); // Indique si le panier a été récupéré depuis le serveur
   const user = useGetUser();
 
   const userId = user?._id;
-  const cartItemsCount = carts?.length;
+  const cartItemsCount = sum(carts?.map((c) => c.quantity));
 
   const fetchCart = async () => {
     try {
@@ -82,14 +87,6 @@ const useCart = () => {
       }
       const _carts = await response.json();
       setCarts(_carts);
-      if (quantity === 1) {
-        Swal.fire({
-          icon: "success",
-          title: "Produit ajouté au panier",
-          showConfirmButton: false,
-          timer: 1200,
-        });
-      }
     } catch (error) {
       console.error("Erreur réseau:", error);
     }

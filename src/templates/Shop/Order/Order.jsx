@@ -7,7 +7,7 @@ import { useGetUser } from "@/Components/useGetUser";
 
 export default function Order() {
   const user = useGetUser();
-  const { cart } = useCartContext();
+  const { carts } = useCartContext();
   const [subTotal, setSubTotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [shippingCost, setShippingCost] = useState(20);
@@ -139,7 +139,7 @@ export default function Order() {
 
   useEffect(() => {
     let totalDiscount = 0;
-    const calculatedSubTotal = cart.reduce((acc, product) => {
+    const calculatedSubTotal = carts?.reduce((acc, product) => {
       const { finalPrice, discountAmount } = applyDiscounts(product); // Appliquer le rabais au prix du produit
       totalDiscount += discountAmount;
       return acc + product.quantity * finalPrice;
@@ -155,7 +155,7 @@ export default function Order() {
 
     setOrder((prevOrder) => ({
       ...prevOrder,
-      items: cart.map((product) => {
+      items: carts?.map((product) => {
         const { finalPrice, appliedDiscounts, discountAmount } =
           applyDiscounts(product);
         return {
@@ -172,7 +172,7 @@ export default function Order() {
       totalAmount: calculatedTotalAmount,
       totalDiscountAmount: totalDiscount,
     }));
-  }, [cart, shippingCost, discounts]);
+  }, [carts, shippingCost, discounts]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -201,22 +201,22 @@ export default function Order() {
     } else if (name === "company") {
       setCompany(value);
     } else {
-      const updatedUser = { ...user, [name]: value };
-      fetch(`${BASE_URL}/users/${user._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to update user");
-          }
-        })
-        .catch((error) => {
-          console.error("Error updating user:", error);
-        });
+      // const updatedUser = { ...user, [name]: value };
+      // fetch(`${BASE_URL}/users/${user._id}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(updatedUser),
+      // })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Failed to update user");
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error updating user:", error);
+      //   });
     }
   };
 
@@ -247,20 +247,7 @@ export default function Order() {
       return;
     }
 
-    console.log("Creating order with data:", {
-      user: user._id,
-      deliveryAddress: order.deliveryAddress,
-      billingAddress: order.billingAddress,
-      items: order.items,
-      delivery: order.delivery,
-      totalAmount: order.totalAmount,
-      totalDiscountAmount: order.totalDiscountAmount,
-      payment: {
-        method: "stripe",
-        paid: false,
-      },
-      status: "pending",
-    });
+    // PUT `${BASE_URL}/orders/:orderId/delevery`
 
     const orderResponse = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
@@ -276,7 +263,6 @@ export default function Order() {
         status: "pending",
       }),
     });
-    const newOrder = await orderResponse.json();
 
     if (!orderResponse.ok) {
       Swal.fire({
@@ -287,6 +273,8 @@ export default function Order() {
       return;
     }
 
+    const newOrder = await orderResponse.json();
+
     console.log("Order created successfully:", newOrder);
 
     const response = await fetch(`${BASE_URL}/create-checkout-session`, {
@@ -296,28 +284,27 @@ export default function Order() {
       },
       body: JSON.stringify({
         userId: user._id,
-        amount: order.totalAmount,
-        currency: "eur",
+        // amount: order.totalAmount,
+        // currency: "eur",
         orderId: newOrder._id,
       }),
     });
 
-    const session = await response.json();
-
-    if (response.ok) {
-      window.location.href = session.url;
-    } else {
+    if (!response.ok) {
       Swal.fire({
         icon: "error",
         title: "Erreur",
         text: "Erreur lors de la création de la session de paiement",
       });
+      return;
     }
+
+    const session = await response.json();
+
+    window.location.href = session.url;
   };
 
-  if (!user) {
-    return <div>Chargement...</div>;
-  }
+  if (!user) return <div>Chargement...</div>;
 
   return (
     <div className={styles["order-container"]}>

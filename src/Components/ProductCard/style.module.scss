@@ -46,13 +46,10 @@
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--sunset1);
 
-    a {
-      text-decoration: none;
-      color: var(--sunset1);
-    }
-
-    a:hover {
+    &:hover {
       color: #0053a0;
     }
   }
