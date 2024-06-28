@@ -1,9 +1,8 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { BASE_URL } from "../url";
 import { useGetUser } from "./useGetUser";
-import Swal from "sweetalert2";
 
-const getCartId = () => {
+export const getCartId = () => {
   const cartId = localStorage.getItem("cartId");
   if (cartId) return cartId;
 

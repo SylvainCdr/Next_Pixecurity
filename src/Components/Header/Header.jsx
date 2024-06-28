@@ -60,7 +60,7 @@ function Header() {
         <ul>
           <li className={pathname === "/boutique" ? styles.active : ""}>
             <Link
-              href="/boutique"
+              href={`/boutique${user?._id ? `?userId=${user?._id}` : ""}`}
               className={styles.shop}
               onClick={handleLinkClick}
             >

@@ -1,123 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import AOS from "aos";
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
-import { useCartContext } from "@/Components/cartContext";
-
-function useGetDiscount() {
-  const [discounts, setDiscounts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchDiscounts = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/discounts`);
-        if (!response.ok) {
-          throw new Error("Erreur lors de la récupération des remises");
-        }
-        const data = await response.json();
-        setDiscounts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDiscounts();
-  }, []);
-
-  return { discounts, loading, error };
-}
+import { getCartId, useCartContext } from "@/Components/cartContext";
+import { useRouter } from "next/router";
+import { createOrder as createOrderAPI } from "@/api/orders";
 
 export default function Cart({ carouselProducts }) {
   const { carts } = useCartContext();
-  const user = useGetUser();
-  const userId = user?._id;
-
-  const { discounts, loading, error } = useGetDiscount();
-  const applyDiscounts = (product) => {
-    if (loading || error) {
-      return product.price;
-    }
-
-    let finalPrice = product.price;
-    let globalDiscount = 0;
-    let globalDiscountType = null;
-
-    let specificDiscount = 0;
-    let specificDiscountType = null;
-
-    discounts.forEach((discount) => {
-      const isDateValid =
-        new Date(discount.startDate) <= new Date() &&
-        new Date(discount.endDate) >= new Date();
-      const isGlobalAndUserTargeted =
-        discount.isGlobalDiscount &&
-        (discount.targetedUsers.length === 0 ||
-          discount.targetedUsers.includes(userId));
-      const isUserTargeted =
-        discount.targetedUsers.length === 0 ||
-        discount.targetedUsers.includes(userId);
-      const isProductTargeted = discount.products.includes(product.product_id);
-      const isBrandTargeted = discount.targetedBrands.includes(product.brand);
-
-      if (isDateValid && isGlobalAndUserTargeted) {
-        if (discount.discountType === "percentage") {
-          globalDiscount += discount.discountValue;
-          globalDiscountType = "percentage";
-        } else if (discount.discountType === "fixed") {
-          globalDiscount += discount.discountValue;
-          globalDiscountType = "fixed";
-        }
-      }
-
-      if (
-        isDateValid &&
-        isUserTargeted &&
-        (isProductTargeted || isBrandTargeted)
-      ) {
-        if (discount.discountType === "percentage") {
-          if (
-            discount.discountValue > specificDiscount &&
-            specificDiscountType !== "fixed"
-          ) {
-            specificDiscount = discount.discountValue;
-            specificDiscountType = "percentage";
-          }
-        } else if (discount.discountType === "fixed") {
-          const fixedDiscountValue =
-            (discount.discountValue / product.price) * 100;
-          if (fixedDiscountValue > specificDiscount) {
-            specificDiscount = fixedDiscountValue;
-            specificDiscountType = "fixed";
-          }
-        }
-      }
-    });
-
-    if (globalDiscountType === "percentage") {
-      finalPrice -= (finalPrice * globalDiscount) / 100;
-    } else if (globalDiscountType === "fixed") {
-      finalPrice -= globalDiscount;
-    }
-
-    if (specificDiscountType === "percentage") {
-      finalPrice -= (finalPrice * specificDiscount) / 100;
-    } else if (specificDiscountType === "fixed") {
-      finalPrice -= specificDiscount;
-    }
-
-    return finalPrice;
-  };
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  console.log({ carts });
+
+  const user = useGetUser();
+  const userId = user?._id;
+  const router = useRouter();
+
+  const createOrder = async () => {
+    const cartId = getCartId();
+    const orderId = await createOrderAPI({ userId, cartId });
+    router.push("/commande/" + orderId);
+  };
 
   if (!carts || carts?.length === 0)
     return <EmptyCart carouselProducts={carouselProducts} />;
@@ -137,32 +46,29 @@ export default function Cart({ carouselProducts }) {
           </div>
 
           {carts?.map((cart) => (
-            <CartItem
-              key={cart._id}
-              cart={cart}
-              discountedPrice={applyDiscounts(cart.product)}
-            />
+            <CartItem key={cart._id} cart={cart} />
           ))}
 
-          <Totals carts={carts} applyDiscounts={applyDiscounts} />
-          <Link
-            href="/commande"
+          <Totals carts={carts} />
+          <button
+            // href="/commande"
             className={styles["checkout"]}
-            style={{ textDecoration: "none" }}
+            // style={{ textDecoration: "none" }}
+            onClick={createOrder}
           >
             Commander
-          </Link>
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-function CartItem({ cart, discountedPrice }) {
+function CartItem({ cart }) {
   const product = cart.product;
   const { addToCart, removeFromCart } = useCartContext();
 
-  const totalPrice = (cart.quantity * discountedPrice).toFixed(2);
+  const totalPrice = (cart.quantity * product.discountPrice).toFixed(2);
 
   const handleQuantityChange = (quantity) => {
     if (quantity < 1) return;
@@ -193,17 +99,17 @@ function CartItem({ cart, discountedPrice }) {
         </div>
         <p className={styles["product-description"]}>{product.description}</p>
       </div>
-      {discountedPrice < product.price && (
+      {product.pourcentageDiscount && (
         <p className={styles["discount-badge"]}>
-          -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
+          -{product.pourcentageDiscount}%
         </p>
       )}
       <div className={styles["product-price"]}>
-        {discountedPrice < product.price ? (
+        {product.discountPrice ? (
           <>
             <span className={styles["original-price"]}>{product.price}€</span>
             <span className={styles["discounted-price"]}>
-              {discountedPrice.toFixed(2)} €
+              {product.discountPrice.toFixed(2)} €
             </span>
           </>
         ) : (
@@ -228,11 +134,11 @@ function CartItem({ cart, discountedPrice }) {
   );
 }
 
-function Totals({ carts, applyDiscounts }) {
+function Totals({ carts }) {
   const calculatedSubTotal =
     carts?.reduce((acc, c) => {
       const product = c.product;
-      const discountedPrice = applyDiscounts(product);
+      const discountedPrice = product.discountPrice;
       return acc + c.quantity * discountedPrice;
     }, 0) ?? 0;
   const tax = calculatedSubTotal * 0.2;

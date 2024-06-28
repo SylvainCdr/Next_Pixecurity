@@ -6,8 +6,6 @@ import AOS from "aos";
 import { logos } from "@/templates/Shop/Product/LogosData";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
-import useDiscount from "@/Components/useDiscount"; // Assurez-vous de l'importer
-
 import styles from "./style.module.scss";
 import ShopNav from "@/Components/ShopNav/ShopNav";
 import ShopSearch from "@/Components/ShopSearch/ShopSearch";
@@ -21,10 +19,6 @@ export default function Product({ product, id, suggestions }) {
 
   const user = useGetUser();
   const userId = user?._id;
-
-  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
-
-  const discountedPrice = applyDiscountsForProductsDisplay(product);
 
   const brandLogo = logos.find(
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
@@ -131,27 +125,6 @@ export default function Product({ product, id, suggestions }) {
     }
   };
 
-  const calculateDiscountedPrice = () => {
-    if (product.price && discountedPrice !== product.price) {
-      return (
-        <p className={styles.prices}>
-          <span className={styles["original-price"]}>
-            {product.price.toFixed(2)} €
-          </span>
-          <span className={styles["discounted-price"]}>
-            {discountedPrice.toFixed(2)} € <span> HT</span>
-          </span>
-        </p>
-      );
-    } else {
-      return (
-        <p className={styles.price}>
-          {product.price ? product.price.toFixed(2) : "00.00"} €<span>HT</span>
-        </p>
-      );
-    }
-  };
-
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -164,16 +137,11 @@ export default function Product({ product, id, suggestions }) {
       <div className={styles["product-page"]}>
         <div className={styles["product-section1"]}>
           <div data-aos="zoom-in-right" className={styles["product-img"]}>
-            {/* {discount !== 0 && (
-              <span className={styles["discount-badge"]}>-{discount}%</span>
-            )} */}
-            {/* // on affiche la discountValue */}
-            {discountedPrice !== product.price && (
-              <span className={styles["discount-badge"]}>
-                -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
-              </span>
+            {product.pourcentageDiscount && (
+              <p className={styles["discount-badge"]}>
+                -{product.pourcentageDiscount}%
+              </p>
             )}
-
             <img
               src={
                 product.image && product.image.startsWith("http")
@@ -229,7 +197,7 @@ export default function Product({ product, id, suggestions }) {
             </div>
             <div className={styles["price-addToCart"]}>
               <div className={styles.price}>
-                <p className={styles.prices}>{calculateDiscountedPrice()}</p>
+                <DiscountedPrice product={product} />
               </div>
               <div className={styles.quantity}>
                 <button
@@ -306,3 +274,21 @@ export default function Product({ product, id, suggestions }) {
     </div>
   );
 }
+
+const DiscountedPrice = ({ product }) => {
+  if (product.price && product.discountPrice)
+    return (
+      <p className={styles.prices}>
+        <span className={styles["original-price"]}>{product.price} €</span>
+        <span className={styles["discounted-price"]}>
+          {product.discountPrice} € <span> HT</span>
+        </span>
+      </p>
+    );
+
+  return (
+    <p className={styles.price}>
+      {product.price ? product.price.toFixed(2) : "00.00"} €<span>HT</span>
+    </p>
+  );
+};

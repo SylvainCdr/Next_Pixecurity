@@ -7,9 +7,10 @@ import Aos from "aos";
 import "aos/dist/aos.css"; // Import des styles d'AOS
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 
-
 function Catalogue({ products }) {
-  const carouselProducts = products?.filter((product) => product.brand === "Vivotek");
+  const carouselProducts = products?.filter(
+    (product) => product.brand === "Vivotek"
+  );
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
@@ -64,7 +65,7 @@ function Catalogue({ products }) {
 
       <div className={styles["products-carousel"]}>
         <h4>Découvrez nos produits Vivotek </h4>
-         <ShopProductsCarousel carouselProducts={carouselProducts} />
+        <ShopProductsCarousel carouselProducts={carouselProducts} />
       </div>
     </div>
   );

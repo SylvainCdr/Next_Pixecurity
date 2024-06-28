@@ -3,23 +3,21 @@ import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import ShopAside from "@/Components/ShopAside/ShopAside";
 import styles from "./style.module.scss";
-import { useState } from "react";
 import { PropagateLoader } from "react-spinners";
 import { useRouterLoading } from "@/Components/useRouterLoading";
 
+const color = "#ff9c3fc0";
+// contient les styles du loader
+const override = {
+  size: "15px",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
 // on importe les produits depuis Api/products
-const Products = ({ products, category, subcategory, filters }) => {
-  // contient les styles du loader
-  const override = {
-    size: "15px",
-    margin: "0 auto",
-    borderColor: "red",
-  };
+const Products = ({ products, subcategory, filters }) => {
+  console.log({ products });
 
-  // on initialise le state loading à true
-  // on initialise la couleur du loader
-
-  const [color] = useState("#ff9c3fc0");
   const loading = useRouterLoading();
 
   return (

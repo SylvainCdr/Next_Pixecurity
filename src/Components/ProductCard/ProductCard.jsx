@@ -7,7 +7,6 @@ import { logos } from "../../templates/Shop/Product/LogosData";
 import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
-import useDiscount from "../useDiscount";
 import { useCartContext } from "@/Components/cartContext";
 
 function ProductCard({ product }) {
@@ -19,10 +18,13 @@ function ProductCard({ product }) {
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
   );
 
+  const user = useGetUser();
+  const userId = user?._id;
+
   return (
     <div className={styles["product-card"]}>
       <Link
-        href={`/boutique/produit/${product._id}`}
+        href={`/boutique/produit/${product._id}${userId ? `?userId=${userId}` : ""}`}
         style={{ textDecoration: "none" }}
       >
         <DiscountBadge product={product} />
@@ -59,34 +61,20 @@ function ProductCard({ product }) {
 }
 
 function DiscountBadge({ product }) {
-  const user = useGetUser();
-  const userId = user?._id;
-  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
-  const discountedPrice = applyDiscountsForProductsDisplay(product);
-
-  if (discountedPrice === product.price) return null;
+  if (!product?.pourcentageDiscount) return null;
 
   return (
-    <p className={styles["discount-badge"]}>
-      -{((1 - discountedPrice / product.price) * 100).toFixed(0)}%
-    </p>
+    <p className={styles["discount-badge"]}>-{product.pourcentageDiscount}%</p>
   );
 }
 
 function Prices({ product }) {
-  const user = useGetUser();
-  const userId = user?._id;
-  const { applyDiscountsForProductsDisplay } = useDiscount(userId);
-  const discountedPrice = applyDiscountsForProductsDisplay(product);
-
-  if (product.price && discountedPrice !== product.price) {
+  if (product.price && product?.discountPrice) {
     return (
       <div className={styles["card-prices"]}>
-        <p className={styles["original-price"]}>
-          {product.price.toFixed(2)} €{" "}
-        </p>
+        <p className={styles["original-price"]}>{product.price} € </p>
         <p className={styles["discounted-price"]}>
-          {discountedPrice.toFixed(2)} € <span>HT</span>{" "}
+          {product.discountPrice} € <span>HT</span>{" "}
         </p>
       </div>
     );
@@ -94,7 +82,7 @@ function Prices({ product }) {
 
   return (
     <p className={styles["card-price"]}>
-      {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
+      {product.price ? product.price : "00.00"} €<span> HT</span>
     </p>
   );
 }

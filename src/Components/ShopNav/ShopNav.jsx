@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Link  from "next/link";
+import Link from "next/link";
 import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
+import { useGetUser } from "../useGetUser";
 
 function ShopNav() {
   const [categories, setCategories] = useState([]);
   const [subcategoriesMap, setSubcategoriesMap] = useState({});
   const [openCategory, setOpenCategory] = useState(null);
   const [openSubcategory, setOpenSubcategory] = useState(null);
+  const user = useGetUser();
+  const userId = user?._id;
 
   useEffect(() => {
     // Charger toutes les catégories
@@ -15,7 +18,7 @@ function ShopNav() {
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((error) =>
-        console.error("Erreur lors de la récupération des catégories :", error),
+        console.error("Erreur lors de la récupération des catégories :", error)
       );
   }, []);
 
@@ -29,11 +32,11 @@ function ShopNav() {
             .catch((error) => {
               console.error(
                 `Erreur lors de la récupération des sous-catégories pour ${category} :`,
-                error,
+                error
               );
               return [];
-            }),
-        ),
+            })
+        )
       );
 
       // Construire un objet associant chaque catégorie à ses sous-catégories
@@ -67,7 +70,7 @@ function ShopNav() {
 
   // Trier les catégories selon l'ordre spécifié
   const sortedCategories = categories.sort(
-    (a, b) => order.indexOf(a) - order.indexOf(b),
+    (a, b) => order.indexOf(a) - order.indexOf(b)
   );
 
   return (
@@ -91,7 +94,7 @@ function ShopNav() {
               {subcategoriesMap[category]?.map((subcategory) => (
                 <li key={subcategory}>
                   <Link
-                    href={`/boutique/${category}/${subcategory}`}
+                    href={`/boutique/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
                     onClick={() => toggleSubcategory(subcategory)}
                     className={
                       openSubcategory === subcategory ? styles.active : ""
@@ -103,7 +106,11 @@ function ShopNav() {
               ))}
               {/* création d'une li pour tous les produits de chaque catégorie */}
               <li>
-                <Link href={`/boutique/${category}`}>Tous les produits</Link>
+                <Link
+                  href={`/boutique/${category}${userId ? `?userId=${userId}` : ""}`}
+                >
+                  Tous les produits
+                </Link>
               </li>
             </ul>
           </li>

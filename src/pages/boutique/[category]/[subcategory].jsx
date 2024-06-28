@@ -1,4 +1,4 @@
-import { getProductsByCatSubCat } from "@/utils/api/products";
+import { getProductsByCatSubCat } from "@/api/products";
 import Products from "@/templates/Shop/Products/Products";
 import {
   getProductsFiltered,
@@ -8,7 +8,12 @@ import {
 export async function getServerSideProps({ params, query }) {
   const category = params.category;
   const subcategory = params.subcategory;
-  const products = await getProductsByCatSubCat({ category, subcategory });
+  const userId = query.userId;
+  const products = await getProductsByCatSubCat({
+    category,
+    subcategory,
+    userId,
+  });
   const productsFiltered = getProductsFiltered(products, query);
   const filters = getFiltersFromProducts(productsFiltered);
 
@@ -23,6 +28,7 @@ export async function getServerSideProps({ params, query }) {
 }
 
 export default function Page({ products, category, subcategory, filters }) {
+  console.log({ products });
   return (
     <Products
       products={products}

@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../url";
+import { BASE_URL } from "../url";
 
 export const editQuantity = async (userId, productId, quantity) => {
   try {

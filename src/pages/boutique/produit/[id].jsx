@@ -1,4 +1,4 @@
-import { getProductById, getProducts } from "@/utils/api/products";
+import { getProductById, getProducts } from "@/api/products";
 import Product from "@/templates/Shop/Product/Product";
 
 export async function getServerSideProps({ params }) {

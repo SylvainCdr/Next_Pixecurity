@@ -1,4 +1,4 @@
-import { getProducts } from "@/utils/api/products";
+import { getProducts } from "@/api/products";
 import Cart from "@/templates/Shop/Cart/Cart";
 
 export async function getServerSideProps() {

@@ -1,8 +1,9 @@
-import { getProducts } from "@/utils/api/products";
+import { getProducts } from "@/api/products";
 import Catalogue from "@/templates/Shop/Main/Main";
 
-export async function getServerSideProps() {
-  const products = await getProducts();
+export async function getServerSideProps({ query }) {
+  const userId = query.userId;
+  const products = await getProducts(userId);
 
   return {
     props: {
