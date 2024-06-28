@@ -192,9 +192,9 @@ export default function Cart({ carouselProducts }) {
                     {product.name}
                     <p>Réf : {product.ref}</p>
                   </div>
-                  <p className={styles["product-description"]}>
+                  {/* <p className={styles["product-description"]}>
                     {product.description}
-                  </p>
+                  </p> */}
                 </div>
                 {discountedPrice < product.price && (
                   <p className={styles["discount-badge"]}>

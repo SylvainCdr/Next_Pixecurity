@@ -84,9 +84,10 @@ const useCart = () => {
       setCarts(_carts);
       if (quantity === 1) {
         Swal.fire({
-          icon: "info",
-          title: "Produit ajouté au panier avec succès!",
-          showConfirmButton: true,
+          icon: "success",
+          title: "Produit ajouté au panier",
+          showConfirmButton: false,
+          timer: 1200,
         });
       }
     } catch (error) {
