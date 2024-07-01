@@ -27,7 +27,7 @@ function Contact() {
     const value = e.target.value;
     setLastname(value);
     setLastnameError(
-      isValidLastname(value) ? "" : "Nom invalide (minimum 2 lettres)"
+      isValidLastname(value) ? "" : "Nom invalide (minimum 2 lettres)",
     );
   };
 
@@ -35,7 +35,7 @@ function Contact() {
     const value = e.target.value;
     setFirstname(value);
     setFirstnameError(
-      isValidFirstname(value) ? "" : "Prénom invalide (minimum 2 lettres)"
+      isValidFirstname(value) ? "" : "Prénom invalide (minimum 2 lettres)",
     );
   };
 
@@ -46,7 +46,7 @@ function Contact() {
       setCompanyError("");
     } else {
       setCompanyError(
-        "Le nom de l'entreprise ne doit pas dépasser 30 caractères"
+        "Le nom de l'entreprise ne doit pas dépasser 30 caractères",
       );
     }
   };
@@ -61,7 +61,7 @@ function Contact() {
     const value = e.target.value;
     setMessage(value);
     setMessageError(
-      isValidMessage(value) ? "" : "Message invalide (au moins 50 caractères)"
+      isValidMessage(value) ? "" : "Message invalide (au moins 50 caractères)",
     );
   };
 
@@ -84,9 +84,7 @@ function Contact() {
       return;
     }
 
-    console.log("Nom:", lastname);
-    console.log("Email:", email);
-    console.log("Message:", message);
+    console.log('Submitting form with:', { lastname, firstname, company, email, message });
 
     const response = await fetch(`${BASE_URL}/contact`, {
       method: "POST",
