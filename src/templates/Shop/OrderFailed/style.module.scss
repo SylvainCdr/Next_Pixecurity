@@ -1,0 +1,23 @@
+
+.orderFailedContainer {
+    max-width: 1440px;
+    margin: 7em auto;
+    padding: 3em 1em 2em 1em;
+    min-height: 80vh;
+    text-align: center;
+
+    h1 {
+        font-size: 2.7rem;
+        margin-bottom: 3rem;
+        font-weight: 500;
+        color: var(--sunset1);
+        font-family: "Barlow Condensed", sans-serif;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 1em;
+    }
+
+}
+

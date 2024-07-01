@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function UserAccount() {
   const router = useRouter();
 
-  const [selectedTab, setSelectedTab] = useState("discounts");
+  const [selectedTab, setSelectedTab] = useState("favoris");
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -138,15 +138,15 @@ export default function UserAccount() {
 
           <button
             className={styles.active}
-            onClick={() => handleTabClick("discounts")}
-          >
-            <i class="fa-solid fa-percent"></i>
-          </button>
-          <button
-            className={styles.active}
             onClick={() => handleTabClick("favoris")}
           >
             <i class="fa-solid fa-heart"></i>
+          </button>
+          <button
+            className={styles.active}
+            onClick={() => handleTabClick("discounts")}
+          >
+            <i class="fa-solid fa-percent"></i>
           </button>
 
           <button
@@ -193,9 +193,6 @@ export default function UserAccount() {
                   Date d'inscription :{" "}
                   {new Date(user.created).toLocaleDateString()}
                 </p>
-                {user.discount !== 0 && (
-                  <p>Remise accordée : {user.discount}%</p>
-                )}
               </div>
 
               <div className={styles.contact}>
@@ -323,7 +320,7 @@ export default function UserAccount() {
                         {/* // Calcul du total de la commande, on arrondi à 2 chiffres après la virgule */}
                         <td className={styles.mobile}>
                           {" "}
-                          {order.totalAmount.toFixed(2)} €{" "}
+                          {order.totalAmount.toFixed(2)} € <br />
                         </td>
                         {/* <td>{order.status}</td> */}
                         <td>

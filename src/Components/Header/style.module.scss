@@ -174,8 +174,14 @@
       margin-right: 5%;
     }
 
-    .cart {
-      // justify-content: flex-end;
+  }
+  .cart {
+   
+    color : white;
+    text-decoration: none;
+
+    i {
+      font-size: 1.4rem;
     }
   }
 }

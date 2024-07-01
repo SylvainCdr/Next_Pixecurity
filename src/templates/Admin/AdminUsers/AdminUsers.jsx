@@ -19,16 +19,6 @@ export default function AdminUsers() {
 
   const [discounts, setDiscounts] = useState({});
 
- 
-
-
-
-
-
-
- 
-
-
   const deleteUser = (id) => {
     if (!id) {
       console.error("ID is undefined or null");
@@ -98,8 +88,6 @@ export default function AdminUsers() {
                 (user / admin)
               </th>
 
-              <th>Remises actives</th>
-
               <th>
                 Création <br />
                 compte
@@ -120,10 +108,6 @@ export default function AdminUsers() {
                 <td>{user.company}</td>
                 <td>{user.email}</td>
                 <td>{user.role}</td>
-
-
-
-
 
                 <td>{new Date(user.created).toLocaleDateString()}</td>
                 {/* // Ajout de la date de modification si elle est différente de la date de création, sinon on affiche un tiret */}

@@ -1,17 +1,16 @@
 .orderConfirmation {
-    min-height: 90vh;
-    max-width: 800px;
-    margin: 7rem auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1440px;
+    margin: 5em auto;
+    padding: 3em 1em 2em 1em;
+    min-height: 80vh;
   
     h1 {
-      font-size: 2rem;
+      font-size: 2.7rem;
+      margin-bottom: 3rem;
+      font-weight: 500;
+      color: var(--sunset1);
+      font-family: "Barlow Condensed", sans-serif;
       text-align: center;
-      color: #333;
-      margin-bottom: 20px;
     }
   
     h2 {
@@ -22,15 +21,25 @@
   
     h3 {
       font-size: 1.2rem;
-      color: #666;
-      margin-top: 20px;
+      margin-top: 30px;
       margin-bottom: 5px;
+      background-color: rgb(228, 228, 228);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color : var(--sunset1);
     }
   
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #444;
       line-height: 1.6;
+    }
+    .thank {
+      font-size: 1.2rem;
+      color: #000000;
+
+      text-align: center;
+      padding-bottom : 3rem;
     }
   
     ul {
@@ -38,7 +47,7 @@
       padding: 0;
   
       li {
-        background: #fff;
+        background: #ffffff;
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid #ddd;
@@ -65,6 +74,13 @@
           margin: 0;
         }
       }
+    }
+
+    .bottomText {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #444;
+      text-align: center;
     }
   
     .loading,

@@ -72,9 +72,9 @@ function Prices({ product }) {
   if (product.price && product?.discountPrice) {
     return (
       <div className={styles["card-prices"]}>
-        <p className={styles["original-price"]}>{product.price} € </p>
+        <p className={styles["original-price"]}>{product.price.toFixed(2)} € </p>
         <p className={styles["discounted-price"]}>
-          {product.discountPrice} € <span>HT</span>{" "}
+          {product.discountPrice.toFixed(2)} € <span>HT</span>{" "}
         </p>
       </div>
     );
@@ -159,9 +159,10 @@ function ButtonAddToCart({ product }) {
       onClick={async () => {
         await addToCart(product);
         Swal.fire({
-          icon: "info",
+          icon: "success",
           title: "Produit ajouté au panier avec succès!",
-          showConfirmButton: true,
+          showConfirmButton: false,
+          timer: 1200,
         });
       }}
     >

@@ -43,8 +43,6 @@ export default function OrderDetails() {
         setDeliveryFee(data.delivery.fee);
         setPaymentMethod(data.payment.method);
         setPaid(data.payment.paid);
-
-
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération de la commande :", error);
@@ -76,6 +74,12 @@ export default function OrderDetails() {
     Aos.init({ duration: 1000 });
   }, []);
 
+  // on calcule le total HT grace a chaque articles * quté
+ 
+
+
+
+
   return (
     <div data-aos="flip-down" className={styles["order-details-container"]}>
       <h2>DETAILS DE COMMANDE </h2>
@@ -106,33 +110,33 @@ export default function OrderDetails() {
             <p>Statut du paiement : {paid ? "Payé" : "Non payé"}</p>
           </div>
           <div className={styles["order-details-items"]}>
-        <h4>Produits</h4>
-        <ul>
-          {items?.map((item) => (
-            <li key={item._id}>
-              <p>
-                {item.name} - {item.quantity} x {item?.priceAtOrderTime?.toFixed(2)} € ht
-                {item.discount.length > 0 && (
-                  <span>
-                    {" ("}
-                    {item.discount
-                      .map((discountId) => {
-                        const discount = discounts[discountId];
-                        return discount
-                          ? discount.discountType === "percentage"
-                            ? `${discount.discountValue}%`
-                            : `${discount.discountValue}€` 
-                          : "";
-                      })
-                      .join(" + ")}
-                    {" appliqué(s))"}
-                  </span>
-                )}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+            <h4>Produits</h4>
+            <ul>
+              {items?.map((item) => (
+                <li key={item._id}>
+                  <p>
+                    {item.name} - {item.quantity} x {item?.priceAtOrderTime?.toFixed(2)} € ht
+                    {item.discount && item.discount.length > 0 && (
+                      <span>
+                        {" ("}
+                        {item.discount
+                          .map((discountId) => {
+                            const discount = discounts[discountId];
+                            return discount
+                              ? discount.discountType === "percentage"
+                                ? `${discount.discountValue}%`
+                                : `${discount.discountValue}€` 
+                              : "";
+                          })
+                          .join(" + ")}
+                        {" appliqué(s))"}
+                      </span>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className={styles["order-details-total"]}>
             <h4>Total </h4>
             <p>Total de la commande TTC : {totalAmount?.toFixed(2)} €</p>

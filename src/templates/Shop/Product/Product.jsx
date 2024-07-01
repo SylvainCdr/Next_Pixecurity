@@ -279,9 +279,9 @@ const DiscountedPrice = ({ product }) => {
   if (product.price && product.discountPrice)
     return (
       <p className={styles.prices}>
-        <span className={styles["original-price"]}>{product.price} €</span>
+        <span className={styles["original-price"]}>{product.price.toFixed(2)} €</span>
         <span className={styles["discounted-price"]}>
-          {product.discountPrice} € <span> HT</span>
+          {product.discountPrice.toFixed(2)} € <span> HT</span>
         </span>
       </p>
     );

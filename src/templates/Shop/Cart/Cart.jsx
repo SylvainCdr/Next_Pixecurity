@@ -105,9 +105,11 @@ function CartItem({ cart }) {
         </p>
       )}
       <div className={styles["product-price"]}>
+        { /* If there is a discount price, display the original price and the discounted price */ }
+
         {product.discountPrice ? (
           <>
-            <span className={styles["original-price"]}>{product.price}€</span>
+            <span className={styles["original-price"]}>{product.price.toFixed(2)}€</span>
             <span className={styles["discounted-price"]}>
               {product.discountPrice.toFixed(2)} €
             </span>
