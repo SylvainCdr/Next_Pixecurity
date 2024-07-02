@@ -90,7 +90,6 @@ export default function Login() {
   };
 
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
 
   const handleResetPassword = async (clientEmail) => {
     try {
@@ -101,8 +100,7 @@ export default function Login() {
         },
         body: JSON.stringify({ clientEmail }),
       });
-      console.log(showModal);
-      // const data = await response.json();
+
       if (response.status === 404) {
         Swal.fire({
           icon: "error",

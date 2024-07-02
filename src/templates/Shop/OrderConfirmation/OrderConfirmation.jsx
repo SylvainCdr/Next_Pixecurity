@@ -13,86 +13,67 @@ const OrderConfirmation = () => {
 
   useEffect(() => {
     if (order_id) {
+      const checkPaymentStatus = async () => {
+        try {
+          const response = await fetch(`${BASE_URL}/orders/${order_id}`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch order details");
+          }
+          const orderData = await response.json();
+
+          if (
+            orderData.payment.method === "stripe" &&
+            !orderData.payment.paid
+          ) {
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
+            const updateResponcheckPaymentStatusse = await fetch(
+              `${BASE_URL}/orders/${order_id}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  ...orderData,
+                  payment: { ...orderData.payment, paid: true },
+                  status: "pending",
+                }),
+              }
+            );
+
+            if (!updateResponse.ok) {
+              throw new Error("Failed to update order status");
+            }
+
+            localStorage.removeItem("cartId");
+
+            Swal.fire({
+              icon: "success",
+              title: "Paiement réussi",
+              text: "Votre commande a été payée avec succès. Un email de confirmation vous a été envoyé",
+            });
+          }
+
+          setOrder(orderData);
+          setLoading(false);
+        } catch (err) {
+          setError(err.message);
+          setLoading(false);
+          Swal.fire({
+            icon: "error",
+            title: "Erreur",
+            text: "Erreur lors de la vérification du statut de la commande",
+          });
+        }
+      };
+
       checkPaymentStatus();
     }
   }, [order_id]);
 
-  const checkPaymentStatus = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/orders/${order_id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch order details");
-      }
-      const orderData = await response.json();
-
-      if (orderData.payment.method === "stripe" && !orderData.payment.paid) {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        const updateResponse = await fetch(`${BASE_URL}/orders/${order_id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...orderData,
-            payment: { ...orderData.payment, paid: true },
-            status: "pending",
-          }),
-        });
-
-        if (!updateResponse.ok) {
-          throw new Error("Failed to update order status");
-        }
-
-        await fetch(`${BASE_URL}/users/${orderData.user}/reset-cart`, {
-          method: "PUT",
-        });
-
-        // Envoyer l'email de confirmation de commande
-        await fetch(`${BASE_URL}/confirm-order`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            clientEmail: orderData.user.email,
-            orderDetails: orderData,
-            userFirstName: orderData.user.firstName,
-          }),
-        });
-
-        // on va chercher le nom et prenom de user
-        const userResponse = await fetch(`${BASE_URL}/users/${orderData.user}`);
-        const userData = await userResponse.json();
-        const user = userData.firstName + " " + userData.lastName;
-
-        Swal.fire({
-          icon: "success",
-          title: "Paiement réussi",
-          text: "Votre commande a été payée avec succès. Un email de confirmation vous a été envoyé",
-        });
-      }
-
-      setOrder(orderData);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-      setLoading(false);
-      Swal.fire({
-        icon: "error",
-        title: "Erreur",
-        text: "Erreur lors de la vérification du statut de la commande",
-      });
-    }
-  };
-
-  if (loading) {
-    return <div className={styles.loading}>Chargement...</div>;
-  }
-
-  if (error) {
-    return <div className={styles.error}>Erreur: {error}</div>;
-  }
+  if (loading) return <div className={styles.loading}>Chargement...</div>;
+  if (error) return <div className={styles.error}>Erreur: {error}</div>;
 
   return (
     <div className={styles.orderConfirmation}>

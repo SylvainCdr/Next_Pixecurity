@@ -50,12 +50,7 @@ export default function Cart({ carouselProducts }) {
           ))}
 
           <Totals carts={carts} />
-          <button
-            // href="/commande"
-            className={styles["checkout"]}
-            // style={{ textDecoration: "none" }}
-            onClick={createOrder}
-          >
+          <button className={styles["checkout"]} onClick={createOrder}>
             Commander
           </button>
         </div>

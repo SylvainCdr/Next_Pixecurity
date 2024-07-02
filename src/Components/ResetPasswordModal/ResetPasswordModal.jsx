@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import styles from "./style.module.scss";
 import { BASE_URL } from "../../url";
 
-const PasswordResetModal = ({ show, onClose, onResetPassword, checkEmail }) => {
+const PasswordResetModal = ({ show, onClose, onResetPassword }) => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

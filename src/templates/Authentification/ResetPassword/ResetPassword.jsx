@@ -8,25 +8,10 @@ import { BASE_URL } from "@/url";
 export default function ResetPassword() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token"); // Extrait le jeton JWT de l'URL
-  const [, setUserEmail] = useState(""); // État pour stocker l'e-mail de l'utilisateur
   const [, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   useEffect(() => {
-    // Récupérer l'e-mail de l'utilisateur à partir du backend
-    fetch(`/reset-password/${token}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Données reçues du backend :", data);
-        setUserEmail(data.userEmail);
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération de l'e-mail de l'utilisateur :",
-          error
-        );
-      });
-
     Aos.init({ duration: 2000 });
   }, []);
 
