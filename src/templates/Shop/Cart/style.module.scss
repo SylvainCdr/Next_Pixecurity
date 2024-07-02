@@ -24,7 +24,7 @@
 
   .cart-content {
     max-width: 1440px;
-    margin: 4.5em auto;
+    margin-top: 4.5em;
     padding: 3em 1em 2em 1em;
 
     h1 {
@@ -42,19 +42,19 @@
     }
     .product-details {
       float: left;
-      width: 37%;
+      width: 30%;
     }
     .product-price {
       float: left;
-      width: 12%;
+      width: 20%;
     }
     .product-quantity {
       float: left;
-      width: 10%;
+      width: 7%;
     }
     .product-removal {
       float: left;
-      width: 9%;
+      width: 7%;
     }
     .product-line-price {
       float: left;
@@ -261,7 +261,7 @@
 
       .product-price {
         clear: both;
-        width: 70px;
+        width: 160px;
       }
 
       .product-quantity {
@@ -271,9 +271,9 @@
         }
       }
 
-      .product-quantity:before {
-        content: "x";
-      }
+      // .product-quantity:before {
+      //   content: "x";
+      // }
 
       .product-removal {
         width: auto;
@@ -286,7 +286,7 @@
     }
 
     /* Make more adjustments for phone */
-    @media screen and (max-width: 350px) {
+    @media screen and (max-width: 400px) {
       .product-removal {
         float: right;
       }
@@ -299,20 +299,20 @@
       }
 
       .product .product-line-price:before {
-        content: "Item Total: $";
+        content: "Total HT: ";
       }
 
-      // .totals {
-      //   .totals-item {
-      //     label {
-      //       width: 60%;
-      //     }
+      .totals {
+        .totals-item {
+          label {
+            width: 60%;
+          }
 
-      //     .totals-value {
-      //       width: 40%;
-      //     }
-      //   }
-      // }
+          .totals-value {
+            width: 40%;
+          }
+        }
+      }
     }
   }
 }

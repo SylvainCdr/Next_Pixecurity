@@ -11,7 +11,7 @@ import { useCartContext } from "@/Components/cartContext";
 
 function ProductCard({ product }) {
   useEffect(() => {
-    Aos.init({ duration: 1000 });
+    Aos.init({ duration: 1500 });
   }, []);
 
   const brandLogo = logos.find(
@@ -64,7 +64,7 @@ function DiscountBadge({ product }) {
   if (!product?.pourcentageDiscount) return null;
 
   return (
-    <p className={styles["discount-badge"]}>-{product.pourcentageDiscount}%</p>
+    <p className={styles["discount-badge"]} data-aos="zoom-in-up">-{product.pourcentageDiscount}%</p>
   );
 }
 
@@ -145,6 +145,7 @@ function ButtonAddToFavorite({ product }) {
       <i
         className="fa-solid fa-heart"
         style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
+        data-aos="zoom-in"
       />
     </button>
   );
@@ -166,7 +167,8 @@ function ButtonAddToCart({ product }) {
         });
       }}
     >
-      <i className="fa-solid fa-cart-plus" />
+      <i className="fa-solid fa-cart-plus" 
+      data-aos="zoom-in"/>
     </button>
   );
 }

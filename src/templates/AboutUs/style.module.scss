@@ -303,6 +303,10 @@
 
   // media queries
   @media screen and (max-width: 1024px) {
+
+    h1 {
+      font-size: 2.5rem;
+    }
     .section-2 {
       flex-direction: column;
       align-items: center;
@@ -316,6 +320,10 @@
     .section-3 {
       margin-top: 1em;
       margin-bottom: 9em;
+
+      h3 {
+        font-size: 1.5rem;
+      }
     }
 
     .section-4 {
@@ -331,6 +339,24 @@
 
   @media screen and (max-width: 768px) {
     padding: 0 2rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .section-3 {
+      padding: 2em 1em;
+      margin-top: 1em;
+      margin-bottom: 5em;
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
 
     .section-4 {
       .auto-grid {

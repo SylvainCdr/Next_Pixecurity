@@ -97,7 +97,7 @@ function CartItem({ cart }) {
           {product.name}
           <p>Réf : {product.ref}</p>
         </div>
-        <p className={styles["product-description"]}>{product.description}</p>
+        {/* <p className={styles["product-description"]}>{product.description}</p> */}
       </div>
       {product.pourcentageDiscount && (
         <p className={styles["discount-badge"]}>

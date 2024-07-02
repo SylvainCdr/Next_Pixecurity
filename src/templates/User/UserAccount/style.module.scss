@@ -32,7 +32,7 @@
 
       button {
         width: 100%;
-        padding: 3.5em 1em;
+        padding: 3em 0.5em;
         background-color: rgba(111, 111, 111, 0.39);
         color: white;
         border: none;
@@ -43,7 +43,7 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
         i {
-          font-size: 2rem;
+          font-size: 1.8rem;
         }
       }
     }
@@ -368,14 +368,14 @@
     .user-menu {
       .user-account-nav {
         h2 {
-          font-size: 1.1em;
+          font-size: 1.3em;
         }
       }
     }
 
     .user-dashboard {
       h3 {
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
       .user-infos {
         .grid-infos {
