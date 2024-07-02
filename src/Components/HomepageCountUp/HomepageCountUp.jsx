@@ -65,7 +65,7 @@ export default function HomepageCountUp() {
           >
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={styles.timer}>23</span>
+                <span className={styles.timer}>+20</span>
               </h3>
               <h4>Partenaires</h4>
             </div>
@@ -78,7 +78,7 @@ export default function HomepageCountUp() {
           >
             <div className={`${styles.count_box} ${styles.box_center}`}>
               <h3>
-                <span className={styles.timer}>63</span>
+                <span className={styles.timer}>+600</span>
               </h3>
               <h4>Projets</h4>
             </div>
@@ -91,7 +91,7 @@ export default function HomepageCountUp() {
           >
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={styles.timer}>48</span>
+                <span className={styles.timer}>+110</span>
               </h3>
               <h4>Clients</h4>
             </div>

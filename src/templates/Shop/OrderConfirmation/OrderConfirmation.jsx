@@ -129,9 +129,11 @@ const OrderConfirmation = () => {
             {order.delivery.method} - {order.delivery.fee} €
           </p>
           <div className={styles.bottomText}>
-          <p> Un email de confirmation vous a été envoyé par mail.</p>
-          <p>Vous pouvez consulter les détails de commande depuis 'Mon compte'. </p>
-        </div>
+            <p> Un email de confirmation vous a été envoyé par mail.</p>
+            <p>
+              Vous pouvez consulter les détails de commande depuis 'Mon compte'.{" "}
+            </p>
+          </div>
         </div>
       ) : (
         <p>Commande introuvable</p>
