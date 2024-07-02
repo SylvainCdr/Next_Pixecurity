@@ -217,6 +217,20 @@ export default function AboutUs() {
           </li>
           <li>
             <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Michael GONFIER</h2>
+              <p>Technicien Systèmes & Réseaux</p>
+              <img alt="Michael GONFIER" src="assets/team/MICHAEL.jpg" />
+            </div>
+          </li>
+          <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>David LEPAGE</h2>
+              <p>Chargé d'affaires des projets transports</p>
+              <img alt="David LEPAGE" src="assets/team/DAVID.jpg" />
+            </div>
+          </li>
+          {/* <li>
+            <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
               <p>Ingénieur Systèmes & Réseaux</p>
               <img
@@ -254,7 +268,7 @@ export default function AboutUs() {
                 src="https://www.pixecurity.com/wp-content/uploads/2023/02/Aziz.png"
               />
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
