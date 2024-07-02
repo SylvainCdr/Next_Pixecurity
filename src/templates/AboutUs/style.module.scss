@@ -87,16 +87,15 @@
 
   .section-3 {
     height: auto;
-    width: 90%;
     // background-color: var(--sunset1);
     background: linear-gradient(
-          153deg,
-          var(--sunset1) 7%,
-          var(--sunset1) 16%,
-          rgb(2, 73, 120) 40%,
-          rgb(1, 51, 100),
-          rgb(0, 22, 44) 94%
-        );
+      153deg,
+      var(--sunset1) 7%,
+      var(--sunset1) 16%,
+      rgb(2, 73, 120) 40%,
+      rgb(1, 51, 100),
+      rgb(0, 22, 44) 94%
+    );
     margin: 6em auto;
     padding: 5em 2em;
     align-items: center;
@@ -315,7 +314,6 @@
     }
 
     .section-3 {
-      width: 100%;
       margin-top: 1em;
       margin-bottom: 9em;
     }

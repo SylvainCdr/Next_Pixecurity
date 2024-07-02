@@ -1,9 +1,7 @@
 .shopAside_container {
-  width: 15%;
+  width: 12%;
   min-width: 7em;
-  background-color: rgba(199, 199, 199, 0.38);
-  margin: 1em;
-  padding: 0.3em;
+  padding: 0em 0em 1em 0.5em;
   border-radius: 0.3rem;
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
@@ -41,3 +39,12 @@
     }
   }
 }
+
+//mediaqueries
+
+@media screen and (max-width: 1024px) {
+  .shopAside_container {
+    width: 10%;
+  }
+}
+

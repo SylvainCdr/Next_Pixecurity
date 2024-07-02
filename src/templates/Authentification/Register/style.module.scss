@@ -22,11 +22,11 @@
     align-items: center;
 
     h1 {
-      margin-top: 1em;
+      margin-top: 0.5em;
       font-family: "Barlow Condensed", sans-serif;
       font-size: 3rem;
       font-weight: 500;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
       color: var(--sunset1);
     }
 
@@ -62,7 +62,7 @@
       input {
         color: white;
         padding: 6px;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         border: 1px solid #696868;
         font-size: 14px;
         background-color: rgba(31, 31, 31, 0.089);
@@ -137,7 +137,7 @@
       }
 
       form {
-        width: 20em;
+        width: 17em;
       }
     }
 
