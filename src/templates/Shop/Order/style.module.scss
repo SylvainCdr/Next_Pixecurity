@@ -147,4 +147,137 @@
       margin-left: 27%;
     }
   }
+
+
+//mediaqueries
+
+  @media (max-width: 768px) {
+    .order-container {
+      padding: 2em;
+      margin-top: 0;
+    }
+
+    .order-page {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .customer-infos {
+        display: flex;
+        flex-direction: column;
+        border-bottom: none;
+
+        .details,
+        .contact {
+          padding: 0;
+        }
+      }
+
+      .address-details {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+
+        .billing-address,
+        .delivery-address {
+          width: 100%;
+          padding: 0;
+
+          p {
+            margin-bottom: 0.5rem;
+          }
+
+          select {
+            margin-bottom: 0.5rem;
+          }
+
+          .same-address {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+
+      .deliveryAndPayment {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .delivery-options,
+      .payment-options {
+        margin-bottom: 0.5rem;
+
+        select {
+          margin: 0.5rem 0;
+          width: 100%;
+        }
+
+        img {
+          margin-left: 0;
+        }
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  }
+
+//mediaqueries
+
+  @media (max-width: 425px) {
+    .order-container {
+      padding: 1em;
+    }
+
+    .order-page {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .customer-infos {
+        .details,
+        .contact {
+          padding: 0;
+        }
+      }
+
+      .address-details {
+        .billing-address,
+        .delivery-address {
+          p {
+            font-size: 1rem;
+          }
+
+          select {
+            margin-bottom: 0.5rem;
+          }
+
+          .same-address {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .delivery-options,
+      .payment-options {
+        select {
+          margin: 0.5rem 0;
+          width: 100%;
+        }
+
+        img {
+          margin-left: 0;
+        }
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  }
+
+
 }
+
