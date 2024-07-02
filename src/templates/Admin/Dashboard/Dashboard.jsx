@@ -130,7 +130,7 @@ export default function Dashboard() {
             </h2>
             <h2>
               {" "}
-              Taux de conversion (inscription/achat) :<br />
+              Taux de conversion (inscription/commande) :<br />
               <br />
               <span>{(conversionRate * 100).toFixed(2)} %</span>
             </h2>
