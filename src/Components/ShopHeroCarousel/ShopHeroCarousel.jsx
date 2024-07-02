@@ -10,7 +10,7 @@ const heroImages = [
     url: "https://i-pro.com/products_and_solutions/sites/default/files/2023-11/2880x720_X-series_0.jpg",
   },
   {
-    url: "https://www.zyxel.com/sites/zyxel/files/styles/homepage_hero/public/hero-banner/WBE660S-WIFI-WEB%20BANNERS-FR_Web%20banner_1920x1080.jpg?itok=ZoUfZ0gy",
+    url: "./assets/zyxel-banner.jpg",
   },
 ];
 
