@@ -14,21 +14,17 @@ $animationSpeed: 30s;
 .slider {
   background: linear-gradient(to bottom right, #31313155, #73bdfe71);
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  height: 18em;
-  margin : 12em auto;
+  height: 50vh;
+  // margin : 12em auto;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 1.5em;
 
   h1 {
-    font-size: 1.2rem;
-    text-transform: uppercase;
+    padding-top: 1em;
+    font-size: 3rem;
     color: var(--sunset1);
     font-weight: 500;
-    margin: 0;
-    padding: 1rem 0rem 1.5rem 0rem;
     text-align: center;
-    letter-spacing: 1px;
   }
 
   &::before,
@@ -61,13 +57,13 @@ $animationSpeed: 30s;
 
   .slide {
     justify-content: center;
-    height: 15em;
+    height: 50vh;
     width: 100%;
     margin-left: 5rem;
 
     img {
       text-align: center;
-      height: 12em;
+      height: 35vh;
       width: 15em;
       padding: 0.4rem 0rem;
       object-fit: contain;

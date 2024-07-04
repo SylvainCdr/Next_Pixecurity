@@ -17,19 +17,20 @@ export default function HomepageHero() {
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
       <div className={styles["hero-left"]}>
-        <h2
+        <h4
           data-aos="flip-left"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="2000"
         >
           Smarter. <br /> Safer.
-        </h2>
+        </h4>
       </div>
 
       <div className={styles["hero-right"]}>
         <h1 data-aos="fade-up" data-aos-duration="3000">
-          Pixecurity : Votre partenaire en sûreté intelligente
+        Fournisseur de solutions de sureté intelligentes
         </h1>
+        <h3>Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...</h3>
         <Link href="/boutique">
           <button>Visiter la boutique</button>
         </Link>
@@ -54,12 +55,12 @@ export default function HomepageHero() {
             <strong>solutions</strong> sur-mesure, repensant la sécurité selon
             vos besoins.
           </p>
-          <div data-aos="zoom-in" className={styles.icons}>
+          {/* <div data-aos="zoom-in" className={styles.icons}>
             <img src="../assets/icons/ico3.png" alt="" />
             <img src="../assets/icons/ico2.png" alt="" />
             <img src="../assets/icons/ico1.png" alt="" />
             <img src="../assets/icons/ico4.png" alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
       </div>

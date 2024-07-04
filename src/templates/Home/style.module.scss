@@ -5,18 +5,29 @@
   h2 {
     margin-bottom: 0.5em;
     color: var(--sunset1);
-    font-family: "Barlow Condensed", sans-serif;
-    font-size: 3rem;
-    font-weight: 500;
+    // font-family: "Barlow Condensed", sans-serif;
+    font-size: 4em;
+    font-weight: 600;
   }
 
-
   .section2-offer {
-    margin: 10em auto;
-    padding: 0 2rem;
-    max-width: 1440px;
-    // background-color: #e6e4e4;
+    display: flex;
+    padding: 10em 10em 10em 10em;
+    background-image: url("../../../public/assets/cube3.png");
+    height: 60vh;
+    background-size: cover;
+    background-position: 95%;
+    background-repeat: no-repeat;
+    background-size: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      width: 60%;
+    }
     p {
+      width: 45%;
+      max-width: 1440px;
       line-height: 1.5;
       font-size: 1.2rem;
       text-align: justify;
@@ -25,13 +36,19 @@
 
   .section4-aboutUs {
     display: flex;
-    height: auto;
-    margin: 12em auto;
-    padding-left: 2rem;
-    max-width: 1440px;
+    height: 60vh;
+    // margin: 12em auto;
+    // padding-left: 2rem;
+    // padding: 10em 0em 10em 2em;
+    // max-width: 1440px;
+    background-color: #f0f7f4;
 
     .section4-text {
       width: 60%;
+      padding-left: 12em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       justify-items: center;
 
@@ -41,6 +58,7 @@
         text-align: justify;
         color: #e6e4e4;
         margin-bottom: 1em;
+        color: black;
       }
 
       a {
@@ -51,13 +69,13 @@
     .section4-img {
       width: 60%;
       background: linear-gradient(
-          80deg,
-          #1c1c1c 5%,
-          rgba(23, 23, 23, 0.914) 15%,
-          rgba(31, 31, 31, 0.671) 25%,
-          rgba(80, 80, 80, 0.661),
+          90deg,
+          #f0f7f4 5%,
+          rgba(225, 225, 225, 0.586) 15%,
+          rgba(211, 211, 211, 0.682) 25%,
+          rgba(185, 185, 185, 0.661),
           40%,
-          rgba(122, 122, 122, 0.106) 94%
+          rgba(150, 150, 150, 0.106) 94%
         ),
         url("https://images.unsplash.com/photo-1581091877018-dac6a371d50f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
       background-size: cover;
@@ -65,8 +83,6 @@
 
       filter: grayscale(0.8);
       -webkit-filter: grayscale(0.8);
-
-     
     }
   }
 
@@ -76,8 +92,6 @@
       font-size: 2.2em;
     }
 
- 
-
     .section2-offer {
       p {
         font-size: 1.1rem;
@@ -86,7 +100,7 @@
     }
 
     .section4-aboutUs {
-       flex-direction: column;
+      flex-direction: column;
       padding: 0rem 2rem;
 
       .section4-text {
@@ -99,6 +113,24 @@
       .section4-img {
         width: 100%;
       }
+    }
+  }
+  .learnMore {
+    height: 40vh;
+    display: flex;
+    background-color: #6c1b74;
+
+    h5 {
+      font-size: 4rem;
+      font-weight: 600;
+      margin: auto;
+      width: 50%;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+      margin: auto;
     }
   }
 }

@@ -19,7 +19,6 @@ export default function Home() {
     <div className={styles["homepage-container"]}>
       <Hero />
 
-
       <div className={styles["section2-offer"]}>
         <h2>Une offre pensée autrement</h2>
         <p>
@@ -54,11 +53,15 @@ export default function Home() {
         <div className={styles["section4-img"]}></div>
       </div>
 
+      <HomepagePartners />
       <HomepageCountUp />
 
-      <HomepagePartners />
-
       <HomepageCustomersSlider />
+
+      <div className={styles.learnMore}>
+        <h5> Ready to learn more ? </h5>
+        <Link href="/contact" > <button>Contactez-nous </button> </Link>
+      </div>
     </div>
   );
 }

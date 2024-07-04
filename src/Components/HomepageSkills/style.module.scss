@@ -1,10 +1,24 @@
 .skills-container {
-  max-width: 1440px;
-  margin: 12em auto;
-  padding: 0 2rem;
+  // margin: 12em auto;
+  padding: 10em 10em 10em 10em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6em;
+
+  // back ground image avec opacity
+
+  background-image: url("../../../public/assets/cube3.png");
+
+  background-position: top;
+
+  background-repeat: no-repeat;
+
+  // background-image: url("../../../public/assets/cadre.png");
+  // background-size: cover;
+  // background-position:  15% ;
+  // background-repeat: no-repeat;
+
+  // max-width: 1440px;
 
   .skills-card {
     position: relative;
