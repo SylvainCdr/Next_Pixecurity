@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function HomepageSkills() {
   return (
     <div className={styles["skills-container"]}>
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://t3.ftcdn.net/jpg/00/86/09/02/240_F_86090219_AgQYqc6e5WTemRT4gUBm9nWGfz3dmBan.jpg"
           alt=""
@@ -23,7 +23,7 @@ export default function HomepageSkills() {
         </div>
       </div>
 
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://as2.ftcdn.net/v2/jpg/06/23/47/61/1000_F_623476120_sxpUbL24Q2bltwWFyFnW2I36C04iZijQ.jpg"
           alt=""
@@ -41,7 +41,7 @@ export default function HomepageSkills() {
         </div>
       </div>
 
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://as1.ftcdn.net/v2/jpg/03/98/81/82/1000_F_398818257_AeMd0j9behzSLR4VHU8i7u2eEGqjoaao.jpg"
           alt=""
@@ -59,7 +59,7 @@ export default function HomepageSkills() {
         </div>
       </div>
 
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://as1.ftcdn.net/v2/jpg/05/29/73/10/1000_F_529731004_UaoYV7jskuWv59UBAW379oNlvB7eFSXQ.jpg"
           alt=""
@@ -78,7 +78,7 @@ export default function HomepageSkills() {
         </div>
       </div>
 
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://as2.ftcdn.net/v2/jpg/07/21/03/59/1000_F_721035927_13iHfiOZwRdje1j2DhAKmNJXHysZI5B2.jpg"
           alt=""
@@ -97,7 +97,7 @@ export default function HomepageSkills() {
         </div>
       </div>
 
-      <div data-aos="fade-down" className={styles["skills-card"]}>
+      <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="https://as1.ftcdn.net/v2/jpg/04/37/45/56/1000_F_437455634_qQLUUFaON7O4I3PATKsFsBIhfrHAf6BM.jpg"
           alt=""

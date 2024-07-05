@@ -46,9 +46,14 @@ export default function Home() {
             déterminés à dénicher les solutions les plus adaptées à vos
             exigences.
           </p>
+          <div className={styles.ctaButtons}>
           <Link href="/a-propos">
-            <button>Notre équipe</button>
+            <button className={styles.ctaTeam}>Notre équipe</button>
           </Link>
+          <Link href="/notre-expertise">
+            <button className={styles.ctaExpertise}>Notre expertise</button>
+          </Link>
+          </div>
         </div>
         <div className={styles["section4-img"]}></div>
       </div>
