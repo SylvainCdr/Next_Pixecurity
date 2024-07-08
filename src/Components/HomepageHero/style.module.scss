@@ -82,9 +82,11 @@
 
   .section2 {
     min-height: 35vh;
+
     .section2-intro {
       display: flex;
       height: 100%;
+      min-height: 35vh;
 
       .section2-img {
         width: 30%;
