@@ -1,27 +1,31 @@
 .counter_wrapper {
-  max-width: 1440px;
+  // max-width: 1440px;
   width: 100%;
-  background: rgb(234, 234, 234);
-  margin: 10em auto;
-  padding: 1em 0;
+  background: #f0f7f4;
+  margin: 0 auto;
+  padding: 9em 0em 9em 0em;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 0.3em;
+
+  height: 20vh;
+  background-image: url("../../../public/assets/cadre.png");
+  background-size: cover;
+
   .row {
+    gap: 2em;
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
   .count_box {
     display: inline-flex;
-    width: 100%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 14em;
+    width: 14vh;
     padding: 4.5em;
-    border: 1px solid var(--sunset5);
+    border: 1px solid #ffffff34;
     text-align: center;
     border-radius: 0.5em;
     background: var(--sunset1);
@@ -47,22 +51,52 @@
   .box_hover:hover h4 {
     scale: 1.2;
   }
-  @media (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+  .counter_wrapper {
+    height: 10vh;
     .count_box {
-      width: 13em;
-      padding: 1em;
+      width: 20vh;
+      padding: 2em;
     }
   }
-  @media (max-width: 768px) {
+}
+@media (max-width: 900px) {
+  .counter_wrapper {
+    height: 7vh;
     .count_box {
-      width: 8em;
-      padding: 1em;
+      width: 16vh;
+      padding: 2em;
     }
   }
-  @media (max-width: 480px) {
+}
+@media (max-width: 800px) {
+  .counter_wrapper {
+    height: 6vh;
     .count_box {
-      width: 5em;
-      padding: 1em;
+      width: 11vh;
+      padding: 2em;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .counter_wrapper {
+    height: 5vh;
+    .count_box {
+      width: 9vh;
+      padding: 2em;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .counter_wrapper {
+    height: 4vh;
+    .count_box {
+      width: 4vh;
+      padding: 2em;
     }
   }
 }

@@ -19,7 +19,6 @@ export default function Home() {
     <div className={styles["homepage-container"]}>
       <Hero />
 
-
       <div className={styles["section2-offer"]}>
         <h2>Une offre pensée autrement</h2>
         <p>
@@ -47,18 +46,27 @@ export default function Home() {
             déterminés à dénicher les solutions les plus adaptées à vos
             exigences.
           </p>
+          <div className={styles.ctaButtons}>
           <Link href="/a-propos">
-            <button>Notre équipe</button>
+            <button className={styles.ctaTeam}>Notre équipe</button>
           </Link>
+          <Link href="/notre-expertise">
+            <button className={styles.ctaExpertise}>Notre expertise</button>
+          </Link>
+          </div>
         </div>
         <div className={styles["section4-img"]}></div>
       </div>
 
+      <HomepagePartners />
       <HomepageCountUp />
 
-      <HomepagePartners />
-
       <HomepageCustomersSlider />
+
+      <div className={styles.learnMore}>
+        <h5> Ready to learn more ? </h5>
+        <Link href="/contact" > <button>Contactez-nous </button> </Link>
+      </div>
     </div>
   );
 }

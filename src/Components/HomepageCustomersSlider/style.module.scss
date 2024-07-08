@@ -12,23 +12,22 @@ $animationSpeed: 30s;
 
 // Styling
 .slider {
-  background: linear-gradient(to bottom right, #31313155, #73bdfe71);
+  // background: linear-gradient(to bottom right, #31313155, #73bdfe71);
+  background: linear-gradient(to bottom right, #b98bf400, #73bdfe00);
+
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  height: 18em;
-  margin : 12em auto;
+  height: 23rem;
+  // margin : 12em auto;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 1.5em;
 
   h1 {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    color: var(--sunset1);
-    font-weight: 500;
-    margin: 0;
-    padding: 1rem 0rem 1.5rem 0rem;
+    padding-top: 0.5em;
     text-align: center;
-    letter-spacing: 1px;
+    color: var(--sunset1);
+    // font-family: "Barlow Condensed", sans-serif;
+    font-size: 3.2em;
+    font-weight: 600;
   }
 
   &::before,
@@ -61,14 +60,14 @@ $animationSpeed: 30s;
 
   .slide {
     justify-content: center;
-    height: 15em;
+    height: 23rem;
     width: 100%;
     margin-left: 5rem;
 
     img {
       text-align: center;
-      height: 12em;
-      width: 15em;
+      height: 13rem;
+      width: 14em;
       padding: 0.4rem 0rem;
       object-fit: contain;
     }

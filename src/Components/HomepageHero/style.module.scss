@@ -15,15 +15,14 @@
         var(--sunset1),
         var(--sunset1) 94%
       );
-      // background: var(--sunset1);
       display: flex;
 
-      h2 {
-        color: var(--sunset8);
+      h4 {
+        
         text-shadow: rgb(2, 87, 145) 1px 1px 6px;
         font-size: 3em;
         font-weight: 600;
-        letter-spacing: 0.3rem;
+        letter-spacing: 0rem;
         margin-bottom: 0rem;
         margin-top: 5%;
         margin-left: 5%;
@@ -37,30 +36,52 @@
       background-repeat: no-repeat;
       background-position: right;
 
-      h1 {
-        width: 50%;
-        text-shadow: rgb(82, 82, 82) 2px 2px 5px;
-        font-size: 3.3em;
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.2rem;
+      .titles {
+        top: 35%;
+        left: 10%;
         position: absolute;
-        top: 40%;
-        right: 30%;
-        text-transform: uppercase;
+        width: 65%;
+
+        h1 {
+          text-shadow: rgb(82, 82, 82) 2px 2px 5px;
+          font-size: 3.4em;
+          font-family: "Barlow Condensed", sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.2rem;
+          margin-bottom: 0.5em;
+        }
+
+        h3 {
+          text-shadow: rgb(82, 82, 82) 2px 2px 5px;
+          font-size: 1.5em;
+          // font-family: "Barlow Condensed", sans-serif;
+          font-weight: 600;
+          letter-spacing: 0.1rem;
+        }
       }
 
-      a {
+      .homepageHeroCta {
         text-decoration: none;
         color: white;
-        bottom: 25%;
+        bottom: 28%;
         right: 6%;
         position: absolute;
+
+        button {
+          width: 12em;
+        }
+
+        .ctaContact {
+          background-color: white;
+          color : var(--sunset1);
+          border : 1px solid var(--sunset1);
+        }
       }
     }
   }
 
   .section2 {
+    min-height: 35vh;
     .section2-intro {
       display: flex;
       height: 100%;
@@ -88,8 +109,8 @@
         justify-content: space-around;
 
         p {
-          line-height: 1.5;
-          font-size: 1.2rem;
+          line-height: 1.7;
+          font-size: 1.3rem;
           font-weight: 500;
           text-align: justify;
           color: #e6e4e4;
@@ -122,32 +143,37 @@
 
 @media (max-width: 1024px) {
   .homepageHero-container {
-    
     .section1 {
-      height: 60vh;
+      // height: 60vh;
       .hero-left {
-        h2 {
+        h4 {
           font-size: 2.5em;
           margin-top: 10%;
           margin-left: 10%;
         }
+   
       }
 
       .hero-right {
         h1 {
           font-size: 2.3em;
-          width: 50%;
-          top: 40%;
-          right: 30%;
+          width: 80%;
+         
         }
 
-        a {
-          bottom: 35%;
-          right: 10%;
+        .homepageHeroCta {
+          bottom: 25%;
+          right: 8%;
+
+          button {
+            padding: 0.5rem 1rem;
+            font-size: 1.2em;
+            width: 10em;
+          }
         }
       }
     }
-    .section2{ 
+    .section2 {
       .section2-intro {
         .section2-img {
           width: 30%;
@@ -179,7 +205,7 @@
     .section1 {
       height: 50vh;
       .hero-left {
-        h2 {
+        h4 {
           font-size: 2.2em;
           margin-top: 10%;
           margin-left: 10%;
@@ -187,19 +213,62 @@
       }
 
       .hero-right {
-        h1 {
-          font-size: 2.2em;
-          width: 70%;
-          top: 40%;
-          right: 15%;
-        }
 
-        a {
-          bottom: 43%;
-          right: 10%;
+        .titles {
+          top: 25%;
+          left: 10%;
+          position: absolute;
+          width: 80%;
+
+          h1 {
+            font-size: 2.3em;
+            font-family: "Barlow Condensed", sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.2rem;
+            margin-bottom: 0.5em;
+          }
+
+          h3 {
+            font-size: 1.2em;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+          }
+        }
+        .homepageHeroCta {
+          bottom: 45%;
+          right: 8%;
           button {
             padding: 0.5rem 1rem;
             font-size: 1.2em;
+            width: 10em;
+          }
+        }
+       
+       
+
+      }
+    }
+
+    .section2 {
+      .section2-intro {
+        .section2-img {
+          width: 30%;
+        }
+        .section2-text {
+          width: 70%;
+          p {
+            font-size: 1rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            line-height: 1.5;
+            strong {
+              font-size: 1rem;
+            }
+          }
+          .icons {
+            img {
+              width: 3.5rem;
+            }
           }
         }
       }
@@ -211,9 +280,9 @@
 @media (max-width: 480px) {
   .homepageHero-container {
     .section1 {
-      height: 40vh;
+      height: 50vh;
       .hero-left {
-        h2 {
+        h4 {
           font-size: 1.5em;
           margin-top: 10%;
           margin-left: 10%;
@@ -221,19 +290,35 @@
       }
 
       .hero-right {
-        h1 {
-          font-size: 1.9em;
-          width: 70%;
-          top: 23%;
-          right: 15%;
-        }
+        .titles {
+          top: 25%;
+          left: 5%;
+          position: absolute;
+          width: 85%;
 
-        a {
-          bottom: 52%;
-          right: 10%;
+    
+
+          h1 {
+            font-size: 1.7em;
+            font-family: "Barlow Condensed", sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.2rem;
+            margin-bottom: 0.5em;
+          }
+
+          h3 {
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+          }
+        }
+        .homepageHeroCta {
+          bottom: 40%;
+          right: 2%;
           button {
-            padding: 0.5rem 1rem;
-            font-size: 1.2em;
+            padding: 0.3rem 0em;
+            font-size: 1em;
+            width: 6em;
           }
         }
       }

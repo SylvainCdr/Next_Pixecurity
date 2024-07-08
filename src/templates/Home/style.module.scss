@@ -1,23 +1,41 @@
 .homepage-container {
   width: 100%;
   margin-top: 5em;
+  background-image: url("../../../public/assets/cube3.png");
+
+  background-size: cover;
+  background-position: 230% 28%;
+
+  background-repeat: no-repeat;
+  background-size: 80%;
 
   h2 {
     margin-bottom: 0.5em;
     color: var(--sunset1);
-    font-family: "Barlow Condensed", sans-serif;
-    font-size: 3rem;
-    font-weight: 500;
+
+    // font-family: "Barlow Condensed", sans-serif;
+    font-size: 3.2em;
+    font-weight: 700;
   }
 
-
   .section2-offer {
-    margin: 10em auto;
-    padding: 0 2rem;
+    position: relative;
     max-width: 1440px;
-    // background-color: #e6e4e4;
+    margin: auto;
+    display: flex;
+    padding: 8em 3em 3em 3em;
+
+    display: flex;
+
+    flex-direction: column;
+
+    h2 {
+      width: 60%;
+    }
     p {
-      line-height: 1.5;
+      width: 50%;
+
+      line-height: 1.6;
       font-size: 1.2rem;
       text-align: justify;
     }
@@ -25,13 +43,16 @@
 
   .section4-aboutUs {
     display: flex;
-    height: auto;
-    margin: 12em auto;
-    padding-left: 2rem;
-    max-width: 1440px;
+    height: 35rem;
+
+    background-color: #f0f7f4;
 
     .section4-text {
       width: 60%;
+      padding-left: 18em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       justify-items: center;
 
@@ -41,23 +62,30 @@
         text-align: justify;
         color: #e6e4e4;
         margin-bottom: 1em;
+        color: black;
       }
 
-      a {
+      button {
         text-decoration: none;
+        width: 15rem;
+      }
+      .ctaExpertise {
+        background-color: white;
+        color: var(--sunset1);
+        border: 1px solid var(--sunset1);
       }
     }
 
     .section4-img {
       width: 60%;
       background: linear-gradient(
-          80deg,
-          #1c1c1c 5%,
-          rgba(23, 23, 23, 0.914) 15%,
-          rgba(31, 31, 31, 0.671) 25%,
-          rgba(80, 80, 80, 0.661),
+          90deg,
+          #f0f7f4 5%,
+          rgba(225, 225, 225, 0.586) 15%,
+          rgba(211, 211, 211, 0.682) 25%,
+          rgba(185, 185, 185, 0.661),
           40%,
-          rgba(122, 122, 122, 0.106) 94%
+          rgba(150, 150, 150, 0.106) 94%
         ),
         url("https://images.unsplash.com/photo-1581091877018-dac6a371d50f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
       background-size: cover;
@@ -65,29 +93,56 @@
 
       filter: grayscale(0.8);
       -webkit-filter: grayscale(0.8);
+    }
+  }
+  .learnMore {
+    height: 30vh;
+    display: flex;
+    background-image: url("../../../public/assets/wave3.jpeg");
+    background-size: cover;
+    background-position: 50% 20%;
 
-     
+    h5 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: auto;
+      width: 60%;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+      margin: auto;
+    }
+
+    button {
+      // background-color: #681a70;
+      width: 15rem;
     }
   }
 
   //media queries
   @media (max-width: 1024px) {
+    background-position: 240% 25%;
+    background-size: 80%;
+
     h2 {
       font-size: 2.2em;
     }
 
- 
-
     .section2-offer {
+      padding: 2em 2em 3em 2em;
       p {
         font-size: 1.1rem;
-        line-height: 1.3;
+        line-height: 1.5;
       }
     }
 
     .section4-aboutUs {
-       flex-direction: column;
-      padding: 0rem 2rem;
+      display: flex;
+
+      height: 30rem;
+      padding-left: 2em;
 
       .section4-text {
         width: 100%;
@@ -98,6 +153,67 @@
       }
       .section4-img {
         width: 100%;
+      }
+    }
+    .learnMore {
+      height: 30vh;
+      h5 {
+        font-size: 2.6rem;
+      }
+      button {
+        width: 12rem;
+      }
+    }
+  }
+
+  //media queries
+  @media (max-width: 768px) {
+    background-position: 130% 25%;
+    background-size: 190%;
+    background-image: url("../../../public/assets/cube3.png");
+
+    h2 {
+      font-size: 1.8em;
+    }
+
+    .section2-offer {
+      padding: 5em 1em 0em 1em;
+
+      width: 80%;
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        width: 100%;
+      }
+    }
+
+    .section4-aboutUs {
+      flex-direction: column;
+      padding: 4em 2em;
+      height: auto;
+
+      .section4-text {
+        width: 100%;
+        padding-left: 0rem;
+        p {
+          margin-bottom: 1em;
+        }
+      }
+      .section4-text {
+        width: 100%;
+        padding-left: 0rem;
+        p {
+          margin-bottom: 1em;
+        }
+      }
+    }
+
+    .learnMore {
+      height: 30vh;
+      padding-left : 0.5em;
+      h5 {
+        font-size: 2rem;
       }
     }
   }
