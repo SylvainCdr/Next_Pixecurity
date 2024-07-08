@@ -24,11 +24,11 @@ export default function HomepageHero() {
         </div>
 
         <div className={styles["hero-right"]}>
-          <div className={styles.titles}>
-          <h1 data-aos="fade-up" data-aos-duration="3000">
+          <div className={styles.titles} data-aos="fade-up"data-aos-duration="3000">
+          <h1>
             Fournisseur de solutions de sûreté intelligentes
           </h1>
-          <h3>
+          <h3 >
             Vidéosurveillance, analyse d'image, contrôle d'accès,
             réseaux/stockage des données, hypervision...
           </h3>

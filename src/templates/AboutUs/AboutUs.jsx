@@ -75,26 +75,27 @@ export default function AboutUs() {
       </div>
       <div className={styles["section-3"]}>
         <h3>
-          "Notre but ?  <br />Répondre aux exigences et anticiper les besoins de nos
-          clients. <br />
-          Simplifier la compréhension de la sécurité "
+          "Notre but ? <br />
+          Répondre aux exigences et anticiper les besoins de nos clients. <br />
+          Simplifier la compréhension de la sécurité."
         </h3>
-        <p>Yann Duchet, CEO Pixecurity</p>
+        <div className={styles.bottom}>
+        <p>-- Yann Duchet, CEO Pixecurity</p>
+        <img src="assets/team/YANN-aboutUs.jpg" alt="" />
+       
+        </div>
       </div>
 
       <div className={styles["section-4"]}>
         <h1>L'équipe</h1>
         <ul className={styles["auto-grid"]} role="list">
-          <li>
+          {/* <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Yann DUCHET</h2>
               <p>CEO</p>
-              <img
-                alt="Yann DUCHET"
-                src="assets/team/YANN.jpg"
-              />
+              <img alt="Yann DUCHET" src="assets/team/YANN.jpg" />
             </div>
-          </li>
+          </li> */}
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Kenza GAUTIAM</h2>
@@ -130,7 +131,7 @@ export default function AboutUs() {
               <img alt="Yanis MEBARKI" src="assets/team/YANNIS.jpg" />
             </div>
           </li>
-          
+
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
@@ -155,7 +156,7 @@ export default function AboutUs() {
               />
             </div>
           </li>
-         
+
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Élodie TENEUR</h2>
@@ -167,10 +168,7 @@ export default function AboutUs() {
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Miriem BOUSSAHA</h2>
               <p>Développeuse</p>
-              <img
-                alt="Anaelle SOUHAUT"
-                src="assets/team/MIRIEM.jpg"
-              />
+              <img alt="Anaelle SOUHAUT" src="assets/team/MIRIEM.jpg" />
             </div>
           </li>
           <li>

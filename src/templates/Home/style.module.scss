@@ -43,7 +43,7 @@
 
   .section4-aboutUs {
     display: flex;
-    height: 30rem;
+    height: 35rem;
 
     background-color: #f0f7f4;
 
@@ -177,13 +177,13 @@
     }
 
     .section2-offer {
-      padding: 5em 2em 0em 2em;
+      padding: 5em 1em 0em 1em;
 
-      width: 90%;
+      width: 80%;
 
       p {
         font-size: 1.1rem;
-        line-height: 1.5;
+        line-height: 1.4;
         width: 100%;
       }
     }
@@ -211,6 +211,7 @@
 
     .learnMore {
       height: 30vh;
+      padding-left : 0.5em;
       h5 {
         font-size: 2rem;
       }
