@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 import { partners } from "../../Components/HomepagePartners/PartnersData";
 import AOS from "aos";
+import Link from "next/link";
 
 const Partners = () => {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
@@ -18,6 +19,15 @@ const Partners = () => {
     return acc;
   }, {});
 
+  // Map each domain to an image URL
+  const domainImages = {
+    "Vidéoprotection": "https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=2108&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "VMS": "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Réseaux": "https://images.unsplash.com/photo-1452696193712-6cabf5103b63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Contrôle d'accès": "https://images.unsplash.com/photo-1444738720667-27446e3f293d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // Add other domains and their corresponding images here
+  };
+
   const toggleDescription = (index) => {
     setExpandedDescriptions((prev) => ({
       ...prev,
@@ -30,9 +40,10 @@ const Partners = () => {
       <div className={styles["partners-section1"]}>
         <div className={styles["partners-intro"]}>
           <h1>Nos partenaires</h1>
+          <h2>Découvrez nos partenaires de confiance, leaders mondiaux en sécurité
+            et surveillance.</h2>
           <p>
-            Découvrez nos partenaires de confiance, leaders mondiaux en sécurité
-            et surveillance. Chez Pixecurity, nous nous engageons à vous fournir
+             Chez Pixecurity, nous nous engageons à vous fournir
             les meilleures solutions disponibles, grâce à des collaborations
             avec des entreprises innovantes et réputées.
           </p>
@@ -54,12 +65,13 @@ const Partners = () => {
           </p>
         </div>
 
-        <div data-aos="fade-left" className={styles["partner-img"]}></div>
+        <div data-aos="fade-down" className={styles["partner-img"]}></div>
       </div>
 
       {Object.keys(groupedPartners).map((domain, domainIndex) => (
         <div key={domainIndex} className={styles["domain-title"]}>
           <h2>{domain}</h2>
+          <img src={domainImages[domain]} className={styles.domainImg} alt={domain} />
           {groupedPartners[domain].map((partner, partnerIndex) => {
             const isExpanded = expandedDescriptions[`${domainIndex}-${partnerIndex}`];
             const description = partner.description;
@@ -91,9 +103,9 @@ const Partners = () => {
                       </span>
                     )}
                   </p>
-                  <a href={partner.website} target="_blank" rel="noreferrer">
-                    {partner.website}
-                  </a>
+                  <Link href={partner.website} target="_blank" rel="noreferrer">
+                    en savoir plus 
+                  </Link>
                 </div>
               </div>
             );

@@ -134,32 +134,33 @@ export default function UserAccount() {
     <div className={styles["user-account-container"]}>
       <div className={styles["user-menu"]}>
         <aside className={styles["user-account-nav"]}>
-          <h2>MENU</h2>
+          <h2></h2>
 
           <button
             className={styles.active}
             onClick={() => handleTabClick("favoris")}
           >
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"> </i>
+            Favoris
           </button>
           <button
             className={styles.active}
             onClick={() => handleTabClick("discounts")}
           >
-            <i class="fa-solid fa-percent"></i>
+            <i class="fa-solid fa-percent"></i> Promotions
           </button>
 
           <button
             className={styles.active}
             onClick={() => handleTabClick("commandes")}
           >
-            <i class="fa-solid fa-basket-shopping"></i>
+            <i class="fa-solid fa-basket-shopping"></i> commandes
           </button>
           <button
             className={styles.active}
             onClick={() => handleTabClick("infos")}
           >
-            <i class="fa-solid fa-user-pen"></i>
+            <i class="fa-solid fa-user-pen"></i> infos
           </button>
         </aside>
       </div>

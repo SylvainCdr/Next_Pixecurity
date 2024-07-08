@@ -1,6 +1,7 @@
 import styles from "./style.module.scss";
 import { useEffect } from "react";
 import Aos from "aos";
+import Link from "next/link";
 
 export default function AboutUs() {
   useEffect(() => {
@@ -17,7 +18,9 @@ export default function AboutUs() {
           technologique... Bref, de vrais dealers de solutions de sureté prêts à
           tout pour trouver les bons produits adaptés à vos besoins.
         </p>
+      <Link href="/contact"> <button>Un Projet? Parlons en !</button>  </Link>
       </div>
+
 
       <div className={styles["section-2"]}>
         <div

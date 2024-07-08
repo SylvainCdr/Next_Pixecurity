@@ -31,6 +31,9 @@
       }
 
       button {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
         width: 100%;
         padding: 3em 0.5em;
         background-color: rgba(111, 111, 111, 0.39);

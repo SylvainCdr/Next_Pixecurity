@@ -11,19 +11,25 @@
     width: 100%;
 
     .partners-intro {
-      padding: 2em 1em 2em 1em;
-      width: 60%;
+      padding: 4em 0em 2em 6em;
+      width: 50%;
       display: flex;
       flex-direction: column;
 
       h1 {
-        font-family: "Barlow Condensed", sans-serif;
-        font-size: 3rem;
+        font-size: 3.2rem;
         color: var(--sunset1);
-        font-weight: 500;
-        line-height: 3rem;
+        font-weight: 700;
+       
         margin-bottom: 0.5em;
         margin-top: 0.5em;
+      }
+      h2 { font-size: 2.1rem;
+        color: #fff;
+        font-weight: 500;
+        line-height: 2rem;
+        margin-bottom: 1.5rem;
+   
       }
 
       p {
@@ -35,7 +41,7 @@
     }
 
     .partner-img {
-      width: 40%;
+      width: 50%;
       background: linear-gradient(
           90deg,
           #1c1c1c 5%,
@@ -57,20 +63,28 @@
   .domain-title {
     width: 100%;
 
-    h2 {
+    .domainImg {
+      height: 35vh;
       width: 100%;
-      font-size: 1.8rem;
-      font-family: "Barlow Condensed", sans-serif;
-      padding: 0.4rem 0em;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 1em;
-      color: black;
-      background-color: rgba(255, 255, 255, 0.911);
+      object-fit: cover;
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      color: rgb(75, 75, 75);
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      display: flex;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      margin-top: 15vh;
+      background-color: rgba(255, 255, 255, 0.651);
     }
   }
+
   .partners-section2 {
     display: flex;
     justify-content: center;
@@ -131,19 +145,37 @@
       }
 
       a {
-        font-size: 1.1rem;
-        font-weight: 400;
         text-decoration: none;
-        margin-bottom: 1em;
-        color: rgb(174, 215, 254);
+        padding: 0.6em 1.5em;
+        margin: 0.1em;
+        text-transform: uppercase;
+        font-size: 1.3em;
+        font-family: "Barlow Condensed", sans-serif;
+        transition: 0.5s;
+        color: white;
+        border: 0px;
+        font-weight: 500;
+        box-shadow: 0px 0px 14px -7px #121e37;
+        background-color: var(--sunset1);
+        cursor: pointer;
+        border-radius: 0.3em;
+        -webkit-border-radius: 0.3em;
+        -moz-border-radius: 0.3em;
+        -ms-border-radius: 0.3em;
+        -o-border-radius: 0.3em;
+
+        &:hover {
+          background-color: rgb(55, 194, 254);
+          text-decoration: none;
+          scale: 0.97;
+        }
       }
     }
 
     .toggle-description {
-  
       padding: 0.1em 0.6em;
       border-radius: 5px;
-      color : white;
+      color: white;
       font-weight: 400;
       background-color: rgba(128, 128, 128, 0.363);
 
@@ -154,10 +186,11 @@
   @media screen and (max-width: 1280px) {
     .partners-section1 {
       flex-direction: column;
-      padding-left: 0;
+
 
       .partners-intro {
-        width: 95%;
+        padding : 2em 1em;
+        width: 90%;
       }
 
       .partner-img {
@@ -166,9 +199,21 @@
       }
     }
 
+    .domain-title {
+      .domainImg {
+        height: 20vh;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-top: 8vh;
+      }
+    }
+    
     .partners-section2 {
       padding: 1em 2em;
       display: block;
+      
 
       .partner-logo {
         width: 100%;
