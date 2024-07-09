@@ -219,7 +219,7 @@ export default function Order() {
                 defaultValue={user?.phone}
                 {...register("phone")}
               />
-              {errors.phone && <p>{errors.phone.message}</p>}
+              {errors.phone && <p className={styles.errorsForm}>{errors.phone.message} </p>}
             </div>
           </div>
 

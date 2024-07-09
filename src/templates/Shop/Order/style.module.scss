@@ -41,6 +41,13 @@
       -o-border-radius: 0.2rem;
     }
 
+    .errorsForm {
+      color: rgb(249, 19, 19);
+       font-size: 0.9em;
+       font-weight: 500;
+    }
+ 
+
     .customer-infos {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -53,6 +60,7 @@
         flex-direction: column;
         justify-content: space-around;
         padding: 1rem;
+      
       }
     }
 
