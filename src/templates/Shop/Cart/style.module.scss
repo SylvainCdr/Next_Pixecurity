@@ -35,12 +35,29 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     
+
+
     h1 {
       font-size: 2.7rem;
       margin-bottom: 3rem;
       font-weight: 500;
       color: var(--sunset1);
       font-family: "Barlow Condensed", sans-serif;
+    }
+
+    .empty-cart-btn {
+      margin-top: 0em;
+      padding: 0.3em 0.8em;
+      background-color: rgb(57, 57, 57);
+      color: #fff;
+      font-size: 1rem;
+      text-transform: none;
+      font-weight: 400;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
     }
 
     /* Global "table" column settings */

@@ -38,6 +38,7 @@ export default function Cart({ carouselProducts }) {
             justifyContent: "space-between",
             alignItems: "center",
             marginBottom: "42px",
+
           }}
         >
           <h1>Panier</h1>
@@ -45,7 +46,8 @@ export default function Cart({ carouselProducts }) {
             onClick={() => {
               localStorage.removeItem("cartId");
               window.location.reload();
-            }}
+            }} className={styles["empty-cart-btn"]}
+            
           >
             Vider le panier
           </button>

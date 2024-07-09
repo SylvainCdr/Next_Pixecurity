@@ -235,14 +235,14 @@ export default function Order() {
                 placeholder="Numéro et Rue"
                 {...register("billingStreet")}
               />
-              {errors.billingStreet && <p>{errors.billingStreet.message}</p>}
+              {errors.billingStreet && <p className={styles.errorsForm}>{errors.billingStreet.message}</p>}
               <input
                 type="text"
                 name="billingZip"
                 placeholder="Code Postal"
                 {...register("billingZip")}
               />
-              {errors.billingZip && <p>{errors.billingZip.message}</p>}
+              {errors.billingZip && <p className={styles.errorsForm}>{errors.billingZip.message}</p>}
               <input
                 type="text"
                 name="billingCity"
@@ -257,7 +257,7 @@ export default function Order() {
                 <option value="suisse">Suisse</option>
                 <option value="luxembourg">Luxembourg</option>
               </select>
-              {errors.billingCountry && <p>{errors.billingCountry.message}</p>}
+              {errors.billingCountry && <p className={styles.errorsForm}>{errors.billingCountry.message}</p>}
 
               <div className={styles["same-address"]}>
                 <input
@@ -288,7 +288,7 @@ export default function Order() {
                   })
                 }
               />
-              {errors.deliveryStreet && <p>{errors.deliveryStreet.message}</p>}
+              {errors.deliveryStreet && <p className={styles.errorsForm}>{errors.deliveryStreet.message}</p>}
               <input
                 type="text"
                 name="deliveryZip"
@@ -302,7 +302,7 @@ export default function Order() {
                   })
                 }
               />
-              {errors.deliveryZip && <p>{errors.deliveryZip.message}</p>}
+              {errors.deliveryZip && <p className={styles.errorsForm}>{errors.deliveryZip.message}</p>}
               <input
                 type="text"
                 name="deliveryCity"
@@ -316,7 +316,7 @@ export default function Order() {
                   })
                 }
               />
-              {errors.deliveryCity && <p>{errors.deliveryCity.message}</p>}
+              {errors.deliveryCity && <p className={styles.errorsForm}>{errors.deliveryCity.message}</p>}
               <select
                 name="deliveryCountry"
                 {...register("deliveryCountry")}
@@ -335,7 +335,7 @@ export default function Order() {
                 <option value="luxembourg">Luxembourg</option>
               </select>
               {errors.deliveryCountry && (
-                <p>{errors.deliveryCountry.message}</p>
+                <p className={styles.errorsForm}>{errors.deliveryCountry.message}</p>
               )}
             </div>
           </div>
@@ -351,7 +351,7 @@ export default function Order() {
                 <option value="dhl">DHL</option>
                 <option value="chronopost">Chronopost</option>
               </select>
-              {errors.deliveryMethod && <p>{errors.deliveryMethod.message}</p>}
+              {errors.deliveryMethod && <p className={styles.errorsForm}>{errors.deliveryMethod.message}</p>}
               <img
                 src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
                 className={styles.chrono}
