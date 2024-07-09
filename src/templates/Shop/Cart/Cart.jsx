@@ -16,8 +16,6 @@ export default function Cart({ carouselProducts }) {
     AOS.init({ duration: 1000 });
   }, []);
 
-  console.log({ carts });
-
   const user = useGetUser();
   const userId = user?._id;
   const router = useRouter();
@@ -34,7 +32,24 @@ export default function Cart({ carouselProducts }) {
   return (
     <div className={styles["cart-container"]}>
       <div className={styles["cart-content"]}>
-        <h1>Panier</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "42px",
+          }}
+        >
+          <h1>Panier</h1>
+          <button
+            onClick={() => {
+              localStorage.removeItem("cartId");
+              window.location.reload();
+            }}
+          >
+            Vider le panier
+          </button>
+        </div>
         <div className={styles["shopping-cart"]}>
           <div className={styles["column-labels"]}>
             <p className={styles["product-image"]}>Image</p>
@@ -100,11 +115,13 @@ function CartItem({ cart }) {
         </p>
       )}
       <div className={styles["product-price"]}>
-        { /* If there is a discount price, display the original price and the discounted price */ }
+        {/* If there is a discount price, display the original price and the discounted price */}
 
         {product.discountPrice ? (
           <>
-            <span className={styles["original-price"]}>{product.price.toFixed(2)}€</span>
+            <span className={styles["original-price"]}>
+              {product.price.toFixed(2)}€
+            </span>
             <span className={styles["discounted-price"]}>
               {product.discountPrice.toFixed(2)} €
             </span>

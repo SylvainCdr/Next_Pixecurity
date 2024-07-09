@@ -14,10 +14,7 @@ const override = {
   borderColor: "red",
 };
 
-// on importe les produits depuis Api/products
 const Products = ({ products, subcategory, filters }) => {
-  console.log({ products });
-
   const loading = useRouterLoading();
 
   return (

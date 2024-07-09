@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Aos from "aos";
 import styles from "./style.module.scss";
 import Swal from "sweetalert2";
 import { BASE_URL } from "@/url";
 
 export default function ResetPassword() {
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token"); // Extrait le jeton JWT de l'URL
+  const params = useParams();
+  const token = params?.token;
   const [, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 

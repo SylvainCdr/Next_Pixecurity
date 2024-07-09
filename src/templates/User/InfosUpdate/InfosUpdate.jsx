@@ -129,8 +129,6 @@ export default function InfosUpdate() {
         return response.json();
       })
       .then((data) => {
-        console.log("User updated:", data);
-
         Swal.fire({
           title: "Vos informations seront à jour à votre prochaine connexion",
           icon: "success",

@@ -28,7 +28,6 @@ export async function getServerSideProps({ params, query }) {
 }
 
 export default function Page({ products, category, subcategory, filters }) {
-  console.log({ products });
   return (
     <Products
       products={products}

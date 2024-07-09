@@ -15,56 +15,40 @@ const OrderConfirmation = () => {
     if (order_id) {
       const checkPaymentStatus = async () => {
         try {
-          const response = await fetch(`${BASE_URL}/orders/${order_id}`);
-          if (!response.ok) {
-            throw new Error("Failed to fetch order details");
-          }
-          const orderData = await response.json();
-
-          if (
-            orderData.payment.method === "stripe" &&
-            !orderData.payment.paid
-          ) {
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-
-            const updateResponcheckPaymentStatusse = await fetch(
-              `${BASE_URL}/orders/${order_id}`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  ...orderData,
-                  payment: { ...orderData.payment, paid: true },
-                  status: "pending",
-                }),
-              }
-            );
-
-            if (!updateResponse.ok) {
-              throw new Error("Failed to update order status");
+          const updateResponse = await fetch(
+            `${BASE_URL}/orders/${order_id}/success`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
             }
+          );
 
-            localStorage.removeItem("cartId");
-
-            Swal.fire({
-              icon: "success",
-              title: "Paiement réussi",
-              text: "Votre commande a été payée avec succès. Un email de confirmation vous a été envoyé",
-            });
+          if (!updateResponse.ok) {
+            throw new Error("Failed to update order status");
           }
 
+          localStorage.removeItem("cartId");
+
+          const orderData = await updateResponse.json();
           setOrder(orderData);
-          setLoading(false);
+
+          Swal.fire({
+            icon: "success",
+            title: "Paiement réussi",
+            text: "Votre commande a été payée avec succès. Un email de confirmation vous a été envoyé",
+          });
         } catch (err) {
+          console.error({ err });
           setError(err.message);
-          setLoading(false);
           Swal.fire({
             icon: "error",
             title: "Erreur",
             text: "Erreur lors de la vérification du statut de la commande",
           });
+        } finally {
+          setLoading(false);
         }
       };
 

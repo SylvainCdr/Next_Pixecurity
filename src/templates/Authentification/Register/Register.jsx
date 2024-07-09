@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import styles from "./style.module.scss";
-import Link  from "next/link";
+import Link from "next/link";
 import Aos from "aos";
 import { BASE_URL } from "@/url";
 
@@ -21,7 +21,7 @@ export default function Register() {
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isValidPassword = (password) =>
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-      password,
+      password
     );
   const isValidLastName = (name) => /^[a-zA-Z\s]{2,}$/.test(name);
   const isValidFirstName = (name) => /^[a-zA-Z\s]{2,}$/.test(name);
@@ -38,7 +38,7 @@ export default function Register() {
     setPasswordError(
       isValidPassword(value)
         ? ""
-        : "Mot de passe invalide (au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial)",
+        : "Mot de passe invalide (au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial)"
     );
   };
 
@@ -48,7 +48,7 @@ export default function Register() {
     setLastNameError(
       isValidLastName(value)
         ? ""
-        : "Nom invalide (au minimum 2 caractères alphabétiques)",
+        : "Nom invalide (au minimum 2 caractères alphabétiques)"
     );
   };
 
@@ -58,7 +58,7 @@ export default function Register() {
     setFirstNameError(
       isValidFirstName(value)
         ? ""
-        : "Prénom invalide (au minimum 2 caractères alphabétiques)",
+        : "Prénom invalide (au minimum 2 caractères alphabétiques)"
     );
   };
 
@@ -100,7 +100,6 @@ export default function Register() {
             text: "Veuillez vérifier le formulaire et réessayer.",
           });
         } else {
-          console.log(data);
           setErrors(null);
           // Alert et redirection seulement en cas de succès
           Swal.fire({
@@ -112,7 +111,7 @@ export default function Register() {
           });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
   //Aos

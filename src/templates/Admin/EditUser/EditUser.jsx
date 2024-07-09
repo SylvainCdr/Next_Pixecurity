@@ -13,7 +13,6 @@ export default function EditUser() {
         const userId = window.location.pathname.split("/").pop();
         const response = await fetch(`${BASE_URL}/users/${userId}`);
         const userData = await response.json();
-        console.log("userData:", userData);
         setUserToEdit(userData);
       } catch (error) {
         console.error(

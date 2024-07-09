@@ -60,17 +60,13 @@ export default function EditOrders() {
         totalAmount,
         status,
       }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    }).then((response) => response.json());
 
     fetch(`${BASE_URL}/users/${user._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUser), // Envoyez l'objet utilisateur mis à jour
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    }).then((response) => response.json());
 
     // alert sweet alert et redirection
     Swal.fire({
