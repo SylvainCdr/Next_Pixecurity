@@ -16,13 +16,15 @@ const sum = (arrayNumbers) =>
     return accumulator + currentValue;
   }, 0);
 
-const useCart = () => {
-  const [carts, setCarts] = useState([]); // Contient les produits dans le panier
-  const [isCartFetched, setIsCartFetched] = useState(false); // Indique si le panier a été récupéré depuis le serveur
-  const user = useGetUser();
-
-  const userId = user?._id;
-  const cartItemsCount = sum(carts?.map((c) => c.quantity));
+  const useCart = () => {
+    const [carts, setCarts] = useState([]); // Contient les produits dans le panier
+    const [isCartFetched, setIsCartFetched] = useState(false); // Indique si le panier a été récupéré depuis le serveur
+    const user = useGetUser();
+  
+    const userId = user?._id;
+  
+    // Modifier cette ligne pour gérer les cas où carts n'est pas un tableau
+    const cartItemsCount = Array.isArray(carts) ? sum(carts.map((c) => c.quantity)) : 0;
 
   const fetchCart = async () => {
     try {

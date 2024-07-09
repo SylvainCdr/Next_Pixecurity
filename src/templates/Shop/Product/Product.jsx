@@ -101,29 +101,22 @@ export default function Product({ product, id, suggestions }) {
 
   const handleAddToCartClick = async () => {
     if (userId) {
-      const added = await addToCart(
-        userId,
-        id,
-        product.name,
-        product.ref,
-        quantity,
-        product.price,
-        product.image
-      );
-      if (added) {
-        console.log("Produit ajouté au panier avec succès!");
-      } else {
-        console.error("Erreur lors de l'ajout du produit au panier");
-      }
+      await addToCart(product, quantity);  // Assurez-vous que `product` et `quantity` sont correctement passés
+      Swal.fire({
+        icon: "success",
+        title: "Produit ajouté au panier avec succès!",
+        showConfirmButton: false,
+        timer: 1200,
+      });
     } else {
       Swal.fire({
         icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        title: "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
         showConfirmButton: true,
       });
     }
   };
+  
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
