@@ -6,20 +6,17 @@
     height: 70vh;
 
     .hero-left {
+      background: rgb(0,0,0);
+      background: -moz-linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
+      background: -webkit-linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
+      background: linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#009fe3",GradientType=1);  
+      
       width: 30%;
-      background: linear-gradient(
-        153deg,
-        rgb(0, 22, 44) 7%,
-        rgb(1, 51, 100) 16%,
-        rgb(2, 73, 120) 40%,
-        var(--sunset1),
-        var(--sunset1) 94%
-      );
-      display: flex;
-
-      h4 {
-        
-        text-shadow: rgb(2, 87, 145) 1px 1px 6px;
+      
+      h4 
+{
+        text-shadow: rgb(71, 71, 71) 1px 1px 6px;
         font-size: 3em;
         font-weight: 600;
         letter-spacing: 0rem;
@@ -43,7 +40,7 @@
         width: 65%;
 
         h1 {
-          text-shadow: rgb(82, 82, 82) 2px 2px 5px;
+          text-shadow: rgb(71, 71, 71) 1px 1px 6px;
           font-size: 3.4em;
           font-family: "Barlow Condensed", sans-serif;
           font-weight: 700;
@@ -52,11 +49,12 @@
         }
 
         h3 {
-          text-shadow: rgb(82, 82, 82) 2px 2px 5px;
+          text-shadow: rgb(71, 71, 71) 1px 1px 6px;
           font-size: 1.5em;
           // font-family: "Barlow Condensed", sans-serif;
           font-weight: 600;
-          letter-spacing: 0.1rem;
+          letter-spacing: 0.05rem;
+          line-height: 1.2;
         }
       }
 
@@ -73,8 +71,8 @@
 
         .ctaContact {
           background-color: white;
-          color : var(--sunset1);
-          border : 2px solid var(--sunset1);
+          color: var(--sunset1);
+          border: 2px solid var(--sunset1);
         }
       }
     }
@@ -97,21 +95,26 @@
 
       .section2-text {
         width: 70%;
-        background: linear-gradient(
-          153deg,
-          var(--sunset1) 7%,
-          var(--sunset1) 16%,
-          rgb(2, 73, 120) 40%,
-          rgb(1, 51, 100),
-          rgb(0, 22, 44) 94%
-        );
-        // background: var(--sunset1);
+        // background: linear-gradient(
+        //   153deg,
+        //   var(--sunset1) 7%,
+        //   var(--sunset1) 16%,
+        //   rgb(2, 73, 120) 40%,
+        //   rgb(1, 51, 100),
+        //   rgb(0, 22, 44) 94%
+        // );
+        background: rgb(0,159,227);
+        background: -moz-linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
+        background: -webkit-linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
+        background: linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009fe3",endColorstr="#000000",GradientType=1); 
+        
         display: flex;
         flex-direction: column;
         justify-content: space-around;
 
         p {
-          line-height: 1.7;
+          line-height: 1.6;
           font-size: 1.3rem;
           font-weight: 500;
           text-align: justify;
@@ -122,9 +125,9 @@
           padding-top: 1em;
 
           strong {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #ffffff;
-            text-shadow: rgb(0, 2, 5) 1px 1px 2px;
+            text-shadow: rgb(11, 28, 53) 1px 1px 2px;
             font-weight: 500;
           }
         }
@@ -153,14 +156,12 @@
           margin-top: 10%;
           margin-left: 10%;
         }
-   
       }
 
       .hero-right {
         h1 {
           font-size: 2.3em;
           width: 80%;
-         
         }
 
         .homepageHeroCta {
@@ -215,7 +216,6 @@
       }
 
       .hero-right {
-
         .titles {
           top: 25%;
           left: 10%;
@@ -245,9 +245,6 @@
             width: 10em;
           }
         }
-       
-       
-
       }
     }
 
@@ -297,8 +294,6 @@
           left: 5%;
           position: absolute;
           width: 85%;
-
-    
 
           h1 {
             font-size: 1.7em;

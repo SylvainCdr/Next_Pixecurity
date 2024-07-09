@@ -5,7 +5,7 @@ import AOS from "aos";
 function Expertise() {
   useEffect(() => {
     AOS.init({
-      duration: 1200,
+      duration: 2000,
     });
   }, []);
 
