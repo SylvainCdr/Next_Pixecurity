@@ -4,15 +4,34 @@ import { BASE_URL } from "@/url";
 import styles from "./style.module.scss";
 import { useParams } from "next/navigation";
 import { useGetUser } from "@/Components/useGetUser";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const phoneRegExp = /^(\+33|0)[1-9](\d{2}){4}$/;
+
+const schema = yup.object().shape({
+  company: yup.string().required("L'entreprise est requise"),
+  phone: yup
+    .string()
+    .required("Le téléphone est requis")
+    .matches(phoneRegExp, "Numéro de téléphone invalide"),
+  billingStreet: yup.string().required("La rue de facturation est requise"),
+  billingCity: yup.string().required("La ville de facturation est requise"),
+  billingZip: yup.string().required("Le code postal de facturation est requis"),
+  billingCountry: yup.string().required("Le pays de facturation est requis"),
+  deliveryStreet: yup.string().required("La rue de livraison est requise"),
+  deliveryCity: yup.string().required("La ville de livraison est requise"),
+  deliveryZip: yup.string().required("Le code postal de livraison est requis"),
+  deliveryCountry: yup.string().required("Le pays de livraison est requis"),
+  deliveryMethod: yup.string().required("Le mode de livraison est requis"),
+});
 
 export default function Order() {
   const params = useParams();
   const orderId = params?.id;
-  console.log({ orderId });
 
-  // on récupère les informations de l'utilisateur connecté
   const user = useGetUser();
-
   const [sameAddress, setSameAddress] = useState(false);
   const [deliveryAddress, setDeliveryAddress] = useState({
     street: "",
@@ -21,43 +40,46 @@ export default function Order() {
     country: "",
   });
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   useEffect(() => {
     if (sameAddress) {
-      setDeliveryAddress({
-        street: document.querySelector('input[name="billingStreet"]').value,
-        city: document.querySelector('input[name="billingCity"]').value,
-        zip: document.querySelector('input[name="billingZip"]').value,
-        country: document.querySelector('select[name="billingCountry"]').value,
-      });
+      setValue("deliveryStreet", watch("billingStreet"));
+      setValue("deliveryCity", watch("billingCity"));
+      setValue("deliveryZip", watch("billingZip"));
+      setValue("deliveryCountry", watch("billingCountry"));
     } else {
-      setDeliveryAddress({
-        street: "",
-        city: "",
-        zip: "",
-        country: "",
-      });
+      setValue("deliveryStreet", "");
+      setValue("deliveryCity", "");
+      setValue("deliveryZip", "");
+      setValue("deliveryCountry", "");
     }
-  }, [sameAddress]);
+  }, [sameAddress, setValue, watch]);
 
-  const handleOrderSubmission = async (e) => {
-    e.preventDefault();
-    const form = Object.fromEntries(new FormData(e.target));
-    console.log({ orderId });
-    console.log({ form });
-
+  const onSubmit = async (form) => {
     try {
-      // Vérifier et mettre à jour les informations de l'utilisateur si elles ne sont pas déjà connues
       if (!user?.company || !user?.phone) {
-        const updateUserResponse = await fetch(`${BASE_URL}/users/${user._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            company: form.company,
-            phone: form.phone,
-          }),
-        });
+        const updateUserResponse = await fetch(
+          `${BASE_URL}/users/${user._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              company: form.company,
+              phone: form.phone,
+            }),
+          }
+        );
 
         if (!updateUserResponse.ok) {
           Swal.fire({
@@ -69,31 +91,33 @@ export default function Order() {
         }
       }
 
-      // Mettre à jour les informations de livraison et de facturation
-      const updateResponse = await fetch(`${BASE_URL}/orders/${orderId}/delivery`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          deliveryAddress: {
-            street: form.deliveryStreet,
-            city: form.deliveryCity,
-            zip: form.deliveryZip,
-            country: form.deliveryCountry,
+      const updateResponse = await fetch(
+        `${BASE_URL}/orders/${orderId}/delivery`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
           },
-          billingAddress: {
-            street: form.billingStreet,
-            city: form.billingCity,
-            zip: form.billingZip,
-            country: form.billingCountry,
-          },
-          delivery: {
-            method: form.deliveryMethod,
-            fee: 20, // Ajustez en fonction de votre logique de calcul des frais de livraison
-          },
-        }),
-      });
+          body: JSON.stringify({
+            deliveryAddress: {
+              street: form.deliveryStreet,
+              city: form.deliveryCity,
+              zip: form.deliveryZip,
+              country: form.deliveryCountry,
+            },
+            billingAddress: {
+              street: form.billingStreet,
+              city: form.billingCity,
+              zip: form.billingZip,
+              country: form.billingCountry,
+            },
+            delivery: {
+              method: form.deliveryMethod,
+              fee: 20,
+            },
+          }),
+        }
+      );
 
       if (!updateResponse.ok) {
         Swal.fire({
@@ -106,7 +130,6 @@ export default function Order() {
 
       const updatedOrder = await updateResponse.json();
 
-      // Créer la session de paiement Stripe
       const response = await fetch(`${BASE_URL}/create-checkout-session`, {
         method: "POST",
         headers: {
@@ -142,7 +165,7 @@ export default function Order() {
       <div className={styles["order-page"]}>
         <h1>Commande</h1>
 
-        <form method="POST" onSubmit={handleOrderSubmission}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h2>
             <i className="fa-solid fa-user"></i> ETAPE 1 : Informations
             personnelles
@@ -156,6 +179,7 @@ export default function Order() {
                 placeholder="Prénom"
                 defaultValue={user?.firstName}
                 readOnly
+                {...register("firstName")}
               />
               Nom :{" "}
               <input
@@ -164,6 +188,7 @@ export default function Order() {
                 placeholder="Nom"
                 defaultValue={user?.lastName}
                 readOnly
+                {...register("lastName")}
               />
               Entreprise:{" "}
               <input
@@ -171,7 +196,9 @@ export default function Order() {
                 name="company"
                 placeholder="Entreprise"
                 defaultValue={user?.company}
+                {...register("company")}
               />
+              {errors.company && <p>{errors.company.message}</p>}
             </div>
 
             <div className={styles.contact}>
@@ -182,6 +209,7 @@ export default function Order() {
                 placeholder="Email"
                 defaultValue={user?.email}
                 readOnly
+                {...register("email")}
               />
               Téléphone :{" "}
               <input
@@ -189,7 +217,9 @@ export default function Order() {
                 name="phone"
                 placeholder="A renseigner"
                 defaultValue={user?.phone}
+                {...register("phone")}
               />
+              {errors.phone && <p>{errors.phone.message}</p>}
             </div>
           </div>
 
@@ -203,25 +233,31 @@ export default function Order() {
                 type="text"
                 name="billingStreet"
                 placeholder="Numéro et Rue"
+                {...register("billingStreet")}
               />
+              {errors.billingStreet && <p>{errors.billingStreet.message}</p>}
               <input
                 type="text"
                 name="billingZip"
                 placeholder="Code Postal"
+                {...register("billingZip")}
               />
+              {errors.billingZip && <p>{errors.billingZip.message}</p>}
               <input
                 type="text"
                 name="billingCity"
                 placeholder="Ville"
+                {...register("billingCity")}
               />
-
-              <select name="billingCountry">
+              {errors.billingCity && <p>{errors.billingCity.message}</p>}
+              <select name="billingCountry" {...register("billingCountry")}>
                 <option value="">Sélectionnez votre pays</option>
                 <option value="france">France</option>
                 <option value="belgique">Belgique</option>
                 <option value="suisse">Suisse</option>
                 <option value="luxembourg">Luxembourg</option>
               </select>
+              {errors.billingCountry && <p>{errors.billingCountry.message}</p>}
 
               <div className={styles["same-address"]}>
                 <input
@@ -243,35 +279,53 @@ export default function Order() {
                 type="text"
                 name="deliveryStreet"
                 placeholder="Numéro et Rue"
+                {...register("deliveryStreet")}
                 value={deliveryAddress.street}
                 onChange={(e) =>
-                  setDeliveryAddress({ ...deliveryAddress, street: e.target.value })
+                  setDeliveryAddress({
+                    ...deliveryAddress,
+                    street: e.target.value,
+                  })
                 }
               />
+              {errors.deliveryStreet && <p>{errors.deliveryStreet.message}</p>}
               <input
                 type="text"
                 name="deliveryZip"
                 placeholder="Code Postal"
+                {...register("deliveryZip")}
                 value={deliveryAddress.zip}
                 onChange={(e) =>
-                  setDeliveryAddress({ ...deliveryAddress, zip: e.target.value })
+                  setDeliveryAddress({
+                    ...deliveryAddress,
+                    zip: e.target.value,
+                  })
                 }
               />
+              {errors.deliveryZip && <p>{errors.deliveryZip.message}</p>}
               <input
                 type="text"
                 name="deliveryCity"
                 placeholder="Ville"
+                {...register("deliveryCity")}
                 value={deliveryAddress.city}
                 onChange={(e) =>
-                  setDeliveryAddress({ ...deliveryAddress, city: e.target.value })
+                  setDeliveryAddress({
+                    ...deliveryAddress,
+                    city: e.target.value,
+                  })
                 }
               />
-
+              {errors.deliveryCity && <p>{errors.deliveryCity.message}</p>}
               <select
                 name="deliveryCountry"
+                {...register("deliveryCountry")}
                 value={deliveryAddress.country}
                 onChange={(e) =>
-                  setDeliveryAddress({ ...deliveryAddress, country: e.target.value })
+                  setDeliveryAddress({
+                    ...deliveryAddress,
+                    country: e.target.value,
+                  })
                 }
               >
                 <option value="">Sélectionnez votre pays</option>
@@ -280,6 +334,9 @@ export default function Order() {
                 <option value="suisse">Suisse</option>
                 <option value="luxembourg">Luxembourg</option>
               </select>
+              {errors.deliveryCountry && (
+                <p>{errors.deliveryCountry.message}</p>
+              )}
             </div>
           </div>
 
@@ -289,11 +346,12 @@ export default function Order() {
                 <i className="fa-solid fa-truck"></i> ETAPE 3 : Mode de
                 livraison
               </h2>
-              <select name="deliveryMethod">
+              <select name="deliveryMethod" {...register("deliveryMethod")}>
                 <option value="">Sélectionnez le mode de livraison</option>
                 <option value="dhl">DHL</option>
                 <option value="chronopost">Chronopost</option>
               </select>
+              {errors.deliveryMethod && <p>{errors.deliveryMethod.message}</p>}
               <img
                 src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
                 className={styles.chrono}
