@@ -28,7 +28,7 @@
 
     .hero-right {
       width: 70%;
-      background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-image: url("../../../public/assets/homepage/hero1.jpg");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: right;
@@ -61,7 +61,7 @@
       .homepageHeroCta {
         text-decoration: none;
         color: white;
-        bottom: 28%;
+        bottom: 23%;
         right: 6%;
         position: absolute;
 
@@ -72,7 +72,7 @@
         .ctaContact {
           background-color: white;
           color: var(--sunset1);
-          border: 2px solid var(--sunset1);
+          border: 1px solid var(--sunset1);
         }
       }
     }
@@ -88,7 +88,7 @@
 
       .section2-img {
         width: 30%;
-        background-image: url("https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-image: url("../../../public/assets/homepage/hero3.jpg");
         background-size: cover;
         background-position: center;
       }
@@ -252,6 +252,7 @@
       .section2-intro {
         .section2-img {
           width: 30%;
+          background-position: 200% 0%;
         }
         .section2-text {
           width: 70%;
@@ -310,7 +311,7 @@
           }
         }
         .homepageHeroCta {
-          bottom: 40%;
+          bottom: 42%;
           right: 2%;
           button {
             padding: 0.3rem 0em;
