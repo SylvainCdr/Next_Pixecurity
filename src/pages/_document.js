@@ -35,6 +35,8 @@ export default function Document() {
         <link rel="icon" href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
 
         <link rel="preload" as="image" href="/assets/homepage/hero1.webp" />
+        <link rel="preload" as="image" href="/assets/homepage/hero2.webp" />
+   
 
         {/* External Stylesheets */}
         <link
