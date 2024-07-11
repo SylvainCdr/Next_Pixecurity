@@ -15,9 +15,9 @@ export default function HomepageHero() {
       <div className={styles.section1}>
         <div className={styles["hero-left"]}>
           <h4
-            data-aos="flip-left"
+            data-aos="fade-right"
             data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
+            data-aos-duration="1500"
           >
             Smarter. <br /> Safer.
           </h4>
