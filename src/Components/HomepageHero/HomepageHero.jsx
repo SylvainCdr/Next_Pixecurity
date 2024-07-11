@@ -12,7 +12,7 @@ export default function HomepageHero() {
     // On charge l'image en arrière-plan du hero-right après le chargement de la page
     const heroRightElement = document.querySelector(`.${styles["hero-right"]}`);
     const image = new Image();
-    image.src = "/assets/homepage/hero1.jpg";
+    image.src = "/assets/homepage/hero1.webp";
     image.onload = () => {
       heroRightElement.style.backgroundImage = `url(${image.src})`;
     };
