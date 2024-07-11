@@ -63,6 +63,7 @@ function Footer() {
             <i className="fa-brands fa-linkedin"></i>
             <a href="https://www.linkedin.com/company/pixecurity/">Linkedin</a>
           </li>
+           <p className={styles.copyright}>&copy; 2024 Pixecurity. Tous droits réservés.</p> 
         </ul>
       </div>
     </div>
