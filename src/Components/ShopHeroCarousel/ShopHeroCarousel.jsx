@@ -10,7 +10,7 @@ const heroImages = [
     url: "https://i-pro.com/products_and_solutions/sites/default/files/2023-11/2880x720_X-series_0.jpg",
   },
   {
-    url: "http://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/zyxel-banner-scaled.jpg",
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/zyxel-banner-scaled.jpg",
   },
 ];
 
@@ -31,7 +31,7 @@ const ShopHeroCarousel = () => {
       <Slider {...settings}>
         {heroImages.map((image, index) => (
           <div key={index}>
-            <img src={image.url} alt="hero" />
+            <img src={image.url} alt="hero" loading="lazy" />
           </div>
         ))}
       </Slider>
