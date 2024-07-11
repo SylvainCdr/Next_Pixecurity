@@ -72,7 +72,7 @@ function Header() {
               Notre expertise
             </Link>
           </li>
-          <li className={pathname === "/contact" ? styles.active : ""}>
+          <li className={pathname === "/partenaires" ? styles.active : ""}>
             <Link href="/partenaires" onClick={handleLinkClick}>
               Nos partenaires
             </Link>

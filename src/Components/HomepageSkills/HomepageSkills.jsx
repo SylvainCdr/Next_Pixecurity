@@ -18,7 +18,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#videoprotection">
-            <i className="fa-solid fa-arrow-right"></i>
+           En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#analyse">
-            <i className="fa-solid fa-arrow-right"></i>
+          En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#access">
-            <i className="fa-solid fa-arrow-right"></i>
+          En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#cloud">
-            <i className="fa-solid fa-arrow-right"></i>
+          En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#network">
-            <i className="fa-solid fa-arrow-right"></i>
+          En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
