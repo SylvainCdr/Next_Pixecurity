@@ -7,7 +7,7 @@ export default function HomepageSkills() {
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills1.jpg"
+          src="assets/homepage/skills1.webp"
           alt=""
         />
         <h3>Vidéoprotection</h3>
@@ -25,7 +25,7 @@ export default function HomepageSkills() {
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills2.jpg"
+          src="assets/homepage/skills2.webp"
           alt=""
         />
         <h3>Analyse d'image</h3>
@@ -43,7 +43,7 @@ export default function HomepageSkills() {
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills3.jpg"
+          src="assets/homepage/skills3.webp"
           alt=""
         />
         <h3>Contrôle d'accès</h3>
@@ -61,7 +61,7 @@ export default function HomepageSkills() {
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills4.jpg"
+          src="assets/homepage/skills4.webp"
           alt=""
         />
         <h3>Cloud et objets connectés</h3>
@@ -80,7 +80,7 @@ export default function HomepageSkills() {
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills5.jpg"
+          src="assets/homepage/skills5.webp"
           alt=""
         />
         <h3>Réseaux SI / Stockage</h3>
@@ -99,7 +99,7 @@ export default function HomepageSkills() {
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
-          src="assets/homepage/skills6.jpg"
+          src="assets/homepage/skills6.webp"
           alt=""
         />
         <h3>Ingénierie</h3>
