@@ -17,6 +17,7 @@ export default function Document() {
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="Pixecurity" />
         <meta name="google-site-verification" content="QvkZATbvD-BmH2iBLbgj5TkwY3U186eXjsvJ8HEsYmk" />
+        <meta name="google-site-verification" content="N873MTUl_TjLc2KnzhdPY9hti3IdxlOYyukQq3DkWYo" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
