@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         {/* Meta Tags for SEO */}
         <meta name="description" content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité." />
-        <meta name="keywords" content="sécurité, solutions de sûreté, protection, surveillance, Pixecurity, france, paris, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til" />
+        <meta name="keywords" content="sécurité, solutions de sûreté, protection, surveillance, Pixecurity, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til" />
         <meta name="author" content="Pixecurity" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Pixecurity - Fournisseur de solutions de sûreté intelligentes" />
