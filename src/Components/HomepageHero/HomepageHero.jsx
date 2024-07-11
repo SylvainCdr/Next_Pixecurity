@@ -8,6 +8,14 @@ export default function HomepageHero() {
     AOS.init({
       duration: 1500,
     });
+
+    // On charge l'image en arrière-plan du hero-right après le chargement de la page
+    const heroRightElement = document.querySelector(`.${styles["hero-right"]}`);
+    const image = new Image();
+    image.src = "/assets/homepage/hero1.jpg";
+    image.onload = () => {
+      heroRightElement.style.backgroundImage = `url(${image.src})`;
+    };
   }, []);
 
   return (
@@ -24,17 +32,17 @@ export default function HomepageHero() {
         </div>
 
         <div className={styles["hero-right"]}>
-          <div className={styles.titles} data-aos="fade-up"data-aos-duration="3000">
-          <h1>
-            Fournisseur de solutions de sûreté intelligentes
-          </h1>
-          <h3 > <strong>
-            Vidéosurveillance, analyse d'image, contrôle d'accès,
-            réseaux/stockage des données, hypervision...</strong>
-          </h3>
+          <div className={styles.titles} data-aos="fade-up" data-aos-duration="3000">
+            <h1>Fournisseur de solutions de sûreté intelligentes</h1>
+            <h3>
+              <strong>
+                Vidéosurveillance, analyse d'image, contrôle d'accès,
+                réseaux/stockage des données, hypervision...
+              </strong>
+            </h3>
           </div>
           <div className={styles.homepageHeroCta}>
-            <Link href="/boutique" >
+            <Link href="/boutique">
               <button className={styles.ctaShop}>Visiter la boutique</button>
             </Link>
             <Link href="/contact">
@@ -59,12 +67,6 @@ export default function HomepageHero() {
               <strong>solutions</strong> sur-mesure, repensant la sécurité selon
               vos besoins.
             </p>
-            {/* <div data-aos="zoom-in" className={styles.icons}>
-            <img src="../assets/icons/ico3.png" alt="" />
-            <img src="../assets/icons/ico2.png" alt="" />
-            <img src="../assets/icons/ico1.png" alt="" />
-            <img src="../assets/icons/ico4.png" alt="" />
-          </div> */}
           </div>
         </div>
       </div>

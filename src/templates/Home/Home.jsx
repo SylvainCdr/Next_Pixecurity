@@ -28,7 +28,8 @@ export default function Home() {
           name="keywords"
           content="Pixecurity, sûreté 3.0, BTP, réseaux, technologies du bâtiment, conformité, cybersécurité"
         />
-        {/* Autres balises meta spécifiques à la page d'accueil si nécessaires */}
+
+
       </Head>
 
       <div className={styles["homepage-container"]}>
