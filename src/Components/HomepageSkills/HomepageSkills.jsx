@@ -4,14 +4,14 @@ import Link from "next/link";
 
 export default function HomepageSkills() {
   // On charge les images des card skills après le chargement de la page
-  const skillsCards = document.querySelectorAll(`.${styles["skills-card"]}`);
-  skillsCards.forEach((card) => {
-    const image = new Image();
-    image.src = card.querySelector("img").src;
-    image.onload = () => {
-      card.style.backgroundImage = `url(${image.src})`;
-    };
-  });
+  // const skillsCards = document.querySelectorAll(`.${styles["skills-card"]}`);
+  // skillsCards.forEach((card) => {
+  //   const image = new Image();
+  //   image.src = card.querySelector("img").src;
+  //   image.onload = () => {
+  //     card.style.backgroundImage = `url(${image.src})`;
+  //   };
+  // });
 
   return (
     <div className={styles["skills-container"]}>
