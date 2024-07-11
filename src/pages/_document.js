@@ -16,6 +16,7 @@ export default function Document() {
         <meta property="og:image" content="http://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="Pixecurity" />
+        <meta name="google-site-verification" content="QvkZATbvD-BmH2iBLbgj5TkwY3U186eXjsvJ8HEsYmk" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
