@@ -3,13 +3,20 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 
 export default function HomepageSkills() {
+  // On charge les images des card skills après le chargement de la page
+  const skillsCards = document.querySelectorAll(`.${styles["skills-card"]}`);
+  skillsCards.forEach((card) => {
+    const image = new Image();
+    image.src = card.querySelector("img").src;
+    image.onload = () => {
+      card.style.backgroundImage = `url(${image.src})`;
+    };
+  });
+
   return (
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
-          src="assets/homepage/skills1.webp"
-          alt="Videoprotection"
-        />
+        <img src="assets/homepage/skills1.webp" alt="Videoprotection" />
         <h3>Vidéoprotection</h3>
         <p>
           L'analyse d'image doit permettre de gagner du temps et de simplifier
@@ -18,16 +25,13 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#videoprotection">
-           En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
-          src="assets/homepage/skills2.webp"
-          alt="Analyse d'image"
-        />
+        <img src="assets/homepage/skills2.webp" alt="Analyse d'image" />
         <h3>Analyse d'image</h3>
         <p>
           Protections des biens et des personnes, levée de doutes et bien plus
@@ -36,16 +40,13 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#analyse">
-          En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
-          src="assets/homepage/skills3.webp"
-          alt="Contrôle d'accès"
-        />
+        <img src="assets/homepage/skills3.webp" alt="Contrôle d'accès" />
         <h3>Contrôle d'accès</h3>
         <p>
           Suivi, gestion, traçabilité, protection des personnes. Pixecurity
@@ -54,7 +55,7 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#access">
-          En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -73,16 +74,13 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#cloud">
-          En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
-          src="assets/homepage/skills5.webp"
-          alt=" Réseaux SI / Stockage"
-        />
+        <img src="assets/homepage/skills5.webp" alt=" Réseaux SI / Stockage" />
         <h3>Réseaux SI / Stockage</h3>
         <p>
           Le traitement, le transport et l'exploitation doivent être garantis
@@ -92,16 +90,13 @@ export default function HomepageSkills() {
         </p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#network">
-          En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
-          src="assets/homepage/skills6.webp"
-          alt=" Ingénierie"
-        />
+        <img src="assets/homepage/skills6.webp" alt=" Ingénierie" />
         <h3>Ingénierie</h3>
         <p>
           Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau

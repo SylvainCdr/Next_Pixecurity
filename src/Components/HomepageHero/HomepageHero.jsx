@@ -22,7 +22,7 @@ export default function HomepageHero() {
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
         <div className={styles["hero-left"]}>
-          <h4 data-aos="fade-right" >
+          <h4 data-aos="fade-right">
             Smarter. <br /> Safer.
           </h4>
         </div>
