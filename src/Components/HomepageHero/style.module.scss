@@ -207,7 +207,6 @@
   .homepageHero-container {
     .section1 {
       height: 50vh;
-      background-image: url("../../../public/assets/homepage/hero1-mobile.webp");
       .hero-left {
         h4 {
           font-size: 2.2em;
@@ -215,8 +214,9 @@
           margin-left: 10%;
         }
       }
-
+      
       .hero-right {
+        background-image: url("../../../public/assets/homepage/hero1-mobile.webp");
         .titles {
           top: 25%;
           left: 10%;

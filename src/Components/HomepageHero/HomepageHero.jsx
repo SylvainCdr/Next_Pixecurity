@@ -22,17 +22,17 @@ export default function HomepageHero() {
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
         <div className={styles["hero-left"]}>
-          <h4
-            data-aos="fade-right"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="1500"
-          >
+          <h4 data-aos="fade-right" >
             Smarter. <br /> Safer.
           </h4>
         </div>
 
         <div className={styles["hero-right"]}>
-          <div className={styles.titles} data-aos="fade-up" data-aos-duration="3000">
+          <div
+            className={styles.titles}
+            data-aos="fade-up"
+            data-aos-duration="3000"
+          >
             <h1>Fournisseur de solutions de sûreté intelligentes</h1>
             <h3>
               <strong>
