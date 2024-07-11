@@ -21,7 +21,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Pixecurity - Fournisseur de solutions de sûreté intelligentes" />
         <meta name="twitter:description" content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité." />
-        <meta name="twitter:image" content="http://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
+        <meta name="twitter:image" content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
         <meta name="twitter:site" content="@pixecurity" />
 
         
@@ -30,7 +30,7 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Favicon for the tab */}
-        <link rel="icon" href="http://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
+        <link rel="icon" href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
 
         {/* External Stylesheets */}
         <link
