@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./style.module.scss";
 import AOS from "aos";
+import Head from "next/head";
 
 function Expertise() {
   useEffect(() => {
@@ -10,6 +11,21 @@ function Expertise() {
   }, []);
 
   return (
+
+    <>
+    <Head>
+      <title>Notre Expertise - Pixecurity</title>
+      <meta
+        name="description"
+        content="Découvrez l'expertise de Pixecurity dans le domaine de la sûreté, de la vidéoprotection, de l'analyse d'image, du contrôle d'accès, du cloud et des réseaux. Des solutions sur mesure pour assurer votre sécurité."
+      />
+      <meta
+        name="keywords"
+        content="expertise, sûreté, vidéoprotection, analyse d'image, contrôle d'accès, cloud, réseaux, sécurité, Pixecurity, solutions de sûreté, caméras, thermiques, sécurité électronique, ANSSI, full-cloud, 5G, stockage, réseau, cyber-sécurité"
+      />
+      <meta name="author" content="Pixecurity" />
+      {/* Autres balises meta spécifiques à cette page si nécessaire */}
+    </Head>
     <div className={styles["expertise-container"]}>
       {/* <h1>Des experts avant tout</h1> */}
 
@@ -298,7 +314,7 @@ function Expertise() {
         </div>
       </div>
     </div>
+</>
   );
 }
-
 export default Expertise;

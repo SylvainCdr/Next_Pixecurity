@@ -6,6 +6,7 @@ import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Import des styles d'AOS
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
+import Head from "next/head";
 
 function Catalogue({ products }) {
   const carouselProducts = products?.filter(
@@ -18,6 +19,22 @@ function Catalogue({ products }) {
 
   return (
     <div className={styles["shop-container"]}>
+      <Head>
+        <title>
+          Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle
+          d'accès, réseaux/stockage des données, hypervision...{" "}
+        </title>
+        <meta
+          name="description"
+          content="Découvrez notre catalogue de produits chez Pixecurity Boutique. Nous offrons des caméras de surveillance, des équipements réseau, des logiciels et plus encore pour répondre à vos besoins en sécurité."
+        />
+        <meta
+          name="keywords"
+          content="catalogue, produits, Pixecurity, Boutique, caméras, surveillance, équipements réseau, logiciels, sécurité, Vivotek, Bosch, Zyxel, I-Pro, Milestone, Til Technologies, Cisco, Comnet, Vuwall, Briefcam, Technoaware"
+        />
+        <meta name="author" content="Pixecurity" />
+      </Head>
+
       <ShopNav />
       <ShopSearch />
 

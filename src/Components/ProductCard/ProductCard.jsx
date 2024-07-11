@@ -8,6 +8,7 @@ import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
 import { useCartContext } from "@/Components/cartContext";
+import Head from "next/head";
 
 function ProductCard({ product }) {
   useEffect(() => {
@@ -23,6 +24,12 @@ function ProductCard({ product }) {
 
   return (
     <div className={styles["product-card"]}>
+      <Head>
+        <meta property="og:title" content={product.name} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.image} />
+        {/* Add more OG meta tags as needed */}
+      </Head>
       <Link
         href={`/boutique/produit/${product._id}${userId ? `?userId=${userId}` : ""}`}
         style={{ textDecoration: "none" }}
@@ -64,7 +71,9 @@ function DiscountBadge({ product }) {
   if (!product?.pourcentageDiscount) return null;
 
   return (
-    <p className={styles["discount-badge"]} data-aos="zoom-in-up">-{product.pourcentageDiscount}%</p>
+    <p className={styles["discount-badge"]} data-aos="zoom-in-up">
+      -{product.pourcentageDiscount}%
+    </p>
   );
 }
 
@@ -72,7 +81,9 @@ function Prices({ product }) {
   if (product.price && product?.discountPrice) {
     return (
       <div className={styles["card-prices"]}>
-        <p className={styles["original-price"]}>{product.price.toFixed(2)} € </p>
+        <p className={styles["original-price"]}>
+          {product.price.toFixed(2)} €{" "}
+        </p>
         <p className={styles["discounted-price"]}>
           {product.discountPrice.toFixed(2)} € <span>HT</span>{" "}
         </p>
@@ -168,18 +179,16 @@ function ButtonAddToCart({ product }) {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        title:
+          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
         showConfirmButton: true,
       });
     }
   };
 
   return (
-    <button
-      className={styles.cart}
-      onClick={handleAddToCart}
-    >
-      <i className="fa-solid fa-cart-plus" data-aos="zoom-in"/>
+    <button className={styles.cart} onClick={handleAddToCart}>
+      <i className="fa-solid fa-cart-plus" data-aos="zoom-in" />
     </button>
   );
 }

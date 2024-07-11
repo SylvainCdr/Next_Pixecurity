@@ -10,6 +10,7 @@ import styles from "./style.module.scss";
 import ShopNav from "@/Components/ShopNav/ShopNav";
 import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ProductCard from "@/Components/ProductCard/ProductCard";
+import Head from "next/head";
 
 export default function Product({ product, id, suggestions }) {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
@@ -124,6 +125,12 @@ export default function Product({ product, id, suggestions }) {
 
   return (
     <div className={styles["product-container"]}>
+             <Head>
+        <meta property="og:title" content={product.name} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.image} />
+        {/* Add more OG meta tags as needed */}
+      </Head>
       <ShopNav />
       <ShopSearch />
 

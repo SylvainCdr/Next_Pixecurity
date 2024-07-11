@@ -3,6 +3,7 @@ import styles from "./style.module.scss";
 import { partners } from "../../Components/HomepagePartners/PartnersData";
 import AOS from "aos";
 import Link from "next/link";
+import Head from "next/head";
 
 const Partners = () => {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
@@ -36,7 +37,28 @@ const Partners = () => {
   };
 
   return (
+
+
+    
     <div className={styles["partners-container"]}>
+
+
+
+<Head>
+        <title>Nos partenaires - Pixecurity</title>
+        <meta
+          name="description"
+          content="Découvrez nos partenaires de confiance, leaders mondiaux en sécurité et surveillance. Pixecurity collabore avec des entreprises innovantes pour vous offrir les meilleures solutions de sécurité."
+        />
+        {/* Ajoutez d'autres balises meta au besoin */}
+        <meta 
+        name = "keywords"
+        content = "partenaires, sécurité, surveillance, solutions, Pixecurity, surveillance IP, gestion vidéo,  contrôle d'accès, tranquillité d'esprit, galerie, entreprises, produits, sécurité de haute qualité, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware " 
+        />
+      </Head>
+
+    
+
       <div className={styles["partners-section1"]}>
         <div className={styles["partners-intro"]}>
           <h1>Nos partenaires</h1>
@@ -113,7 +135,7 @@ const Partners = () => {
         </div>
       ))}
     </div>
+  
   );
 };
-
 export default Partners;
