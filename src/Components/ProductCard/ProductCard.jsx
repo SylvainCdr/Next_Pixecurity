@@ -27,7 +27,7 @@ function ProductCard({ product }) {
       <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={product.image} />
+        <meta property="og:image" content={product.image}  />
         {/* Add more OG meta tags as needed */}
       </Head>
       <Link
@@ -43,6 +43,7 @@ function ProductCard({ product }) {
             src={`${BASE_URL}${product.image}`}
             alt=""
             className={styles["product-img"]}
+            loading="lazy"
           />
         )}
         <h2 className={styles["card-title"]}>{product.name}</h2>
@@ -52,6 +53,7 @@ function ProductCard({ product }) {
               src={brandLogo.logo}
               alt={brandLogo.name}
               className={styles["brand-logo"]}
+              loading="lazy"
             />
           )}
         </div>
