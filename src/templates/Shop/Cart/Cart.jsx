@@ -102,6 +102,7 @@ function CartItem({ cart }) {
               : `${BASE_URL}${product.image}`
           }
           alt={product.name}
+          loading="lazy"
         />
       </div>
       <div className={styles["product-details"]}>

@@ -53,7 +53,7 @@ function Header() {
       <nav className={styles.header__nav}>
         <div className={styles.header__logo}>
           <Link href="/">
-            <img src="/assets/logo-dark.svg" alt="logo" />
+            <img src="/assets/logo-dark.svg" alt="Logo Pixecurity" />
           </Link>
         </div>
 
