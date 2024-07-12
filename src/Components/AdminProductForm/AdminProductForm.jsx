@@ -784,7 +784,7 @@ export default function AdminProductForm({ onSubmit, productToEdit }) {
             value={detailsDebitVpn}
             onChange={(e) => setDetailsDebitVpn(e.target.value)}
           />
-          <label htmlFor="detailsMaxTcp">Max. sesions simultanées TCP</label>
+          <label htmlFor="detailsMaxTcp">Max. sessions simultanées TCP</label>
           <input
             type="text"
             name="detailsMaxTcp"

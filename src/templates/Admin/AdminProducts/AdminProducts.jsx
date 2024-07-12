@@ -3,6 +3,7 @@ import styles from "./style.module.scss";
 import Swal from "sweetalert2";
 import AdminProductForm from "../../../Components/AdminProductForm/AdminProductForm";
 import { BASE_URL } from "../../../url";
+import Link from "next/link";
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -239,9 +240,12 @@ export default function AdminProducts() {
                     {/* <td>{product.name}</td>
                   // lien vers la page produit */}
                     <td>
-                      <a href={`${BASE_URL}/boutique/produit/${product._id}`}>
+                      {/* <Link href={`${BASE_URL}/boutique/produit/${product._id}`}>
                         {product.name}
-                      </a>
+                      </Link> */}
+                      <Link href={`/boutique/produit/${product._id}`}>
+                        {product.name}
+                      </Link>
                     </td>
                     <td>{product.ref}</td>
                     <td>{product.category}</td>
