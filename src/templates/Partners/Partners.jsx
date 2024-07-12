@@ -22,10 +22,13 @@ const Partners = () => {
 
   // Map each domain to an image URL
   const domainImages = {
-    "Vidéoprotection": "https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=2108&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "VMS": "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "Réseaux": "https://images.unsplash.com/photo-1452696193712-6cabf5103b63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "Contrôle d'accès": "https://images.unsplash.com/photo-1444738720667-27446e3f293d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    Vidéoprotection:
+      "https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=2108&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    VMS: "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    Réseaux:
+      "https://images.unsplash.com/photo-1452696193712-6cabf5103b63?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Contrôle d'accès":
+      "https://images.unsplash.com/photo-1444738720667-27446e3f293d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     // Add other domains and their corresponding images here
   };
 
@@ -37,37 +40,31 @@ const Partners = () => {
   };
 
   return (
-
-
-    
     <div className={styles["partners-container"]}>
-
-
-
-<Head>
+      <Head>
         <title>Nos partenaires - Pixecurity</title>
         <meta
           name="description"
           content="Découvrez nos partenaires de confiance, leaders mondiaux en sécurité et surveillance. Pixecurity collabore avec des entreprises innovantes pour vous offrir les meilleures solutions de sécurité."
         />
         {/* Ajoutez d'autres balises meta au besoin */}
-        <meta 
-        name = "keywords"
-        content = "partenaires, sécurité, surveillance, solutions, Pixecurity, surveillance IP, gestion vidéo,  contrôle d'accès, tranquillité d'esprit, galerie, entreprises, produits, sécurité de haute qualité, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware " 
+        <meta
+          name="keywords"
+          content="partenaires, sécurité, surveillance, solutions, Pixecurity, surveillance IP, gestion vidéo,  contrôle d'accès, tranquillité d'esprit, galerie, entreprises, produits, sécurité de haute qualité, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware "
         />
       </Head>
-
-    
 
       <div className={styles["partners-section1"]}>
         <div className={styles["partners-intro"]}>
           <h1>Nos partenaires</h1>
-          <h2>Découvrez nos partenaires de confiance, leaders mondiaux en sécurité
-            et surveillance.</h2>
+          <h2>
+            Découvrez nos partenaires de confiance, leaders mondiaux en sécurité
+            et surveillance.
+          </h2>
           <p>
-             Chez Pixecurity, nous nous engageons à vous fournir
-            les meilleures solutions disponibles, grâce à des collaborations
-            avec des entreprises innovantes et réputées.
+            Chez Pixecurity, nous nous engageons à vous fournir les meilleures
+            solutions disponibles, grâce à des collaborations avec des
+            entreprises innovantes et réputées.
           </p>
           <p>
             Chaque partenaire apporte son expertise et ses technologies de
@@ -93,9 +90,15 @@ const Partners = () => {
       {Object.keys(groupedPartners).map((domain, domainIndex) => (
         <div key={domainIndex} className={styles["domain-title"]}>
           <h2>{domain}</h2>
-          <img src={domainImages[domain]} className={styles.domainImg} alt={domain} loading="lazy"/>
+          <img
+            src={domainImages[domain]}
+            className={styles.domainImg}
+            alt={domain}
+            loading="lazy"
+          />
           {groupedPartners[domain].map((partner, partnerIndex) => {
-            const isExpanded = expandedDescriptions[`${domainIndex}-${partnerIndex}`];
+            const isExpanded =
+              expandedDescriptions[`${domainIndex}-${partnerIndex}`];
             const description = partner.description;
             const shortDescription = description.slice(0, 300);
 
@@ -120,14 +123,16 @@ const Partners = () => {
                     {description.length > 100 && (
                       <span
                         className={styles["toggle-description"]}
-                        onClick={() => toggleDescription(`${domainIndex}-${partnerIndex}`)}
+                        onClick={() =>
+                          toggleDescription(`${domainIndex}-${partnerIndex}`)
+                        }
                       >
                         {isExpanded ? " moins" : " plus"}
                       </span>
                     )}
                   </p>
                   <Link href={partner.website} target="_blank" rel="noreferrer">
-                    en savoir plus 
+                    en savoir plus
                   </Link>
                 </div>
               </div>
@@ -136,7 +141,6 @@ const Partners = () => {
         </div>
       ))}
     </div>
-  
   );
 };
 export default Partners;

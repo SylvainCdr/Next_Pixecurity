@@ -1,5 +1,5 @@
 .shop_hero_carousel_container {
-  width: 97%;
+  width: 95%;
   margin: auto;
 
   img {
@@ -10,9 +10,16 @@
 }
 // media queries
 
+@media (max-width: 900px) {
+  .shop_hero_carousel_container {
+    width: 90%;
+    margin: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .shop_hero_carousel_container {
-    width: 85%;
+    width: 82%;
     margin: auto;
   }
 }
