@@ -34,6 +34,8 @@ export default function Document() {
 
         {/* Preloading critical images */}
         <link rel="preload" as="image" href="/assets/homepage/hero1.webp" />
+        <link rel="preload" as="image" href="/assets/cube3(1).webp" />
+        <link rel="preload" as="image" href="/assets/cube4.jpg" />
         <link rel="preload" as="image" href="/assets/homepage/hero2.webp" />
 
         {/* External Stylesheets */}
