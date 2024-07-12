@@ -93,7 +93,7 @@ const Partners = () => {
       {Object.keys(groupedPartners).map((domain, domainIndex) => (
         <div key={domainIndex} className={styles["domain-title"]}>
           <h2>{domain}</h2>
-          <img src={domainImages[domain]} className={styles.domainImg} alt={domain} />
+          <img src={domainImages[domain]} className={styles.domainImg} alt={domain} loading="lazy"/>
           {groupedPartners[domain].map((partner, partnerIndex) => {
             const isExpanded = expandedDescriptions[`${domainIndex}-${partnerIndex}`];
             const description = partner.description;
@@ -110,6 +110,7 @@ const Partners = () => {
                       data-aos="zoom-in"
                       src={partner.logo}
                       alt={partner.name}
+                      loading="lazy"
                     />
                   </a>
                 </div>

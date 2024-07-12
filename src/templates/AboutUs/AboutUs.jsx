@@ -50,6 +50,7 @@ export default function AboutUs() {
               <img
                 src="https://as2.ftcdn.net/v2/jpg/05/73/57/23/1000_F_573572330_EFcB1C8z5wcthD2H8MjUKFVmBrN9wVdT.jpg"
                 alt=""
+                loading="lazy"
               />
             </div>
             <h2>BTP</h2>
@@ -68,6 +69,7 @@ export default function AboutUs() {
               <img
                 src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
+                loading="lazy"
               />
             </div>
             <h2>Électronique appliquée</h2>
@@ -86,6 +88,7 @@ export default function AboutUs() {
               <img
                 src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
+                loading="lazy"
               />
             </div>
             <h2>IT</h2>
@@ -122,35 +125,35 @@ export default function AboutUs() {
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Kenza GAUTIAM</h2>
                 <p>Commerciale</p>
-                <img alt="Kenza GAUTIAM" src="assets/team/KENZA.jpeg" />
+                <img alt="Kenza GAUTIAM" src="assets/team/KENZA.jpeg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Fabien THOMAS</h2>
                 <p>Brand Manager</p>
-                <img alt="Fabien THOMAS" src="assets/team/FABIEN.jpg" />
+                <img alt="Fabien THOMAS" src="assets/team/FABIEN.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Anaelle Souhaut</h2>
                 <p>Chargée d'affaires</p>
-                <img alt="Fabien THOMAS" src="assets/team/ANAELLE.jpg" />
+                <img alt="Fabien THOMAS" src="assets/team/ANAELLE.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Fabrice VALLEE</h2>
                 <p>Commercial grands comptes</p>
-                <img alt="Fabrice VALLEE" src="assets/team/FABRICE.jpg" />
+                <img alt="Fabrice VALLEE" src="assets/team/FABRICE.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Yanis MEBARKI</h2>
                 <p>Commercial</p>
-                <img alt="Yanis MEBARKI" src="assets/team/YANNIS.jpg" />
+                <img alt="Yanis MEBARKI" src="assets/team/YANNIS.jpg" loading="lazy"/>
               </div>
             </li>
 
@@ -158,14 +161,14 @@ export default function AboutUs() {
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
                 <p>Chargée d'étude avant-vente</p>
-                <img alt="Dyhia LAGA" src="assets/team/DYHIA.jpg" />
+                <img alt="Dyhia LAGA" src="assets/team/DYHIA.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Jessica FILIALI</h2>
                 <p>Assistante de direction</p>
-                <img alt="Jessica FILIALI" src="assets/team/JESSICA.jpg" />
+                <img alt="Jessica FILIALI" src="assets/team/JESSICA.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
@@ -175,7 +178,7 @@ export default function AboutUs() {
                 <img
                   alt="Abdulrhaman SHOUGRI"
                   src="assets/team/ABDULRAHMAN.jpg"
-                />
+                loading="lazy"/>
               </div>
             </li>
 
@@ -183,70 +186,70 @@ export default function AboutUs() {
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Élodie TENEUR</h2>
                 <p>Technicienne supérieure Systèmes & Réseaux</p>
-                <img alt="Élodie TENEUR" src="assets/team/ELODIE.jpg" />
+                <img alt="Élodie TENEUR" src="assets/team/ELODIE.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Miriem BOUSSAHA</h2>
                 <p>Développeuse</p>
-                <img alt="Anaelle SOUHAUT" src="assets/team/MIRIEM.jpg" />
+                <img alt="Anaelle SOUHAUT" src="assets/team/MIRIEM.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Alexis OTTINA</h2>
                 <p>Développeur</p>
-                <img alt="Alexis OTTINA" src="assets/team/ALEXIS.jpg" />
+                <img alt="Alexis OTTINA" src="assets/team/ALEXIS.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
                 <p>Développeur</p>
-                <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" />
+                <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
                 <p>Assistante de direction</p>
-                <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" />
+                <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Yasmina AOUAM</h2>
                 <p>Chargée d'étude avant-vente</p>
-                <img alt="Yasmina AOUAM" src="assets/team/YASMINA.jpg" />
+                <img alt="Yasmina AOUAM" src="assets/team/YASMINA.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Alex HUBERT</h2>
                 <p>Développeur</p>
-                <img alt="Alex HUBERT" src="assets/team/ALEX.jpg" />
+                <img alt="Alex HUBERT" src="assets/team/ALEX.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
                 <p>Développeur</p>
-                <img alt="Sylvain CADORET" src="assets/team/SYLVAIN.jpg" />
+                <img alt="Sylvain CADORET" src="assets/team/SYLVAIN.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Michael GONFIER</h2>
                 <p>Technicien Systèmes & Réseaux</p>
-                <img alt="Michael GONFIER" src="assets/team/MICHAEL.jpg" />
+                <img alt="Michael GONFIER" src="assets/team/MICHAEL.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>David LEPAGE</h2>
                 <p>Chargé d'affaires des projets transports</p>
-                <img alt="David LEPAGE" src="assets/team/DAVID.jpg" />
+                <img alt="David LEPAGE" src="assets/team/DAVID.jpg" loading="lazy"/>
               </div>
             </li>
             {/* <li>

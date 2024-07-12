@@ -102,7 +102,7 @@ export default function Product({ product, id, suggestions }) {
 
   const handleAddToCartClick = async () => {
     if (userId) {
-      await addToCart(product, quantity);  // Assurez-vous que `product` et `quantity` sont correctement passés
+      await addToCart(product, quantity); // Assurez-vous que `product` et `quantity` sont correctement passés
       Swal.fire({
         icon: "success",
         title: "Produit ajouté au panier avec succès!",
@@ -112,12 +112,12 @@ export default function Product({ product, id, suggestions }) {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        title:
+          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
         showConfirmButton: true,
       });
     }
   };
-  
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -125,7 +125,7 @@ export default function Product({ product, id, suggestions }) {
 
   return (
     <div className={styles["product-container"]}>
-             <Head>
+      <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
@@ -149,6 +149,7 @@ export default function Product({ product, id, suggestions }) {
                   : `${BASE_URL}${product.image}`
               }
               alt={product.name}
+              loading="lazy"
             />
             <p
               className={styles.like}
@@ -170,6 +171,7 @@ export default function Product({ product, id, suggestions }) {
                 src={brandLogo.logo}
                 alt={product.brand}
                 className={styles["brand-logo"]}
+                loading="lazy"
               />
             ) : (
               <p className={styles["brand-logo"]}>{product.brand}</p>
@@ -279,7 +281,9 @@ const DiscountedPrice = ({ product }) => {
   if (product.price && product.discountPrice)
     return (
       <p className={styles.prices}>
-        <span className={styles["original-price"]}>{product.price.toFixed(2)} €</span>
+        <span className={styles["original-price"]}>
+          {product.price.toFixed(2)} €
+        </span>
         <span className={styles["discounted-price"]}>
           {product.discountPrice.toFixed(2)} € <span> HT</span>
         </span>

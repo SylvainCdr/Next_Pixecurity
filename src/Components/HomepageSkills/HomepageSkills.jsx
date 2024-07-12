@@ -3,12 +3,14 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 
 export default function HomepageSkills() {
-
-
   return (
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img src="assets/homepage/skills1.webp" alt="Videoprotection" />
+        <img
+          src="assets/homepage/skills1.webp"
+          alt="Videoprotection"
+          loading="lazy"
+        />
         <h3>Vidéoprotection</h3>
         <p>
           L'analyse d'image doit permettre de gagner du temps et de simplifier
@@ -23,7 +25,11 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img src="assets/homepage/skills2.webp" alt="Analyse d'image" />
+        <img
+          src="assets/homepage/skills2.webp"
+          alt="Analyse d'image"
+          loading="lazy"
+        />
         <h3>Analyse d'image</h3>
         <p>
           Protections des biens et des personnes, levée de doutes et bien plus
@@ -38,7 +44,11 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img src="assets/homepage/skills3.webp" alt="Contrôle d'accès" />
+        <img
+          src="assets/homepage/skills3.webp"
+          alt="Contrôle d'accès"
+          loading="lazy"
+        />
         <h3>Contrôle d'accès</h3>
         <p>
           Suivi, gestion, traçabilité, protection des personnes. Pixecurity
@@ -56,6 +66,7 @@ export default function HomepageSkills() {
         <img
           src="assets/homepage/skills4.webp"
           alt=" Cloud et objets connectés"
+          loading="lazy"
         />
         <h3>Cloud et objets connectés</h3>
         <p>
@@ -72,7 +83,11 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img src="assets/homepage/skills5.webp" alt=" Réseaux SI / Stockage" />
+        <img
+          src="assets/homepage/skills5.webp"
+          alt=" Réseaux SI / Stockage"
+          loading="lazy"
+        />
         <h3>Réseaux SI / Stockage</h3>
         <p>
           Le traitement, le transport et l'exploitation doivent être garantis
@@ -88,7 +103,11 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img src="assets/homepage/skills6.webp" alt=" Ingénierie" />
+        <img
+          src="assets/homepage/skills6.webp"
+          alt=" Ingénierie"
+          loading="lazy"
+        />
         <h3>Ingénierie</h3>
         <p>
           Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau

@@ -76,6 +76,7 @@ function Expertise() {
             <img
               src="./assets/expertise/cam1.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Caméras visibles</h4>
             <h3>La caméra tout-terrain </h3>
@@ -92,6 +93,7 @@ function Expertise() {
             <img
               src="./assets/expertise/cam2.png"
               alt=""
+              loading="lazy"
             />
             <h4>Caméras Thermiques</h4>
             <h3>Augmenter les contrastes</h3>
@@ -108,6 +110,7 @@ function Expertise() {
             <img
               src="./assets/expertise/cam3.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Caméras spécifiques</h4>
             <h3>A chaque situation sa caméra</h3>
@@ -126,6 +129,7 @@ function Expertise() {
             <img
               src="./assets/expertise/ana1.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Solutions d'analyse en temps réel</h4>
             <h3>Augmentez l'intelligence</h3>
@@ -140,6 +144,7 @@ function Expertise() {
             <img
               src="./assets/expertise/ana2.png"
               alt=""
+              loading="lazy"
             />
             <h4>Solutions d'analyse a posteriori</h4>
             <h3>Gagnez du temps</h3>
@@ -154,6 +159,7 @@ function Expertise() {
             <img
               src="./assets/expertise/ana3.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Analyse et Business Intelligence</h4>
             <h3>Allez plus loin</h3>
@@ -172,6 +178,7 @@ function Expertise() {
             <img
               src="./assets/expertise/con1.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Gestion des portes et des accès</h4>
             <h3>Un contrôle d'accès VIP</h3>
@@ -186,6 +193,7 @@ function Expertise() {
             <img
               src="./assets/expertise/con2.png"
               alt=""
+              loading="lazy"
             />
             <h4>Architecture sécurisée (ANSSI)</h4>
             <h3>Gagnez du temps</h3>
@@ -200,6 +208,7 @@ function Expertise() {
             <img
               src="./assets/expertise/con3.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Solution Full-integrée (Hypervision)</h4>
             <h3>Une solution unique</h3>
@@ -219,6 +228,7 @@ function Expertise() {
             <img
               src="./assets/expertise/clou1.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Solutions de sureté full-cloud</h4>
             <h3>Une architecture vidéo et contrôle d'accès full-cloud</h3>
@@ -235,6 +245,7 @@ function Expertise() {
             <img
               src="./assets/expertise/clou2.png"
               alt=""
+              loading="lazy"
             />
             <h4>Gestion de projet Pixecurity en full-cloud</h4>
             <h3>Pixplatform</h3>
@@ -250,6 +261,7 @@ function Expertise() {
             <img
               src="./assets/expertise/clou3.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Objets connectés</h4>
             <h3>Données et rapidité</h3>
@@ -270,6 +282,7 @@ function Expertise() {
             <img
               src="./assets/expertise/rese1.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Réseaux</h4>
             <h3>Un savoir-faire à la française</h3>
@@ -287,6 +300,7 @@ function Expertise() {
             <img
               src="./assets/expertise/rese2.png"
               alt=""
+              loading="lazy"
             />
             <h4>Systèmes d'Information</h4>
             <h3>L'environnement c'est vous</h3>
@@ -301,6 +315,7 @@ function Expertise() {
             <img
               src="./assets/expertise/rese3.jpg"
               alt=""
+              loading="lazy"
             />
             <h4>Stockage</h4>
             <h3>Vers l'infini et le Peta</h3>
