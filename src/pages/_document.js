@@ -42,8 +42,6 @@ export default function Document() {
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha384-NqDf0VVYmoTH5A65My5Okpn7B3ujAoaZpv5OwK3fj8x5F48L0tszY3/MlJHTaS0W"
-          crossorigin="anonymous"
         />
         <link href="https://fonts.cdnfonts.com/css/barlow" rel="stylesheet" />
         <link
