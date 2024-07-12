@@ -126,6 +126,15 @@ export default function Product({ product, id, suggestions }) {
   return (
     <div className={styles["product-container"]}>
       <Head>
+        <title>{product.name} - Pixecurity</title>
+        <meta
+          name="description"
+          content={product.description}
+        />
+        <meta
+          name="keywords"
+          content="caméra, surveillance, sécurité, vidéo, videoprotection, analyse d'image, intelligente, IA, IP, HD, 4K, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware"
+        />
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
