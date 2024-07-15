@@ -14,7 +14,7 @@ export default function HomepagePartners() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={partner.logo} alt={partner.name} loading="lazy"/>
+            <img src={partner.logo} alt={partner.name} loading="lazy" />
           </a>
         ))}
       </div>
