@@ -92,12 +92,12 @@ export default function Register() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.errors) {
-          setErrors(data.errors);
+        if (data.error) {
+          setErrors([data.error]);
           Swal.fire({
             icon: "error",
             title: "Erreur d'inscription",
-            text: "Veuillez vérifier le formulaire et réessayer.",
+            text: data.error,
           });
         } else {
           setErrors(null);
@@ -214,7 +214,7 @@ export default function Register() {
           <p>Erreur(s) de validation :</p>
           <ul>
             {errors.map((error, index) => (
-              <li key={index}>{error.msg}</li>
+              <li key={index}>{error}</li>
             ))}
           </ul>
         </div>

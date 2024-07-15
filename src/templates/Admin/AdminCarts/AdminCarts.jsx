@@ -5,17 +5,17 @@ import { BASE_URL } from "@/url";
 import { useRouter } from "next/router";
 
 export default function AdminCarts() {
-  const [allCarts, setAllCarts] = useState([]);
+  const [groupedCarts, setGroupedCarts] = useState([]);
   const [selectedCart, setSelectedCart] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const router = useRouter(); // Corrected here
+  const router = useRouter();
 
   // Fetch all carts from the server
   useEffect(() => {
-    fetch(`${BASE_URL}/all-carts`)
+    fetch(`${BASE_URL}/carts`)
       .then((response) => response.json())
       .then((data) => {
-        setAllCarts(data);
+        setGroupedCarts(data);
       })
       .catch((error) => {
         console.error("Error fetching carts:", error);
@@ -33,16 +33,17 @@ export default function AdminCarts() {
   };
 
   const handleEditClick = (cart) => {
-    router.push(`/admin/paniers/modification/${cart.userId}`);
+    router.push(`/admin/paniers/modification/${cart._id}`);
   };
 
   return (
     <div className={styles["adminCarts-container"]}>
-      <h1>Paniers en cours </h1>
+      <h1>Paniers en cours</h1>
       <div className={styles["carts-list"]}>
         <table>
           <thead>
             <tr>
+              <th>Cart ID</th>
               <th>Client</th>
               <th>Produit(s)</th>
               <th>Quantité</th>
@@ -54,55 +55,35 @@ export default function AdminCarts() {
             </tr>
           </thead>
           <tbody>
-            {allCarts
-              .filter((cart) => cart.cart.length > 0) // Filter out empty carts
-              .map((cart) => (
-                <tr key={cart.userId}>
-                  <td>{cart.username}</td>
-                  <td>{cart.cart.map((product) => product.name).join(", ")}</td>
-                  <td>
-                    {cart.cart.map((product) => product.quantity).join(" - ")}
-                  </td>
-                  <td>
-                    {cart.cart.map((product) => product.price).join("€ - ")}€{" "}
-                  </td>
-                  <td>
-                    {cart.cart
-                      .map((product) => product.price * product.quantity)
-                      .reduce((acc, curr) => acc + curr, 0)}
-                    €
-                  </td>
-                  <td>
-                    {cart.cart.length > 0
-                      ? new Date(
-                          cart.cart.reduce((latest, product) => {
-                            const productDate = new Date(product.created);
-                            return productDate > latest ? productDate : latest;
-                          }, new Date(0))
-                        ).toLocaleDateString("fr-FR")
-                      : "Aucune date"}
-                  </td>
+            {groupedCarts.map((group) =>
+              group.carts.map((cart) => (
+                <tr key={cart._id}>
+                  <td>{group._id}</td>
+                  <td>{cart.user ? `${cart.user.firstName} ${cart.user.lastName}` : "Utilisateur inconnu"}</td>
+                  <td>{cart.name}</td>
+                  <td>{cart.quantity}</td>
+                  <td>{cart.price}€</td>
+                  <td>{cart.price * cart.quantity}€</td>
+                  <td>{new Date(cart.updated).toLocaleDateString("fr-FR")}</td>
                   <td>
                     <button onClick={() => handleViewClick(cart)}>Voir</button>
                   </td>
                   <td>
-                    <button
-                      onClick={() => handleEditClick(cart)}
-                      className={styles["modify-btn"]}
-                    >
+                    <button onClick={() => handleEditClick(cart)} className={styles["modify-btn"]}>
                       Modifier
                     </button>
                   </td>
                 </tr>
-              ))}
+              ))
+            )}
           </tbody>
         </table>
       </div>
       {showModal && (
         <AdminCartModal
           cart={selectedCart}
-          user={{ username: selectedCart.username }}
-          contact={{ contact: selectedCart.contact }}
+          user={{ username: selectedCart.user ? `${selectedCart.user.firstName} ${selectedCart.user.lastName}` : "Utilisateur inconnu" }}
+          contact={{ contact: selectedCart.user ? selectedCart.user.contact : "Contact inconnu" }}
           onClose={handleCloseModal}
         />
       )}

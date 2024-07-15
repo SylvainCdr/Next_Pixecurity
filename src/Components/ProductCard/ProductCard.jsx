@@ -80,7 +80,7 @@ function DiscountBadge({ product }) {
 }
 
 function Prices({ product }) {
-  if (product.price && product?.discountPrice) {
+  if (product.price && product.discountPrice && product.price !== product.discountPrice) {
     return (
       <div className={styles["card-prices"]}>
         <p className={styles["original-price"]}>
@@ -95,10 +95,12 @@ function Prices({ product }) {
 
   return (
     <p className={styles["card-price"]}>
-      {product.price ? product.price : "00.00"} €<span> HT</span>
+      {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
     </p>
   );
 }
+
+
 
 function ButtonAddToFavorite({ product }) {
   const prouductId = product._id;
