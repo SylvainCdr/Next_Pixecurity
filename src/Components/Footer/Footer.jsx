@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className={styles["footer-container"]}>
       <div className={styles["section-1"]}>
-        <img src="/assets/logo-dark.svg" alt="Logo Pixecurity" />
+        <img src="/assets/logo-dark.svg" alt="Logo Pixecurity" loading="lazy" />
         <p>
           Fournisseur de solutions de sureté intelligentes :
           Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage

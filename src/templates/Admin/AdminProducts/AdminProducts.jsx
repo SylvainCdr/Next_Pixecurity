@@ -41,7 +41,7 @@ export default function AdminProducts() {
         })
           .then(() => {
             setProducts((prevProducts) =>
-              prevProducts.filter((product) => product._id !== id),
+              prevProducts.filter((product) => product._id !== id)
             );
           })
           .then(() => {
@@ -56,7 +56,7 @@ export default function AdminProducts() {
             });
           })
           .catch((error) =>
-            console.log("Erreur lors de la suppression :", error),
+            console.log("Erreur lors de la suppression :", error)
           );
       }
     });
@@ -89,7 +89,7 @@ export default function AdminProducts() {
       // Si la sous-catégorie est déjà dans le filtre, la retirer
       updatedSubcategoryFilter.splice(
         updatedSubcategoryFilter.indexOf(subcategory),
-        1,
+        1
       );
     } else {
       // Sinon, l'ajouter au filtre
@@ -157,7 +157,7 @@ export default function AdminProducts() {
                 />
                 <label htmlFor={`category-${category}`}>{category}</label>
               </div>
-            ),
+            )
           )}
 
           <h3>Filtrer par Sous-catégorie</h3>
@@ -167,10 +167,10 @@ export default function AdminProducts() {
                 .filter((product) =>
                   categoryFilter.length === 0
                     ? true
-                    : categoryFilter.includes(product.category),
+                    : categoryFilter.includes(product.category)
                 )
-                .map((product) => product.subcategory),
-            ),
+                .map((product) => product.subcategory)
+            )
           ).map((subcategory) => (
             <div key={subcategory}>
               <input
@@ -197,7 +197,7 @@ export default function AdminProducts() {
                 />
                 <label htmlFor={`brand-${brand}`}>{brand}</label>
               </div>
-            ),
+            )
           )}
         </div>
 
@@ -237,12 +237,7 @@ export default function AdminProducts() {
                         <img src={`${BASE_URL}${product.image}`} alt="" />
                       )}
                     </td>
-                    {/* <td>{product.name}</td>
-                  // lien vers la page produit */}
                     <td>
-                      {/* <Link href={`${BASE_URL}/boutique/produit/${product._id}`}>
-                        {product.name}
-                      </Link> */}
                       <Link href={`/boutique/produit/${product._id}`}>
                         {product.name}
                       </Link>
