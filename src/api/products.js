@@ -1,13 +1,5 @@
 import { BASE_URL } from "@/url";
 
-export async function getProducts(userId = "") {
-  const response = await fetch(
-    `${BASE_URL}/products${userId ? `?userId=${userId}` : ""}`
-  );
-  const data = await response.json();
-  return data;
-}
-
 export async function getProductsByCatSubCat({
   category,
   subcategory,
@@ -22,8 +14,19 @@ export async function getProductsByCatSubCat({
   return data;
 }
 
-export async function getProductById(id) {
-  const response = await fetch(`${BASE_URL}/products/${id}`);
+export async function getProducts(userId = "") {
+  const response = await fetch(
+    `${BASE_URL}/products${userId ? `?userId=${userId}` : ""}`
+  );
   const data = await response.json();
   return data;
 }
+
+export async function getProductById(id, userId = "") {
+  const response = await fetch(
+    `${BASE_URL}/products/${id}${userId ? `?userId=${userId}` : ""}`
+  );
+  const data = await response.json();
+  return data;
+}
+

@@ -1,10 +1,12 @@
 import { getProductById, getProducts } from "@/api/products";
 import Product from "@/templates/Shop/Product/Product";
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, query }) {
   const id = params.id;
-  const product = await getProductById(id);
-  const products = await getProducts();
+  const userId = query.userId;
+  const product = await getProductById(id, userId );
+  const products = await getProducts(userId);
+  
   const suggestions = products
     .filter(
       (item) =>
@@ -17,10 +19,11 @@ export async function getServerSideProps({ params }) {
       product,
       id,
       suggestions,
+      userId,
     },
   };
 }
 
-export default function Page({ product, id, suggestions }) {
-  return <Product product={product} id={id} suggestions={suggestions} />;
+export default function Page({ product, id, suggestions, userId }) {
+  return <Product product={product} id={id} suggestions={suggestions} userId={userId} />;
 }

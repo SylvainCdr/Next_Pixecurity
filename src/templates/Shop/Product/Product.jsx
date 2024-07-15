@@ -287,17 +287,19 @@ export default function Product({ product, id, suggestions }) {
 }
 
 const DiscountedPrice = ({ product }) => {
-  if (product.price && product.discountPrice)
+  if (product.price && product.pourcentageDiscount) {
+    const discountPrice = product.price * (1 - product.pourcentageDiscount / 100);
     return (
       <p className={styles.prices}>
         <span className={styles["original-price"]}>
           {product.price.toFixed(2)} €
         </span>
         <span className={styles["discounted-price"]}>
-          {product.discountPrice.toFixed(2)} € <span> HT</span>
+          {discountPrice.toFixed(2)} € <span>HT</span>
         </span>
       </p>
     );
+  }
 
   return (
     <p className={styles.price}>
