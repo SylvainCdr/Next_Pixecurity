@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { BASE_URL } from "../url";
 
 const useFavorites = () => {
@@ -11,7 +11,7 @@ const useFavorites = () => {
     productName,
     productPrice,
     productRef,
-    productImage,
+    productImage
   ) => {
     try {
       setIsAddingToFavorites(true);
@@ -46,10 +46,10 @@ const useFavorites = () => {
     }
   };
 
-  const checkFavorite = useCallback(async (userId, productId) => {
+  const checkFavorite = async (userId, productId) => {
     try {
       const response = await fetch(
-        `${BASE_URL}/users/${userId}/check-favorite/${productId}`,
+        `${BASE_URL}/users/${userId}/check-favorite/${productId}`
       );
 
       if (response.ok) {
@@ -64,7 +64,7 @@ const useFavorites = () => {
       console.error("Error network issue during checkFavorite:", error);
       return false;
     }
-  }, []);
+  };
 
   const removeFromFavorites = async (userId, productId) => {
     try {
@@ -74,7 +74,7 @@ const useFavorites = () => {
         `${BASE_URL}/users/${userId}/delete-favorite/${productId}`,
         {
           method: "DELETE",
-        },
+        }
       );
       console.log("res", response);
 
@@ -93,7 +93,7 @@ const useFavorites = () => {
     }
   };
 
-  const getFavorites = useCallback(async (userId) => {
+  const getFavorites = async (userId) => {
     try {
       const response = await fetch(`${BASE_URL}/users/${userId}/favorites`);
       if (response.ok) {
@@ -108,7 +108,7 @@ const useFavorites = () => {
       console.error("Error network issue during getFavorites:", error);
       return [];
     }
-  }, []);
+  };
 
   return {
     addToFavorites,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 import useFavorites from "@/Components/useFavorites";
 import ProductCard from "@/Components/ProductCard/ProductCard";
@@ -19,7 +19,6 @@ export default function UserAccount() {
   const [orders, setOrders] = useState([]);
   const [countFavorites, setCountFavorites] = useState(0);
   const [countOrders, setCountOrders] = useState(0);
-  const [countCart, setCountCart] = useState(0);
   const [discounts, setDiscounts] = useState([]);
 
   const { getFavorites, removeFromFavorites, checkFavorite, addToFavorites } =
@@ -34,7 +33,9 @@ export default function UserAccount() {
 
       try {
         const [productsData, favoritesData] = await Promise.all([
-          fetch(`${BASE_URL}/products`).then((res) => res.json()),
+          fetch(`${BASE_URL}/products?userId=${userId}`).then((res) =>
+            res.json()
+          ),
           getFavorites(userId),
         ]);
 
@@ -169,42 +170,45 @@ export default function UserAccount() {
         <h3>
           {selectedTab === "favoris" && "Mes produits favoris"}
           {selectedTab === "discounts" && "Mes remises & promotions"}
-          {selectedTab === "infos" && "Mes informations"}
           {selectedTab === "commandes" && "Mes commandes"}
+          {selectedTab === "infos" && "Mes informations"}
         </h3>
 
-        {selectedTab === "infos" && (
-          <div data-aos="fade-up" className={styles["user-infos"]}>
-            <div className={styles["grid-infos"]}>
-              <div className={styles.activity}>
-                <h4>Activité</h4>
-                <p>Vous avez {countFavorites} produits dans vos favoris</p>
-                <p>Vous avez {cartItemsCount} produits dans votre panier</p>
-                <p>
-                  Vous avez passé {countOrders} commandes depuis votre
-                  inscription
-                </p>
-              </div>
-              <div className={styles.perso}>
-                <h4>Informations personnelles</h4>
-                <p>Nom : {user.lastName}</p>
-                <p>Prénom : {user.firstName}</p>
-                <p>Entreprise : {user.company}</p>
-                <p>
-                  Date d'inscription :{" "}
-                  {new Date(user.created).toLocaleDateString()}
-                </p>
-              </div>
+        {selectedTab === "favoris" && (
+          <div className={styles["user-favorites"]}>
+            <div className={styles["favorites-grid"]}>
+              {favorites?.length > 0 ? (
+                favorites.map((favorite) => {
+                  const product = products.find(
+                    (item) => item._id === favorite.product_id
+                  );
 
-              <div className={styles.contact}>
-                <h4>Informations de contact</h4>
-                <p>Email : {user.email}</p>
-                <p>Téléphone : {user.phone}</p>
-              </div>
+                  return (
+                    <div
+                      data-aos="fade-up"
+                      key={favorite.product_id}
+                      className={styles.productCard}
+                    >
+                      <ProductCard
+                        product={product}
+                        addToCart={addToCart}
+                        addToFavorites={addToFavorites}
+                        checkFavorite={checkFavorite}
+                        removeFromFavorites={removeFromFavorites}
+                        handleProductClick={handleProductClick}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <div className={styles["no-favorites-msg"]}>
+                  <p>Vous n'avez pas encore de produits favoris.</p>
+                  <Link href="/boutique">
+                    <button>Visiter la boutique</button>
+                  </Link>
+                </div>
+              )}
             </div>
-            <Link href="/mon-compte/modification">
-              <button>Modifier</button>
-            </Link>
           </div>
         )}
 
@@ -242,44 +246,6 @@ export default function UserAccount() {
                   </p>
                 </div>
               ))}
-            </div>
-          </div>
-        )}
-
-        {selectedTab === "favoris" && (
-          <div className={styles["user-favorites"]}>
-            <div className={styles["favorites-grid"]}>
-              {favorites.length > 0 ? (
-                favorites.map((favorite) => {
-                  const product = products.find(
-                    (item) => item._id === favorite.product_id
-                  );
-
-                  return (
-                    <div
-                      data-aos="fade-up"
-                      key={favorite.product_id}
-                      className={styles.productCard}
-                    >
-                      <ProductCard
-                        product={product}
-                        addToCart={addToCart}
-                        addToFavorites={addToFavorites}
-                        checkFavorite={checkFavorite}
-                        removeFromFavorites={removeFromFavorites}
-                        handleProductClick={handleProductClick}
-                      />
-                    </div>
-                  );
-                })
-              ) : (
-                <div className={styles["no-favorites-msg"]}>
-                  <p>Vous n'avez pas encore de produits favoris.</p>
-                  <Link href="/boutique">
-                    <button>Visiter la boutique</button>
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -347,6 +313,41 @@ export default function UserAccount() {
                 </Link>
               </div>
             )}
+          </div>
+        )}
+
+        {selectedTab === "infos" && (
+          <div data-aos="fade-up" className={styles["user-infos"]}>
+            <div className={styles["grid-infos"]}>
+              <div className={styles.activity}>
+                <h4>Activité</h4>
+                <p>Vous avez {countFavorites} produits dans vos favoris</p>
+                <p>Vous avez {cartItemsCount} produits dans votre panier</p>
+                <p>
+                  Vous avez passé {countOrders} commandes depuis votre
+                  inscription
+                </p>
+              </div>
+              <div className={styles.perso}>
+                <h4>Informations personnelles</h4>
+                <p>Nom : {user.lastName}</p>
+                <p>Prénom : {user.firstName}</p>
+                <p>Entreprise : {user.company}</p>
+                <p>
+                  Date d'inscription :{" "}
+                  {new Date(user.created).toLocaleDateString()}
+                </p>
+              </div>
+
+              <div className={styles.contact}>
+                <h4>Informations de contact</h4>
+                <p>Email : {user.email}</p>
+                <p>Téléphone : {user.phone}</p>
+              </div>
+            </div>
+            <Link href="/mon-compte/modification">
+              <button>Modifier</button>
+            </Link>
           </div>
         )}
       </div>
