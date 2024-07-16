@@ -75,7 +75,7 @@ export default function Login() {
           title: "Connecté",
           text: "Bienvenue sur Pixecurity !",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 3000,
         });
         setAuthenticated(true);
       }

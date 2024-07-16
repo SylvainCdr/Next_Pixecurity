@@ -3,10 +3,11 @@ import Product from "@/templates/Shop/Product/Product";
 
 export async function getServerSideProps({ params, query }) {
   const id = params.id;
-  const userId = query.userId;
-  const product = await getProductById(id, userId );
+  const userId = query.userId || null; // Provide a default value of null if userId is not present
+
+  const product = await getProductById(id, userId);
   const products = await getProducts(userId);
-  
+
   const suggestions = products
     .filter(
       (item) =>
