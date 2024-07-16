@@ -6,23 +6,37 @@
     height: 70vh;
 
     .hero-left {
-      background: rgb(0,0,0);
-      background: -moz-linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
-      background: -webkit-linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
-      background: linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(42,57,161,1) 50%, rgba(0,159,227,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#009fe3",GradientType=1);  
-      
+      background: rgb(0, 0, 0);
+      background: -moz-linear-gradient(
+        150deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(42, 57, 161, 1) 50%,
+        rgba(0, 159, 227, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        150deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(42, 57, 161, 1) 50%,
+        rgba(0, 159, 227, 1) 100%
+      );
+      background: linear-gradient(
+        150deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(42, 57, 161, 1) 50%,
+        rgba(0, 159, 227, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#009fe3",GradientType=1);
+
       width: 30%;
-      
-      h4 
-{
-        text-shadow: rgb(71, 71, 71) 1px 1px 6px;
+
+      h4 {
         font-size: 3em;
         font-weight: 600;
         letter-spacing: 0rem;
         margin-bottom: 0rem;
         margin-top: 5%;
         margin-left: 5%;
+        color: var(--sunset1);
       }
     }
 
@@ -51,7 +65,6 @@
         h3 {
           text-shadow: rgb(71, 71, 71) 1px 1px 6px;
           font-size: 1.5em;
-          // font-family: "Barlow Condensed", sans-serif;
           font-weight: 600;
           letter-spacing: 0.05rem;
           line-height: 1.2;
@@ -61,7 +74,7 @@
       .homepageHeroCta {
         text-decoration: none;
         color: white;
-        bottom: 23%;
+        bottom: 25%;
         right: 6%;
         position: absolute;
 
@@ -103,12 +116,27 @@
         //   rgb(1, 51, 100),
         //   rgb(0, 22, 44) 94%
         // );
-        background: rgb(0,159,227);
-        background: -moz-linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
-        background: -webkit-linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
-        background: linear-gradient(150deg, rgba(0,159,227,1) 0%, rgba(42,57,161,1) 50%, rgba(0,0,0,1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009fe3",endColorstr="#000000",GradientType=1); 
-        
+        background: rgb(0, 159, 227);
+        background: -moz-linear-gradient(
+          150deg,
+          rgba(0, 159, 227, 1) 0%,
+          rgba(42, 57, 161, 1) 50%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        background: -webkit-linear-gradient(
+          150deg,
+          rgba(0, 159, 227, 1) 0%,
+          rgba(42, 57, 161, 1) 50%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        background: linear-gradient(
+          150deg,
+          rgba(0, 159, 227, 1) 0%,
+          rgba(42, 57, 161, 1) 50%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009fe3",endColorstr="#000000",GradientType=1);
+
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -214,7 +242,7 @@
           margin-left: 10%;
         }
       }
-      
+
       .hero-right {
         background-image: url("../../../public/assets/homepage/hero1-mobile.webp");
         .titles {
