@@ -9,6 +9,7 @@ import { BASE_URL } from "@/url";
 import { useRouter } from "next/router";
 import { useGetUser } from "@/Components/useGetUser";
 import Link from "next/link";
+import { getUserFavoriteProducts } from "@/api/users";
 
 export default function UserAccount() {
   const router = useRouter();
@@ -21,33 +22,38 @@ export default function UserAccount() {
   const [countOrders, setCountOrders] = useState(0);
   const [discounts, setDiscounts] = useState([]);
 
-  const { getFavorites, removeFromFavorites, checkFavorite, addToFavorites } =
-    useFavorites();
+  const { removeFromFavorites, checkFavorite, addToFavorites } = useFavorites();
   const { addToCart, cartItemsCount } = useCartContext();
   const user = useGetUser();
   const userId = user?._id;
 
   useEffect(() => {
-    async function fetchUserData() {
-      if (!userId) return;
+    getUserFavoriteProducts(userId).then((data) => {
+      setFavorites(data);
+    });
+  }, [userId]);
 
-      try {
-        const [productsData, favoritesData] = await Promise.all([
-          fetch(`${BASE_URL}/products?userId=${userId}`).then((res) =>
-            res.json()
-          ),
-          getFavorites(userId),
-        ]);
+  // useEffect(() => {
+  //   async function fetchUserData() {
+  //     if (!userId) return;
 
-        setProducts(productsData);
-        setFavorites(favoritesData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
+  //     try {
+  //       const [productsData, favoritesData] = await Promise.all([
+  //         fetch(`${BASE_URL}/products?userId=${userId}`).then((res) =>
+  //           res.json()
+  //         ),
+  //         getFavorites(userId),
+  //       ]);
 
-    fetchUserData();
-  }, [userId, getFavorites]);
+  //       setProducts(productsData);
+  //       setFavorites(favoritesData);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   }
+
+  //   fetchUserData();
+  // }, [userId, getFavorites]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -70,9 +76,9 @@ export default function UserAccount() {
 
   // on compte le nombre de favoris du user
 
-  useEffect(() => {
-    setCountFavorites(favorites.length);
-  }, [favorites]);
+  // useEffect(() => {
+  //   setCountFavorites(favorites.length);
+  // }, [favorites]);
 
   // on compte le nombre de commandes du user
   useEffect(() => {
@@ -179,10 +185,6 @@ export default function UserAccount() {
             <div className={styles["favorites-grid"]}>
               {favorites?.length > 0 ? (
                 favorites.map((favorite) => {
-                  const product = products.find(
-                    (item) => item._id === favorite.product_id
-                  );
-
                   return (
                     <div
                       data-aos="fade-up"
@@ -190,7 +192,7 @@ export default function UserAccount() {
                       className={styles.productCard}
                     >
                       <ProductCard
-                        product={product}
+                        product={favorite}
                         addToCart={addToCart}
                         addToFavorites={addToFavorites}
                         checkFavorite={checkFavorite}

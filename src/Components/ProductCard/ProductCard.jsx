@@ -27,7 +27,7 @@ function ProductCard({ product }) {
       <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={product.image}  />
+        <meta property="og:image" content={product.image} />
         {/* Add more OG meta tags as needed */}
       </Head>
       <Link
@@ -80,7 +80,11 @@ function DiscountBadge({ product }) {
 }
 
 function Prices({ product }) {
-  if (product.price && product.discountPrice && product.price !== product.discountPrice) {
+  if (
+    product.price &&
+    product.discountPrice &&
+    product.price !== product.discountPrice
+  ) {
     return (
       <div className={styles["card-prices"]}>
         <p className={styles["original-price"]}>
@@ -99,8 +103,6 @@ function Prices({ product }) {
     </p>
   );
 }
-
-
 
 function ButtonAddToFavorite({ product }) {
   const prouductId = product._id;
@@ -159,7 +161,9 @@ function ButtonAddToFavorite({ product }) {
     <button className={styles.heart} onClick={handleToggleFavorites}>
       <i
         className="fa-solid fa-heart"
-        style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
+        style={{
+          color: product?.isFav || isInFavorites ? "#ed3f3f" : "#838485",
+        }}
         data-aos="zoom-in"
       />
     </button>
