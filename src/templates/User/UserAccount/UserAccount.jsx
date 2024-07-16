@@ -47,7 +47,7 @@ export default function UserAccount() {
     }
 
     fetchUserData();
-  }, [userId, getFavorites]);
+  }, [userId]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -68,20 +68,18 @@ export default function UserAccount() {
     fetchOrders();
   }, [userId]);
 
-  // on compte le nombre de favoris du user
-
   useEffect(() => {
     setCountFavorites(favorites.length);
   }, [favorites]);
 
-  // on compte le nombre de commandes du user
   useEffect(() => {
     setCountOrders(orders.length);
   }, [orders]);
 
-  // on va chercher les remises actives et applicables pour l'utilisateur
   useEffect(() => {
     const fetchDiscounts = async () => {
+      if (!userId) return;
+      
       try {
         const response = await fetch(`${BASE_URL}/discounts`);
         if (!response.ok) {
@@ -129,7 +127,7 @@ export default function UserAccount() {
     AOS.init({ duration: 1000 });
   }, []);
 
-  if (!user) return null; // Ou affichez un message de chargement si nécessaire
+  if (!user) return null;
 
   return (
     <div className={styles["user-account-container"]}>
@@ -141,27 +139,27 @@ export default function UserAccount() {
             className={styles.active}
             onClick={() => handleTabClick("favoris")}
           >
-            <i class="fa-solid fa-heart"> </i>
+            <i className="fa-solid fa-heart"> </i>
             Favoris
           </button>
           <button
             className={styles.active}
             onClick={() => handleTabClick("discounts")}
           >
-            <i class="fa-solid fa-percent"></i> Promotions
+            <i className="fa-solid fa-percent"></i> Promotions
           </button>
 
           <button
             className={styles.active}
             onClick={() => handleTabClick("commandes")}
           >
-            <i class="fa-solid fa-basket-shopping"></i> commandes
+            <i className="fa-solid fa-basket-shopping"></i> commandes
           </button>
           <button
             className={styles.active}
             onClick={() => handleTabClick("infos")}
           >
-            <i class="fa-solid fa-user-pen"></i> infos
+            <i className="fa-solid fa-user-pen"></i> infos
           </button>
         </aside>
       </div>
@@ -182,6 +180,8 @@ export default function UserAccount() {
                   const product = products.find(
                     (item) => item._id === favorite.product_id
                   );
+
+                  if (!product) return null;
 
                   return (
                     <div
@@ -233,13 +233,7 @@ export default function UserAccount() {
                       ? "Remise sur toute la boutique"
                       : "PROMOTION"}
                   </p>
-                  {/* <p>
-                    {discount.targetedUsers.length > 0
-                     ? `Remise pour ${discount.targetedUsers.length} utilisateur(s)`
-                      : "PROMOTION"}
-                  </p> */}
                   <p>
-                    {" "}
                     Validité :{" "}
                     {new Date(discount.startDate).toLocaleDateString()} au{" "}
                     {new Date(discount.endDate).toLocaleDateString()}
@@ -262,21 +256,17 @@ export default function UserAccount() {
                         <th>Date</th>
                         <th className={styles.mobile}>Produits</th>
                         <th className={styles.mobile}>Total TTC</th>
-                        {/* <th>Statut</th> */}
                         <th>Détails</th>
                       </tr>
-                      {/* // ajout d'une ligne pour afficher la timeline */}
                     </thead>
                     <tbody>
                       <tr>
                         <td>{order._id}</td>
-
                         <td>
                           {order.orderDate
                             ? new Date(order.orderDate).toLocaleDateString()
                             : "Date inconnue"}
                         </td>
-
                         <td className={styles.mobile}>
                           {order.items.map((product) => (
                             <p key={product._id}>
@@ -284,12 +274,9 @@ export default function UserAccount() {
                             </p>
                           ))}
                         </td>
-                        {/* // Calcul du total de la commande, on arrondi à 2 chiffres après la virgule */}
                         <td className={styles.mobile}>
-                          {" "}
                           {order.totalAmount.toFixed(2)} € <br />
                         </td>
-                        {/* <td>{order.status}</td> */}
                         <td>
                           <Link href={`/mon-compte/commande/${order._id}`}>
                             <button>Voir</button>

@@ -253,7 +253,7 @@ export default function AdminDiscountForm() {
 
         <div className={styles.formGroup}>
           <label>Utilisateurs ciblés</label>
-          <p>(Sélectionner un utilisateur ou aucun si la promo concerne tout le monde)</p>
+          <p>(Sélectionner un utilisateur ou aucun si la promo concerne tous les utilisateurs enregistrés)</p>
           <select
             multiple
             name="targetedUsers"
@@ -279,7 +279,7 @@ export default function AdminDiscountForm() {
 
         <div className={styles.formGroup}>
           <label>Réduction globale</label>
-          <p> OPTION 1: Concerne tous les produits et cible tous les utilisateurs ou un spécifique </p>
+          <p> OPTION 1: Concerne tous les produits et cible tous les utilisateurs enregistrés ou un spécifique </p>
           <select
             name="isGlobalDiscount"
             value={discountData.isGlobalDiscount}
