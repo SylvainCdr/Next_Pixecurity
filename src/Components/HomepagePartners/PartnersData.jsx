@@ -90,4 +90,12 @@ export const partners = [
     description:
       "TechnoAware est un fournisseur mondial de solutions de vidéosurveillance intelligente, spécialisé dans le développement de technologies avancées pour la détection, l'analyse et la gestion des données vidéo. Forte d'une expertise approfondie en intelligence artificielle, apprentissage automatique et traitement d'images, TechnoAware offre des solutions innovantes pour aider les organisations à tirer le meilleur parti de leurs infrastructures de sécurité. Les solutions de vidéosurveillance intelligente de TechnoAware intègrent des fonctionnalités de reconnaissance faciale, de suivi d'objets, de détection d'anomalies et d'analyse comportementale pour fournir des informations précieuses aux opérateurs de sécurité et aux décideurs. Grâce à une combinaison de logiciels puissants et de matériel de pointe, TechnoAware permet aux entreprises de détecter et de prévenir les incidents de sécurité, d'optimiser les flux de travail et d'améliorer la prise de décision en temps réel.",
   },
+  {
+    name: "6SS",
+    logo: "assets/partnersLogo/6ss.png",
+    domain: "Gestion & Analyse d'image",
+    website: "https://6ss.co/",
+    description:
+      "6SS Global est un leader mondial dans le domaine des solutions de sécurité intelligentes, spécialisé dans le développement de technologies avancées pour la surveillance et l'analyse des données. Avec une expertise approfondie en intelligence artificielle, apprentissage automatique et intégration de systèmes, 6SS Global propose des solutions innovantes pour aider les organisations à maximiser la sécurité de leurs infrastructures. Les produits de 6SS Global incluent des fonctionnalités telles que la reconnaissance faciale, le suivi d'objets, la détection d'anomalies et l'analyse comportementale, fournissant ainsi des informations précieuses aux opérateurs de sécurité et aux décideurs. Grâce à un partenariat stratégique avec Milestone Systems, leader mondial des plateformes de gestion vidéo, 6SS Global intègre des logiciels puissants et du matériel de pointe pour offrir des solutions de sécurité complètes. Cette collaboration permet aux entreprises de détecter et prévenir les incidents de sécurité, d'optimiser leurs opérations et d'améliorer la prise de décision en temps réel, garantissant ainsi une sécurité renforcée et une efficacité opérationnelle accrue.",
+  },
 ];
