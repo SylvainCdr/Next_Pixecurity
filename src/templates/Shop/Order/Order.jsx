@@ -24,7 +24,6 @@ const schema = yup.object().shape({
   deliveryCity: yup.string().required("La ville de livraison est requise"),
   deliveryZip: yup.string().required("Le code postal de livraison est requis"),
   deliveryCountry: yup.string().required("Le pays de livraison est requis"),
-  deliveryMethod: yup.string().required("Le mode de livraison est requis"),
 });
 
 export default function Order() {
@@ -89,10 +88,13 @@ export default function Order() {
           });
           return;
         }
-user.phone = form.phone;
-user.company = form.company;
 
+        user.phone = form.phone;
+        user.company = form.company;
       }
+
+      // Replace with your logic to determine if there are physical products
+      const hasPhysicalProducts = true; // Replace with actual logic
 
       const updateResponse = await fetch(
         `${BASE_URL}/orders/${orderId}/delivery`,
@@ -114,10 +116,7 @@ user.company = form.company;
               zip: form.billingZip,
               country: form.billingCountry,
             },
-            delivery: {
-              method: form.deliveryMethod,
-              fee: 20,
-            },
+       
           }),
         }
       );
@@ -222,7 +221,9 @@ user.company = form.company;
                 defaultValue={user?.phone}
                 {...register("phone")}
               />
-              {errors.phone && <p className={styles.errorsForm}>{errors.phone.message} </p>}
+              {errors.phone && (
+                <p className={styles.errorsForm}>{errors.phone.message} </p>
+              )}
             </div>
           </div>
 
@@ -238,14 +239,18 @@ user.company = form.company;
                 placeholder="Numéro et Rue"
                 {...register("billingStreet")}
               />
-              {errors.billingStreet && <p className={styles.errorsForm}>{errors.billingStreet.message}</p>}
+              {errors.billingStreet && (
+                <p className={styles.errorsForm}>{errors.billingStreet.message}</p>
+              )}
               <input
                 type="text"
                 name="billingZip"
                 placeholder="Code Postal"
                 {...register("billingZip")}
               />
-              {errors.billingZip && <p className={styles.errorsForm}>{errors.billingZip.message}</p>}
+              {errors.billingZip && (
+                <p className={styles.errorsForm}>{errors.billingZip.message}</p>
+              )}
               <input
                 type="text"
                 name="billingCity"
@@ -260,7 +265,9 @@ user.company = form.company;
                 <option value="suisse">Suisse</option>
                 <option value="luxembourg">Luxembourg</option>
               </select>
-              {errors.billingCountry && <p className={styles.errorsForm}>{errors.billingCountry.message}</p>}
+              {errors.billingCountry && (
+                <p className={styles.errorsForm}>{errors.billingCountry.message}</p>
+              )}
 
               <div className={styles["same-address"]}>
                 <input
@@ -276,94 +283,87 @@ user.company = form.company;
               </div>
             </div>
 
-            <div className={styles["delivery-address"]}>
-              <p>Adresse de livraison : </p>
-              <input
-                type="text"
-                name="deliveryStreet"
-                placeholder="Numéro et Rue"
-                {...register("deliveryStreet")}
-                value={deliveryAddress.street}
-                onChange={(e) =>
-                  setDeliveryAddress({
-                    ...deliveryAddress,
-                    street: e.target.value,
-                  })
-                }
-              />
-              {errors.deliveryStreet && <p className={styles.errorsForm}>{errors.deliveryStreet.message}</p>}
-              <input
-                type="text"
-                name="deliveryZip"
-                placeholder="Code Postal"
-                {...register("deliveryZip")}
-                value={deliveryAddress.zip}
-                onChange={(e) =>
-                  setDeliveryAddress({
-                    ...deliveryAddress,
-                    zip: e.target.value,
-                  })
-                }
-              />
-              {errors.deliveryZip && <p className={styles.errorsForm}>{errors.deliveryZip.message}</p>}
-              <input
-                type="text"
-                name="deliveryCity"
-                placeholder="Ville"
-                {...register("deliveryCity")}
-                value={deliveryAddress.city}
-                onChange={(e) =>
-                  setDeliveryAddress({
-                    ...deliveryAddress,
-                    city: e.target.value,
-                  })
-                }
-              />
-              {errors.deliveryCity && <p className={styles.errorsForm}>{errors.deliveryCity.message}</p>}
-              <select
-                name="deliveryCountry"
-                {...register("deliveryCountry")}
-                value={deliveryAddress.country}
-                onChange={(e) =>
-                  setDeliveryAddress({
-                    ...deliveryAddress,
-                    country: e.target.value,
-                  })
-                }
-              >
-                <option value="">Sélectionnez votre pays</option>
-                <option value="france">France</option>
-                <option value="belgique">Belgique</option>
-                <option value="suisse">Suisse</option>
-                <option value="luxembourg">Luxembourg</option>
-              </select>
-              {errors.deliveryCountry && (
-                <p className={styles.errorsForm}>{errors.deliveryCountry.message}</p>
-              )}
-            </div>
+            {!sameAddress && (
+              <div className={styles["delivery-address"]}>
+                <p>Adresse de livraison : </p>
+                <input
+                  type="text"
+                  name="deliveryStreet"
+                  placeholder="Numéro et Rue"
+                  {...register("deliveryStreet")}
+                  value={deliveryAddress.street}
+                  onChange={(e) =>
+                    setDeliveryAddress({
+                      ...deliveryAddress,
+                      street: e.target.value,
+                    })
+                  }
+                />
+                {errors.deliveryStreet && (
+                  <p className={styles.errorsForm}>{errors.deliveryStreet.message}</p>
+                )}
+                <input
+                  type="text"
+                  name="deliveryZip"
+                  placeholder="Code Postal"
+                  {...register("deliveryZip")}
+                  value={deliveryAddress.zip}
+                  onChange={(e) =>
+                    setDeliveryAddress({
+                      ...deliveryAddress,
+                      zip: e.target.value,
+                    })
+                  }
+                />
+                {errors.deliveryZip && (
+                  <p className={styles.errorsForm}>{errors.deliveryZip.message}</p>
+                )}
+                <input
+                  type="text"
+                  name="deliveryCity"
+                  placeholder="Ville"
+                  {...register("deliveryCity")}
+                  value={deliveryAddress.city}
+                  onChange={(e) =>
+                    setDeliveryAddress({
+                      ...deliveryAddress,
+                      city: e.target.value,
+                    })
+                  }
+                />
+                {errors.deliveryCity && (
+                  <p className={styles.errorsForm}>{errors.deliveryCity.message}</p>
+                )}
+                <select
+                  name="deliveryCountry"
+                  {...register("deliveryCountry")}
+                  value={deliveryAddress.country}
+                  onChange={(e) =>
+                    setDeliveryAddress({
+                      ...deliveryAddress,
+                      country: e.target.value,
+                    })
+                  }
+                >
+                  <option value="">Sélectionnez votre pays</option>
+                  <option value="france">France</option>
+                  <option value="belgique">Belgique</option>
+                  <option value="suisse">Suisse</option>
+                  <option value="luxembourg">Luxembourg</option>
+                </select>
+                {errors.deliveryCountry && (
+                  <p className={styles.errorsForm}>{errors.deliveryCountry.message}</p>
+                )}
+              </div>
+            )}
           </div>
 
           <div className={styles.deliveryAndPayment}>
             <div className={styles["delivery-options"]}>
               <h2>
-                <i className="fa-solid fa-truck"></i> ETAPE 3 : Mode de
-                livraison
+                <i className="fa-solid fa-truck"></i> ETAPE 3 : Paiement sécurisé Stripe
               </h2>
-              <select name="deliveryMethod" {...register("deliveryMethod")}>
-                <option value="">Sélectionnez le mode de livraison</option>
-                <option value="dhl">DHL</option>
-                <option value="chronopost">Chronopost</option>
-              </select>
-              {errors.deliveryMethod && <p className={styles.errorsForm}>{errors.deliveryMethod.message}</p>}
-              <img
-                src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
-                className={styles.chrono}
-                alt="chronopost"
-              />
-              <img
-                src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
-                alt="DHL"
-              />
+        
             </div>
           </div>
 

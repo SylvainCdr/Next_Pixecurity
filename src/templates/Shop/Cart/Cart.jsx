@@ -22,7 +22,11 @@ export default function Cart({ carouselProducts }) {
 
   const createOrder = async () => {
     const cartId = getCartId();
-    const orderId = await createOrderAPI({ userId, cartId });
+    const allDigital = carts.every((c) => c.product.category === "Logiciels");
+    const shippingCost = allDigital ? 0 : 20;
+    const shippingMethod = allDigital ? "email" : "dhl";
+
+    const orderId = await createOrderAPI({ userId, cartId, shippingCost, shippingMethod });
     router.push("/commande/" + orderId);
   };
 
@@ -38,7 +42,6 @@ export default function Cart({ carouselProducts }) {
             justifyContent: "space-between",
             alignItems: "center",
             marginBottom: "42px",
-
           }}
         >
           <h1>Panier</h1>
@@ -46,8 +49,8 @@ export default function Cart({ carouselProducts }) {
             onClick={() => {
               localStorage.removeItem("cartId");
               window.location.reload();
-            }} className={styles["empty-cart-btn"]}
-            
+            }}
+            className={styles["empty-cart-btn"]}
           >
             Vider le panier
           </button>
@@ -88,8 +91,6 @@ function CartItem({ cart }) {
       addToCart(cart.product, newQuantity);
     }
   };
-
-
 
   const handleKeyDown = (event) => {
     // Bloquer la saisie manuelle
@@ -135,7 +136,6 @@ function CartItem({ cart }) {
         )}
       </div>
       <div className={styles["product-quantity"]}>
-     
         <input
           type="number"
           min={1}
@@ -144,10 +144,12 @@ function CartItem({ cart }) {
           onKeyDown={handleKeyDown}
           inputMode="none" // Bloque la saisie manuelle
         />
-
       </div>
       <div className={styles["product-removal"]}>
-        <a className={styles["remove-product"]} onClick={() => removeFromCart(cart)}>
+        <a
+          className={styles["remove-product"]}
+          onClick={() => removeFromCart(cart)}
+        >
           Supprimer
         </a>
       </div>
@@ -157,15 +159,23 @@ function CartItem({ cart }) {
 }
 
 function Totals({ carts }) {
-  const calculatedSubTotal =
-    carts?.reduce((acc, c) => {
-      const product = c.product;
-      const discountedPrice = product.discountPrice;
-      return acc + c.quantity * discountedPrice;
-    }, 0) ?? 0;
+  const calculatedSubTotal = carts?.reduce((acc, c) => {
+    const product = c.product;
+    const discountedPrice = product.discountPrice;
+    return acc + c.quantity * discountedPrice;
+  }, 0) ?? 0;
+  
   const tax = calculatedSubTotal * 0.2;
-  const shippingCost = 20;
+  
+  const allDigital = carts.every((c) => c.product.category === "Logiciels");
+  const shippingCost = allDigital ? 0 : 20;
+  
+
   const totalAmount = calculatedSubTotal + tax + shippingCost;
+  console.log("calculatedSubTotal:", calculatedSubTotal);
+  console.log("tax:", tax);
+  console.log("shippingCost:", shippingCost);
+  console.log("totalAmount:", totalAmount);
 
   return (
     <div className={styles["totals"]}>
@@ -182,7 +192,7 @@ function Totals({ carts }) {
         </div>
       </div>
       <div className={styles["totals-item"]} id="cart-shipping">
-        <p>Frais de livraison</p>
+        <p>Frais de livraison (DHL) </p>
         <div className={styles["totals-value"]} id="cart-shipping">
           {shippingCost.toFixed(2)} €
         </div>

@@ -73,7 +73,7 @@ export default function AdminOrderModal({ order, user, onClose }) {
             <th>Quantité</th>
             <th>Prix unitaire</th>
             {/* <th>Remise</th> */}
-            <th>Total</th>
+            <th>Total HT</th>
           </tr>
         </thead>
         <tbody>
@@ -99,7 +99,7 @@ export default function AdminOrderModal({ order, user, onClose }) {
         Paiement : {order.payment.paid ? "Payé" : "En attente de paiement"}
       </h3>
 
-      <p>Total de la commande : {order.totalAmount.toFixed(2)} €</p>
+      <p>Total de la commande TTC : {order.totalAmount.toFixed(2)} €</p>
     </div>
   );
 }
