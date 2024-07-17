@@ -191,7 +191,10 @@ export default function Product({ product, id, suggestions }) {
             <p className={styles.stock}>
               <i className="fa-solid fa-check"></i> Disponible sur commande
             </p>
-            <div className={styles.delivery}>
+            <div className={styles.details}>
+              <p className={styles.securePayment}>
+                <i className="fa-solid fa-lock"></i>  Paiement sécurisé
+              </p>
               <p>
                 <i className="fa-solid fa-truck-fast"></i> Livraison sous 2 à 3
                 semaines
@@ -206,6 +209,9 @@ export default function Product({ product, id, suggestions }) {
                 alt="chronopost"
               />
             </div>
+
+             
+           
             <div className={styles["price-addToCart"]}>
               <div className={styles.price}>
                 <DiscountedPrice product={product} />

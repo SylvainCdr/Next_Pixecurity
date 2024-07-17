@@ -28,12 +28,12 @@ export default function EditOrders() {
       .then((response) => response.json())
       .then((data) => {
         setUser(data);
-        setBillingAddress(data.billingAddress);
       });
   }, [order]);
 
   useEffect(() => {
     setDeliveryAddress(order.deliveryAddress);
+    setBillingAddress(order.billingAddress);
     setDelivery(order.delivery);
     setPayment(order.payment);
     setTotalAmount(order.totalAmount);
@@ -55,6 +55,7 @@ export default function EditOrders() {
       body: JSON.stringify({
         user: user._id, // Assurez-vous que cela correspond à ce que votre backend attend
         deliveryAddress,
+        billingAddress,
         delivery,
         payment,
         totalAmount,
@@ -222,6 +223,7 @@ export default function EditOrders() {
               value={status}
               onChange={(event) => setStatus(event.target.value)}
             >
+              <option value="paid">Payée</option>
               <option value="pending">En attente</option>
               <option value="shipped">Expédiée</option>
               <option value="delivered">Livrée</option>

@@ -89,6 +89,9 @@ export default function Order() {
           });
           return;
         }
+user.phone = form.phone;
+user.company = form.company;
+
       }
 
       const updateResponse = await fetch(

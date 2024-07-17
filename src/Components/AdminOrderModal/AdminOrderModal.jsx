@@ -20,26 +20,26 @@ export default function AdminOrderModal({ order, user, onClose }) {
       .then((data) => setUserDetails(data));
   }, [order]);
 
-  useEffect(() => {
-    const fetchDiscounts = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/discounts`);
-        if (!response.ok) {
-          throw new Error("Erreur lors de la récupération des remises");
-        }
-        const data = await response.json();
-        const discountMap = data.reduce((acc, discount) => {
-          acc[discount._id] = discount;
-          return acc;
-        }, {});
-        setDiscounts(discountMap);
-      } catch (err) {
-        console.error("Error fetching discounts:", err);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchDiscounts = async () => {
+  //     try {
+  //       const response = await fetch(`${BASE_URL}/discounts`);
+  //       if (!response.ok) {
+  //         throw new Error("Erreur lors de la récupération des remises");
+  //       }
+  //       const data = await response.json();
+  //       const discountMap = data.reduce((acc, discount) => {
+  //         acc[discount._id] = discount;
+  //         return acc;
+  //       }, {});
+  //       setDiscounts(discountMap);
+  //     } catch (err) {
+  //       console.error("Error fetching discounts:", err);
+  //     }
+  //   };
 
-    fetchDiscounts();
-  }, []);
+  //   fetchDiscounts();
+  // }, []);
 
   return (
     <div className={styles["admin-order-modal"]}>
@@ -81,22 +81,11 @@ export default function AdminOrderModal({ order, user, onClose }) {
             <tr key={item._id}>
               <td>{item.name}</td>
               <td>{item.quantity}</td>
-              <td>{item.priceAtOrderTime.toFixed(2)} €    {item.discount.length > 0 && (
-                  <span>
-                    {" ("}
-                    {item.discount
-                      .map((discountId) => {
-                        const discount = discounts[discountId];
-                        return discount
-                          ? discount.discountType === "percentage"
-                            ? `${discount.discountValue}%`
-                            : `${discount.discountValue}€`
-                          : "";
-                      })
-                      .join(" + ")}
-                    {" apppliqué(s))"}
-                  </span>
-                )}</td>
+              <td>
+  {item.priceAtOrderTime.toFixed(2)} €{" "}
+
+</td>
+
            
               <td>{(item.priceAtOrderTime * item.quantity).toFixed(2)} €</td>
             </tr>

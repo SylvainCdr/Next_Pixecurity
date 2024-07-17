@@ -82,18 +82,22 @@ function CartItem({ cart }) {
 
   const totalPrice = (cart.quantity * product.discountPrice).toFixed(2);
 
-  const handleQuantityChange = (quantity) => {
-    if (quantity < 1) return;
-
-    addToCart(cart.product, quantity);
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    if (!isNaN(newQuantity) && newQuantity >= 1) {
+      addToCart(cart.product, newQuantity);
+    }
   };
 
-  const handleRemoveFromCart = () => {
-    removeFromCart(cart);
+
+
+  const handleKeyDown = (event) => {
+    // Bloquer la saisie manuelle
+    event.preventDefault();
   };
 
   return (
-    <div className={styles["product"]} key={cart._id}>
+    <div className={styles.product}>
       <div className={styles["product-image"]}>
         <img
           src={
@@ -110,7 +114,6 @@ function CartItem({ cart }) {
           {product.name}
           <p>Réf : {product.ref}</p>
         </div>
-        {/* <p className={styles["product-description"]}>{product.description}</p> */}
       </div>
       {product.pourcentageDiscount && (
         <p className={styles["discount-badge"]}>
@@ -118,8 +121,6 @@ function CartItem({ cart }) {
         </p>
       )}
       <div className={styles["product-price"]}>
-        {/* If there is a discount price, display the original price and the discounted price */}
-
         {product.discountPrice ? (
           <>
             <span className={styles["original-price"]}>
@@ -134,15 +135,19 @@ function CartItem({ cart }) {
         )}
       </div>
       <div className={styles["product-quantity"]}>
+     
         <input
           type="number"
           min={1}
-          defaultValue={cart.quantity}
-          onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
+          value={cart.quantity}
+          onChange={handleQuantityChange}
+          onKeyDown={handleKeyDown}
+          inputMode="none" // Bloque la saisie manuelle
         />
+
       </div>
       <div className={styles["product-removal"]}>
-        <a className={styles["remove-product"]} onClick={handleRemoveFromCart}>
+        <a className={styles["remove-product"]} onClick={() => removeFromCart(cart)}>
           Supprimer
         </a>
       </div>
