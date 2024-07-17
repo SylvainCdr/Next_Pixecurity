@@ -11,21 +11,21 @@ export default function DeliveryTimeline({ status }) {
   return (
     <div data-aos="flip-down" className={styles["delivery-timeline"]}>
       <div
-        className={`${styles["timeline-item"]} ${status === "paid" ? styles["active"] : ""}`}
+        className={`${styles["timeline-item"]} ${status === "pending" ? styles["active"] : ""}`}
       >
         <div className={styles["timeline-circle"]}>1</div>
         <div className={styles["timeline-content"]}>
-          <h4>Payé</h4>
-          <p> Commande payée </p>
+          <h4>En attente</h4>
+          <p>Commande créée, en attente de paiement</p>
         </div>
       </div>
       <div
-        className={`${styles["timeline-item"]} ${status === "pending" ? styles["active"] : ""}`}
+        className={`${styles["timeline-item"]} ${status === "paid" ? styles["active"] : ""}`}
       >
         <div className={styles["timeline-circle"]}>2</div>
         <div className={styles["timeline-content"]}>
-          <h4>En attente</h4>
-          <p>En attente de traitement</p>
+          <h4>Payée</h4>
+          <p> Commande payée </p>
         </div>
       </div>
       <div
