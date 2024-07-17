@@ -192,7 +192,7 @@ function Totals({ carts }) {
         </div>
       </div>
       <div className={styles["totals-item"]} id="cart-shipping">
-        <p>Frais de livraison (DHL) </p>
+        <p>Frais de livraison  <img src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg" alt="dhl-logo" /></p>
         <div className={styles["totals-value"]} id="cart-shipping">
           {shippingCost.toFixed(2)} €
         </div>

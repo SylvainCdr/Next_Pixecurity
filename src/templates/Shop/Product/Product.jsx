@@ -203,11 +203,11 @@ export default function Product({ product, id, suggestions }) {
                 src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
                 alt="DHL"
               />
-              <img
+              {/* <img
                 src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
                 className={styles.chrono}
                 alt="chronopost"
-              />
+              /> */}
             </div>
 
              
