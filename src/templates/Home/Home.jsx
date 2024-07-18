@@ -36,7 +36,7 @@ export default function Home() {
         <Hero />
 
         <div className={styles["section2-offer"]}>
-          <h2>Une offre pensée autrement</h2>
+          <h3>Une offre pensée autrement</h3>
           <p>
             La protection de vos données personnelles certifiée Pixecurity c'est
             : la fourniture d'outils électroniques, une plateforme de gestion de
@@ -53,7 +53,7 @@ export default function Home() {
 
         <div className={styles["section4-aboutUs"]}>
           <div className={styles["section4-text"]}>
-            <h2>Qui sommes nous ?</h2>
+            <h3>Qui sommes nous ?</h3>
             <p>
               Des ingénieurs avant-gardistes. Des experts 3.0, natifs du
               numérique, spécialisés dans le BTP, les réseaux, les technologies

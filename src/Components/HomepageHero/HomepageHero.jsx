@@ -34,12 +34,12 @@ export default function HomepageHero() {
             data-aos-duration="3000"
           >
             <h1>Fournisseur de solutions de sûreté intelligentes</h1>
-            <h3>
+            <h2>
               <strong>
                 Vidéosurveillance, analyse d'image, contrôle d'accès,
                 réseaux/stockage des données, hypervision...
               </strong>
-            </h3>
+            </h2>
           </div>
           <div className={styles.homepageHeroCta}>
             <Link href="/boutique">

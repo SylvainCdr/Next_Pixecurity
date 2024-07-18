@@ -11,6 +11,7 @@ import ShopNav from "@/Components/ShopNav/ShopNav";
 import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Product({ product, id, suggestions }) {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
@@ -133,7 +134,7 @@ export default function Product({ product, id, suggestions }) {
         />
         <meta
           name="keywords"
-          content="caméra, surveillance, sécurité, vidéo, videoprotection, analyse d'image, intelligente, IA, IP, HD, 4K, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware"
+          content="caméra, caméras, surveillance, sécurité, sûreté, vidéo, protection videoprotection, videosurveillance, analyse d'image, intelligente, IA, IP, HD, 4K, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware, ptz, bullet, dôme, multicapteur, switch, firewall, licence, license"
         />
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
@@ -215,7 +216,7 @@ export default function Product({ product, id, suggestions }) {
               {product.category !== "Logiciels" && (
                 <img
                   src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
-                  alt="DHL"
+                  alt="DHL-logo"
                 />
               )}
             </div>
@@ -268,22 +269,22 @@ export default function Product({ product, id, suggestions }) {
 
             {product.pdf && (
               product.category === "Logiciels" ? (
-                <a
+                <Link
                   href={product.pdf}
                   target="_blank"
                   className={styles["pdf-link"]}
                 >
                   En savoir plus <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+                </Link>
               ) : (
-                <a
+                <Link
                   href={product.pdf}
                   download
                   target="_blank"
                   className={styles["pdf-link"]}
                 >
                   Fiche technique <i className="fa-solid fa-file-pdf"></i>
-                </a>
+                </Link>
               )
             )}
           </div>

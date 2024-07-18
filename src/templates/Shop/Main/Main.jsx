@@ -30,7 +30,7 @@ function Catalogue({ products }) {
         />
         <meta
           name="keywords"
-          content="catalogue, produits, Pixecurity, Boutique, caméras, surveillance, équipements réseau, logiciels, sécurité, Vivotek, Bosch, Zyxel, I-Pro, Milestone, Til Technologies, Cisco, Comnet, Vuwall, Briefcam, Technoaware"
+          content="catalogue, boutique, produits, caméras, surveillance, videosurveillance, sûreté, sécurité, Paris, France, videoprotection, équipements réseau, logiciels, sécurité, Vivotek, Bosch, Zyxel, I-Pro, Milestone, Til Technologies, Cisco, Comnet, Vuwall, Briefcam, Technoaware, bullet, ptz, dôme, angle, fisheye, multicapteur, fixe, switch, firewall"
         />
         <meta name="author" content="Pixecurity" />
       </Head>
@@ -41,7 +41,7 @@ function Catalogue({ products }) {
       <div data-aos="fade-up" className={styles["shop-categories"]}>
         <Link href="/boutique/Caméras">
           <div className={styles.category}>
-            <h3>Caméras</h3>
+            <h1>Caméras</h1>
             <img
               src="assets/cameras.webp"
               alt="Caméras"
@@ -52,7 +52,7 @@ function Catalogue({ products }) {
 
         <Link href="/boutique/Réseau">
           <div className={styles.category}>
-            <h3>Réseaux</h3>
+            <h1>Réseaux</h1>
             <img
               src="assets/reseaux.webp"
               alt="Réseaux"
@@ -63,7 +63,7 @@ function Catalogue({ products }) {
 
         <Link href="/boutique/Logiciels">
           <div className={styles.category}>
-            <h3>Logiciels</h3>
+            <h1>Logiciels</h1>
             <img
               src="assets/logiciels.webp"
               alt="Logiciels"
@@ -74,7 +74,7 @@ function Catalogue({ products }) {
 
         <Link href="/boutique/Autres">
           <div className={styles.category}>
-            <h3>Autres</h3>
+            <h1>Autres</h1>
             <img
               src="assets/autres.webp"
               alt="Autres"
@@ -85,7 +85,7 @@ function Catalogue({ products }) {
       </div>
 
       <div className={styles["products-carousel"]}>
-        <h4>Découvrez nos produits Vivotek </h4>
+        <h2>Découvrez nos produits Vivotek </h2>
         <ShopProductsCarousel carouselProducts={carouselProducts} />
       </div>
     </div>

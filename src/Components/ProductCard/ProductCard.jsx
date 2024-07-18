@@ -37,16 +37,16 @@ function ProductCard({ product }) {
         <DiscountBadge product={product} />
 
         {product.image.startsWith("http") ? (
-          <img src={product.image} alt="" className={styles["product-img"]} />
+          <img src={product.image} alt={product.name} className={styles["product-img"]} />
         ) : (
           <img
             src={`${BASE_URL}${product.image}`}
-            alt=""
+            alt={product.name}
             className={styles["product-img"]}
             loading="lazy"
           />
         )}
-        <h2 className={styles["card-title"]}>{product.name}</h2>
+        <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
             <img
