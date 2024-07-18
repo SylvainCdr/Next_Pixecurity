@@ -7,6 +7,9 @@ import styles from "./style.module.scss";
 
 const heroImages = [
   {
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/promo-banner-1-scaled.jpg",
+  },
+  {
     url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/2880x720_X-series_0-scaled.webp",
   },
   {

@@ -86,6 +86,12 @@ export default function Home() {
             <button>Contactez-nous </button>{" "}
           </Link>
         </div>
+<div className={styles.shopBanner}>
+  <h3> Découvrez notre boutique en ligne </h3>
+
+  <img src="assets/shop.png" alt="discoverShop-banner" />
+</div>
+
       </div>
     </>
   );
