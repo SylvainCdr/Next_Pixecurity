@@ -188,9 +188,17 @@ export default function Product({ product, id, suggestions }) {
 
             <p className={styles.presentation}>{product.presentation}</p>
 
-            <p className={styles.stock}>
-              <i className="fa-solid fa-check"></i> Disponible sur commande
-            </p>
+            {product.category === "Logiciels" ? (
+  <p className={styles.stock}>
+    <i className="fa-solid fa-check"></i> En stock
+  </p>
+) : (
+  <p className={styles.stock}>
+    <i className="fa-solid fa-check"></i> Disponible sur commande
+  </p>
+)}
+
+
             <div className={styles.details}>
               <p className={styles.securePayment}>
                 <i className="fa-solid fa-lock"></i>  Paiement sécurisé
@@ -211,8 +219,7 @@ export default function Product({ product, id, suggestions }) {
                 />
               )}
             </div>
-             
-           
+
             <div className={styles["price-addToCart"]}>
               <div className={styles.price}>
                 <DiscountedPrice product={product} />
@@ -260,14 +267,24 @@ export default function Product({ product, id, suggestions }) {
             </table>
 
             {product.pdf && (
-              <a
-                href={product.pdf}
-                download
-                target="_blank"
-                className={styles["pdf-link"]}
-              >
-                Fiche technique <i className="fa-solid fa-file-pdf"></i>
-              </a>
+              product.category === "Logiciels" ? (
+                <a
+                  href={product.pdf}
+                  target="_blank"
+                  className={styles["pdf-link"]}
+                >
+                  En savoir plus <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              ) : (
+                <a
+                  href={product.pdf}
+                  download
+                  target="_blank"
+                  className={styles["pdf-link"]}
+                >
+                  Fiche technique <i className="fa-solid fa-file-pdf"></i>
+                </a>
+              )
             )}
           </div>
 

@@ -247,6 +247,16 @@ export default function AboutUs() {
             </li>
             <li>
               <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Mathieu PACREAU</h2>
+                <p>Technicien supérieur Systèmes & Réseaux</p>
+                <img
+                  alt="Mathieu PACREAU"
+                  src="assets/team/MATHIEU_P.jpg"
+                />
+              </div>
+            </li>
+            <li>
+              <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>David LEPAGE</h2>
                 <p>Chargé d'affaires des projets transports</p>
                 <img alt="David LEPAGE" src="assets/team/DAVID.jpg" loading="lazy"/>
@@ -269,16 +279,6 @@ export default function AboutUs() {
               <img
                 alt="Adrien DESDOITS"
                 src="https://www.pixecurity.com/wp-content/uploads/2022/03/Adri-D.png"
-              />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Mathieu PACREAU</h2>
-              <p>Technicien supérieur Systèmes & Réseaux</p>
-              <img
-                alt="Mathieu PACREAU"
-                src="https://www.pixecurity.com/wp-content/uploads/2022/03/Mathieu.png"
               />
             </div>
           </li>
