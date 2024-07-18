@@ -56,6 +56,7 @@ export default function AdminUsers() {
             });
           })
           .catch((error) =>
+            console.error("Erreur lors de la suppression de l'utilisateur :", error)
           );
       }
     });

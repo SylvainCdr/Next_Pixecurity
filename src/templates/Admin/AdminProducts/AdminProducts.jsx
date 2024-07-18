@@ -56,6 +56,7 @@ export default function AdminProducts() {
             });
           })
           .catch((error) =>
+            console.error("Erreur lors de la suppression du produit :", error)  
           );
       }
     });
