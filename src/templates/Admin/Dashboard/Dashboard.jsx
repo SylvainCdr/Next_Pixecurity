@@ -88,7 +88,6 @@ export default function Dashboard() {
             favorites.push(favorite);
           });
         });
-        console.log("tous les favorites enregistrés:", favorites);
 
         setUserFavorites(favorites);
 
@@ -102,14 +101,12 @@ export default function Dashboard() {
           return acc;
         }, {});
 
-        console.log("groupedFavorites:", groupedFavorites);
 
         // on trie les produits par nombre de likes
         const sortedFavorites = Object.entries(groupedFavorites).sort(
           (a, b) => b[1] - a[1]
         );
 
-        console.log("sortedFavorites:", sortedFavorites);
 
         setTopFavorites(sortedFavorites.slice(0, 6));
       });

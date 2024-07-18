@@ -126,7 +126,6 @@ function ButtonAddToFavorite({ product }) {
   }, [userId, prouductId, checkFavorite]);
 
   const handleToggleFavorites = async () => {
-    console.log("Trying to remove product with ID:", product._id);
     try {
       if (userId) {
         if (isInFavorites) {

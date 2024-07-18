@@ -85,14 +85,7 @@ function Contact() {
       return;
     }
 
-    console.log("Submitting form with:", {
-      lastname,
-      firstname,
-      company,
-      email,
-      message,
-    });
-
+  
     const response = await fetch(`${BASE_URL}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -203,7 +203,6 @@ export default function AdminProductForm({ onSubmit, productToEdit }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Avant ajout nouvelle sous-catégorie :", subcategory);
 
     // Construire l'objet produit
     let product = {
@@ -259,14 +258,12 @@ export default function AdminProductForm({ onSubmit, productToEdit }) {
       nebula: detailsNebula,
     };
 
-    console.log("Après ajout nouvelle sous-catégorie :", product.subcategory);
 
     // Télécharger l'image si un fichier est sélectionné
     if (imageFile) {
       const formData = new FormData();
       formData.append("file", imageFile);
       formData.append("fileName", imageFile.name); // Utilisez `imageFile.name` comme nom de fichier
-      console.log(imageFile.name);
 
       try {
         const response = await fetch(`${BASE_URL}/upload`, {

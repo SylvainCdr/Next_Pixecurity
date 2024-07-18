@@ -172,10 +172,6 @@ function Totals({ carts }) {
   
 
   const totalAmount = calculatedSubTotal + tax + shippingCost;
-  console.log("calculatedSubTotal:", calculatedSubTotal);
-  console.log("tax:", tax);
-  console.log("shippingCost:", shippingCost);
-  console.log("totalAmount:", totalAmount);
 
   return (
     <div className={styles["totals"]}>

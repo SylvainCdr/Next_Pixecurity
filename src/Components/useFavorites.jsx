@@ -31,7 +31,6 @@ const useFavorites = () => {
       });
 
       if (response.ok) {
-        console.log("Produit ajouté aux favoris avec succès!");
         setIsInFavorites(true);
         return true;
       } else {
@@ -54,7 +53,6 @@ const useFavorites = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Check Favorite Response Data:", data); // Add this line for debugging
         return data.isInFavorites;
       } else {
         console.error("Error checking favorites:", response.statusText);
@@ -76,10 +74,8 @@ const useFavorites = () => {
           method: "DELETE",
         }
       );
-      console.log("res", response);
 
       if (response.ok) {
-        console.log("Produit retiré des favoris avec succès!");
         setIsInFavorites(false);
         return true;
       } else {
@@ -98,7 +94,6 @@ const useFavorites = () => {
       const response = await fetch(`${BASE_URL}/users/${userId}/favorites`);
       if (response.ok) {
         const data = await response.json();
-        console.log("Favorites Data:", data); // Add this line for debugging
         return data;
       } else {
         console.error("Error fetching favorites:", response.statusText);

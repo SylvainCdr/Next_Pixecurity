@@ -13,7 +13,6 @@ function EditProduct() {
         const productId = window.location.pathname.split("/").pop();
         const response = await fetch(`${BASE_URL}/products/${productId}`);
         const productData = await response.json();
-        console.log("productData:", productData);
         setProductToEdit(productData);
       } catch (error) {
         console.error(
