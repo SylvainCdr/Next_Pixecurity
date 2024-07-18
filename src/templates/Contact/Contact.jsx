@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import { BASE_URL } from "../../url";
 import Head from "next/head";
+import Link from "next/link";
 
 function Contact() {
   const [lastname, setLastname] = useState("");
@@ -162,15 +163,15 @@ function Contact() {
             </p>
             <p>
               <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:pixecurity@pixecurity.com">
+              <Link href="mailto:pixecurity@pixecurity.com">
                 pixecurity@pixecurity.com
-              </a>
+              </Link>
             </p>
             <p>
               <i className="fa-brands fa-linkedin"></i>
-              <a href="https://www.linkedin.com/company/pixecurity/">
+              <Link href="https://www.linkedin.com/company/pixecurity/">
                 Linkedin
-              </a>
+              </Link>
             </p>
             <p>
               <i className="fa-solid fa-location-dot"></i> 38 Rue Jean Mermoz

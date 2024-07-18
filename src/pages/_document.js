@@ -1,3 +1,4 @@
+// pages/_document.js
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -26,17 +27,8 @@ export default function Document() {
         <meta name="twitter:image" content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
         <meta name="twitter:site" content="@pixecurity" />
 
-        {/* Viewport Meta Tag for Mobile Optimization */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         {/* Favicon for the tab */}
         <link rel="icon" href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
-
-        {/* Preloading critical images */}
-        <link rel="preload" as="image" href="/assets/homepage/hero1.webp" />
-        <link rel="preload" as="image" href="/assets/cube3(1).webp" />
-        <link rel="preload" as="image" href="/assets/cube4.jpg" />
-        <link rel="preload" as="image" href="/assets/homepage/hero2.webp" />
 
         {/* External Stylesheets */}
         <link
@@ -49,7 +41,7 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        {/* Preloading fonts */}
+        {/* Preloading fonts
         <link
           rel="preload"
           href="https://fonts.cdnfonts.com/s/46796/Barlow-Regular.woff2"
@@ -63,7 +55,7 @@ export default function Document() {
           as="font"
           type="font/woff2"
           crossorigin="anonymous"
-        />
+        /> */}
       </Head>
       <body>
         <Main />

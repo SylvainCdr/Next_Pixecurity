@@ -48,9 +48,9 @@ function Footer() {
         <ul>
           <li>
             <i className="fa-solid fa-envelope"></i>
-            <a href="mailto:pixecurity@pixecurity.com">
+            <Link href="mailto:pixecurity@pixecurity.com">
               pixecurity@pixecurity.com
-            </a>
+            </Link>
           </li>
           <li>
             <i className="fa-solid fa-phone"></i>(+33) 1 39 60 98 82
@@ -61,7 +61,7 @@ function Footer() {
           </li>
           <li>
             <i className="fa-brands fa-linkedin"></i>
-            <a href="https://www.linkedin.com/company/pixecurity/">Linkedin</a>
+            <Link href="https://www.linkedin.com/company/pixecurity/">Linkedin</Link>
           </li>
            <p className={styles.copyright}>&copy; 2024 Pixecurity. Tous droits réservés.</p> 
         </ul>

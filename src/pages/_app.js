@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { AppProvider } from "@/Components/appContext";
 import { CartProvider } from "@/Components/cartContext";
 import Template from "@/Components/Template/Template";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -24,12 +25,18 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <AppProvider>
-      <CartProvider>
-        <Template>
-          <Component {...pageProps} />
-        </Template>
-      </CartProvider>
-    </AppProvider>
+    <>
+      <Head>
+        {/* Viewport Meta Tag for Mobile Optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <AppProvider>
+        <CartProvider>
+          <Template>
+            <Component {...pageProps} />
+          </Template>
+        </CartProvider>
+      </AppProvider>
+    </>
   );
 }

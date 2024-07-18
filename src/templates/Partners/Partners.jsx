@@ -109,14 +109,14 @@ const Partners = () => {
                 className={`${styles["partners-section2"]} ${partnerIndex % 2 === 0 ? styles.left : styles.right}`}
               >
                 <div className={styles["partner-logo"]}>
-                  <a href={partner.website} target="_blank" rel="noreferrer">
+                  <Link href={partner.website} target="_blank" rel="noreferrer">
                     <img
                       data-aos="zoom-in"
                       src={partner.logo}
                       alt={partner.name}
                       loading="lazy"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className={styles["partner-info"]}>
                   <p>

@@ -113,9 +113,9 @@ function Header() {
           )}
           {user && (
             <li>
-              <a href="#" onClick={logout} className={styles.logout}>
+              <Link href="#" onClick={logout} className={styles.logout}>
                 Déconnexion
-              </a>
+              </Link>
             </li>
           )}
         </ul>

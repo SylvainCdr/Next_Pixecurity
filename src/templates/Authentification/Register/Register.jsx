@@ -190,13 +190,13 @@ export default function Register() {
             <input type="checkbox" name="cgu" id="cgu" required />
             <label htmlFor="cgu">
               J'accepte les
-              <a href="/cgv" target="_blank">
+              <Link href="/cgv" target="_blank">
                 CGV
-              </a>
+              </Link>
               et la
-              <a href="/rgpd" target="_blank">
+              <Link href="/rgpd" target="_blank">
                 politique de confidentialité
-              </a>
+              </Link>
             </label>
           </div>
 
