@@ -376,6 +376,7 @@ export default function AdminProductForm({ onSubmit, productToEdit }) {
                 <option value="Panoramique">Panoramique</option>
                 <option value="Angle">Angle</option>
                 <option value="Comptage">Comptage</option>
+                <option value="Fixe">Fixe</option>
               </>
             )}
 
@@ -391,7 +392,8 @@ export default function AdminProductForm({ onSubmit, productToEdit }) {
             {/* Si la catégorie est "Logiciels", affichez les options suivantes */}
             {category === "Logiciels" && (
               <>
-                <option value="Milestone">Milestone</option>
+                <option value="Milestone - XProtect">Milestone - XProtect</option>
+                <option value="Milestone - Care Plus">Milestone - Care Plus </option>
                 <option value="Briefcam">Briefcam</option>
                 <option value="Technoaware">Technoaware</option>
                 <option value="Nx Witness">Nx Witness</option>

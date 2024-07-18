@@ -195,21 +195,22 @@ export default function Product({ product, id, suggestions }) {
               <p className={styles.securePayment}>
                 <i className="fa-solid fa-lock"></i>  Paiement sécurisé
               </p>
-              <p>
-                <i className="fa-solid fa-truck-fast"></i> Livraison sous 2 à 3
-                semaines
-              </p>
-              <img
-                src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
-                alt="DHL"
-              />
-              {/* <img
-                src="https://www.chronopost.fr/sites/chronopost/themes/custom/chronopost/images/chronopost_logo.png"
-                className={styles.chrono}
-                alt="chronopost"
-              /> */}
+              {product.category === "Logiciels" ? (
+                <p>
+                  <i className="fa-solid fa-envelope"></i> Activation sous 48 à 72 heures
+                </p>
+              ) : (
+                <p>
+                  <i className="fa-solid fa-truck-fast"></i> Livraison sous 2 à 3 semaines via DHL
+                </p>
+              )}
+              {product.category !== "Logiciels" && (
+                <img
+                  src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
+                  alt="DHL"
+                />
+              )}
             </div>
-
              
            
             <div className={styles["price-addToCart"]}>
