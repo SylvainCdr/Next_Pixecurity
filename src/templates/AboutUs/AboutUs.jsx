@@ -48,7 +48,7 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="https://as2.ftcdn.net/v2/jpg/05/73/57/23/1000_F_573572330_EFcB1C8z5wcthD2H8MjUKFVmBrN9wVdT.jpg"
+                src="../../assets/about1.webp"
                 alt=""
                 loading="lazy"
               />
@@ -67,7 +67,7 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="../../assets/about2.webp"
                 alt=""
                 loading="lazy"
               />
@@ -86,7 +86,7 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="../../assets/about3.webp"
                 alt=""
                 loading="lazy"
               />
@@ -107,7 +107,7 @@ export default function AboutUs() {
           </h3>
           <div className={styles.bottom}>
             <p>-- Yann Duchet, CEO Pixecurity</p>
-            <img src="assets/team/YANN-aboutUs.jpg" alt="" />
+            <img src="../../assets/team/YANN-aboutUs.jpg" alt="" loading="lazy" />
           </div>
         </div>
 
