@@ -6,6 +6,7 @@ import styles from "./style.module.scss";
 import { PropagateLoader } from "react-spinners";
 import { useRouterLoading } from "@/Components/useRouterLoading";
 import Head from "next/head";
+import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
 const color = "#ff9c3fc0";
 // contient les styles du loader
@@ -20,7 +21,6 @@ const Products = ({ products, subcategory, filters }) => {
 
   return (
     <div className={styles["products-container"]}>
-
       <Head>
         <title>Produits</title>
         <meta
@@ -33,7 +33,8 @@ const Products = ({ products, subcategory, filters }) => {
         />
         <meta name="author" content="Pixecurity" />
       </Head>
-      
+
+      <RegisterPopup />
 
       <ShopNav />
       <ShopSearch isHero={false} />

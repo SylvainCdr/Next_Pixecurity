@@ -35,6 +35,8 @@ function Catalogue({ products }) {
         <meta name="author" content="Pixecurity" />
       </Head>
 
+   
+
       <ShopNav />
       <ShopSearch />
 
