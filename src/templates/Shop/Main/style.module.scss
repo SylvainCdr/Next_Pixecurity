@@ -20,7 +20,7 @@
 
       .category {
         width: 90%;
-        height: 100%;
+        height: 25rem;
         padding: 1em 1em 4em 1em;
         cursor: pointer;
         transition: 0.3s;
@@ -62,26 +62,28 @@
 
   }
 
-}
-@media (max-width: 768px) {
-  .shop-categories {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    a {
-      margin: 1em 0;
-      width: 100%;
-
-      .category {
-        width: 80%;
-
-        h3 {
-          font-size: 1.2rem;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+  @media (max-width: 768px) {
+    .shop-categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  
+      a {
+        margin: 1em 0;
+        width: 100%;
+  
+        .category {
+          width: 80%;
+          height: 14rem;
+          padding: 1em 1em 0em 1em;
+  
+          h1 {
+            font-size: 1.2rem;
+          }
+          img {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+          }
         }
       }
     }

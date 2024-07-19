@@ -10,16 +10,30 @@ import Head from "next/head";
 
 function Catalogue({ products }) {
 
-  
-  const carouselProducts1 = products?.filter(
+  function getRandomProducts(products, limit) {
+    // Mélanger le tableau des produits
+    const shuffledProducts = products.sort(() => 0.5 - Math.random());
+    // Limiter le nombre de produits à 'limit'
+    return shuffledProducts.slice(0, limit);
+  }
+
+  const filteredProducts1 = products?.filter(
     (product) => product.brand === "Vivotek"
   );
-  const carouselProducts2 = products?.filter(
+  const carouselProducts1 = getRandomProducts(filteredProducts1, 10);
+
+  const filteredProducts2 = products?.filter(
     (product) => product.brand === "Zyxel"
   );
-  const carouselProducts3 = products?.filter(
+  const carouselProducts2 = getRandomProducts(filteredProducts2, 10);
+
+  const filteredProducts3 = products?.filter(
     (product) => product.brand === "Milestone"
   );
+  const carouselProducts3 = getRandomProducts(filteredProducts3, 10);
+
+
+
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
@@ -43,8 +57,6 @@ function Catalogue({ products }) {
         <meta name="author" content="Pixecurity" />
       </Head>
 
-   
-
       <ShopNav />
       <ShopSearch />
 
@@ -52,61 +64,57 @@ function Catalogue({ products }) {
         <Link href="/boutique/Caméras">
           <div className={styles.category}>
             <h1>Caméras</h1>
-            <img
-              src="assets/cameras.webp"
-              alt="Caméras"
-              loading="lazy"
-            />
+            <img src="assets/cameras.webp" alt="Caméras" loading="lazy" />
           </div>
         </Link>
 
         <Link href="/boutique/Réseau">
           <div className={styles.category}>
             <h1>Réseaux</h1>
-            <img
-              src="assets/reseaux.webp"
-              alt="Réseaux"
-              loading="lazy"
-            />
+            <img src="assets/reseaux.webp" alt="Réseaux" loading="lazy" />
           </div>
         </Link>
 
         <Link href="/boutique/Logiciels">
           <div className={styles.category}>
             <h1>Logiciels</h1>
-            <img
-              src="assets/logiciels.webp"
-              alt="Logiciels"
-              loading="lazy"
-            />
+            <img src="assets/logiciels.webp" alt="Logiciels" loading="lazy" />
           </div>
         </Link>
 
         <Link href="/boutique/Autres">
           <div className={styles.category}>
             <h1>Autres</h1>
-            <img
-              src="assets/autres.webp"
-              alt="Autres"
-              loading="lazy"
-            />
+            <img src="assets/autres.webp" alt="Autres" loading="lazy" />
           </div>
         </Link>
       </div>
 
       <div className={styles["products-carousel"]}>
         {/* <h2>Découvrez nos produits Vivotek </h2> */}
-        <img src="assets/partnersLogo/vivotek.png" alt="Vivotek-logo" loading="lazy" />
+        <img
+          src="assets/partnersLogo/vivotek.png"
+          alt="Vivotek-logo"
+          loading="lazy"
+        />
         <ShopProductsCarousel carouselProducts={carouselProducts1} />
       </div>
       <div className={styles["products-carousel"]}>
         {/* <h2>Découvrez nos produits Vivotek </h2> */}
-        <img src="assets/partnersLogo/zyxel2.png" alt="Zyxel-logo" loading="lazy" />
+        <img
+          src="assets/partnersLogo/zyxel2.png"
+          alt="Zyxel-logo"
+          loading="lazy"
+        />
         <ShopProductsCarousel carouselProducts={carouselProducts2} />
       </div>
       <div className={styles["products-carousel"]}>
         {/* <h2>Découvrez nos produits Vivotek </h2> */}
-        <img src="assets/partnersLogo/milestone.png" alt="Milestone-logo" loading="lazy" />
+        <img
+          src="assets/partnersLogo/milestone.png"
+          alt="Milestone-logo"
+          loading="lazy"
+        />
         <ShopProductsCarousel carouselProducts={carouselProducts3} />
       </div>
     </div>
