@@ -10,13 +10,14 @@ import { useGetUser } from "../useGetUser";
 
 const ShopProductsCarousel = ({ carouselProducts }) => {
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
-    // speed: 600,
+    speed: 600,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 2500,
     slidesToShow: 5,
     slidesToScroll: 1,
+  
 
     responsive: [
       {
@@ -25,7 +26,7 @@ const ShopProductsCarousel = ({ carouselProducts }) => {
           slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+         
         },
       },
       {
@@ -34,7 +35,7 @@ const ShopProductsCarousel = ({ carouselProducts }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+        
         },
       },
       {

@@ -9,8 +9,16 @@ import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProducts
 import Head from "next/head";
 
 function Catalogue({ products }) {
-  const carouselProducts = products?.filter(
+
+  
+  const carouselProducts1 = products?.filter(
     (product) => product.brand === "Vivotek"
+  );
+  const carouselProducts2 = products?.filter(
+    (product) => product.brand === "Zyxel"
+  );
+  const carouselProducts3 = products?.filter(
+    (product) => product.brand === "Milestone"
   );
 
   useEffect(() => {
@@ -87,8 +95,19 @@ function Catalogue({ products }) {
       </div>
 
       <div className={styles["products-carousel"]}>
-        <h2>Découvrez nos produits Vivotek </h2>
-        <ShopProductsCarousel carouselProducts={carouselProducts} />
+        {/* <h2>Découvrez nos produits Vivotek </h2> */}
+        <img src="assets/partnersLogo/vivotek.png" alt="Vivotek-logo" loading="lazy" />
+        <ShopProductsCarousel carouselProducts={carouselProducts1} />
+      </div>
+      <div className={styles["products-carousel"]}>
+        {/* <h2>Découvrez nos produits Vivotek </h2> */}
+        <img src="assets/partnersLogo/zyxel2.png" alt="Zyxel-logo" loading="lazy" />
+        <ShopProductsCarousel carouselProducts={carouselProducts2} />
+      </div>
+      <div className={styles["products-carousel"]}>
+        {/* <h2>Découvrez nos produits Vivotek </h2> */}
+        <img src="assets/partnersLogo/milestone.png" alt="Milestone-logo" loading="lazy" />
+        <ShopProductsCarousel carouselProducts={carouselProducts3} />
       </div>
     </div>
   );
