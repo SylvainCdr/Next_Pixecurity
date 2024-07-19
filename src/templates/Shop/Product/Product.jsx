@@ -12,6 +12,7 @@ import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import Head from "next/head";
 import Link from "next/link";
+import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
 export default function Product({ product, id, suggestions }) {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
@@ -141,6 +142,7 @@ export default function Product({ product, id, suggestions }) {
         <meta property="og:image" content={product.image} />
         {/* Add more OG meta tags as needed */}
       </Head>
+      <RegisterPopup />
       <ShopNav />
       <ShopSearch />
 
