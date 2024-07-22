@@ -194,11 +194,11 @@ export function getFiltersFromProducts(products) {
       queryKey: "installationExt",
       filters: uniqueInstallationExt,
     },
-    nbrePorts: {
-      title: "Nombre de ports",
-      queryKey: "nbrePorts",
-      filters: uniqueNbrePorts,
-    },
+    // nbrePorts: {
+    //   title: "Nombre de ports",
+    //   queryKey: "nbrePorts",
+    //   filters: uniqueNbrePorts,
+    // },
     rackable: {
       title: "Rackable",
       queryKey: "rackable",
@@ -244,31 +244,31 @@ export function getFiltersFromProducts(products) {
       queryKey: "debitFirewall",
       filters: uniqueDebitFirewall,
     },
-    vitesse: {
-      title: "Vitesse",
-      queryKey: "vitesse",
-      filters: uniqueVitesse,
-    },
-    typeWifi: {
-      title: "Type Wifi",
-      queryKey: "typeWifi",
-      filters: uniqueTypeWifi,
-    },
-    antenne: {
-      title: "Antenne",
-      queryKey: "antenne",
-      filters: uniqueAntenne,
-    },
+    // vitesse: {
+    //   title: "Vitesse",
+    //   queryKey: "vitesse",
+    //   filters: uniqueVitesse,
+    // },
+    // typeWifi: {
+    //   title: "Type Wifi",
+    //   queryKey: "typeWifi",
+    //   filters: uniqueTypeWifi,
+    // },
+    // antenne: {
+    //   title: "Antenne",
+    //   queryKey: "antenne",
+    //   filters: uniqueAntenne,
+    // },
     lan: {
       title: "LAN",
       queryKey: "lan",
       filters: uniqueLan,
     },
-    nebula: {
-      title: "Nebula",
-      queryKey: "nebula",
-      filters: uniqueNebula,
-    },
+    // nebula: {
+    //   title: "Nebula",
+    //   queryKey: "nebula",
+    //   filters: uniqueNebula,
+    // },
   };
 }
 export function getProductsFiltered(products, query) {

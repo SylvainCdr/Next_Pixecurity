@@ -30,7 +30,7 @@ export default function Product({ product, id, suggestions }) {
   const labelsMapping = {
     dimensions: "Dimensions",
     poids: "Poids",
-    temp: "Température",
+    temp: "Température de fonctionnement",
     megapixels: "Mégapixels",
     distanceFocale: "Distance focale",
     ouverture: "Ouverture",
@@ -50,14 +50,22 @@ export default function Product({ product, id, suggestions }) {
     poe: "PoE",
     poePlus: "PoE+",
     poePlusPlus: "PoE++",
-    consommation: "Consommation",
+    consommation: "Consommation max",
     garantie: "Garantie",
+    interface: "Interface",
+    usb : "USB",
+    portConsole: "Port console",
+    debitVpn: "Débit VPN",
+    maxTcp: "Max TCP",
+    debitFirewall: "Débit Firewall",
     vitesse: "Vitesse",
     typeWifi: "Type de WiFi",
     antenne: "Antenne",
     lan: "LAN",
     nebula: "Nebula",
   };
+
+
 
   const [isInFavorites, setIsInFavorites] = useState(false);
 
