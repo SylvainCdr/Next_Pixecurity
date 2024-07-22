@@ -58,7 +58,6 @@ function ShopSearch({ isHero = true }) {
 
       {isHero && searchResults.length === 0 && (
         <div className={styles["shop-hero-carousel"]}>
-          <ShopHeroCarousel />
         </div>
       )}
 

@@ -1,11 +1,16 @@
 .shop_hero_carousel_container {
   width: 95%;
-  margin: auto;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-bottom: 3em;
+  
 
   img {
-    max-width: 1440px;
     width: 100%;
     object-fit: cover;
+    display : flex;
+   margin :auto;  
+
   }
 }
 // media queries

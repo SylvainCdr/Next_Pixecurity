@@ -7,6 +7,7 @@ import Aos from "aos";
 import "aos/dist/aos.css"; // Import des styles d'AOS
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 import Head from "next/head";
+import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 
 function Catalogue({ products }) {
 
@@ -22,10 +23,10 @@ function Catalogue({ products }) {
   );
   const carouselProducts1 = getRandomProducts(filteredProducts1, 10);
 
-  const filteredProducts2 = products?.filter(
-    (product) => product.brand === "Zyxel"
-  );
-  const carouselProducts2 = getRandomProducts(filteredProducts2, 10);
+  // const filteredProducts2 = products?.filter(
+  //   (product) => product.brand === "Zyxel"
+  // );
+  // const carouselProducts2 = getRandomProducts(filteredProducts2, 10);
 
   const filteredProducts3 = products?.filter(
     (product) => product.brand === "Milestone"
@@ -59,7 +60,7 @@ function Catalogue({ products }) {
 
       <ShopNav />
       <ShopSearch />
-
+      <ShopHeroCarousel />
       <div data-aos="fade-up" className={styles["shop-categories"]}>
         <Link href="/boutique/Caméras">
           <div className={styles.category}>
@@ -91,7 +92,6 @@ function Catalogue({ products }) {
       </div>
 
       <div className={styles["products-carousel"]}>
-        {/* <h2>Découvrez nos produits Vivotek </h2> */}
         <img
           src="assets/partnersLogo/vivotek.png"
           alt="Vivotek-logo"
@@ -99,17 +99,15 @@ function Catalogue({ products }) {
         />
         <ShopProductsCarousel carouselProducts={carouselProducts1} />
       </div>
-      <div className={styles["products-carousel"]}>
-        {/* <h2>Découvrez nos produits Vivotek </h2> */}
+      {/* <div className={styles["products-carousel"]}>
         <img
           src="assets/partnersLogo/zyxel2.png"
           alt="Zyxel-logo"
           loading="lazy"
         />
         <ShopProductsCarousel carouselProducts={carouselProducts2} />
-      </div>
+      </div> */}
       <div className={styles["products-carousel"]}>
-        {/* <h2>Découvrez nos produits Vivotek </h2> */}
         <img
           src="assets/partnersLogo/milestone.png"
           alt="Milestone-logo"

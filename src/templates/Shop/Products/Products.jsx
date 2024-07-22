@@ -7,6 +7,7 @@ import { PropagateLoader } from "react-spinners";
 import { useRouterLoading } from "@/Components/useRouterLoading";
 import Head from "next/head";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 
 const color = "#ff9c3fc0";
 // contient les styles du loader
@@ -38,7 +39,7 @@ const Products = ({ products, subcategory, filters }) => {
 
       <ShopNav />
       <ShopSearch isHero={false} />
-
+   <ShopHeroCarousel />
       <div className={styles["sweet-loading"]}>
         {loading && (
           <PropagateLoader
