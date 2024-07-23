@@ -17,7 +17,7 @@
     background-position: top;
     align-items: center;
     display: flex;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
     width: 100%;
 
     .title {
@@ -51,9 +51,23 @@
     }
   }
   .forces {
+    background: linear-gradient(
+      360deg,
+      #1c1c1cfb 10%,
+      rgba(10, 17, 30, 0.452) 35%,
+      rgba(31, 50, 87, 0.065),
+      50%,
+      rgba(122, 122, 122, 0) 70%
+    ),
+    url("https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/AdobeStock_355150756-scaled.webp");background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     ul {
       max-width: 1440px;
-      margin: 6em auto;
+      padding-top : 8em ;
+      padding-bottom : 20em ;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       width: 95%;
@@ -84,7 +98,7 @@
   .slides-section {
     max-width: 1440px;
     margin: 2em auto;
-    padding: 8em 2em 2em 2em;
+    padding: 2em 2em 2em 2em;
 
     h2 {
       width: 30%;
@@ -177,8 +191,10 @@
     .forces {
 
       ul { 
+        padding-top : 2em ;
+        padding-bottom : 12em ;
       display: inline-block;
-      margin: 2em auto;
+      // margin: 2em auto;
       width: 100%;
       align-items: center;
       justify-content: center;
@@ -255,7 +271,7 @@
       background-size: cover;
       background-position: top;
       .title {
-        width: 50%;
+        width: 55%;
 
         h1 {
           font-size: 1.6rem;
@@ -277,7 +293,8 @@
     .forces {
       ul { 
       display: inline-block;
-      margin: 2em auto;
+     padding-top : 2em ;
+        padding-bottom : 9em ;
       width: 100%;
       align-items: center;
       justify-content: center;
