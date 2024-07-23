@@ -1,58 +1,62 @@
 /* style.module.scss */
 
 .popup {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.603);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it's on top of other content */
-   
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.603);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  max-width: 400px; /* Adjust as needed */
+  margin: 0 20px; /* Add some margin for responsiveness */
+
+  h2 {
+    margin-bottom: 1em;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    color: var(--sunset1);
+    font-weight: 700;
+
+    span {
+      color: rgb(247, 44, 44);
+      font-size: 1.2em;
+    }
   }
-  
-  .popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    max-width: 400px; /* Adjust as needed */
-    margin: 0 20px; /* Add some margin for responsiveness */
 
-    
+  p {
+    color: rgb(66, 66, 66);
+    font-size: 1.1em;
+    margin-bottom: 1em;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.1em;
+  right: 0.2em;
+  cursor: pointer;
+  font-size: 3rem; /* Make the close button larger */
+  color: black;
+
+  @media screen and (max-width: 768px) {
     h2 {
-        margin-bottom: 1em;
-        font-size: 1.4em;
-        text-transform: uppercase;
-        color : var(--sunset1);
-        font-weight: 700;
-
-        span {
-            color : rgb(247, 44, 44);
-            font-size: 1.2em;
-       
-        }
-    
+      font-size: 1.2em;
     }
 
     p {
-        color : rgb(66, 66, 66)    ;
-        font-size: 1.1em;
-        margin-bottom: 1em;
+      font-size: 1em;
     }
   }
-  
-  .close-btn {
-    position: absolute;
-    top: 0.1em;
-    right: 0.2em;
-    cursor: pointer;
-    font-size: 3rem; /* Make the close button larger */
-    color : black;
-    
-  }
-  
+}

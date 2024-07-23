@@ -1,5 +1,6 @@
 .aboutUs-container {
-  margin: 5em auto;
+  margin: 0 auto;
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
 
@@ -45,6 +46,8 @@
 
     .card-about {
       width: 30%;
+      position: relative;
+      z-index: 1000;
       height: auto;
       background-color: rgb(255, 255, 255);
       box-shadow: 1px 1px 2px rgba(126, 126, 126, 0.613);
@@ -101,8 +104,8 @@
 
   .section-3 {
     padding: 2em 1em;
-    min-height: 80vh;
-    margin: 9em 0em;
+    min-height: 120vh;
+   margin: -10em 0em;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -120,6 +123,7 @@
       width: 60%;
       max-width: 1440px;
       margin: 0 auto;
+      padding-top : 5em;
     }
 
     .bottom {
@@ -149,10 +153,19 @@
   }
 
   .section-4 {
-    margin: 6em 0em;
+    margin-top: 18em ;
+    margin-bottom: 5em;
+
 
     h1 {
-      margin-bottom: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 2em;
+     
+      text-align: center;
     }
 
     .auto-grid {
@@ -365,7 +378,7 @@
     }
 
     .section-4 {
-      margin-top: 3em;
+      margin-top: 15em;
       .auto-grid {
         grid-template-columns: 1fr 1fr 1fr;
       }
@@ -418,6 +431,9 @@
     .section-4 {
       .auto-grid {
         grid-template-columns: 1fr 1fr;
+      }
+      h2 {
+        font-size: 1.2rem;
       }
     }
   }

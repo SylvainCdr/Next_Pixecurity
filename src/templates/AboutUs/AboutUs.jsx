@@ -112,7 +112,8 @@ export default function AboutUs() {
         </div>
 
         <div className={styles["section-4"]}>
-          <h1>L'équipe</h1>
+          <h1>Rencontrez les experts de Pixecurity</h1>
+          <h2>Des spécialistes qualifiés qui mettent leur savoir-faire à votre service pour une protection optimale.</h2>
           <ul className={styles["auto-grid"]} role="list">
             {/* <li>
             <div className={styles.profile}>

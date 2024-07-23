@@ -6,29 +6,62 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Meta Tags for SEO */}
-        <meta name="description" content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité." />
-        <meta name="keywords" content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, Pixecurity, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til" />
+        <meta
+          name="description"
+          content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité."
+        />
+        <meta
+          name="keywords"
+          content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, Pixecurity, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
+        />
         <meta name="author" content="Pixecurity" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Pixecurity - Fournisseur de solutions de sûreté intelligentes" />
-        <meta property="og:description" content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité." />
+        <meta
+          property="og:title"
+          content="Pixecurity - Fournisseur de solutions de sûreté intelligentes"
+        />
+        <meta
+          property="og:description"
+          content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité."
+        />
         <meta property="og:url" content="https://www.pixecurity.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
+        <meta
+          property="og:image"
+          content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
+        />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="Pixecurity" />
-        <meta name="google-site-verification" content="QvkZATbvD-BmH2iBLbgj5TkwY3U186eXjsvJ8HEsYmk" />
-        <meta name="google-site-verification" content="N873MTUl_TjLc2KnzhdPY9hti3IdxlOYyukQq3DkWYo" />
+        <meta
+          name="google-site-verification"
+          content="QvkZATbvD-BmH2iBLbgj5TkwY3U186eXjsvJ8HEsYmk"
+        />
+        <meta
+          name="google-site-verification"
+          content="N873MTUl_TjLc2KnzhdPY9hti3IdxlOYyukQq3DkWYo"
+        />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pixecurity - Fournisseur de solutions de sûreté intelligentes" />
-        <meta name="twitter:description" content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité." />
-        <meta name="twitter:image" content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
+        <meta
+          name="twitter:title"
+          content="Pixecurity - Fournisseur de solutions de sûreté intelligentes"
+        />
+        <meta
+          name="twitter:description"
+          content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité."
+        />
+        <meta
+          name="twitter:image"
+          content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
+        />
         <meta name="twitter:site" content="@pixecurity" />
 
         {/* Favicon for the tab */}
-        <link rel="icon" href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png" />
+        <link
+          rel="icon"
+          href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
+        />
 
         {/* External Stylesheets */}
         <link
@@ -40,8 +73,6 @@ export default function Document() {
           href="https://fonts.cdnfonts.com/css/barlow-condensed"
           rel="stylesheet"
         />
-
-     
       </Head>
       <body>
         <Main />
