@@ -10,10 +10,13 @@ const heroImages = [
     url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/promo-banner-1-scaled.jpg",
   },
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/2880x720_X-series_0-scaled.webp",
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/milestone-banner.png",
   },
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/zyxel-banner-scaled.webp",
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/zyxel-banner2.jpg",
+  },
+  {
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/2880x720_X-series_0-scaled.webp",
   },
 ];
 
