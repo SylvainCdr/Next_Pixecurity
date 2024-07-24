@@ -16,4 +16,11 @@
       padding-top: 1rem;
     }
   }
+  
+}
+
+@media (max-width: 768px) {
+  .shopCarousel-container {
+    width: 85%;
+  }
 }

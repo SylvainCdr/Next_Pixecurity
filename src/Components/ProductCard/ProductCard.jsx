@@ -35,7 +35,7 @@ function ProductCard({ product }) {
         style={{ textDecoration: "none" }}
       >
         <DiscountBadge product={product} />
-
+<div className={styles.imgContainer}>
         {product.image.startsWith("http") ? (
           <img src={product.image} alt={product.name} className={styles["product-img"]} />
         ) : (
@@ -46,6 +46,7 @@ function ProductCard({ product }) {
             loading="lazy"
           />
         )}
+        </div>
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
