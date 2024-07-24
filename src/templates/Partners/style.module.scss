@@ -44,15 +44,16 @@
       width: 50%;
       background: linear-gradient(
           90deg,
-          #1c1c1c 5%,
-          #1c1c1c 15%,
-          #1c1c1cd1 25%,
-          #1c1c1c75,
+          #1c1c1c 20%,
+     
+          #1c1c1cdb 25%,
+          #1c1c1c63,
           40%,
           rgba(122, 122, 122, 0.106) 94%
         ),
+        
         url("https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/photo-1520697830682-bbb6e85e2b0b.webp");
-      background-size: 130%;
+      background-size: 150%;
       background-position: center;
 
       filter: grayscale(0.8);

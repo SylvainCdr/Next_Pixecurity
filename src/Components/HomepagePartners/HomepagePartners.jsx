@@ -20,7 +20,7 @@ export default function HomepagePartners() {
       </div>
       <div className={styles["partners-text"]}>
         <h2>Nos partenaires</h2>
-        <h3>L'excellence du marché à votre service</h3>
+        <h4>L'excellence du marché à votre service</h4>
         <p>
           Qu'il s'agisse de caméras visibles, thermiques, de systèmes de gestion
           vidéo, ou d'IP... Les ingénieurs de Pixecurity s'engagent à
