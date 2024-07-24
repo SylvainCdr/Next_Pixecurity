@@ -17,7 +17,7 @@ export const logos = [
   },
   {
     name: "Briefcam",
-    logo: "/assets/shopLogos/briefcam.png",
+    logo: "/assets/shopLogos/briefcam.jpg",
   },
   {
     name: "Til Technologies",
