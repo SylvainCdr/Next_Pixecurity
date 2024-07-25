@@ -17,7 +17,7 @@ const override = {
   borderColor: "red",
 };
 
-const Products = ({ products, subcategory, filters }) => {
+const Products = ({ products, category, subcategory, filters }) => {
   const loading = useRouterLoading();
 
   return (
@@ -54,7 +54,7 @@ const Products = ({ products, subcategory, filters }) => {
       </div>
 
       <div className={styles["aside-products"]}>
-        <ShopAside subcategory={subcategory} filters={filters} />
+        <ShopAside subcategory={subcategory} category={category} filters={filters} />
         <div className={styles["products-grid"]}>
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />

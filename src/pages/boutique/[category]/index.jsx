@@ -6,9 +6,15 @@ import {
 } from "@/utils/getProductsFiltered";
 
 export async function getServerSideProps({ params, query }) {
-  const category = params.category;
-  const userId = query.userId;
-  const products = await getProductsByCatSubCat({ category, userId });
+  const category = params.category || '';
+  const subcategory = params.subcategory || '';
+  const userId = query.userId || '';
+
+  if (!category) {
+    return { notFound: true };
+  }
+
+  const products = await getProductsByCatSubCat({ category, subcategory, userId });
   const productsFiltered = getProductsFiltered(products, query);
   const filters = getFiltersFromProducts(productsFiltered);
 
@@ -16,11 +22,21 @@ export async function getServerSideProps({ params, query }) {
     props: {
       products: productsFiltered,
       category,
+      subcategory, // Ajout de subcategory ici
       filters,
     },
   };
 }
 
-export default function Page({ products, category, filters }) {
-  return <Products products={products} category={category} filters={filters} />;
-}
+const Page = ({ products, category, subcategory, filters }) => {
+  return (
+    <Products
+      products={products}
+      category={category}
+      subcategory={subcategory} // Ajout de subcategory ici
+      filters={filters}
+    />
+  );
+};
+
+export default Page;

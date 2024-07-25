@@ -1,11 +1,20 @@
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ShopAside({ filters, subcategory }) {
   const filtersArray = Object.values(filters);
   const haveSubcat = Boolean(subcategory?.length);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [currentParams, setCurrentParams] = useState({});
+
+  useEffect(() => {
+    // Synchroniser les paramètres de recherche avec l'état local
+    const params = Object.fromEntries(searchParams.entries());
+    setCurrentParams(params);
+  }, [searchParams]);
 
   return (
     <div className={styles.shopAside_container}>
@@ -13,19 +22,22 @@ export default function ShopAside({ filters, subcategory }) {
         if (filter.queryKey === "price")
           return (
             <PriceFilter
+              key={index}
               title={filter.title}
               filters={filter.filters}
               haveSubcat={haveSubcat}
+              currentParams={currentParams}
             />
           );
 
         return (
           <ProductFilter
-            key={index} // Add a key prop here
+            key={index}
             title={filter.title}
             queryKey={filter.queryKey}
             filters={filter.filters}
             haveSubcat={haveSubcat}
+            currentParams={currentParams}
           />
         );
       })}
@@ -33,8 +45,8 @@ export default function ShopAside({ filters, subcategory }) {
   );
 }
 
-function ProductFilter({ title, queryKey, filters, haveSubcat }) {
-  const searchParams = useSearchParams();
+function ProductFilter({ title, queryKey, filters, haveSubcat, currentParams }) {
+  const router = useRouter();
 
   if (!filters?.length) return null;
 
@@ -44,29 +56,27 @@ function ProductFilter({ title, queryKey, filters, haveSubcat }) {
       <ul>
         {filters.map((value, index) => (
           <li key={index}>
-            {" "}
-            {/* Ensure each item in the list has a unique key */}
             <label>
               <input
                 type="checkbox"
                 onChange={(e) => {
-                  let values = searchParams.getAll(queryKey);
+                  let values = currentParams[queryKey] ? currentParams[queryKey].split(",") : [];
                   if (e.target.checked) {
                     values.push(value);
                   } else {
-                    values = values.filter((b) => String(b) !== String(value));
+                    values = values.filter((v) => String(v) !== String(value));
                   }
-                  router.replace({
+                  router.push({
                     pathname: haveSubcat
-                      ? "/boutique/[category]/[subcategory]"
-                      : "/boutique/[category]",
+                      ? `/boutique/${router.query.category}/${router.query.subcategory}`
+                      : `/boutique/${router.query.category}`,
                     query: {
-                      ...router.query,
-                      [queryKey]: values,
+                      ...currentParams,
+                      [queryKey]: values.join(","),
                     },
                   });
                 }}
-                checked={searchParams.getAll(queryKey).includes(String(value))}
+                checked={currentParams[queryKey]?.split(",").includes(String(value))}
               />
               {value}
             </label>
@@ -77,21 +87,26 @@ function ProductFilter({ title, queryKey, filters, haveSubcat }) {
   );
 }
 
-function PriceFilter({ title, filters, haveSubcat }) {
-  const searchParams = useSearchParams();
-  const [price, setPrice] = useState(searchParams.get("price") ?? filters?.max); // Initialiser avec la valeur maximale
+function PriceFilter({ title, filters, haveSubcat, currentParams }) {
+  const [price, setPrice] = useState(currentParams.price ? JSON.parse(currentParams.price) : { min: filters?.min, max: filters?.max });
   const router = useRouter();
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setPrice(value);
-    router.replace({
+    setPrice(prev => ({
+      ...prev,
+      [e.target.name]: value
+    }));
+    router.push({
       pathname: haveSubcat
-        ? "/boutique/[category]/[subcategory]"
-        : "/boutique/[category]",
+        ? `/boutique/${router.query.category}/${router.query.subcategory}`
+        : `/boutique/${router.query.category}`,
       query: {
-        ...router.query,
-        price: value,
+        ...currentParams,
+        price: JSON.stringify({
+          ...price,
+          [e.target.name]: value
+        }),
       },
     });
   };
@@ -99,14 +114,29 @@ function PriceFilter({ title, filters, haveSubcat }) {
   return (
     <div className={styles.filter}>
       <h2>{title}</h2>
-      <input
-        type="range"
-        min={filters?.min}
-        max={filters?.max}
-        value={price}
-        onChange={handleChange}
-      />
-      <span>{price} € HT maximum</span>
+      <label>
+        Min: 
+        <input
+          type="number"
+          name="min"
+          min={filters?.min}
+          max={price.max}
+          value={price.min}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Max: 
+        <input
+          type="number"
+          name="max"
+          min={price.min}
+          max={filters?.max}
+          value={price.max}
+          onChange={handleChange}
+        />
+      </label>
+      {/* <span>{price.min} € HT minimum - {price.max} € HT maximum</span> */}
     </div>
   );
 }
