@@ -7,12 +7,14 @@ import Cookies from "js-cookie";
 import Aos from "aos";
 import PasswordResetModal from "@/Components/ResetPasswordModal/ResetPasswordModal";
 import { BASE_URL } from "@/url";
+import { useGetUser } from "@/Components/useGetUser";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [, setAuthenticated] = useState(false);
+  const user = useGetUser();
 
   // on récupère le setUser afin de mettre à jour le contexte
   const { setUser } = useAppContext();
@@ -69,7 +71,7 @@ export default function Login() {
         // Stockage du token dans les cookies
         Cookies.set("token", data.token);
         setUser(data.user);
-        router.push("/boutique");
+        router.push("/");
         Swal.fire({
           icon: "success",
           title: "Connecté",

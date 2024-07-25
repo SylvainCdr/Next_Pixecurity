@@ -8,6 +8,7 @@ import "aos/dist/aos.css"; // Import des styles d'AOS
 import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
 import Head from "next/head";
 import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
+import { useGetUser } from "@/Components/useGetUser";
 
 function Catalogue({ products }) {
 
@@ -34,7 +35,7 @@ function Catalogue({ products }) {
   const carouselProducts3 = getRandomProducts(filteredProducts3, 10);
 
 
-
+const user = useGetUser();
 
   useEffect(() => {
     Aos.init({ duration: 1500 });
@@ -62,28 +63,29 @@ function Catalogue({ products }) {
       <ShopSearch />
       <ShopHeroCarousel />
       <div data-aos="fade-up" className={styles["shop-categories"]}>
-        <Link href="/boutique/Caméras">
+        <Link href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}>
           <div className={styles.category}>
             <h1>Caméras</h1>
             <img src="assets/cameras.webp" alt="Caméras" loading="lazy" />
           </div>
         </Link>
 
-        <Link href="/boutique/Réseau">
+        <Link href={`/boutique/Réseau${user?._id ? `?userId=${user?._id}` : ""}`}>
           <div className={styles.category}>
             <h1>Réseaux</h1>
             <img src="assets/reseaux.webp" alt="Réseaux" loading="lazy" />
           </div>
         </Link>
 
-        <Link href="/boutique/Logiciels">
+        <Link href={`/boutique/Logiciels${user?._id ? `?userId=${user?._id}` : ""}`}>
+
           <div className={styles.category}>
             <h1>Logiciels</h1>
             <img src="assets/logiciels.webp" alt="Logiciels" loading="lazy" />
           </div>
         </Link>
 
-        <Link href="/boutique/Autres">
+        <Link href={`/boutique/Autres${user?._id ? `?userId=${user?._id}` : ""}`}>
           <div className={styles.category}>
             <h1>Autres</h1>
             <img src="assets/autres.webp" alt="Autres" loading="lazy" />
