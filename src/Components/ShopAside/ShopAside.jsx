@@ -35,7 +35,6 @@ export default function ShopAside({ filters, subcategory }) {
 
 function ProductFilter({ title, queryKey, filters, haveSubcat }) {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   if (!filters?.length) return null;
 
@@ -80,8 +79,22 @@ function ProductFilter({ title, queryKey, filters, haveSubcat }) {
 
 function PriceFilter({ title, filters, haveSubcat }) {
   const searchParams = useSearchParams();
-  const [price, setPrice] = useState(searchParams.get("price") ?? 0);
+  const [price, setPrice] = useState(searchParams.get("price") ?? filters?.max); // Initialiser avec la valeur maximale
   const router = useRouter();
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setPrice(value);
+    router.replace({
+      pathname: haveSubcat
+        ? "/boutique/[category]/[subcategory]"
+        : "/boutique/[category]",
+      query: {
+        ...router.query,
+        price: value,
+      },
+    });
+  };
 
   return (
     <div className={styles.filter}>
@@ -91,21 +104,9 @@ function PriceFilter({ title, filters, haveSubcat }) {
         min={filters?.min}
         max={filters?.max}
         value={price}
-        onChange={(e) => {
-          const value = e.target.value;
-          setPrice(value);
-          router.replace({
-            pathname: haveSubcat
-              ? "/boutique/[category]/[subcategory]"
-              : "/boutique/[category]",
-            query: {
-              ...router.query,
-              price: value,
-            },
-          });
-        }}
+        onChange={handleChange}
       />
-      <span>{price} € HT</span>
+      <span>{price} € HT maximum</span>
     </div>
   );
 }

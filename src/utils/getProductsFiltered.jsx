@@ -277,7 +277,9 @@ export function getProductsFiltered(products, query) {
       query.brand ? query.brand.includes(product.brand) : true
     )
     .filter((product) =>
-      query.price ? Number(query.price) <= Number(product.price) : true
+      query.price
+        ? Number(product.price) < Number(query.price) // Changement ici
+        : true
     )
     .filter((product) =>
       query.megapixels
