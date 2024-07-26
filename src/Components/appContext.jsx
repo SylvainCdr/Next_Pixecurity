@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import useLocalStorage from "use-local-storage";
-
 // NB : ON INSTALLE LE PACKAGE "use-local-storage" POUR STOCKER L'UTILISATEUR DANS LE LOCAL STORAGE
 
 // Création du contexte

@@ -1,21 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useGetUser } from "@/Components/useGetUser";
 
-// fonction withAuth pour protéger les routes si le role stocké dans le localStorage n est pas admin
-
 export default function withAuth(Component) {
-  return function Auth() {
+  return function AuthHOC(props) {
+    const [loading, setLoading] = useState(true);
     const user = useGetUser();
     const router = useRouter();
     const role = user?.role;
 
     useEffect(() => {
-      if (role && role !== "admin") {
-        router.push("/connexion");
+      if (!user) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+        if (role !== "admin") {
+          router.push("/connexion");
+        }
       }
-    }, [role, router]);
+    }, [user, role, router]);
 
-    return <Component />;
+    if (loading) {
+      return <div>Loading...</div>; // Vous pouvez personnaliser ce loader
+    }
+
+    return <Component {...props} />;
   };
 }
