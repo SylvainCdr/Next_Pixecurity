@@ -34,6 +34,20 @@
       -o-border-radius: 4px;
     }
 
+
+    select {
+      width: 60%;
+      padding: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+    }
+
     button {
       margin-top: 2rem;
       background-color: #007bff;

@@ -9,13 +9,8 @@ export default function InfosUpdate() {
     lastName: "",
     email: "",
     company: "",
+    salesperson: "",
     phone: "",
-    billingAddress: {
-      street: "",
-      city: "",
-      zip: "",
-      country: "",
-    },
   });
 
   const [errors, setErrors] = useState({});
@@ -55,8 +50,6 @@ export default function InfosUpdate() {
 
     const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{1,30}$/;
     const companyPattern = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s]{0,30}$/; // Company can be empty
-    const zipPattern = /^[0-9]{0,6}$/; // Zip code can be empty
-    const addressPattern = /^.{0,60}$/; // Address can be empty
     const phonePattern = /^[0-9+]{0,20}$/; // Phone can be empty
 
     if (!user.firstName.trim() || !namePattern.test(user.firstName)) {
@@ -73,31 +66,7 @@ export default function InfosUpdate() {
       newErrors.company =
         "L'entreprise doit comporter des lettres et/ou des chiffres (max 30 caractères)";
     }
-    // Valider le code postal
-    if (!zipPattern.test(user.billingAddress.zip)) {
-      newErrors.zip =
-        "Le code postal doit comporter uniquement des chiffres (max 6 caractères)";
-    }
-    // Valider l'adresse
-    if (!addressPattern.test(user.billingAddress.street)) {
-      newErrors.street = "L'adresse ne doit pas dépasser 60 caractères";
-    }
-    // Valider la ville si elle n'est pas vide
-    if (
-      user.billingAddress.city &&
-      !namePattern.test(user.billingAddress.city)
-    ) {
-      newErrors.city =
-        "La ville doit comporter uniquement des lettres (max 30 caractères)";
-    }
-    // Valider le pays si il n'est pas vide
-    if (
-      user.billingAddress.country &&
-      !namePattern.test(user.billingAddress.country)
-    ) {
-      newErrors.country =
-        "Le pays doit comporter uniquement des lettres (max 30 caractères)";
-    }
+
     // Valider le téléphone
     if (!phonePattern.test(user.phone)) {
       newErrors.phone =
@@ -201,6 +170,7 @@ export default function InfosUpdate() {
               readOnly
             />
 
+
             <label htmlFor="phone">Téléphone</label>
             <input
               type="tel"
@@ -212,52 +182,20 @@ export default function InfosUpdate() {
             {errors.phone && (
               <span className={styles.error}>{errors.phone}</span>
             )}
-          </div>
-
-          <div className={styles["form-group"]}>
-            <label htmlFor="street">Adresse</label>
-            <input
-              type="text"
-              id="street"
-              name="street"
-              value={user.billingAddress?.street}
-              onChange={handleAddressChange}
-            />
-            {errors.street && (
-              <span className={styles.error}>{errors.street}</span>
-            )}
-
-            <label htmlFor="city">Ville</label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={user.billingAddress?.city}
-              onChange={handleAddressChange}
-            />
-            {errors.city && <span className={styles.error}>{errors.city}</span>}
-
-            <label htmlFor="zip">Code postal</label>
-            <input
-              type="text"
-              id="zip"
-              name="zip"
-              value={user.billingAddress?.zip}
-              onChange={handleAddressChange}
-            />
-            {errors.zip && <span className={styles.error}>{errors.zip}</span>}
-
-            <label htmlFor="country">Pays</label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value={user.billingAddress?.country}
-              onChange={handleAddressChange}
-            />
-            {errors.country && (
-              <span className={styles.error}>{errors.country}</span>
-            )}
+            
+            <label htmlFor="salesperson">Commercial(e) référent(e)</label>
+            <select
+              name="salesperson"
+              id="salesperson"
+              value={user.salesperson}
+              onChange={handleChange}
+            >
+              <option value="Aucun">Aucun</option>
+              <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
+              <option value="Fabrice VALLEE">Fabrice VALLEE</option>
+              <option value="Yanis MEBARKI">Yanis MEBARKI</option>
+              <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
+            </select>
           </div>
         </div>
         <button type="submit">Enregistrer les modifications</button>

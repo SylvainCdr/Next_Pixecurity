@@ -31,7 +31,7 @@
 
     p {
       font-size: 1.1rem;
-      margin-bottom: 2em;
+      margin-bottom: 1em;
       color: var(--sunset4);
       text-align: center;
     }
@@ -65,6 +65,20 @@
         border: 1px solid #696868;
         font-size: 14px;
         background-color: rgba(31, 31, 31, 0.089);
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+      }
+
+      select {
+        color: white;
+        padding: 6px;
+        margin-bottom: 10px;
+        border: 1px solid #696868;
+        font-size: 14px;
+        background-color: rgba(31, 31, 31, 0.651);
         border-radius: 4px;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;

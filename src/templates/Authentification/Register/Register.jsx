@@ -11,6 +11,7 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [company, setCompany] = useState("");
+  const [salesperson, setSalesperson] = useState("Aucun");
   const [errors, setErrors] = useState(null);
 
   const [emailError, setEmailError] = useState("");
@@ -62,6 +63,11 @@ export default function Register() {
     );
   };
 
+  const handleSalespersonChange = (e) => {
+    const value = e.target.value;
+    setSalesperson(value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -81,6 +87,7 @@ export default function Register() {
       lastName,
       firstName,
       company,
+      salesperson,
     };
 
     fetch(`${BASE_URL}/register`, {
@@ -106,6 +113,8 @@ export default function Register() {
             icon: "success",
             title: "Inscription réussie!",
             text: "Vous pouvez maintenant vous connecter.",
+            timer: 2500,
+
           }).then(() => {
             window.location.href = "/connexion";
           });
@@ -123,7 +132,6 @@ export default function Register() {
     <div className={styles["register-container"]}>
       <div data-aos="fade-right" className={styles["section-1"]}>
         <h1>Inscription </h1>
-        <p>Créez votre compte pour accéder à notre boutique</p>
         <form onSubmit={handleSubmit}>
           <label htmlFor="firstName">Prénom</label>
           <input
@@ -158,6 +166,20 @@ export default function Register() {
             id="company"
             onChange={(e) => setCompany(e.target.value)}
           />
+          {/* // select pour le choix du commercial */}
+          <label htmlFor="salesperson">Commercial(e) référent(e)</label>
+          <select
+            name="salesperson"
+            id="salesperson"
+            defaultValue="Aucun"
+            onChange={(e) => setSalesperson(e.target.value)}
+          >
+            <option value="Aucun">Aucun</option>
+            <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
+            <option value="Fabrice VALLEE">Fabrice VALLEE</option>
+            <option value="Yanis MEBARKI">Yanis MEBARKI</option>
+            <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
+          </select>
 
           <label htmlFor="email">Email</label>
           <input

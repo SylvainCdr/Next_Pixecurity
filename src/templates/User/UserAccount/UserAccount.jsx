@@ -330,6 +330,8 @@ export default function UserAccount() {
                 <h4>Informations de contact</h4>
                 <p>Email : {user.email}</p>
                 <p>Téléphone : {user.phone}</p>
+                <p>Commercial(e) référent(e) : <br /> {user.salesperson}</p>
+    
               </div>
             </div>
             <Link href="/mon-compte/modification">

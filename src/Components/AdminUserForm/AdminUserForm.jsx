@@ -5,7 +5,9 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
+  const [salesperson, setSalesperson] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [updated, setUpdated] = useState("");
 
@@ -14,7 +16,9 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
       setFirstName(userToEdit.firstName);
       setLastName(userToEdit.lastName);
       setCompany(userToEdit.company);
+      setSalesperson(userToEdit.salesperson);
       setEmail(userToEdit.email);
+      setPhone(userToEdit.phone);
       setRole(userToEdit.role);
       setUpdated(userToEdit.updated);
     }
@@ -27,7 +31,9 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
       firstName: firstName,
       lastName: lastName,
       company: company,
+      salesperson: salesperson,
       email: email,
+      phone: phone,
       role: role,
       updated: updated,
     };
@@ -69,6 +75,20 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
           onChange={(e) => setCompany(e.target.value)}
         />
 
+        <label htmlFor="salesperson">Commercial(e) référent(e)</label>
+        <select
+          name="salesperson"
+          id="salesperson"
+          value={salesperson}
+          onChange={(e) => setSalesperson(e.target.value)}
+        >
+          <option value="Aucun">Aucun</option>
+          <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
+          <option value="Fabrice VALLEE">Fabrice VALLEE</option>
+          <option value="Yanis MEBARKI">Yanis MEBARKI</option>
+          <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
+        </select>
+
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -77,6 +97,16 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
+        <label htmlFor="phone">Téléphone</label>
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+
 
         <label htmlFor="role">Rôle</label>
         <input
@@ -87,15 +117,14 @@ export default function AdminUsers({ onSubmit, userToEdit }) {
           onChange={(e) => setRole(e.target.value)}
         />
 
-
-        <label htmlFor="updated">Date de modification</label>
+        {/* <label htmlFor="updated">Date de modification</label>
         <input
           type="date"
           name="updated"
           id="updated"
           value={updated}
           onChange={(e) => setUpdated(e.target.value)}
-        />
+        /> */}
 
         <button type="submit">Modifier</button>
       </form>
