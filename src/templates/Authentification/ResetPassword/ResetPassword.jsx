@@ -95,7 +95,7 @@ export default function ResetPassword() {
       });
       // Rediriger l'utilisateur vers la page de connexion après 3 secondes
       setTimeout(() => {
-        window.location.replace("/connexion");
+        window.location.replace("/");
       }, 3000);
     } catch (error) {
       console.error(
