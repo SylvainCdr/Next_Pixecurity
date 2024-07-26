@@ -10,12 +10,12 @@ export default function withAuth(Component) {
     const role = user?.role;
 
     useEffect(() => {
-      if (!user) {
+      if (role == "null") {
         setLoading(true);
       } else {
         setLoading(false);
         if (role !== "admin") {
-          router.push("/connexion");
+          router.push("/");
         }
       }
     }, [user, role, router]);
