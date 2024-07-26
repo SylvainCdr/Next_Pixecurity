@@ -191,8 +191,18 @@ export default function AboutUs() {
               </div>
             </li>
             <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
+              <p>Ingénieur Systèmes & Réseaux</p>
+              <img
+                alt="Adrien JOANNY"
+                src="assets/team/ADRIEN_J.jpg"
+              />
+            </div>
+          </li>
+            <li>
               <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Miriem BOUSSAHA</h2>
+                <h2 className={styles["profile__name"]}>Meriem BOUSSAHA</h2>
                 <p>Développeuse</p>
                 <img alt="Anaelle SOUHAUT" src="assets/team/MIRIEM.jpg" loading="lazy"/>
               </div>
@@ -206,16 +216,16 @@ export default function AboutUs() {
             </li>
             <li>
               <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
-                <p>Développeur</p>
-                <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" loading="lazy"/>
+                <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
+                <p>Assistante de direction</p>
+                <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
               <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
-                <p>Assistante de direction</p>
-                <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" loading="lazy"/>
+                <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
+                <p>Développeur</p>
+                <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" loading="lazy"/>
               </div>
             </li>
             <li>
@@ -263,16 +273,7 @@ export default function AboutUs() {
                 <img alt="David LEPAGE" src="assets/team/DAVID.jpg" loading="lazy"/>
               </div>
             </li>
-            {/* <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
-              <p>Ingénieur Systèmes & Réseaux</p>
-              <img
-                alt="Adrien JOANNY"
-                src="https://www.pixecurity.com/wp-content/uploads/2022/03/Adri-J.png"
-              />
-            </div>
-          </li>
+            {/*
           <li>
             <div className={styles.profile}>
               <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
