@@ -7,19 +7,30 @@ export default function RegisterPopup() {
   const user = useGetUser();
 
   useEffect(() => {
-    if (user) return; // If the user is already logged in, don't show the popup
+    if (user) return; // Si l'utilisateur est déjà connecté, ne pas afficher le pop-up
 
-    const maxDisplays = 2;
+    const maxDisplaysPerHour = 2;
     const displayCount = parseInt(localStorage.getItem('popupDisplayCount')) || 0;
+    const lastDisplayTime = parseInt(localStorage.getItem('popupLastDisplayTime')) || 0;
+    const currentTime = new Date().getTime();
 
-    if (displayCount >= maxDisplays) return; // If the popup has been displayed 3 times, don't show it again
+    const oneHourInMilliseconds = 3600000;
+
+    if (displayCount >= maxDisplaysPerHour && (currentTime - lastDisplayTime < oneHourInMilliseconds)) {
+      return; // Si le pop-up a été affiché 2 fois dans la dernière heure, ne pas l'afficher
+    }
+
+    if (currentTime - lastDisplayTime >= oneHourInMilliseconds) {
+      localStorage.setItem('popupDisplayCount', 0); // Réinitialiser le compteur si une heure s'est écoulée
+    }
 
     const timer = setTimeout(() => {
       setShow(true);
       localStorage.setItem('popupDisplayCount', displayCount + 1);
-    }, 6000); // Adjust the timing as needed
+      localStorage.setItem('popupLastDisplayTime', currentTime);
+    }, 6000); // Ajustez le timing si nécessaire
 
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    return () => clearTimeout(timer); // Nettoyer le timer à la destruction du composant
   }, [user]);
 
   function closePopup() {
@@ -27,7 +38,7 @@ export default function RegisterPopup() {
   }
 
   function redirectToSignup() {
-    window.location.href = '/inscription'; // Replace with your signup URL
+    window.location.href = '/inscription'; // Remplacez par votre URL d'inscription
   }
 
   if (!show) return null;
