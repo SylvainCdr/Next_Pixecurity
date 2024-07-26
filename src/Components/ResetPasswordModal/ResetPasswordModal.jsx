@@ -64,6 +64,8 @@ const PasswordResetModal = ({ show, onClose, onResetPassword }) => {
         icon: "success",
         title: "Succès",
         text: "Un e-mail de réinitialisation de mot de passe a été envoyé.",
+        showConfirmButton: false,
+        timer: 2500,
       });
       setEmail(""); // Efface l'e-mail après l'envoi réussi
       onClose(); // Ferme le modal après l'envoi réussi
