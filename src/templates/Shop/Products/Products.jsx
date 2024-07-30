@@ -39,7 +39,7 @@ const Products = ({ products, category, subcategory, filters }) => {
 
       <ShopNav />
       <ShopSearch isHero={false} />
-   <ShopHeroCarousel />
+   {/* <ShopHeroCarousel /> */}
       <div className={styles["sweet-loading"]}>
         {loading && (
           <PropagateLoader

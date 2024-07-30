@@ -1,9 +1,11 @@
 .shopNav-container {
-  margin-top: 5.5rem;
+  // margin-top: 5rem;
   width: 100%;
   background-color: #30a6e6;
   height: 2.4rem;
   display: flex;
+  position: fixed;
+  z-index: 1000;
 
   ul {
     margin: 0;
