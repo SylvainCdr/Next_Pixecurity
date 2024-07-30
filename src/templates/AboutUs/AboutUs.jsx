@@ -197,6 +197,7 @@ export default function AboutUs() {
               <img
                 alt="Adrien JOANNY"
                 src="assets/team/ADRIEN_J.jpg"
+                loading="lazy"
               />
             </div>
           </li>
@@ -243,6 +244,15 @@ export default function AboutUs() {
               </div>
             </li>
             <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Aziz ARJDAL</h2>
+              <p>Technicien Systèmes & Réseaux</p>
+              <img
+                alt="Aziz ARJDAL"
+                src="assets/team/AZIZ.jpg" loading="lazy"/>
+            </div>
+          </li> 
+            <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
                 <p>Développeur</p>
@@ -267,33 +277,22 @@ export default function AboutUs() {
               </div>
             </li>
             <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
+              <p>Technicien Systèmes & Réseaux</p>
+              <img
+                alt="Adrien DESDOITS"
+                src="assets/team/ADRIEN_D.jpg" loading="lazy"/>
+            </div>
+          </li>
+            <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>David LEPAGE</h2>
                 <p>Chargé d'affaires des projets transports</p>
                 <img alt="David LEPAGE" src="assets/team/DAVID.jpg" loading="lazy"/>
               </div>
             </li>
-            {/*
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
-              <p>Technicien Systèmes & Réseaux</p>
-              <img
-                alt="Adrien DESDOITS"
-                src="https://www.pixecurity.com/wp-content/uploads/2022/03/Adri-D.png"
-              />
-            </div>
-          </li>
-          <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Aziz ARJDAL</h2>
-              <p>Technicien Systèmes & Réseaux</p>
-              <img
-                alt="Aziz ARJDAL"
-                src="https://www.pixecurity.com/wp-content/uploads/2023/02/Aziz.png"
-              />
-            </div>
-          </li> */}
+         
           </ul>
         </div>
       </div>
