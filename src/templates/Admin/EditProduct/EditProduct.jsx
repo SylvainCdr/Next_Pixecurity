@@ -11,14 +11,16 @@ function EditProduct() {
     const fetchProductToEdit = async () => {
       try {
         const productId = window.location.pathname.split("/").pop();
+        console.log('Product ID:', productId);
         const response = await fetch(`${BASE_URL}/products/${productId}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const productData = await response.json();
+        console.log('Product Data:', productData);
         setProductToEdit(productData);
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération du produit à éditer :",
-          error
-        );
+        console.error("Erreur lors de la récupération du produit à éditer :", error);
       }
     };
 

@@ -10,7 +10,9 @@ export default function withAuth(Component) {
     const role = user?.role;
 
     useEffect(() => {
-      if (role == "null") {
+      console.log('User:', user);
+      console.log('Role:', role);
+      if (role === "null") {
         setLoading(true);
       } else {
         setLoading(false);
@@ -21,7 +23,7 @@ export default function withAuth(Component) {
     }, [user, role, router]);
 
     if (loading) {
-      return <div>Loading...</div>; // Vous pouvez personnaliser ce loader
+      return <div>Loading...</div>;
     }
 
     return <Component {...props} />;
