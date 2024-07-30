@@ -155,11 +155,11 @@ export function getFiltersFromProducts(products) {
       queryKey: 'maxTcp',
       filters: uniqueMaxTcp,
     },
-    debitFirewall: {
-      title: 'Débit Firewall',
-      queryKey: 'debitFirewall',
-      filters: uniqueDebitFirewall,
-    },
+    // debitFirewall: {
+    //   title: 'Débit Firewall',
+    //   queryKey: 'debitFirewall',
+    //   filters: uniqueDebitFirewall,
+    // },
     vitesse: {
       title: 'Vitesse',
       queryKey: 'vitesse',
