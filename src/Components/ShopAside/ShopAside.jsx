@@ -45,6 +45,18 @@ export default function ShopAside({ filters, subcategory }) {
   );
 }
 
+const normalizeValue = (value) => value.trim().toLowerCase();
+
+const getUniqueValues = (products, key, parser = (x) => x) => {
+  return Array.from(
+    new Set(
+      products
+        .map((product) => normalizeValue(parser(product, key)))
+        .filter((value) => value)
+    )
+  ).sort((a, b) => (typeof a === "string" ? a.localeCompare(b) : a - b));
+};
+
 function ProductFilter({ title, queryKey, filters, haveSubcat, currentParams }) {
   const router = useRouter();
 
@@ -54,34 +66,37 @@ function ProductFilter({ title, queryKey, filters, haveSubcat, currentParams }) 
     <div className={styles.filter}>
       <h2>{title}</h2>
       <ul>
-        {filters.map((value, index) => (
-          <li key={index}>
-            <label>
-              <input
-                type="checkbox"
-                onChange={(e) => {
-                  let values = currentParams[queryKey] ? currentParams[queryKey].split(",") : [];
-                  if (e.target.checked) {
-                    values.push(value);
-                  } else {
-                    values = values.filter((v) => String(v) !== String(value));
-                  }
-                  router.push({
-                    pathname: haveSubcat
-                      ? `/boutique/${router.query.category}/${router.query.subcategory}`
-                      : `/boutique/${router.query.category}`,
-                    query: {
-                      ...currentParams,
-                      [queryKey]: values.join(","),
-                    },
-                  });
-                }}
-                checked={currentParams[queryKey]?.split(",").includes(String(value))}
-              />
-              {value}
-            </label>
-          </li>
-        ))}
+        {filters.map((value, index) => {
+          const normalizedValue = normalizeValue(value);
+          return (
+            <li key={index}>
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    let values = currentParams[queryKey] ? currentParams[queryKey].split(",") : [];
+                    if (e.target.checked) {
+                      values.push(normalizedValue);
+                    } else {
+                      values = values.filter((v) => normalizeValue(v) !== normalizedValue);
+                    }
+                    router.push({
+                      pathname: haveSubcat
+                        ? `/boutique/${router.query.category}/${router.query.subcategory}`
+                        : `/boutique/${router.query.category}`,
+                      query: {
+                        ...currentParams,
+                        [queryKey]: values.join(","),
+                      },
+                    });
+                  }}
+                  checked={currentParams[queryKey]?.split(",").map(normalizeValue).includes(normalizedValue)}
+                />
+                {value}
+              </label>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -136,7 +151,6 @@ function PriceFilter({ title, filters, haveSubcat, currentParams }) {
           onChange={handleChange}
         />
       </label>
-      {/* <span>{price.min} € HT minimum - {price.max} € HT maximum</span> */}
     </div>
   );
 }
