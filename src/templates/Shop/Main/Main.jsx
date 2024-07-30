@@ -20,7 +20,7 @@ function Catalogue({ products }) {
   }
 
   const filteredProducts1 = products?.filter(
-    (product) => product.brand === "Vivotek"
+    (product) => product.category === "Caméras"
   );
   const carouselProducts1 = getRandomProducts(filteredProducts1, 10);
 
@@ -94,22 +94,30 @@ const user = useGetUser();
       </div>
 
       <div className={styles["products-carousel"]}>
+<h2>Explorez Notre Gamme Complète de Caméras : Dômes, Bullet, Fisheye et Plus </h2>
+        <div className={styles.logos}>
         <img
           src="assets/partnersLogo/vivotek.png"
           alt="Vivotek-logo"
           loading="lazy"
         />
-        <ShopProductsCarousel carouselProducts={carouselProducts1} />
-      </div>
-      {/* <div className={styles["products-carousel"]}>
+          <img
+            src="assets/shopLogos/i-pro.png"
+            alt="Vivotek-logo"
+            loading="lazy"
+          />
         <img
-          src="assets/partnersLogo/zyxel2.png"
-          alt="Zyxel-logo"
+          src="assets/partnersLogo/bosch.png"
+          alt="Vivotek-logo"
           loading="lazy"
         />
-        <ShopProductsCarousel carouselProducts={carouselProducts2} />
-      </div> */}
+        </div>
+        <ShopProductsCarousel carouselProducts={carouselProducts1} />
+      </div>
+  
       <div className={styles["products-carousel"]}>
+      <h2>Maîtrisez la Gestion Vidéo avec Milestone : Notre Expertise au Service de Vos Besoins</h2>
+
         <img
           src="assets/partnersLogo/milestone.png"
           alt="Milestone-logo"
