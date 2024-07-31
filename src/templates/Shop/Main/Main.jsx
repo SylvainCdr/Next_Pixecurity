@@ -94,7 +94,7 @@ const user = useGetUser();
       </div>
 
       <div className={styles["products-carousel"]}>
-<h2>Explorez Notre Gamme Complète de Caméras : Dômes, Bullet, Fisheye et Plus </h2>
+<h2>Explorez notre gamme complète de caméras : Dômes, Bullet, Fisheye et plus </h2>
         <div className={styles.logos}>
         <img
           src="assets/partnersLogo/vivotek.png"
@@ -116,7 +116,7 @@ const user = useGetUser();
       </div>
   
       <div className={styles["products-carousel"]}>
-      <h2>Maîtrisez la Gestion Vidéo avec Milestone : Notre Expertise au Service de Vos Besoins</h2>
+      <h2>Maîtrisez la gestion vidéo avec Milestone : Notre expertise au service de vos besoins</h2>
 
         <img
           src="assets/partnersLogo/milestone.png"
