@@ -123,6 +123,31 @@ export default function UserAccount() {
     }
   };
 
+  const handlePayClick = async (orderId) => {
+    try {
+      // Demande à votre serveur de créer une session de paiement
+      const response = await fetch(`${BASE_URL}/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderId }),
+      });
+  
+      const { url } = await response.json();
+  
+      if (url) {
+        // Redirige l'utilisateur vers Stripe Checkout
+        window.location.href = url;
+      } else {
+        console.error('Erreur lors de la création de la session de paiement');
+      }
+    } catch (error) {
+      console.error('Erreur lors du paiement :', error);
+    }
+  };
+  
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -244,64 +269,71 @@ export default function UserAccount() {
           </div>
         )}
 
-        {selectedTab === "commandes" && (
-          <div data-aos="fade-up" className={styles["user-orders"]}>
-            {orders.length > 0 ? (
-              orders.map((order) => (
-                <div className={styles.order} key={order._id}>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>N° de commande</th>
-                        <th>Date</th>
-                        <th className={styles.mobile}>Produits</th>
-                        <th className={styles.mobile}>Total TTC</th>
-                        <th>Détails</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{order._id}</td>
-                        <td>
-                          {order.orderDate
-                            ? new Date(order.orderDate).toLocaleDateString()
-                            : "Date inconnue"}
-                        </td>
-                        <td className={styles.mobile}>
-                          {order.items.map((product) => (
-                            <p key={product._id}>
-                              {product.name} <span>x {product.quantity}</span>
-                            </p>
-                          ))}
-                        </td>
-                        <td className={styles.mobile}>
-                          {order.totalAmount.toFixed(2)} € <br />
-                        </td>
-                        <td>
-                          <Link href={`/mon-compte/commande/${order._id}`}>
-                            <button>Voir</button>
-                          </Link>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan="5">
-                          <DeliveryTimeline status={order.status} />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              ))
-            ) : (
-              <div className={styles["no-orders-msg"]}>
-                <p>Vous n'avez pas encore effectué de commande.</p>
-                <Link href="/boutique">
-                  <button>Visiter la boutique</button>
-                </Link>
-              </div>
-            )}
-          </div>
-        )}
+{selectedTab === "commandes" && (
+  <div data-aos="fade-up" className={styles["user-orders"]}>
+    {orders.length > 0 ? (
+      orders.map((order) => (
+        <div className={styles.order} key={order._id}>
+          <table>
+            <thead>
+              <tr>
+                <th>N° de commande</th>
+                <th>Date</th>
+                <th className={styles.mobile}>Produits</th>
+                <th className={styles.mobile}>Total TTC</th>
+                <th>Détails</th>
+                <th></th> {/* Ajout de la colonne pour le bouton de paiement */}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{order._id}</td>
+                <td>
+                  {order.orderDate
+                    ? new Date(order.orderDate).toLocaleDateString()
+                    : "Date inconnue"}
+                </td>
+                <td className={styles.mobile}>
+                  {order.items.map((product) => (
+                    <p key={product._id}>
+                      {product.name} <span>x {product.quantity}</span>
+                    </p>
+                  ))}
+                </td>
+                <td className={styles.mobile}>
+                  {order.totalAmount.toFixed(2)} € <br />
+                </td>
+                <td>
+                  <Link href={`/mon-compte/commande/${order._id}`}>
+                    <button>Voir</button>
+                  </Link>
+                </td>
+                <td>
+                  {order.status === 'pending' && (
+                    <button onClick={() => handlePayClick(order._id)}>Payer</button>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6">
+                  <DeliveryTimeline status={order.status} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ))
+    ) : (
+      <div className={styles["no-orders-msg"]}>
+        <p>Vous n'avez pas encore effectué de commande.</p>
+        <Link href="/boutique">
+          <button>Visiter la boutique</button>
+        </Link>
+      </div>
+    )}
+  </div>
+)}
+
 
         {selectedTab === "infos" && (
           <div data-aos="fade-up" className={styles["user-infos"]}>
