@@ -284,7 +284,7 @@ export default function Order() {
               </div>
             </div>
 
-            {!sameAddress && (
+            
               <div className={styles["delivery-address"]}>
                 <p>Adresse de livraison : </p>
                 <input
@@ -356,7 +356,7 @@ export default function Order() {
                   <p className={styles.errorsForm}>{errors.deliveryCountry.message}</p>
                 )}
               </div>
-            )}
+            
           </div>
 
           <div className={styles.deliveryAndPayment}>
