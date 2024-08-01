@@ -108,6 +108,13 @@ function ShopNav() {
               className={styles["dropdown-menu"]}
               style={{ display: openCategory === category ? "block" : "none" }}
             >
+              <li>
+                <Link
+                  href={`/boutique/${category}${userId ? `?userId=${userId}` : ""}`}
+                >
+                  Tous les produits
+                </Link>
+              </li>
               {subcategoriesMap[category]?.map((subcategory) => (
                 <li key={subcategory}>
                   <Link
@@ -121,13 +128,6 @@ function ShopNav() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href={`/boutique/${category}${userId ? `?userId=${userId}` : ""}`}
-                >
-                  Tous les produits
-                </Link>
-              </li>
             </ul>
           </li>
         ))}
