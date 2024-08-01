@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
@@ -11,6 +11,8 @@ function ShopNav() {
   const [openSubcategory, setOpenSubcategory] = useState(null);
   const user = useGetUser();
   const userId = user?._id;
+
+  const navRef = useRef(null); // Reference pour le conteneur du menu
 
   useEffect(() => {
     // Charger toutes les catégories
@@ -53,13 +55,29 @@ function ShopNav() {
     }
   }, [categories]);
 
-  // Fonction pour ouvrir ou fermer le menu déroulant d'une catégorie
+  useEffect(() => {
+    // Fonction pour gérer les clics en dehors du menu
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpenCategory(null);
+        setOpenSubcategory(null);
+      }
+    };
+
+    // Ajouter l'écouteur d'événements
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Nettoyer l'écouteur d'événements à la destruction du composant
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const toggleCategory = (category) => {
     setOpenCategory(openCategory === category ? null : category);
     setOpenSubcategory(null); // Fermer le dropdown de la sous-catégorie lorsqu'on ouvre une nouvelle catégorie
   };
 
-  // Fonction pour ouvrir ou fermer le menu déroulant d'une sous-catégorie
   const toggleSubcategory = (subcategory) => {
     setOpenSubcategory(openSubcategory === subcategory ? null : subcategory);
     setOpenCategory(null); // Fermer le dropdown de la catégorie lorsqu'on clique sur une sous-catégorie
@@ -74,9 +92,8 @@ function ShopNav() {
   );
 
   return (
-    <div className={styles["shopNav-container"]}>
+    <div className={styles["shopNav-container"]} ref={navRef}>
       <ul>
-        {/* création d'une li pour chaque catégorie trouvée dans la base de données */}
         {sortedCategories.map((category) => (
           <li key={category} className={styles.dropdown}>
             <label
@@ -104,7 +121,6 @@ function ShopNav() {
                   </Link>
                 </li>
               ))}
-              {/* création d'une li pour tous les produits de chaque catégorie */}
               <li>
                 <Link
                   href={`/boutique/${category}${userId ? `?userId=${userId}` : ""}`}

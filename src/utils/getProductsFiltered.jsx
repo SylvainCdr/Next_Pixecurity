@@ -2,16 +2,43 @@ const normalizeValue = (value) => {
   if (typeof value === 'string') {
     return value.trim().toLowerCase();
   }
-  return ''; // Valeur par défaut si ce n'est pas une chaîne
+  return String(value); // Valeur par défaut si ce n'est pas une chaîne
 };
 
-const getProductMegapixels = (product) => parseInt(product.details?.megapixels || 0);
+
+
+
+const getUniqueValues = (products, key, parser = (x) => x) => {
+  // Extract unique values and normalize them
+  const values = products
+    .map((product) => normalizeValue(parser(product, key)))
+    .filter((value) => value !== ''); // Remove empty values
+
+  // Determine if the values are numeric or string
+  const isNumeric = values.every(value => !isNaN(value));
+
+  // Create a Set to get unique values and sort them accordingly
+  const uniqueValues = Array.from(new Set(values));
+
+  return uniqueValues.sort((a, b) => {
+    if (isNumeric) {
+      // For numeric values: sort from smallest to largest
+      return parseFloat(a) - parseFloat(b);
+    } else {
+      // For non-numeric values: sort alphabetically
+      return a.localeCompare(b);
+    }
+  });
+};
+
+
+const getProductMegapixels = (product) => parseFloat(product.details?.megapixels || 0);
 const getProductsImgSec = (product) => parseInt(product.details?.imgSec || 0);
 const getColor = (product) => product.details?.couleur || "";
 const getProductsInfrarouge = (product) => product.details?.infrarouge || "";
 const getProductsDistanceInfrarouge = (product) => parseInt(product.details?.distanceInfrarouge || 0);
 const getProductsInstallationExt = (product) => product.details?.installationExt || "";
-const getProductsNbrePorts = (product) => parseInt(product.details?.nbrePorts || 0);
+const getProductsNbrePorts = (product) => product.details?.nbrePorts || "";
 const getProductsRackable = (product) => product.details?.rackable || "";
 const getProductsManageable = (product) => product.details?.manageable || "";
 const getProductsPoe = (product) => product.details?.poe || "";
@@ -27,166 +54,158 @@ const getProductsAntenne = (product) => product.details?.antenne || "";
 const getProductsLan = (product) => product.details?.lan || "";
 const getProductsNebula = (product) => product.details?.nebula || "";
 
-const getUniqueValues = (products, key, parser = (x) => x) => {
-  return Array.from(
-    new Set(
-      products
-        .map((product) => normalizeValue(parser(product, key)))
-        .filter((value) => value !== '') // Filtrer les chaînes vides
-    )
-  ).sort((a, b) => (typeof a === 'string' ? a.localeCompare(b) : a - b));
-};
-
 export function getFiltersFromProducts(products) {
-  const brands = Array.from(new Set(products.map((product) => normalizeValue(product.brand))));
+  const brands = Array.from(new Set(products.map((product) => normalizeValue(product.brand)))).filter(Boolean);
 
   const prices = products.map((product) => parseFloat(product.price) || 0);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
 
-  const uniqueMegapixels = getUniqueValues(products, 'megapixels', getProductMegapixels);
-  const uniqueImgSec = getUniqueValues(products, 'imgSec', getProductsImgSec);
-  const uniqueColors = getUniqueValues(products, 'couleur', getColor);
-  const uniqueInfrarouge = getUniqueValues(products, 'infrarouge', getProductsInfrarouge);
-  const uniqueDistanceInfrarouge = getUniqueValues(products, 'distanceInfrarouge', getProductsDistanceInfrarouge);
-  const uniqueInstallationExt = getUniqueValues(products, 'installationExt', getProductsInstallationExt);
-  const uniqueNbrePorts = getUniqueValues(products, 'nbrePorts', getProductsNbrePorts);
-  const uniqueRackable = getUniqueValues(products, 'rackable', getProductsRackable);
-  const uniqueManageable = getUniqueValues(products, 'manageable', getProductsManageable);
-  const uniquePoe = getUniqueValues(products, 'poe', getProductsPoe);
-  const uniquePoePlus = getUniqueValues(products, 'poePlus', getProductsPoePlus);
-  const uniquePoePlusPlus = getUniqueValues(products, 'poePlusPlus', getProductsPoePlusPlus);
-  const uniqueUsb = getUniqueValues(products, 'usb', getProductsUsb);
-  const uniqueDebitVpn = getUniqueValues(products, 'debitVpn', getProductsDebitVpn);
-  const uniqueMaxTcp = getUniqueValues(products, 'maxTcp', getProductsMaxTcp);
-  const uniqueDebitFirewall = getUniqueValues(products, 'debitFirewall', getProductsDebitFirewall);
-  const uniqueVitesse = getUniqueValues(products, 'vitesse', getProductsVitesse);
-  const uniqueTypeWifi = getUniqueValues(products, 'typeWifi', getProductsTypeWifi);
-  const uniqueAntenne = getUniqueValues(products, 'antenne', getProductsAntenne);
-  const uniqueLan = getUniqueValues(products, 'lan', getProductsLan);
-  const uniqueNebula = getUniqueValues(products, 'nebula', getProductsNebula);
+  const uniqueMegapixels = getUniqueValues(products, 'megapixels', getProductMegapixels).filter(value => value !== '0');
+  const uniqueImgSec = getUniqueValues(products, 'imgSec', getProductsImgSec).filter(value => value !== '0');
+  const uniqueColors = getUniqueValues(products, 'couleur', getColor).filter(Boolean);
+  const uniqueInfrarouge = getUniqueValues(products, 'infrarouge', getProductsInfrarouge).filter(Boolean);
+  const uniqueDistanceInfrarouge = getUniqueValues(products, 'distanceInfrarouge', getProductsDistanceInfrarouge).filter(value => value !== '0');
+  const uniqueInstallationExt = getUniqueValues(products, 'installationExt', getProductsInstallationExt).filter(Boolean);
+  const uniqueNbrePorts = getUniqueValues(products, 'nbrePorts', getProductsNbrePorts).filter(Boolean);
+  const uniqueRackable = getUniqueValues(products, 'rackable', getProductsRackable).filter(Boolean);
+  const uniqueManageable = getUniqueValues(products, 'manageable', getProductsManageable).filter(Boolean);
+  const uniquePoe = getUniqueValues(products, 'poe', getProductsPoe).filter(Boolean);
+  const uniquePoePlus = getUniqueValues(products, 'poePlus', getProductsPoePlus).filter(Boolean);
+  const uniquePoePlusPlus = getUniqueValues(products, 'poePlusPlus', getProductsPoePlusPlus).filter(Boolean);
+  const uniqueUsb = getUniqueValues(products, 'usb', getProductsUsb).filter(Boolean);
+  const uniqueDebitVpn = getUniqueValues(products, 'debitVpn', getProductsDebitVpn).filter(Boolean);
+  const uniqueMaxTcp = getUniqueValues(products, 'maxTcp', getProductsMaxTcp).filter(Boolean);
+  const uniqueDebitFirewall = getUniqueValues(products, 'debitFirewall', getProductsDebitFirewall).filter(Boolean);
+  const uniqueVitesse = getUniqueValues(products, 'vitesse', getProductsVitesse).filter(Boolean);
+  const uniqueTypeWifi = getUniqueValues(products, 'typeWifi', getProductsTypeWifi).filter(Boolean);
+  const uniqueAntenne = getUniqueValues(products, 'antenne', getProductsAntenne).filter(Boolean);
+  const uniqueLan = getUniqueValues(products, 'lan', getProductsLan).filter(Boolean);
+  const uniqueNebula = getUniqueValues(products, 'nebula', getProductsNebula).filter(Boolean);
 
   return {
     brand: {
-      title: 'Marques',
-      queryKey: 'brand',
+      title: "Marques",
+      queryKey: "brand",
       filters: brands,
     },
     price: {
-      title: 'Prix',
-      queryKey: 'price',
+      title: "Prix",
+      queryKey: "price",
       filters: {
         min: minPrice,
         max: maxPrice,
       },
     },
     megapixels: {
-      title: 'Mégapixels',
-      queryKey: 'megapixels',
+      title: "Mégapixels",
+      queryKey: "megapixels",
       filters: uniqueMegapixels,
     },
     imgSec: {
-      title: 'Images par seconde',
-      queryKey: 'imgSec',
+      title: "Images par seconde",
+      queryKey: "imgSec",
       filters: uniqueImgSec,
     },
-    colors: {
-      title: 'Couleurs',
-      queryKey: 'colors',
+    couleur: {
+      title: "Couleur",
+      queryKey: "couleur",
       filters: uniqueColors,
     },
     infrarouge: {
-      title: 'Infrarouge',
-      queryKey: 'infrarouge',
+      title: "Infrarouge",
+      queryKey: "infrarouge",
       filters: uniqueInfrarouge,
     },
     distanceInfrarouge: {
-      title: 'Distance infrarouge',
-      queryKey: 'distanceInfrarouge',
+      title: "Distance Infrarouge",
+      queryKey: "distanceInfrarouge",
       filters: uniqueDistanceInfrarouge,
     },
     installationExt: {
-      title: 'Installation extérieure',
-      queryKey: 'installationExt',
+      title: "Installation Extérieure",
+      queryKey: "installationExt",
       filters: uniqueInstallationExt,
     },
-    nbrePorts: {
-      title: 'Nombre de ports',
-      queryKey: 'nbrePorts',
-      filters: uniqueNbrePorts,
-    },
+    // nbrePorts: {
+    //   title: "Nombre de Ports",
+    //   queryKey: "nbrePorts",
+    //   filters: uniqueNbrePorts,
+    // },
     rackable: {
-      title: 'Rackable',
-      queryKey: 'rackable',
+      title: "Rackable",
+      queryKey: "rackable",
       filters: uniqueRackable,
     },
     manageable: {
-      title: 'Manageable',
-      queryKey: 'manageable',
+      title: "Manageable",
+      queryKey: "manageable",
       filters: uniqueManageable,
     },
     poe: {
-      title: 'PoE',
-      queryKey: 'poe',
+      title: "PoE",
+      queryKey: "poe",
       filters: uniquePoe,
     },
     poePlus: {
-      title: 'PoE+',
-      queryKey: 'poePlus',
+      title: "PoE+",
+      queryKey: "poePlus",
       filters: uniquePoePlus,
     },
     poePlusPlus: {
-      title: 'PoE++',
-      queryKey: 'poePlusPlus',
+      title: "PoE++",
+      queryKey: "poePlusPlus",
       filters: uniquePoePlusPlus,
     },
-    usb: {
-      title: 'USB',
-      queryKey: 'usb',
-      filters: uniqueUsb,
-    },
-    debitVpn: {
-      title: 'Débit VPN',
-      queryKey: 'debitVpn',
-      filters: uniqueDebitVpn,
-    },
-    maxTcp: {
-      title: 'Débit TCP',
-      queryKey: 'maxTcp',
-      filters: uniqueMaxTcp,
-    },
+    // usb: {
+    //   title: "USB",
+    //   queryKey: "usb",
+    //   filters: uniqueUsb,
+    // },
+    // debitVpn: {
+    //   title: "Débit VPN",
+    //   queryKey: "debitVpn",
+    //   filters: uniqueDebitVpn,
+    // },
+    // maxTcp: {
+    //   title: "Max TCP",
+    //   queryKey: "maxTcp",
+    //   filters: uniqueMaxTcp,
+    // },
     // debitFirewall: {
-    //   title: 'Débit Firewall',
-    //   queryKey: 'debitFirewall',
+    //   title: "Débit Firewall",
+    //   queryKey: "debitFirewall",
     //   filters: uniqueDebitFirewall,
     // },
-    vitesse: {
-      title: 'Vitesse',
-      queryKey: 'vitesse',
-      filters: uniqueVitesse,
-    },
+    // vitesse: {
+    //   title: "Vitesse",
+    //   queryKey: "vitesse",
+    //   filters: uniqueVitesse,
+    // },
     // typeWifi: {
-    //   title: 'Type Wifi',
-    //   queryKey: 'typeWifi',
+    //   title: "Type de Wifi",
+    //   queryKey: "typeWifi",
     //   filters: uniqueTypeWifi,
     // },
     // antenne: {
-    //   title: 'Antenne',
-    //   queryKey: 'antenne',
+    //   title: "Antenne",
+    //   queryKey: "antenne",
     //   filters: uniqueAntenne,
     // },
     // lan: {
-    //   title: 'LAN',
-    //   queryKey: 'lan',
+    //   title: "LAN",
+    //   queryKey: "lan",
     //   filters: uniqueLan,
     // },
     // nebula: {
-    //   title: 'Nebula',
-    //   queryKey: 'nebula',
+    //   title: "Nebula",
+    //   queryKey: "nebula",
     //   filters: uniqueNebula,
     // },
+   
   };
 }
+
 
 export function getProductsFiltered(products, query) {
   let priceRange = {};
