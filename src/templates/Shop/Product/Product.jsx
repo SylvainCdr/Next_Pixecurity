@@ -53,7 +53,7 @@ export default function Product({ product, id, suggestions }) {
     consommation: "Consommation max",
     garantie: "Garantie",
     interface: "Interface",
-    usb : "USB",
+    usb: "USB",
     portConsole: "Port console",
     debitVpn: "Débit VPN",
     maxTcp: "Max TCP",
@@ -64,8 +64,6 @@ export default function Product({ product, id, suggestions }) {
     lan: "LAN",
     nebula: "Nebula",
   };
-
-
 
   const [isInFavorites, setIsInFavorites] = useState(false);
 
@@ -137,10 +135,7 @@ export default function Product({ product, id, suggestions }) {
     <div className={styles["product-container"]}>
       <Head>
         <title>{product.name} - Pixecurity</title>
-        <meta
-          name="description"
-          content={product.description}
-        />
+        <meta name="description" content={product.description} />
         <meta
           name="keywords"
           content="caméra, caméras, surveillance, sécurité, sûreté, vidéo, protection videoprotection, videosurveillance, analyse d'image, intelligente, IA, IP, HD, 4K, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware, ptz, bullet, dôme, multicapteur, switch, firewall, licence, license"
@@ -157,11 +152,18 @@ export default function Product({ product, id, suggestions }) {
       <div className={styles["product-page"]}>
         <div className={styles["product-section1"]}>
           <div data-aos="zoom-in-right" className={styles["product-img"]}>
-            {product.pourcentageDiscount && (
+            {/* {product.pourcentageDiscount && (
+              <p className={styles["discount-badge"]}>
+                -{product.pourcentageDiscount}%
+              </p> 
+            )} */}
+            {/* // si pourcentageDiscount est présent, afficher le badge de réduction ici si 0 alors ne rien afficher */}
+            {product.pourcentageDiscount !== 0 && (
               <p className={styles["discount-badge"]}>
                 -{product.pourcentageDiscount}%
               </p>
             )}
+
             <img
               src={
                 product.image && product.image.startsWith("http")
@@ -200,27 +202,28 @@ export default function Product({ product, id, suggestions }) {
             <p className={styles.presentation}>{product.presentation}</p>
 
             {product.category === "Logiciels" ? (
-  <p className={styles.stock}>
-    <i className="fa-solid fa-check"></i> En stock
-  </p>
-) : (
-  <p className={styles.stock}>
-    <i className="fa-solid fa-check"></i> Disponible sur commande
-  </p>
-)}
-
+              <p className={styles.stock}>
+                <i className="fa-solid fa-check"></i> En stock
+              </p>
+            ) : (
+              <p className={styles.stock}>
+                <i className="fa-solid fa-check"></i> Disponible sur commande
+              </p>
+            )}
 
             <div className={styles.details}>
               <p className={styles.securePayment}>
-                <i className="fa-solid fa-lock"></i>  Paiement sécurisé
+                <i className="fa-solid fa-lock"></i> Paiement sécurisé
               </p>
               {product.category === "Logiciels" ? (
                 <p>
-                  <i className="fa-solid fa-envelope"></i> Activation sous 48 à 72 heures
+                  <i className="fa-solid fa-envelope"></i> Activation sous 48 à
+                  72 heures
                 </p>
               ) : (
                 <p>
-                  <i className="fa-solid fa-truck-fast"></i> Livraison sous 2 à 3 semaines via DHL
+                  <i className="fa-solid fa-truck-fast"></i> Livraison sous 2 à
+                  3 semaines via DHL
                 </p>
               )}
               {product.category !== "Logiciels" && (
@@ -277,14 +280,15 @@ export default function Product({ product, id, suggestions }) {
               </tbody>
             </table>
 
-            {product.pdf && (
-              product.category === "Logiciels" ? (
+            {product.pdf &&
+              (product.category === "Logiciels" ? (
                 <Link
                   href={product.pdf}
                   target="_blank"
                   className={styles["pdf-link"]}
                 >
-                  En savoir plus <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  En savoir plus{" "}
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </Link>
               ) : (
                 <Link
@@ -295,8 +299,7 @@ export default function Product({ product, id, suggestions }) {
                 >
                   Fiche technique <i className="fa-solid fa-file-pdf"></i>
                 </Link>
-              )
-            )}
+              ))}
           </div>
 
           <div className={styles["product-suggestions"]}>
@@ -323,7 +326,8 @@ export default function Product({ product, id, suggestions }) {
 
 const DiscountedPrice = ({ product }) => {
   if (product.price && product.pourcentageDiscount) {
-    const discountPrice = product.price * (1 - product.pourcentageDiscount / 100);
+    const discountPrice =
+      product.price * (1 - product.pourcentageDiscount / 100);
     return (
       <p className={styles.prices}>
         <span className={styles["original-price"]}>
