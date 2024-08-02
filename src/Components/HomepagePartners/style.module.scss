@@ -52,7 +52,6 @@
     h2 {
       margin-bottom: 0.5em;
       color: var(--sunset1);
-
       // font-family: "Barlow Condensed", sans-serif;
       font-size: 3.2em;
       font-weight: 700;
@@ -119,11 +118,25 @@
     }
   }
 
+  @media screen and (max-width: 1024px) {
+    .partners-text { 
+      h2 {
+        font-size: 2.3em;
+      }
+    }
+  }
   @media screen and (max-width: 768px) {
+    
+    .partners-text { 
+    h2 {
+      font-size: 1.8em;
+    }
+  }
     .partners-logo {
       width: 80%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
 }
