@@ -1,19 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 
 export default function HomepageCountUp() {
   const animationDuration = 5000;
   const frameDuration = 1000 / 60;
   const totalFrames = Math.round(animationDuration / frameDuration);
+
   const easeOutQuad = (t) => t * (2 - t);
 
   const animateCountUp = (el) => {
     let frame = 0;
-    const countTo = parseInt(el.innerHTML, 10);
+    const countTo = parseInt(el.getAttribute("data-count-to"), 10);
+    el.innerHTML = "0"; // Initialiser à zéro au début
+
+    console.log(`Animating count up to: ${countTo}`);
 
     const counter = setInterval(() => {
       frame++;
+
       const progress = easeOutQuad(frame / totalFrames);
+
       const currentCount = Math.round(countTo * progress);
 
       if (parseInt(el.innerHTML, 10) !== currentCount) {
@@ -26,73 +32,68 @@ export default function HomepageCountUp() {
     }, frameDuration);
   };
 
+  const containerRef = useRef(null);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCountUp(entry.target);
-            observer.unobserve(entry.target); // Arrêter d'observer une fois animé
-          }
-        });
-      },
-      { threshold: 0.5 }, // Déclencher quand 50% de l'élément est visible
-    );
+    const observerOptions = {
+      root: null, // utilise le viewport comme root
+      rootMargin: "0px",
+      threshold: 0.1, // déclenche quand 10% de l'élément est visible
+    };
 
-    // Ajouter chaque élément .timer à observer
-    const countupEls = document.querySelectorAll(`.${styles.timer}`);
+    const observerCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const countupEls = entry.target.querySelectorAll(`.${styles.timer}`);
+          console.log(`Found ${countupEls.length} elements to animate.`);
+          countupEls.forEach(animateCountUp);
+          observer.unobserve(entry.target); // arrêter d'observer après l'animation
+        }
+      });
+    };
 
-    countupEls.forEach((el) => {
-      observer.observe(el);
-    });
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Nettoyage de l'effet
-    return () => countupEls.forEach((el) => observer.unobserve(el));
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
   }, []);
 
   return (
     <div className={styles.counter_wrapper}>
-      <div className={styles.container}>
+      <div className={styles.container} ref={containerRef}>
         <div className={styles.row}>
-          <div
-            data-aos="flip-down"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="1000"
-            className={styles.col}
-          >
+          <div className={styles.col}>
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={styles.timer}>+20</span>
+                <span className={`${styles.timer}`} data-count-to="20">0</span>+
               </h3>
               <h4>Partenaires</h4>
             </div>
           </div>
-          <div
-            data-aos="flip-down"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
-            className={styles.col}
-          >
-            <div className={`${styles.count_box} ${styles.box_center}`}>
-              <h3>
-                <span className={styles.timer}>+600</span>
-              </h3>
-              <h4>Projets</h4>
-            </div>
-          </div>
-          <div
-            data-aos="flip-down"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="3000"
-            className={styles.col}
-          >
+          <div className={styles.col}>
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={styles.timer}>+110</span>
+                <span className={`${styles.timer}`} data-count-to="110">0</span>+
               </h3>
               <h4>Clients</h4>
             </div>
           </div>
+          <div className={styles.col}>
+            <div className={`${styles.count_box} ${styles.box_hover}`}>
+              <h3>
+                <span className={`${styles.timer}`} data-count-to="600">0</span>+
+              </h3>
+              <h4>Projets</h4>
+            </div>
+          </div>
+         
         </div>
       </div>
     </div>

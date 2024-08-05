@@ -115,7 +115,9 @@ export default function HomepageSkills() {
           mise en service, maintenance, livrables documentaires...
         </p>
         <div className={styles["bottom"]}>
-          {/* <Link to="/notre-expertise#engineering">EN SAVOIR PLUS</Link> */}
+        <Link href="/a-propos">
+            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+          </Link>
         </div>
       </div>
     </div>

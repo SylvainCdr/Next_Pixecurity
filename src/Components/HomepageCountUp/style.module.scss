@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   height: 20vh;
   background-image: url("../../../public/assets/cadre.png");
   background-size: cover;
@@ -97,6 +96,12 @@
     .count_box {
       width: 4vh;
       padding: 2em;
+      h3 {
+        font-size: 1.9em;
+      }
+      h4 {
+        font-size: 0.8em;
+      }
     }
   }
 }
