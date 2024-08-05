@@ -7,7 +7,7 @@ import { PropagateLoader } from "react-spinners";
 import { useRouterLoading } from "@/Components/useRouterLoading";
 import Head from "next/head";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
-import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
+//import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 
 const color = "#ff9c3fc0";
 // contient les styles du loader
@@ -19,6 +19,12 @@ const override = {
 
 const Products = ({ products, category, subcategory, filters }) => {
   const loading = useRouterLoading();
+
+  // Sort products by name alphabetically
+  const sortedProducts = products.sort((a, b) => {
+    // Compare product names in lowercase to ensure case-insensitive sorting
+    return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+  });
 
   return (
     <div className={styles["products-container"]}>
@@ -39,7 +45,7 @@ const Products = ({ products, category, subcategory, filters }) => {
 
       <ShopNav />
       <ShopSearch isHero={false} />
-   {/* <ShopHeroCarousel /> */}
+      {/* <ShopHeroCarousel /> */}
       <div className={styles["sweet-loading"]}>
         {loading && (
           <PropagateLoader
@@ -54,9 +60,13 @@ const Products = ({ products, category, subcategory, filters }) => {
       </div>
 
       <div className={styles["aside-products"]}>
-        <ShopAside subcategory={subcategory} category={category} filters={filters} />
+        <ShopAside
+          subcategory={subcategory}
+          category={category}
+          filters={filters}
+        />
         <div className={styles["products-grid"]}>
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
