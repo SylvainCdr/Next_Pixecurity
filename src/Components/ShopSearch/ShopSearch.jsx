@@ -5,8 +5,16 @@ import useFavorites from "../useFavorites";
 import { useCartContext } from "../cartContext";
 import { BASE_URL } from "../../url";
 import ShopHeroCarousel from "../ShopHeroCarousel/ShopHeroCarousel";
+import { PropagateLoader } from "react-spinners"; // Import the loader
 
-function ShopSearch({ isHero = true }) {
+const color = "#ff9c3fc0"; // Define loader color
+const override = { // Define loader styles
+  size: "15px",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
+function ShopSearch({ isHero = true, onSearchResults }) {
   const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -14,7 +22,6 @@ function ShopSearch({ isHero = true }) {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
 
-  // créer une fonction pour gérer la recherche
   const handleSearch = (e) => {
     e.preventDefault(); // Prevent form submission
 
@@ -27,7 +34,7 @@ function ShopSearch({ isHero = true }) {
         .then((data) => {
           setSearchResults(data);
           setSearching(false);
-          // Pass search results to the parent component
+          onSearchResults(data); // Pass search results to the parent component
         })
         .catch((error) => {
           console.error("Erreur lors de la recherche de produits :", error);
@@ -35,7 +42,7 @@ function ShopSearch({ isHero = true }) {
         });
     } else {
       setSearchResults([]);
-      // Pass an empty array to the parent component when search is cleared
+      onSearchResults([]); // Pass an empty array to the parent component when search is cleared
     }
   };
 
@@ -54,10 +61,23 @@ function ShopSearch({ isHero = true }) {
         </div>
       </form>
 
-      {searching && <p>Recherche en cours...</p>}
+      {/* Display loader when searching */}
+      <div className={styles["sweet-loading"]}>
+        {searching && (
+          <PropagateLoader
+            color={color}
+            loading={searching}
+            cssOverride={override}
+            size={20}
+            aria-label="Grid Loader"
+            data-testid="loader"
+          />
+        )}
+      </div>
 
-      {isHero && searchResults.length === 0 && (
+      {isHero && searchResults.length === 0 && !searching && (
         <div className={styles["shop-hero-carousel"]}>
+          <ShopHeroCarousel />
         </div>
       )}
 
