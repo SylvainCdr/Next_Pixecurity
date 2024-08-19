@@ -63,11 +63,6 @@ export default function Document() {
           href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
         />
 
-         {/* Preloading Critical Resources */}
-         <link rel="preload" href="https://fonts.cdnfonts.com/css/barlow" as="style" />
-        <link rel="preload" href="https://fonts.cdnfonts.com/css/barlow-condensed" as="style" />
-
-
         {/* External Stylesheets */}
         <link
           rel="stylesheet"

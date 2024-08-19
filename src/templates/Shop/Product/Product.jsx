@@ -131,6 +131,35 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
+  // Generate JSON-LD structured data
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "id": product.ref,
+    "name": product.name,
+    "title": product.name,
+    "description": product.description,
+    "image_link": product.image.startsWith("http")
+      ? product.image
+      : `${BASE_URL}${product.image}`,
+    "sku": product.ref,
+
+    "brand": {
+      "@type": "Brand",
+      "name": product.brand,
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": product.price,
+      // "priceValidUntil": "2024-12-31",
+      // "itemCondition": "https://schema.org/NewCondition",
+      // "availability": "https://schema.org/InStock",
+    },
+    // "gtin": product.ref, // Use the ref as GTIN
+    "mpn": product.ref, // Use the ref as MPN
+  };
+
   return (
     <div className={styles["product-container"]}>
       <Head>
@@ -143,6 +172,12 @@ export default function Product({ product, id, suggestions }) {
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
+
+        {/* JSON-LD structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+
         {/* Add more OG meta tags as needed */}
       </Head>
       <RegisterPopup />
@@ -152,12 +187,6 @@ export default function Product({ product, id, suggestions }) {
       <div className={styles["product-page"]}>
         <div className={styles["product-section1"]}>
           <div data-aos="zoom-in-right" className={styles["product-img"]}>
-            {/* {product.pourcentageDiscount && (
-              <p className={styles["discount-badge"]}>
-                -{product.pourcentageDiscount}%
-              </p> 
-            )} */}
-            {/* // si pourcentageDiscount est présent, afficher le badge de réduction ici si 0 alors ne rien afficher */}
             {product.pourcentageDiscount !== 0 && (
               <p className={styles["discount-badge"]}>
                 -{product.pourcentageDiscount}%
@@ -288,7 +317,7 @@ export default function Product({ product, id, suggestions }) {
                   className={styles["pdf-link"]}
                 >
                   En savoir plus{" "}
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
                 </Link>
               ) : (
                 <Link
