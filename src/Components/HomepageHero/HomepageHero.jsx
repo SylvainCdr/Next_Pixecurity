@@ -39,10 +39,8 @@ export default function HomepageHero() {
           >
             <h1>Fournisseur de solutions de sûreté intelligentes</h1>
             <h2>
-              <strong>
                 Vidéosurveillance, analyse d'image, contrôle d'accès,
                 réseaux/stockage des données, hypervision...
-              </strong>
             </h2>
           </div>
           <div className={styles.homepageHeroCta}>

@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="fr">
       <Head>
         {/* Meta Tags for SEO */}
         <meta
@@ -62,6 +62,11 @@ export default function Document() {
           rel="icon"
           href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
         />
+
+         {/* Preloading Critical Resources */}
+         <link rel="preload" href="https://fonts.cdnfonts.com/css/barlow" as="style" />
+        <link rel="preload" href="https://fonts.cdnfonts.com/css/barlow-condensed" as="style" />
+
 
         {/* External Stylesheets */}
         <link

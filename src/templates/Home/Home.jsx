@@ -20,14 +20,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Pixecurity - Accueil</title>
+      <title>Pixecurity - Fournisseur de solutions de sûreté intelligentes - Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision </title> 
+
         <meta
           name="description"
           content="Découvrez Pixecurity, leader dans la sûreté 3.0. Experts en BTP, réseaux, et technologies du bâtiment."
+  
         />
         <meta
           name="keywords"
-          content="Pixecurity, sûreté 3.0, BTP, réseaux, technologies du bâtiment, conformité, cybersécurité"
+          content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, IA, AI, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
         />
 
 
