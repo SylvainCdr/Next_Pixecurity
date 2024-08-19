@@ -58,6 +58,7 @@ function Catalogue({ products }) {
 
       <ShopNav />
       <ShopSearch onSearchResults={handleSearchResults} />
+      <ShopHeroCarousel />
 
       {searchResults.length > 0 && (
         <div className={styles["search-results"]}>
