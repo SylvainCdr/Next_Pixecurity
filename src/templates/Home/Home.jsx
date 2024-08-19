@@ -8,7 +8,7 @@ import HomepageCountUp from "../../Components/HomepageCountUp/HomepageCountUp";
 import HomepagePartners from "../../Components/HomepagePartners/HomepagePartners";
 import HomepageSkills from "../../Components/HomepageSkills/HomepageSkills";
 import Head from "next/head";
-import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup"; 
+import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
 export default function Home() {
   useEffect(() => {
@@ -20,23 +20,19 @@ export default function Home() {
   return (
     <>
       <Head>
-      <title>Pixecurity - Fournisseur de solutions de sûreté intelligentes - Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision </title> 
+        <title>Pixecurity - Fournisseur de solutions de sûreté intelligentes - Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision</title> 
 
         <meta
           name="description"
           content="Découvrez Pixecurity, leader dans la sûreté 3.0. Experts en BTP, réseaux, et technologies du bâtiment."
-  
         />
         <meta
           name="keywords"
           content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, IA, AI, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
         />
-
-
       </Head>
 
       <div className={styles["homepage-container"]}>
-
         <RegisterPopup />
         <Hero />
 
@@ -48,9 +44,9 @@ export default function Home() {
             projets réalisée en propre pour faciliter l'interaction avec nos
             experts, des développements spécifiques et sur mesure, la mise en
             place de solutions cyber. <br />
-            Des certifications de conformités delivrées par nos consultants sur
-            du compliance : Pixecurity couvre toute la haute chaine de valeur de
-            la sureté. Pixecurity est le fournisseur de solutions de sureté 3.0
+            Des certifications de conformités délivrées par nos consultants sur
+            du compliance : Pixecurity couvre toute la haute chaîne de valeur de
+            la sûreté. Pixecurity est le fournisseur de solutions de sûreté 3.0.
           </p>
         </div>
 
@@ -58,7 +54,7 @@ export default function Home() {
 
         <div className={styles["section4-aboutUs"]}>
           <div className={styles["section4-text"]}>
-            <h3>Qui sommes nous ?</h3>
+            <h3>Qui sommes-nous ?</h3>
             <p>
               Des ingénieurs avant-gardistes. Des experts 3.0, natifs du
               numérique, spécialisés dans le BTP, les réseaux, les technologies
@@ -87,16 +83,14 @@ export default function Home() {
         <div className={styles.learnMore}>
           <h5> Ready to learn more ? </h5>
           <Link href="/contact">
-            {" "}
-            <button>Contactez-nous </button>{" "}
+            <button>Contactez-nous</button>
           </Link>
         </div>
-<div className={styles.shopBanner}>
-  <h3> Découvrez notre boutique en ligne </h3>
 
-  <img src="assets/shop.png" alt="discoverShop-banner" />
-</div>
-
+        <div className={styles.shopBanner}>
+          <h3> Découvrez notre boutique en ligne </h3>
+          <img src="assets/shop.png" alt="Bannière pour découvrir notre boutique en ligne" loading="lazy" />
+        </div>
       </div>
     </>
   );
