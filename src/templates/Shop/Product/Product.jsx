@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import useFavorites from "@/Components/useFavorites";
 import { useCartContext } from "@/Components/cartContext";
 import Swal from "sweetalert2";
@@ -14,7 +14,7 @@ import Head from "next/head";
 import Link from "next/link";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
-export default function Product({ product, id, suggestions }) {
+const Product = ({ product, id, suggestions }) => {
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
     useFavorites();
   const { addToCart } = useCartContext();
@@ -23,47 +23,51 @@ export default function Product({ product, id, suggestions }) {
   const user = useGetUser();
   const userId = user?._id;
 
-  const brandLogo = logos.find(
-    (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
+  const brandLogo = useMemo(
+    () => logos.find((logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()),
+    [product.brand]
   );
 
-  const labelsMapping = {
-    dimensions: "Dimensions",
-    poids: "Poids",
-    temp: "Température de fonctionnement",
-    megapixels: "Mégapixels",
-    distanceFocale: "Distance focale",
-    ouverture: "Ouverture",
-    angleVue: "Angle de vue",
-    imgSec: "Images par seconde",
-    capteur: "Capteur",
-    resolution: "Résolution",
-    couleur: "Couleur",
-    infrarouge: "Infrarouge",
-    distanceInfrarouge: "Distance infrarouge",
-    indiceProtection: "Indice de protection",
-    puissance: "Puissance",
-    installationExt: "Installation extérieure",
-    nbrePorts: "Nombre de ports",
-    rackable: "Rackable",
-    manageable: "Manageable",
-    poe: "PoE",
-    poePlus: "PoE+",
-    poePlusPlus: "PoE++",
-    consommation: "Consommation max",
-    garantie: "Garantie",
-    interface: "Interface",
-    usb: "USB",
-    portConsole: "Port console",
-    debitVpn: "Débit VPN",
-    maxTcp: "Max TCP",
-    debitFirewall: "Débit Firewall",
-    vitesse: "Vitesse",
-    typeWifi: "Type de WiFi",
-    antenne: "Antenne",
-    lan: "LAN",
-    nebula: "Nebula",
-  };
+  const labelsMapping = useMemo(
+    () => ({
+      dimensions: "Dimensions",
+      poids: "Poids",
+      temp: "Température de fonctionnement",
+      megapixels: "Mégapixels",
+      distanceFocale: "Distance focale",
+      ouverture: "Ouverture",
+      angleVue: "Angle de vue",
+      imgSec: "Images par seconde",
+      capteur: "Capteur",
+      resolution: "Résolution",
+      couleur: "Couleur",
+      infrarouge: "Infrarouge",
+      distanceInfrarouge: "Distance infrarouge",
+      indiceProtection: "Indice de protection",
+      puissance: "Puissance",
+      installationExt: "Installation extérieure",
+      nbrePorts: "Nombre de ports",
+      rackable: "Rackable",
+      manageable: "Manageable",
+      poe: "PoE",
+      poePlus: "PoE+",
+      poePlusPlus: "PoE++",
+      consommation: "Consommation max",
+      garantie: "Garantie",
+      interface: "Interface",
+      usb: "USB",
+      portConsole: "Port console",
+      debitVpn: "Débit VPN",
+      maxTcp: "Max TCP",
+      debitFirewall: "Débit Firewall",
+      vitesse: "Vitesse",
+      typeWifi: "Type de WiFi",
+      antenne: "Antenne",
+      lan: "LAN",
+      nebula: "Nebula",
+    }),
+    []
+  );
 
   const [isInFavorites, setIsInFavorites] = useState(false);
 
@@ -82,56 +86,53 @@ export default function Product({ product, id, suggestions }) {
     fetchFavoriteStatus();
   }, [userId, id, checkFavorite]);
 
-  const handleToggleFavoritesClick = async () => {
+  const handleToggleFavoritesClick = useCallback(async () => {
     if (userId) {
-      if (isInFavorites) {
-        await removeFromFavorites(userId, id);
-      } else {
-        await addToFavorites(
-          userId,
-          id,
-          product.name,
-          product.price,
-          product.ref,
-          product.image
-        );
+      try {
+        if (isInFavorites) {
+          await removeFromFavorites(userId, id);
+        } else {
+          await addToFavorites(userId, id, product.name, product.price, product.ref, product.image);
+        }
+        setIsInFavorites(!isInFavorites);
+      } catch (error) {
+        console.error("Error toggling favorites:", error);
       }
-
-      setIsInFavorites(!isInFavorites);
     } else {
       Swal.fire({
         icon: "info",
-        title:
-          "Pour ajouter un produit à vos favoris, veuillez vous connecter ou vous inscrire.",
+        title: "Pour ajouter un produit à vos favoris, veuillez vous connecter ou vous inscrire.",
         showConfirmButton: true,
       });
     }
-  };
+  }, [userId, id, isInFavorites, addToFavorites, removeFromFavorites, product]);
 
-  const handleAddToCartClick = async () => {
+  const handleAddToCartClick = useCallback(async () => {
     if (userId) {
-      await addToCart(product, quantity); // Assurez-vous que `product` et `quantity` sont correctement passés
-      Swal.fire({
-        icon: "success",
-        title: "Produit ajouté au panier avec succès!",
-        showConfirmButton: false,
-        timer: 1200,
-      });
+      try {
+        await addToCart(product, quantity);
+        Swal.fire({
+          icon: "success",
+          title: "Produit ajouté au panier avec succès!",
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+      }
     } else {
       Swal.fire({
         icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+        title: "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
         showConfirmButton: true,
       });
     }
-  };
+  }, [userId, product, quantity, addToCart]);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  // Generate JSON-LD structured data
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -142,8 +143,6 @@ export default function Product({ product, id, suggestions }) {
     "image_link": product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
-    "sku": product.ref,
-
     "brand": {
       "@type": "Brand",
       "name": product.brand,
@@ -152,13 +151,14 @@ export default function Product({ product, id, suggestions }) {
       "@type": "Offer",
       "priceCurrency": "EUR",
       "price": product.price,
-      // "priceValidUntil": "2024-12-31",
-      // "itemCondition": "https://schema.org/NewCondition",
-      // "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2024-12-31",
+      "itemCondition": "NewCondition",
+      "availability": "InStock",
     },
-    // "gtin": product.ref, // Use the ref as GTIN
-    "mpn": product.ref, // Use the ref as MPN
+    "mpn": product.ref,
+    "link": `${BASE_URL}/shop/${product._id}`,
   };
+  
 
   return (
     <div className={styles["product-container"]}>
@@ -173,12 +173,9 @@ export default function Product({ product, id, suggestions }) {
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
 
-        {/* JSON-LD structured data for SEO */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
-
-        {/* Add more OG meta tags as needed */}
       </Head>
       <RegisterPopup />
       <ShopNav />
@@ -207,6 +204,8 @@ export default function Product({ product, id, suggestions }) {
               data-aos="zoom-in-left"
               onClick={handleToggleFavoritesClick}
               style={{ cursor: "pointer" }}
+              aria-label={`Add ${product.name} to favorites`}
+              role="button"
             >
               <i
                 className="fa-solid fa-heart"
@@ -269,67 +268,32 @@ export default function Product({ product, id, suggestions }) {
               </div>
               <div className={styles.quantity}>
                 <button
-                  onClick={() => setQuantity(quantity - 1)}
-                  disabled={quantity === 1}
+                  onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}
                   className={styles["qty-input"]}
+                  aria-label="Decrease quantity"
                 >
                   -
                 </button>
                 <p>{quantity}</p>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => setQuantity((prev) => prev + 1)}
                   className={styles["qty-input"]}
+                  aria-label="Increase quantity"
                 >
                   +
                 </button>
               </div>
 
-              <button onClick={handleAddToCartClick}>Ajouter au panier</button>
+              <button onClick={handleAddToCartClick} aria-label="Add to cart">
+                Ajouter au panier
+              </button>
             </div>
             <p className={styles.ref}>Référence : {product.ref}</p>
           </div>
         </div>
 
         <div className={styles["product-section2"]}>
-          <div className={styles["product-details"]}>
-            <h3>Détails du produit</h3>
-            <p>{product.description}</p>
-            <table>
-              <tbody>
-                {product.details &&
-                  Object.keys(product.details).map(
-                    (key) =>
-                      product.details[key] !== "" && (
-                        <tr key={key}>
-                          <td>{labelsMapping[key] || key}</td>
-                          <td>{product.details[key]}</td>
-                        </tr>
-                      )
-                  )}
-              </tbody>
-            </table>
-
-            {product.pdf &&
-              (product.category === "Logiciels" ? (
-                <Link
-                  href={product.pdf}
-                  target="_blank"
-                  className={styles["pdf-link"]}
-                >
-                  En savoir plus{" "}
-                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                </Link>
-              ) : (
-                <Link
-                  href={product.pdf}
-                  download
-                  target="_blank"
-                  className={styles["pdf-link"]}
-                >
-                  Fiche technique <i className="fa-solid fa-file-pdf"></i>
-                </Link>
-              ))}
-          </div>
+          <ProductDetails product={product} labelsMapping={labelsMapping} />
 
           <div className={styles["product-suggestions"]}>
             <h3>Produits similaires</h3>
@@ -354,24 +318,62 @@ export default function Product({ product, id, suggestions }) {
 }
 
 const DiscountedPrice = ({ product }) => {
-  if (product.price && product.pourcentageDiscount) {
-    const discountPrice =
-      product.price * (1 - product.pourcentageDiscount / 100);
-    return (
-      <p className={styles.prices}>
-        <span className={styles["original-price"]}>
-          {product.price.toFixed(2)} €
-        </span>
-        <span className={styles["discounted-price"]}>
-          {discountPrice.toFixed(2)} € <span>HT</span>
-        </span>
-      </p>
-    );
-  }
+  const discountPrice = useMemo(
+    () => product.price * (1 - product.pourcentageDiscount / 100),
+    [product.price, product.pourcentageDiscount]
+  );
 
   return (
-    <p className={styles.price}>
-      {product.price ? product.price.toFixed(2) : "00.00"} €<span>HT</span>
+    <p className={styles.prices}>
+      <span className={styles["original-price"]}>
+        {product.price.toFixed(2)} €
+      </span>
+      <span className={styles["discounted-price"]}>
+        {discountPrice.toFixed(2)} € <span>HT</span>
+      </span>
     </p>
   );
 };
+
+const ProductDetails = ({ product, labelsMapping }) => (
+  <div className={styles["product-details"]}>
+    <h3>Détails du produit</h3>
+    <p>{product.description}</p>
+    <table>
+      <tbody>
+        {product.details &&
+          Object.keys(product.details).map(
+            (key) =>
+              product.details[key] !== "" && (
+                <tr key={key}>
+                  <td>{labelsMapping[key] || key}</td>
+                  <td>{product.details[key]}</td>
+                </tr>
+              )
+          )}
+      </tbody>
+    </table>
+
+    {product.pdf && (
+      <Link
+        href={product.pdf}
+        download={product.category !== "Logiciels"}
+        target="_blank"
+        className={styles["pdf-link"]}
+      >
+        {product.category === "Logiciels"
+          ? "En savoir plus"
+          : "Fiche technique"}{" "}
+        <i
+          className={
+            product.category === "Logiciels"
+              ? "fa-solid fa-arrow-up-right-from-square"
+              : "fa-solid fa-file-pdf"
+          }
+        ></i>
+      </Link>
+    )}
+  </div>
+);
+
+export default Product;
