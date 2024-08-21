@@ -138,7 +138,7 @@ export default function Product({ product, id, suggestions }) {
     "name": product.name,
     "title": product.name,
     "description": product.description,
-    "image_link": product.image.startsWith("http")
+    "image": product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
     "sku": product.ref,
