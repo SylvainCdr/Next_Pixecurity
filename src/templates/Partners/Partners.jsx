@@ -4,6 +4,7 @@ import { partners } from "../../Components/HomepagePartners/PartnersData";
 import AOS from "aos";
 import Link from "next/link";
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 const Partners = () => {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
@@ -40,6 +41,8 @@ const Partners = () => {
     }));
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className={styles["partners-container"]}>
       <Head>
@@ -57,12 +60,14 @@ const Partners = () => {
 
       <div className={styles["partners-section1"]}>
         <div className={styles["partners-intro"]}>
-          <h1>Nos partenaires</h1>
-          <h2>
-            Découvrez nos partenaires de confiance, leaders mondiaux en sécurité
-            et surveillance.
-          </h2>
-          <p>
+          <h1>{t("partnersHeroTitle")}</h1>
+          <h2> {t("partnersHeroSubtitle")}</h2>
+
+          <p> {t("partnersHeroDescription1")}</p>
+          <p> {t("partnersHeroDescription2")}</p>
+          <p> {t("partnersHeroDescription3")}</p>
+
+          {/* <p>
             Chez Pixecurity, nous nous engageons à vous fournir les meilleures
             solutions disponibles, grâce à des collaborations avec des
             entreprises innovantes et réputées.
@@ -82,7 +87,7 @@ const Partners = () => {
           </p>
           <p>
             Bienvenue chez Pixecurity, où votre sécurité est notre priorité.
-          </p>
+          </p> */}
         </div>
 
         <div data-aos="fade-down" className={styles["partner-img"]}></div>

@@ -4,10 +4,15 @@ import Aos from "aos";
 import Link from "next/link";
 import Head from "next/head";
 
+
+import { useTranslation } from "next-i18next";
+
 export default function AboutUs() {
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -27,16 +32,10 @@ export default function AboutUs() {
 
       <div className={styles["aboutUs-container"]}>
         <div className={styles["section-1"]}>
-          <h1>Qui sommes-nous ?</h1>
-          <p>
-            Des ingénieurs avant tout. Des ingénieurs 3.0 même. Digital natives,
-            branchés BTP, réseaux, technologies appliquées aux bâtiments, veille
-            technologique... Bref, de vrais dealers de solutions de sureté prêts
-            à tout pour trouver les bons produits adaptés à vos besoins.
-          </p>
+          <h1>{t('aboutUs.title')}</h1>
+          <p>{t('aboutUs.section1.text')}</p>
           <Link href="/contact">
-            {" "}
-            <button>Un Projet? Parlons en !</button>{" "}
+            <button>{t('aboutUs.section1.button')}</button>
           </Link>
         </div>
 
@@ -48,18 +47,15 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="../../assets/about1.webp"
+                src={t('aboutUs.section2.cards.imgSrc1')}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>BTP</h2>
-            <p>
-              Avec des ingénieurs de formation génie civil, Pixecurity conserve
-              un ADN travaux, chantier, qui reste l'essence même de notre
-              métier.
-            </p>
+            <h2>{t('aboutUs.section2.cards.title1')}</h2>
+            <p>{t('aboutUs.section2.cards.text1')}</p>
           </div>
+
           <div
             className={styles["card-about"]}
             data-aos="fade-up"
@@ -67,18 +63,15 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="../../assets/about2.webp"
+                src={t('aboutUs.section2.cards.imgSrc2')}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>Électronique appliquée</h2>
-            <p>
-              En complément du génie civil, nos ingénieurs cadres sont formés en
-              électronique appliquée : domotique, vidéoprotection, contrôle
-              d'accès...
-            </p>
+            <h2>{t('aboutUs.section2.cards.title2')}</h2>
+            <p>{t('aboutUs.section2.cards.text2')}</p>
           </div>
+
           <div
             className={styles["card-about"]}
             data-aos="fade-up"
@@ -86,34 +79,27 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src="../../assets/about3.webp"
+                src={t('aboutUs.section2.cards.imgSrc3')}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>IT</h2>
-            <p>
-              Pixecurity complète son équipe par des ingénieurs réseaux
-              certifiés, systèmes, SI...
-            </p>
+            <h2>{t('aboutUs.section2.cards.title3')}</h2>
+            <p>{t('aboutUs.section2.cards.text3')}</p>
           </div>
         </div>
+
         <div className={styles["section-3"]}>
-          <h3>
-            "Notre but ? <br />
-            Répondre aux exigences et anticiper les besoins de nos clients.{" "}
-            <br />
-            Simplifier la compréhension de la sécurité."
-          </h3>
+          <h3 dangerouslySetInnerHTML={{ __html: t('aboutUs.section3.quote') }} />
           <div className={styles.bottom}>
-            <p>-- Yann Duchet, CEO Pixecurity</p>
-            <img src="../../assets/team/YANN-aboutUs.jpg" alt="" loading="lazy" />
+            <p>{t('aboutUs.section3.author')}</p>
+            <img src={t('aboutUs.section3.imgSrc')} alt="" loading="lazy" />
           </div>
         </div>
 
         <div className={styles["section-4"]}>
-          <h1>Rencontrez les experts de Pixecurity</h1>
-          <h2>Des spécialistes qualifiés qui mettent leur savoir-faire à votre service pour une protection optimale.</h2>
+          <h1>{t('aboutUs.section4.title')}</h1>
+          <h2>{t('aboutUs.section4.subtitle')}</h2>
           <ul className={styles["auto-grid"]} role="list">
             {/* <li>
             <div className={styles.profile}>

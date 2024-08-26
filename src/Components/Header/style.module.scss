@@ -8,6 +8,45 @@
   top: 0;
   margin: 0 auto;
 
+
+/* Styles pour le sélecteur de langue */
+.language_selector {
+  position: absolute;
+  bottom: 0px;
+  left: 3.7rem;
+  padding: 0;
+  border-radius: 2px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.lang_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 1px 15px;
+  background-color: inherit;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.lang_button img {
+  width: 20px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  // margin-right: 5px;
+}
+
+.lang_button:hover {
+  color: #96c5f8;
+}
+
+
   .header__nav {
     margin: auto;
     width: 100%;
@@ -121,6 +160,8 @@
   @media screen and (max-width: 1080px) {
     .header__nav {
       justify-content: flex-end;
+
+      
 
       ul {
         .shop {

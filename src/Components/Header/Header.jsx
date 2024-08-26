@@ -5,9 +5,15 @@ import Swal from "sweetalert2";
 import { usePathname } from "next/navigation";
 import { useGetUser } from "../useGetUser";
 import { useCartContext } from "@/Components/cartContext";
+import { useTranslation } from "next-i18next";
+import { useRouter } from 'next/router'; // Importer useRouter pour accéder à la route actuelle
+import i18next from "i18next";
 
 function Header() {
   const user = useGetUser();
+  const pathname = usePathname();
+  const { t } = useTranslation();
+  const router = useRouter(); // Obtenir la route actuelle
 
   function burgerToggle() {
     const nav = document.querySelector(`.${styles.header__nav}`);
@@ -34,9 +40,9 @@ function Header() {
     });
 
     Swal.fire({
-      title: "Déconnecté",
+      title: t('logoutTitle'),  // "Déconnecté"
       icon: "success",
-      text: "Pixecurity vous remercie pour votre visite !",
+      text: t('logoutText'),  // "Pixecurity vous remercie pour votre visite !"
       timer: 2000,
       showConfirmButton: false,
     });
@@ -46,10 +52,27 @@ function Header() {
     }, 2000);
   };
 
-  const pathname = usePathname();
+  // Détermine si le sélecteur de langue doit être affiché
+  const shouldDisplayLanguageSelector = !pathname.startsWith('/boutique') && !pathname.startsWith('/inscription') && !pathname.startsWith('/connexion') && !pathname.startsWith('/connexion') && !pathname.startsWith('/panier') && !pathname.startsWith('/mon-compte') && !pathname.startsWith('/admin') && !pathname.startsWith('/commande');
+
+  const changeLanguage = (lng) => {
+    i18next.changeLanguage(lng);
+  };
 
   return (
     <div className={styles.header_container}>
+      {/* Sélecteur de langue */}
+      {shouldDisplayLanguageSelector && (
+        <div className={styles.language_selector}>
+          <button onClick={() => changeLanguage('fr')} className={styles.lang_button}>
+            <img src="/assets/icons/french-logo.png" alt="French" />
+          </button>
+          <button onClick={() => changeLanguage('en')} className={styles.lang_button}>
+            <img src="/assets/icons/english-logo.png" alt="English" />
+          </button>
+        </div>
+      )}
+
       <nav className={styles.header__nav}>
         <div className={styles.header__logo}>
           <Link href="/">
@@ -64,22 +87,22 @@ function Header() {
               className={styles.shop}
               onClick={handleLinkClick}
             >
-              Boutique
+              {t('shop')}  {/* Boutique */}
             </Link>
           </li>
           <li className={pathname === "/notre-expertise" ? styles.active : ""}>
             <Link href="/notre-expertise" onClick={handleLinkClick}>
-              Notre expertise
+              {t('Expertise')}  {/* Notre expertise */}
             </Link>
           </li>
           <li className={pathname === "/partenaires" ? styles.active : ""}>
             <Link href="/partenaires" onClick={handleLinkClick}>
-              Nos partenaires
+              {t('ourPartners')}  {/* Nos partenaires */}
             </Link>
           </li>
           <li className={pathname === "/a-propos" ? styles.active : ""}>
             <Link href="/a-propos" onClick={handleLinkClick}>
-              Qui sommes-nous ?
+              {t('about')}  {/* Qui sommes-nous ? */}
             </Link>
           </li>
           {!user && (
@@ -91,14 +114,14 @@ function Header() {
               }
             >
               <Link href="/inscription" onClick={handleLinkClick}>
-                Connexion
+                {t('login')}  {/* Connexion */}
               </Link>
             </li>
           )}
           {user?.role === "user" && (
             <li className={pathname === "/mon-compte" ? styles.active : ""}>
               <Link href="/mon-compte" onClick={handleLinkClick}>
-                Mon compte
+                {t('myAccount')}  {/* Mon compte */}
               </Link>
             </li>
           )}
@@ -107,14 +130,14 @@ function Header() {
               className={pathname === "/admin/dashboard" ? styles.active : ""}
             >
               <Link href="/admin/dashboard" onClick={handleLinkClick}>
-                Administration
+                {t('admin')}  {/* Administration */}
               </Link>
             </li>
           )}
           {user && (
             <li>
               <Link href="#" onClick={logout} className={styles.logout}>
-                Déconnexion
+                {t('logout')}  {/* Déconnexion */}
               </Link>
             </li>
           )}
@@ -130,6 +153,8 @@ function Header() {
 
 function CartLink() {
   const { cartItemsCount } = useCartContext();
+  const { t } = useTranslation();
+
   return (
     <Link className={styles.cart} href="/panier">
       <p className={styles.count}>{cartItemsCount}</p>

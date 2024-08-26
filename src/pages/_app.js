@@ -1,16 +1,21 @@
 import "@/index.css";
 import "aos/dist/aos.css";
-
 import { useEffect } from "react";
 import { AppProvider } from "@/Components/appContext";
 import { CartProvider } from "@/Components/cartContext";
 import Template from "@/Components/Template/Template";
 import Head from "next/head";
+import '../../i18n';
+import { appWithTranslation } from 'next-i18next';
 
-export default function App({ Component, pageProps }) {
+
+
+
+
+ function App({ Component, pageProps }) {
   useEffect(() => {
     // Charger le script Google Analytics
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=G-JVBQQF1007`;
     script.async = true;
     document.head.appendChild(script);
@@ -20,8 +25,8 @@ export default function App({ Component, pageProps }) {
     function gtag() {
       window.dataLayer.push(arguments);
     }
-    gtag('js', new Date());
-    gtag('config', 'G-JVBQQF1007');
+    gtag("js", new Date());
+    gtag("config", "G-JVBQQF1007");
   }, []);
 
   return (
@@ -40,3 +45,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default appWithTranslation(App);

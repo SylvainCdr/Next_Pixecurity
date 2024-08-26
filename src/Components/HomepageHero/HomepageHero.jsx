@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import AOS from "aos";
+import "aos/dist/aos.css";
+import { useTranslation } from "next-i18next";
 
 export default function HomepageHero() {
   useEffect(() => {
@@ -22,6 +24,8 @@ export default function HomepageHero() {
     };
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
@@ -37,20 +41,17 @@ export default function HomepageHero() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h1>Fournisseur de solutions de sûreté intelligentes</h1>
-            <h2>
-                Vidéosurveillance, analyse d'image, contrôle d'accès,
-                réseaux/stockage des données, hypervision...
-            </h2>
+            <h1> {t("heroTitle")}</h1>
+            <h2>{t("heroDescription")}</h2>
           </div>
           <div className={styles.homepageHeroCta}>
-            <Link href="/boutique">
-              <button className={styles.ctaShop}>Visiter la boutique</button>
-            </Link>
-            <Link href="/contact">
-              <button className={styles.ctaContact}>Contactez nous</button>
-            </Link>
-          </div>
+      <Link href="/boutique">
+        <button className={styles.ctaShop}>{t('visitShop')}</button>
+      </Link>
+      <Link href="/contact">
+        <button className={styles.ctaContact}>{t('contact')}</button>
+      </Link>
+    </div>
         </div>
       </div>
 
@@ -59,15 +60,8 @@ export default function HomepageHero() {
           <div className={styles["section2-img"]}></div>
 
           <div className={styles["section2-text"]}>
-            <p>
-              La <strong>sûreté</strong> ne dépend plus de la force brute, mais
-              de <strong>l'intelligence</strong>. <br /> Chez{" "}
-              <strong>Pixecurity</strong>, nous sommes les fournisseurs de
-              systèmes de <strong>sûreté</strong> intelligents. <br />
-              Notre <strong>mission</strong> : vous accompagner avec les{" "}
-              <strong>meilleurs</strong> produits et des{" "}
-              <strong>solutions</strong> sur-mesure, repensant la sécurité selon
-              vos besoins.
+            <p> {t("section2Text")}
+          
             </p>
           </div>
         </div>

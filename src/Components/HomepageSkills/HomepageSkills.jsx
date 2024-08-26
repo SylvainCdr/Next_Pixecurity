@@ -1,25 +1,24 @@
 import React from "react";
 import styles from "./style.module.scss";
 import Link from "next/link";
+import { useTranslation } from 'next-i18next';
 
 export default function HomepageSkills() {
+  const { t } = useTranslation();
+
   return (
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills1.webp"
-          alt="Videoprotection"
+          alt={t('skills.videoprotection.title')}
           loading="lazy"
         />
-        <h3>Vidéoprotection</h3>
-        <p>
-          L'analyse d'image doit permettre de gagner du temps et de simplifier
-          l'experience utilisateur sans être une usine à gaz. Notre savoir faire
-          nous permet de vous proposer les meilleurs produits.{" "}
-        </p>
+        <h3>{t('skills.videoprotection.title')}</h3>
+        <p>{t('skills.videoprotection.description')}</p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#videoprotection">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -27,18 +26,14 @@ export default function HomepageSkills() {
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills2.webp"
-          alt="Analyse d'image"
+          alt={t('skills.analyseImage.title')}
           loading="lazy"
         />
-        <h3>Analyse d'image</h3>
-        <p>
-          Protections des biens et des personnes, levée de doutes et bien plus
-          encore... Pixecurity sélectionne pour vous les meilleures solutions du
-          marché : Caméras visibles, thermiques, mobiles, fish-eye...
-        </p>
+        <h3>{t('skills.analyseImage.title')}</h3>
+        <p>{t('skills.analyseImage.description')}</p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#analyse">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -46,18 +41,14 @@ export default function HomepageSkills() {
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills3.webp"
-          alt="Contrôle d'accès"
+          alt={t('skills.controleAcces.title')}
           loading="lazy"
         />
-        <h3>Contrôle d'accès</h3>
-        <p>
-          Suivi, gestion, traçabilité, protection des personnes. Pixecurity
-          complète son offre pour vous proposer une solution globale avec les
-          leaders du marché.
-        </p>
+        <h3>{t('skills.controleAcces.title')}</h3>
+        <p>{t('skills.controleAcces.description')}</p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#access">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -65,19 +56,14 @@ export default function HomepageSkills() {
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills4.webp"
-          alt=" Cloud et objets connectés"
+          alt={t('skills.cloudObjetsConnectes.title')}
           loading="lazy"
         />
-        <h3>Cloud et objets connectés</h3>
-        <p>
-          Tout objet connecté est aujourd'hui un capteur de sureté devient
-          exploitable depuis n'importe quelle interface utilisateur. Pixecurity
-          vous propose des solutions innovantes et intélligentes permettant de
-          les traiter.
-        </p>
+        <h3>{t('skills.cloudObjetsConnectes.title')}</h3>
+        <p>{t('skills.cloudObjetsConnectes.description')}</p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#cloud">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -85,19 +71,14 @@ export default function HomepageSkills() {
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills5.webp"
-          alt=" Réseaux SI / Stockage"
+          alt={t('skills.reseauxStockage.title')}
           loading="lazy"
         />
-        <h3>Réseaux SI / Stockage</h3>
-        <p>
-          Le traitement, le transport et l'exploitation doivent être garantis
-          par une expertise métier. Les ingénieurs Pixecurity vous assurent un
-          dimensionnement optimal des réseaux, du stockage, des ressources
-          informatiques.
-        </p>
+        <h3>{t('skills.reseauxStockage.title')}</h3>
+        <p>{t('skills.reseauxStockage.description')}</p>
         <div className={styles["bottom"]}>
           <Link href="/notre-expertise#network">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>
@@ -105,18 +86,14 @@ export default function HomepageSkills() {
       <div data-aos="fade-up" className={styles["skills-card"]}>
         <img
           src="assets/homepage/skills6.webp"
-          alt=" Ingénierie"
+          alt={t('skills.ingenierie.title')}
           loading="lazy"
         />
-        <h3>Ingénierie</h3>
-        <p>
-          Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau
-          2-Niveau 3 sur vos systèmes de sureté. Avant vente, suivi de projet,
-          mise en service, maintenance, livrables documentaires...
-        </p>
+        <h3>{t('skills.ingenierie.title')}</h3>
+        <p>{t('skills.ingenierie.description')}</p>
         <div className={styles["bottom"]}>
-        <Link href="/a-propos">
-            En savoir plus <i className="fa-solid fa-arrow-right"></i>
+          <Link href="/a-propos">
+            {t('learnMore')} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./style.module.scss";
+import { useTranslation } from "next-i18next";
 
 export default function HomepageCountUp() {
   const animationDuration = 5000;
@@ -33,6 +34,8 @@ export default function HomepageCountUp() {
   };
 
   const containerRef = useRef(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const observerOptions = {
@@ -74,7 +77,7 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="20">0</span>+
               </h3>
-              <h4>Partenaires</h4>
+              <h4>{t('partners')}</h4>
             </div>
           </div>
           <div className={styles.col}>
@@ -82,7 +85,7 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="110">0</span>+
               </h3>
-              <h4>Clients</h4>
+              <h4>{t('clients')}</h4>
             </div>
           </div>
           <div className={styles.col}>
@@ -90,10 +93,9 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="600">0</span>+
               </h3>
-              <h4>Projets</h4>
+              <h4>{t('projects')}</h4>
             </div>
           </div>
-         
         </div>
       </div>
     </div>

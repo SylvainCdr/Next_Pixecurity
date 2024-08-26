@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./style.module.scss";
+import { useTranslation } from "next-i18next";
+
+
 
 const images = [
   "aphp.png",
@@ -21,10 +24,16 @@ const images = [
   "terideal.png",
 ];
 
+
+
+
 export default function HomepageCustomersSlider() {
+
+  const { t } = useTranslation();
+
   return (
     <div className={styles.slider}>
-      <h1>Ils nous font confiance</h1>
+      <h1>{t('trustedBy')}</h1>
       <div className={styles.slide_track}>
         {images.map((image, index) => (
           <div className={styles.slide} key={index}>
