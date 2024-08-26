@@ -53,7 +53,7 @@ function Header() {
   };
 
   // Détermine si le sélecteur de langue doit être affiché
-  const shouldDisplayLanguageSelector = !pathname.startsWith('/boutique') && !pathname.startsWith('/inscription') && !pathname.startsWith('/connexion') && !pathname.startsWith('/connexion') && !pathname.startsWith('/panier') && !pathname.startsWith('/mon-compte') && !pathname.startsWith('/admin') && !pathname.startsWith('/commande');
+  const shouldDisplayLanguageSelector = !pathname.startsWith('/boutique') ;
 
   const changeLanguage = (lng) => {
     i18next.changeLanguage(lng);
