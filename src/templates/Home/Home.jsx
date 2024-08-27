@@ -45,23 +45,23 @@ export default function Home() {
         <RegisterPopup />
         <Hero />
         <div className={styles["section2-offer"]}>
-          <h3>{t("offerTitle")}</h3>
-          <p>{t("offerDescription")}</p>
+          <h3>{t("home.offerTitle")}</h3>
+          <p>{t("home.offerDescription")}</p>
         </div>
 
         <HomepageSkills />
 
         <div className={styles["section4-aboutUs"]}>
           <div className={styles["section4-text"]}>
-            <h3>{t("aboutUsTitle")}</h3>
-            <p>{t("aboutUsDescription")}</p>
+            <h3>{t("home.aboutUsTitle")}</h3>
+            <p>{t("home.aboutUsDescription")}</p>
             <div className={styles.ctaButtons}>
               <Link href="/a-propos">
-                <button className={styles.ctaTeam}>{t("ourTeam")}</button>
+                <button className={styles.ctaTeam}>{t("home.ourTeam")}</button>
               </Link>
               <Link href="/notre-expertise">
                 <button className={styles.ctaExpertise}>
-                  {t("ourExpertise")}
+                  {t("home.ourExpertise")}
                 </button>
               </Link>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
         <div className={styles.learnMore}>
           <h5> Ready to learn more ? </h5>
           <Link href="/contact">
-            <button> {t('contactUs')}</button>
+            <button> {t('home.contactUs')}</button>
           </Link>
         </div>
 

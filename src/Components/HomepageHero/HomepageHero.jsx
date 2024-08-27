@@ -41,15 +41,15 @@ export default function HomepageHero() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h1> {t("heroTitle")}</h1>
-            <h2>{t("heroDescription")}</h2>
+            <h1> {t("homepageHero.heroTitle")}</h1>
+            <h2>{t("homepageHero.heroDescription")}</h2>
           </div>
           <div className={styles.homepageHeroCta}>
             <Link href="/boutique">
-              <button className={styles.ctaShop}>{t("visitShop")}</button>
+              <button className={styles.ctaShop}>{t("homepageHero.visitShop")}</button>
             </Link>
             <Link href="/contact">
-              <button className={styles.ctaContact}>{t("contact")}</button>
+              <button className={styles.ctaContact}>{t("homepageHero.contact")}</button>
             </Link>
           </div>
         </div>
@@ -60,8 +60,8 @@ export default function HomepageHero() {
           <div className={styles["section2-img"]}></div>
 
           <div className={styles["section2-text"]}>
-            <p className={styles.text1} > {t("section2Text1")}</p>
-            <p className={styles.text2}> {t("section2Text2")}</p>
+            <p className={styles.text1} > {t("homepageHero.section2Text1")}</p>
+            <p className={styles.text2}> {t("homepageHero.section2Text2")}</p>
           </div>
         </div>
       </div>

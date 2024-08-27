@@ -77,7 +77,7 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="20">0</span>+
               </h3>
-              <h4>{t('partners')}</h4>
+              <h4>{t('homepageCountup.partners')}</h4>
             </div>
           </div>
           <div className={styles.col}>
@@ -85,7 +85,7 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="110">0</span>+
               </h3>
-              <h4>{t('clients')}</h4>
+              <h4>{t('homepageCountup.clients')}</h4>
             </div>
           </div>
           <div className={styles.col}>
@@ -93,7 +93,7 @@ export default function HomepageCountUp() {
               <h3>
                 <span className={`${styles.timer}`} data-count-to="600">0</span>+
               </h3>
-              <h4>{t('projects')}</h4>
+              <h4>{t('homepageCountup.projects')}</h4>
             </div>
           </div>
         </div>

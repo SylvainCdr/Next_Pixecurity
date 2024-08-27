@@ -1,7 +1,6 @@
 {
   
-
-
+  "header": {
     "shop": "Shop",
     "Expertise": "Our Expertise",
     "ourPartners": "Our Partners",
@@ -11,21 +10,49 @@
     "admin": "Administration",
     "logout": "Logout",
     "logoutTitle": "Logged Out",
-    "logoutText": "Pixecurity thanks you for your visit!",
+    "logoutText": "Pixecurity thanks you for your visit!"
+  },
   
-  
+
+    
+      "footer": {
+        "description": "Provider of intelligent security solutions: Video surveillance, image analysis, access control, data networks/storage, hypervision...",
+        "siteMap": "Site Map",
+        "contactUs": "Contact Us",
+        "home": "Home",
+        "shop": "Shop",
+        "expertise": "Our Expertise",
+        "signupLogin": "Signup / Login",
+        "aboutUsLink": "About Us",
+        "partnersLink": "Our Partners",
+        "contactLink": "Contact",
+        "email": "pixecurity@pixecurity.com",
+        "phone": "(+33) 1 39 60 98 82",
+        "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
+        "linkedin": "Linkedin",
+        "copyright": "© 2024 Pixecurity. All rights reserved."
+      },
+    
+    
+      "homepageHero" : {
     "heroTitle": "Provider of Intelligent Security Solutions",
     "heroDescription": "Video surveillance, Image analysis, Access control, Data networks/storage, Hypervision...",
       "visitShop": "Visit the shop",
       "contact": "Contact us",
-    
       "section2Text1": "Security no longer depends on brute force, but on intelligence. At Pixecurity, we are providers of intelligent security systems.",
-      "section2Text2": "Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs.",
+      "section2Text2": "Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs."
+      },
 
-   
+      
+   "home" : {
     "offerTitle": "A Different Approach to Offering",
     "offerDescription": "Pixecurity’s certified personal data protection includes: the provision of electronic tools, a proprietary project management platform to facilitate interaction with our experts, custom and tailored developments, and the implementation of cyber solutions. Compliance certifications issued by our consultants on compliance: Pixecurity covers the entire high-value chain of security. Pixecurity is the provider of 3.0 security solutions.",
-    
+    "aboutUsTitle": "Who are we?",
+    "aboutUsDescription": "Cutting-edge engineers. 3.0 experts, digital natives, specialized in construction, networks, building technologies, and always on the lookout for the latest technological advances. They are true security artisans, determined to find the solutions best suited to your needs.",
+      "ourTeam": "Our team",
+      "ourExpertise": "Our expertise",
+      "contactUs": "Contact Us"
+    },
   
     
     "skills": {
@@ -56,27 +83,24 @@
     },
     "learnMore": "Learn More",
 
-    "aboutUsTitle": "Who are we?",
-    "aboutUsDescription": "Cutting-edge engineers. 3.0 experts, digital natives, specialized in construction, networks, building technologies, and always on the lookout for the latest technological advances. They are true security artisans, determined to find the solutions best suited to your needs.",
-      "ourTeam": "Our team",
-      "ourExpertise": "Our expertise",
-  
-    
 
+  "homepagePartners": {
     "partnersTitle": "Our partners",
     "partnersSubtitle": "Market Excellence at Your Service",
     "partnersDescription": "Whether it's visible cameras, thermal cameras, video management systems, or IP... Pixecurity engineers are committed to selecting the most effective products, perfectly suited to your project.",
+    "learnMore": "Learn More"
+  },
 
-    
+
+    "homepageCountup": {
       "partners": "Partners",
       "clients": "Clients",
-      "projects": "Projects",
+      "projects": "Projects"
+    },
 
   
       "trustedBy": "They trust us",
-      
-        
-      "contactUs": "Contact Us",
+     
 
 
         "expertiseHeroTitle": "Our Expertise: Your protection, our commitment",

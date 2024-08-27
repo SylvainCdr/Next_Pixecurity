@@ -22,11 +22,11 @@ export default function HomepagePartners() {
         ))}
       </div>
       <div className={styles["partners-text"]}>
-        <h2>{t('partnersTitle')}</h2>
-        <h4>{t('partnersSubtitle')}</h4>
-        <p>{t('partnersDescription')}</p>
+        <h2>{t('homepagePartners.partnersTitle')}</h2>
+        <h4>{t('homepagePartners.partnersSubtitle')}</h4>
+        <p>{t('homepagePartners.partnersDescription')}</p>
         <Link href="/partenaires">
-          <button>{t('learnMore')}</button>
+          <button>{t('homepagePartners.learnMore')}</button>
         </Link>
       </div>
     </div>

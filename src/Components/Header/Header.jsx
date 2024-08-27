@@ -88,22 +88,22 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               className={styles.shop}
               onClick={handleLinkClick}
             >
-              {t('shop')}  {/* Boutique */}
+              {t('header.shop')}  {/* Boutique */}
             </Link>
           </li>
           <li className={pathname === "/notre-expertise" ? styles.active : ""}>
             <Link href="/notre-expertise" onClick={handleLinkClick}>
-              {t('Expertise')}  {/* Notre expertise */}
+              {t('header.Expertise')}  {/* Notre expertise */}
             </Link>
           </li>
           <li className={pathname === "/partenaires" ? styles.active : ""}>
             <Link href="/partenaires" onClick={handleLinkClick}>
-              {t('ourPartners')}  {/* Nos partenaires */}
+              {t('header.ourPartners')}  {/* Nos partenaires */}
             </Link>
           </li>
           <li className={pathname === "/a-propos" ? styles.active : ""}>
             <Link href="/a-propos" onClick={handleLinkClick}>
-              {t('about')}  {/* Qui sommes-nous ? */}
+              {t('header.about')}  {/* Qui sommes-nous ? */}
             </Link>
           </li>
           {!user && (
@@ -115,14 +115,14 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               }
             >
               <Link href="/inscription" onClick={handleLinkClick}>
-                {t('login')}  {/* Connexion */}
+                {t('header.login')}  {/* Connexion */}
               </Link>
             </li>
           )}
           {user?.role === "user" && (
             <li className={pathname === "/mon-compte" ? styles.active : ""}>
               <Link href="/mon-compte" onClick={handleLinkClick}>
-                {t('myAccount')}  {/* Mon compte */}
+                {t('header.myAccount')}  {/* Mon compte */}
               </Link>
             </li>
           )}
@@ -131,14 +131,14 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               className={pathname === "/admin/dashboard" ? styles.active : ""}
             >
               <Link href="/admin/dashboard" onClick={handleLinkClick}>
-                {t('admin')}  {/* Administration */}
+                {t('header.admin')}  {/* Administration */}
               </Link>
             </li>
           )}
           {user && (
             <li>
               <Link href="#" onClick={logout} className={styles.logout}>
-                {t('logout')}  {/* Déconnexion */}
+                {t('header.logout')}  {/* Déconnexion */}
               </Link>
             </li>
           )}
