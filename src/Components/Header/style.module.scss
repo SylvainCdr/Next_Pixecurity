@@ -37,13 +37,24 @@
 }
 
 .lang_button img {
-  width: 20px; /* Ajustez la taille selon vos besoins */
-  height: auto;
-  // margin-right: 5px;
+  width: 20px;
+  /*Ajustezlatailleselonvosbesoins*/height: auto;
+  //margin-right: 5px;
+  transform: scale(1.1);
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 .lang_button:hover {
   color: #96c5f8;
+  scale : 1.2;
 }
 
 
