@@ -218,7 +218,7 @@
         }
         .section2-text {
           width: 70%;
-          p {
+          p, .text1, .text2 {
             font-size: 1rem;
             margin-left: 1rem;
             margin-right: 1rem;
@@ -292,11 +292,12 @@
         }
         .section2-text {
           width: 70%;
-          p {
+          p, .text1, .text2  {
             font-size: 1rem;
             margin-left: 1rem;
             margin-right: 1rem;
             line-height: 1.5;
+            padding : 0.5rem;
             strong {
               font-size: 1rem;
             }
