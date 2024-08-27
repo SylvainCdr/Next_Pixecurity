@@ -155,7 +155,7 @@ export default function Product({ product, id, suggestions }) {
       "availability": "InStock",
     },
     "mpn": product.ref,
-    "link": `${BASE_URL}/shop/${product._id}`,
+    "link": `https://pixecurity.com/boutique/produit/${id}`,
   };
   
 
