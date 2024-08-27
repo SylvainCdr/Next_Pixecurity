@@ -15,11 +15,13 @@
   
   
     "heroTitle": "Provider of Intelligent Security Solutions",
-    "heroDescription": "Video surveillance, image analysis, access control, data networks/storage, hypervision...",
+    "heroDescription": "Video surveillance, Image analysis, Access control, Data networks/storage, Hypervision...",
       "visitShop": "Visit the shop",
       "contact": "Contact us",
     
-   
+      "section2Text1": "Security no longer depends on brute force, but on intelligence. At Pixecurity, we are providers of intelligent security systems.",
+      "section2Text2": "Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs.",
+
    
     "offerTitle": "A Different Approach to Offering",
     "offerDescription": "Pixecurity’s certified personal data protection includes: the provision of electronic tools, a proprietary project management platform to facilitate interaction with our experts, custom and tailored developments, and the implementation of cyber solutions. Compliance certifications issued by our consultants on compliance: Pixecurity covers the entire high-value chain of security. Pixecurity is the provider of 3.0 security solutions.",
@@ -56,7 +58,6 @@
 
     "aboutUsTitle": "Who Are We?",
     "aboutUsDescription": "Cutting-edge engineers. 3.0 experts, digital natives, specialized in construction, networks, building technologies, and always on the lookout for the latest technological advances. They are true security artisans, determined to find the solutions best suited to your needs.",
-    "section2Text": "Security no longer depends on brute force, but on intelligence. At Pixecurity, we are providers of intelligent security systems. Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs.",
       "ourTeam": "Our team",
       "ourExpertise": "Our expertise",
   
@@ -182,7 +183,7 @@
 
     
          
-          "partnersHeroTitle": "Our Partners",
+          "partnersHeroTitle": "Our partners",
           "partnersHeroSubtitle": "Discover our trusted partners, global leaders in security and surveillance.",
           "partnersHeroDescription1": "At Pixecurity, we are committed to providing you with the best available solutions through collaborations with innovative and reputable companies. Each partner brings its expertise and cutting-edge technologies, covering a wide range of needs: IP surveillance, video management, access control, and more. Our partners offer advanced solutions to protect your assets and ensure your peace of mind.",
           "partnersHeroDescription2": "Browse our gallery to learn more about these companies and their products. We are proud to work with these major players to offer you the highest quality security solutions.",
@@ -192,7 +193,7 @@
         
       
           "aboutUs": {
-            "title": "Who Are We?",
+            "title": "Who are we?",
             "section1": {
               "text": "Engineers above all. Even 3.0 engineers. Digital natives, involved in construction, networks, building technologies, technological watch... In short, real security solution dealers ready to find the right products tailored to your needs.",
               "button": "A Project? Let's Discuss!"

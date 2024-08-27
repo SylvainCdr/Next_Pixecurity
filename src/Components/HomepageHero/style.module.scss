@@ -139,26 +139,33 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
 
         p {
           line-height: 1.6;
-          font-size: 1.3rem;
           font-weight: 500;
           text-align: justify;
-          color: #e6e4e4;
-          text-shadow: rgb(0, 16, 57) 1px 1px 1px;
           margin-left: 4rem;
           margin-right: 4rem;
-          padding-top: 1em;
-
-          strong {
-            font-size: 1.3rem;
-            color: #ffffff;
-            text-shadow: rgb(11, 28, 53) 1px 1px 2px;
-            font-weight: 500;
-          }
         }
+
+        .text1 {
+          font-size: 1.3rem;
+          padding-bottom: 1rem;
+        }
+        .text2 {
+          font-size: 1.2rem;
+          background-color: #ffffff;
+          color: rgb(46, 46, 46);
+          border-radius: 5px 5px 5px 5px;
+          -webkit-border-radius: 5px 5px 5px 5px;
+          -moz-border-radius: 5px 5px 5px 5px;
+          -ms-border-radius: 5px 5px 5px 5px;
+          -o-border-radius: 5px 5px 5px 5px;
+          padding: 1rem;
+          text-transform: uppercase;
+        }
+
         .icons {
           display: flex;
           justify-content: space-around;
