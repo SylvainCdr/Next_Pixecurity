@@ -32,6 +32,21 @@
         "linkedin": "Linkedin",
         "copyright": "© 2024 Pixecurity. All rights reserved."
       },
+
+
+      
+        "popup": {
+          "title": "Sign up and get",
+          "discount": "-15%",
+          "description": "Join our community and enjoy exclusive offers and immediate discounts on our Online Store.",
+          "signupButton": "Sign up now",
+          "contactTitle": "Are you a professional?",
+          "contactDescription": "Contact us and receive additional discounts",
+          "contactButton": "Contact Us",
+          "closeButton": "Close"
+        },
+      
+      
     
     
       "homepageHero" : {
@@ -246,10 +261,34 @@
               "title": "Meet the Pixecurity Experts",
               "subtitle": "Qualified specialists who bring their expertise to provide optimal protection."
             }
-          }
+          },
       
         
-        
+          
+            "contact": {
+              "title": "Contact Us",
+              "subtitle": "Let's Get In Touch",
+              "description": "Tell us who you are and describe your issue in a few words. We will contact you as soon as possible to start the project.",
+              "name": "Last Name",
+              "firstname": "First Name",
+              "company": "Company (optional)",
+              "email": "Email",
+              "message": "Message",
+              "submit": "Send",
+              "phone": "(+33) 1 39 60 98 82",
+              "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
+              "linkedin": "Linkedin",
+              "nameError": "Invalid last name (minimum 2 letters)",
+              "firstnameError": "Invalid first name (minimum 2 letters)",
+              "companyError": "Company name must not exceed 30 characters",
+              "emailError": "Invalid email",
+              "messageError": "Invalid message (at least 50 characters)",
+              "success": "Message sent successfully",
+              "error": "An error occurred. Please try again.",
+              "validationError": "Please fill out all fields correctly"
+            }
+          
+          
     
     
   }

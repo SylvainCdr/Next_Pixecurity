@@ -5,8 +5,10 @@ import AOS from "aos";
 import { BASE_URL } from "../../url";
 import Head from "next/head";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 function Contact() {
+  const { t } = useTranslation();
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [company, setCompany] = useState("");
@@ -29,7 +31,7 @@ function Contact() {
     const value = e.target.value;
     setLastname(value);
     setLastnameError(
-      isValidLastname(value) ? "" : "Nom invalide (minimum 2 lettres)"
+      isValidLastname(value) ? "" : t("contact.nameError")
     );
   };
 
@@ -37,7 +39,7 @@ function Contact() {
     const value = e.target.value;
     setFirstname(value);
     setFirstnameError(
-      isValidFirstname(value) ? "" : "Prénom invalide (minimum 2 lettres)"
+      isValidFirstname(value) ? "" : t("contact.firstnameError")
     );
   };
 
@@ -47,23 +49,21 @@ function Contact() {
       setCompany(value);
       setCompanyError("");
     } else {
-      setCompanyError(
-        "Le nom de l'entreprise ne doit pas dépasser 30 caractères"
-      );
+      setCompanyError(t("contact.companyError"));
     }
   };
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
-    setEmailError(isValidEmail(value) ? "" : "Email invalide");
+    setEmailError(isValidEmail(value) ? "" : t("contact.emailError"));
   };
 
   const handleMessageChange = (e) => {
     const value = e.target.value;
     setMessage(value);
     setMessageError(
-      isValidMessage(value) ? "" : "Message invalide (au moins 50 caractères)"
+      isValidMessage(value) ? "" : t("contact.messageError")
     );
   };
 
@@ -79,14 +79,13 @@ function Contact() {
     ) {
       Swal.fire({
         title: "Erreur",
-        text: "Veuillez renseigner tous les champs correctement",
+        text: t("contact.validationError"),
         icon: "error",
         timer: 1800,
       });
       return;
     }
 
-  
     const response = await fetch(`${BASE_URL}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -97,7 +96,7 @@ function Contact() {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Message envoyé avec succès",
+        title: t("contact.success"),
         showConfirmButton: false,
         timer: 1800,
       });
@@ -115,7 +114,7 @@ function Contact() {
     } else {
       Swal.fire({
         title: "Erreur",
-        text: "Une erreur s'est produite. Veuillez réessayer.",
+        text: t("contact.error"),
         icon: "error",
         timer: 1800,
       });
@@ -131,10 +130,10 @@ function Contact() {
   return (
     <>
       <Head>
-        <title>Contactez-nous - Pixecurity</title>
+        <title>{t("contact.title")} - Pixecurity</title>
         <meta
           name="description"
-          content="Contactez Pixecurity pour toute demande de projet ou d'information sur nos solutions de sûreté. Nous sommes là pour répondre à vos besoins en sécurité."
+          content={t("contact.description")}
         />
         <meta
           name="keywords"
@@ -147,19 +146,15 @@ function Contact() {
       <div className={styles["contact-container"]}>
         <div className={styles["contact-section"]}>
           <div data-aos="flip-down" className={styles["visit-card"]}>
-            <h2>Contactez-nous</h2>
-            <h1>Let's Get In Touch</h1>
-            <h3>
-              Dites-nous qui vous êtes et expliquez nous votre problématique en
-              quelques mots. Nous vous recontacterons dans les plus brefs délais
-              pour lancer le projet.
-            </h3>
+            <h2>{t("contact.title")}</h2>
+            <h1>{t("contact.subtitle")}</h1>
+            <h3>{t("contact.description")}</h3>
 
             <p>
-              <img src="assets/logo-dark.svg" alt="" />
+              <img src="assets/logo-dark.svg" alt="Pixecurity Logo" />
             </p>
             <p>
-              <i className="fa-solid fa-phone"></i>(+33) 1 39 60 98 82
+              <i className="fa-solid fa-phone"></i>{t("contact.phone")}
             </p>
             <p>
               <i className="fa-solid fa-envelope"></i>
@@ -170,12 +165,11 @@ function Contact() {
             <p>
               <i className="fa-brands fa-linkedin"></i>
               <Link href="https://www.linkedin.com/company/pixecurity/">
-                Linkedin
+                {t("contact.linkedin")}
               </Link>
             </p>
             <p>
-              <i className="fa-solid fa-location-dot"></i> 38 Rue Jean Mermoz
-              78600 Maisons-Laffitte
+              <i className="fa-solid fa-location-dot"></i> {t("contact.address")}
             </p>
           </div>
 
@@ -193,7 +187,7 @@ function Contact() {
 
         <div data-aos="flip-right" className={styles["contact-form"]}>
           <form onSubmit={handleFormSubmit}>
-            <label htmlFor="lastname">Nom :</label>
+            <label htmlFor="lastname">{t("contact.name")}:</label>
             <input
               type="text"
               id="lastname"
@@ -206,7 +200,7 @@ function Contact() {
               <span className={styles["error-message"]}>{lastnameError}</span>
             )}
 
-            <label htmlFor="firstname">Prénom :</label>
+            <label htmlFor="firstname">{t("contact.firstname")}:</label>
             <input
               type="text"
               id="firstname"
@@ -219,7 +213,7 @@ function Contact() {
               <span className={styles["error-message"]}>{firstnameError}</span>
             )}
 
-            <label htmlFor="company">Entreprise (optionnel) :</label>
+            <label htmlFor="company">{t("contact.company")}:</label>
             <input
               type="text"
               id="company"
@@ -231,7 +225,7 @@ function Contact() {
               <span className={styles["error-message"]}>{companyError}</span>
             )}
 
-            <label htmlFor="email">Email :</label>
+            <label htmlFor="email">{t("contact.email")}:</label>
             <input
               type="email"
               id="email"
@@ -244,7 +238,7 @@ function Contact() {
               <span className={styles["error-message"]}>{emailError}</span>
             )}
 
-            <label htmlFor="message">Message :</label>
+            <label htmlFor="message">{t("contact.message")}:</label>
             <textarea
               id="message"
               name="message"
@@ -259,7 +253,7 @@ function Contact() {
 
             <input
               type="submit"
-              value="Envoyer"
+              value={t("contact.submit")}
               className={styles.submitButton}
             />
           </form>
@@ -268,4 +262,5 @@ function Contact() {
     </>
   );
 }
+
 export default Contact;

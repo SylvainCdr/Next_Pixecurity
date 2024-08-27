@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./style.module.scss";
 import { useGetUser } from '../useGetUser';
+import { useTranslation } from 'next-i18next';
 
 export default function RegisterPopup() {
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
   const user = useGetUser();
 
@@ -38,7 +40,10 @@ export default function RegisterPopup() {
   }
 
   function redirectToSignup() {
-    window.location.href = '/inscription'; // Remplacez par votre URL d'inscription
+    window.location.href = '/inscription'; 
+  }
+  function redirectToContact() {
+    window.location.href = '/contact'; 
   }
 
   if (!show) return null;
@@ -47,9 +52,14 @@ export default function RegisterPopup() {
     <div id="signup-popup" className={styles.popup}>
       <div className={styles["popup-content"]}>
         <span className={styles["close-btn"]} onClick={closePopup}>&times;</span>
-        <h2>Inscrivez-vous et obtenez <br /><span>-15%</span></h2>
-        <p>Rejoignez notre communauté et profitez d'offres exclusives et de réductions immédiates sur la Boutique en ligne.</p>
-        <button onClick={redirectToSignup}>Inscrivez-vous maintenant</button>
+        <h2>{t('popup.title')} <br /><span>{t('popup.discount')}</span></h2>
+        <p>{t('popup.description')}</p>
+        <button onClick={redirectToSignup}>{t('popup.signupButton')}</button>
+
+        <p>--------------</p> 
+        <h2>{t('popup.contactTitle')}</h2>
+        <p>{t('popup.contactDescription')}</p>
+        <button onClick={redirectToContact}>{t('popup.contactButton')}</button>
       </div>
     </div>
   );

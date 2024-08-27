@@ -30,6 +30,21 @@
       "copyright": "© 2024 Pixecurity. Tous droits réservés."
     },
   
+
+    
+      "popup": {
+        "title": "Inscrivez-vous et obtenez",
+        "discount": "-15%",
+        "description": "Rejoignez notre communauté et profitez d'offres exclusives et de réductions immédiates sur la Boutique en ligne.",
+        "signupButton": "Inscrivez-vous maintenant",
+        "contactTitle": "Vous êtes un professionnel ?",
+        "contactDescription": "Contactez-nous et bénéficiez de remises supplémentaires",
+        "contactButton": "Nous Contacter",
+        "closeButton": "Fermer"
+      },
+    
+    
+
     "homepageHero" : {
     "heroTitle": "Fournisseur de Solutions de Sûreté Intelligentes",
     "heroDescription": "Vidéosurveillance, Analyse d'image, Contrôle d'accès, Réseaux/stockage des données, Hypervision...",
@@ -240,9 +255,33 @@
                   "title": "Rencontrez les experts de Pixecurity",
                   "subtitle": "Des spécialistes qualifiés qui mettent leur savoir-faire à votre service pour une protection optimale."
                 }
-              }
+              },
             
-            
+              
+                "contact": {
+                  "title": "Contactez-nous",
+                  "subtitle": "Let's Get In Touch",
+                  "description": "Dites-nous qui vous êtes et expliquez nous votre problématique en quelques mots. Nous vous recontacterons dans les plus brefs délais pour lancer le projet.",
+                  "name": "Nom",
+                  "firstname": "Prénom",
+                  "company": "Entreprise (optionnel)",
+                  "email": "Email",
+                  "message": "Message",
+                  "submit": "Envoyer",
+                  "phone": "(+33) 1 39 60 98 82",
+                  "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
+                  "linkedin": "Linkedin",
+                  "nameError": "Nom invalide (minimum 2 lettres)",
+                  "firstnameError": "Prénom invalide (minimum 2 lettres)",
+                  "companyError": "Le nom de l'entreprise ne doit pas dépasser 30 caractères",
+                  "emailError": "Email invalide",
+                  "messageError": "Message invalide (au moins 50 caractères)",
+                  "success": "Message envoyé avec succès",
+                  "error": "Une erreur s'est produite. Veuillez réessayer.",
+                  "validationError": "Veuillez renseigner tous les champs correctement"
+                }
+              
+              
       
   }
   
