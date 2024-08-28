@@ -153,6 +153,7 @@ export default function Product({ product, id, suggestions }) {
       itemCondition: "https://schema.org/NewCondition",
       availability: "in_stock",
     },
+    availability: "in_stock",
     mpn: product.ref,
     category: product.category,
     subcategory: product.subcategory,
