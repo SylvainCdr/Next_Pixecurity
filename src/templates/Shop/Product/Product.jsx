@@ -136,7 +136,7 @@ export default function Product({ product, id, suggestions }) {
     "@type": "Product",
     id: product._id,
     name: product.name,
-    description: product.description,
+    description: product.presentation,
     image: product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
