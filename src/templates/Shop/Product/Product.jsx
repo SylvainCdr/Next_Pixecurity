@@ -134,44 +134,36 @@ export default function Product({ product, id, suggestions }) {
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "id": product.product._id,
-    "title": product.name,
-    "description": product.description,
-    "image": product.image.startsWith("http")
+    id: product._id,
+    title: product.name,
+    description: product.description,
+    image: product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
-      "image_link": product.image.startsWith("http")
+    image_link: product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
-      "link": `https://pixecurity.com/boutique/produit/${product._id}`,
-    "brand": {
+    link: `https://pixecurity.com/boutique/produit/${product._id}`,
+    brand: {
       "@type": "Brand",
-      "name": product.brand,
+      name: product.brand,
     },
-    "offers": {
+    offers: {
       "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": product.price,
-      "priceValidUntil": "2024-12-31",
-      "itemCondition": "https://schema.org/NewCondition",
-      "availability": "https://schema.org/InStock",
+      priceCurrency: "EUR",
+      price: product.price,
+      priceValidUntil: "2024-12-31",
+      itemCondition: "https://schema.org/NewCondition",
+      availability: "https://schema.org/InStock",
     },
-    "price" : product.price,
-    "availability": "in_stock",
-    "brand": product.brand,
-    "mpn": product.ref,
-    "gtin": "",
-    "category": product.category,
-    "subcategory": product.subcategory,
-
-   
-
+    price: product.price,
+    availability: "in_stock",
+    brand: product.brand,
+    mpn: product.ref,
+    gtin: "",
+    category: product.category,
+    subcategory: product.subcategory,
   };
-
-
-
-
-
 
   return (
     <div className={styles["product-container"]}>
