@@ -134,8 +134,7 @@ export default function Product({ product, id, suggestions }) {
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "id": product.ref,
-    "name": product.name,
+    "id": product.product._id,
     "title": product.name,
     "description": product.description,
     "image": product.image.startsWith("http")
@@ -153,15 +152,26 @@ export default function Product({ product, id, suggestions }) {
       "priceCurrency": "EUR",
       "price": product.price,
       "priceValidUntil": "2024-12-31",
-      "itemCondition": "NewCondition",
-      "availability": "in_stock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+    
+
     },
     "mpn": product.ref,
-    "gtin": product.ref,
+    "gtin": "",
     "url": `https://pixecurity.com/boutique/produit/${id}`,
     "link": `https://pixecurity.com/boutique/produit/${id}`,
+    "category": product.category,
+    "subcategory": product.subcategory,
+
+   
+
   };
-  
+
+
+
+
+
 
   return (
     <div className={styles["product-container"]}>
