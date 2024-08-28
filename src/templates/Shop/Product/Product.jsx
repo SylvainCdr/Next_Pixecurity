@@ -143,6 +143,7 @@ export default function Product({ product, id, suggestions }) {
       "image_link": product.image.startsWith("http")
       ? product.image
       : `${BASE_URL}${product.image}`,
+      "link": `https://pixecurity.com/boutique/produit/${product._id}`,
     "brand": {
       "@type": "Brand",
       "name": product.brand,
@@ -154,13 +155,13 @@ export default function Product({ product, id, suggestions }) {
       "priceValidUntil": "2024-12-31",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",
-    
-
     },
+    "price" : product.price,
+    "availability": "in_stock",
+    "brand": product.brand,
+
     "mpn": product.ref,
     "gtin": "",
-    "url": `https://pixecurity.com/boutique/produit/${id}`,
-    "link": `https://pixecurity.com/boutique/produit/${id}`,
     "category": product.category,
     "subcategory": product.subcategory,
 
