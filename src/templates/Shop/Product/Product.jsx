@@ -159,7 +159,6 @@ export default function Product({ product, id, suggestions }) {
     "price" : product.price,
     "availability": "in_stock",
     "brand": product.brand,
-
     "mpn": product.ref,
     "gtin": "",
     "category": product.category,
