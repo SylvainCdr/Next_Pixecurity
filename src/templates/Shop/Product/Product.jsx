@@ -131,6 +131,7 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
+
   useEffect(() => {
     const jsonLdData = {
       "@context": "https://schema.org/",
@@ -156,18 +157,15 @@ export default function Product({ product, id, suggestions }) {
       mpn: product.ref,
     };
 
-    // Log the data before stringifying
     console.log("JSON-LD Data:", jsonLdData);
 
     try {
       const jsonString = JSON.stringify(jsonLdData);
       console.log("JSON-LD String:", jsonString);
-
-      // Continue with setting the inner HTML
     } catch (error) {
       console.error("Error stringifying JSON-LD data:", error);
     }
-  }, [product]); // Assurez-vous que `product` est disponible lors du rendu
+  }, [product]);
 
   return (
     <div className={styles["product-container"]}>
@@ -182,8 +180,10 @@ export default function Product({ product, id, suggestions }) {
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org/",
             "@type": "Product",
             name: product.name,
@@ -205,8 +205,9 @@ export default function Product({ product, id, suggestions }) {
               availability: "https://schema.org/InStock",
             },
             mpn: product.ref,
-          })}
-        </script>
+          }),
+        }}
+      />
       </Head>
 
       <RegisterPopup />
