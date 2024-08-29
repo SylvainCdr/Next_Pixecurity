@@ -131,33 +131,9 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const structuredData = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    id: product._id,
-    name: product.name,
-    description: product.presentation,
-    image: product.image.startsWith("http")
-      ? product.image
-      : `${BASE_URL}${product.image}`,
-    url: `https://pixecurity.com/boutique/produit/${product._id}`,
-    brand: {
-      "@type": "Brand",
-      name: product.brand,
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "EUR",
-      price: product.price,
-      priceValidUntil: "2024-12-31",
-      itemCondition: "https://schema.org/NewCondition",
-      availability: "InStock",
-    },
-    mpn: product.ref,
-    category: product.category,
-    subcategory: product.subcategory,
-  };
-  
+
+
+
 
   return (
     <div className={styles["product-container"]}>
@@ -170,15 +146,37 @@ export default function Product({ product, id, suggestions }) {
         />
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={product.image} />
+        <meta property="og:image" content={product.image} />.
 
-        {/* JSON-LD structured data for SEO */}
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": product.name,
+            "description": product.presentation,
+            "image": product.image.startsWith("http")
+              ? product.image
+              : `${BASE_URL}${product.image}`,
+            "url": `https://pixecurity.com/boutique/produit/${product._id}`,
+            "brand": {
+              "@type": "Brand",
+              "name": product.brand,
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "EUR",
+              "price": product.price,
+              "priceValidUntil": "2024-12-31",
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock",
+            },
+            "mpn": product.ref,
+          })}
         </script>
 
-        {/* Add more OG meta tags as needed */}
       </Head>
+
+
       <RegisterPopup />
       <ShopNav />
       <ShopSearch />
