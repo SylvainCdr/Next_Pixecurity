@@ -110,7 +110,7 @@ export default function Product({ product, id, suggestions }) {
 
   const handleAddToCartClick = async () => {
     if (userId) {
-      await addToCart(product, quantity); // Assurez-vous que `product` et `quantity` sont correctement passés
+      await addToCart(product, quantity);
       Swal.fire({
         icon: "success",
         title: "Produit ajouté au panier avec succès!",
@@ -131,9 +131,43 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
+  useEffect(() => {
+    const jsonLdData = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name: product.name,
+      description: product.presentation,
+      image: product.image.startsWith("http")
+        ? product.image
+        : `${BASE_URL}${product.image}`,
+      url: `https://pixecurity.com/boutique/produit/${product._id}`,
+      brand: {
+        "@type": "Brand",
+        name: product.brand,
+      },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "EUR",
+        price: product.price.toFixed(2),
+        priceValidUntil: "2024-12-31",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+      },
+      mpn: product.ref,
+    };
 
+    // Log the data before stringifying
+    console.log("JSON-LD Data:", jsonLdData);
 
+    try {
+      const jsonString = JSON.stringify(jsonLdData);
+      console.log("JSON-LD String:", jsonString);
 
+      // Continue with setting the inner HTML
+    } catch (error) {
+      console.error("Error stringifying JSON-LD data:", error);
+    }
+  }, [product]); // Assurez-vous que `product` est disponible lors du rendu
 
   return (
     <div className={styles["product-container"]}>
@@ -146,36 +180,34 @@ export default function Product({ product, id, suggestions }) {
         />
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={product.image} />.
+        <meta property="og:image" content={product.image} />
 
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org/",
             "@type": "Product",
-            "name": product.name,
-            "description": product.presentation,
-            "image": product.image.startsWith("http")
+            name: product.name,
+            description: product.presentation,
+            image: product.image.startsWith("http")
               ? product.image
               : `${BASE_URL}${product.image}`,
-            "url": `https://pixecurity.com/boutique/produit/${product._id}`,
-            "brand": {
+            url: `https://pixecurity.com/boutique/produit/${product._id}`,
+            brand: {
               "@type": "Brand",
-              "name": product.brand,
+              name: product.brand,
             },
-            "offers": {
+            offers: {
               "@type": "Offer",
-              "priceCurrency": "EUR",
-              "price": product.price,
-              "priceValidUntil": "2024-12-31",
-              "itemCondition": "https://schema.org/NewCondition",
-              "availability": "https://schema.org/InStock",
+              priceCurrency: "EUR",
+              price: product.price.toFixed(2),
+              priceValidUntil: "2024-12-31",
+              itemCondition: "https://schema.org/NewCondition",
+              availability: "https://schema.org/InStock",
             },
-            "mpn": product.ref,
+            mpn: product.ref,
           })}
         </script>
-
       </Head>
-
 
       <RegisterPopup />
       <ShopNav />
