@@ -186,12 +186,18 @@ export default function Product({ product, id, suggestions }) {
           __html: JSON.stringify({
             "@context": "https://schema.org/",
             "@type": "Product",
+            id : product._id,
             name: product.name,
-            description: product.presentation,
+            title : product.name,
+            description: product.description,
             image: product.image.startsWith("http")
               ? product.image
               : `${BASE_URL}${product.image}`,
+              image_link : product.image.startsWith("http")
+              ? product.image
+              : `${BASE_URL}${product.image}`,
             url: `https://pixecurity.com/boutique/produit/${product._id}`,
+            link: `https://pixecurity.com/boutique/produit/${product._id}`,
             brand: {
               "@type": "Brand",
               name: product.brand,
@@ -205,6 +211,10 @@ export default function Product({ product, id, suggestions }) {
               availability: "https://schema.org/InStock",
             },
             mpn: product.ref,
+            availability : "in_stock",
+            price : product.price.toFixed(2),
+
+
           }),
         }}
       />
