@@ -115,6 +115,7 @@ const Partners = () => {
               >
                 <div className={styles["partner-logo"]}>
                   <Link href={partner.website} target="_blank" rel="noreferrer">
+                  <h1 className={styles.partnerName}> {partner.name}</h1>
                     <img
                       data-aos="zoom-in"
                       src={partner.logo}
