@@ -62,17 +62,9 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
 
   return (
     <div className={styles.header_container}>
-      {/* Sélecteur de langue */}
-      {shouldDisplayLanguageSelector && (
-        <div className={styles.language_selector}>
-          <button onClick={() => changeLanguage('fr')} className={styles.lang_button}>
-            <img src="/assets/icons/french-logo.png" alt="French" />
-          </button>
-          <button onClick={() => changeLanguage('en')} className={styles.lang_button}>
-            <img src="/assets/icons/english-logo.png" alt="English" />
-          </button>
-        </div>
-      )}
+
+      
+  
 
       <nav className={styles.header__nav}>
         <div className={styles.header__logo}>
@@ -142,11 +134,25 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               </Link>
             </li>
           )}
+
+  
         </ul>
 
         <div className={styles.header__burgerMenu} onClick={burgerToggle} />
 
         {user?.role === "user" && <CartLink />}
+
+                {/* Sélecteur de langue */}
+      {shouldDisplayLanguageSelector && (
+        <div className={styles.language_selector}>
+          <button onClick={() => changeLanguage('fr')} className={styles.lang_button}>
+            <img src="/assets/icons/french-logo.png" alt="French" />
+          </button>
+          <button onClick={() => changeLanguage('en')} className={styles.lang_button}>
+            <img src="/assets/icons/english-logo.png" alt="English" />
+          </button>
+        </div>
+      )}
       </nav>
     </div>
   );
