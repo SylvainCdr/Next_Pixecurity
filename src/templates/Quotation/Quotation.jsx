@@ -82,10 +82,9 @@ export default function Quotation() {
 
   return (
     <div className={styles.quotationContainer}>
-      <h1>Demandez Votre Devis Personnalisé Gratuit</h1>
+      <h1>Demandez Votre Devis Gratuit et Personnalisé</h1>
       <h3>
-        Solutions sur mesure en vidéosurveillance, analyse d'image, contrôle
-        d'accès, et plus encore
+      Des Solutions Personnalisées pour la Vidéosurveillance, l'Analyse d'Images, le Contrôle d'Accès, et Plus Encore
       </h3>
       <form onSubmit={handleFormSubmit}>
         {/* Informations de Contact */}
