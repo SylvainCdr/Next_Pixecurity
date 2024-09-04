@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Head from "next/head";
 import Hero from "@/Components/HomepageHero/HomepageHero";
+// import Hero from "@/Components/HomepageHero2/HomepageHero2";
 import HomepageSkills from "@/Components/HomepageSkills/HomepageSkills";
 import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";

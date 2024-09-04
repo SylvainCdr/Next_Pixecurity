@@ -4,7 +4,6 @@ import Aos from "aos";
 import Link from "next/link";
 import Head from "next/head";
 
-
 import { useTranslation } from "next-i18next";
 
 export default function AboutUs() {
@@ -32,10 +31,10 @@ export default function AboutUs() {
 
       <div className={styles["aboutUs-container"]}>
         <div className={styles["section-1"]}>
-          <h1>{t('aboutUs.title')}</h1>
-          <p>{t('aboutUs.section1.text')}</p>
+          <h1>{t("aboutUs.title")}</h1>
+          <p>{t("aboutUs.section1.text")}</p>
           <Link href="/contact">
-            <button>{t('aboutUs.section1.button')}</button>
+            <button>{t("aboutUs.section1.button")}</button>
           </Link>
         </div>
 
@@ -47,13 +46,13 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src={t('aboutUs.section2.cards.imgSrc1')}
+                src={t("aboutUs.section2.cards.imgSrc1")}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>{t('aboutUs.section2.cards.title1')}</h2>
-            <p>{t('aboutUs.section2.cards.text1')}</p>
+            <h2>{t("aboutUs.section2.cards.title1")}</h2>
+            <p>{t("aboutUs.section2.cards.text1")}</p>
           </div>
 
           <div
@@ -63,13 +62,13 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src={t('aboutUs.section2.cards.imgSrc2')}
+                src={t("aboutUs.section2.cards.imgSrc2")}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>{t('aboutUs.section2.cards.title2')}</h2>
-            <p>{t('aboutUs.section2.cards.text2')}</p>
+            <h2>{t("aboutUs.section2.cards.title2")}</h2>
+            <p>{t("aboutUs.section2.cards.text2")}</p>
           </div>
 
           <div
@@ -79,27 +78,29 @@ export default function AboutUs() {
           >
             <div className={styles.top}>
               <img
-                src={t('aboutUs.section2.cards.imgSrc3')}
+                src={t("aboutUs.section2.cards.imgSrc3")}
                 alt=""
                 loading="lazy"
               />
             </div>
-            <h2>{t('aboutUs.section2.cards.title3')}</h2>
-            <p>{t('aboutUs.section2.cards.text3')}</p>
+            <h2>{t("aboutUs.section2.cards.title3")}</h2>
+            <p>{t("aboutUs.section2.cards.text3")}</p>
           </div>
         </div>
 
         <div className={styles["section-3"]}>
-          <h3 dangerouslySetInnerHTML={{ __html: t('aboutUs.section3.quote') }} />
+          <h3
+            dangerouslySetInnerHTML={{ __html: t("aboutUs.section3.quote") }}
+          />
           <div className={styles.bottom}>
-            <p>{t('aboutUs.section3.author')}</p>
-            <img src={t('aboutUs.section3.imgSrc')} alt="" loading="lazy" />
+            <p>{t("aboutUs.section3.author")}</p>
+            <img src={t("aboutUs.section3.imgSrc")} alt="" loading="lazy" />
           </div>
         </div>
 
         <div className={styles["section-4"]}>
-          <h1>{t('aboutUs.section4.title')}</h1>
-          <h2>{t('aboutUs.section4.subtitle')}</h2>
+          <h1>{t("aboutUs.section4.title")}</h1>
+          <h2>{t("aboutUs.section4.subtitle")}</h2>
           <ul className={styles["auto-grid"]} role="list">
             {/* <li>
             <div className={styles.profile}>
@@ -112,50 +113,78 @@ export default function AboutUs() {
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Kenza GAUTIAM</h2>
                 <p>Commerciale</p>
-                <img alt="Kenza GAUTIAM" src="assets/team/KENZA.jpeg" loading="lazy"/>
+                <img
+                  alt="Kenza GAUTIAM"
+                  src="assets/team/KENZA.jpeg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Fabien THOMAS</h2>
                 <p>Brand Manager</p>
-                <img alt="Fabien THOMAS" src="assets/team/FABIEN.jpg" loading="lazy"/>
+                <img
+                  alt="Fabien THOMAS"
+                  src="assets/team/FABIEN.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Anaelle Souhaut</h2>
-                <p>Chargée d'affaires</p>
-                <img alt="Fabien THOMAS" src="assets/team/ANAELLE.jpg" loading="lazy"/>
+                <p>Chargée d'Affaires</p>
+                <img
+                  alt="Fabien THOMAS"
+                  src="assets/team/ANAELLE.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Fabrice VALLEE</h2>
-                <p>Commercial grands comptes</p>
-                <img alt="Fabrice VALLEE" src="assets/team/FABRICE.jpg" loading="lazy"/>
+                <p>Commercial Grands Comptes</p>
+                <img
+                  alt="Fabrice VALLEE"
+                  src="assets/team/FABRICE.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Yanis MEBARKI</h2>
                 <p>Commercial</p>
-                <img alt="Yanis MEBARKI" src="assets/team/YANNIS.jpg" loading="lazy"/>
+                <img
+                  alt="Yanis MEBARKI"
+                  src="assets/team/YANNIS.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
 
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
-                <p>Chargée d'étude avant-vente</p>
-                <img alt="Dyhia LAGA" src="assets/team/DYHIA.jpg" loading="lazy"/>
+                <p>Chargée d'Etude Avant-Vente</p>
+                <img
+                  alt="Dyhia LAGA"
+                  src="assets/team/DYHIA.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Jessica FILIALI</h2>
-                <p>Assistante de direction</p>
-                <img alt="Jessica FILIALI" src="assets/team/JESSICA.jpg" loading="lazy"/>
+                <p>Assistante de Direction</p>
+                <img
+                  alt="Jessica FILIALI"
+                  src="assets/team/JESSICA.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
@@ -165,120 +194,183 @@ export default function AboutUs() {
                 <img
                   alt="Abdulrhaman SHOUGRI"
                   src="assets/team/ABDULRAHMAN.jpg"
-                loading="lazy"/>
+                  loading="lazy"
+                />
               </div>
             </li>
 
             <li>
               <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Élodie TENEUR</h2>
-                <p>Technicienne supérieure Systèmes & Réseaux</p>
-                <img alt="Élodie TENEUR" src="assets/team/ELODIE.jpg" loading="lazy"/>
+                <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
+                <p>Ingénieur Systèmes & Réseaux</p>
+                <img
+                  alt="Adrien JOANNY"
+                  src="assets/team/ADRIEN_J.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
-            <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
-              <p>Ingénieur Systèmes & Réseaux</p>
-              <img
-                alt="Adrien JOANNY"
-                src="assets/team/ADRIEN_J.jpg"
-                loading="lazy"
-              />
-            </div>
-          </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Meriem BOUSSAHA</h2>
                 <p>Développeuse</p>
-                <img alt="Anaelle SOUHAUT" src="assets/team/MIRIEM.jpg" loading="lazy"/>
+                <img
+                  alt="Anaelle SOUHAUT"
+                  src="assets/team/MIRIEM.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Alexis OTTINA</h2>
                 <p>Développeur</p>
-                <img alt="Alexis OTTINA" src="assets/team/ALEXIS.jpg" loading="lazy"/>
+                <img
+                  alt="Alexis OTTINA"
+                  src="assets/team/ALEXIS.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
-                <p>Assistante de direction</p>
-                <img alt="Nathalie JANNOT" src="assets/team/NATHALIE.jpg" loading="lazy"/>
+                <p>Assistante de Direction</p>
+                <img
+                  alt="Nathalie JANNOT"
+                  src="assets/team/NATHALIE.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
                 <p>Développeur</p>
-                <img alt="Augustin MAHIEU" src="assets/team/AUGUSTIN.jpg" loading="lazy"/>
+                <img
+                  alt="Augustin MAHIEU"
+                  src="assets/team/AUGUSTIN.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Yasmina AOUAM</h2>
-                <p>Chargée d'étude avant-vente</p>
-                <img alt="Yasmina AOUAM" src="assets/team/YASMINA.jpg" loading="lazy"/>
+                <p>Chargée d'Etude Avant-Vente</p>
+                <img
+                  alt="Yasmina AOUAM"
+                  src="assets/team/YASMINA.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Alex HUBERT</h2>
                 <p>Développeur</p>
-                <img alt="Alex HUBERT" src="assets/team/ALEX.jpg" loading="lazy"/>
+                <img
+                  alt="Alex HUBERT"
+                  src="assets/team/ALEX.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Aziz ARJDAL</h2>
-              <p>Technicien Systèmes & Réseaux</p>
-              <img
-                alt="Aziz ARJDAL"
-                src="assets/team/AZIZ.jpg" loading="lazy"/>
-            </div>
-          </li> 
+              <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Aziz ARJDAL</h2>
+                <p>Technicien Systèmes & Réseaux</p>
+                <img
+                  alt="Aziz ARJDAL"
+                  src="assets/team/AZIZ.jpg"
+                  loading="lazy"
+                />
+              </div>
+            </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
                 <p>Développeur</p>
-                <img alt="Sylvain CADORET" src="assets/team/SYLVAIN.jpg" loading="lazy"/>
+                <img
+                  alt="Sylvain CADORET"
+                  src="assets/team/SYLVAIN.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Michael GONFIER</h2>
                 <p>Technicien Systèmes & Réseaux</p>
-                <img alt="Michael GONFIER" src="assets/team/MICHAEL.jpg" loading="lazy"/>
+                <img
+                  alt="Michael GONFIER"
+                  src="assets/team/MICHAEL.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Mathieu PACREAU</h2>
                 <p>Technicien supérieur Systèmes & Réseaux</p>
+                <img alt="Mathieu PACREAU" src="assets/team/MATHIEU_P.jpg" />
+              </div>
+            </li>
+            <li>
+              <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
+                <p>Technicien Systèmes & Réseaux</p>
                 <img
-                  alt="Mathieu PACREAU"
-                  src="assets/team/MATHIEU_P.jpg"
+                  alt="Adrien DESDOITS"
+                  src="assets/team/ADRIEN_D.jpg"
+                  loading="lazy"
                 />
               </div>
             </li>
             <li>
-            <div className={styles.profile}>
-              <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
-              <p>Technicien Systèmes & Réseaux</p>
-              <img
-                alt="Adrien DESDOITS"
-                src="assets/team/ADRIEN_D.jpg" loading="lazy"/>
-            </div>
-          </li>
-            <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>David LEPAGE</h2>
-                <p>Chargé d'affaires des projets transports</p>
-                <img alt="David LEPAGE" src="assets/team/DAVID.jpg" loading="lazy"/>
+                <p>Chargé d'Affaires des Projets Transports</p>
+                <img
+                  alt="David LEPAGE"
+                  src="assets/team/DAVID.jpg"
+                  loading="lazy"
+                />
               </div>
             </li>
-         
+              {/* <li>
+                <div className={styles.profile}>
+                  <h2 className={styles["profile__name"]}>Amélie CORDIER</h2>
+                  <p>UX/UI Designer</p>
+                  <img
+                    alt="Amélie CORDIER"
+                    src="assets/team/AMELIE.webp"
+                    loading="lazy"
+                  />
+                </div>
+              </li> */}
+            <li>
+              <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Andy BARZOLA</h2>
+                <p>3D Designer</p>
+                <img
+                  alt="Andy BARZOLA"
+                  src="assets/team/ANDY.webp"
+                  loading="lazy"
+                />
+              </div>
+            </li>
+            <li>
+              <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Vincent ROCHETTE</h2>
+                <p>Responsable Commercial Sud</p>
+                <img
+                  alt="Vincent ROCHETTE"
+                  src="assets/team/VINCENT.webp"
+                  loading="lazy"
+                />
+              </div>
+            </li>
           </ul>
         </div>
       </div>

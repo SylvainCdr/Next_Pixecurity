@@ -1,0 +1,95 @@
+.homepageHero-container {
+  height: 90vh;
+  width: 100%;
+  // background-image: url("https://as1.ftcdn.net/v2/jpg/02/92/49/50/1000_F_292495095_rQojwiv2RCk51wmreUruQB7T7MnDlxuS.jpg");
+  // background-image: url("https://as2.ftcdn.net/v2/jpg/02/39/68/71/1000_F_239687125_NQ4RLAYDY70sfFRG5a0pulsOBaIL49CI.jpg");
+  // background-image: url("https://as1.ftcdn.net/v2/jpg/06/52/83/20/1000_F_652832067_rbqxnzahn69Eahels0pYsnci1akDwssL.jpghttps://as1.ftcdn.net/v2/jpg/06/52/83/20/1000_F_652832067_rbqxnzahn69Eahels0pYsnci1akDwssL.jpg");
+  // background-image: url("/assets/homepage/hero1.webp");
+  // background-image: url("https://as1.ftcdn.net/v2/jpg/04/87/53/72/1000_F_487537263_RCuTHumtqSsjADNN2zYRtufH3FqCE744.jpg");
+
+  
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    z-index: -1;
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    -moz-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    -o-transform: scale(1.0);
+}
+
+  h4 {
+    font-size: 4em;
+    font-weight: 600;
+    letter-spacing: 0rem;
+    margin-bottom: 0rem;
+    margin-top:10%;
+    margin-left: 7%;
+    color: var(--sunset1);
+
+  }
+
+  h1 {
+    text-shadow: rgb(71, 71, 71) 1px 1px 6px;
+    font-size: 3.4em;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.5em;
+    margin-top:10%;
+    margin-left: 7%;
+  }
+
+  h2 {
+    text-shadow: rgb(71, 71, 71) 1px 1px 6px;
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    line-height: 1.2;
+    margin-left: 7%;
+  }
+
+  .text1 {
+    margin-top: 5em;
+    font-size: 1.3rem;
+    padding-bottom: 1rem;
+    background-color: #ffffff;
+    color: rgb(66, 66, 66);
+  }
+  .text2 {
+    font-size: 1.3rem;
+    background-color: #ffffff;
+    color: rgb(66, 66, 66);
+    // border-radius: 5px 5px 5px 5px;
+    // -webkit-border-radius: 5px 5px 5px 5px;
+    // -moz-border-radius: 5px 5px 5px 5px;
+    // -ms-border-radius: 5px 5px 5px 5px;
+    // -o-border-radius: 5px 5px 5px 5px;
+    padding: 0.6rem;
+    // text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .homepageHeroCta {
+    text-decoration: none;
+    color: white;
+    bottom: 5%;
+    right: 6%;
+    position: absolute;
+
+    button {
+      width: 12em;
+    }
+
+    .ctaContact {
+      background-color: white;
+      color: var(--sunset1);
+      border: 1px solid var(--sunset1);
+    }
+  }
+}
