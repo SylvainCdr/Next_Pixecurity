@@ -78,8 +78,19 @@ export default function Home() {
         <div className={styles.learnMore}>
           <h5> Ready to learn more ? </h5>
           <Link href="/contact">
-            <button> {t('home.contactUs')}</button>
+            <button> {t("home.contactUs")}</button>
           </Link>
+        </div>
+        <div className={styles.linkedinFeedCarousel}>
+          <script
+            src="https://static.elfsight.com/platform/platform.js"
+            data-use-service-core
+            defer
+          ></script>
+          <div
+            class="elfsight-app-78409cc0-860a-4e7b-bb8a-2bf939e4076f"
+            data-elfsight-app-lazy
+          ></div>
         </div>
 
         {/* <div className={styles.shopBanner}>
