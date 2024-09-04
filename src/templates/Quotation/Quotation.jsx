@@ -17,7 +17,7 @@ export default function Quotation() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const form = event.currentTarget; // Utilisez event.currentTarget ici
+    const form = event.currentTarget;
     const formData = new FormData(form);
 
     const data = {
@@ -27,20 +27,20 @@ export default function Quotation() {
       phone: formData.get("phone"),
       services: selectedServices,
       cameraCount: formData.get("cameraCount"),
-      areaSize: formData.get("areaSize"),
-      existingSystem: formData.get("existingSystem"),
+      solution: formData.get("solution"), // Champ ajouté pour solution
+      existingVideoSystem: formData.get("existingVideoSystem"), // Champ modifié pour éviter les conflits
       analysisPurpose: formData.get("analysisPurpose"),
       dataVolume: formData.get("dataVolume"),
       realTimeAnalysis: formData.get("realTimeAnalysis"),
       entryPoints: formData.get("entryPoints"),
       accessMethods: formData.getAll("accessMethods"),
+      securityLevel: formData.get("securityLevel"), // Champ ajouté pour le niveau de sécurité
       integration: formData.get("integration"),
-      currentStorage: formData.get("currentStorage"),
+      currentStorage: formData.get("currentStorage"), // Champ modifié pour éviter les conflits
       networkType: formData.get("networkType"),
       expansion: formData.get("expansion"),
       systemsToMonitor: formData.get("systemsToMonitor"),
-      integrationLevel: formData.get("integrationLevel"),
-      realTimeMonitoring: formData.get("realTimeMonitoring"),
+      vmsNeeded: formData.get("vmsNeeded"), // Champ ajouté pour VMS
       projectDetails: formData.get("projectDetails"),
       budget: formData.get("budget"),
     };
@@ -159,24 +159,29 @@ export default function Quotation() {
             <h3>Questions sur la Vidéosurveillance</h3>
             <label htmlFor="cameraCount">Nombre de caméras</label>
             <input type="number" id="cameraCount" name="cameraCount" min="0" />
-            {/* type de solution souhaitée (sur nvr ou sur logiciel) */}
+
             <label htmlFor="solution">Type de solution souhaitée</label>
             <select id="solution" name="solution">
               <option value="nvr">Sur Enregistreur (NVR)</option>
               <option value="software">Sur Logiciel</option>
             </select>
-            {/* // si oui lequel ? */}
 
-            <label htmlFor="existingSystem">
+            <label htmlFor="existingVideoSystem">
               Avez-vous déjà un système existant?
             </label>
-            <select id="existingSystem" name="existingSystem">
+            <select id="existingVideoSystem" name="existingVideoSystem">
               <option value="yes">Oui</option>
               <option value="no">Non</option>
             </select>
-            {/* // si oui lequel ? */}
-            <label htmlFor="existingSystem">Si oui, lequel ?</label>
-            <input type="text" id="existingSystem" name="existingSystem" />
+
+            <label htmlFor="existingVideoSystemDetails">
+              Si oui, lequel ?
+            </label>
+            <input
+              type="text"
+              id="existingVideoSystemDetails"
+              name="existingVideoSystemDetails"
+            />
           </div>
         )}
 
@@ -208,7 +213,6 @@ export default function Quotation() {
             <label htmlFor="entryPoints">Nombre de points d'accès</label>
             <input type="number" id="entryPoints" name="entryPoints" min="0" />
 
-            {/* methode de controle d access souhaité, avec badge, biométrique, clavier plusieurs choix possibles/} */}
             <label htmlFor="accessMethods">
               Méthodes de contrôle d'accès souhaitées
             </label>
@@ -227,9 +231,7 @@ export default function Quotation() {
               </label>
             </div>
 
-            {/* niveau de sécurité souhaité select  */}
             <label htmlFor="securityLevel">Niveau de sécurité souhaité</label>
-
             <select id="securityLevel" name="securityLevel">
               <option value="low">Bas</option>
               <option value="medium">Moyen</option>
@@ -251,24 +253,22 @@ export default function Quotation() {
           <div className={styles.serviceDetails}>
             <h3>Questions sur les Réseaux/Stockage des données</h3>
 
-
-            <label htmlFor="existingSystem">Avez-vous déjà un système existant?</label>
-            <select id="existingSystem" name="existingSystem">
+            <label htmlFor="existingNetworkSystem">
+              Avez-vous déjà un système existant?
+            </label>
+            <select id="existingNetworkSystem" name="existingNetworkSystem">
               <option value="yes">Oui</option>
               <option value="no">Non</option>
             </select>
-            {/* // si oui lequel ? */}
-            <label htmlFor="currentStorage">Si oui, quelle est la capacité de stockage actuelle ?</label>
-            <input type="text" id="currentStorage" name="currentStorage" />
 
-
-
-
-
-
-
-
-    
+            <label htmlFor="currentStorage">
+              Si oui, quelle est la capacité de stockage actuelle ?
+            </label>
+            <input
+              type="text"
+              id="currentStorage"
+              name="currentStorage"
+            />
 
             <label htmlFor="expansion">
               Prévision de croissance du réseau/stockage?
@@ -294,15 +294,11 @@ export default function Quotation() {
               min="0"
             />
 
-           
-
             <label htmlFor="vmsNeeded">Avez-vous besoin d'un VMS ?</label>
             <select id="vmsNeeded" name="vmsNeeded">
               <option value="yes">Oui</option>
               <option value="no">Non</option>
             </select>
-
-
           </div>
         )}
 
@@ -315,9 +311,6 @@ export default function Quotation() {
           rows="5"
           required
         ></textarea>
-
-        {/* <label htmlFor="budget">Budget estimé</label>
-        <input type="number" id="budget" name="budget" min="0" /> */}
 
         {/* Soumission du formulaire */}
         <button type="submit" className={styles.submitButton}>
