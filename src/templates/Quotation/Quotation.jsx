@@ -145,11 +145,11 @@ export default function Quotation() {
           <label>
             <input
               type="checkbox"
-              value="hypervision"
-              checked={isServiceSelected("hypervision")}
+              value="supervision"
+              checked={isServiceSelected("supervision")}
               onChange={handleServiceChange}
             />
-            Hypervision
+            Supervision
           </label>
         </div>
 
@@ -159,9 +159,13 @@ export default function Quotation() {
             <h3>Questions sur la Vidéosurveillance</h3>
             <label htmlFor="cameraCount">Nombre de caméras</label>
             <input type="number" id="cameraCount" name="cameraCount" min="0" />
-
-            <label htmlFor="areaSize">Surface à couvrir (en m²)</label>
-            <input type="number" id="areaSize" name="areaSize" min="0" />
+            {/* type de solution souhaitée (sur nvr ou sur logiciel) */}
+            <label htmlFor="solution">Type de solution souhaitée</label>
+            <select id="solution" name="solution">
+              <option value="nvr">Sur Enregistreur (NVR)</option>
+              <option value="software">Sur Logiciel</option>
+            </select>
+            {/* // si oui lequel ? */}
 
             <label htmlFor="existingSystem">
               Avez-vous déjà un système existant?
@@ -170,6 +174,9 @@ export default function Quotation() {
               <option value="yes">Oui</option>
               <option value="no">Non</option>
             </select>
+            {/* // si oui lequel ? */}
+            <label htmlFor="existingSystem">Si oui, lequel ?</label>
+            <input type="text" id="existingSystem" name="existingSystem" />
           </div>
         )}
 
@@ -177,6 +184,11 @@ export default function Quotation() {
         {isServiceSelected("analyse_image") && (
           <div className={styles.serviceDetails}>
             <h3>Questions sur l'Analyse d'image</h3>
+            <label htmlFor="typeAnalysis">Type d'analyse</label>
+            <select id="typeAnalysis" name="typeAnalysis">
+              <option value="live">En temps réel</option>
+              <option value="reading">En relecture</option>
+            </select>
             <label htmlFor="analysisPurpose">
               Objectif principal de l'analyse
             </label>
@@ -186,19 +198,6 @@ export default function Quotation() {
               rows="3"
               required
             ></textarea>
-
-            <label htmlFor="dataVolume">
-              Volume estimé de données à analyser
-            </label>
-            <input type="number" id="dataVolume" name="dataVolume" min="0" />
-
-            <label htmlFor="realTimeAnalysis">
-              Besoin d'analyse en temps réel?
-            </label>
-            <select id="realTimeAnalysis" name="realTimeAnalysis">
-              <option value="yes">Oui</option>
-              <option value="no">Non</option>
-            </select>
           </div>
         )}
 
@@ -209,13 +208,32 @@ export default function Quotation() {
             <label htmlFor="entryPoints">Nombre de points d'accès</label>
             <input type="number" id="entryPoints" name="entryPoints" min="0" />
 
+            {/* methode de controle d access souhaité, avec badge, biométrique, clavier plusieurs choix possibles/} */}
             <label htmlFor="accessMethods">
               Méthodes de contrôle d'accès souhaitées
             </label>
-            <select id="accessMethods" name="accessMethods" multiple>
-              <option value="badge">Badge</option>
-              <option value="biometric">Biométrique</option>
-              <option value="keypad">Clavier</option>
+            <div className={styles.checkboxContainer}>
+              <label>
+                <input type="checkbox" value="badge" name="accessMethods" />
+                Badge
+              </label>
+              <label>
+                <input type="checkbox" value="biometric" name="accessMethods" />
+                Biométrique
+              </label>
+              <label>
+                <input type="checkbox" value="keyboard" name="accessMethods" />
+                Clavier
+              </label>
+            </div>
+
+            {/* niveau de sécurité souhaité select  */}
+            <label htmlFor="securityLevel">Niveau de sécurité souhaité</label>
+
+            <select id="securityLevel" name="securityLevel">
+              <option value="low">Bas</option>
+              <option value="medium">Moyen</option>
+              <option value="high">Élevé</option>
             </select>
 
             <label htmlFor="integration">
@@ -232,21 +250,25 @@ export default function Quotation() {
         {isServiceSelected("reseaux_stockage") && (
           <div className={styles.serviceDetails}>
             <h3>Questions sur les Réseaux/Stockage des données</h3>
-            <label htmlFor="currentStorage">
-              Capacité de stockage actuelle (en To)
-            </label>
-            <input
-              type="number"
-              id="currentStorage"
-              name="currentStorage"
-              min="0"
-            />
 
-            <label htmlFor="networkType">Type de réseau</label>
-            <select id="networkType" name="networkType">
-              <option value="wired">Câblé</option>
-              <option value="wireless">Sans fil</option>
+
+            <label htmlFor="existingSystem">Avez-vous déjà un système existant?</label>
+            <select id="existingSystem" name="existingSystem">
+              <option value="yes">Oui</option>
+              <option value="no">Non</option>
             </select>
+            {/* // si oui lequel ? */}
+            <label htmlFor="currentStorage">Si oui, quelle est la capacité de stockage actuelle ?</label>
+            <input type="text" id="currentStorage" name="currentStorage" />
+
+
+
+
+
+
+
+
+    
 
             <label htmlFor="expansion">
               Prévision de croissance du réseau/stockage?
@@ -258,10 +280,10 @@ export default function Quotation() {
           </div>
         )}
 
-        {/* Questions spécifiques pour Hypervision */}
-        {isServiceSelected("hypervision") && (
+        {/* Questions spécifiques pour Supervision */}
+        {isServiceSelected("supervision") && (
           <div className={styles.serviceDetails}>
-            <h3>Questions sur l'Hypervision</h3>
+            <h3>Questions sur la Supervision</h3>
             <label htmlFor="systemsToMonitor">
               Nombre de systèmes à surveiller
             </label>
@@ -272,22 +294,15 @@ export default function Quotation() {
               min="0"
             />
 
-            <label htmlFor="integrationLevel">
-              Niveau d'intégration souhaité
-            </label>
-            <select id="integrationLevel" name="integrationLevel">
-              <option value="low">Bas</option>
-              <option value="medium">Moyen</option>
-              <option value="high">Élevé</option>
-            </select>
+           
 
-            <label htmlFor="realTimeMonitoring">
-              Surveillance en temps réel nécessaire?
-            </label>
-            <select id="realTimeMonitoring" name="realTimeMonitoring">
+            <label htmlFor="vmsNeeded">Avez-vous besoin d'un VMS ?</label>
+            <select id="vmsNeeded" name="vmsNeeded">
               <option value="yes">Oui</option>
               <option value="no">Non</option>
             </select>
+
+
           </div>
         )}
 
@@ -301,14 +316,13 @@ export default function Quotation() {
           required
         ></textarea>
 
-        <label htmlFor="budget">Budget estimé</label>
-        <input type="number" id="budget" name="budget" min="0" />
+        {/* <label htmlFor="budget">Budget estimé</label>
+        <input type="number" id="budget" name="budget" min="0" /> */}
 
         {/* Soumission du formulaire */}
         <button type="submit" className={styles.submitButton}>
-            Envoyer
+          Envoyer
         </button>
-        
       </form>
     </div>
   );
