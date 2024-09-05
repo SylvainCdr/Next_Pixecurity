@@ -93,14 +93,6 @@ export default function Home() {
           ></div>
         </div>
 
-        {/* <div className={styles.shopBanner}>
-          <h3> Découvrez notre boutique en ligne </h3>
-          <img
-            src="assets/shop.png"
-            alt="Bannière pour découvrir notre boutique en ligne"
-            loading="lazy"
-          />
-        </div> */}
       </div>
     </>
   );
