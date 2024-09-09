@@ -10,8 +10,6 @@ export default function withAuth(Component) {
     const role = user?.role;
 
     useEffect(() => {
-      console.log('User:', user);
-      console.log('Role:', role);
       if (role === "null") {
         setLoading(true);
       } else {

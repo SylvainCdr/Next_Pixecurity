@@ -57,14 +57,28 @@ export default function AdminOrderModal({ order, user, onClose }) {
       </h3>
       <h4>Entreprise : {userDetails.company}</h4>
       <h4>
-        Adresse de facturation : {order.billingAddress.street}, {order.billingAddress.zip}{" "}
-        {order.billingAddress.city}, {order.billingAddress.country}
-      </h4>
-      <h4>
-        Adresse de livraison : {order.deliveryAddress.street},{" "}
-        {order.deliveryAddress.zip} {order.deliveryAddress.city},{" "}
-        {order.deliveryAddress.country}
-      </h4>
+  Adresse de facturation : 
+  {order.billingAddress ? (
+    <>
+      {order.billingAddress.street}, {order.billingAddress.zip} {order.billingAddress.city}, {order.billingAddress.country}
+    </>
+  ) : (
+    "Adresse de facturation non disponible"
+  )}
+</h4>
+
+<h4> Adresse de Livraison : 
+{order.deliveryAddress ? (
+  <>
+
+    {order.deliveryAddress.street}, {order.deliveryAddress.zip} {order.deliveryAddress.city}, {order.deliveryAddress.country}
+  </>
+) : (
+  "Adresse de livraison non disponible"
+)}
+</h4>
+
+     
 
       <table>
         <thead>
