@@ -15,10 +15,6 @@ export default function HomepageHero() {
     const heroRightElement = document.querySelector(`.${styles["hero-right"]}`);
     const image = new Image();
     image.src = "/assets/homepage/hero1.webp";
-    // image.src = "https://as1.ftcdn.net/v2/jpg/02/92/49/50/1000_F_292495095_rQojwiv2RCk51wmreUruQB7T7MnDlxuS.jpg";
-    // image.src = "https://as2.ftcdn.net/v2/jpg/02/39/68/71/1000_F_239687125_NQ4RLAYDY70sfFRG5a0pulsOBaIL49CI.jpg";
-    // image.src = "https://as1.ftcdn.net/v2/jpg/06/52/83/20/1000_F_652832067_rbqxnzahn69Eahels0pYsnci1akDwssL.jpghttps://as1.ftcdn.net/v2/jpg/06/52/83/20/1000_F_652832067_rbqxnzahn69Eahels0pYsnci1akDwssL.jpg";
-    // image.src = "https://as1.ftcdn.net/v2/jpg/06/23/45/20/1000_F_623452077_kTh6o2gT2NDUoNpEvcE1TiuvMe07KCpk.jpg";
     image.onload = () => {
       heroRightElement.style.backgroundImage = `url(${image.src})`;
     };
@@ -30,7 +26,7 @@ export default function HomepageHero() {
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
         <div className={styles["hero-left"]}>
-          <h4 data-aos="fade-right">
+          <h4 >
             Smarter. <br /> Safer.
           </h4>
         </div>
