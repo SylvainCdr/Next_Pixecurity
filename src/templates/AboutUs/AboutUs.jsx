@@ -233,6 +233,17 @@ export default function AboutUs() {
               </div>
             </li>
             <li>
+            <div className={styles.profile}>
+              <h2 className={styles["profile__name"]}>Abdelhadi LAMMINI</h2>
+              <p>Product Owner</p>
+              <img
+                alt="Abdelhadi LAMMINI"
+                src="assets/team/ABDELHADI_.webp"
+                loading="lazy"
+              />
+            </div>
+            </li>
+            <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
                 <p>Assistante de Direction</p>
@@ -311,6 +322,17 @@ export default function AboutUs() {
             </li>
             <li>
               <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Amélie CORDIER</h2>
+                <p>UX/UI Designer</p>
+                <img
+                  alt="Amélie CORDIER"
+                  src="assets/team/AMELIE_.webp"
+                  loading="lazy"
+                />
+              </div>
+            </li>
+            <li>
+              <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Mathieu PACREAU</h2>
                 <p>Technicien supérieur Systèmes & Réseaux</p>
                 <img alt="Mathieu PACREAU" src="assets/team/MATHIEU_P.jpg" />
@@ -329,6 +351,17 @@ export default function AboutUs() {
             </li>
             <li>
               <div className={styles.profile}>
+                <h2 className={styles["profile__name"]}>Morgane PEREIRA</h2>
+                <p>Assistante Administrative</p>
+                <img
+                  alt="Morgane PEREIRA"
+                  src="assets/team/MORGANE_.webp"
+                  loading="lazy"
+                />
+              </div>
+            </li>
+            <li>
+              <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>David LEPAGE</h2>
                 <p>Chargé d'Affaires des Projets Transports</p>
                 <img
@@ -338,17 +371,7 @@ export default function AboutUs() {
                 />
               </div>
             </li>
-              {/* <li>
-                <div className={styles.profile}>
-                  <h2 className={styles["profile__name"]}>Amélie CORDIER</h2>
-                  <p>UX/UI Designer</p>
-                  <img
-                    alt="Amélie CORDIER"
-                    src="assets/team/AMELIE.webp"
-                    loading="lazy"
-                  />
-                </div>
-              </li> */}
+       
             <li>
               <div className={styles.profile}>
                 <h2 className={styles["profile__name"]}>Andy BARZOLA</h2>
@@ -360,17 +383,9 @@ export default function AboutUs() {
                 />
               </div>
             </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Vincent ROCHETTE</h2>
-                <p>Responsable Commercial Sud</p>
-                <img
-                  alt="Vincent ROCHETTE"
-                  src="assets/team/VINCENT.webp"
-                  loading="lazy"
-                />
-              </div>
-            </li>
+       
+            
+          
           </ul>
         </div>
       </div>
