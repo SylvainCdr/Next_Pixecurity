@@ -1,5 +1,5 @@
 # Pixecurity
-(https://www.pixecurity.com/)
+https://www.pixecurity.com/
 
 ## Présentation
 
