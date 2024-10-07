@@ -12,6 +12,7 @@ import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
 import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+// import { HomepageLinkedinFeed } from "@/Components/HomepageLinkedinFeed/HomepageLinkedinFeed";
 
 export default function Home() {
   useEffect(() => {
@@ -90,8 +91,11 @@ export default function Home() {
             class="elfsight-app-78409cc0-860a-4e7b-bb8a-2bf939e4076f"
             data-elfsight-app-lazy
           ></div>
-        </div>
 
+          {/* Composant LinkedIn Feed */}
+{/* < HomepageLinkedinFeed /> */}
+
+        </div>
       </div>
     </>
   );

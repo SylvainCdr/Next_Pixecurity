@@ -315,7 +315,7 @@ export default function AboutUs() {
                 <p>Technicien Systèmes & Réseaux</p>
                 <img
                   alt="Michael GONFIER"
-                  src="assets/team/MICHAEL.jpg"
+                  src="assets/team/MICHAEL_.webp"
                   loading="lazy"
                 />
               </div>
