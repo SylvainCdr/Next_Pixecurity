@@ -6,6 +6,9 @@ export const partners = [
     website: "https://www.vivotek.com/",
     description:
       "VIVOTEK Inc. est un fournisseur mondial de premier plan dans le domaine des solutions de sécurité IP et de surveillance. Depuis sa fondation en 2000, VIVOTEK s'est imposée comme une référence en matière de qualité et d'innovation technologique, offrant des produits et des solutions de surveillance de pointe pour un large éventail d'applications, allant des petites entreprises aux infrastructures critiques.",
+      text1: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe nostrum autem ullam architecto unde? Quis reiciendis dignissimos aliquam consequuntur mollitia sunt ipsum quidem vitae tempora, repudiandae ullam rerum labore sint.",
+      text2: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      image: "assets/partnersLogo/vivotek.png",
   },
   
   {

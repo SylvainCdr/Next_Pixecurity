@@ -1,46 +1,46 @@
 export const logos = [
   {
     name: "vivotek",
-    logo: "/assets/shopLogos/vivotek.png",
+    logo: "/assets/shop/shopLogos/vivotek.png",
   },
   {
     name: "i-pro",
-    logo: "/assets/shopLogos/i-pro.png",
+    logo: "/assets/shop/shopLogos/i-pro.png",
   },
   {
     name: "Bosch",
-    logo: "/assets/shopLogos/bosch.png",
+    logo: "/assets/shop/shopLogos/bosch.png",
   },
   {
     name: "milestone",
-    logo: "/assets/shopLogos/milestone.png",
+    logo: "/assets/shop/shopLogos/milestone.png",
   },
   {
     name: "Briefcam",
-    logo: "/assets/shopLogos/briefcam.jpg",
+    logo: "/assets/shop/shopLogos/briefcam.jpg",
   },
   {
     name: "Til Technologies",
-    logo: "/assets/shopLogos/til.png",
+    logo: "/assets/shop/shopLogos/til.png",
   },
   {
     name: "cisco",
-    logo: "/assets/shopLogos/cisco.png",
+    logo: "/assets/shop/shopLogos/cisco.png",
   },
   {
     name: "Zyxel",
-    logo: "/assets/shopLogos/zyxel.png",
+    logo: "/assets/shop/shopLogos/zyxel.png",
   },
   {
     name: "Comnet",
-    logo: "/assets/shopLogos/comnet.png",
+    logo: "/assets/shop/shopLogos/comnet.png",
   },
   {
     name: "vuWall",
-    logo: "/assets/shopLogos/vuWall.png",
+    logo: "/assets/shop/shopLogos/vuWall.png",
   },
   {
     name: "technoAware",
-    logo: "/assets/shopLogos/technoAware.png",
+    logo: "/assets/shop/shopLogos/technoAware.png",
   },
 ];

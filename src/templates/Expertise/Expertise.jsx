@@ -67,10 +67,10 @@ function Expertise() {
         </div>
 
 
-        <div className={styles["slides-section"]} id="videoprotection">
+        <div className={styles["slides-section"]} id="videoprotection" data-aos="slide-up">
           <h2>{t('videoProtection.title')}</h2>
           <div className={styles["slide-container"]}>
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/cam1.jpg" alt={t('videoProtection.cam1.title')} loading="lazy" />
               <h3>{t('videoProtection.cam1.title')}</h3>
               <h4>{t('videoProtection.cam1.subtitle')}</h4>
@@ -79,7 +79,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/cam2.png" alt={t('videoProtection.cam2.title')} loading="lazy" />
               <h3>{t('videoProtection.cam2.title')}</h3>
               <h4>{t('videoProtection.cam2.subtitle')}</h4>
@@ -88,7 +88,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/cam3.jpg" alt={t('videoProtection.cam3.title')} loading="lazy" />
               <h3>{t('videoProtection.cam3.title')}</h3>
               <h4>{t('videoProtection.cam3.subtitle')}</h4>
@@ -99,10 +99,10 @@ function Expertise() {
           </div>
         </div>
 
-        <div className={styles["slides-section"]} id="analyse">
+        <div className={styles["slides-section"]} id="analyse" data-aos="slide-up">
           <h2>{t('imageAnalysis.title')}</h2>
           <div className={styles["slide-container"]}>
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/ana1.jpg" alt={t('imageAnalysis.realTime.title')} loading="lazy" />
               <h3>{t('imageAnalysis.realTime.title')}</h3>
               <h4>{t('imageAnalysis.realTime.subtitle')}</h4>
@@ -111,7 +111,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/ana2.png" alt={t('imageAnalysis.postAnalysis.title')} loading="lazy" />
               <h3>{t('imageAnalysis.postAnalysis.title')}</h3>
               <h4>{t('imageAnalysis.postAnalysis.subtitle')}</h4>
@@ -120,7 +120,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide} >
               <img src="./assets/expertise/ana3.jpg" alt={t('imageAnalysis.businessIntelligence.title')} loading="lazy" />
               <h3>{t('imageAnalysis.businessIntelligence.title')}</h3>
               <h4>{t('imageAnalysis.businessIntelligence.subtitle')}</h4>
@@ -131,10 +131,10 @@ function Expertise() {
           </div>
         </div>
 
-        <div className={styles["slides-section"]} id="access">
+        <div className={styles["slides-section"]} id="access" data-aos="slide-up">
           <h2>{t('accessControl.title')}</h2>
           <div className={styles["slide-container"]}>
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/con1.jpg" alt={t('accessControl.doorManagement.title')} loading="lazy" />
               <h3>{t('accessControl.doorManagement.title')}</h3>
               <h4>{t('accessControl.doorManagement.subtitle')}</h4>
@@ -143,7 +143,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/con2.png" alt={t('accessControl.secureArchitecture.title')} loading="lazy" />
               <h3>{t('accessControl.secureArchitecture.title')}</h3>
               <h4>{t('accessControl.secureArchitecture.subtitle')}</h4>
@@ -152,7 +152,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/con3.jpg" alt={t('accessControl.fullIntegratedSolution.title')} loading="lazy" />
               <h3>{t('accessControl.fullIntegratedSolution.title')}</h3>
               <h4>{t('accessControl.fullIntegratedSolution.subtitle')}</h4>
@@ -163,10 +163,10 @@ function Expertise() {
           </div>
         </div>
 
-        <div className={styles["slides-section"]} id="cloud">
+        <div className={styles["slides-section"]} id="cloud" data-aos="slide-up">
           <h2>{t('cloudAndIoT.title')}</h2>
           <div className={styles["slide-container"]}>
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/clou1.jpg" alt={t('cloudAndIoT.fullCloudSolutions.title')} loading="lazy" />
               <h3>{t('cloudAndIoT.fullCloudSolutions.title')}</h3>
               <h4>{t('cloudAndIoT.fullCloudSolutions.subtitle')}</h4>
@@ -175,7 +175,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/clou2.png" alt={t('cloudAndIoT.cloudProjectManagement.title')} loading="lazy" />
               <h3>{t('cloudAndIoT.cloudProjectManagement.title')}</h3>
               <h4>{t('cloudAndIoT.cloudProjectManagement.subtitle')}</h4>
@@ -184,7 +184,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/clou3.jpg" alt={t('cloudAndIoT.connectedObjects.title')} loading="lazy" />
               <h3>{t('cloudAndIoT.connectedObjects.title')}</h3>
               <h4>{t('cloudAndIoT.connectedObjects.subtitle')}</h4>
@@ -195,10 +195,10 @@ function Expertise() {
           </div>
         </div>
 
-        <div className={styles["slides-section"]} id="network">
+        <div className={styles["slides-section"]} id="network" data-aos="slide-up">
           <h2>{t('networksSIStorage.title')}</h2>
           <div className={styles["slide-container"]}>
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/rese1.jpg" alt={t('networksSIStorage.networks.title')} loading="lazy" />
               <h3>{t('networksSIStorage.networks.title')}</h3>
               <h4>{t('networksSIStorage.networks.subtitle')}</h4>
@@ -207,7 +207,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/rese2.png" alt={t('networksSIStorage.informationSystems.title')} loading="lazy" />
               <h3>{t('networksSIStorage.informationSystems.title')}</h3>
               <h4>{t('networksSIStorage.informationSystems.subtitle')}</h4>
@@ -216,7 +216,7 @@ function Expertise() {
               </p>
             </div>
 
-            <div className={styles.slide} data-aos="slide-up">
+            <div className={styles.slide}>
               <img src="./assets/expertise/rese3.jpg" alt={t('networksSIStorage.storage.title')} loading="lazy" />
               <h3>{t('networksSIStorage.storage.title')}</h3>
               <h4>{t('networksSIStorage.storage.subtitle')}</h4>

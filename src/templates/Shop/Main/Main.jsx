@@ -75,28 +75,28 @@ function Catalogue({ products }) {
             <Link href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}>
               <div className={styles.category}>
                 <h1>Caméras</h1>
-                <img src="assets/cameras.webp" alt="Caméras" loading="lazy" />
+                <img src="assets/shop/cameras.webp" alt="Caméras" loading="lazy" />
               </div>
             </Link>
 
             <Link href={`/boutique/Réseau${user?._id ? `?userId=${user?._id}` : ""}`}>
               <div className={styles.category}>
                 <h1>Réseaux</h1>
-                <img src="assets/reseaux.webp" alt="Réseaux" loading="lazy" />
+                <img src="assets/shop/reseaux.webp" alt="Réseaux" loading="lazy" />
               </div>
             </Link>
 
             <Link href={`/boutique/Logiciels${user?._id ? `?userId=${user?._id}` : ""}`}>
               <div className={styles.category}>
                 <h1>Logiciels</h1>
-                <img src="assets/logiciels.webp" alt="Logiciels" loading="lazy" />
+                <img src="assets/shop/logiciels.webp" alt="Logiciels" loading="lazy" />
               </div>
             </Link>
 
             <Link href={`/boutique/Autres${user?._id ? `?userId=${user?._id}` : ""}`}>
               <div className={styles.category}>
                 <h1>Autres</h1>
-                <img src="assets/autres.webp" alt="Autres" loading="lazy" />
+                <img src="assets/shop/autres.webp" alt="Autres" loading="lazy" />
               </div>
             </Link>
           </div>

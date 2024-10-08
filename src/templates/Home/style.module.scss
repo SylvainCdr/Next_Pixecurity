@@ -1,7 +1,7 @@
 .homepage-container {
   width: 100%;
   margin-top: 5em;
-  background-image: url("../../../public/assets/cube3(1).webp");
+  background-image: url("../../../public/assets/homepage/cube3(1).webp");
 
   background-size: cover;
   background-position: 230% 28%;
@@ -95,7 +95,7 @@
   .learnMore {
     height: 30vh;
     display: flex;
-    background-image: url("../../../public/assets/wave3.jpg");
+    background-image: url("../../../public/assets/homepage/wave3.jpg");
     background-size: cover;
     background-position: 50% 20%;
 
@@ -190,7 +190,7 @@
   @media (max-width: 768px) {
     background-position: 130% 25%;
     background-size: 190%;
-    background-image: url("../../../public/assets/cube3(1).webp");
+    background-image: url("../../../public/assets/homepage/cube3(1).webp");
 
     h3 {
       font-size: 1.8em;
