@@ -40,9 +40,9 @@ function Header() {
     });
 
     Swal.fire({
-      title: t('logoutTitle'),  // "Déconnecté"
+      title: "Déconnecté",  
       icon: "success",
-      text: t('logoutText'),  // "Pixecurity vous remercie pour votre visite !"
+      text: "Pixecurity vous remercie pour votre visite !",  
       timer: 2000,
       showConfirmButton: false,
     });

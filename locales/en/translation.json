@@ -8,9 +8,8 @@
     "login": "Login",
     "myAccount": "My Account",
     "admin": "Administration",
-    "logout": "Logout",
-    "logoutTitle": "Logged Out",
-    "logoutText": "Pixecurity thanks you for your visit!"
+    "logout": "Logout"
+    
   },
   
 

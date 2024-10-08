@@ -12,7 +12,7 @@ import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
 import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
-// import { HomepageLinkedinFeed } from "@/Components/HomepageLinkedinFeed/HomepageLinkedinFeed";
+import { HomepageLinkedinFeed } from "@/Components/HomepageLinkedinFeed/HomepageLinkedinFeed";
 
 export default function Home() {
   useEffect(() => {
