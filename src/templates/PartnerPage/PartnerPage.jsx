@@ -3,6 +3,7 @@
 import { partners } from "@/Components/HomepagePartners/PartnersData";
 import { useRouter } from "next/router";
 import styles from "./style.module.scss";
+import Link from "next/link";
 
 const PartnerPage = () => {
   const router = useRouter();
@@ -43,7 +44,6 @@ const PartnerPage = () => {
             className={styles.partnerVideo}
             src={partner.video}
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             loading="lazy"
@@ -86,14 +86,14 @@ const PartnerPage = () => {
       </div>
 
       <div className={styles.section4}>
-        <a
+        <Link
           href={partner.website}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.websiteLink}
         >
           Visitez leur site Web
-        </a>
+        </Link>
       </div>
     </div>
   );

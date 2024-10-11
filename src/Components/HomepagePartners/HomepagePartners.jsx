@@ -13,7 +13,7 @@ export default function HomepagePartners() {
         {partners.map((partner, index) => (
           <a
             key={index}
-            href={partner.website}
+            href={`/partenaires/${partner.slug}`}
             target="_blank"
             rel="noreferrer"
           >
