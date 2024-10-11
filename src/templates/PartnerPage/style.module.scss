@@ -35,7 +35,7 @@
     }
   }
 
-  h2 {
+  h1 {
     font-size: 2.3rem;
     color: var(--sunset1);
     font-weight: 600;
@@ -48,9 +48,9 @@
     font-size: 1.1rem;
     color: white;
     line-height: 1.6;
-    text-align: justify;
     padding: 20px;
     justify-content: center;
+    text-align: justify;
   }
 
   .section1 {
@@ -131,18 +131,20 @@
     }
   }
   .section4 {
-    height: 10vh;
+   padding-bottom : 3rem;
     width: 100%;
-    text-align: center;
+    justify-content: space-around;
+    display: flex;
     a {
       text-decoration: none;
       color: var(--sunset1);
       font-weight: 600;
       background-color: white;
-      padding: 15px 60px;
+      padding: 15px 30px;
       border-radius: 8px;
       font-size: 1.2rem;
       transition: all 0.3s;
+      text-transform: uppercase;
 
       &:hover {
         background-color: var(--sunset1);
@@ -156,15 +158,14 @@
   .partnerContainer {
     margin-top: 4rem;
 
+
     .partnerHeader {
       img {
         width: 60%;
       }
     }
 
-    h2 {
-      font-size: 1.8rem;
-    }
+  
 
     p {
       font-size: 1rem;
@@ -194,14 +195,12 @@
     .section3 {
       padding: 3rem 0;
   
-
-  
       
     }
 
     .section4 {
       a {
-        padding: 15px 40px;
+        padding: 10px 30px;
       }
     }
   }
@@ -210,12 +209,17 @@
   .partnerContainer {
     margin-top: 3rem;
 
-   
+    
+    .partnerHeader {
 
-
-    h2 {
-      font-size: 1.6rem;
+      img {
+        width: 60%;
+        margin-top : 3rem;
+        margin-bottom: 0rem;
+      }
     }
+
+   
 
     p {
       font-size: 1rem;
@@ -256,6 +260,7 @@
 
       p {
         color: rgb(73, 73, 73);
+
       }
     }
 
@@ -267,6 +272,68 @@
     background-color: var(--sunset1);
     color : white;
    }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .partnerContainer {
+    margin-top: 2rem;
+
+    .partnerHeader {
+
+      img {
+        width: 60%;
+        margin-top : 4rem;
+        margin-bottom: 0rem;
+      }
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .section1 {
+      flex-direction: column;
+      gap: 1rem;
+
+      .partnerVideo {
+        width: 100%;
+        height: 300px;
+      }
+    }
+
+    .partnerImage {
+      width: 100%;
+    }
+
+    .partnerDescription {
+      width: 100%;
+    }
+
+    .section2 {
+      padding-top: 4rem;
+      padding-bottom: 0;
+    }
+
+    .section3 {
+      padding-top: 4rem;
+      padding-bottom: 0;
+    }
+
+    .section4 {
+      flex-direction: column;
+      gap : 1rem;
+      text-align: center;
+      align-items: center;
+      a {
+        padding: 15px 40px;
+        width: 70%;
+        font-size: 1rem;
+      }
     }
   }
 }

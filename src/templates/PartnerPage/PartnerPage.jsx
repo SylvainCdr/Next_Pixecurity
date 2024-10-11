@@ -36,7 +36,7 @@ const PartnerPage = () => {
       <div className={styles.section1}>
         <section className={styles.partnerDescription}>
           {/* <p>{partner.description}</p> */}
-          <h2>{partner.title1}</h2>
+          <h1>{partner.title1}</h1>
           <p>{partner.text1}</p>
         </section>
         <section>
@@ -61,20 +61,19 @@ const PartnerPage = () => {
             />
           </section>
           <section className={styles.partnerDescription}>
-            <h2>{partner.title2}</h2>
-        
+            <h1>{partner.title2}</h1>
+
             <p>{partner.text2}</p>
           </section>
         </div>
       </div>
       <div className={styles.section3}>
-      <div className={styles.section3Content}>
-      
+        <div className={styles.section3Content}>
           <section className={styles.partnerDescription}>
-        <h2>{partner.title3}</h2>
-        <p>{partner.text3}</p>
-        </section>
-        <section className={styles.partnerImage}>
+            <h1>{partner.title3}</h1>
+            <p>{partner.text3}</p>
+          </section>
+          <section className={styles.partnerImage}>
             <img
               src={partner.image2}
               alt={`Illustration de ${partner.name}`}
@@ -82,17 +81,22 @@ const PartnerPage = () => {
               className={styles.brandIllustration}
             />
           </section>
-      </div>
+        </div>
       </div>
 
       <div className={styles.section4}>
-        <Link
-          href={partner.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.websiteLink}
-        >
-          Visiter leur site Web
+        {partner.products && (
+          <Link
+            href={partner.products}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Voir les produits
+          </Link>
+        )}
+
+        <Link href={partner.website} target="_blank" rel="noopener noreferrer">
+          Visiter leur Site Web
         </Link>
       </div>
     </div>

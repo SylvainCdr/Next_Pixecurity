@@ -22,6 +22,7 @@ export const partners = [
     image1:
       "https://content.storefront7.co.za/stores/za.co.storefront7.rectroncms/pictures/638206811616177811/webbanner-01-(2471x1237).jpg?cache=always",
     video: "https://www.youtube.com/embed/AAovU2fE2nw",
+    products : "https://www.pixecurity.com//boutique/Caméras?brand=vivotek"
   },
 
   {
@@ -49,6 +50,7 @@ export const partners = [
       "https://getsafeandsound.com/wp-content/uploads/2020/03/Bosch-security-dealers.jpg",
     image2: "https://media.boschsecurity.com/fs/media/pb/images/products/conference_solutions/topimage_DICENTISWireless_res_800x450.webp",
     video: "https://www.youtube.com/embed/gcrnSUPUktM",
+    products : "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=bosch"
   },
   {
     name: "milestone systems",
@@ -73,6 +75,7 @@ export const partners = [
       "https://mswebappcdn.azureedge.net/episerverprod/d863478064514d73bb59e705e25f130f/3e224f3ccc544839b049ead6f6a7250d.png",
     image2: "https://www.actuia.com/wp-content/uploads/2023/05/Milestone-Systems-comment-IA-et-technologie-video-transforment-hopital-vie-soignants-patients-1200x600.png",
     video: "https://www.youtube.com/embed/0l-z7Im820w",
+     products : "https://www.pixecurity.com/boutique/Logiciels?brand=milestone"
   },
   {
     name: "i-PRO",
@@ -97,6 +100,7 @@ export const partners = [
       "https://i-pro.com/products_and_solutions/sites/default/files/styles/webp/public/2022-04/newS_news_0.png.webp?itok=LNDpNo1G",
     image2: "https://media.licdn.com/dms/image/sync/v2/D4E27AQH1K1pXkJdvMQ/articleshare-shrink_800/articleshare-shrink_800/0/1727340745666?e=2147483647&v=beta&t=T_yEb5782i6OabPjSDsKVlPSzwORU6Q3gRRQEFM2FEA",
     video: "https://www.youtube.com/embed/LzXRGBMky2E",
+    products : "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=i-pro"
   },
 
   {
@@ -122,6 +126,7 @@ export const partners = [
       "https://www.briefcam.com/wp-content/uploads/2023/07/BriefCam-Video-Analytics-for-Retail-Business-Intelligence-Thumbnail.png",
     image2: "https://www.briefcam.com/wp-content/uploads/2018/04/Screen-6.png",
     video: "https://www.youtube.com/embed/5d6VbcUwQco",
+    products : "https://www.pixecurity.com/boutique/Logiciels/Briefcam"
   },
   {
     name: "Til Technologies",
@@ -170,6 +175,8 @@ export const partners = [
       "https://www.zyxel.com/uploads/images/public/ZyxelNetworks_PRimage_Nebula_family_P13_EMEA.jpg",
     image2: "https://www.zyxel.com/sites/zyxel/files/library/assets/newsroom/About_Zyxel_for_business_600x350.jpg",
     video: "https://www.youtube.com/embed/LOxW5DCeUbw",
+    products : "https://www.pixecurity.com/boutique/R%C3%A9seau?brand=zyxel"
+
   },
   {
     name: "Cisco",
@@ -219,6 +226,7 @@ export const partners = [
     image2: "https://acresecurity.com/hs-fs/hubfs/video-and-data.png?width=1583&height=1496&name=video-and-data.png",
     video: "https://www.youtube.com/embed/Hp0tD4Hacxk",
     image1: "https://acresecurity.com/hubfs/Featured%20Image@2x.jpg",
+   
   },
   {
     name: "vuWall",
@@ -267,6 +275,7 @@ export const partners = [
       "https://www.elko.lv/media/4748/download/Technoaware_video-analysis.jpg?v=1",
     image2: "https://technoaware.org/wp-content/uploads/2018/07/technoaware-quote.jpg",
     video: "https://www.youtube.com/embed/Fv1Whak4GVo",
+     products : "https://www.pixecurity.com/boutique/Logiciels/Technoaware"
   },
   {
     name: "6SS",
