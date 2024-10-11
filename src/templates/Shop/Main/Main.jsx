@@ -104,16 +104,16 @@ function Catalogue({ products }) {
           <div className={styles["products-carousel"]}>
             <h2>Explorez notre gamme complète de caméras : Dômes, Bullet, Fisheye et plus</h2>
             <div className={styles.logos}>
-              <img src="assets/partnersLogo/vivotek.png" alt="Vivotek-logo" loading="lazy" />
-              <img src="assets/shopLogos/i-pro.png" alt="Vivotek-logo" loading="lazy" />
-              <img src="assets/partnersLogo/bosch.png" alt="Vivotek-logo" loading="lazy" />
+              <img src="assets/partners/partnersLogo/vivotek.png" alt="Vivotek-logo" loading="lazy" />
+              <img src="assets/shop/shopLogos/i-pro.png" alt="i-Pro-logo" loading="lazy" />
+              <img src="assets/partners/partnersLogo/bosch.png" alt="Bosch-logo" loading="lazy" />
             </div>
             <ShopProductsCarousel carouselProducts={carouselProducts1} />
           </div>
 
           <div className={styles["products-carousel"]}>
             <h2>Maîtrisez la gestion vidéo avec Milestone : Notre expertise au service de vos besoins</h2>
-            <img src="assets/partnersLogo/milestone.png" alt="Milestone-logo" loading="lazy" />
+            <img src="assets/partners/partnersLogo/milestone.png" alt="Milestone-logo" loading="lazy" />
             <ShopProductsCarousel carouselProducts={carouselProducts3} />
           </div>
         </>
