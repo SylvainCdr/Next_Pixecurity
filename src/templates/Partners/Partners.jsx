@@ -66,28 +66,6 @@ const Partners = () => {
           <p> {t("partnersHeroDescription1")}</p>
           <p> {t("partnersHeroDescription2")}</p>
           <p> {t("partnersHeroDescription3")}</p>
-
-          {/* <p>
-            Chez Pixecurity, nous nous engageons à vous fournir les meilleures
-            solutions disponibles, grâce à des collaborations avec des
-            entreprises innovantes et réputées.
-          </p>
-          <p>
-            Chaque partenaire apporte son expertise et ses technologies de
-            pointe, couvrant une vaste gamme de besoins : surveillance IP,
-            gestion vidéo, contrôle d'accès et bien plus. Nos partenaires
-            offrent des solutions avancées pour protéger vos biens et garantir
-            votre tranquillité d'esprit.
-          </p>
-          <p>
-            Parcourez notre galerie pour en savoir plus sur ces entreprises et
-            leurs produits. Nous sommes fiers de travailler avec ces acteurs
-            majeurs pour vous offrir des solutions de sécurité de la plus haute
-            qualité.
-          </p>
-          <p>
-            Bienvenue chez Pixecurity, où votre sécurité est notre priorité.
-          </p> */}
         </div>
 
         <div data-aos="fade-down" className={styles["partner-img"]}></div>
@@ -115,7 +93,7 @@ const Partners = () => {
               >
                 <div className={styles["partner-logo"]}>
                   <Link href={partner.website} target="_blank" rel="noreferrer">
-                  <h1 className={styles.partnerName}> {partner.name}</h1>
+                    <h1 className={styles.partnerName}> {partner.name}</h1>
                     <img
                       data-aos="zoom-in"
                       src={partner.logo}
@@ -138,7 +116,7 @@ const Partners = () => {
                       </span>
                     )}
                   </p>
-                  <Link href={partner.website} target="_blank" rel="noreferrer">
+                  <Link href={`/partenaires/${partner.slug}`}>
                     en savoir plus
                   </Link>
                 </div>

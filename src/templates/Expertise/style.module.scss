@@ -17,7 +17,7 @@
     background-position: top;
     align-items: center;
     display: flex;
-    // margin-bottom: 2rem;
+
     width: 100%;
 
     .title {
@@ -25,7 +25,6 @@
       padding-left: 4%;
 
       h1 {
-        // font-family: "Barlow Condensed", sans-serif;
         font-size: 3.2rem;
         color: var(--sunset1);
         font-weight: 700;
@@ -34,7 +33,6 @@
       }
 
       h2 {
-        // font-family: "Barlow Condensed", sans-serif;
         font-size: 2.2rem;
         color: #fff;
         font-weight: 500;
@@ -52,21 +50,22 @@
   }
   .forces {
     background: linear-gradient(
-      360deg,
-      #000000fb 10%,
-      rgba(22, 24, 26, 0.346) 35%,
-      rgba(31, 50, 87, 0.065),
-      50%,
-      rgba(122, 122, 122, 0) 70%
-    ),
-    url("https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/AdobeStock_355150756-scaled.webp");background-size: cover;
+        360deg,
+        #000000fb 10%,
+        rgba(22, 24, 26, 0.346) 35%,
+        rgba(31, 50, 87, 0.065),
+        50%,
+        rgba(122, 122, 122, 0) 70%
+      ),
+      url("https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/AdobeStock_355150756-scaled.webp");
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
     ul {
       max-width: 1440px;
-      padding-top : 8em ;
-      padding-bottom : 20em ;
+      padding-top: 8em;
+      padding-bottom: 20em;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -189,32 +188,32 @@
     }
 
     .forces {
+      ul {
+        padding-top: 2em;
+        padding-bottom: 12em;
+        display: inline-block;
+        // margin: 2em auto;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        align-self: center;
 
-      ul { 
-        padding-top : 2em ;
-        padding-bottom : 12em ;
-      display: inline-block;
-      // margin: 2em auto;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-      align-self: center;
+        i {
+          width: 10%;
+          font-size: 2rem;
 
-      i {
-        width: 10%;
-        font-size: 2rem;
+          margin-top: 1em;
+          margin-left: 0.3em;
+        }
 
-        margin-top: 1em;
-        margin-left: 0.3em;
+        li {
+          width: 80%;
+
+          margin-top: 1em;
+        }
       }
-
-      li {
-        width: 80%;
-
-        margin-top: 1em;
-      }
-    }}
+    }
 
     .slides-section {
       padding: 0 2em;
@@ -291,30 +290,30 @@
     }
 
     .forces {
-      ul { 
-      display: inline-block;
-     padding-top : 2em ;
-        padding-bottom : 9em ;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-      align-self: center;
+      ul {
+        display: inline-block;
+        padding-top: 2em;
+        padding-bottom: 9em;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        align-self: center;
 
-      i {
-        width: 10%;
-        font-size: 2rem;
+        i {
+          width: 10%;
+          font-size: 2rem;
 
-        margin-top: 1em;
-        margin-left: 0.3em;
+          margin-top: 1em;
+          margin-left: 0.3em;
+        }
+
+        li {
+          width: 80%;
+
+          margin-top: 1em;
+        }
       }
-
-      li {
-        width: 80%;
-
-        margin-top: 1em;
-      }
-    }
     }
 
     .slides-section {
