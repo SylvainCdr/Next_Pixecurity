@@ -61,8 +61,8 @@ const PartnerPage = () => {
             />
           </section>
           <section className={styles.partnerDescription}>
-            {/* <p>{partner.description}</p> */}
             <h2>{partner.title2}</h2>
+        
             <p>{partner.text2}</p>
           </section>
         </div>
@@ -92,7 +92,7 @@ const PartnerPage = () => {
           rel="noopener noreferrer"
           className={styles.websiteLink}
         >
-          Visitez leur site Web
+          Visiter leur site Web
         </Link>
       </div>
     </div>
