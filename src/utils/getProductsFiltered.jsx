@@ -31,7 +31,7 @@ const getUniqueValues = (products, key, parser = (x) => x) => {
   });
 };
 
-
+const getProductSubcategory = (product) => product.subcategory || "";
 const getProductMegapixels = (product) => parseFloat(product.details?.megapixels || 0);
 const getProductsImgSec = (product) => parseInt(product.details?.imgSec || 0);
 const getColor = (product) => product.details?.couleur || "";
@@ -61,7 +61,8 @@ export function getFiltersFromProducts(products) {
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
 
-  const uniqueMegapixels = getUniqueValues(products, 'megapixels', getProductMegapixels).filter(value => value !== '0');
+const uniqueSubcategory = getUniqueValues(products, 'subcategory', getProductSubcategory).filter(Boolean);
+const uniqueMegapixels = getUniqueValues(products, 'megapixels', getProductMegapixels).filter(value => value !== '0');
   const uniqueImgSec = getUniqueValues(products, 'imgSec', getProductsImgSec).filter(value => value !== '0');
   const uniqueColors = getUniqueValues(products, 'couleur', getColor).filter(Boolean);
   const uniqueInfrarouge = getUniqueValues(products, 'infrarouge', getProductsInfrarouge).filter(Boolean);
@@ -89,16 +90,21 @@ export function getFiltersFromProducts(products) {
       queryKey: "brand",
       filters: brands,
     },
-    price: {
-      title: "Prix",
-      queryKey: "price",
-      filters: {
-        min: minPrice,
-        max: maxPrice,
-      },
+    subcategory: {
+      title: "Sous-catégories",
+      queryKey: "subcategory",
+      filters: uniqueSubcategory,
     },
+    // price: {
+    //   title: "Prix",
+    //   queryKey: "price",
+    //   filters: {
+    //     min: minPrice,
+    //     max: maxPrice,
+    //   },
+    // },
     megapixels: {
-      title: "Mégapixels",
+      title: "Résolution (MP)",
       queryKey: "megapixels",
       filters: uniqueMegapixels,
     },
@@ -221,6 +227,7 @@ export function getProductsFiltered(products, query) {
     .filter((product) => !query.brand || query.brand.split(',').map(normalizeValue).includes(normalizeValue(product.brand)))
     .filter((product) => !priceRange.min || Number(product.price) >= Number(priceRange.min))
     .filter((product) => !priceRange.max || Number(product.price) <= Number(priceRange.max))
+    .filter((product) => !query.subcategory || query.subcategory.split(',').map(normalizeValue).includes(normalizeValue(getProductSubcategory(product))))
     .filter((product) => !query.megapixels || query.megapixels.split(',').map(normalizeValue).includes(normalizeValue(getProductMegapixels(product))))
     .filter((product) => !query.imgSec || query.imgSec.split(',').map(normalizeValue).includes(normalizeValue(getProductsImgSec(product))))
     .filter((product) => !query.colors || query.colors.split(',').map(normalizeValue).includes(normalizeValue(getColor(product))))
