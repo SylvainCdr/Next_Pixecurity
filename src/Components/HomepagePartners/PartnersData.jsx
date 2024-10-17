@@ -297,8 +297,8 @@ export const partners = [
     text3:
       "6SS s'engage à rester à la pointe de l'innovation en cybersécurité. L'entreprise investit continuellement dans la recherche et le développement pour anticiper les menaces émergentes et développer des solutions proactives. En parallèle, 6SS organise des sessions de sensibilisation et de formation pour aider les entreprises à comprendre l'importance de la cybersécurité et à adopter des pratiques de sécurité robustes. Cet engagement envers l'innovation et la sensibilisation positionne 6SS comme un acteur clé dans la protection des systèmes d'information.",
     image1:
-      "https://6ss.co/Handler.ashx?ProductImageId=f6220687-207f-4ded-901d-83f0f13ae4e4",
-    image2: "https://6ss.co/Images/choose-video-thumb.jpg",
+      "https://6ss.co/Images/choose-video-thumb.jpg",
+    image2: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     video: "https://www.youtube.com/embed/Lzjm4MerG9c",
   },
 ];
