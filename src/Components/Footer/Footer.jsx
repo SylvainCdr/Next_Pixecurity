@@ -36,6 +36,9 @@ function Footer() {
           <Link href="/partenaires">
             <li>{t('footer.partnersLink')}</li>
           </Link>
+          <Link href="/devis">
+            <li>{t('footer.quotationLink')}</li>
+          </Link>
           <Link href="/contact">
             <li>{t('footer.contactLink')}</li>
           </Link>

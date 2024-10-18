@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useGetUser } from "../useGetUser";
 import { useCartContext } from "@/Components/cartContext";
 import { useTranslation } from "next-i18next";
-import { useRouter } from 'next/router'; // Importer useRouter pour accéder à la route actuelle
+import { useRouter } from "next/router"; // Importer useRouter pour accéder à la route actuelle
 import i18next from "i18next";
 
 function Header() {
@@ -40,9 +40,9 @@ function Header() {
     });
 
     Swal.fire({
-      title: "Déconnecté",  
+      title: "Déconnecté",
       icon: "success",
-      text: "Pixecurity vous remercie pour votre visite !",  
+      text: "Pixecurity vous remercie pour votre visite !",
       timer: 2000,
       showConfirmButton: false,
     });
@@ -52,8 +52,20 @@ function Header() {
     }, 2000);
   };
 
-// Vérifiez que pathname est défini avant d'utiliser startsWith
-const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutique') && !pathname.startsWith('/panier') && !pathname.startsWith('/mon-compte') && !pathname.startsWith('/admin') && !pathname.startsWith('/inscription') && !pathname.startsWith('/connexion') && !pathname.startsWith('/inscription'); 
+  // Vérifiez que pathname est défini avant d'utiliser startsWith
+  const shouldDisplayLanguageSelector =
+    pathname &&
+    !pathname.startsWith("/boutique") &&
+    !pathname.startsWith("/panier") &&
+    !pathname.startsWith("/mon-compte") &&
+    !pathname.startsWith("/admin") &&
+    !pathname.startsWith("/inscription") &&
+    !pathname.startsWith("/connexion") &&
+    !pathname.startsWith("/inscription") &&
+    !pathname.startsWith("/devis") &&
+    !pathname.startsWith("/rgpd") &&
+    !pathname.startsWith("/cgv") &&
+    !pathname.startsWith("/partenaires/");
 
 
   const changeLanguage = (lng) => {
@@ -62,10 +74,6 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
 
   return (
     <div className={styles.header_container}>
-
-      
-  
-
       <nav className={styles.header__nav}>
         <div className={styles.header__logo}>
           <Link href="/">
@@ -80,22 +88,22 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               className={styles.shop}
               onClick={handleLinkClick}
             >
-              {t('header.shop')}  {/* Boutique */}
+              {t("header.shop")} {/* Boutique */}
             </Link>
           </li>
           <li className={pathname === "/notre-expertise" ? styles.active : ""}>
             <Link href="/notre-expertise" onClick={handleLinkClick}>
-              {t('header.Expertise')}  {/* Notre expertise */}
+              {t("header.Expertise")} {/* Notre expertise */}
             </Link>
           </li>
           <li className={pathname === "/partenaires" ? styles.active : ""}>
             <Link href="/partenaires" onClick={handleLinkClick}>
-              {t('header.ourPartners')}  {/* Nos partenaires */}
+              {t("header.ourPartners")} {/* Nos partenaires */}
             </Link>
           </li>
           <li className={pathname === "/a-propos" ? styles.active : ""}>
             <Link href="/a-propos" onClick={handleLinkClick}>
-              {t('header.about')}  {/* Qui sommes-nous ? */}
+              {t("header.about")} {/* Qui sommes-nous ? */}
             </Link>
           </li>
           {!user && (
@@ -107,14 +115,14 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               }
             >
               <Link href="/inscription" onClick={handleLinkClick}>
-                {t('header.login')}  {/* Connexion */}
+                {t("header.login")} {/* Connexion */}
               </Link>
             </li>
           )}
           {user?.role === "user" && (
             <li className={pathname === "/mon-compte" ? styles.active : ""}>
               <Link href="/mon-compte" onClick={handleLinkClick}>
-                {t('header.myAccount')}  {/* Mon compte */}
+                {t("header.myAccount")} {/* Mon compte */}
               </Link>
             </li>
           )}
@@ -123,36 +131,40 @@ const shouldDisplayLanguageSelector = pathname && !pathname.startsWith('/boutiqu
               className={pathname === "/admin/dashboard" ? styles.active : ""}
             >
               <Link href="/admin/dashboard" onClick={handleLinkClick}>
-                {t('header.admin')}  {/* Administration */}
+                {t("header.admin")} {/* Administration */}
               </Link>
             </li>
           )}
           {user && (
             <li>
               <Link href="#" onClick={logout} className={styles.logout}>
-                {t('header.logout')}  {/* Déconnexion */}
+                {t("header.logout")} {/* Déconnexion */}
               </Link>
             </li>
           )}
-
-  
         </ul>
 
         <div className={styles.header__burgerMenu} onClick={burgerToggle} />
 
         {user?.role === "user" && <CartLink />}
 
-                {/* Sélecteur de langue */}
-      {shouldDisplayLanguageSelector && (
-        <div className={styles.language_selector}>
-          <button onClick={() => changeLanguage('fr')} className={styles.lang_button}>
-            <img src="/assets/icons/french-logo.png" alt="French" />
-          </button>
-          <button onClick={() => changeLanguage('en')} className={styles.lang_button}>
-            <img src="/assets/icons/english-logo.png" alt="English" />
-          </button>
-        </div>
-      )}
+        {/* Sélecteur de langue */}
+        {shouldDisplayLanguageSelector && (
+          <div className={styles.language_selector}>
+            <button
+              onClick={() => changeLanguage("fr")}
+              className={styles.lang_button}
+            >
+              <img src="/assets/icons/french-logo.png" alt="French" />
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={styles.lang_button}
+            >
+              <img src="/assets/icons/english-logo.png" alt="English" />
+            </button>
+          </div>
+        )}
       </nav>
     </div>
   );
@@ -171,5 +183,3 @@ function CartLink() {
 }
 
 export default Header;
-
-
