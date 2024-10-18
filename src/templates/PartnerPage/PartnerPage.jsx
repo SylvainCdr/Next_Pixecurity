@@ -62,14 +62,16 @@ const PartnerPage = () => {
             <p>{partner.text1}</p>
           </section>
           <section>
-            <iframe
-              className={styles.partnerVideo}
-              src={partner.video}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
+            {partner.video && (
+              <iframe
+                className={styles.partnerVideo}
+                src={partner.video}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            )}
           </section>
         </div>
         <div className={styles.section2}>
