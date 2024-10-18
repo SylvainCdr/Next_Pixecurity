@@ -55,10 +55,10 @@
       font-weight: bold;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-    }
+    // form {
+    //   display: flex;
+    //   flex-direction: column;
+    // }
     input,
     select,
     textarea {
@@ -76,24 +76,48 @@
       margin-bottom: 20px;
     }
 
-    // button {
-    //   padding: 10px 20px;
-    //   background-color: #007bff;
-    //   color: #fff;
-    //   border: none;
-    //   border-radius: 5px;
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     background-color: #0056b3;
-    //   }
-    // }
 
     .serviceDetails {
       margin-top: 20px;
       padding: 15px;
       background-color: #eef;
       border-radius: 5px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .quotationContainer {
+    margin: 6em auto;
+    padding: 10px;
+
+    h1 {
+      font-size: 2rem;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+    .checkboxContainer{
+    flex-direction: column;
+    text-align: left;
+
+    label {
+      margin: 5px 0;
+      width: 90%;
+    }
+    input {
+      width: 10%;
+
+
+    }
+      
+    }
     }
   }
 }

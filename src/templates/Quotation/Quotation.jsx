@@ -27,23 +27,23 @@ export default function Quotation() {
       phone: formData.get("phone"),
       services: selectedServices,
       cameraCount: formData.get("cameraCount"),
-      solution: formData.get("solution"), // Champ ajouté pour solution
-      existingVideoSystem: formData.get("existingVideoSystem"), // Champ modifié pour éviter les conflits
+      solution: formData.get("solution"),
+      existingVideoSystem: formData.get("existingVideoSystem"),
+      existingVideoSystemDetails: formData.get("existingVideoSystemDetails"),
+      typeAnalysis: formData.get("typeAnalysis"),
       analysisPurpose: formData.get("analysisPurpose"),
-      dataVolume: formData.get("dataVolume"),
-      realTimeAnalysis: formData.get("realTimeAnalysis"),
       entryPoints: formData.get("entryPoints"),
       accessMethods: formData.getAll("accessMethods"),
-      securityLevel: formData.get("securityLevel"), // Champ ajouté pour le niveau de sécurité
+      securityLevel: formData.get("securityLevel"),
       integration: formData.get("integration"),
-      currentStorage: formData.get("currentStorage"), // Champ modifié pour éviter les conflits
-      networkType: formData.get("networkType"),
+      existingNetworkSystem: formData.get("existingNetworkSystem"),
+      currentStorage: formData.get("currentStorage"),
       expansion: formData.get("expansion"),
       systemsToMonitor: formData.get("systemsToMonitor"),
-      vmsNeeded: formData.get("vmsNeeded"), // Champ ajouté pour VMS
+      vmsNeeded: formData.get("vmsNeeded"),
       projectDetails: formData.get("projectDetails"),
-      budget: formData.get("budget"),
     };
+
 
     try {
       const response = await fetch(`${BASE_URL}/quotation`, {
@@ -56,12 +56,15 @@ export default function Quotation() {
 
       if (response.ok) {
         Swal.fire({
-          title: "Succès",
-          text: "Votre demande de devis a bien été envoyée",
+          title: "Demande de devis envoyée",
+          text: "Vous allez être contacté sous peu pour discuter de votre projet",
           icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed || result.isDismissed) {
+            // Rediriger l'utilisateur vers la page d'accueil après la confirmation ou la fermeture de l'alerte
+            window.location.assign("/");
+          }
         });
-        form.reset();
-        setSelectedServices([]);
       } else {
         Swal.fire({
           title: "Erreur",
@@ -69,6 +72,7 @@ export default function Quotation() {
           icon: "error",
         });
       }
+      
     } catch (error) {
       Swal.fire({
         title: "Erreur",
@@ -90,7 +94,7 @@ export default function Quotation() {
         {/* Informations de Contact */}
         <h2>Informations de Contact</h2>
         <label htmlFor="companyName">Nom de l'entreprise</label>
-        <input type="text" id="companyName" name="companyName" required />
+        <input type="text" id="Nom Entreprise" name="companyName" required />
 
         <label htmlFor="contactName">Nom du contact</label>
         <input type="text" id="contactName" name="contactName" required />

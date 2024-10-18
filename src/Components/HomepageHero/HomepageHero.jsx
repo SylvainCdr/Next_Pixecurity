@@ -44,8 +44,8 @@ export default function HomepageHero() {
             <Link href="/boutique">
               <button className={styles.ctaShop}>{t("homepageHero.visitShop")}</button>
             </Link>
-            <Link href="/contact">
-              <button className={styles.ctaContact}>{t("homepageHero.contact")}</button>
+            <Link href="/devis">
+              <button className={styles.ctaContact}>{t("homepageHero.quotation")}</button>
             </Link>
           </div>
         </div>
