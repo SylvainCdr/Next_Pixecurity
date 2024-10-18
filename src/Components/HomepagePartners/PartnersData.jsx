@@ -22,7 +22,9 @@ export const partners = [
     image1:
       "https://content.storefront7.co.za/stores/za.co.storefront7.rectroncms/pictures/638206811616177811/webbanner-01-(2471x1237).jpg?cache=always",
     video: "https://www.youtube.com/embed/AAovU2fE2nw",
-    products : "https://www.pixecurity.com//boutique/Caméras?brand=vivotek"
+    products: "https://www.pixecurity.com//boutique/Caméras?brand=vivotek",
+    keywords:
+      "Vivotek, caméras, vidéosurveillance, sécurité, IoT, surveillance IP, enregistreurs vidéo, logiciels de gestion, R&D, distribution, alliances, VIVOTEK Academy",
   },
 
   {
@@ -48,9 +50,12 @@ export const partners = [
 
     image1:
       "https://getsafeandsound.com/wp-content/uploads/2020/03/Bosch-security-dealers.jpg",
-    image2: "https://media.boschsecurity.com/fs/media/pb/images/products/conference_solutions/topimage_DICENTISWireless_res_800x450.webp",
+    image2:
+      "https://media.boschsecurity.com/fs/media/pb/images/products/conference_solutions/topimage_DICENTISWireless_res_800x450.webp",
     video: "https://www.youtube.com/embed/gcrnSUPUktM",
-    products : "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=bosch"
+    products: "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=bosch",
+    keywords:
+      "Bosch, sécurité, communication, technologies, infrastructures, bâtiments, vidéosurveillance, alarmes incendie, contrôle d'accès, communication, durabilité, environnement, aéroports, systèmes de transport, hôpitaux, établissements éducatifs, énergie, ressources naturelles, technologies de construction, centres des congrès, bureaux, magasins, tunnels, hôpitaux, établissements de santé, aéroports, gares, flux de passagers, infrastructures modernes",
   },
   {
     name: "milestone systems",
@@ -73,9 +78,12 @@ export const partners = [
       "Fort de plus de 25 ans d'expérience dans l'industrie, Milestone Systems se distingue par son engagement envers des solutions de sécurité responsables et axées sur l'humain. Nos trois piliers fondamentaux — responsabilité, centration sur l'humain et innovation — guident notre approche. Nous nous efforçons de développer des technologies qui non seulement répondent aux besoins des entreprises, mais contribuent également au bien-être de la société dans son ensemble. Grâce à notre plateforme ouverte, vous bénéficiez d'une évolutivité sans précédent, d'une intégration facile avec d'autres technologies, et d'une sécurité renforcée pour l'avenir.",
     image1:
       "https://mswebappcdn.azureedge.net/episerverprod/d863478064514d73bb59e705e25f130f/3e224f3ccc544839b049ead6f6a7250d.png",
-    image2: "https://www.actuia.com/wp-content/uploads/2023/05/Milestone-Systems-comment-IA-et-technologie-video-transforment-hopital-vie-soignants-patients-1200x600.png",
+    image2:
+      "https://www.actuia.com/wp-content/uploads/2023/05/Milestone-Systems-comment-IA-et-technologie-video-transforment-hopital-vie-soignants-patients-1200x600.png",
     video: "https://www.youtube.com/embed/0l-z7Im820w",
-     products : "https://www.pixecurity.com/boutique/Logiciels?brand=milestone"
+    products: "https://www.pixecurity.com/boutique/Logiciels?brand=milestone",
+    keywords:
+      "Milestone Systems, logiciels, gestion vidéo, IP, VMS, XProtect, sécurité, surveillance vidéo, temps réel, sécurité publique, commerce de détail, transports, éducation, infrastructures critiques, innovation, collaboration, partenaires technologiques, solutions complètes, personnalisées, responsabilité, centration sur l'humain, technologie vidéo, données, intégration, caméras, capteurs, plateforme ouverte, informations exploitables, prise de décision, interface utilisateur, analyses avancées, intelligence artificielle, surveillance proactive, réactive, centralisation, flexibilité, efficacité opérationnelle",
   },
   {
     name: "i-PRO",
@@ -98,9 +106,12 @@ export const partners = [
       "Avec plus de 60 ans d'expérience dans le secteur de l'imagerie, i-PRO a établi des bases solides dans 7 pays et opère dans 72 pays à travers le monde. Notre équipe de direction, composée de leaders d'industrie chevronnés, guide notre croissance continue et notre adaptation aux évolutions du marché. Grâce à notre architecture modulaire unique, nous garantissons à nos clients l'accès aux dernières technologies plus rapidement que tout autre fabricant. Nous croyons fermement que la technologie doit servir le bien-être de la société, et nous nous efforçons d'être à l'avant-garde des solutions de sécurité pour créer un avenir meilleur, tout en respectant les normes éthiques et de conformité.",
     image1:
       "https://i-pro.com/products_and_solutions/sites/default/files/styles/webp/public/2022-04/newS_news_0.png.webp?itok=LNDpNo1G",
-    image2: "https://media.licdn.com/dms/image/sync/v2/D4E27AQH1K1pXkJdvMQ/articleshare-shrink_800/articleshare-shrink_800/0/1727340745666?e=2147483647&v=beta&t=T_yEb5782i6OabPjSDsKVlPSzwORU6Q3gRRQEFM2FEA",
+    image2:
+      "https://media.licdn.com/dms/image/sync/v2/D4E27AQH1K1pXkJdvMQ/articleshare-shrink_800/articleshare-shrink_800/0/1727340745666?e=2147483647&v=beta&t=T_yEb5782i6OabPjSDsKVlPSzwORU6Q3gRRQEFM2FEA",
     video: "https://www.youtube.com/embed/LzXRGBMky2E",
-    products : "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=i-pro"
+    products: "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=i-pro",
+    keywords:
+      'i-PRO, Panasonic Security Solutions, Panasonic Corporation, sécurité, surveillance, analyse vidéo, qualité, performance, caméras de surveillance, systèmes de gestion vidéo, VMS, intelligence artificielle, détection, analyse des comportements, sécurité publique, infrastructures critiques, entreprises, institutions gouvernementales, protection, fiabilité, efficacité, société en sécurité, imagerie avancée, confiance, fabricant de confiance, décisions critiques, qualité, innovation, responsabilité, surveillance de sécurité, vision médicale, caméras modulaires, moduca, durabilité, "Politique Ouverte", intégrateurs de systèmes, maisons d\'IA, OEM, architecture modulaire, technologie, éthique, conformité',
   },
 
   {
@@ -126,7 +137,9 @@ export const partners = [
       "https://www.briefcam.com/wp-content/uploads/2023/07/BriefCam-Video-Analytics-for-Retail-Business-Intelligence-Thumbnail.png",
     image2: "https://www.briefcam.com/wp-content/uploads/2018/04/Screen-6.png",
     video: "https://www.youtube.com/embed/5d6VbcUwQco",
-    products : "https://www.pixecurity.com/boutique/Logiciels/Briefcam"
+    products: "https://www.pixecurity.com/boutique/Logiciels/Briefcam",
+    keywords:
+      "BriefCam, vidéo intelligente, vidéosurveillance, analyse vidéo, technologie, recherche, analyse, données vidéo, VIDEO SYNOPSIS®, apprentissage profond, sécurité, opérations, ciblage, villes intelligentes, commerce de détail, santé, forces de l'ordre, alerte en temps réel, reconnaissance faciale, aperçus vidéo quantitatifs, forces de l'ordre, villes intelligentes, commerce de détail, santé, architecture flexible, cloud, BriefCam Nexus, gestion des alertes, informations commerciales, visibilité holistique, sécurité, efficacité opérationnelle",
   },
   {
     name: "Til Technologies",
@@ -149,8 +162,11 @@ export const partners = [
       "TIL Technologies s'engage à fournir des solutions sécurisées, certifiées ANSSI, garantissant la fiabilité et la cybersécurité de nos produits. Notre recherche et développement représente 30 % de nos effectifs, mettant l'accent sur l'innovation et l'évolution. Nous collaborons étroitement avec un réseau de plus de 3000 techniciens formés, assurant un service de qualité et une assistance technique tout au long de votre projet. Ensemble, nous construisons un environnement sécurisé et durable pour nos clients.",
     image1:
       "https://www.til-technologies.fr/uploads/cms/block/img_produits_utl_2-65cfa4979a61c.webp",
-    image2: "https://www.til-technologies.fr/uploads/cms/block/img_part_integrateurs_5-65dcbf029f6c2.jpg",
+    image2:
+      "https://www.til-technologies.fr/uploads/cms/block/img_part_integrateurs_5-65dcbf029f6c2.jpg",
     video: "https://i.ytimg.com/vi/RHmI0gzsWbc/maxresdefault.jpg",
+    keywords:
+      "TIL Technologies, éditeur de logiciels, fournisseur de solutions, gestion de la sécurité, bâtiments, sûreté, contrôle d'accès, gestion des alarmes, vidéosurveillance, intégration de systèmes de sécurité, expertise, solutions sur mesure, sécurité électronique, conception, fabrication, commercialisation, systèmes de sécurité électronique, sites protégés, contrôle d'accès, détection d'intrusion, gestion technique des bâtiments, MICROSESAME, supervision unifiée, solutions adaptées, tertiaire, santé, industrie, sites sensibles, transports, collectivité locale, hôpital, site industriel, produits, fonctionnalités logicielles, sécurité, innovation, ANSSI, recherche et développement, cybersécurité, réseau de techniciens, service de qualité, assistance technique, environnement sécurisé, durable",
   },
   {
     name: "Zyxel Communications",
@@ -173,10 +189,12 @@ export const partners = [
       "Chez Zyxel, l'innovation est au cœur de notre mission. Nous investissons continuellement dans la recherche et le développement pour garantir que nos solutions restent à la pointe de la technologie. De plus, notre équipe de support client dédiée est toujours prête à fournir une assistance technique et des conseils personnalisés, assurant que vous tiriez le meilleur parti de nos produits. Ensemble, construisons des réseaux plus sûrs et plus performants.",
     image1:
       "https://www.zyxel.com/uploads/images/public/ZyxelNetworks_PRimage_Nebula_family_P13_EMEA.jpg",
-    image2: "https://www.zyxel.com/sites/zyxel/files/library/assets/newsroom/About_Zyxel_for_business_600x350.jpg",
+    image2:
+      "https://www.zyxel.com/sites/zyxel/files/library/assets/newsroom/About_Zyxel_for_business_600x350.jpg",
     video: "https://www.youtube.com/embed/LOxW5DCeUbw",
-    products : "https://www.pixecurity.com/boutique/R%C3%A9seau?brand=zyxel"
-
+    products: "https://www.pixecurity.com/boutique/R%C3%A9seau?brand=zyxel",
+    keywords:
+      "Zyxel Communications, solutions réseau, connectivité, sécurité, technologies de l'information, communication, routeurs, commutateurs, points d'accès sans fil, solutions de sécurité réseau, systèmes de gestion de réseau, cloud, entreprises, particuliers, performances, fiabilité, petites et moyennes entreprises, grandes entreprises, fournisseurs de services, expertise technologique, innovation, transformation numérique, pare-feu, détection, prévention des intrusions, VPN, support client, recherche, développement, réseaux, connectivité, assistance technique",
   },
   {
     name: "Cisco",
@@ -199,8 +217,11 @@ export const partners = [
       "Cisco s'engage à innover en permanence pour répondre aux besoins en constante évolution de ses clients. Nous travaillons avec des partenaires stratégiques pour développer des solutions qui intègrent les dernières technologies, telles que l'intelligence artificielle et l'Internet des objets. Ensemble, nous transformons la manière dont les entreprises interagissent et collaborent, bâtissant un avenir numérique durable.",
     image1:
       "https://newsroom.cisco.com/c/dam/r/newsroom/en/us/assets/a/y2023/m04/FY23_Q3_simplify-your-security-operations-with-cisco-xdr_blog_hero.png",
-    image2: "https://contentstatic.techgig.com/photo/110006645/cisco-unlocks-ai-powered-intelligence-for-self-hosted-observability.jpg?90256",
+    image2:
+      "https://contentstatic.techgig.com/photo/110006645/cisco-unlocks-ai-powered-intelligence-for-self-hosted-observability.jpg?90256",
     video: "https://www.youtube.com/embed/PJ5LMo59ro4",
+    keywords:
+      "Cisco Systems, technologies de l'information, communication, équipements, logiciels, mise en réseau, sécurité, collaboration, gestion des centres de données, routage, commutation, cloud computing, Internet des objets, IoT, cybersécurité, connectivité, innovation, solutions intégrées, connecter, collaborer, sécuriser, connectivité, communication, réseau, environnements de travail, sécurité, données, infrastructures, menaces, cybersécurité, confidentialité, informations, innovation, partenariats stratégiques, intelligence artificielle, avenir numérique",
   },
   {
     name: "Comnet",
@@ -223,10 +244,12 @@ export const partners = [
     title3: "Partenariats Durables et Fiables",
     text3:
       "Nous croyons en la force des collaborations. Acre travaille main dans la main avec divers partenaires technologiques pour vous offrir des solutions de sécurité innovantes et durables. Ensemble, nous construisons un avenir plus sûr pour vous et votre entreprise. Notre approche collaborative nous permet de rester à la pointe des nouvelles technologies et d'adapter nos offres aux évolutions du marché.",
-    image2: "https://acresecurity.com/hs-fs/hubfs/video-and-data.png?width=1583&height=1496&name=video-and-data.png",
+    image2:
+      "https://acresecurity.com/hs-fs/hubfs/video-and-data.png?width=1583&height=1496&name=video-and-data.png",
     video: "https://www.youtube.com/embed/Hp0tD4Hacxk",
     image1: "https://acresecurity.com/hubfs/Featured%20Image@2x.jpg",
-   
+    keywords:
+      "ComNet, ACRE, communications, réseaux, sécurité critique, transmission de données, vidéo, audio, série, IP, fibre optique, conception, fabrication, produits fiables, sécurisés, connectivité, systèmes de sécurité, surveillance, contrôle d'accès, partenaire de confiance, réseaux de communication, continuité des opérations, protection, biens, personnes, sécurité, exigences, protection optimale, services, environnements professionnels, tranquillité d'esprit, contrôle d'accès, gestion des visiteurs, systèmes d'alarme, transmission vidéo, sécurité intégrée, partenariats technologiques, collaborations, nouvelles technologies, marché",
   },
   {
     name: "vuWall",
@@ -249,8 +272,11 @@ export const partners = [
       "VuWall s'engage à offrir des solutions sécurisées conformes aux normes les plus strictes, avec l'attestation SOC 2 Type I qui garantit la protection et l'intégrité des données. Ce niveau de certification atteste de la fiabilité des processus internes et de l’engagement constant de l’entreprise envers la sécurité et la confidentialité des informations. En parallèle, VuWall propose des programmes de certification pour les professionnels du secteur AV, leur permettant de maîtriser les outils et technologies de l'écosystème VuWall, assurant ainsi une expertise accrue dans la gestion des infrastructures audiovisuelles et IT complexes.",
     image1:
       "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:800/h:450/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/2019/10/card-app-corpsignage.jpg",
-    image2: "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:1600/h:900/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/SOC-2-CERT-PR-Feature-Image.png",
+    image2:
+      "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:1600/h:900/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/SOC-2-CERT-PR-Feature-Image.png",
     video: "https://www.youtube.com/embed/RUOwXuAuJaQ",
+    keywords:
+      "VuWall, solutions de visualisation, gestion de contenu, environnements de contrôle, surveillance, vidéowall, collaboration, gestion de l'affichage, solutions logicielles, matérielles, sources vidéo, visualisation des données, flexibilité, centres de commande, salles de contrôle, postes de travail de sécurité, environnements de diffusion en direct, prise de décision, collaboration, efficacité opérationnelle, écosystème, interopérabilité, évolutivité, simplicité d'utilisation, gestion centralisée, contenu visuel, espaces professionnels, salles de contrôle critiques, centres de commandement, centres de surveillance, espaces de travail collaboratifs, visualisation multi-sources, temps réel, gestion centralisée, collaboration, technologie, certification, sécurité des données, normes, attestation SOC 2 Type I, protection, intégrité, confidentialité, programmes de certification, professionnels AV, expertise, infrastructures audiovisuelles, IT",
   },
   {
     name: "technoAware",
@@ -273,9 +299,12 @@ export const partners = [
       "TechnoAware s'engage à fournir des solutions de qualité supérieure, basées sur les dernières avancées technologiques en matière d'intelligence artificielle et de vision par ordinateur. En combinant innovation et fiabilité, TechnoAware investit continuellement dans la recherche et le développement pour anticiper les besoins futurs du marché de la sécurité. De plus, l'entreprise adhère aux normes internationales de qualité et de sécurité, assurant à ses clients des produits robustes, performants et évolutifs. Cet engagement envers l'innovation et la qualité positionne TechnoAware comme un partenaire de confiance dans le domaine de la sécurité intelligente.",
     image1:
       "https://www.elko.lv/media/4748/download/Technoaware_video-analysis.jpg?v=1",
-    image2: "https://technoaware.org/wp-content/uploads/2018/07/technoaware-quote.jpg",
+    image2:
+      "https://technoaware.org/wp-content/uploads/2018/07/technoaware-quote.jpg",
     video: "https://www.youtube.com/embed/Fv1Whak4GVo",
-     products : "https://www.pixecurity.com/boutique/Logiciels/Technoaware"
+    products: "https://www.pixecurity.com/boutique/Logiciels/Technoaware",
+    keywords:
+      "TechnoAware, vidéosurveillance intelligente, technologies avancées, détection, analyse, gestion des données vidéo, intelligence artificielle, apprentissage automatique, traitement d'images, reconnaissance faciale, suivi d'objets, détection d'anomalies, analyse comportementale, opérateurs de sécurité, décideurs, logiciels puissants, matériel de pointe, incidents de sécurité, flux de travail, prise de décision, sécurité intelligente, vision artificielle, événements de sécurité, réactivité, efficacité, protection proactive, menaces potentielles, applications, secteurs publics, privés, sécurité urbaine, infrastructures critiques, espaces commerciaux, industriels, résidentiels, intégration, caméras, dispositifs intelligents, alertes en temps réel, analyse précise, automatisée, qualité, innovation, avancées technologiques, vision par ordinateur, recherche, développement, normes internationales, sécurité, produits robustes, performants, évolutifs, partenariat, sécurité intelligente",
   },
   {
     name: "6SS",
@@ -296,9 +325,11 @@ export const partners = [
     title3: "Engagement envers l'Innovation et la Sensibilisation",
     text3:
       "6SS s'engage à rester à la pointe de l'innovation en cybersécurité. L'entreprise investit continuellement dans la recherche et le développement pour anticiper les menaces émergentes et développer des solutions proactives. En parallèle, 6SS organise des sessions de sensibilisation et de formation pour aider les entreprises à comprendre l'importance de la cybersécurité et à adopter des pratiques de sécurité robustes. Cet engagement envers l'innovation et la sensibilisation positionne 6SS comme un acteur clé dans la protection des systèmes d'information.",
-    image1:
-      "https://6ss.co/Images/choose-video-thumb.jpg",
-    image2: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image1: "https://6ss.co/Images/choose-video-thumb.jpg",
+    image2:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     video: "https://www.youtube.com/embed/Lzjm4MerG9c",
+    keywords:
+      "6SS Global, solutions de sécurité intelligentes, surveillance, analyse des données, intelligence artificielle, apprentissage automatique, intégration de systèmes, reconnaissance faciale, suivi d'objets, détection d'anomalies, analyse comportementale, opérateurs de sécurité, décideurs, partenariat stratégique, Milestone Systems, plateformes de gestion vidéo, logiciels puissants, matériel de pointe, incidents de sécurité, opérations, prise de décision, sécurité renforcée, efficacité opérationnelle, protection des systèmes d'information, cybersécurité, audit de sécurité, protection avancée, protection, données, infrastructures, approche personnalisée, continuité des activités, confidentialité, expertise, conformité, RGPD, PCI-DSS, normes, risques, confiance, clients, partenaires commerciaux, innovation, sensibilisation, recherche, développement, menaces émergentes, solutions proactives, sessions de sensibilisation, formation, pratiques de sécurité, acteur clé, protection des systèmes d'information",
   },
 ];
