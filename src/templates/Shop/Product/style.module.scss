@@ -23,13 +23,12 @@
       -o-border-radius: 0.5rem;
       height: 50vh;
       width: 50vh;
-      object-fit: cover;
       margin: auto;
 
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 0.5rem;
         -webkit-border-radius: 0.5rem;
         -moz-border-radius: 0.5rem;
