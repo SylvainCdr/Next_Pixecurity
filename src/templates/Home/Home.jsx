@@ -82,7 +82,7 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.linkedinFeedCarousel}>
-          <script
+          {/* <script
             src="https://static.elfsight.com/platform/platform.js"
             data-use-service-core
             defer
@@ -90,12 +90,12 @@ export default function Home() {
           <div
             class="elfsight-app-78409cc0-860a-4e7b-bb8a-2bf939e4076f"
             data-elfsight-app-lazy
-          ></div>
+          ></div> */}
 
           {/* Composant LinkedIn Feed */}
-{/* < HomepageLinkedinFeed /> */}
-
-        </div>
+          {/* <HomepageLinkedinFeed /> */}
+          <rssapp-carousel id="ah3XnR0YLYmMNql2"></rssapp-carousel><script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+           </div>
       </div>
     </>
   );
