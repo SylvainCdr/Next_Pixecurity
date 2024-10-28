@@ -95,7 +95,7 @@ export default function Home() {
           {/* Composant LinkedIn Feed */}
           {/* <HomepageLinkedinFeed /> */}
           {/* <rssapp-carousel id="ah3XnR0YLYmMNql2"></rssapp-carousel><script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script> */}
-          <iframe src='https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604' frameborder='0' width='100%' height='800'></iframe>           </div>
+          <iframe src='https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604' frameborder='0' width='100%' height='760'></iframe>           </div>
       </div>
     </>
   );
