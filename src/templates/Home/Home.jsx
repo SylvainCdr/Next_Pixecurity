@@ -13,6 +13,7 @@ import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
 import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import { HomepageLinkedinFeed } from "@/Components/HomepageLinkedinFeed/HomepageLinkedinFeed";
+import HomepageHero2 from "@/Components/HomepageHero2/HomepageHero2";
 
 export default function Home() {
   useEffect(() => {
@@ -44,7 +45,8 @@ export default function Home() {
 
       <div className={styles["homepage-container"]}>
         <RegisterPopup />
-        <Hero />
+        {/* <Hero /> */}
+        <HomepageHero2 />
         <div className={styles["section2-offer"]}>
           <h3>{t("home.offerTitle")}</h3>
           <p>{t("home.offerDescription")}</p>

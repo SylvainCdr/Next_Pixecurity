@@ -70,7 +70,6 @@ function Catalogue({ products }) {
 
       {searchResults.length === 0 && (
         <>
-          {/* <ShopHeroCarousel /> */}
           <div data-aos="fade-up" className={styles["shop-categories"]}>
             <Link href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}>
               <div className={styles.category}>

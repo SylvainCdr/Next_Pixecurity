@@ -19,23 +19,25 @@ function ShopSearch({ isHero = true, onSearchResults }) {
   const [searching, setSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null); // Nouvel état pour le produit sélectionné
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
 
+
   const handleSearch = (e) => {
     e.preventDefault();
-
+    setIsSubmitted(true); // Marque que la recherche a été soumise
+  
     if (search.length > 0) {
       setSearching(true);
-
+  
       fetch(`${BASE_URL}/search?query=${search}`)
         .then((res) => res.json())
         .then((data) => {
           setSearchResults(data);
           setSearching(false);
           onSearchResults(data);
-          setSelectedProduct(null); // Réinitialiser le produit sélectionné lors d'une nouvelle recherche
+          setSelectedProduct(null);
         })
         .catch((error) => {
           console.error("Erreur lors de la recherche de produits :", error);
@@ -82,10 +84,16 @@ function ShopSearch({ isHero = true, onSearchResults }) {
 
       {searchResults.length > 0 && !selectedProduct && (
         <div className={styles["search-msg"]}>
-          <p>Résultats de recherche ({searchResults.length} produits) :</p>
+          <p>Résultats de recherche ({searchResults.length} produits) </p>
         </div>
       )}
 
+  {/* Afficher le message uniquement après soumission et si aucun résultat n'a été trouvé */}
+{isSubmitted && !searching && search.length > 0 && searchResults.length === 0 && (
+  <div className={styles["search-msg"]}>
+    <p>Aucun résultat pour "{search}"</p>
+  </div>
+)}
       {!selectedProduct && (
         <div className={styles["search-grid"]}>
           {searchResults?.map((result) => (

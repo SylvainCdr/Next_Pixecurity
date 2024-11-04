@@ -7,6 +7,7 @@ import { PropagateLoader } from "react-spinners";
 import { useRouterLoading } from "@/Components/useRouterLoading";
 import Head from "next/head";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+import { useState } from "react";
 //import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 
 const color = "#ff9c3fc0";
@@ -17,14 +18,21 @@ const override = {
   borderColor: "red",
 };
 
+
 const Products = ({ products, category, subcategory, filters }) => {
   const loading = useRouterLoading();
+  const [searchResults, setSearchResults] = useState([]);
 
   // Sort products by name alphabetically
   const sortedProducts = products.sort((a, b) => {
     // Compare product names in lowercase to ensure case-insensitive sorting
     return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
   });
+
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+  };
+
 
   return (
     <div className={styles["products-container"]}>
@@ -44,8 +52,7 @@ const Products = ({ products, category, subcategory, filters }) => {
       <RegisterPopup />
 
       <ShopNav />
-      <ShopSearch isHero={false} />
-      {/* <ShopHeroCarousel /> */}
+      <ShopSearch isHero={false} onSearchResults={handleSearchResults}  />
       <div className={styles["sweet-loading"]}>
         {loading && (
           <PropagateLoader
@@ -58,7 +65,8 @@ const Products = ({ products, category, subcategory, filters }) => {
           />
         )}
       </div>
-
+      {searchResults.length === 0 && (
+        
       <div className={styles["aside-products"]}>
         <ShopAside
           subcategory={subcategory}
@@ -71,7 +79,9 @@ const Products = ({ products, category, subcategory, filters }) => {
           ))}
         </div>
       </div>
+        )}
     </div>
+
   );
 };
 

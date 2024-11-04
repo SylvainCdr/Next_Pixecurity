@@ -27,6 +27,9 @@ export default function Product({ product, id, suggestions }) {
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
   );
 
+  const [searchResults, setSearchResults] = useState([]);
+
+
   const labelsMapping = {
     dimensions: "Dimensions",
     poids: "Poids",
@@ -131,6 +134,9 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+  }
 
   useEffect(() => {
     const jsonLdData = {
@@ -214,9 +220,12 @@ export default function Product({ product, id, suggestions }) {
 
       <RegisterPopup />
       <ShopNav />
-      <ShopSearch />
+      <ShopSearch onSearchResults={handleSearchResults} />
+      {searchResults.length === 0 && (
 
       <div className={styles["product-page"]}>
+
+
         <div className={styles["product-section1"]}>
           <div data-aos="zoom-in-right" className={styles["product-img"]}>
             {product.pourcentageDiscount !== 0 && (
@@ -381,6 +390,7 @@ export default function Product({ product, id, suggestions }) {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
