@@ -9,7 +9,7 @@ export default function HomepageHero2() {
   const { t } = useTranslation();
 
   return (
-    <div className={styles["homepageHero-container"]}>
+    <div className={styles.homepageHeroContainer}>
       <h4>
         Smarter. <br /> Safer.
       </h4>
