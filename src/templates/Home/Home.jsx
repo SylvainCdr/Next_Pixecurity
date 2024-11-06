@@ -45,8 +45,8 @@ export default function Home() {
 
       <div className={styles["homepage-container"]}>
         <RegisterPopup />
-        <Hero />
-        {/* <HomepageHero2 /> */}
+        {/* <Hero /> */}
+        <HomepageHero2 />
         <div className={styles["section2-offer"]}>
           <h3>{t("home.offerTitle")}</h3>
           <p>{t("home.offerDescription")}</p>
