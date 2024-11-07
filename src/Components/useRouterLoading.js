@@ -1,3 +1,6 @@
+// Composant qui permet de gérer le chargement de la page lors de la navigation entre les pages
+// Ce loader est affiché en haut de la page sur la page : Products
+
 import { useEffect, useState } from "react";
 import Router from "next/router";
 

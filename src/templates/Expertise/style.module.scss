@@ -2,7 +2,7 @@
   margin-top: 5em;
 
   .hero {
-    height: 75vh;
+    height: 85vh;
     background: linear-gradient(
         90deg,
         #000000fb 10%,
@@ -12,24 +12,36 @@
         rgba(122, 122, 122, 0) 70%
       ),
       url("https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/expertise-scaled.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-repeat: no-repeat;
+    // background-size: cover;
     background-position: top;
     align-items: center;
     display: flex;
-
     width: 100%;
+   
+
+      background-attachment: fixed;
+      // background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+    
 
     .title {
       width: 42%;
       padding-left: 4%;
-
+      animation: floatEffect 5s ease-in-out infinite;
+      @keyframes floatEffect {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
       h1 {
         font-size: 3.2rem;
         color: var(--sunset1);
         font-weight: 700;
         line-height: 3rem;
         margin-bottom: 1.5rem;
+      
       }
 
       h2 {
@@ -62,6 +74,16 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    // background: linear-gradient(-45deg, #3b82f6, #ef4444, #f59e0b, #10b981);
+    // background-size: 400% 400%;
+    // animation: gradientAnimation 15s ease infinite;
+    
+    // @keyframes gradientAnimation {
+    //   0% { background-position: 0% 50%; }
+    //   50% { background-position: 100% 50%; }
+    //   100% { background-position: 0% 50%; }
+    // }
+
     ul {
       max-width: 1440px;
       padding-top: 8em;
@@ -77,6 +99,11 @@
         color: #03dac8;
         font-size: 3rem;
         margin-right: 0.3em;
+      }
+      i:hover {
+        color: #03dac8;
+        transform: scale(1.2);
+        transition: transform 0.3s, color 0.3s;
       }
 
       li {
