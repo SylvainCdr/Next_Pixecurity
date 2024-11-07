@@ -88,7 +88,7 @@ function Header() {
               className={styles.shop}
               onClick={handleLinkClick}
             >
-              {t("header.shop")} {/* Boutique */}
+              {t("header.Shop")} {/* Boutique */}
             </Link>
           </li>
           <li className={pathname === "/notre-expertise" ? styles.active : ""}>

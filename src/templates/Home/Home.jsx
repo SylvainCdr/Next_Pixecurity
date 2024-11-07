@@ -12,7 +12,6 @@ import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
 import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
-import { HomepageLinkedinFeed } from "@/Components/HomepageLinkedinFeed/HomepageLinkedinFeed";
 import HomepageHero2 from "@/Components/HomepageHero2/HomepageHero2";
 
 export default function Home() {
@@ -73,6 +72,7 @@ export default function Home() {
         </div>
 
         <HomepagePartners />
+        
         <HomepageCountUp />
 
         <HomepageCustomersSlider />
@@ -84,20 +84,12 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.linkedinFeedCarousel}>
-          {/* <script
-            src="https://static.elfsight.com/platform/platform.js"
-            data-use-service-core
-            defer
-          ></script>
-          <div
-            class="elfsight-app-78409cc0-860a-4e7b-bb8a-2bf939e4076f"
-            data-elfsight-app-lazy
-          ></div> */}
-
-          {/* Composant LinkedIn Feed */}
-          {/* <HomepageLinkedinFeed /> */}
-          {/* <rssapp-carousel id="ah3XnR0YLYmMNql2"></rssapp-carousel><script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script> */}
-          <iframe src='https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604' frameborder='0' width='100%' height='760'></iframe>           </div>
+          <iframe
+            src="https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604"
+            width="100%"
+            height="760"
+          ></iframe>{" "}
+        </div>
       </div>
     </>
   );
