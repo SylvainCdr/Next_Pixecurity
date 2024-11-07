@@ -49,28 +49,28 @@ export default function ShopAside({ filters, subcategory }) {
   );
 }
 
-const normalizeValue = (value) => {
-  if (typeof value === 'string') {
-    return value.trim().toLowerCase();
-  }
-  return String(value); // Valeur par défaut si ce n'est pas une chaîne
-};
+// const normalizeValue = (value) => {
+//   if (typeof value === 'string') {
+//     return value.trim().toLowerCase();
+//   }
+//   return String(value); // Valeur par défaut si ce n'est pas une chaîne
+// };
 
-// Fonction pour obtenir des valeurs uniques avec tri
-const getUniqueValues = (products, key, parser = (x) => x) => {
-  return Array.from(
-    new Set(
-      products
-        .map((product) => normalizeValue(parser(product, key)))
-        .filter((value) => value !== '' && value !== '0') // Filtrer les chaînes vides et les zéros
-    )
-  ).sort((a, b) => {
-    if (!isNaN(a) && !isNaN(b)) {
-      return b - a; // Tri décroissant pour les nombres
-    }
-    return a.localeCompare(b); // Tri alphabétique pour les chaînes
-  });
-};
+// // Fonction pour obtenir des valeurs uniques avec tri
+// const getUniqueValues = (products, key, parser = (x) => x) => {
+//   return Array.from(
+//     new Set(
+//       products
+//         .map((product) => normalizeValue(parser(product, key)))
+//         .filter((value) => value !== '' && value !== '0') // Filtrer les chaînes vides et les zéros
+//     )
+//   ).sort((a, b) => {
+//     if (!isNaN(a) && !isNaN(b)) {
+//       return b - a; // Tri décroissant pour les nombres
+//     }
+//     return a.localeCompare(b); // Tri alphabétique pour les chaînes
+//   });
+// };
 
 function ProductFilter({ title, queryKey, filters, haveSubcat, currentParams }) {
   const router = useRouter();
