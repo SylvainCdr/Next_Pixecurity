@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ import useFavorites from "../useFavorites";
 import { useCartContext } from "@/Components/cartContext";
 import Head from "next/head";
 import Image from "next/image";
+import aos from "aos";
 
 function ProductCard({ product }) {
   useEffect(() => {
@@ -23,12 +24,17 @@ function ProductCard({ product }) {
   const user = useGetUser();
   const userId = user?._id;
 
+  useEffect(() => {
+    Aos.init({ duration: 500 });
+  }
+  , []);
+
   return (
-    <div className={styles["product-card"]}>
+    <div className={styles["product-card"]} data-aos="zoom-in" >
       <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={product.image}  />
+        <meta property="og:image" content={product.image} />
         {/* Add more OG meta tags as needed */}
       </Head>
       <Link
@@ -36,19 +42,23 @@ function ProductCard({ product }) {
         style={{ textDecoration: "none" }}
       >
         <DiscountBadge product={product} />
-<div className={styles.imgContainer}>
-        {product.image.startsWith("http") ? (
-          <img src={product.image} alt={product.name} className={styles["product-img"]} />
-        ) : (
-          <Image
-            src={`${BASE_URL}${product.image}`}
-            alt={product.name}
-            className={styles["product-img"]}
-            loading="lazy"
-            width={250}
-            height={250}
-          />
-        )}
+        <div className={styles.imgContainer}>
+          {product.image.startsWith("http") ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              className={styles["product-img"]}
+            />
+          ) : (
+            <Image
+              src={`${BASE_URL}${product.image}`}
+              alt={product.name}
+              className={styles["product-img"]}
+              loading="lazy"
+              width={250}
+              height={250}
+            />
+          )}
         </div>
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
@@ -58,7 +68,6 @@ function ProductCard({ product }) {
               alt={brandLogo.name}
               className={styles["brand-logo"]}
               loading="lazy"
-            
             />
           )}
         </div>
@@ -85,7 +94,11 @@ function DiscountBadge({ product }) {
 }
 
 function Prices({ product }) {
-  if (product.price && product.discountPrice && product.price !== product.discountPrice) {
+  if (
+    product.price &&
+    product.discountPrice &&
+    product.price !== product.discountPrice
+  ) {
     return (
       <div className={styles["card-prices"]}>
         <p className={styles["original-price"]}>
@@ -104,8 +117,6 @@ function Prices({ product }) {
     </p>
   );
 }
-
-
 
 function ButtonAddToFavorite({ product }) {
   const prouductId = product._id;
