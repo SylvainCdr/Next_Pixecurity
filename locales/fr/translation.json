@@ -235,13 +235,13 @@
                 },
                 "section2": {
                   "cards": { 
-                      "imgSrc1": "../../assets/aboutUs/about1.webp",
+                      "imgSrc1": "/assets/aboutUs/about1.webp",
                       "title1": "BTP",
                       "text1": "Avec des ingénieurs de formation génie civil, Pixecurity conserve un ADN travaux, chantier, qui reste l'essence même de notre métier.",
-                      "imgSrc2": "../../assets/aboutUs/about2.webp",
+                      "imgSrc2": "/assets/aboutUs/about2.webp",
                       "title2": "Électronique appliquée",
                       "text2": "En complément du génie civil, nos ingénieurs cadres sont formés en électronique appliquée : domotique, vidéoprotection, contrôle d'accès...",
-                      "imgSrc3": "../../assets/aboutUs/about3.webp",
+                      "imgSrc3": "/assets/aboutUs/about3.webp",
                       "title3": "IT",
                       "text3": "Pixecurity complète son équipe par des ingénieurs réseaux certifiés, systèmes, SI..."
                 }
@@ -249,7 +249,7 @@
                 "section3": {
                   "quote": "\"Notre but ? <br /> Répondre aux exigences et anticiper les besoins de nos clients. <br /> Simplifier la compréhension de la sécurité.\"",
                   "author": "-- Yann Duchet, CEO Pixecurity",
-                  "imgSrc": "../../assets/team/YANN-aboutUs.jpg"
+                  "imgSrc": "/assets/team/YANN-aboutUs.jpg"
                 },
                 "section4": {
                   "title": "Rencontrez les experts de Pixecurity",

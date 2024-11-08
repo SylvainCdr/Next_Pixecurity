@@ -9,6 +9,7 @@ import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProducts
 import Head from "next/head";
 import { useGetUser } from "@/Components/useGetUser";
 import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
+import Image from "next/image";
 
 function Catalogue({ products }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -61,58 +62,116 @@ function Catalogue({ products }) {
       <ShopHeroCarousel />
 
       {searchResults.length > 0 && (
-        <div className={styles["search-results"]}>
-       
-        </div>
+        <div className={styles["search-results"]}></div>
       )}
-
-     
 
       {searchResults.length === 0 && (
         <>
           <div data-aos="fade-up" className={styles["shop-categories"]}>
-            <Link href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}>
+            <Link
+              href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}
+            >
               <div className={styles.category}>
                 <h1>Caméras</h1>
-                <img src="assets/shop/cameras.webp" alt="Caméras" loading="lazy" />
+                <Image
+                  src="/assets/shop/cameras.webp"
+                  alt="Caméras"
+                  loading="lazy"
+                  width={300}
+                  height={300}
+                />
               </div>
             </Link>
 
-            <Link href={`/boutique/Réseau${user?._id ? `?userId=${user?._id}` : ""}`}>
+            <Link
+              href={`/boutique/Réseau${user?._id ? `?userId=${user?._id}` : ""}`}
+            >
               <div className={styles.category}>
                 <h1>Réseaux</h1>
-                <img src="assets/shop/reseaux.webp" alt="Réseaux" loading="lazy" />
+                <Image
+                  src="/assets/shop/reseaux.webp"
+                  alt="Réseaux"
+                  loading="lazy"
+                  width={300}
+                  height={300}
+                />
               </div>
             </Link>
 
-            <Link href={`/boutique/Logiciels${user?._id ? `?userId=${user?._id}` : ""}`}>
+            <Link
+              href={`/boutique/Logiciels${user?._id ? `?userId=${user?._id}` : ""}`}
+            >
               <div className={styles.category}>
                 <h1>Logiciels</h1>
-                <img src="assets/shop/logiciels.webp" alt="Logiciels" loading="lazy" />
+                <Image
+                  src="/assets/shop/logiciels.webp"
+                  alt="Logiciels"
+                  loading="lazy"
+                  width={300}
+                  height={300}
+                />
               </div>
             </Link>
 
-            <Link href={`/boutique/Autres${user?._id ? `?userId=${user?._id}` : ""}`}>
+            <Link
+              href={`/boutique/Autres${user?._id ? `?userId=${user?._id}` : ""}`}
+            >
               <div className={styles.category}>
                 <h1>Autres</h1>
-                <img src="assets/shop/autres.webp" alt="Autres" loading="lazy" />
+                <Image
+                  src="/assets/shop/autres.webp"
+                  alt="Autres"
+                  loading="lazy"
+                  width={300}
+                  height={300}
+                />
               </div>
             </Link>
           </div>
 
           <div className={styles["products-carousel"]}>
-            <h2>Explorez notre gamme complète de caméras : Dômes, Bullet, Fisheye et plus</h2>
+            <h2>
+              Explorez notre gamme complète de caméras : Dômes, Bullet, Fisheye
+              et plus
+            </h2>
             <div className={styles.logos}>
-              <img src="assets/partners/partnersLogo/vivotek.png" alt="Vivotek-logo" loading="lazy" />
-              <img src="assets/shop/shopLogos/i-pro.png" alt="i-Pro-logo" loading="lazy" />
-              <img src="assets/partners/partnersLogo/bosch.png" alt="Bosch-logo" loading="lazy" />
+              <Image
+                src="/assets/partners/partnersLogo/vivotek.png"
+                alt="Vivotek-logo"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
+              <Image
+                src="/assets/shop/shopLogos/i-pro.png"
+                alt="i-Pro-logo"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
+              <Image
+                src="/assets/partners/partnersLogo/bosch.png"
+                alt="Bosch-logo"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
             </div>
             <ShopProductsCarousel carouselProducts={carouselProducts1} />
           </div>
 
           <div className={styles["products-carousel"]}>
-            <h2>Maîtrisez la gestion vidéo avec Milestone : Notre expertise au service de vos besoins</h2>
-            <img src="assets/partners/partnersLogo/milestone.png" alt="Milestone-logo" loading="lazy" />
+            <h2>
+              Maîtrisez la gestion vidéo avec Milestone : Notre expertise au
+              service de vos besoins
+            </h2>
+            <Image
+              src="/assets/partners/partnersLogo/milestone.png"
+              alt="Milestone-logo"
+              loading="lazy"
+              width={150}
+              height={150}
+            />
             <ShopProductsCarousel carouselProducts={carouselProducts3} />
           </div>
         </>

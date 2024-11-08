@@ -9,6 +9,7 @@ import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
 import { useCartContext } from "@/Components/cartContext";
 import Head from "next/head";
+import Image from "next/image";
 
 function ProductCard({ product }) {
   useEffect(() => {
@@ -39,22 +40,26 @@ function ProductCard({ product }) {
         {product.image.startsWith("http") ? (
           <img src={product.image} alt={product.name} className={styles["product-img"]} />
         ) : (
-          <img
+          <Image
             src={`${BASE_URL}${product.image}`}
             alt={product.name}
             className={styles["product-img"]}
             loading="lazy"
+            width={250}
+            height={250}
           />
         )}
         </div>
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
-            <img
+            <Image
               src={brandLogo.logo}
               alt={brandLogo.name}
               className={styles["brand-logo"]}
               loading="lazy"
+              width={80}
+              height={30}
             />
           )}
         </div>

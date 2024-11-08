@@ -30,9 +30,7 @@ function Contact() {
   const handleLastnameChange = (e) => {
     const value = e.target.value;
     setLastname(value);
-    setLastnameError(
-      isValidLastname(value) ? "" : t("contact.nameError")
-    );
+    setLastnameError(isValidLastname(value) ? "" : t("contact.nameError"));
   };
 
   const handleFirstnameChange = (e) => {
@@ -62,9 +60,7 @@ function Contact() {
   const handleMessageChange = (e) => {
     const value = e.target.value;
     setMessage(value);
-    setMessageError(
-      isValidMessage(value) ? "" : t("contact.messageError")
-    );
+    setMessageError(isValidMessage(value) ? "" : t("contact.messageError"));
   };
 
   const handleFormSubmit = async (e) => {
@@ -131,10 +127,7 @@ function Contact() {
     <>
       <Head>
         <title>{t("contact.title")} - Pixecurity</title>
-        <meta
-          name="description"
-          content={t("contact.description")}
-        />
+        <meta name="description" content={t("contact.description")} />
         <meta
           name="keywords"
           content="contact, nous contacter, projet, sécurité, solutions de sûreté, surveillance, Pixecurity, france, paris, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
@@ -151,10 +144,11 @@ function Contact() {
             <h3>{t("contact.description")}</h3>
 
             <p>
-              <img src="assets/logo-dark.svg" alt="Pixecurity Logo" />
+              <img src="/assets/logo-dark.svg" alt="Pixecurity Logo" />
             </p>
             <p>
-              <i className="fa-solid fa-phone"></i>{t("contact.phone")}
+              <i className="fa-solid fa-phone"></i>
+              {t("contact.phone")}
             </p>
             <p>
               <i className="fa-solid fa-envelope"></i>
@@ -169,7 +163,8 @@ function Contact() {
               </Link>
             </p>
             <p>
-              <i className="fa-solid fa-location-dot"></i> {t("contact.address")}
+              <i className="fa-solid fa-location-dot"></i>{" "}
+              {t("contact.address")}
             </p>
           </div>
 

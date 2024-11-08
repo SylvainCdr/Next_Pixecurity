@@ -240,13 +240,13 @@
             "section2": {
               "cards": 
                 {
-                  "imgSrc1": "../../assets/aboutUs/about1.webp",
+                  "imgSrc1": "/assets/aboutUs/about1.webp",
                   "title1": "Construction",
                   "text1": "With civil engineering-trained engineers, Pixecurity retains a construction DNA, which remains the essence of our profession.",
-                  "imgSrc2": "../../aboutUs/assets/about2.webp",
+                  "imgSrc2": "/aboutUs/assets/about2.webp",
                   "title2": "Applied Electronics",
                   "text2": "In addition to civil engineering, our senior engineers are trained in applied electronics: home automation, video protection, access control...",
-                  "imgSrc3": "../../aboutUs/assets/about3.webp",
+                  "imgSrc3": "/aboutUs/assets/about3.webp",
                   "title3": "IT",
                   "text3": "Pixecurity complements its team with certified network, systems, and IT engineers..."
                 }
@@ -255,7 +255,7 @@
             "section3": {
               "quote": "\"Our goal? <br /> Meet the requirements and anticipate the needs of our clients. <br /> Simplify the understanding of security.\"",
               "author": "-- Yann Duchet, CEO Pixecurity",
-              "imgSrc": "../../assets/team/YANN-aboutUs.jpg"
+              "imgSrc": "/assets/team/YANN-aboutUs.jpg"
             },
             "section4": {
               "title": "Meet the Pixecurity Experts",

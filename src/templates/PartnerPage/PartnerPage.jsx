@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 const PartnerPage = () => {
   const router = useRouter();
@@ -48,11 +49,13 @@ const PartnerPage = () => {
       <div className={styles.partnerContainer}>
         <div className={styles.partnerHeader}>
           <h1 className={styles.partnerTitle}>{partner.name}</h1>
-          <img
+          <Image
             src={partner.logo}
             alt={`Logo de ${partner.name}`}
             loading="lazy"
             className={styles.partnerLogo}
+            width={800}
+            height={150}
           />
         </div>
         <div className={styles.section1}>

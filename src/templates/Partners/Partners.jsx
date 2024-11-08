@@ -5,6 +5,8 @@ import AOS from "aos";
 import Link from "next/link";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
+
 
 const Partners = () => {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
@@ -74,11 +76,13 @@ const Partners = () => {
       {Object.keys(groupedPartners).map((domain, domainIndex) => (
         <div key={domainIndex} className={styles["domain-title"]}>
           <h2>{domain}</h2>
-          <img
+          <Image
             src={domainImages[domain]}
             className={styles.domainImg}
             alt={domain}
             loading="lazy"
+            width = {2000}
+            height = {300}
           />
           {groupedPartners[domain].map((partner, partnerIndex) => {
             const isExpanded =
@@ -98,11 +102,13 @@ const Partners = () => {
                     rel="noreferrer"
                   >
                     <h1 className={styles.partnerName}> {partner.name}</h1>
-                    <img
+                    <Image
                       data-aos="zoom-in"
                       src={partner.logo}
                       alt={partner.name}
                       loading="lazy"
+                      width={600}
+                      height={150}
                     />
                   </Link>
                 </div>
