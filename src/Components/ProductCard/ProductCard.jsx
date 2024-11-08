@@ -53,13 +53,12 @@ function ProductCard({ product }) {
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
-            <Image
+            <img
               src={brandLogo.logo}
               alt={brandLogo.name}
               className={styles["brand-logo"]}
               loading="lazy"
-              width={80}
-              height={30}
+            
             />
           )}
         </div>
