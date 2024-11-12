@@ -2,8 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com"],
-    domains: ["files.pixecurity.com"], // Ajoutez ici l'hôte autorisé
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "files.pixecurity.com", // Add your authorized host here
+      },
+    ],
   },
 };
 
