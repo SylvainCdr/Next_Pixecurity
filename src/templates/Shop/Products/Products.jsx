@@ -61,14 +61,14 @@ const Products = ({ products, category, subcategory, filters }) => {
   }, [inView]);
 
   useEffect(() => {
-    // Ajouter un loader lors du changement de catégorie
     setIsCategoryLoading(true);
-    // Simuler un délai pour le chargement de la catégorie (si nécessaire)
-    setTimeout(() => {
-      setDisplayedProducts(products.slice(0, 20));
-      setIsCategoryLoading(false);
-    }, 500); // Ajustez le délai si nécessaire pour simuler le chargement
-  }, [category, subcategory, filters, products]); // Re-déclenche le chargement quand ces props changent
+    
+    // Réinitialiser displayedProducts lors du changement de catégorie
+    setDisplayedProducts(products.slice(0, 20));
+    
+    setIsCategoryLoading(false);
+  }, [category, subcategory, filters, products]);
+  
 
   return (
     <div className={styles["products-container"]}>
