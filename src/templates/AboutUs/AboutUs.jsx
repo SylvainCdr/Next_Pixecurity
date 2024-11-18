@@ -14,6 +14,110 @@ export default function AboutUs() {
 
   const { t } = useTranslation();
 
+  const teamMembers = [
+    {
+      name: "Kenza GAUTIAM",
+      role: "Commerciale Grands Comptes",
+      src: "/assets/team/KENZA.jpeg",
+    },
+    {
+      name: "Fabien THOMAS",
+      role: "Brand Manager",
+      src: "/assets/team/FABIEN.jpg",
+    },
+    {
+      name: "Anaelle Souhaut",
+      role: "Chargée d'Affaires",
+      src: "/assets/team/ANAELLE.jpg",
+    },
+    {
+      name: "Fabrice VALLEE",
+      role: "Commercial Grands Comptes",
+      src: "/assets/team/FABRICE.jpg",
+    },
+    {
+      name: "Yanis MEBARKI",
+      role: "Commercial",
+      src: "/assets/team/YANNIS.jpg",
+    },
+    {
+      name: "Dyhia LAGA",
+      role: "Chargée d'Etude Avant-Vente",
+      src: "/assets/team/DYHIA.jpg",
+    },
+    {
+      name: "Jessica FILIALI",
+      role: "Assistante de Direction",
+      src: "/assets/team/JESSICA.jpg",
+    },
+    {
+      name: "Abdulrhaman SHOUGRI",
+      role: "Commercial",
+      src: "/assets/team/ABDULRAHMAN.jpg",
+    },
+    {
+      name: "Adrien JOANNY",
+      role: "Ingénieur Systèmes & Réseaux",
+      src: "/assets/team/ADRIEN_J.jpg",
+    },
+    {
+      name: "Nathalie JANNOT",
+      role: "Assistante de Direction",
+      src: "/assets/team/NATHALIE.jpg",
+    },
+    {
+      name: "Yasmina AOUAM",
+      role: "Chargée d'Etude Avant-Vente",
+      src: "/assets/team/YASMINA.jpg",
+    },
+    {
+      name: "Aziz ARJDAL",
+      role: "Technicien Systèmes & Réseaux",
+      src: "/assets/team/AZIZ.jpg",
+    },
+    {
+      name: "Sylvain CADORET",
+      role: "Développeur",
+      src: "/assets/team/SYLVAIN.jpg",
+    },
+    {
+      name: "Michael GONFIER",
+      role: "Technicien Systèmes & Réseaux",
+      src: "/assets/team/MICHAEL_.webp",
+    },
+    // {
+    //   name: "Amélie CORDIER",
+    //   role: "UX/UI Designer",
+    //   src: "/assets/team/AMELIE_.webp",
+    // },
+    {
+      name: "Mathieu PACREAU",
+      role: "Technicien supérieur Systèmes & Réseaux",
+      src: "/assets/team/MATHIEU_P.jpg",
+    },
+    {
+      name: "Adrien DESDOITS",
+      role: "Technicien Systèmes & Réseaux",
+      src: "/assets/team/ADRIEN_D.jpg",
+    },
+    {
+      name: "Morgane PEREIRA",
+      role: "Assistante Administrative",
+      src: "/assets/team/MORGANE_.webp",
+    },
+    {
+      name: "David LEPAGE",
+      role: "Chargé d'Affaires des Projets Transports",
+      src: "/assets/team/DAVID.jpg",
+    },
+    {
+      name: "Vincent ROCHETTE",
+      role: "Responsable Commercial Sud",
+      src: "/assets/team/VINCENT.webp",
+    },
+
+  ];
+
   return (
     <>
       <Head>
@@ -46,7 +150,7 @@ export default function AboutUs() {
             data-aos-duration="1500"
           >
             <div className={styles.top}>
-              <Image
+              <img
                 src={t("aboutUs.section2.cards.imgSrc1")}
                 alt=""
                 loading="lazy"
@@ -64,7 +168,7 @@ export default function AboutUs() {
             data-aos-duration="2000"
           >
             <div className={styles.top}>
-              <Image
+              <img
                 src={t("aboutUs.section2.cards.imgSrc2")}
                 alt=""
                 loading="lazy"
@@ -82,7 +186,7 @@ export default function AboutUs() {
             data-aos-duration="2500"
           >
             <div className={styles.top}>
-              <Image
+              <img
                 src={t("aboutUs.section2.cards.imgSrc3")}
                 alt=""
                 loading="lazy"
@@ -101,12 +205,12 @@ export default function AboutUs() {
           />
           <div className={styles.bottom}>
             <p>{t("aboutUs.section3.author")}</p>
-            <Image
+            <img
               src={t("aboutUs.section3.imgSrc")}
               alt=""
               loading="lazy"
-              width={400}
-              height={400}
+              width={300}
+              height={300}
             />
           </div>
         </div>
@@ -115,333 +219,21 @@ export default function AboutUs() {
           <h1>{t("aboutUs.section4.title")}</h1>
           <h2>{t("aboutUs.section4.subtitle")}</h2>
           <ul className={styles["auto-grid"]} role="list">
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Kenza GAUTIAM</h2>
-                <p>Commerciale</p>
-                <Image
-                  alt="Kenza GAUTIAM"
-                  src="/assets/team/KENZA.jpeg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Fabien THOMAS</h2>
-                <p>Brand Manager</p>
-                <Image
-                  alt="Fabien THOMAS"
-                  src="/assets/team/FABIEN.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Anaelle Souhaut</h2>
-                <p>Chargée d'Affaires</p>
-                <Image
-                  alt="Fabien THOMAS"
-                  src="/assets/team/ANAELLE.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Fabrice VALLEE</h2>
-                <p>Commercial Grands Comptes</p>
-                <Image
-                  alt="Fabrice VALLEE"
-                  src="/assets/team/FABRICE.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Yanis MEBARKI</h2>
-                <p>Commercial</p>
-                <Image
-                  alt="Yanis MEBARKI"
-                  src="/assets/team/YANNIS.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Dyhia LAGA</h2>
-                <p>Chargée d'Etude Avant-Vente</p>
-                <Image
-                  alt="Dyhia LAGA"
-                  src="/assets/team/DYHIA.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Jessica FILIALI</h2>
-                <p>Assistante de Direction</p>
-                <Image
-                  alt="Jessica FILIALI"
-                  src="/assets/team/JESSICA.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Abdulrhaman SHOUGRI</h2>
-                <p>Commercial</p>
-                <Image
-                  alt="Abdulrhaman SHOUGRI"
-                  src="/assets/team/ABDULRAHMAN.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Adrien JOANNY</h2>
-                <p>Ingénieur Systèmes & Réseaux</p>
-                <Image
-                  alt="Adrien JOANNY"
-                  src="/assets/team/ADRIEN_J.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Meriem BOUSSAHA</h2>
-                <p>Développeuse</p>
-                <Image
-                  alt="Anaelle SOUHAUT"
-                  src="/assets/team/MIRIEM.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Alexis OTTINA</h2>
-                <p>Développeur</p>
-                <Image
-                  alt="Alexis OTTINA"
-                  src="/assets/team/ALEXIS.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Abdelhadi LAMMINI</h2>
-                <p>Product Owner</p>
-                <Image
-                  alt="Abdelhadi LAMMINI"
-                  src="/assets/team/ABDELHADI_.webp"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Nathalie JANNOT</h2>
-                <p>Assistante de Direction</p>
-                <Image
-                  alt="Nathalie JANNOT"
-                  src="/assets/team/NATHALIE.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Augustin MAHIEU</h2>
-                <p>Développeur</p>
-                <Image
-                  alt="Augustin MAHIEU"
-                  src="/assets/team/AUGUSTIN.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Yasmina AOUAM</h2>
-                <p>Chargée d'Etude Avant-Vente</p>
-                <Image
-                  alt="Yasmina AOUAM"
-                  src="/assets/team/YASMINA.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Alex HUBERT</h2>
-                <p>Développeur</p>
-                <Image
-                  alt="Alex HUBERT"
-                  src="/assets/team/ALEX.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Aziz ARJDAL</h2>
-                <p>Technicien Systèmes & Réseaux</p>
-                <Image
-                  alt="Aziz ARJDAL"
-                  src="/assets/team/AZIZ.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Sylvain CADORET</h2>
-                <p>Développeur</p>
-                <Image
-                  alt="Sylvain CADORET"
-                  src="/assets/team/SYLVAIN.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Michael GONFIER</h2>
-                <p>Technicien Systèmes & Réseaux</p>
-                <Image
-                  alt="Michael GONFIER"
-                  src="/assets/team/MICHAEL_.webp"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Amélie CORDIER</h2>
-                <p>UX/UI Designer</p>
-                <Image
-                  alt="Amélie CORDIER"
-                  src="/assets/team/AMELIE_.webp"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Mathieu PACREAU</h2>
-                <p>Technicien supérieur Systèmes & Réseaux</p>
-                <Image
-                  alt="Mathieu PACREAU"
-                  src="/assets/team/MATHIEU_P.jpg"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Adrien DESDOITS</h2>
-                <p>Technicien Systèmes & Réseaux</p>
-                <Image
-                  alt="Adrien DESDOITS"
-                  src="/assets/team/ADRIEN_D.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Morgane PEREIRA</h2>
-                <p>Assistante Administrative</p>
-                <Image
-                  alt="Morgane PEREIRA"
-                  src="/assets/team/MORGANE_.webp"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>David LEPAGE</h2>
-                <p>Chargé d'Affaires des Projets Transports</p>
-                <Image
-                  alt="David LEPAGE"
-                  src="/assets/team/DAVID.jpg"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
-
-            <li>
-              <div className={styles.profile}>
-                <h2 className={styles["profile__name"]}>Andy BARZOLA</h2>
-                <p>3D Designer</p>
-                <Image
-                  alt="Andy BARZOLA"
-                  src="/assets/team/ANDY.webp"
-                  loading="lazy"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            </li>
+            {teamMembers.map((member, index) => (
+              <li key={index}>
+                <div className={styles.profile}>
+                  <h2 className={styles["profile__name"]}>{member.name}</h2>
+                  <p>{member.role}</p>
+                  <Image
+                    alt={member.name}
+                    src={member.src}
+                    loading="lazy"
+                    width={300}
+                    height={300}
+                  />
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
