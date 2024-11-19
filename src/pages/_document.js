@@ -16,6 +16,7 @@ export default function Document() {
         />
         <meta name="author" content="Pixecurity" />
         <meta name="robots" content="index, follow" />
+       
         <meta
           property="og:title"
           content="Pixecurity - Fournisseur de solutions de sûreté intelligentes"
@@ -41,23 +42,7 @@ export default function Document() {
           content="N873MTUl_TjLc2KnzhdPY9hti3IdxlOYyukQq3DkWYo"
         />
 
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Pixecurity - Fournisseur de solutions de sûreté intelligentes"
-        />
-        <meta
-          name="twitter:description"
-          content="Pixecurity offre des solutions de sûreté innovantes pour protéger vos biens et votre personnel. Découvrez nos solutions de sécurité."
-        />
-        <meta
-          name="twitter:image"
-          content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
-        />
-        <meta name="twitter:site" content="@pixecurity" />
-
-        {/* Favicon for the tab */}
+        {/* Favicon  */}
         <link
           rel="icon"
           href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"

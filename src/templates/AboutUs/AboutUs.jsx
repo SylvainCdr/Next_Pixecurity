@@ -16,9 +16,9 @@ export default function AboutUs() {
 
   const teamMembers = [
     {
-      name: "Kenza GAUTIAM",
-      role: "Commerciale Grands Comptes",
-      src: "/assets/team/KENZA.jpeg",
+      name: "Fabrice VALLEE",
+      role: "Commercial Grands Comptes",
+      src: "/assets/team/FABRICE.jpg",
     },
     {
       name: "Fabien THOMAS",
@@ -26,30 +26,21 @@ export default function AboutUs() {
       src: "/assets/team/FABIEN.jpg",
     },
     {
-      name: "Anaelle Souhaut",
+      name: "Anaelle SOUHAUT",
       role: "Chargée d'Affaires",
       src: "/assets/team/ANAELLE.jpg",
     },
     {
-      name: "Fabrice VALLEE",
-      role: "Commercial Grands Comptes",
-      src: "/assets/team/FABRICE.jpg",
-    },
-    {
       name: "Yanis MEBARKI",
-      role: "Commercial",
+      role: "Technicien de Mise en Service",
       src: "/assets/team/YANNIS.jpg",
     },
     {
-      name: "Dyhia LAGA",
-      role: "Chargée d'Etude Avant-Vente",
-      src: "/assets/team/DYHIA.jpg",
+      name: "Kenza GAUTIAM",
+      role: "Commerciale Grands Comptes",
+      src: "/assets/team/KENZA.jpeg",
     },
-    {
-      name: "Jessica FILIALI",
-      role: "Assistante de Direction",
-      src: "/assets/team/JESSICA.jpg",
-    },
+
     {
       name: "Abdulrhaman SHOUGRI",
       role: "Commercial",
@@ -61,49 +52,14 @@ export default function AboutUs() {
       src: "/assets/team/ADRIEN_J.jpg",
     },
     {
-      name: "Nathalie JANNOT",
-      role: "Assistante de Direction",
-      src: "/assets/team/NATHALIE.jpg",
-    },
-    {
-      name: "Yasmina AOUAM",
+      name: "Dyhia LAGA",
       role: "Chargée d'Etude Avant-Vente",
-      src: "/assets/team/YASMINA.jpg",
+      src: "/assets/team/DYHIA.jpg",
     },
-    {
-      name: "Aziz ARJDAL",
-      role: "Technicien Systèmes & Réseaux",
-      src: "/assets/team/AZIZ.jpg",
-    },
-    {
-      name: "Sylvain CADORET",
-      role: "Développeur",
-      src: "/assets/team/SYLVAIN.jpg",
-    },
-    {
-      name: "Michael GONFIER",
-      role: "Technicien Systèmes & Réseaux",
-      src: "/assets/team/MICHAEL_.webp",
-    },
-    // {
-    //   name: "Amélie CORDIER",
-    //   role: "UX/UI Designer",
-    //   src: "/assets/team/AMELIE_.webp",
-    // },
     {
       name: "Mathieu PACREAU",
-      role: "Technicien supérieur Systèmes & Réseaux",
+      role: "Technicien Supérieur Systèmes & Réseaux",
       src: "/assets/team/MATHIEU_P.jpg",
-    },
-    {
-      name: "Adrien DESDOITS",
-      role: "Technicien Systèmes & Réseaux",
-      src: "/assets/team/ADRIEN_D.jpg",
-    },
-    {
-      name: "Morgane PEREIRA",
-      role: "Assistante Administrative",
-      src: "/assets/team/MORGANE_.webp",
     },
     {
       name: "David LEPAGE",
@@ -111,11 +67,65 @@ export default function AboutUs() {
       src: "/assets/team/DAVID.jpg",
     },
     {
+      name: "Nathalie JANNOT",
+      role: "Assistante de Direction",
+      src: "/assets/team/NATHALIE.jpg",
+    },
+    {
+      name: "Michael GONFIER",
+      role: "Technicien de Mise en Service",
+      src: "/assets/team/MICHAEL_.webp",
+    },
+
+    {
+      name: "Adrien DESDOITS",
+      role: "Technicien de Mise en Service",
+      src: "/assets/team/ADRIEN_D.jpg",
+    },
+    {
+      name: "Jessica FILIALI",
+      role: "Assistante de Direction",
+      src: "/assets/team/JESSICA.jpg",
+    },
+  
+    {
+      name: "Aziz ARJDAL",
+      role: "Technicien de Mise en Service Supérieur ",
+      src: "/assets/team/AZIZ.jpg",
+    },
+    {
+      name: "Sylvain CADORET",
+      role: "Développeur",
+      src: "/assets/team/SYLVAIN.jpg",
+    },
+
+    {
+      name: "Yasmina AOUAM",
+      role: "Chargée d'Etude Avant-Vente",
+      src: "/assets/team/YASMINA.jpg",
+    },
+ 
+
+    {
       name: "Vincent ROCHETTE",
       role: "Responsable Commercial Sud",
       src: "/assets/team/VINCENT.webp",
     },
-
+    {
+      name: "Antoine COUDERT",
+      role: "Commercial",
+      src: "/assets/team/ANTOINE.webp",
+    },
+    {
+      name: "Morgane PEREIRA",
+      role: "Assistante Administrative",
+      src: "/assets/team/MORGANE_.webp",
+    },
+    {
+      name: "Hector RICHARD",
+      role: "Technicien de Mise en Service",
+      src: "/assets/team/HECTOR.webp",
+    },
   ];
 
   return (
