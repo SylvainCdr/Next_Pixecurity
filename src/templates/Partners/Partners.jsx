@@ -102,13 +102,12 @@ const Partners = () => {
                     rel="noreferrer"
                   >
                     <h1 className={styles.partnerName}> {partner.name}</h1>
-                    <Image
+                    <img
                       data-aos="zoom-in"
                       src={partner.logo}
                       alt={partner.name}
                       loading="lazy"
-                      width={600}
-                      height={150}
+                     
                     />
                   </Link>
                 </div>
