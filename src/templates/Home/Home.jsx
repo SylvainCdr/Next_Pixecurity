@@ -84,11 +84,14 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.linkedinFeedCarousel}>
-          <iframe
+          {/* <iframe
             src="https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604"
             width="100%"
             height="760"
-          ></iframe>{" "}
+          ></iframe>{" "} */}
+
+<iframe width="100%" height="440"  src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC" frameborder="0"></iframe>
+
         </div>
       </div>
     </>
