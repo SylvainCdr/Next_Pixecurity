@@ -38,7 +38,7 @@ export default function PartnersWhatsUp() {
         </div>
 
         <iframe
-          width="1440"
+          width="1350"
           height="3000"
           src="https://rss.app/embed/v1/wall/_uW33og8IouUH8pL5"
           frameborder="0"
@@ -46,14 +46,15 @@ export default function PartnersWhatsUp() {
 
         {/* // Lien vers la boutique en ligne et nous contacter */}
         <div className={styles.links}>
-          <button>
-            <Link href="https://www.google.com">Visiter la Boutique</Link>
-          </button>
-          <button>
-            <Link href="https://www.google.com">
+         
+            <Link href="/boutique">  <button>Visiter la Boutique</button></Link>
+          
+          
+            <Link href="/contact"> <button>
               Un Projet ? Contactez-nous
-            </Link>
+            
           </button>
+          </Link>
         </div>
       </div>
     </>
