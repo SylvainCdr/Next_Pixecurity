@@ -42,6 +42,9 @@ function Footer() {
           <Link href="/contact">
             <li>{t('footer.contactLink')}</li>
           </Link>
+          <Link href="/actualites-de-nos-partenaires">
+            <li>{t('footer.partnersActus')}</li>
+          </Link>
         </ul>
       </div>
 

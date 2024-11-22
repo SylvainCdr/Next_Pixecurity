@@ -8,280 +8,255 @@
     "myAccount": "Mon compte",
     "admin": "Administration",
     "logout": "Déconnexion"
-   
-},
-
-    "footer": {
-      "description": "Fournisseur de solutions de sûreté intelligentes : Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...",
-      "siteMap": "Plan du site",
-      "contactUs": "Nous contacter",
-      "home": "Accueil",
-      "shop": "Boutique",
-      "expertise": "Notre expertise",
-      "signupLogin": "Inscription / Connexion",
-      "aboutUsLink": "Qui sommes-nous ?",
-      "partnersLink": "Nos partenaires",
-      "quotationLink": "Demande de devis",
-      "contactLink": "Contact",
-      "email": "pixecurity@pixecurity.com",
-      "phone": "(+33) 1 39 60 98 82",
-      "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
-      "linkedin": "Linkedin",
-      "copyright": "© 2024 Pixecurity. Tous droits réservés."
-    },
-  
-
-    
-      "popup": {
-        "title": "Inscrivez-vous et obtenez",
-        "discount": "-15%",
-        "description": "Rejoignez notre communauté et profitez d'offres exclusives et de réductions immédiates sur la Boutique en ligne.",
-        "signupButton": "Inscrivez-vous maintenant",
-        "contactTitle": "Vous êtes un professionnel ?",
-        "contactDescription": "Contactez-nous et bénéficiez de remises supplémentaires",
-        "contactButton": "Nous Contacter",
-        "closeButton": "Fermer"
-      },
-    
-    
-
-    "homepageHero" : {
+  },
+  "footer": {
+    "description": "Fournisseur de solutions de sûreté intelligentes : Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...",
+    "siteMap": "Plan du site",
+    "contactUs": "Nous contacter",
+    "home": "Accueil",
+    "shop": "Boutique",
+    "expertise": "Notre expertise",
+    "signupLogin": "Inscription / Connexion",
+    "aboutUsLink": "Qui sommes-nous ?",
+    "partnersLink": "Nos partenaires",
+    "quotationLink": "Demande de devis",
+    "contactLink": "Contact",
+    "partnersActus": "Actualités de nos partenaires",
+    "email": "pixecurity@pixecurity.com",
+    "phone": "(+33) 1 39 60 98 82",
+    "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
+    "linkedin": "Linkedin",
+    "copyright": "© 2024 Pixecurity. Tous droits réservés."
+  },
+  "popup": {
+    "title": "Inscrivez-vous et obtenez",
+    "discount": "-15%",
+    "description": "Rejoignez notre communauté et profitez d'offres exclusives et de réductions immédiates sur la Boutique en ligne.",
+    "signupButton": "Inscrivez-vous maintenant",
+    "contactTitle": "Vous êtes un professionnel ?",
+    "contactDescription": "Contactez-nous et bénéficiez de remises supplémentaires",
+    "contactButton": "Nous Contacter",
+    "closeButton": "Fermer"
+  },
+  "homepageHero": {
     "heroTitle": "Fournisseur de Solutions de Sûreté Intelligentes",
     "heroDescription": "Vidéosurveillance, Analyse d'image, Contrôle d'accès, Réseaux/stockage des données, Hypervision...",
-      "visitShop": "Visiter la boutique",
-      "quotation": "Demande de devis",
-      "section2Text1": "La sûreté ne dépend plus de la force brute, mais de l'intelligence. Chez Pixecurity, nous sommes les fournisseurs de systèmes de sûreté intelligents.",
-      "section2Text2": "Notre mission : vous accompagner avec les meilleurs produits et des solutions sur-mesure, repensant la sécurité selon vos besoins."
+    "visitShop": "Visiter la boutique",
+    "quotation": "Demande de devis",
+    "section2Text1": "La sûreté ne dépend plus de la force brute, mais de l'intelligence. Chez Pixecurity, nous sommes les fournisseurs de systèmes de sûreté intelligents.",
+    "section2Text2": "Notre mission : vous accompagner avec les meilleurs produits et des solutions sur-mesure, repensant la sécurité selon vos besoins."
+  },
+  "home": {
+    "offerTitle": "Une offre pensée autrement",
+    "offerDescription": "La protection de vos données personnelles certifiée Pixecurity c'est : la fourniture d'outils électroniques, une plateforme de gestion de projets réalisée en propre pour faciliter l'interaction avec nos experts, des développements spécifiques et sur mesure, la mise en place de solutions cyber. Des certifications de conformités délivrées par nos consultants sur du compliance : Pixecurity couvre toute la haute chaîne de valeur de la sûreté. Pixecurity est le fournisseur de solutions de sûreté 3.0.",
+    "aboutUsTitle": "Qui sommes-nous ?",
+    "aboutUsDescription": "Des ingénieurs avant-gardistes. Des experts 3.0, natifs du numérique, spécialisés dans le BTP, les réseaux, les technologies du bâtiment, et toujours à l'affût des dernières avancées technologiques. Ce sont de véritables artisans de la sûreté, déterminés à dénicher les solutions les plus adaptées à vos exigences.",
+    "ourTeam": "Notre équipe",
+    "ourExpertise": "Notre expertise",
+    "contactUs": "Contactez-nous"
+  },
+  "skills": {
+    "videoprotection": {
+      "title": "Vidéoprotection",
+      "description": "L'analyse d'image doit permettre de gagner du temps et de simplifier l'expérience utilisateur sans être une usine à gaz. Notre savoir-faire nous permet de vous proposer les meilleurs produits."
     },
-
-      "home" : { 
-      "offerTitle": "Une offre pensée autrement",
-      "offerDescription": "La protection de vos données personnelles certifiée Pixecurity c'est : la fourniture d'outils électroniques, une plateforme de gestion de projets réalisée en propre pour faciliter l'interaction avec nos experts, des développements spécifiques et sur mesure, la mise en place de solutions cyber. Des certifications de conformités délivrées par nos consultants sur du compliance : Pixecurity couvre toute la haute chaîne de valeur de la sûreté. Pixecurity est le fournisseur de solutions de sûreté 3.0.",
-      "aboutUsTitle": "Qui sommes-nous ?",
-      "aboutUsDescription": "Des ingénieurs avant-gardistes. Des experts 3.0, natifs du numérique, spécialisés dans le BTP, les réseaux, les technologies du bâtiment, et toujours à l'affût des dernières avancées technologiques. Ce sont de véritables artisans de la sûreté, déterminés à dénicher les solutions les plus adaptées à vos exigences.",
-        "ourTeam": "Notre équipe",
-        "ourExpertise": "Notre expertise",
-        "contactUs": "Contactez-nous"
-      },
-
-
-  
-    "skills": {
-      "videoprotection": {
-        "title": "Vidéoprotection",
-        "description": "L'analyse d'image doit permettre de gagner du temps et de simplifier l'expérience utilisateur sans être une usine à gaz. Notre savoir-faire nous permet de vous proposer les meilleurs produits."
-      },
-      "analyseImage": {
-        "title": "Analyse d'image",
-        "description": "Protection des biens et des personnes, levée de doutes et bien plus encore... Pixecurity sélectionne pour vous les meilleures solutions du marché : Caméras visibles, thermiques, mobiles, fish-eye..."
-      },
-      "controleAcces": {
-        "title": "Contrôle d'accès",
-        "description": "Suivi, gestion, traçabilité, protection des personnes. Pixecurity complète son offre pour vous proposer une solution globale avec les leaders du marché."
-      },
-      "cloudObjetsConnectes": {
-        "title": "Cloud et objets connectés",
-        "description": "Tout objet connecté est aujourd'hui un capteur de sûreté devient exploitable depuis n'importe quelle interface utilisateur. Pixecurity vous propose des solutions innovantes et intelligentes permettant de les traiter."
-      },
-      "reseauxStockage": {
-        "title": "Réseaux SI / Stockage",
-        "description": "Le traitement, le transport et l'exploitation doivent être garantis par une expertise métier. Les ingénieurs Pixecurity vous assurent un dimensionnement optimal des réseaux, du stockage, des ressources informatiques."
-      },
-      "ingenierie": {
-        "title": "Ingénierie",
-        "description": "Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau 2-Niveau 3 sur vos systèmes de sûreté. Avant-vente, suivi de projet, mise en service, maintenance, livrables documentaires..."
-      }
+    "analyseImage": {
+      "title": "Analyse d'image",
+      "description": "Protection des biens et des personnes, levée de doutes et bien plus encore... Pixecurity sélectionne pour vous les meilleures solutions du marché : Caméras visibles, thermiques, mobiles, fish-eye..."
     },
-    "learnMore": "En savoir plus",
-
-
-    "homepagePartners": {
+    "controleAcces": {
+      "title": "Contrôle d'accès",
+      "description": "Suivi, gestion, traçabilité, protection des personnes. Pixecurity complète son offre pour vous proposer une solution globale avec les leaders du marché."
+    },
+    "cloudObjetsConnectes": {
+      "title": "Cloud et objets connectés",
+      "description": "Tout objet connecté est aujourd'hui un capteur de sûreté devient exploitable depuis n'importe quelle interface utilisateur. Pixecurity vous propose des solutions innovantes et intelligentes permettant de les traiter."
+    },
+    "reseauxStockage": {
+      "title": "Réseaux SI / Stockage",
+      "description": "Le traitement, le transport et l'exploitation doivent être garantis par une expertise métier. Les ingénieurs Pixecurity vous assurent un dimensionnement optimal des réseaux, du stockage, des ressources informatiques."
+    },
+    "ingenierie": {
+      "title": "Ingénierie",
+      "description": "Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau 2-Niveau 3 sur vos systèmes de sûreté. Avant-vente, suivi de projet, mise en service, maintenance, livrables documentaires..."
+    }
+  },
+  "learnMore": "En savoir plus",
+  "homepagePartners": {
     "partnersTitle": "Nos partenaires",
     "partnersSubtitle": "L'excellence du marché à votre service",
     "partnersDescription": "Qu'il s'agisse de caméras visibles, thermiques, de systèmes de gestion vidéo, ou d'IP... Les ingénieurs de Pixecurity s'engagent à sélectionner pour vous les produits les plus performants, parfaitement adaptés à votre projet.",
     "learnMore": "En savoir plus"
   },
-
   "homepageCountup": {
-      "partners": "Partenaires",
-      "clients": "Clients",
-      "projects": "Projets"
+    "partners": "Partenaires",
+    "clients": "Clients",
+    "projects": "Projets"
+  },
+  "trustedBy": "Ils nous font confiance",
+  "expertiseHeroTitle": "Notre Expertise : Votre protection, notre engagement",
+  "expertiseHeroSubtitle": "Une sécurité complète",
+  "expertiseHeroDescription": "Avec Pixecurity, votre sûreté est entre de bonnes mains à chaque étape, de la conception à la certification.",
+  "forces": {
+    "point1": "Des outils électroniques de pointe, taillés sur mesure pour répondre à vos besoins.",
+    "point2": "Une plateforme de gestion de projets élaborée en interne, offrant une interaction aisée avec nos experts.",
+    "point3": "Des solutions de développement sur mesure, conçues spécialement pour vous.",
+    "point4": "Des mesures de cybersécurité avancées pour une protection optimale.",
+    "point5": "La délivrance de certifications de conformité par nos consultants spécialisés."
+  },
+  "videoProtection": {
+    "title": "Vidéoprotection",
+    "cam1": {
+      "title": "Caméras visibles",
+      "subtitle": "La caméra tout-terrain",
+      "description": "De jour comme de nuit les caméras visibles sont exploitées pour de la détection, de la reconnaissance ainsi que pour de l'identification. Pixecurity travaille avec les meilleurs fabricants pour cette typologie de caméras."
     },
-  
-      
-        "trustedBy": "Ils nous font confiance",
+    "cam2": {
+      "title": "Caméras Thermiques",
+      "subtitle": "Augmenter les contrastes",
+      "description": "Les caméras thermiques sont là pour augmenter un maximum les contrastes entre l'objet que l'on souhaite détecter et identifier et l'environnement dans lequel il se situe. Une préanalyse spécifique et poussée permet de sélectionner au plus juste la caméra thermique idéale."
+    },
+    "cam3": {
+      "title": "Caméras spécifiques",
+      "subtitle": "A chaque situation sa caméra",
+      "description": "Détection de gaz, caméras embarquées, milieux ATEX, mobiles, fish-eye... A chaque environnement sa caméra spécifique."
+    }
+  },
+  "imageAnalysis": {
+    "title": "Analyse d'image",
+    "realTime": {
+      "title": "Solutions d'analyse en temps réel",
+      "subtitle": "Augmentez l'intelligence",
+      "description": "Pixecurity travaille en partenariat avec des logiciels permettant la détection d'intrusion, de colis abandonnés, de comptage, de machine-learning..."
+    },
+    "postAnalysis": {
+      "title": "Solutions d'analyse a posteriori",
+      "subtitle": "Gagnez du temps",
+      "description": "La colorimétrie, la recherche d'individus, d'objets, de véhicules, de plaques d'immatriculation, lors d'investigations poussées par le client."
+    },
+    "businessIntelligence": {
+      "title": "Analyse et Business Intelligence",
+      "subtitle": "Allez plus loin",
+      "description": "Mise en place d'outils statistiques sur les taux de fréquentation, analyse comportementale, gestion des visiteurs, de la clientèle..."
+    }
+  },
+  "accessControl": {
+    "title": "Contrôle d'accès",
+    "doorManagement": {
+      "title": "Gestion des portes et des accès",
+      "subtitle": "Un contrôle d'accès VIP",
+      "description": "Depuis tout l'environnement du point d'accès jusqu'à la typologie du badge, Pixecurity s'entoure de partenaires qualifiés Niveau 3 sur les solutions : Til, Primion, Nedap."
+    },
+    "secureArchitecture": {
+      "title": "Architecture sécurisée (ANSSI)",
+      "subtitle": "Gagnez du temps",
+      "description": "Un design réfléchi Pixecurity met en place l'architecture physique, logicielle et logique pour rester en conformité avec les recommandations de la RGPD ainsi que celles de l'ANSSI."
+    },
+    "fullIntegratedSolution": {
+      "title": "Solution Full-intégrée (Hypervision)",
+      "subtitle": "Une solution unique",
+      "description": "Pixecurity propose une solution vidéo / contrôle d'accès full-intégrée via des partenaires travaillant sur une philosophie ouverte (Milestone, Til)."
+    }
+  },
+  "cloudAndIoT": {
+    "title": "Cloud et objets connectés",
+    "fullCloudSolutions": {
+      "title": "Solutions de sûreté full-cloud",
+      "subtitle": "Une architecture vidéo et contrôle d'accès full-cloud",
+      "description": "La transition vers le full-cloud est amorcée, Pixecurity propose une solution vidéo/contrôle d'accès packagée full-cloud permettant de pallier les coûts de stockage, de réseau, de matériel informatique. La solution est proposée en achat unique ou en mode SAS."
+    },
+    "cloudProjectManagement": {
+      "title": "Gestion de projet Pixecurity en full-cloud",
+      "subtitle": "Pixplatform",
+      "description": "Le monde a changé : la gestion de projet comme le travail se fait à distance. Pixecurity vous propose un outil performant, en cloud, pour suivre en temps réel vos affaires, vos livraisons... votre philosophie de sûreté."
+    },
+    "connectedObjects": {
+      "title": "Objets connectés",
+      "subtitle": "Données et rapidité",
+      "description": "La 5G est arrivée, en passant par le drone, les téléphones, les télécommandes BIM, la récupération de data n'a jamais été aussi facile et rapide. Pixecurity les exploite pour vous et les met en musique."
+    }
+  },
+  "networksSIStorage": {
+    "title": "Réseaux, SI, stockage",
+    "networks": {
+      "title": "Réseaux",
+      "subtitle": "Un savoir-faire à la française",
+      "description": "En physique : Pixecurity possède les plus hautes certifications réseau (Cisco) permettant de vous garantir une sécurisation d'un bout à l'autre de la chaîne jusqu'à vous amener vers des conformités cyber-sécurité. En cloud : Pixecurity met un point d'honneur à garantir la sécurisation des données de ses clients via un cloud souverain (OVH)."
+    },
+    "informationSystems": {
+      "title": "Systèmes d'Information",
+      "subtitle": "L'environnement c'est vous",
+      "description": "Toute la gestion de votre système d'information en serveur ou en mode poste client est paramétrée et configurée selon vos pré-requis (active directory, choix matériel)."
+    },
+    "storage": {
+      "title": "Stockage",
+      "subtitle": "Vers l'infini et le Peta",
+      "description": "Que ce soit en capacité ou en typologie de stockage (DAS, NAS, SAN), sécurisation des RAID (1, 5, 10), redondance à chaud ou à froid (miroir, grappe) Pixecurity certifie son expertise en la matière."
+    }
+  },
+  "partnersHeroTitle": "Nos partenaires",
+  "partnersHeroSubtitle": "Découvrez nos partenaires de confiance, leaders mondiaux en sécurité et surveillance.",
+  "partnersHeroDescription1": "Chez Pixecurity, nous nous engageons à vous fournir les meilleures solutions disponibles, grâce à des collaborations avec des entreprises innovantes et réputées. Chaque partenaire apporte son expertise et ses technologies de pointe, couvrant une vaste gamme de besoins : surveillance IP, gestion vidéo, contrôle d'accès et bien plus. Nos partenaires offrent des solutions avancées pour protéger vos biens et garantir votre tranquillité d'esprit.",
+  "partnersHeroDescription2": "Parcourez notre galerie pour en savoir plus sur ces entreprises et leurs produits. Nous sommes fiers de travailler avec ces acteurs majeurs pour vous offrir des solutions de sécurité de la plus haute qualité.",
+  "partnersHeroDescription3": "Bienvenue chez Pixecurity, où votre sécurité est notre priorité.",
+  "partnersHeroLink": "Actualités de nos partenaires",
+  "aboutUs": {
+    "title": "Qui sommes-nous ?",
+    "section1": {
+      "text": "Des ingénieurs avant tout. Des ingénieurs 3.0 même. Digital natives, branchés BTP, réseaux, technologies appliquées aux bâtiments, veille technologique... Bref, de vrais dealers de solutions de sureté prêts à tout pour trouver les bons produits adaptés à vos besoins.",
+      "button": "Un Projet? Parlons en !"
+    },
+    "section2": {
+      "cards": {
+        "imgSrc1": "/assets/aboutUs/about1.webp",
+        "title1": "BTP",
+        "text1": "Avec des ingénieurs de formation génie civil, Pixecurity conserve un ADN travaux, chantier, qui reste l'essence même de notre métier.",
+        "imgSrc2": "/assets/aboutUs/about2.webp",
+        "title2": "Électronique appliquée",
+        "text2": "En complément du génie civil, nos ingénieurs cadres sont formés en électronique appliquée : domotique, vidéoprotection, contrôle d'accès...",
+        "imgSrc3": "/assets/aboutUs/about3.webp",
+        "title3": "IT",
+        "text3": "Pixecurity complète son équipe par des ingénieurs réseaux certifiés, systèmes, SI..."
+      }
+    },
+    "section3": {
+      "quote": "\"Notre but ? <br /> Répondre aux exigences et anticiper les besoins de nos clients. <br /> Simplifier la compréhension de la sécurité.\"",
+      "author": "-- Yann Duchet, CEO Pixecurity",
+      "imgSrc": "/assets/team/YANN-aboutUs.jpg"
+    },
+    "section4": {
+      "title": "Rencontrez les experts de Pixecurity",
+      "subtitle": "Des spécialistes qualifiés qui mettent leur savoir-faire à votre service pour une protection optimale."
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Let's Get In Touch",
+    "description": "Dites-nous qui vous êtes et expliquez nous votre problématique en quelques mots. Nous vous recontacterons dans les plus brefs délais pour lancer le projet.",
+    "name": "Nom",
+    "firstname": "Prénom",
+    "company": "Entreprise (optionnel)",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Envoyer",
+    "phone": "(+33) 1 39 60 98 82",
+    "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
+    "linkedin": "Linkedin",
+    "nameError": "Nom invalide (minimum 2 lettres)",
+    "firstnameError": "Prénom invalide (minimum 2 lettres)",
+    "companyError": "Le nom de l'entreprise ne doit pas dépasser 30 caractères",
+    "emailError": "Email invalide",
+    "messageError": "Message invalide (au moins 50 caractères)",
+    "success": "Message envoyé avec succès",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "validationError": "Veuillez renseigner tous les champs correctement"
+  },
 
-      
-     
-
-          
   
-            "expertiseHeroTitle": "Notre Expertise : Votre protection, notre engagement",
-            "expertiseHeroSubtitle": "Une sécurité complète",
-            "expertiseHeroDescription": "Avec Pixecurity, votre sûreté est entre de bonnes mains à chaque étape, de la conception à la certification.",
-            "forces": {
-              "point1": "Des outils électroniques de pointe, taillés sur mesure pour répondre à vos besoins.",
-              "point2": "Une plateforme de gestion de projets élaborée en interne, offrant une interaction aisée avec nos experts.",
-              "point3": "Des solutions de développement sur mesure, conçues spécialement pour vous.",
-              "point4": "Des mesures de cybersécurité avancées pour une protection optimale.",
-              "point5": "La délivrance de certifications de conformité par nos consultants spécialisés."
-            },
-            "videoProtection": {
-              "title": "Vidéoprotection",
-              "cam1": {
-                "title": "Caméras visibles",
-                "subtitle": "La caméra tout-terrain",
-                "description": "De jour comme de nuit les caméras visibles sont exploitées pour de la détection, de la reconnaissance ainsi que pour de l'identification. Pixecurity travaille avec les meilleurs fabricants pour cette typologie de caméras."
-              },
-              "cam2": {
-                "title": "Caméras Thermiques",
-                "subtitle": "Augmenter les contrastes",
-                "description": "Les caméras thermiques sont là pour augmenter un maximum les contrastes entre l'objet que l'on souhaite détecter et identifier et l'environnement dans lequel il se situe. Une préanalyse spécifique et poussée permet de sélectionner au plus juste la caméra thermique idéale."
-              },
-              "cam3": {
-                "title": "Caméras spécifiques",
-                "subtitle": "A chaque situation sa caméra",
-                "description": "Détection de gaz, caméras embarquées, milieux ATEX, mobiles, fish-eye... A chaque environnement sa caméra spécifique."
-              }
-            },
-            "imageAnalysis": {
-              "title": "Analyse d'image",
-              "realTime": {
-                "title": "Solutions d'analyse en temps réel",
-                "subtitle": "Augmentez l'intelligence",
-                "description": "Pixecurity travaille en partenariat avec des logiciels permettant la détection d'intrusion, de colis abandonnés, de comptage, de machine-learning..."
-              },
-              "postAnalysis": {
-                "title": "Solutions d'analyse a posteriori",
-                "subtitle": "Gagnez du temps",
-                "description": "La colorimétrie, la recherche d'individus, d'objets, de véhicules, de plaques d'immatriculation, lors d'investigations poussées par le client."
-              },
-              "businessIntelligence": {
-                "title": "Analyse et Business Intelligence",
-                "subtitle": "Allez plus loin",
-                "description": "Mise en place d'outils statistiques sur les taux de fréquentation, analyse comportementale, gestion des visiteurs, de la clientèle..."
-              }
-            },
-            "accessControl": {
-              "title": "Contrôle d'accès",
-              "doorManagement": {
-                "title": "Gestion des portes et des accès",
-                "subtitle": "Un contrôle d'accès VIP",
-                "description": "Depuis tout l'environnement du point d'accès jusqu'à la typologie du badge, Pixecurity s'entoure de partenaires qualifiés Niveau 3 sur les solutions : Til, Primion, Nedap."
-              },
-              "secureArchitecture": {
-                "title": "Architecture sécurisée (ANSSI)",
-                "subtitle": "Gagnez du temps",
-                "description": "Un design réfléchi Pixecurity met en place l'architecture physique, logicielle et logique pour rester en conformité avec les recommandations de la RGPD ainsi que celles de l'ANSSI."
-              },
-              "fullIntegratedSolution": {
-                "title": "Solution Full-intégrée (Hypervision)",
-                "subtitle": "Une solution unique",
-                "description": "Pixecurity propose une solution vidéo / contrôle d'accès full-intégrée via des partenaires travaillant sur une philosophie ouverte (Milestone, Til)."
-              }
-            },
-            "cloudAndIoT": {
-              "title": "Cloud et objets connectés",
-              "fullCloudSolutions": {
-                "title": "Solutions de sûreté full-cloud",
-                "subtitle": "Une architecture vidéo et contrôle d'accès full-cloud",
-                "description": "La transition vers le full-cloud est amorcée, Pixecurity propose une solution vidéo/contrôle d'accès packagée full-cloud permettant de pallier les coûts de stockage, de réseau, de matériel informatique. La solution est proposée en achat unique ou en mode SAS."
-              },
-              "cloudProjectManagement": {
-                "title": "Gestion de projet Pixecurity en full-cloud",
-                "subtitle": "Pixplatform",
-                "description": "Le monde a changé : la gestion de projet comme le travail se fait à distance. Pixecurity vous propose un outil performant, en cloud, pour suivre en temps réel vos affaires, vos livraisons... votre philosophie de sûreté."
-              },
-              "connectedObjects": {
-                "title": "Objets connectés",
-                "subtitle": "Données et rapidité",
-                "description": "La 5G est arrivée, en passant par le drone, les téléphones, les télécommandes BIM, la récupération de data n'a jamais été aussi facile et rapide. Pixecurity les exploite pour vous et les met en musique."
-              }
-            },
-            "networksSIStorage": {
-              "title": "Réseaux, SI, stockage",
-              "networks": {
-                "title": "Réseaux",
-                "subtitle": "Un savoir-faire à la française",
-                "description": "En physique : Pixecurity possède les plus hautes certifications réseau (Cisco) permettant de vous garantir une sécurisation d'un bout à l'autre de la chaîne jusqu'à vous amener vers des conformités cyber-sécurité. En cloud : Pixecurity met un point d'honneur à garantir la sécurisation des données de ses clients via un cloud souverain (OVH)."
-              },
-              "informationSystems": {
-                "title": "Systèmes d'Information",
-                "subtitle": "L'environnement c'est vous",
-                "description": "Toute la gestion de votre système d'information en serveur ou en mode poste client est paramétrée et configurée selon vos pré-requis (active directory, choix matériel)."
-              },
-              "storage": {
-                "title": "Stockage",
-                "subtitle": "Vers l'infini et le Peta",
-                "description": "Que ce soit en capacité ou en typologie de stockage (DAS, NAS, SAN), sécurisation des RAID (1, 5, 10), redondance à chaud ou à froid (miroir, grappe) Pixecurity certifie son expertise en la matière."
-              }
-            },
-          
-          
-           
-            "partnersHeroTitle": "Nos partenaires",
-            "partnersHeroSubtitle": "Découvrez nos partenaires de confiance, leaders mondiaux en sécurité et surveillance.",
-            "partnersHeroDescription1": "Chez Pixecurity, nous nous engageons à vous fournir les meilleures solutions disponibles, grâce à des collaborations avec des entreprises innovantes et réputées. Chaque partenaire apporte son expertise et ses technologies de pointe, couvrant une vaste gamme de besoins : surveillance IP, gestion vidéo, contrôle d'accès et bien plus. Nos partenaires offrent des solutions avancées pour protéger vos biens et garantir votre tranquillité d'esprit.",
-            "partnersHeroDescription2": "Parcourez notre galerie pour en savoir plus sur ces entreprises et leurs produits. Nous sommes fiers de travailler avec ces acteurs majeurs pour vous offrir des solutions de sécurité de la plus haute qualité.",
-            "partnersHeroDescription3": "Bienvenue chez Pixecurity, où votre sécurité est notre priorité.",
-            "partnersHeroLink": "Actualités de nos partenaires",
-        
-            
-              "aboutUs": {
-                "title": "Qui sommes-nous ?",
-                "section1": {
-                  "text": "Des ingénieurs avant tout. Des ingénieurs 3.0 même. Digital natives, branchés BTP, réseaux, technologies appliquées aux bâtiments, veille technologique... Bref, de vrais dealers de solutions de sureté prêts à tout pour trouver les bons produits adaptés à vos besoins.",
-                  "button": "Un Projet? Parlons en !"
-                },
-                "section2": {
-                  "cards": { 
-                      "imgSrc1": "/assets/aboutUs/about1.webp",
-                      "title1": "BTP",
-                      "text1": "Avec des ingénieurs de formation génie civil, Pixecurity conserve un ADN travaux, chantier, qui reste l'essence même de notre métier.",
-                      "imgSrc2": "/assets/aboutUs/about2.webp",
-                      "title2": "Électronique appliquée",
-                      "text2": "En complément du génie civil, nos ingénieurs cadres sont formés en électronique appliquée : domotique, vidéoprotection, contrôle d'accès...",
-                      "imgSrc3": "/assets/aboutUs/about3.webp",
-                      "title3": "IT",
-                      "text3": "Pixecurity complète son équipe par des ingénieurs réseaux certifiés, systèmes, SI..."
-                }
-              },
-                "section3": {
-                  "quote": "\"Notre but ? <br /> Répondre aux exigences et anticiper les besoins de nos clients. <br /> Simplifier la compréhension de la sécurité.\"",
-                  "author": "-- Yann Duchet, CEO Pixecurity",
-                  "imgSrc": "/assets/team/YANN-aboutUs.jpg"
-                },
-                "section4": {
-                  "title": "Rencontrez les experts de Pixecurity",
-                  "subtitle": "Des spécialistes qualifiés qui mettent leur savoir-faire à votre service pour une protection optimale."
-                }
-              },
-            
-              
-                "contact": {
-                  "title": "Contactez-nous",
-                  "subtitle": "Let's Get In Touch",
-                  "description": "Dites-nous qui vous êtes et expliquez nous votre problématique en quelques mots. Nous vous recontacterons dans les plus brefs délais pour lancer le projet.",
-                  "name": "Nom",
-                  "firstname": "Prénom",
-                  "company": "Entreprise (optionnel)",
-                  "email": "Email",
-                  "message": "Message",
-                  "submit": "Envoyer",
-                  "phone": "(+33) 1 39 60 98 82",
-                  "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
-                  "linkedin": "Linkedin",
-                  "nameError": "Nom invalide (minimum 2 lettres)",
-                  "firstnameError": "Prénom invalide (minimum 2 lettres)",
-                  "companyError": "Le nom de l'entreprise ne doit pas dépasser 30 caractères",
-                  "emailError": "Email invalide",
-                  "messageError": "Message invalide (au moins 50 caractères)",
-                  "success": "Message envoyé avec succès",
-                  "error": "Une erreur s'est produite. Veuillez réessayer.",
-                  "validationError": "Veuillez renseigner tous les champs correctement"
-                }
-              
-              
-      
+  "partnersActus": {
+    "title": "Actualités de nos partenaires",
+    "description": "Découvrez les actualités et annonces importantes de nos partenaires de confiance. Leurs innovations et leurs solutions avancées renforcent notre mission : vous offrir une sécurité de pointe. Restez à jour avec les leaders du secteur.",
+    "shopBtn": "Visiter la boutique",
+    "contactBtn": " Un Projet ? Contactez-nous"
   }
-  
+}
