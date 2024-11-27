@@ -43,7 +43,7 @@
     -moz-border-radius: 0.5rem;
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
-    
+
     h1 {
       text-shadow: #681a70 1px 1px 6px;
       // text-shadow: rgb(0, 0, 0) 1px 1px 6px;
@@ -63,29 +63,26 @@
       color: #681a70;
       // color: white;
     }
- 
 
-  .homepageHeroCta {
-    // position: absolute;
-    // bottom: 25%;
-    // left:32%;
-    // width: 35%;
-    margin-top : 5%;
-    gap : 3rem;
-    display: flex;
-    // justify-content: space-around;
-    align-items: center;
+    .homepageHeroCta {
+      // position: absolute;
+      // bottom: 25%;
+      // left:32%;
+      // width: 35%;
+      margin-top: 5%;
+      gap: 3rem;
+      display: flex;
+      // justify-content: space-around;
+      align-items: center;
 
-  //   .ctaQuotation {
-  //     background-color: white;
-  //     color: var(--sunset1);
-  //     border: 2px solid var(--sunset1);
-    
+      //   .ctaQuotation {
+      //     background-color: white;
+      //     color: var(--sunset1);
+      //     border: 2px solid var(--sunset1);
 
-  // }
-
+      // }
+    }
   }
-}
 
   @media screen and (max-width: 1300px) {
     background-position: 25%;
@@ -119,13 +116,12 @@
         letter-spacing: 0.05rem;
         line-height: 1.2;
       }
-  
-    .homepageHeroCta {
-    
-      display: flex;
-      align-items: center;
+
+      .homepageHeroCta {
+        display: flex;
+        align-items: center;
+      }
     }
-  }
   }
 
   @media screen and (max-width: 1000px) {
@@ -157,20 +153,18 @@
         letter-spacing: 0.05rem;
         line-height: 1.2;
       }
-  
-    .homepageHeroCta {
-     
-      display: flex;
-      align-items: center;
 
-      button {
-        font-size: 1.1rem;
+      .homepageHeroCta {
+        display: flex;
+        align-items: center;
+
+        button {
+          font-size: 1.1rem;
+        }
       }
     }
   }
-  }
   @media screen and (max-width: 800px) {
-
     background-position: 5%;
 
     .titles {
@@ -194,14 +188,13 @@
         letter-spacing: 0.05rem;
         line-height: 1.2;
       }
-   
-    .homepageHeroCta {
-      
-      display: flex;
-      align-items: center;
+
+      .homepageHeroCta {
+        display: flex;
+        align-items: center;
+      }
     }
   }
-}
 
   @media screen and (max-width: 600px) {
     background-position: 10%;
@@ -227,17 +220,16 @@
         letter-spacing: 0.05rem;
         line-height: 1.2;
       }
-    
-    .homepageHeroCta {
-   
-      display: flex;
-     
-      align-items: center;
-      button {
-        padding: 0.6rem 1rem;
+
+      .homepageHeroCta {
+        display: flex;
+
+        align-items: center;
+        button {
+          padding: 0.6rem 1rem;
+        }
       }
     }
-  }
   }
 
   @media screen and (max-width: 450px) {
@@ -269,18 +261,17 @@
         letter-spacing: 0.05rem;
         line-height: 1.2;
       }
-   
-    .homepageHeroCta {
-   
-      display: flex;
-    
-      align-items: center;
 
-      button {
-        font-size: 1.1rem;
-        padding: 0.5rem 1rem;
+      .homepageHeroCta {
+        display: flex;
+
+        align-items: center;
+
+        button {
+          font-size: 1.1rem;
+          padding: 0.5rem 1rem;
+        }
       }
     }
-  }
   }
 }

@@ -31,16 +31,7 @@ export default function HomepageHero2() {
       </div>
 
 
-      {/* // <div className={styles.section2}>
-      //   <div className={styles["section2-intro"]}>
-      //     <div className={styles["section2-img"]}></div>
-
-      //     <div className={styles["section2-text"]}>
-      //       <p className={styles.text1} > {t("homepageHero.section2Text1")}</p>
-      //       <p className={styles.text2}> {t("homepageHero.section2Text2")}</p>
-      //     </div>
-      //   </div>
-      // </div> */}
+    
     </div>
   );
 }
