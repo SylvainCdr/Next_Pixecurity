@@ -72,7 +72,7 @@ export default function Home() {
         </div>
 
         <HomepagePartners />
-        
+
         <HomepageCountUp />
 
         <HomepageCustomersSlider />
@@ -84,14 +84,12 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.linkedinFeedCarousel}>
-          {/* <iframe
-            src="https://widgets.sociablekit.com/linkedin-page-posts/iframe/25480604"
+          <iframe
             width="100%"
-            height="760"
-          ></iframe>{" "} */}
-
-<iframe width="100%" height="440"  src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC" frameborder="0"></iframe>
-
+            height="440"
+            src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC"
+            frameborder="0"
+          ></iframe>
         </div>
       </div>
     </>
