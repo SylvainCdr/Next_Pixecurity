@@ -119,24 +119,22 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .partners-text { 
+    .partners-text {
       h2 {
         font-size: 2.3em;
       }
     }
   }
   @media screen and (max-width: 768px) {
-    
-    .partners-text { 
-    h2 {
-      font-size: 1.8em;
+    .partners-text {
+      h2 {
+        font-size: 1.8em;
+      }
     }
-  }
     .partners-logo {
       width: 80%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
 }
