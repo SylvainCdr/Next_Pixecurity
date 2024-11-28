@@ -62,11 +62,10 @@ function Header() {
     !pathname.startsWith("/inscription") &&
     !pathname.startsWith("/connexion") &&
     !pathname.startsWith("/inscription") &&
-    !pathname.startsWith("/devis") &&
+    !pathname.startsWith("/devis-securite-surveillance") &&
     !pathname.startsWith("/rgpd") &&
     !pathname.startsWith("/cgv") &&
-    !pathname.startsWith("/partenaires/");
-
+    !pathname.startsWith("/partenaires-leaders-en-securite-et-surveillance/");
 
   const changeLanguage = (lng) => {
     i18next.changeLanguage(lng);
@@ -91,18 +90,36 @@ function Header() {
               {t("header.Shop")} {/* Boutique */}
             </Link>
           </li>
-          <li className={pathname === "/notre-expertise" ? styles.active : ""}>
-            <Link href="/notre-expertise" onClick={handleLinkClick}>
+          <li
+            className={
+              pathname === "/notre-expertise-en-solutions-de-surete"
+                ? styles.active
+                : ""
+            }
+          >
+            <Link
+              href="/notre-expertise-en-solutions-de-surete"
+              onClick={handleLinkClick}
+            >
               {t("header.Expertise")} {/* Notre expertise */}
             </Link>
           </li>
-          <li className={pathname === "/partenaires" ? styles.active : ""}>
-            <Link href="/partenaires" onClick={handleLinkClick}>
+          <li
+            className={
+              pathname === "/partenaires-leaders-en-securite-et-surveillance"
+                ? styles.active
+                : ""
+            }
+          >
+            <Link
+              href="/partenaires-leaders-en-securite-et-surveillance"
+              onClick={handleLinkClick}
+            >
               {t("header.ourPartners")} {/* Nos partenaires */}
             </Link>
           </li>
-          <li className={pathname === "/a-propos" ? styles.active : ""}>
-            <Link href="/a-propos" onClick={handleLinkClick}>
+          <li className={pathname === "/qui-sommes-nous" ? styles.active : ""}>
+            <Link href="/qui-sommes-nous" onClick={handleLinkClick}>
               {t("header.about")} {/* Qui sommes-nous ? */}
             </Link>
           </li>

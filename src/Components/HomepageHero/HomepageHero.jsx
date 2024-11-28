@@ -26,7 +26,7 @@ export default function HomepageHero() {
     <div className={styles["homepageHero-container"]}>
       <div className={styles.section1}>
         <div className={styles["hero-left"]}>
-          <h4 >
+          <h4>
             Smarter. <br /> Safer.
           </h4>
         </div>
@@ -42,10 +42,14 @@ export default function HomepageHero() {
           </div>
           <div className={styles.homepageHeroCta}>
             <Link href="/boutique">
-              <button className={styles.ctaShop}>{t("homepageHero.visitShop")}</button>
+              <button className={styles.ctaShop}>
+                {t("homepageHero.visitShop")}
+              </button>
             </Link>
-            <Link href="/devis">
-              <button className={styles.ctaContact}>{t("homepageHero.quotation")}</button>
+            <Link href="/devis-securite-surveillance">
+              <button className={styles.ctaContact}>
+                {t("homepageHero.quotation")}
+              </button>
             </Link>
           </div>
         </div>
@@ -56,7 +60,7 @@ export default function HomepageHero() {
           <div className={styles["section2-img"]}></div>
 
           <div className={styles["section2-text"]}>
-            <p className={styles.text1} > {t("homepageHero.section2Text1")}</p>
+            <p className={styles.text1}> {t("homepageHero.section2Text1")}</p>
             <p className={styles.text2}> {t("homepageHero.section2Text2")}</p>
           </div>
         </div>

@@ -7,7 +7,6 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 
-
 const Partners = () => {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
 
@@ -68,8 +67,10 @@ const Partners = () => {
           <p> {t("partnersHeroDescription1")}</p>
           <p> {t("partnersHeroDescription2")}</p>
           <p> {t("partnersHeroDescription3")}</p>
-          <Link href="/actualites-de-nos-partenaires"> <button> {t("partnersHeroLink")} </button></Link>
-
+          <Link href="/actualites-de-nos-partenaires">
+            {" "}
+            <button> {t("partnersHeroLink")} </button>
+          </Link>
         </div>
 
         <div data-aos="fade-down" className={styles["partner-img"]}></div>
@@ -83,8 +84,8 @@ const Partners = () => {
             className={styles.domainImg}
             alt={domain}
             loading="lazy"
-            width = {2000}
-            height = {300}
+            width={2000}
+            height={300}
           />
           {groupedPartners[domain].map((partner, partnerIndex) => {
             const isExpanded =
@@ -99,7 +100,7 @@ const Partners = () => {
               >
                 <div className={styles["partner-logo"]}>
                   <Link
-                    href={`/partenaires/${partner.slug}`}
+                    href={`/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -109,7 +110,6 @@ const Partners = () => {
                       src={partner.logo}
                       alt={partner.name}
                       loading="lazy"
-                     
                     />
                   </Link>
                 </div>
@@ -127,7 +127,9 @@ const Partners = () => {
                       </span>
                     )}
                   </p>
-                  <Link href={`/partenaires/${partner.slug}`}>
+                  <Link
+                    href={`/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
+                  >
                     en savoir plus
                   </Link>
                 </div>

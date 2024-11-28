@@ -6,7 +6,6 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 
-
 const PartnerPage = () => {
   const router = useRouter();
   const { slug } = router.query;
@@ -35,14 +34,14 @@ const PartnerPage = () => {
         <meta property="og:image" content={partner.logo} />
         <meta
           property="og:url"
-          content={`https://wwww.pixecurity.com/partenaires/${partner.slug}`}
+          content={`https://wwww.pixecurity.com/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Pixecurity" />
 
         <link
           rel="canonical"
-          href={`https://www.pixecurity.com/partenaires/${partner.slug}`}
+          href={`https://www.pixecurity.com/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
         />
       </Head>
 
@@ -54,7 +53,6 @@ const PartnerPage = () => {
             alt={`Logo de ${partner.name}`}
             loading="lazy"
             className={styles.partnerLogo}
-            
           />
         </div>
         <div className={styles.section1}>

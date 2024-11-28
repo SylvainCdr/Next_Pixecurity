@@ -17,7 +17,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.videoprotection.title")}</h3>
         <p>{t("skills.videoprotection.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/notre-expertise#videoprotection">
+          <Link href="/notre-expertise-en-solutions-de-surete#videoprotection">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.analyseImage.title")}</h3>
         <p>{t("skills.analyseImage.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/notre-expertise#analyse">
+          <Link href="/notre-expertise-en-solutions-de-surete#analyse">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
@@ -47,7 +47,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.controleAcces.title")}</h3>
         <p>{t("skills.controleAcces.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/notre-expertise#access">
+          <Link href="/notre-expertise-en-solutions-de-surete#access">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
@@ -62,7 +62,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.cloudObjetsConnectes.title")}</h3>
         <p>{t("skills.cloudObjetsConnectes.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/notre-expertise#cloud">
+          <Link href="/notre-expertise-en-solutions-de-surete#cloud">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
@@ -77,7 +77,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.reseauxStockage.title")}</h3>
         <p>{t("skills.reseauxStockage.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/notre-expertise#network">
+          <Link href="/notre-expertise-en-solutions-de-surete#network">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>
@@ -92,7 +92,7 @@ export default function HomepageSkills() {
         <h3>{t("skills.ingenierie.title")}</h3>
         <p>{t("skills.ingenierie.description")}</p>
         <div className={styles["bottom"]}>
-          <Link href="/a-propos">
+          <Link href="/qui-sommes-nous">
             {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
           </Link>
         </div>

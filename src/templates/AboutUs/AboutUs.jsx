@@ -87,7 +87,7 @@ export default function AboutUs() {
       role: "Assistante de Direction",
       src: "/assets/team/JESSICA.jpg",
     },
-  
+
     {
       name: "Aziz ARJDAL",
       role: "Technicien de Mise en Service Supérieur ",
@@ -104,7 +104,6 @@ export default function AboutUs() {
       role: "Chargée d'Etude Avant-Vente",
       src: "/assets/team/YASMINA.jpg",
     },
- 
 
     {
       name: "Vincent ROCHETTE",
@@ -148,7 +147,7 @@ export default function AboutUs() {
         <div className={styles["section-1"]}>
           <h1>{t("aboutUs.title")}</h1>
           <p>{t("aboutUs.section1.text")}</p>
-          <Link href="/contact">
+          <Link href="/contact-pour-solutions-securite">
             <button>{t("aboutUs.section1.button")}</button>
           </Link>
         </div>

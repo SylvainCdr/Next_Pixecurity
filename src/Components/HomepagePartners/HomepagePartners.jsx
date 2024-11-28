@@ -13,7 +13,7 @@ export default function HomepagePartners() {
         {partners.map((partner, index) => (
           <a
             key={index}
-            href={`/partenaires/${partner.slug}`}
+            href={`/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -22,11 +22,11 @@ export default function HomepagePartners() {
         ))}
       </div>
       <div className={styles["partners-text"]}>
-        <h2>{t('homepagePartners.partnersTitle')}</h2>
-        <h4>{t('homepagePartners.partnersSubtitle')}</h4>
-        <p>{t('homepagePartners.partnersDescription')}</p>
-        <Link href="/partenaires">
-          <button>{t('homepagePartners.learnMore')}</button>
+        <h2>{t("homepagePartners.partnersTitle")}</h2>
+        <h4>{t("homepagePartners.partnersSubtitle")}</h4>
+        <p>{t("homepagePartners.partnersDescription")}</p>
+        <Link href="/partenaires-leaders-en-securite-et-surveillance">
+          <button>{t("homepagePartners.learnMore")}</button>
         </Link>
       </div>
     </div>

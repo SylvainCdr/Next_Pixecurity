@@ -4,10 +4,7 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
 export default function PartnersWhatsUp() {
-
-
   const { t } = useTranslation();
-
 
   return (
     <>
@@ -32,10 +29,8 @@ export default function PartnersWhatsUp() {
       <div className={styles.partnersWhatsUpContainer}>
         <div className={styles.partnersWhatsUpHeader}>
           <div className={styles.headerLeft}>
-            <h1> {t("partnersActus.title")}</h1> 
-            <p> {t("partnersActus.description")}
-              
-            </p>
+            <h1> {t("partnersActus.title")}</h1>
+            <p> {t("partnersActus.description")}</p>
           </div>
           <div className={styles.headerRight}></div>
         </div>
@@ -49,14 +44,14 @@ export default function PartnersWhatsUp() {
 
         {/* // Lien vers la boutique en ligne et nous contacter */}
         <div className={styles.links}>
-         
-            <Link href="/boutique">  <button>{t("partnersActus.shopBtn")}</button></Link>
-          
-          
-            <Link href="/contact"> <button>
-            {t("partnersActus.contactBtn")}
-            
-          </button>
+          <Link href="/boutique">
+            {" "}
+            <button>{t("partnersActus.shopBtn")}</button>
+          </Link>
+
+          <Link href="/contact-pour-solutions-securite">
+            {" "}
+            <button>{t("partnersActus.contactBtn")}</button>
           </Link>
         </div>
       </div>

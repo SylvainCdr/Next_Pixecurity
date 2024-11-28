@@ -276,11 +276,15 @@ export default function Product({ product, id, suggestions }) {
               )}
 
               <p className={styles.inquiry}>
-                <i className="fa-solid fa-info-circle"></i> Pour vos besoins spécifiques, vos commandes en quantité ou vos devis groupés, {" "} 
-                <Link href="/contact" className={styles.contactLink}>
+                <i className="fa-solid fa-info-circle"></i> Pour vos besoins
+                spécifiques, vos commandes en quantité ou vos devis groupés,{" "}
+                <Link
+                  href="/contact-pour-solutions-securite"
+                  className={styles.contactLink}
+                >
                   contactez-nous
                 </Link>
-                . 
+                .
               </p>
 
               <div className={styles.details}>
@@ -407,7 +411,8 @@ const DiscountedPrice = ({ product }) => {
       <p className={styles.prices}>
         <span className={styles["original-price"]}>
           {product.price.toFixed(2)} €
-        </span> <br />
+        </span>{" "}
+        <br />
         <span className={styles["discounted-price"]}>
           {discountPrice.toFixed(2)} € <span>HT</span>
         </span>
@@ -417,7 +422,7 @@ const DiscountedPrice = ({ product }) => {
 
   return (
     <p className={styles.price}>
-      {product.price ? product.price.toFixed(2) : "00.00"} €<span>{" "}HT</span>
+      {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
     </p>
   );
 };

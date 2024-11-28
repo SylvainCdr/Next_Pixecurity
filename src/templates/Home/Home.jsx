@@ -58,10 +58,10 @@ export default function Home() {
             <h3>{t("home.aboutUsTitle")}</h3>
             <p>{t("home.aboutUsDescription")}</p>
             <div className={styles.ctaButtons}>
-              <Link href="/a-propos">
+              <Link href="/qui-sommes-nous">
                 <button className={styles.ctaTeam}>{t("home.ourTeam")}</button>
               </Link>
-              <Link href="/notre-expertise">
+              <Link href="/notre-expertise-en-solutions-de-surete">
                 <button className={styles.ctaExpertise}>
                   {t("home.ourExpertise")}
                 </button>
@@ -79,7 +79,7 @@ export default function Home() {
 
         <div className={styles.learnMore}>
           <h5> Ready to learn more ? </h5>
-          <Link href="/contact">
+          <Link href="/contact-pour-solutions-securite">
             <button> {t("home.contactUs")}</button>
           </Link>
         </div>

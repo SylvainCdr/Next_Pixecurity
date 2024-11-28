@@ -16,22 +16,19 @@ export default function HomepageHero2() {
       <div className={styles.titles} data-aos="zoom-in-down">
         <h1> {t("homepageHero.heroTitle")}</h1>
         <h2>{t("homepageHero.heroDescription")}</h2>
-      <div className={styles.homepageHeroCta} data-aos="fade-down">
-        <Link href="/boutique">
-          <button className={styles.ctaShop}>
-            {t("homepageHero.visitShop")}
-          </button>
-        </Link>
-        <Link href="/devis">
-          <button className={styles.ctaQuotation}>
-            {t("homepageHero.quotation")}
-          </button>
-        </Link>
+        <div className={styles.homepageHeroCta} data-aos="fade-down">
+          <Link href="/boutique">
+            <button className={styles.ctaShop}>
+              {t("homepageHero.visitShop")}
+            </button>
+          </Link>
+          <Link href="/devis-securite-surveillance">
+            <button className={styles.ctaQuotation}>
+              {t("homepageHero.quotation")}
+            </button>
+          </Link>
+        </div>
       </div>
-      </div>
-
-
-    
     </div>
   );
 }
