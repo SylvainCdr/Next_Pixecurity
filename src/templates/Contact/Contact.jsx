@@ -82,14 +82,11 @@ function Contact() {
       return;
     }
 
-    const response = await fetch(
-      `${BASE_URL}/contact-pour-solutions-securite`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lastname, firstname, company, email, message }),
-      }
-    );
+    const response = await fetch(`${BASE_URL}//contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lastname, firstname, company, email, message }),
+    });
 
     if (response.ok) {
       Swal.fire({

@@ -48,7 +48,7 @@ export default function RegisterPopup() {
     window.location.href = "/inscription";
   }
   function redirectToContact() {
-    window.location.href = "/contact-pour-solutions-securite";
+    window.location.href = "//contact";
   }
 
   if (!show) return null;

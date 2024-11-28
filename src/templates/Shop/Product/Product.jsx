@@ -278,10 +278,7 @@ export default function Product({ product, id, suggestions }) {
               <p className={styles.inquiry}>
                 <i className="fa-solid fa-info-circle"></i> Pour vos besoins
                 spécifiques, vos commandes en quantité ou vos devis groupés,{" "}
-                <Link
-                  href="/contact-pour-solutions-securite"
-                  className={styles.contactLink}
-                >
+                <Link href="//contact" className={styles.contactLink}>
                   contactez-nous
                 </Link>
                 .
