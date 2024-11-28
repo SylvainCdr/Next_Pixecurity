@@ -39,53 +39,54 @@
     "closeButton": "Close"
   },
   "homepageHero": {
-    "heroTitle": "Provider of Intelligent Security Solutions",
-    "heroDescription": "Video surveillance, Image analysis, Access control, Data networks/storage, Hypervision...",
+    "heroTitle": "Intelligent Solutions for Security and Video Surveillance",
+    "heroDescription": "Surveillance cameras, video analytics, access control, network storage systems, hypervision, and more.",
     "visitShop": "Visit the shop",
     "quotation": "Request a quote",
     "section2Text1": "Security no longer depends on brute force, but on intelligence. At Pixecurity, we are providers of intelligent security systems.",
     "section2Text2": "Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs."
   },
   "home": {
-    "offerTitle": "An offer thought differently",
-    "offerDescription": "Pixecurity’s certified personal data protection includes: the provision of electronic tools, a proprietary project management platform to facilitate interaction with our experts, custom and tailored developments, and the implementation of cyber solutions. Compliance certifications issued by our consultants on compliance: Pixecurity covers the entire high-value chain of security. Pixecurity is the provider of 3.0 security solutions.",
-    "aboutUsTitle": "Who are we?",
-    "aboutUsDescription": "Cutting-edge engineers. 3.0 experts, digital natives, specialized in construction, networks, building technologies, and always on the lookout for the latest technological advances. They are true security artisans, determined to find the solutions best suited to your needs.",
+    "offerTitle": "A Revolutionary Offering for Security and Safety",
+    "offerDescription1": "Pixecurity ensures the protection of your personal data with advanced solutions: cutting-edge electronic equipment, an innovative project management platform for seamless interaction with our experts, custom developments tailored to your needs, and robust cybersecurity integrations.",
+    "offerDescription2": "In terms of compliance, our certified consultants deliver certifications aligned with the most demanding standards. With comprehensive coverage of the value chain, Pixecurity positions itself as the leader in next-generation security and video surveillance solutions, combining innovation and expertise.",
+    "aboutUsTitle": "About Pixecurity",
+    "aboutUsDescription": "Visionary engineers and 3.0 experts, born in the digital era, combining expertise in construction, network infrastructure, and cutting-edge building technologies. Always staying ahead of technological advancements, our teams are true security artisans, dedicated to crafting tailor-made solutions perfectly aligned with the specific needs of our clients.",
     "ourTeam": "Our team",
     "ourExpertise": "Our expertise",
     "contactUs": "Contact Us"
   },
   "skills": {
     "videoprotection": {
-      "title": "Video Protection",
-      "description": "Image analysis should save time and simplify the user experience without being cumbersome. Our expertise allows us to offer you the best products."
+      "title": "Smart Video Surveillance",
+      "description": "Leverage advanced image analysis to simplify processes and save time without unnecessary complexity. Pixecurity offers top-tier solutions tailored to your security needs."
     },
     "analyseImage": {
-      "title": "Image Analysis",
-      "description": "Protection of property and people, resolving doubts, and much more... Pixecurity selects the best market solutions for you: visible, thermal, mobile, fish-eye cameras..."
+      "title": "Advanced Video Analytics",
+      "description": "Protect assets and people with cutting-edge technologies: high-definition cameras, thermal imaging, mobile solutions, fish-eye lenses, and more. Pixecurity brings you the best market solutions for your security projects."
     },
     "controleAcces": {
-      "title": "Access Control",
-      "description": "Monitoring, management, traceability, protection of people. Pixecurity enhances its offering to provide you with a comprehensive solution with market leaders."
+      "title": "Access Control Systems",
+      "description": "Ensure safety and traceability with comprehensive access management solutions. Pixecurity partners with industry leaders to provide innovative and reliable systems tailored to your installations."
     },
     "cloudObjetsConnectes": {
       "title": "Cloud and Connected Devices",
-      "description": "Any connected device today acts as a security sensor and is exploitable from any user interface. Pixecurity offers you innovative and intelligent solutions to handle them."
+      "description": "Transform your connected devices into reliable safety sensors accessible from any user interface. Pixecurity designs smart, scalable solutions to fully utilize their potential."
     },
     "reseauxStockage": {
-      "title": "IT Networks / Storage",
-      "description": "Processing, transport, and operation must be ensured by industry expertise. Pixecurity engineers guarantee optimal sizing of networks, storage, and IT resources."
+      "title": "Optimized Networks and Storage",
+      "description": "Guarantee seamless data transport and processing with our expertise in network infrastructures. Pixecurity engineers ensure optimal sizing of your IT systems and storage resources."
     },
     "ingenierie": {
-      "title": "Engineering",
-      "description": "Our team of tech-savvy engineers provides Level 2-Level 3 support for your security systems. Pre-sales, project follow-up, commissioning, maintenance, and documentation deliverables..."
+      "title": "Security Engineering",
+      "description": "Benefit from comprehensive support from our engineering experts: pre-sales, project follow-up, maintenance, commissioning, and technical documentation. Pixecurity supports you at every stage of your projects."
     }
   },
   "learnMore": "Learn More",
   "homepagePartners": {
-    "partnersTitle": "Our partners",
-    "partnersSubtitle": "Market Excellence at Your Service",
-    "partnersDescription": "Whether it's visible cameras, thermal cameras, video management systems, or IP... Pixecurity engineers are committed to selecting the most effective products, perfectly suited to your project.",
+    "partnersTitle": "Our Security and Video Surveillance Partners",
+    "partnersSubtitle": "Top Products in the Market",
+    "partnersDescription": "Pixecurity selects the best surveillance cameras, video management systems, and IP solutions tailored to your security needs.",
     "learnMore": "Learn More"
   },
   "homepageCountup": {
@@ -251,12 +252,10 @@
     "error": "An error occurred. Please try again.",
     "validationError": "Please fill out all fields correctly"
   },
-
-"partnersActus": {
-  "title": "News from Our Partners",
-  "description": "Discover the latest news and important announcements from our trusted partners. Their innovations and advanced solutions strengthen our mission: to provide you with top-notch security. Stay updated with the leaders in the industry.",
-  "shopBtn": "Visit the Shop",
-  "contactBtn": "Got a Project? Contact Us"
-}
-
+  "partnersActus": {
+    "title": "News from Our Partners",
+    "description": "Discover the latest news and important announcements from our trusted partners. Their innovations and advanced solutions strengthen our mission: to provide you with top-notch security. Stay updated with the leaders in the industry.",
+    "shopBtn": "Visit the Shop",
+    "contactBtn": "Got a Project? Contact Us"
+  }
 }

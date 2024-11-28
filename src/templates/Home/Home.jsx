@@ -28,8 +28,8 @@ export default function Home() {
       <Head>
         <title>
           Pixecurity - Fournisseur de solutions de sûreté intelligentes -
-          Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage
-          des données, hypervision
+          Caméras de vidéosurveillance, analyse d'image, contrôle d'accès,
+          réseaux, stockage des données, hypervision
         </title>
 
         <meta
@@ -48,7 +48,11 @@ export default function Home() {
         <HomepageHero2 />
         <div className={styles["section2-offer"]}>
           <h3>{t("home.offerTitle")}</h3>
-          <p>{t("home.offerDescription")}</p>
+          <p>{t("home.offerDescription1")}</p>
+          <p>{t("home.offerDescription2")}</p>
+          {/* "offerTitle": "Une offre pensée autrement",
+     "offerDescription": "La protection de vos données personnelles certifiée Pixecurity c'est : la fourniture d'outils électroniques, une plateforme de gestion de projets réalisée en propre pour faciliter l'interaction avec nos experts, des développements spécifiques et sur mesure, la mise en place de solutions cyber. Des certifications de conformités délivrées par nos consultants sur du compliance : Pixecurity couvre toute la haute chaîne de valeur de la sûreté. Pixecurity est le fournisseur de solutions de sûreté 3.0.",
+     */}
         </div>
 
         <HomepageSkills />
