@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 export const partners = [
   {
     name: "Vivotek",
@@ -85,6 +87,8 @@ export const partners = [
     keywords:
       "Milestone Systems, logiciels, gestion vidéo, IP, VMS, XProtect, sécurité, surveillance vidéo, temps réel, sécurité publique, commerce de détail, transports, éducation, infrastructures critiques, innovation, collaboration, partenaires technologiques, solutions complètes, personnalisées, responsabilité, centration sur l'humain, technologie vidéo, données, intégration, caméras, capteurs, plateforme ouverte, informations exploitables, prise de décision, interface utilisateur, analyses avancées, intelligence artificielle, surveillance proactive, réactive, centralisation, flexibilité, efficacité opérationnelle",
   },
+
+  
   {
     name: "i-PRO",
     slug: "ipro",
@@ -168,6 +172,7 @@ export const partners = [
     keywords:
       "TIL Technologies, éditeur de logiciels, fournisseur de solutions, gestion de la sécurité, bâtiments, sûreté, contrôle d'accès, gestion des alarmes, vidéosurveillance, intégration de systèmes de sécurité, expertise, solutions sur mesure, sécurité électronique, conception, fabrication, commercialisation, systèmes de sécurité électronique, sites protégés, contrôle d'accès, détection d'intrusion, gestion technique des bâtiments, MICROSESAME, supervision unifiée, solutions adaptées, tertiaire, santé, industrie, sites sensibles, transports, collectivité locale, hôpital, site industriel, produits, fonctionnalités logicielles, sécurité, innovation, ANSSI, recherche et développement, cybersécurité, réseau de techniciens, service de qualité, assistance technique, environnement sécurisé, durable",
   },
+  
   {
     name: "Zyxel Communications",
     slug: "zyxel",
@@ -251,6 +256,25 @@ export const partners = [
     keywords:
       "ComNet, ACRE, communications, réseaux, sécurité critique, transmission de données, vidéo, audio, série, IP, fibre optique, conception, fabrication, produits fiables, sécurisés, connectivité, systèmes de sécurité, surveillance, contrôle d'accès, partenaire de confiance, réseaux de communication, continuité des opérations, protection, biens, personnes, sécurité, exigences, protection optimale, services, environnements professionnels, tranquillité d'esprit, contrôle d'accès, gestion des visiteurs, systèmes d'alarme, transmission vidéo, sécurité intégrée, partenariats technologiques, collaborations, nouvelles technologies, marché",
   },
+  // {
+  //   "name": "Genetec Inc",
+  //   "slug": "genetec",
+  //   "logo": "/assets/partners/partnersLogo/genetec.png",
+  //   "domain": "VMS",
+  //   "website": "https://www.genetec.com/fr",
+  //   "description": "Genetec Inc. est un acteur incontournable dans le domaine des technologies de sécurité avancées. Depuis 1997, l'entreprise développe des solutions intégrées en gestion vidéo (VMS) et contrôle d'accès, répondant aux besoins croissants en cybersécurité et protection physique. Ses produits, utilisés dans divers secteurs tels que les infrastructures critiques, les villes intelligentes, et la sécurité publique, se distinguent par leur fiabilité et leur innovation.",
+  //   "title1": "Des Solutions de Sécurité Connectées et Innovantes",
+  //   "text1": "Genetec transforme la façon dont la sécurité est pensée en exploitant les technologies modernes telles que l'IA, l'analyse vidéo et l'IoT. Nos solutions connectées améliorent la surveillance, optimisent la gestion des risques, et assurent la protection des espaces publics comme privés. Avec une vision centrée sur l'humain, nous créons des technologies qui renforcent la sécurité tout en améliorant la qualité de vie.",
+  //   "title2": "Une Expertise Globale au Service de Tous les Secteurs",
+  //   "text2": "Que ce soit pour les transports, la santé, le commerce de détail ou les infrastructures publiques, Genetec offre des solutions personnalisées et modulables. Nos outils permettent de centraliser la gestion de la sécurité tout en assurant une compatibilité optimale avec les besoins de chaque environnement. Notre plateforme de sécurité physique unifiée facilite la coordination et maximise l'efficacité opérationnelle.",
+  //   "title3": "Innovation et Leadership en Sécurité Intelligente",
+  //   "text3": "L'innovation est au cœur de l'ADN de Genetec. Avec une équipe dédiée à la recherche et au développement, nous concevons des solutions pionnières qui répondent aux enjeux actuels et futurs de la sécurité. En partenariat avec les leaders technologiques, nous nous engageons à offrir des systèmes intégrés, robustes, et évolutifs, garantissant une sécurité totale et durable.",
+  //   "image1": "https://www.genetec.com/binaries/content/gallery/risk-management-strategy-with-partners.jpg",
+  //   "image2": "https://www.genetec.com/binaries/content/gallery/photostock_gettyimages-918828964.jpg",
+  //   "video": "https://www.youtube.com/embed/ghy7X3xi9SU",
+  //   // "products": "https://www.pixecurity.com/boutique/Logiciels?brand=genetec",
+  //   "keywords": "Genetec Inc, sécurité connectée, solutions innovantes, gestion vidéo, VMS, contrôle d'accès, cybersécurité, infrastructures critiques, villes intelligentes, analyse vidéo, intelligence artificielle, IoT, protection physique, sécurité publique, transports, santé, commerce de détail, gestion unifiée, innovation, partenaires technologiques, qualité de vie"
+  // },
   {
     name: "vuWall",
     slug: "vuwall",
