@@ -125,6 +125,16 @@ export default function AboutUs() {
       role: "Technicien de Mise en Service",
       src: "/assets/team/HECTOR.webp",
     },
+    {
+      name: "Stecie RAZA",
+      role: "Chargée de Communication & Marketing",
+      src: "/assets/team/STECIE_.jpg",
+    },
+    {
+      name: "Hiba BOUREZG",
+      role: "Alternante Ingénieur Réseaux & CyberSécurité",
+      src: "/assets/team/HIBA_.jpg",
+    },
   ];
 
   return (
