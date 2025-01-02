@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 
 const heroImages = [
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/promo-banner-1-scaled.jpg",
+    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2025/01/promo-banner-scaled.jpg",
   },
   {
     url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/milestone-banner-1.png",
