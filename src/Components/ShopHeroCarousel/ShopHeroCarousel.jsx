@@ -6,16 +6,17 @@ import styles from "./style.module.scss";
 
 const heroImages = [
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2025/01/promo-banner-scaled.jpg",
+ 
+    url: "/assets/shop/banners/banner3.jpg",
   },
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/milestone-banner-1.png",
+    url: "/assets/shop/banners/banner1.webp",
   },
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/zyxel-banner2.jpg",
+    url: "/assets/shop/banners/banner2.png",
   },
   {
-    url: "https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/2880x720_X-series_0-scaled.webp",
+    url: "/assets/shop/banners/banner4.jpg",
   },
 ];
 
