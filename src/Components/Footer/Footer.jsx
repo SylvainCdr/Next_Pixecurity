@@ -44,7 +44,7 @@ function Footer() {
           <Link href="/devis-securite-surveillance">
             <li>{t("footer.quotationLink")}</li>
           </Link>
-          <Link href="//contact">
+          <Link href="/contact">
             <li>{t("footer.contactLink")}</li>
           </Link>
           <Link href="/actualites-de-nos-partenaires">

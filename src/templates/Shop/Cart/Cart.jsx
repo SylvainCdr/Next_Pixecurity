@@ -70,9 +70,25 @@ export default function Cart({ carouselProducts }) {
           ))}
 
           <Totals carts={carts} />
-          <button className={styles["checkout"]} onClick={createOrder}>
+
+          {/* <button className={styles["checkout"]} onClick={createOrder}>
             Commander
-          </button>
+          </button> */}
+
+          {/* si l'utilisateur est connecté, on affiche le bouton commander sinon on lui demande de se connecter ou de s'inscrire */}
+          {userId ? (
+            <button className={styles["checkout"]} onClick={createOrder}>
+              Commander
+            </button>
+          ) : (
+            <button
+              className={styles["checkout"]}
+              onClick={() => router.push("/inscription")}
+            >
+              S'inscire / Se connecter pour commander
+            </button>
+          )}
+
         </div>
       </div>
     </div>

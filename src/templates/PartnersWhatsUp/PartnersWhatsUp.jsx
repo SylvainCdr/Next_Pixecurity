@@ -49,7 +49,7 @@ export default function PartnersWhatsUp() {
             <button>{t("partnersActus.shopBtn")}</button>
           </Link>
 
-          <Link href="//contact">
+          <Link href="/contact">
             {" "}
             <button>{t("partnersActus.contactBtn")}</button>
           </Link>

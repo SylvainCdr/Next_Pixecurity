@@ -83,7 +83,7 @@ export default function Home() {
 
         <div className={styles.learnMore}>
           <h5> Ready to learn more ? </h5>
-          <Link href="//contact">
+          <Link href="/contact">
             <button> {t("home.contactUs")}</button>
           </Link>
         </div>

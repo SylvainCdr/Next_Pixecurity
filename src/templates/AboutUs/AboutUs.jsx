@@ -157,7 +157,7 @@ export default function AboutUs() {
         <div className={styles["section-1"]}>
           <h1>{t("aboutUs.title")}</h1>
           <p>{t("aboutUs.section1.text")}</p>
-          <Link href="//contact">
+          <Link href="/contact">
             <button>{t("aboutUs.section1.button")}</button>
           </Link>
         </div>

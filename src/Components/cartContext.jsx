@@ -54,7 +54,7 @@ const useCart = () => {
       const cartId = getCartId();
       const body = {
         cartId,
-        user: userId,
+        user: userId || null,
         product: product._id,
         name: product.name,
         ref: product.ref,

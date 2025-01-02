@@ -82,7 +82,7 @@ function Contact() {
       return;
     }
 
-    const response = await fetch(`${BASE_URL}//contact`, {
+    const response = await fetch(`${BASE_URL}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lastname, firstname, company, email, message }),

@@ -133,6 +133,11 @@ export default function Register() {
       <div data-aos="fade-right" className={styles["section-1"]}>
         <h1>Inscription </h1>
         <form onSubmit={handleSubmit}>
+
+          <Link href="/connexion">
+            <button> Se connecter</button>
+          </Link>
+        <span>――――― OU ―――――</span>
           <label htmlFor="firstName">Prénom</label>
           <input
             type="text"
@@ -224,10 +229,7 @@ export default function Register() {
 
           <button>S'enregistrer</button>
 
-          <span>――――― OU ―――――</span>
-          <Link href="/connexion">
-            <button> Se connecter</button>
-          </Link>
+      
         </form>
       </div>
 

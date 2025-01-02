@@ -181,13 +181,48 @@ function ButtonAddToFavorite({ product }) {
   );
 }
 
+
+// Fonction pour ajouter un produit au panier, si le user est connecté sinon afficher un message d'erreur
+// function ButtonAddToCart({ product }) {
+//   const { addToCart } = useCartContext();
+//   const user = useGetUser();
+//   const userId = user?._id;
+
+//   const handleAddToCart = async () => {
+//     if (userId) {
+//       await addToCart(product);
+//       Swal.fire({
+//         icon: "success",
+//         title: "Produit ajouté au panier avec succès!",
+//         showConfirmButton: false,
+//         timer: 1200,
+//       });
+//     } else {
+//       Swal.fire({
+//         icon: "info",
+//         title:
+//           "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
+//         showConfirmButton: true,
+//       });
+//     }
+//   };
+
+//   return (
+//     <button className={styles.cart} onClick={handleAddToCart}>
+//       <i className="fa-solid fa-cart-plus" data-aos="zoom-in" />
+//     </button>
+//   );
+// }
+
+
+// Fonction modifié pour permettre l'ajout d'un produit au panier à tous les users connectés ou non
 function ButtonAddToCart({ product }) {
   const { addToCart } = useCartContext();
-  const user = useGetUser();
-  const userId = user?._id;
+  // const user = useGetUser();
+  // const userId = user?._id;
 
   const handleAddToCart = async () => {
-    if (userId) {
+  
       await addToCart(product);
       Swal.fire({
         icon: "success",
@@ -195,14 +230,6 @@ function ButtonAddToCart({ product }) {
         showConfirmButton: false,
         timer: 1200,
       });
-    } else {
-      Swal.fire({
-        icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
-        showConfirmButton: true,
-      });
-    }
   };
 
   return (

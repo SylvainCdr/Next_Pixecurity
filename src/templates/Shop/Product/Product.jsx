@@ -111,7 +111,6 @@ export default function Product({ product, id, suggestions }) {
   };
 
   const handleAddToCartClick = async () => {
-    if (userId) {
       await addToCart(product, quantity);
       Swal.fire({
         icon: "success",
@@ -119,14 +118,6 @@ export default function Product({ product, id, suggestions }) {
         showConfirmButton: false,
         timer: 1200,
       });
-    } else {
-      Swal.fire({
-        icon: "info",
-        title:
-          "Pour ajouter un produit au panier, veuillez vous connecter ou vous inscrire.",
-        showConfirmButton: true,
-      });
-    }
   };
 
   useEffect(() => {
@@ -278,7 +269,7 @@ export default function Product({ product, id, suggestions }) {
               <p className={styles.inquiry}>
                 <i className="fa-solid fa-info-circle"></i> Pour vos besoins
                 spécifiques, vos commandes en quantité ou vos devis groupés,{" "}
-                <Link href="//contact" className={styles.contactLink}>
+                <Link href="/contact" className={styles.contactLink}>
                   contactez-nous
                 </Link>
                 .
