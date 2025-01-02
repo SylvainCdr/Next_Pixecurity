@@ -8,6 +8,7 @@ import { useGetUser } from "@/Components/useGetUser";
 import { getCartId, useCartContext } from "@/Components/cartContext";
 import { useRouter } from "next/router";
 import { createOrder as createOrderAPI } from "@/api/orders";
+import { CartRequestQuoteModal } from "@/Components/CartRequestQuoteModal/CartRequestQuoteModal";
 
 export default function Cart({ carouselProducts }) {
   const { carts } = useCartContext();
@@ -85,9 +86,11 @@ export default function Cart({ carouselProducts }) {
               className={styles["checkout"]}
               onClick={() => router.push("/inscription")}
             >
-              S'inscire / Se connecter pour commander
+              Se connecter pour commander
             </button>
           )}
+
+          <CartRequestQuoteModal />
 
         </div>
       </div>

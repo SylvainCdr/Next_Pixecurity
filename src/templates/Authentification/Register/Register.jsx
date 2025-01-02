@@ -227,7 +227,7 @@ export default function Register() {
             </label>
           </div>
 
-          <button>S'enregistrer</button>
+          <button>S'inscrire</button>
 
       
         </form>
