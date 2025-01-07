@@ -256,52 +256,52 @@ export const partners = [
     keywords:
       "ComNet, ACRE, communications, réseaux, sécurité critique, transmission de données, vidéo, audio, série, IP, fibre optique, conception, fabrication, produits fiables, sécurisés, connectivité, systèmes de sécurité, surveillance, contrôle d'accès, partenaire de confiance, réseaux de communication, continuité des opérations, protection, biens, personnes, sécurité, exigences, protection optimale, services, environnements professionnels, tranquillité d'esprit, contrôle d'accès, gestion des visiteurs, systèmes d'alarme, transmission vidéo, sécurité intégrée, partenariats technologiques, collaborations, nouvelles technologies, marché",
   },
-  // {
-  //   "name": "Genetec Inc",
-  //   "slug": "genetec",
-  //   "logo": "/assets/partners/partnersLogo/genetec.png",
-  //   "domain": "VMS",
-  //   "website": "https://www.genetec.com/fr",
-  //   "description": "Genetec Inc. est un acteur incontournable dans le domaine des technologies de sécurité avancées. Depuis 1997, l'entreprise développe des solutions intégrées en gestion vidéo (VMS) et contrôle d'accès, répondant aux besoins croissants en cybersécurité et protection physique. Ses produits, utilisés dans divers secteurs tels que les infrastructures critiques, les villes intelligentes, et la sécurité publique, se distinguent par leur fiabilité et leur innovation.",
-  //   "title1": "Des Solutions de Sécurité Connectées et Innovantes",
-  //   "text1": "Genetec transforme la façon dont la sécurité est pensée en exploitant les technologies modernes telles que l'IA, l'analyse vidéo et l'IoT. Nos solutions connectées améliorent la surveillance, optimisent la gestion des risques, et assurent la protection des espaces publics comme privés. Avec une vision centrée sur l'humain, nous créons des technologies qui renforcent la sécurité tout en améliorant la qualité de vie.",
-  //   "title2": "Une Expertise Globale au Service de Tous les Secteurs",
-  //   "text2": "Que ce soit pour les transports, la santé, le commerce de détail ou les infrastructures publiques, Genetec offre des solutions personnalisées et modulables. Nos outils permettent de centraliser la gestion de la sécurité tout en assurant une compatibilité optimale avec les besoins de chaque environnement. Notre plateforme de sécurité physique unifiée facilite la coordination et maximise l'efficacité opérationnelle.",
-  //   "title3": "Innovation et Leadership en Sécurité Intelligente",
-  //   "text3": "L'innovation est au cœur de l'ADN de Genetec. Avec une équipe dédiée à la recherche et au développement, nous concevons des solutions pionnières qui répondent aux enjeux actuels et futurs de la sécurité. En partenariat avec les leaders technologiques, nous nous engageons à offrir des systèmes intégrés, robustes, et évolutifs, garantissant une sécurité totale et durable.",
-  //   "image1": "https://www.genetec.com/binaries/content/gallery/risk-management-strategy-with-partners.jpg",
-  //   "image2": "https://www.genetec.com/binaries/content/gallery/photostock_gettyimages-918828964.jpg",
-  //   "video": "https://www.youtube.com/embed/ghy7X3xi9SU",
-  //   // "products": "https://www.pixecurity.com/boutique/Logiciels?brand=genetec",
-  //   "keywords": "Genetec Inc, sécurité connectée, solutions innovantes, gestion vidéo, VMS, contrôle d'accès, cybersécurité, infrastructures critiques, villes intelligentes, analyse vidéo, intelligence artificielle, IoT, protection physique, sécurité publique, transports, santé, commerce de détail, gestion unifiée, innovation, partenaires technologiques, qualité de vie"
-  // },
   {
-    name: "vuWall",
-    slug: "vuwall",
-    logo: "/assets/partners/partnersLogo/vuWall.png",
-    domain: "Gestion & Analyse d'image",
-    website: "https://vuwall.com/fr/",
-    description:
-      "VuWall est un leader mondial dans le développement de solutions de visualisation et de gestion de contenu pour les environnements de contrôle et de surveillance les plus exigeants. Avec une expertise approfondie dans les domaines de la vidéowall, de la collaboration et de la gestion de l'affichage, VuWall fournit des solutions logicielles et matérielles de pointe conçues pour simplifier la gestion des sources vidéo et optimiser la visualisation des données. Les solutions de VuWall offrent une flexibilité exceptionnelle, permettant aux utilisateurs de regrouper, de gérer et de distribuer facilement des sources vidéo provenant de diverses applications et technologies. Que ce soit pour les centres de commande, les salles de contrôle, les postes de travail de sécurité ou les environnements de diffusion en direct, VuWall offre des outils puissants pour améliorer la prise de décision, renforcer la collaboration et accroître l'efficacité opérationnelle.",
-    title1: "Produits et Solutions Interopérables",
-    text1:
-      "L’écosystème VuWall permet la distribution efficace de n’importe quelle source vers n’importe quelle surface d’affichage à travers les organisations. Il connecte harmonieusement les systèmes AV, informatiques et IP pour offrir une interopérabilité complète, une évolutivité sans compromis, et une simplicité d'utilisation inégalée. Grâce à cette approche intégrée, VuWall assure une gestion fluide et centralisée du contenu visuel, adaptée aux besoins spécifiques de chaque entreprise, tout en garantissant la flexibilité nécessaire pour évoluer avec les exigences futures.",
-
-    title2: "Applications Spécialisées pour les Espaces Professionnels",
-    text2:
-      "Les solutions VuWall sont conçues pour répondre aux besoins diversifiés des environnements professionnels, qu'il s'agisse de salles de contrôle critiques, de centres de commandement, de centres de surveillance, ou d'espaces de travail collaboratifs modernes. Elles permettent une visualisation multi-sources en temps réel, une gestion centralisée des contenus, et facilitent une meilleure collaboration entre les équipes. En intégrant une technologie puissante et conviviale, VuWall simplifie la complexité de la gestion audiovisuelle et transforme les espaces de travail en hubs dynamiques où l'information est partagée de manière fluide et instantanée.",
-
-    title3: "Certification et Sécurité des Données",
-    text3:
-      "VuWall s'engage à offrir des solutions sécurisées conformes aux normes les plus strictes, avec l'attestation SOC 2 Type I qui garantit la protection et l'intégrité des données. Ce niveau de certification atteste de la fiabilité des processus internes et de l’engagement constant de l’entreprise envers la sécurité et la confidentialité des informations. En parallèle, VuWall propose des programmes de certification pour les professionnels du secteur AV, leur permettant de maîtriser les outils et technologies de l'écosystème VuWall, assurant ainsi une expertise accrue dans la gestion des infrastructures audiovisuelles et IT complexes.",
-    image1:
-      "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:800/h:450/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/2019/10/card-app-corpsignage.jpg",
-    image2:
-      "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:1600/h:900/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/SOC-2-CERT-PR-Feature-Image.png",
-    video: "https://www.youtube.com/embed/RUOwXuAuJaQ",
-    keywords:
-      "VuWall, solutions de visualisation, gestion de contenu, environnements de contrôle, surveillance, vidéowall, collaboration, gestion de l'affichage, solutions logicielles, matérielles, sources vidéo, visualisation des données, flexibilité, centres de commande, salles de contrôle, postes de travail de sécurité, environnements de diffusion en direct, prise de décision, collaboration, efficacité opérationnelle, écosystème, interopérabilité, évolutivité, simplicité d'utilisation, gestion centralisée, contenu visuel, espaces professionnels, salles de contrôle critiques, centres de commandement, centres de surveillance, espaces de travail collaboratifs, visualisation multi-sources, temps réel, gestion centralisée, collaboration, technologie, certification, sécurité des données, normes, attestation SOC 2 Type I, protection, intégrité, confidentialité, programmes de certification, professionnels AV, expertise, infrastructures audiovisuelles, IT",
+    "name": "Genetec Inc",
+    "slug": "genetec",
+    "logo": "/assets/partners/partnersLogo/genetec.png",
+    "domain": "VMS",
+    "website": "https://www.genetec.com/fr",
+    "description": "Genetec Inc. est un acteur incontournable dans le domaine des technologies de sécurité avancées. Depuis 1997, l'entreprise développe des solutions intégrées en gestion vidéo (VMS) et contrôle d'accès, répondant aux besoins croissants en cybersécurité et protection physique. Ses produits, utilisés dans divers secteurs tels que les infrastructures critiques, les villes intelligentes, et la sécurité publique, se distinguent par leur fiabilité et leur innovation.",
+    "title1": "Des Solutions de Sécurité Connectées et Innovantes",
+    "text1": "Genetec transforme la façon dont la sécurité est pensée en exploitant les technologies modernes telles que l'IA, l'analyse vidéo et l'IoT. Nos solutions connectées améliorent la surveillance, optimisent la gestion des risques, et assurent la protection des espaces publics comme privés. Avec une vision centrée sur l'humain, nous créons des technologies qui renforcent la sécurité tout en améliorant la qualité de vie.",
+    "title2": "Une Expertise Globale au Service de Tous les Secteurs",
+    "text2": "Que ce soit pour les transports, la santé, le commerce de détail ou les infrastructures publiques, Genetec offre des solutions personnalisées et modulables. Nos outils permettent de centraliser la gestion de la sécurité tout en assurant une compatibilité optimale avec les besoins de chaque environnement. Notre plateforme de sécurité physique unifiée facilite la coordination et maximise l'efficacité opérationnelle.",
+    "title3": "Innovation et Leadership en Sécurité Intelligente",
+    "text3": "L'innovation est au cœur de l'ADN de Genetec. Avec une équipe dédiée à la recherche et au développement, nous concevons des solutions pionnières qui répondent aux enjeux actuels et futurs de la sécurité. En partenariat avec les leaders technologiques, nous nous engageons à offrir des systèmes intégrés, robustes, et évolutifs, garantissant une sécurité totale et durable.",
+    "image1": "https://www.genetec.com/binaries/content/gallery/risk-management-strategy-with-partners.jpg",
+    "image2": "https://www.genetec.com/binaries/content/gallery/photostock_gettyimages-918828964.jpg",
+    "video": "https://www.youtube.com/embed/ghy7X3xi9SU",
+    // "products": "https://www.pixecurity.com/boutique/Logiciels?brand=genetec",
+    "keywords": "Genetec Inc, sécurité connectée, solutions innovantes, gestion vidéo, VMS, contrôle d'accès, cybersécurité, infrastructures critiques, villes intelligentes, analyse vidéo, intelligence artificielle, IoT, protection physique, sécurité publique, transports, santé, commerce de détail, gestion unifiée, innovation, partenaires technologiques, qualité de vie"
   },
+  // {
+  //   name: "vuWall",
+  //   slug: "vuwall",
+  //   logo: "/assets/partners/partnersLogo/vuWall.png",
+  //   domain: "Gestion & Analyse d'image",
+  //   website: "https://vuwall.com/fr/",
+  //   description:
+  //     "VuWall est un leader mondial dans le développement de solutions de visualisation et de gestion de contenu pour les environnements de contrôle et de surveillance les plus exigeants. Avec une expertise approfondie dans les domaines de la vidéowall, de la collaboration et de la gestion de l'affichage, VuWall fournit des solutions logicielles et matérielles de pointe conçues pour simplifier la gestion des sources vidéo et optimiser la visualisation des données. Les solutions de VuWall offrent une flexibilité exceptionnelle, permettant aux utilisateurs de regrouper, de gérer et de distribuer facilement des sources vidéo provenant de diverses applications et technologies. Que ce soit pour les centres de commande, les salles de contrôle, les postes de travail de sécurité ou les environnements de diffusion en direct, VuWall offre des outils puissants pour améliorer la prise de décision, renforcer la collaboration et accroître l'efficacité opérationnelle.",
+  //   title1: "Produits et Solutions Interopérables",
+  //   text1:
+  //     "L’écosystème VuWall permet la distribution efficace de n’importe quelle source vers n’importe quelle surface d’affichage à travers les organisations. Il connecte harmonieusement les systèmes AV, informatiques et IP pour offrir une interopérabilité complète, une évolutivité sans compromis, et une simplicité d'utilisation inégalée. Grâce à cette approche intégrée, VuWall assure une gestion fluide et centralisée du contenu visuel, adaptée aux besoins spécifiques de chaque entreprise, tout en garantissant la flexibilité nécessaire pour évoluer avec les exigences futures.",
+
+  //   title2: "Applications Spécialisées pour les Espaces Professionnels",
+  //   text2:
+  //     "Les solutions VuWall sont conçues pour répondre aux besoins diversifiés des environnements professionnels, qu'il s'agisse de salles de contrôle critiques, de centres de commandement, de centres de surveillance, ou d'espaces de travail collaboratifs modernes. Elles permettent une visualisation multi-sources en temps réel, une gestion centralisée des contenus, et facilitent une meilleure collaboration entre les équipes. En intégrant une technologie puissante et conviviale, VuWall simplifie la complexité de la gestion audiovisuelle et transforme les espaces de travail en hubs dynamiques où l'information est partagée de manière fluide et instantanée.",
+
+  //   title3: "Certification et Sécurité des Données",
+  //   text3:
+  //     "VuWall s'engage à offrir des solutions sécurisées conformes aux normes les plus strictes, avec l'attestation SOC 2 Type I qui garantit la protection et l'intégrité des données. Ce niveau de certification atteste de la fiabilité des processus internes et de l’engagement constant de l’entreprise envers la sécurité et la confidentialité des informations. En parallèle, VuWall propose des programmes de certification pour les professionnels du secteur AV, leur permettant de maîtriser les outils et technologies de l'écosystème VuWall, assurant ainsi une expertise accrue dans la gestion des infrastructures audiovisuelles et IT complexes.",
+  //   image1:
+  //     "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:800/h:450/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/2019/10/card-app-corpsignage.jpg",
+  //   image2:
+  //     "https://mlsyamblqynx.i.optimole.com/cb:lu0M.9187/w:1600/h:900/q:mauto/f:best/ig:avif/https://vuwall.com/wp-content/uploads/SOC-2-CERT-PR-Feature-Image.png",
+  //   video: "https://www.youtube.com/embed/RUOwXuAuJaQ",
+  //   keywords:
+  //     "VuWall, solutions de visualisation, gestion de contenu, environnements de contrôle, surveillance, vidéowall, collaboration, gestion de l'affichage, solutions logicielles, matérielles, sources vidéo, visualisation des données, flexibilité, centres de commande, salles de contrôle, postes de travail de sécurité, environnements de diffusion en direct, prise de décision, collaboration, efficacité opérationnelle, écosystème, interopérabilité, évolutivité, simplicité d'utilisation, gestion centralisée, contenu visuel, espaces professionnels, salles de contrôle critiques, centres de commandement, centres de surveillance, espaces de travail collaboratifs, visualisation multi-sources, temps réel, gestion centralisée, collaboration, technologie, certification, sécurité des données, normes, attestation SOC 2 Type I, protection, intégrité, confidentialité, programmes de certification, professionnels AV, expertise, infrastructures audiovisuelles, IT",
+  // },
   {
     name: "technoAware",
     slug: "technoaware",
