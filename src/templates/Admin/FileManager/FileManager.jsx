@@ -11,25 +11,24 @@ export default function FileManager() {
 
   console.log(file);
 
-  const handleUpload = async () => {
+  const uploadFile = async (file) => {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
   
     try {
-      const response = await fetch('https://uploads.pixecurity.com/upload.php', {
-        method: 'POST',
+      const response = await fetch("https://uploads.pixecurity.com/upload.php", {
+        method: "POST",
         body: formData,
       });
-      console.log (response);
   
-      if (response.ok) {
-        const data = await response.json();
-        console.log('File uploaded:', data);
-      } else {
-        console.error('Upload failed:', await response.text());
+      if (!response.ok) {
+        throw new Error("Upload failed: " + (await response.text()));
       }
-    } catch (err) {
-      console.error('Upload error:', err);
+  
+      const data = await response.json();
+      console.log("Upload successful:", data);
+    } catch (error) {
+      console.error("Error uploading file:", error);
     }
   };
   
@@ -40,7 +39,7 @@ export default function FileManager() {
     <div className={styles.fileManagerContainer}>
       <h1>File Upload</h1>
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={() => uploadFile(file)}>Upload</button>
       {uploadStatus && <p>{uploadStatus}</p>}
     </div>
   );
