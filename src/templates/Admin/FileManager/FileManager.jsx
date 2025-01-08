@@ -9,6 +9,8 @@ export default function FileManager() {
     setFile(e.target.files[0]);
   };
 
+  console.log(file);
+
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
@@ -18,6 +20,7 @@ export default function FileManager() {
         method: 'POST',
         body: formData,
       });
+      console.log (response);
   
       if (response.ok) {
         const data = await response.json();
