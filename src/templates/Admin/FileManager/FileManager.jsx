@@ -12,6 +12,11 @@ export default function FileManager() {
   console.log(file);
 
   const uploadFile = async (file) => {
+    if (!file) {
+      console.error("No file selected for upload.");
+      return;
+    }
+  
     const formData = new FormData();
     formData.append("file", file);
   
@@ -31,6 +36,7 @@ export default function FileManager() {
       console.error("Error uploading file:", error);
     }
   };
+  
   
   
 
