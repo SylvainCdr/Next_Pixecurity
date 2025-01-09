@@ -130,13 +130,26 @@ export default function FileManager() {
           <tbody>
             {uploadedFiles.map((file, index) => (
               <tr key={index}>
-                <td>
+<td>
   {file.name.endsWith('.pdf') ? (
-    <img className={styles.thumbnail} src={`https://uploads.pixecurity.com/files/thumbnails/${file.name}.jpg`} />
+    <div className={styles.thumbnailContainer}>
+      <img 
+        className={styles.thumbnail} 
+        src={`https://uploads.pixecurity.com/files/thumbnails/${file.name.replace(/\+/g, "_")}.jpg`} 
+       
+      />
+      <img 
+        className={styles.pdfIcon} 
+        src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png" 
+        alt="PDF icon" 
+      />
+    </div>
   ) : (
-    <img className={styles.thumbnail} src={file.url} />
+    <img className={styles.thumbnail} src={file.url} alt={file.name} />
   )}
 </td>
+
+
 
                 <td>{file.date = new Date().toLocaleDateString()}</td>
                 <td>{file.name}</td>

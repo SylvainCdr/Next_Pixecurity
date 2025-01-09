@@ -27,6 +27,10 @@ export default function AdminNav() {
         <p>Utilisateurs</p>
         <Link href="/admin/utilisateurs">Liste des utilisateurs </Link>
       </article>
+      <article className={styles.users}>
+        <p>Stockage & Upload</p>
+        <Link href="/admin/file-manager">Upload de fichiers</Link>
+      </article>
     </div>
   );
 }
