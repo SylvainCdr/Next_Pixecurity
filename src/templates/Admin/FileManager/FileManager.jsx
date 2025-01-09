@@ -45,6 +45,12 @@ export default function FileManager() {
     setFiles(Array.from(e.target.files)); // Convertir FileList en tableau
   };
 
+  //effacer la sélection de fichiers
+  const clearFiles = () => {
+    setFiles([]);
+  };
+
+
   // Gérer le drag and drop
   const handleDragOver = (e) => {
     e.preventDefault(); // Permet de déposer le fichier
@@ -177,6 +183,14 @@ Swal.fire({
           </ul>
         </div>
       )}
+
+      {files.length > 0 && (
+        <button onClick={clearFiles} className={styles.clearBtn}>
+          Effacer la sélection
+        </button>
+      )}
+
+      {/* Liste des fichiers déjà uploadés */}
 
       <div>
         <h2>Fichiers disponibles:</h2>
