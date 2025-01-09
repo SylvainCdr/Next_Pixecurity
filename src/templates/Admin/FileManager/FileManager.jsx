@@ -9,9 +9,11 @@ export default function FileManager() {
   // Fonction pour récupérer les fichiers du serveur
   const getUploadedFiles = async () => {
     try {
-      const response = await fetch("https://uploads.pixecurity.com/listFiles.php"); // Requête vers le nouveau script PHP
+      const response = await fetch(
+        "https://uploads.pixecurity.com/listFiles.php"
+      ); // Requête vers le nouveau script PHP
       const data = await response.json();
-  
+
       if (Array.isArray(data)) {
         // Vérifier que 'created_at' est une chaîne de date valide et trier
         data.sort((a, b) => {
@@ -19,7 +21,7 @@ export default function FileManager() {
           const dateB = new Date(b.created_at);
           return dateB - dateA; // Tri décroissant (les plus récents en premier)
         });
-  
+
         console.log("Uploaded files:", data);
         setUploadedFiles(data);
       } else {
@@ -31,7 +33,6 @@ export default function FileManager() {
       setUploadedFiles([]); // Valeur par défaut vide en cas d'erreur
     }
   };
-  
 
   // Appeler la fonction pour récupérer les fichiers déjà uploadés au montage du composant
   useEffect(() => {
@@ -54,10 +55,13 @@ export default function FileManager() {
     files.forEach((file) => formData.append("files[]", file)); // Ajouter chaque fichier dans FormData
 
     try {
-      const response = await fetch("https://uploads.pixecurity.com/upload.php", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://uploads.pixecurity.com/upload.php",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Upload failed: " + (await response.text()));
@@ -77,9 +81,7 @@ export default function FileManager() {
   // fonction pour copier le lien de téléchargement
   const copyLink = (url) => {
     navigator.clipboard.writeText(url).then(
-      () => {
-        
-      },
+      () => {},
       (error) => {
         console.error("Error copying link:", error);
         alert("Erreur lors de la copie du lien");
@@ -87,18 +89,13 @@ export default function FileManager() {
     );
   };
 
-  
-
-
   return (
     <div className={styles.fileManagerContainer}>
       <h1>Upload de fichiers</h1>
-      <input
-        type="file"
-        onChange={handleFileChange}
-        multiple={true} 
-      />
-      <button onClick={uploadFiles} className={styles.uploadBtn} >Upload</button> 
+      <input type="file" onChange={handleFileChange} multiple={true} />
+      <button onClick={uploadFiles} className={styles.uploadBtn}>
+        Upload
+      </button>
       {uploadStatus && <p>{uploadStatus}</p>}
       {files.length > 0 && (
         <div className={styles.selectedFiles}>
@@ -110,10 +107,8 @@ export default function FileManager() {
           </ul>
         </div>
       )}
-    
+
       <div>
-
-
         <h2>Fichiers disponibles:</h2>
 
         <table>
@@ -130,34 +125,33 @@ export default function FileManager() {
           <tbody>
             {uploadedFiles.map((file, index) => (
               <tr key={index}>
-<td>
-  {file.name.endsWith('.pdf') ? (
-    <div className={styles.thumbnailContainer}>
-      <img 
-        className={styles.thumbnail} 
-        src={`https://uploads.pixecurity.com/files/thumbnails/${file.name.replace(/\+/g, "_")}.jpg`} 
-       
-      />
-      <img 
-        className={styles.pdfIcon} 
-        src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png" 
-        alt="PDF icon" 
-      />
-    </div>
-  ) : (
-    <img className={styles.thumbnail} src={file.url} alt={file.name} />
-  )}
-</td>
+                <td>
+                  {file.name.endsWith(".pdf") ? (
+                    <div className={styles.thumbnailContainer}>
+                      <img
+                        className={styles.thumbnail}
+                        src={`https://uploads.pixecurity.com/files/thumbnails/${file.name.replace(/\+/g, "_")}.jpg`}
+                      />
+                      <img
+                        className={styles.pdfIcon}
+                        src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
+                        alt="PDF icon"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      className={styles.thumbnail}
+                      src={file.url}
+                      alt={file.name}
+                    />
+                  )}
+                </td>
 
-
-
-                <td>{file.date = new Date().toLocaleDateString()}</td>
+                <td>{(file.date = new Date().toLocaleDateString())}</td>
                 <td>{file.name}</td>
-                
+
                 <td>{(file.size / 1000).toFixed(1)} Ko</td>
 
-               
-                
                 <td>
                   <a href={file.url} target="_blank" rel="noopener noreferrer">
                     Voir/ Télécharger
@@ -170,8 +164,6 @@ export default function FileManager() {
             ))}
           </tbody>
         </table>
-
-       
       </div>
     </div>
   );
