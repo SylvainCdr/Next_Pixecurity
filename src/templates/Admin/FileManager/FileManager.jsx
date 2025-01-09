@@ -4,31 +4,45 @@ import styles from "./style.module.scss";
 export default function FileManager() {
   const [files, setFiles] = useState([]); // Liste des fichiers
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [dragActive, setDragActive] = useState(false);
 
-  // Charger les fichiers disponibles
+  // Charger les fichiers disponibles depuis le backend
   useEffect(() => {
-    fetch("https://uploads.pixecurity.com/upload.php", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => setFiles(data))
-      .catch((error) => console.error("Error fetching files:", error));
+    const fetchFiles = async () => {
+      try {
+        const response = await fetch("https://uploads.pixecurity.com/upload.php", {
+          method: "GET",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch files.");
+        }
+        const data = await response.json();
+        setFiles(data);
+      } catch (error) {
+        console.error("Error fetching files:", error);
+      }
+    };
+    fetchFiles();
   }, []);
 
   // Gérer le glisser-déposer
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setDragActive(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragActive(false);
+  };
+
   const handleDrop = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    setDragActive(false);
 
     const file = e.dataTransfer.files[0];
     if (file) {
       uploadFile(file);
     }
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
   };
 
   // Fonction pour uploader un fichier
@@ -69,11 +83,12 @@ export default function FileManager() {
 
       {/* Zone de glisser-déposer */}
       <div
-        className={styles.dropZone}
-        onDrop={handleDrop}
+        className={`${styles.dropZone} ${dragActive ? styles.dragActive : ""}`}
         onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
       >
-        <p>Drag & drop your files here</p>
+        <p>Drag & drop your files here, or click to select files.</p>
       </div>
 
       {/* Liste des fichiers */}
