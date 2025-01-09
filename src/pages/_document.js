@@ -45,7 +45,7 @@ export default function Document() {
         {/* Favicon  */}
         <link
           rel="icon"
-          href="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
+          href="https://uploads.pixecurity.com/files/fav-pix-shop_1.png"
         />
 
         {/* External Stylesheets */}
