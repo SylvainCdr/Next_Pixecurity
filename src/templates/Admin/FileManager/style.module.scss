@@ -1,15 +1,42 @@
 .fileManagerContainer {
-
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding-top : 8rem;
-    min-height: 90VH;
-
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-}
+    max-width:1400px;
+    margin: 0 auto;
+ 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    padding-top :8rem;
+    min-height: 90vh;
+  }
+  
+  .dropZone {
+    border: 2px dashed #ccc;
+    padding: 80px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    color : black;
+  }
+  
+  .dropZone:hover {
+    background-color: #e8f5e9;
+  }
+  
+  .fileList ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .fileList li {
+    margin: 5px 0;
+  }
+  
+  .fileList a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .fileList a:hover {
+    text-decoration: underline;
+  }
+  
