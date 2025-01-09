@@ -44,6 +44,19 @@ export default function FileManager() {
     setFiles(Array.from(e.target.files)); // Convertir FileList en tableau
   };
 
+  // Gérer le drag and drop
+  const handleDragOver = (e) => {
+    e.preventDefault(); // Permet de déposer le fichier
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const droppedFiles = Array.from(e.dataTransfer.files); // Récupérer les fichiers déposés
+    setFiles((prevFiles) => [...prevFiles, ...droppedFiles]); // Ajouter les fichiers déposés
+  };
+
   // Fonction pour uploader plusieurs fichiers
   const uploadFiles = async () => {
     if (files.length === 0) {
@@ -92,9 +105,20 @@ export default function FileManager() {
   return (
     <div className={styles.fileManagerContainer}>
       <h1>Upload de fichiers</h1>
+
+      {/* Zone de drag and drop */}
+      <div
+        className={styles.dropZone}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
+        <p>Faites glisser et déposez vos fichiers ici</p>
+      </div>
+
+      {/* Zone de sélection de fichiers */}
       <input type="file" onChange={handleFileChange} multiple={true} />
       <button onClick={uploadFiles} className={styles.uploadBtn}>
-        Upload
+      <i class="fa-solid fa-upload"></i>    {" "} {" "}Upload
       </button>
       {uploadStatus && <p>{uploadStatus}</p>}
       {files.length > 0 && (
