@@ -1,7 +1,7 @@
 .fileManagerContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -123,8 +123,8 @@
   }
 
   .fileList {
-    margin-top: 2rem;
-    padding: 20px;
+    margin-top: 1rem;
+    padding: 10px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -136,7 +136,7 @@
   }
 
   .fileList li {
-    margin: 15px 0;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -204,11 +204,16 @@
   .copyButton {
     background-color: #007bff;
     color: white;
-    border: none;
-    padding: 5px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+  }
+
+  .deleteBtn {
+    background-color: #dc3545;
+    color: white;
+    font-size: 1.1rem;
+    &:hover {
+      background-color: #c82333;
+    }
   }
 
   .copyButton:hover {

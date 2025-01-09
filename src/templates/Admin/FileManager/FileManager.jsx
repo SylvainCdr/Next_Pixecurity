@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./style.module.scss";
+import Swal from "sweetalert2";
 
 export default function FileManager() {
   const [files, setFiles] = useState([]); // Tableau pour stocker les fichiers sélectionnés
@@ -82,14 +83,59 @@ export default function FileManager() {
 
       const data = await response.json();
       console.log("Upload successful:", data);
-
-      setUploadStatus("Upload successful!");
+// alert swal
+Swal.fire({
+  icon: 'success',
+  title: 'Fichiers téléchargés avec succès',
+  showConfirmButton: false,
+  timer: 1500
+})
       getUploadedFiles(); // Recharger la liste des fichiers après l'upload
     } catch (error) {
       console.error("Error uploading files:", error);
       setUploadStatus("Upload failed.");
     }
   };
+
+  // Fonction pour supprimer un fichier
+  const deleteFile = async (fileName) => {
+    if (!fileName) {
+      console.error("No file specified for deletion.");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("fileName", fileName);
+  
+    try {
+      const response = await fetch("https://uploads.pixecurity.com/deleteFile.php", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to delete file: " + (await response.text()));
+      }
+  
+      const data = await response.json();
+      console.log("File deleted:", data);
+  
+      Swal.fire({
+        icon: 'success',
+        title: 'Fichier supprimé avec succès',
+        showConfirmButton: false,
+        timer: 1500
+      });
+  
+      // Mettre à jour la liste des fichiers en supprimant le fichier localement
+      setUploadedFiles((prevFiles) =>
+        prevFiles.filter((file) => file.name !== fileName)
+      );
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
+  };
+  
 
   // fonction pour copier le lien de téléchargement
   const copyLink = (url) => {
@@ -143,7 +189,9 @@ export default function FileManager() {
               <th>Nom de fichier</th>
               <th>Taille</th>
               <th>Voir</th>
-              <th> Action </th>
+              <th> Actions </th>
+              <th> </th>
+         
             </tr>
           </thead>
           <tbody>
@@ -166,13 +214,15 @@ export default function FileManager() {
                     <img
                       className={styles.thumbnail}
                       src={file.url}
-                      alt={file.name}
+                    
                     />
                   )}
                 </td>
 
                 <td>{(file.date = new Date().toLocaleDateString())}</td>
-                <td>{file.name}</td>
+
+                <td>{file.name.length > 70 ? file.name.substring(0, 70) + "..." : file.name}</td>
+              
 
                 <td>{(file.size / 1000).toFixed(1)} Ko</td>
 
@@ -181,9 +231,15 @@ export default function FileManager() {
                     Voir/ Télécharger
                   </a>
                 </td>
+
                 <td>
-                  <button onClick={() => copyLink(file.url)}>Copier url</button>
+                  <button onClick={() => copyLink(file.url)} className={styles.copyButton}>Copier url</button>
                 </td>
+                <td>
+
+                  <button onClick={() => deleteFile(file.name)} className={styles.deleteBtn}>Supprimer</button>
+                </td>
+               
               </tr>
             ))}
           </tbody>
