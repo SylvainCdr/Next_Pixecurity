@@ -12,14 +12,14 @@ export default function Document() {
         />
         <meta
           name="keywords"
-          content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, Pixecurity, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
+          content="sécurité, sûreté, protection, videoprotection, surveillance, videosurveillance, Pixecurity, france, paris, IDF, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, caméras, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til, genetec, hikvision, dahua, axis"
         />
         <meta name="author" content="Pixecurity" />
         <meta name="robots" content="index, follow" />
        
         <meta
           property="og:title"
-          content="Pixecurity - Fournisseur de solutions de sûreté intelligentes"
+          content="Pixecurity - Solutions Intelligentes pour la Sécurité et la Vidéosurveillance / Intelligent Solutions for Security and Video Surveillance / حلول ذكية للأمان والمراقبة بالفيديو"
         />
         <meta
           property="og:description"
@@ -29,7 +29,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/07/fav-pix.png"
+          content="https://uploads.pixecurity.com/files/fav-pix-shop_1.png"
         />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="Pixecurity" />
