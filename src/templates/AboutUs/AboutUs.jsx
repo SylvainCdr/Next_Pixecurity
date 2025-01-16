@@ -107,7 +107,7 @@ export default function AboutUs() {
 
     {
       name: "Vincent ROCHETTE",
-      role: "Responsable Commercial Sud",
+      role: "Responsable Commercial Sud-Est",
       src: "/assets/team/VINCENT.webp",
     },
     {
@@ -128,12 +128,17 @@ export default function AboutUs() {
     {
       name: "Stecie RAZA",
       role: "Chargée de Communication & Marketing",
-      src: "/assets/team/STECIE_.jpg",
+      src: "/assets/team/STECIE_.webp",
     },
     {
       name: "Hiba BOUREZG",
       role: "Alternante Ingénieur Réseaux & CyberSécurité",
       src: "/assets/team/HIBA_.jpg",
+    },
+    {
+      name: "Eric SWORNOWSKI",
+      role: "Commercial Sud-Ouest",
+      src: "/assets/team/ERIC_.webp",
     },
   ];
 
