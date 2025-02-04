@@ -135,25 +135,32 @@ function CartItem({ cart }) {
           <p>Réf : {product.ref}</p>
         </div>
       </div>
-      {product.pourcentageDiscount && (
-        <p className={styles["discount-badge"]}>
-          -{product.pourcentageDiscount}%
-        </p>
-      )}
-      <div className={styles["product-price"]}>
-        {product.discountPrice ? (
-          <>
-            <span className={styles["original-price"]}>
-              {product.price.toFixed(2)}€
-            </span>
-            <span className={styles["discounted-price"]}>
-              {product.discountPrice.toFixed(2)} €
-            </span>
-          </>
-        ) : (
-          <span className={styles["base-price"]}>{product.price} €</span>
-        )}
-      </div>
+      {product.pourcentageDiscount > 0 && (
+  <p className={styles["discount-badge"]}>
+    -{product.pourcentageDiscount}%
+  </p>
+)}
+
+    {/* {product.pourcentageDiscount && (
+  <p className={styles["discount-badge"]}>
+    -{product.pourcentageDiscount}%
+  </p>
+)} */}
+<div className={styles["product-price"]}>
+  {product.discountPrice && product.discountPrice < product.price ? (
+    <>
+      <span className={styles["original-price"]}>
+        {product.price.toFixed(2)}€
+      </span>
+      <span className={styles["discounted-price"]}>
+        {product.discountPrice.toFixed(2)} €
+      </span>
+    </>
+  ) : (
+    <span className={styles["base-price"]}>{product.price.toFixed(2)} €</span>
+  )}
+</div>
+
       <div className={styles["product-quantity"]}>
         <input
           type="number"
