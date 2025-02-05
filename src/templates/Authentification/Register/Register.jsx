@@ -131,7 +131,7 @@ export default function Register() {
   return (
     <div className={styles["register-container"]}>
       <div data-aos="fade-right" className={styles["section-1"]}>
-        <h1>Inscription </h1>
+       
         <form onSubmit={handleSubmit}>
 
           <Link href="/connexion">
