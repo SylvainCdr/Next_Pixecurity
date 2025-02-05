@@ -67,10 +67,10 @@ const Partners = () => {
           <p> {t("partnersHeroDescription1")}</p>
           <p> {t("partnersHeroDescription2")}</p>
           <p> {t("partnersHeroDescription3")}</p>
-          <Link href="/actualites-de-nos-partenaires">
+          {/* <Link href="/actualites-de-nos-partenaires">
             {" "}
             <button> {t("partnersHeroLink")} </button>
-          </Link>
+          </Link> */}
         </div>
 
         <div data-aos="fade-down" className={styles["partner-img"]}></div>

@@ -1,3 +1,3 @@
-import PartnersWhatsUp from "@/templates/PartnersWhatsUp/PartnersWhatsUp";
+// import PartnersWhatsUp from "@/templates/PartnersWhatsUp/PartnersWhatsUp";
 
-export default PartnersWhatsUp;
+// export default PartnersWhatsUp;
