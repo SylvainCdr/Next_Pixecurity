@@ -18,8 +18,8 @@ export default function FileManager() {
       if (Array.isArray(data)) {
         // Vérifier que 'created_at' est une chaîne de date valide et trier
         data.sort((a, b) => {
-          const dateA = new Date(a.created_at);
-          const dateB = new Date(b.created_at);
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
           return dateB - dateA; // Tri décroissant (les plus récents en premier)
         });
 
@@ -49,7 +49,6 @@ export default function FileManager() {
   const clearFiles = () => {
     setFiles([]);
   };
-
 
   // Gérer le drag and drop
   const handleDragOver = (e) => {
@@ -89,13 +88,13 @@ export default function FileManager() {
 
       const data = await response.json();
       console.log("Upload successful:", data);
-// alert swal
-Swal.fire({
-  icon: 'success',
-  title: 'Fichiers téléchargés avec succès',
-  showConfirmButton: false,
-  timer: 1500
-})
+      // alert swal
+      Swal.fire({
+        icon: "success",
+        title: "Fichiers téléchargés avec succès",
+        showConfirmButton: false,
+        timer: 1000,
+      });
       getUploadedFiles(); // Recharger la liste des fichiers après l'upload
     } catch (error) {
       console.error("Error uploading files:", error);
@@ -109,30 +108,33 @@ Swal.fire({
       console.error("No file specified for deletion.");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("fileName", fileName);
-  
+
     try {
-      const response = await fetch("https://uploads.pixecurity.com/deleteFile.php", {
-        method: "POST",
-        body: formData,
-      });
-  
+      const response = await fetch(
+        "https://uploads.pixecurity.com/deleteFile.php",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
       if (!response.ok) {
         throw new Error("Failed to delete file: " + (await response.text()));
       }
-  
+
       const data = await response.json();
       console.log("File deleted:", data);
-  
+
       Swal.fire({
-        icon: 'success',
-        title: 'Fichier supprimé avec succès',
+        icon: "success",
+        title: "Fichier supprimé avec succès",
         showConfirmButton: false,
-        timer: 1500
+        timer: 500,
       });
-  
+
       // Mettre à jour la liste des fichiers en supprimant le fichier localement
       setUploadedFiles((prevFiles) =>
         prevFiles.filter((file) => file.name !== fileName)
@@ -141,7 +143,6 @@ Swal.fire({
       console.error("Error deleting file:", error);
     }
   };
-  
 
   // fonction pour copier le lien de téléchargement
   const copyLink = (url) => {
@@ -170,19 +171,24 @@ Swal.fire({
       {/* Zone de sélection de fichiers */}
       <input type="file" onChange={handleFileChange} multiple={true} />
       <button onClick={uploadFiles} className={styles.uploadBtn}>
-      <i class="fa-solid fa-upload"></i>    {" "} {" "}Upload
+        <i class="fa-solid fa-upload"></i> Upload
       </button>
       {uploadStatus && <p>{uploadStatus}</p>}
+   
+      {/* Liste des fichiers sélectionnés */}
       {files.length > 0 && (
         <div className={styles.selectedFiles}>
-          <h2>Sélection:</h2>
+          <h2>Fichiers sélectionnés:</h2>
           <ul>
             {files.map((file, index) => (
-              <li key={index}>{file.name}</li>
+              <li key={index}>
+                {file.name} - {(file.size / 1000).toFixed(1)} Ko
+              </li>
             ))}
           </ul>
         </div>
       )}
+
 
       {files.length > 0 && (
         <button onClick={clearFiles} className={styles.clearBtn}>
@@ -205,7 +211,6 @@ Swal.fire({
               <th>Voir</th>
               <th> Actions </th>
               <th> </th>
-         
             </tr>
           </thead>
           <tbody>
@@ -225,18 +230,17 @@ Swal.fire({
                       />
                     </div>
                   ) : (
-                    <img
-                      className={styles.thumbnail}
-                      src={file.url}
-                    
-                    />
+                    <img className={styles.thumbnail} src={file.url} />
                   )}
                 </td>
 
-                <td>{(file.date = new Date().toLocaleDateString())}</td>
+                <td>{new Date(file.date).toLocaleString()}</td>
 
-                <td>{file.name.length > 70 ? file.name.substring(0, 70) + "..." : file.name}</td>
-              
+                <td>
+                  {file.name.length > 70
+                    ? file.name.substring(0, 60) + "..."
+                    : file.name}
+                </td>
 
                 <td>{(file.size / 1000).toFixed(1)} Ko</td>
 
@@ -247,13 +251,21 @@ Swal.fire({
                 </td>
 
                 <td>
-                  <button onClick={() => copyLink(file.url)} className={styles.copyButton}>Copier url</button>
+                  <button
+                    onClick={() => copyLink(file.url)}
+                    className={styles.copyButton}
+                  >
+                    Copier url
+                  </button>
                 </td>
                 <td>
-
-                  <button onClick={() => deleteFile(file.name)} className={styles.deleteBtn}>Supprimer</button>
+                  <button
+                    onClick={() => deleteFile(file.name)}
+                    className={styles.deleteBtn}
+                  >
+                    Supprimer
+                  </button>
                 </td>
-               
               </tr>
             ))}
           </tbody>
