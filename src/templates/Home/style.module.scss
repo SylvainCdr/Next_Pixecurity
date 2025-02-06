@@ -95,6 +95,7 @@
     background-image: url("../../../public/assets/homepage/wave3.webp");
     background-size: cover;
     padding: 1rem;
+    margin-bottom : 1rem;
 
     .learnMoreMap {
       display: flex;
@@ -124,6 +125,9 @@
               margin-right: 0.5em;
               color : #760498;
               text-shadow: 1px 1px 4px #ffffff;
+            }
+            strong {
+              font-weight: 600;
             }
             margin-bottom: 0.5em;
             font-size: 1.4rem;

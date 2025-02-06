@@ -94,15 +94,14 @@ export default function Home() {
             </p>
 
             <p>
-              Que vous soyez en Île-de-France, en Nouvelle-Aquitaine ou en
-              Auvergne-Rhône-Alpes, nos experts sont là pour vous conseiller et
+              Que vous soyez en Île-de-France, dans le Sud-Est ou dans le Sud-Ouest, nos experts sont là pour vous conseiller et
               vous accompagner dans vos projets de sécurité et de sûreté.
             </p>
 
             <ul>
-              <li><i class="fa-solid fa-location-dot"></i> Paris – Siège - Etude, Conseil et accompagnement</li>
-              <li><i class="fa-solid fa-location-dot"></i> Bordeaux – Conseil et accompagnement</li>
-              <li><i class="fa-solid fa-location-dot"></i> Lyon – Conseil et accompagnement</li>
+              <li><i class="fa-solid fa-location-dot"></i> <strong>Paris</strong> – Siège - Etude, Conseil et accompagnement</li>
+              <li><i class="fa-solid fa-location-dot"></i> <strong>Bordeaux</strong> – Antenne - Conseil et accompagnement</li>
+              <li><i class="fa-solid fa-location-dot"></i> <strong>Lyon</strong> – Antenne- Conseil et accompagnement</li>
             </ul>
             {/* <p>
               Besoin d’un accompagnement personnalisé ? Contactez nos experts
