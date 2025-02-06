@@ -82,10 +82,46 @@ export default function Home() {
         <HomepageCustomersSlider />
 
         <div className={styles.learnMore}>
-          <h5> Ready to learn more ? </h5>
+        <div className={styles.learnMoreMap}>
+          <div className={styles.mapLeft}>
+            <h3>Pixecurity, présent partout en France pour vous accompagner</h3>
+            <p>
+              Pixecurity, c’est une expertise locale avec une présence
+              nationale. Nos bureaux sont situés à Paris, cœur stratégique de
+              notre activité, tandis que nos équipes commerciales sont également
+              implantées à Bordeaux et Lyon pour être au plus proche de nos
+              clients.
+            </p>
+
+            <p>
+              Que vous soyez en Île-de-France, en Nouvelle-Aquitaine ou en
+              Auvergne-Rhône-Alpes, nos experts sont là pour vous conseiller et
+              vous accompagner dans vos projets de sécurité et de sûreté.
+            </p>
+
+            <ul>
+              <li><i class="fa-solid fa-location-dot"></i> Paris – Siège - Etude, Conseil et accompagnement</li>
+              <li><i class="fa-solid fa-location-dot"></i> Bordeaux – Conseil et accompagnement</li>
+              <li><i class="fa-solid fa-location-dot"></i> Lyon – Conseil et accompagnement</li>
+            </ul>
+            {/* <p>
+              Besoin d’un accompagnement personnalisé ? Contactez nos experts
+              dès aujourd’hui !
+            </p> */}
+          </div>
+
+          <div className={styles.mapRight}>
+            <img src="/assets/homepage/map2.png" alt="carte activité" />
+          </div>
+        </div>
+
+        <div className={styles.learnMoreCTA}>
+          <h4> Ready to learn more ? </h4>
           <Link href="/contact">
             <button> {t("home.contactUs")}</button>
           </Link>
+        </div>
+
         </div>
         <div className={styles.linkedinFeedCarousel}>
           <iframe

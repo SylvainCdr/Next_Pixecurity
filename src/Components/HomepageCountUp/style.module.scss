@@ -27,7 +27,12 @@
     border: 1px solid #ffffff34;
     text-align: center;
     border-radius: 0.5em;
-    background: var(--sunset1);
+    // background: var(--sunset1);
+    background:  #760498 ;
+    transition: all 0.5s;
+    box-shadow: 0 1px 10px 0 #0404e0;
+
+
   }
   .count_box h3 {
     font-size: 40px;
