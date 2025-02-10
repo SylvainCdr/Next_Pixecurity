@@ -11,13 +11,14 @@ export default function RegisterPopup() {
   useEffect(() => {
     if (user) return; // Si l'utilisateur est déjà connecté, ne pas afficher le pop-up
 
-    const maxDisplaysPerHour = 2;
+    const maxDisplaysPerHour = 1;
     const displayCount =
       parseInt(localStorage.getItem("popupDisplayCount")) || 0;
     const lastDisplayTime =
       parseInt(localStorage.getItem("popupLastDisplayTime")) || 0;
     const currentTime = new Date().getTime();
 
+    // 1 heure = 3600000 ms
     const oneHourInMilliseconds = 3600000;
 
     if (

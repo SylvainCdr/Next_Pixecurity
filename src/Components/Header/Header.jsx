@@ -163,17 +163,11 @@ function Header() {
 
         <div className={styles.header__burgerMenu} onClick={burgerToggle} />
 
-       
         {/* icon cart pour les registed user */}
         {/* {user?.role === "user" && <CartLink />} */}
 
-
         {/* // icon cart pour ts les users  */}
-     <CartLink />
-
-
-
-      
+        <CartLink />
 
         {/* Sélecteur de langue */}
         {shouldDisplayLanguageSelector && (

@@ -135,42 +135,51 @@ export default function Login() {
   }, []);
 
   return (
-    <div className={styles["login-container"]}>
-      <div data-aos="fade-right" className={styles["section-1"]}></div>
-      <div data-aos="fade-left" className={styles["section-2"]}>
-        <h1>Connexion</h1>
-        {/* J'écoute l'événement onSubmit qui s'exécute quand on soumet le formulaire (que ce soit avec la touche entrée ou le bouton envoyer)
-            Et l'événement appelle ma fonction handleSubmit */}
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          {/* Pour chaque input, j'écoute l'événement onChange afin de mettre à jour ma variable en fonction de mon input */}
-          {/* Cela permet d'avoir en temps réel le contenu de l'input dans ma variable correspondante */}
-          {/* Pour récupérer le contenu de l'input, je récupère l'événement (la variable "e") */}
-          {/* Dans cet événement, je récupère ma cible (donc l'input) puis sa valeur */}
-          {/* et j'utilise le setEmail pour définir ma variable avec le contenu de mon input */}
-          <input
-            type="email"
-            name="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button>Se connecter</button>
-        </form>
-        <a onClick={() => setShowModal(true)}>Mot de passe oublié ?</a>
-        {/* Composant PasswordResetModal */}
-        <PasswordResetModal
-          show={showModal}
-          onClose={() => setShowModal(false)}
-          onResetPassword={handleResetPassword}
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="https://images.unsplash.com/photo-1462899006636-339e08d1844e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          as="image"
         />
+      </Head>
+      <div className={styles["login-container"]}>
+        <div data-aos="fade-right" className={styles["section-1"]}></div>
+        <div data-aos="fade-left" className={styles["section-2"]}>
+          <h1>Connexion</h1>
+          {/* J'écoute l'événement onSubmit qui s'exécute quand on soumet le formulaire (que ce soit avec la touche entrée ou le bouton envoyer)
+            Et l'événement appelle ma fonction handleSubmit */}
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            {/* Pour chaque input, j'écoute l'événement onChange afin de mettre à jour ma variable en fonction de mon input */}
+            {/* Cela permet d'avoir en temps réel le contenu de l'input dans ma variable correspondante */}
+            {/* Pour récupérer le contenu de l'input, je récupère l'événement (la variable "e") */}
+            {/* Dans cet événement, je récupère ma cible (donc l'input) puis sa valeur */}
+            {/* et j'utilise le setEmail pour définir ma variable avec le contenu de mon input */}
+            <input
+              type="email"
+              name="email"
+              id="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button>Se connecter</button>
+          </form>
+          <a onClick={() => setShowModal(true)}>Mot de passe oublié ?</a>
+          {/* Composant PasswordResetModal */}
+          <PasswordResetModal
+            show={showModal}
+            onClose={() => setShowModal(false)}
+            onResetPassword={handleResetPassword}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

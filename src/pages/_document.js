@@ -16,7 +16,7 @@ export default function Document() {
         />
         <meta name="author" content="Pixecurity" />
         <meta name="robots" content="index, follow" />
-       
+
         <meta
           property="og:title"
           content="Pixecurity - Solutions Intelligentes pour la Sécurité et la Vidéosurveillance / Intelligent Solutions for Security and Video Surveillance / حلول ذكية للأمان والمراقبة بالفيديو"
@@ -78,109 +78,12 @@ export default function Document() {
         />
         {/* End Google Tag Manager */}
 
-{/* Preload images for faster loading */}
-  <link 
-    rel="preload" 
-    href="/assets/homepage/homepage-hero.webp" 
-    as="image" 
-    type="image/webp"
-  />
+        {/* Preload images for faster loading */}
 
-  <link 
-    rel="preload" 
-    href="/assets/expertise/expertise.webp" 
-    as="image" 
-    type="image/webp"
-  />
-  
-  <link 
-    rel="preload" 
-    href="/assets/expertise/expert-back2.webp" 
-    as="image" 
-    type="image/webp"
-  />
+        <link rel="preload" href="/assets/logo-dark.svg" as="image" />
+        <link rel="preload" href="/assets/logo-clear.svg" as="image" />
 
-  <link 
-    rel="preload" 
-    href="/assets/aboutUs/cube4.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/banners/banner1.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/banners/banner2.png" 
-    as="image" 
-    type="image/png"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/banners/banner3.jpg" 
-    as="image" 
-    type="image/jpg"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/banners/banner4.jpg" 
-    as="image" 
-    type="image/jpg"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/cameras.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/reseaux.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/logiciels.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-  <link 
-    rel="preload" 
-    href="/assets/shop/autres.webp" 
-    as="image" 
-    type="image/webp"
-  />
-
-
-  <link 
-    rel="preload" 
-    href="https://images.unsplash.com/photo-1462899006636-339e08d1844e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-    as="image"
-  />
-
-  <link 
-    rel="preload" 
-    href="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-    as="image" 
-   
-  />
-
-  {/* End Preload images for faster loading */}
-
-
-
+        {/* End Preload images for faster loading */}
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}

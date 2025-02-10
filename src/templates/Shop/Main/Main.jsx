@@ -55,6 +55,62 @@ function Catalogue({ products }) {
           content="catalogue, boutique, produits, caméras, surveillance, videosurveillance, sûreté, sécurité, Paris, France, videoprotection, équipements réseau, logiciels, sécurité, Vivotek, Bosch, Zyxel, I-Pro, Milestone, Til Technologies, Cisco, Comnet, Vuwall, Briefcam, Technoaware, bullet, ptz, dôme, angle, fisheye, multicapteur, fixe, switch, firewall"
         />
         <meta name="author" content="Pixecurity" />
+
+        <link
+          rel="preload"
+          href="/assets/shop/banners/banner1.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/banners/banner2.png"
+          as="image"
+          type="image/png"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/banners/banner3.jpg"
+          as="image"
+          type="image/jpg"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/banners/banner4.jpg"
+          as="image"
+          type="image/jpg"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/cameras.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/reseaux.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/logiciels.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/shop/autres.webp"
+          as="image"
+          type="image/webp"
+        />
       </Head>
 
       <ShopNav />

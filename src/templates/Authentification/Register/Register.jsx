@@ -4,6 +4,7 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 import Aos from "aos";
 import { BASE_URL } from "@/url";
+import Head from "next/head";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -114,7 +115,6 @@ export default function Register() {
             title: "Inscription réussie!",
             text: "Vous pouvez maintenant vous connecter.",
             timer: 2500,
-
           }).then(() => {
             window.location.href = "/connexion";
           });
@@ -129,120 +129,125 @@ export default function Register() {
   }, []);
 
   return (
-    <div className={styles["register-container"]}>
-      <div data-aos="fade-right" className={styles["section-1"]}>
-       
-        <form onSubmit={handleSubmit}>
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="https://images.unsplash.com/photo-1462899006636-339e08d1844e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          as="image"
+        />
+      </Head>
+      <div className={styles["register-container"]}>
+        <div data-aos="fade-right" className={styles["section-1"]}>
+          <form onSubmit={handleSubmit}>
+            <Link href="/connexion">
+              <button> Se connecter</button>
+            </Link>
+            <span>――――― OU ―――――</span>
+            <label htmlFor="firstName">Prénom</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              required
+              value={firstName}
+              onChange={handleFirstNameChange}
+            />
+            {firstNameError && (
+              <span className={styles["error-message"]}>{firstNameError}</span>
+            )}
 
-          <Link href="/connexion">
-            <button> Se connecter</button>
-          </Link>
-        <span>――――― OU ―――――</span>
-          <label htmlFor="firstName">Prénom</label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            required
-            value={firstName}
-            onChange={handleFirstNameChange}
-          />
-          {firstNameError && (
-            <span className={styles["error-message"]}>{firstNameError}</span>
-          )}
+            <label htmlFor="lastName">Nom</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              required
+              value={lastName}
+              onChange={handleLastNameChange}
+            />
+            {lastNameError && (
+              <span className={styles["error-message"]}>{lastNameError}</span>
+            )}
 
-          <label htmlFor="lastName">Nom</label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            required
-            value={lastName}
-            onChange={handleLastNameChange}
-          />
-          {lastNameError && (
-            <span className={styles["error-message"]}>{lastNameError}</span>
-          )}
+            <label htmlFor="company">Entreprise (optionnel)</label>
+            <input
+              type="text"
+              name="company"
+              id="company"
+              onChange={(e) => setCompany(e.target.value)}
+            />
+            {/* // select pour le choix du commercial */}
+            <label htmlFor="salesperson">Commercial(e) référent(e)</label>
+            <select
+              name="salesperson"
+              id="salesperson"
+              defaultValue="Aucun"
+              onChange={(e) => setSalesperson(e.target.value)}
+            >
+              <option value="Aucun">Aucun</option>
+              <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
+              <option value="Fabrice VALLEE">Fabrice VALLEE</option>
+              <option value="Yanis MEBARKI">Yanis MEBARKI</option>
+              <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
+            </select>
 
-          <label htmlFor="company">Entreprise (optionnel)</label>
-          <input
-            type="text"
-            name="company"
-            id="company"
-            onChange={(e) => setCompany(e.target.value)}
-          />
-          {/* // select pour le choix du commercial */}
-          <label htmlFor="salesperson">Commercial(e) référent(e)</label>
-          <select
-            name="salesperson"
-            id="salesperson"
-            defaultValue="Aucun"
-            onChange={(e) => setSalesperson(e.target.value)}
-          >
-            <option value="Aucun">Aucun</option>
-            <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
-            <option value="Fabrice VALLEE">Fabrice VALLEE</option>
-            <option value="Yanis MEBARKI">Yanis MEBARKI</option>
-            <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
-          </select>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {emailError && (
+              <span className={styles["error-message"]}>{emailError}</span>
+            )}
 
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {emailError && (
-            <span className={styles["error-message"]}>{emailError}</span>
-          )}
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            {passwordError && (
+              <span className={styles["error-message"]}>{passwordError}</span>
+            )}
 
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            required
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          {passwordError && (
-            <span className={styles["error-message"]}>{passwordError}</span>
-          )}
+            {/* checkbox pour les CGV et la politique de confidentialité */}
+            <div className={styles.cgv}>
+              <input type="checkbox" name="cgu" id="cgu" required />
+              <label htmlFor="cgu">
+                J'accepte les
+                <Link href="/cgv" target="_blank">
+                  CGV
+                </Link>
+                et la
+                <Link href="/rgpd" target="_blank">
+                  politique de confidentialité
+                </Link>
+              </label>
+            </div>
 
-          {/* checkbox pour les CGV et la politique de confidentialité */}
-          <div className={styles.cgv}>
-            <input type="checkbox" name="cgu" id="cgu" required />
-            <label htmlFor="cgu">
-              J'accepte les
-              <Link href="/cgv" target="_blank">
-                CGV
-              </Link>
-              et la
-              <Link href="/rgpd" target="_blank">
-                politique de confidentialité
-              </Link>
-            </label>
-          </div>
-
-          <button>S'inscrire</button>
-
-      
-        </form>
-      </div>
-
-      {errors && (
-        <div className={styles["validation-errors"]}>
-          <p>Erreur(s) de validation :</p>
-          <ul>
-            {errors.map((error, index) => (
-              <li key={index}>{error}</li>
-            ))}
-          </ul>
+            <button>S'inscrire</button>
+          </form>
         </div>
-      )}
-    </div>
+
+        {errors && (
+          <div className={styles["validation-errors"]}>
+            <p>Erreur(s) de validation :</p>
+            <ul>
+              {errors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

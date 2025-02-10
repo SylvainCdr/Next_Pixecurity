@@ -27,7 +27,20 @@ function Expertise() {
           content="expertise, sûreté, vidéoprotection, analyse d'image, contrôle d'accès, cloud, réseaux, sécurité, Pixecurity, solutions de sûreté, caméras, thermiques, sécurité électronique, ANSSI, full-cloud, 5G, stockage, réseau, cyber-sécurité"
         />
         <meta name="author" content="Pixecurity" />
-        {/* Autres balises meta spécifiques à cette page si nécessaire */}
+
+        <link
+          rel="preload"
+          href="/assets/expertise/expertise.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/expertise/expert-back2.webp"
+          as="image"
+          type="image/webp"
+        />
       </Head>
       <div className={styles["expertise-container"]}>
         <div className={styles.hero}>
@@ -80,7 +93,7 @@ function Expertise() {
                 src="/assets/expertise/cam2.png"
                 alt={t("videoProtection.cam2.title")}
                 loading="lazy"
-                   width="300"
+                width="300"
                 height="300"
               />
               <h3>{t("videoProtection.cam2.title")}</h3>
@@ -93,7 +106,7 @@ function Expertise() {
                 src="/assets/expertise/cam3.jpg"
                 alt={t("videoProtection.cam3.title")}
                 loading="lazy"
-              width="300"
+                width="300"
                 height="240"
               />
               <h3>{t("videoProtection.cam3.title")}</h3>
@@ -189,7 +202,7 @@ function Expertise() {
                 src="/assets/expertise/con3.jpg"
                 alt={t("accessControl.fullIntegratedSolution.title")}
                 loading="lazy"
-                width="300" 
+                width="300"
                 height="240"
               />
               <h3>{t("accessControl.fullIntegratedSolution.title")}</h3>
@@ -261,7 +274,6 @@ function Expertise() {
                 loading="lazy"
                 width="300"
                 height="240"
-
               />
               <h3>{t("networksSIStorage.networks.title")}</h3>
               <h4>{t("networksSIStorage.networks.subtitle")}</h4>

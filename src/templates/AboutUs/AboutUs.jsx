@@ -31,11 +31,6 @@ export default function AboutUs() {
       src: "/assets/team/ANAELLE.jpg",
     },
     {
-      name: "Yanis MEBARKI",
-      role: "Technicien de Mise en Service",
-      src: "/assets/team/YANNIS.jpg",
-    },
-    {
       name: "Kenza GAUTIAM",
       role: "Commerciale Grands Comptes",
       src: "/assets/team/KENZA.jpeg",
@@ -155,7 +150,20 @@ export default function AboutUs() {
           content="sécurité, solutions de sûreté, protection, surveillance, Pixecurity, france, paris, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"
         />
         <meta name="author" content="Pixecurity" />
-        {/* Autres balises meta spécifiques à cette page si nécessaire */}
+
+        <link
+          rel="preload"
+          href="/assets/aboutUs/cube4.webp"
+          as="image"
+          type="image/webp"
+        />
+
+        <link
+          rel="preload"
+          href="/assets/expertise/expert-back2.webp"
+          as="image"
+          type="image/webp"
+        />
       </Head>
 
       <div className={styles["aboutUs-container"]}>
