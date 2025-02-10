@@ -8,6 +8,7 @@ import Aos from "aos";
 import PasswordResetModal from "@/Components/ResetPasswordModal/ResetPasswordModal";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "@/Components/useGetUser";
+import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
