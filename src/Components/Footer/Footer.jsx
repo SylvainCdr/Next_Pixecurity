@@ -23,33 +23,40 @@ function Footer() {
       <div className={styles["section-3"]}>
         <h4>{t("footer.siteMap")}</h4>
         <ul>
-          <Link href="/">
-            <li>{t("footer.home")}</li>
-          </Link>
-          <Link href="/boutique">
-            <li>{t("footer.shop")}</li>
-          </Link>
-          <Link href="/notre-expertise-en-solutions-de-surete">
-            <li>{t("footer.expertise")}</li>
-          </Link>
-          <Link href="/inscription">
-            <li>{t("footer.signupLogin")}</li>
-          </Link>
-          <Link href="/qui-sommes-nous">
-            <li>{t("footer.aboutUsLink")}</li>
-          </Link>
-          <Link href="/partenaires-leaders-en-securite-et-surveillance">
-            <li>{t("footer.partnersLink")}</li>
-          </Link>
-          <Link href="/devis-securite-surveillance">
-            <li>{t("footer.quotationLink")}</li>
-          </Link>
-          <Link href="/contact">
-            <li>{t("footer.contactLink")}</li>
-          </Link>
-          <Link href="/actualites-de-nos-partenaires">
-            <li>{t("footer.partnersActus")}</li>
-          </Link>
+          <li>
+            <Link href="/">{t("footer.home")}</Link>
+          </li>
+          <li>
+            <Link href="/boutique">{t("footer.shop")}</Link>
+          </li>
+          <li>
+            {" "}
+            <Link href="/notre-expertise-en-solutions-de-surete">
+              {t("footer.expertise")}
+            </Link>
+          </li>
+          <li>
+            {" "}
+            <Link href="/inscription">{t("footer.signupLogin")}</Link>
+          </li>
+          <li>
+            {" "}
+            <Link href="/qui-sommes-nous">{t("footer.aboutUsLink")}</Link>
+          </li>
+          <li>
+            <Link href="/partenaires-leaders-en-securite-et-surveillance">
+              {t("footer.partnersLink")}
+            </Link>
+          </li>
+          <li>
+            {" "}
+            <Link href="/devis-securite-surveillance">
+              {t("footer.quotationLink")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact">{t("footer.contactLink")}</Link>
+          </li>
         </ul>
       </div>
 
