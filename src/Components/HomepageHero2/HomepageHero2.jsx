@@ -4,12 +4,24 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 export default function HomepageHero2() {
   const { t } = useTranslation();
 
   return (
     <div className={styles.homepageHeroContainer}>
+
+<div className={styles.imageWrapper}>
+<Image
+  src="/assets/homepage/homepage-hero.webp"
+  alt="Hero Image"
+  layout="fill"
+  objectFit="cover"
+  priority // Chargement instantané
+/>
+</div>
+
       <h4>
         Smarter. <br /> Safer.
       </h4>

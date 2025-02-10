@@ -1,24 +1,29 @@
 .homepageHeroContainer {
   height: 110vh;
-  background:
-    linear-gradient(
-      360deg,
-      #000000fb 10%,
-      rgba(22, 24, 26, 0.346) 35%,
-      rgba(31, 50, 87, 0.065),
-      50%,
-      rgba(122, 122, 122, 0) 70%
-    ),
-    // url("https://as2.ftcdn.net/v2/jpg/10/04/94/55/1000_F_1004945569_xJKKQZvqLrUkereHzNAfhdZB4qZpMk0U.jpg");
-    // url("https://as2.ftcdn.net/v2/jpg/10/42/63/21/1000_F_1042632123_LVX247KXIpYcVHvuz82iOWQEWpzG9C9p.jpg");
-    url("/assets/homepage/homepage-hero.webp");
-  // url("/assets/test9.jpeg");
-  // url("/assets/test4.jpeg");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
+
+  /* Conteneur de l'image */
+  .imageWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; // Derrière le texte
+
+    /* Pseudo-élément pour le filtre */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        360deg,
+        #000000fb 5%,
+        rgba(22, 24, 26, 0.346) 20%,
+        rgba(31, 50, 87, 0.065) 40%,
+        rgba(122, 122, 122, 0) 60%
+      );
+    }
+  }
 
   h4 {
     font-size: 3rem;
@@ -36,7 +41,6 @@
     left: 27%;
     position: absolute;
     width: 50%;
-    // background-color: #1184f03f;
     padding: 1rem;
     border-radius: 0.5rem;
     -webkit-border-radius: 0.5rem;
@@ -46,7 +50,6 @@
 
     h1 {
       text-shadow: #681a70 1px 1px 6px;
-      // text-shadow: rgb(0, 0, 0) 1px 1px 6px;
       font-size: 3.2rem;
       font-family: "Barlow Condensed", sans-serif;
       font-weight: 700;
@@ -61,31 +64,24 @@
       letter-spacing: 0.01rem;
       line-height: 1.2;
       color: #681a70;
-      // color: white;
     }
 
     .homepageHeroCta {
-      // position: absolute;
-      // bottom: 25%;
-      // left:32%;
-      // width: 35%;
       margin-top: 5%;
       gap: 3rem;
       display: flex;
-      // justify-content: space-around;
       align-items: center;
-
-      //   .ctaQuotation {
-      //     background-color: white;
-      //     color: var(--sunset1);
-      //     border: 2px solid var(--sunset1);
-
-      // }
     }
   }
 
   @media screen and (max-width: 1300px) {
-    background-position: 25%;
+    
+    .imageWrapper {
+    img {
+      object-fit: cover;
+      object-position: 35% 0%;
+    }
+  }
 
     h4 {
       font-size: 2.5rem;
@@ -126,7 +122,7 @@
 
   @media screen and (max-width: 1000px) {
     height: 100vh;
-    background-position: 40%;
+ 
 
     h4 {
       font-size: 2rem;
@@ -165,7 +161,7 @@
     }
   }
   @media screen and (max-width: 800px) {
-    background-position: 5%;
+  
 
     .titles {
       top: 35%;
@@ -234,7 +230,7 @@
 
   @media screen and (max-width: 450px) {
     height: 90vh;
-    background-position: 20%;
+  
 
     h4 {
       font-size: 1.8rem;
