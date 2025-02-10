@@ -4,36 +4,56 @@
   .hero {
     height: 85vh;
     background: linear-gradient(
-        90deg,
-        #000000fb 10%,
-        rgba(9, 15, 25, 0.757) 35%,
-        rgba(31, 50, 87, 0.065),
-        50%,
-        rgba(122, 122, 122, 0) 70%
-      ),
-      url("/assets/expertise/expertise.webp");
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    background-position: top;
+      90deg,
+      #000000fb 10%,
+      rgba(9, 15, 25, 0.757) 35%,
+      rgba(31, 50, 87, 0.065),
+      50%,
+      rgba(122, 122, 122, 0) 70%
+    );
+
     align-items: center;
     display: flex;
     width: 100%;
-   
+    background-attachment: fixed;
 
-      background-attachment: fixed;
-      // background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    
-    
+     /* Conteneur de l'image */
+  .imageWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; // Derrière le texte
+
+
+
+    /* Pseudo-élément pour le filtre */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        360deg,
+        #000000fb 5%,
+        rgba(22, 24, 26, 0.346) 20%,
+        rgba(31, 50, 87, 0.065) 40%,
+        rgba(122, 122, 122, 0) 60%
+      );
+    }
+  }
+  
 
     .title {
       width: 42%;
       padding-left: 4%;
       animation: floatEffect 5s ease-in-out infinite;
       @keyframes floatEffect {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
       h1 {
         font-size: 3.2rem;
@@ -41,7 +61,6 @@
         font-weight: 700;
         line-height: 3rem;
         margin-bottom: 1.5rem;
-      
       }
 
       h2 {
@@ -77,7 +96,7 @@
     // background: linear-gradient(-45deg, #3b82f6, #ef4444, #f59e0b, #10b981);
     // background-size: 400% 400%;
     // animation: gradientAnimation 15s ease infinite;
-    
+
     // @keyframes gradientAnimation {
     //   0% { background-position: 0% 50%; }
     //   50% { background-position: 100% 50%; }
@@ -103,7 +122,9 @@
       i:hover {
         color: #03dac8;
         transform: scale(1.2);
-        transition: transform 0.3s, color 0.3s;
+        transition:
+          transform 0.3s,
+          color 0.3s;
       }
 
       li {

@@ -44,6 +44,15 @@ function Expertise() {
       </Head>
       <div className={styles["expertise-container"]}>
         <div className={styles.hero}>
+        <div className={styles.imageWrapper}>
+<Image
+  src="/assets/expertise/expertise.webp"
+  alt="Hero Image"
+  layout="fill"
+  objectFit="cover"
+  priority // Chargement instantané
+/>
+</div>
           <div data-aos="fade-right" className={styles.title}>
             <h1>{t("expertiseHeroTitle")}</h1>
             <h2>{t("expertiseHeroSubtitle")}</h2>
