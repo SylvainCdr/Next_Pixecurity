@@ -69,6 +69,13 @@ export default function Home() {
        
 
         />
+        <link
+          rel="preload"
+          href="/assets/cadre.png"
+          as="image"
+       
+
+        />
 
 
 
