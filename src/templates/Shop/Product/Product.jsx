@@ -111,13 +111,13 @@ export default function Product({ product, id, suggestions }) {
   };
 
   const handleAddToCartClick = async () => {
-      await addToCart(product, quantity);
-      Swal.fire({
-        icon: "success",
-        title: "Produit ajouté au panier avec succès!",
-        showConfirmButton: false,
-        timer: 1200,
-      });
+    await addToCart(product, quantity);
+    Swal.fire({
+      icon: "success",
+      title: "Produit ajouté au panier avec succès!",
+      showConfirmButton: false,
+      timer: 1200,
+    });
   };
 
   useEffect(() => {
@@ -153,11 +153,8 @@ export default function Product({ product, id, suggestions }) {
       mpn: product.ref,
     };
 
-    console.log("JSON-LD Data:", jsonLdData);
-
     try {
       const jsonString = JSON.stringify(jsonLdData);
-      console.log("JSON-LD String:", jsonString);
     } catch (error) {
       console.error("Error stringifying JSON-LD data:", error);
     }

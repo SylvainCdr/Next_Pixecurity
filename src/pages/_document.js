@@ -80,9 +80,6 @@ export default function Document() {
 
         {/* Preload images for faster loading */}
 
-        <link rel="preload" href="/assets/logo-dark.svg" as="image" />
-        <link rel="preload" href="/assets/logo-clear.svg" as="image" />
-
         {/* End Preload images for faster loading */}
       </Head>
       <body>

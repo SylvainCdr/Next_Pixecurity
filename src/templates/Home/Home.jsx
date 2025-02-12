@@ -59,26 +59,8 @@ export default function Home() {
           rel="preload"
           href="https://images.unsplash.com/photo-1581091877018-dac6a371d50f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           as="image"
-       
-
         />
-        <link
-          rel="preload"
-          href="/assets/homepage/wave3.webp"
-          as="image"
-       
-
-        />
-        <link
-          rel="preload"
-          href="/assets/cadre.png"
-          as="image"
-       
-
-        />
-
-
-
+        <link rel="preload" href="/assets/homepage/wave3.webp" as="image" />
       </Head>
 
       <div className={styles["homepage-container"]}>
@@ -181,7 +163,6 @@ export default function Home() {
             src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC"
             frameborder="0"
             title="pixecurity linkedin feed"
-
           ></iframe>
         </div>
       </div>
