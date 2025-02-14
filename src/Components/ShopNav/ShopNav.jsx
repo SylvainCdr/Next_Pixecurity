@@ -84,7 +84,7 @@ function ShopNav() {
   };
 
   // Modification de l'ordre des catégories
-  const order = ["Caméras", "Réseau", "Logiciels", "Autres"];
+  const order = ["camera", "Réseau", "Logiciels", "Autres"];
 
   // Trier les catégories selon l'ordre spécifié
   const sortedCategories = categories.sort(

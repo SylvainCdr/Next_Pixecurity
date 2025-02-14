@@ -26,11 +26,10 @@ function ProductCard({ product }) {
 
   useEffect(() => {
     Aos.init({ duration: 500 });
-  }
-  , []);
+  }, []);
 
   return (
-    <div className={styles["product-card"]} data-aos="zoom-in" >
+    <div className={styles["product-card"]} data-aos="zoom-in">
       <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
@@ -43,23 +42,33 @@ function ProductCard({ product }) {
       >
         <DiscountBadge product={product} />
         <div className={styles.imgContainer}>
-          {product.image.startsWith("http") ? (
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles["product-img"]}
-            />
+          {product && product.image ? (
+            product.image.startsWith("http") ? (
+              <img
+                src={product.image}
+                alt={product.name}
+                className={styles["product-img"]}
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={`${BASE_URL}${product.image}`}
+                alt={product.name}
+                className={styles["product-img"]}
+                width={150}
+                height={150}
+                loading="lazy"
+              />
+            )
           ) : (
-            <Image
-              src={`${BASE_URL}${product.image}`}
+            <img
+              src="https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
               alt={product.name}
               className={styles["product-img"]}
-              loading="lazy"
-              width={250}
-              height={250}
             />
           )}
         </div>
+
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
@@ -181,7 +190,6 @@ function ButtonAddToFavorite({ product }) {
   );
 }
 
-
 // Fonction pour ajouter un produit au panier, si le user est connecté sinon afficher un message d'erreur
 // function ButtonAddToCart({ product }) {
 //   const { addToCart } = useCartContext();
@@ -214,7 +222,6 @@ function ButtonAddToFavorite({ product }) {
 //   );
 // }
 
-
 // Fonction modifié pour permettre l'ajout d'un produit au panier à tous les users connectés ou non
 function ButtonAddToCart({ product }) {
   const { addToCart } = useCartContext();
@@ -222,14 +229,13 @@ function ButtonAddToCart({ product }) {
   // const userId = user?._id;
 
   const handleAddToCart = async () => {
-  
-      await addToCart(product);
-      Swal.fire({
-        icon: "success",
-        title: "Produit ajouté au panier avec succès!",
-        showConfirmButton: false,
-        timer: 1200,
-      });
+    await addToCart(product);
+    Swal.fire({
+      icon: "success",
+      title: "Produit ajouté au panier avec succès!",
+      showConfirmButton: false,
+      timer: 1200,
+    });
   };
 
   return (
