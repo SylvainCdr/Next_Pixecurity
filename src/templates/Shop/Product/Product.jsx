@@ -216,15 +216,19 @@ export default function Product({ product, id, suggestions }) {
                 </p>
               )}
 
-              <img
-                src={
-                  product.image && product.image.startsWith("http")
-                    ? product.image
-                    : `${BASE_URL}${product.image}`
-                }
-                alt={product.name}
-                loading="lazy"
-              />
+            <img
+              src={
+                product.image && product.image.startsWith("http")
+                  ? product.image
+                  : `${BASE_URL}${product.image}`
+              }
+              alt={product.name}
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/assets/shop/nopicavailable.webp";
+              }}
+            />
               <p
                 className={styles.like}
                 data-aos="zoom-in-left"

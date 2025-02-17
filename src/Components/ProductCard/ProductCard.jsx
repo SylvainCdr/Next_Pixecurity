@@ -62,7 +62,7 @@ function ProductCard({ product }) {
             )
           ) : (
             <img
-              src="https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+              src="/assets/shop/nopicavailable.webp"
               alt={product.name}
               className={styles["product-img"]}
             />

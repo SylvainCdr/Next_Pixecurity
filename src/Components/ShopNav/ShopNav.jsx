@@ -5,6 +5,7 @@ import { BASE_URL } from "@/url";
 import { useGetUser } from "../useGetUser";
 
 function ShopNav() {
+  const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
   const [subcategoriesMap, setSubcategoriesMap] = useState({});
   const [openCategory, setOpenCategory] = useState(null);
@@ -15,6 +16,20 @@ function ShopNav() {
   const navRef = useRef(null); // Reference pour le conteneur du menu
 
   useEffect(() => {
+    // Charger toutes les marques
+    fetch(`${BASE_URL}/brands`)
+      .then((res) => res.json())
+      .then((data) => setBrands(data))
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des marques :", error)
+      );
+  }
+  , []);
+  
+  console.log (brands);
+
+
+  useEffect(() => {
     // Charger toutes les catégories
     fetch(`${BASE_URL}/categories`)
       .then((res) => res.json())
@@ -23,6 +38,40 @@ function ShopNav() {
         console.error("Erreur lors de la récupération des catégories :", error)
       );
   }, []);
+
+  console.log (categories);
+
+  // charger les marque pour chaque catégorie
+  const [categoriesMap, setCategoriesMap] = useState({});
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const categoriesData = await Promise.all(
+        brands.map((brand) =>
+          fetch(`${BASE_URL}/categories?brand=${brand}`)
+            .then((res) => res.json())
+            .catch((error) => {
+              console.error(
+                `Erreur lors de la récupération des catégories pour ${brand} :`,
+                error
+              );
+              return [];
+            })
+        )
+      );
+
+      // Construire un objet associant chaque marque à ses catégories
+      const categoriesObj = {};
+      brands.forEach((brand, index) => {
+        categoriesObj[brand] = categoriesData[index];
+      });
+
+      setCategoriesMap(categoriesObj);
+    };
+
+    if (brands.length > 0) {
+      fetchCategories();
+    }
+  }, [brands]);
 
   useEffect(() => {
     // Charger les sous-catégories pour chaque catégorie
