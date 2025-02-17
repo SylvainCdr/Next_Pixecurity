@@ -6,65 +6,41 @@ import { useGetUser } from "../useGetUser";
 
 function ShopNav() {
   const [brands, setBrands] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [categoriesMap, setCategoriesMap] = useState({});
   const [subcategoriesMap, setSubcategoriesMap] = useState({});
+  const [openBrand, setOpenBrand] = useState(null);
   const [openCategory, setOpenCategory] = useState(null);
-  const [openSubcategory, setOpenSubcategory] = useState(null);
   const user = useGetUser();
   const userId = user?._id;
 
-  const navRef = useRef(null); // Reference pour le conteneur du menu
+  const navRef = useRef(null);
 
+  // Charger toutes les marques
   useEffect(() => {
-    // Charger toutes les marques
     fetch(`${BASE_URL}/brands`)
       .then((res) => res.json())
       .then((data) => setBrands(data))
       .catch((error) =>
-        console.error("Erreur lors de la récupération des marques :", error)
-      );
-  }
-  , []);
-  
-  console.log (brands);
-
-
-  useEffect(() => {
-    // Charger toutes les catégories
-    fetch(`${BASE_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
-      .catch((error) =>
-        console.error("Erreur lors de la récupération des catégories :", error)
+        console.error("Erreur chargement des marques :", error)
       );
   }, []);
 
-  console.log (categories);
-
-  // charger les marque pour chaque catégorie
-  const [categoriesMap, setCategoriesMap] = useState({});
+  // Charger les catégories spécifiques à chaque marque
   useEffect(() => {
     const fetchCategories = async () => {
-      const categoriesData = await Promise.all(
-        brands.map((brand) =>
-          fetch(`${BASE_URL}/categories?brand=${brand}`)
-            .then((res) => res.json())
-            .catch((error) => {
-              console.error(
-                `Erreur lors de la récupération des catégories pour ${brand} :`,
-                error
-              );
-              return [];
-            })
-        )
-      );
-
-      // Construire un objet associant chaque marque à ses catégories
       const categoriesObj = {};
-      brands.forEach((brand, index) => {
-        categoriesObj[brand] = categoriesData[index];
-      });
-
+      for (const brand of brands) {
+        try {
+          const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
+          const data = await res.json();
+          categoriesObj[brand] = data;
+        } catch (error) {
+          console.error(
+            `Erreur chargement des catégories pour ${brand} :`,
+            error
+          );
+        }
+      }
       setCategoriesMap(categoriesObj);
     };
 
@@ -73,108 +49,120 @@ function ShopNav() {
     }
   }, [brands]);
 
+  // Charger les sous-catégories spécifiques à chaque marque et catégorie
+
   useEffect(() => {
-    // Charger les sous-catégories pour chaque catégorie
     const fetchSubcategories = async () => {
-      const subcategoriesData = await Promise.all(
-        categories.map((category) =>
-          fetch(`${BASE_URL}/subcategories?category=${category}`)
-            .then((res) => res.json())
-            .catch((error) => {
-              console.error(
-                `Erreur lors de la récupération des sous-catégories pour ${category} :`,
-                error
-              );
-              return [];
-            })
-        )
-      );
-
-      // Construire un objet associant chaque catégorie à ses sous-catégories
       const subcategoriesObj = {};
-      categories.forEach((category, index) => {
-        subcategoriesObj[category] = subcategoriesData[index];
-      });
-
+      
+      for (const brand of brands) {
+        if (!categoriesMap[brand]) continue; // Évite les erreurs si categoriesMap[brand] est undefined
+  
+        for (const category of categoriesMap[brand]) {
+          try {
+            const res = await fetch(
+              `${BASE_URL}/subcategories?brand=${brand}&category=${category}`
+            );
+            const data = await res.json();
+  
+            // Stocke les sous-catégories en les associant à la marque et à la catégorie
+            if (!subcategoriesObj[brand]) {
+              subcategoriesObj[brand] = {};
+            }
+            subcategoriesObj[brand][category] = data;
+          } catch (error) {
+            console.error(
+              `Erreur chargement des sous-catégories pour ${category} de ${brand} :`,
+              error
+            );
+          }
+        }
+      }
       setSubcategoriesMap(subcategoriesObj);
     };
-
-    if (categories.length > 0) {
+  
+    if (Object.keys(categoriesMap).length > 0) {
       fetchSubcategories();
     }
-  }, [categories]);
+  }, [categoriesMap]);
+  
 
+
+
+
+
+  // Gérer le clic en dehors du menu
   useEffect(() => {
-    // Fonction pour gérer les clics en dehors du menu
     const handleClickOutside = (event) => {
       if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpenBrand(null);
         setOpenCategory(null);
-        setOpenSubcategory(null);
       }
     };
-
-    // Ajouter l'écouteur d'événements
     document.addEventListener("mousedown", handleClickOutside);
-
-    // Nettoyer l'écouteur d'événements à la destruction du composant
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
+  const toggleBrand = (brand) => {
+    setOpenBrand(openBrand === brand ? null : brand);
+    setOpenCategory(null);
+  };
+
   const toggleCategory = (category) => {
     setOpenCategory(openCategory === category ? null : category);
-    setOpenSubcategory(null); // Fermer le dropdown de la sous-catégorie lorsqu'on ouvre une nouvelle catégorie
   };
-
-  const toggleSubcategory = (subcategory) => {
-    setOpenSubcategory(openSubcategory === subcategory ? null : subcategory);
-    setOpenCategory(null); // Fermer le dropdown de la catégorie lorsqu'on clique sur une sous-catégorie
-  };
-
-  // Modification de l'ordre des catégories
-  const order = ["camera", "Réseau", "Logiciels", "Autres"];
-
-  // Trier les catégories selon l'ordre spécifié
-  const sortedCategories = categories.sort(
-    (a, b) => order.indexOf(a) - order.indexOf(b)
-  );
 
   return (
     <div className={styles["shopNav-container"]} ref={navRef}>
       <ul>
-        {sortedCategories.map((category) => (
-          <li key={category} className={styles.dropdown}>
-            <label
-              htmlFor={category}
-              data-toggle="dropdown"
-              onClick={() => toggleCategory(category)}
-            >
-              {category}
-            </label>
-            <input type="checkbox" id={category} style={{ display: "none" }} />
+        {brands.map((brand) => (
+          <li key={brand} className={styles.dropdown}>
+            <label onClick={() => toggleBrand(brand)}>{brand}</label>
             <ul
               className={styles["dropdown-menu"]}
-              style={{ display: openCategory === category ? "block" : "none" }}
+              style={{ display: openBrand === brand ? "block" : "none" }}
             >
-              <li>
-                <Link
-                  href={`/boutique/${category}${userId ? `?userId=${userId}` : ""}`}
-                >
-                  Tous les produits
-                </Link>
-              </li>
-              {subcategoriesMap[category]?.map((subcategory) => (
-                <li key={subcategory}>
-                  <Link
-                    href={`/boutique/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
-                    onClick={() => toggleSubcategory(subcategory)}
-                    className={
-                      openSubcategory === subcategory ? styles.active : ""
-                    }
+              {categoriesMap[brand]?.map((category) => (
+                <li key={category}>
+                  <label onClick={() => toggleCategory(category)}>
+                    {category}
+                  </label>
+                  <ul
+                    className={styles["dropdown-submenu"]}
+                    style={{
+                      display: openCategory === category ? "block" : "none",
+                    }}
                   >
-                    {subcategory}
-                  </Link>
+                    {/* <li>
+                      <Link
+                        href={`/boutique/${brand}/${category}${userId ? `?userId=${userId}` : ""}`}
+                      >
+                        Tous les produits
+                      </Link>
+                    </li> */}
+                    {console.log(
+                      "Subcategories for",
+                      category,
+                      ":",
+                      subcategoriesMap[category]
+                    )}
+                  {(subcategoriesMap[brand] &&
+  subcategoriesMap[brand][category] &&
+  Array.isArray(subcategoriesMap[brand][category])) 
+    ? subcategoriesMap[brand][category].map((subcategory) => (
+        <li key={subcategory}>
+          <Link
+            href={`/boutique/${brand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
+          >
+            {subcategory}
+          </Link>
+        </li>
+      ))
+    : null}
+
+                  </ul>
                 </li>
               ))}
             </ul>

@@ -96,8 +96,8 @@ function ProductFilter({ title, queryKey, filters, haveSubcat, currentParams }) 
                   }
                   router.push({
                     pathname: haveSubcat
-                      ? `/boutique/${router.query.category}/${router.query.subcategory}`
-                      : `/boutique/${router.query.category}`,
+                      ? `/boutique/${router.query.brand}/${router.query.category}/${router.query.subcategory}`
+                      : `/boutique/${router.query.brand}/${router.query.category}`,
                     query: {
                       ...currentParams,
                       [queryKey]: values.join(","),

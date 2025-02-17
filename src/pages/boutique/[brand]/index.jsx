@@ -6,34 +6,42 @@ import {
 } from "@/utils/getProductsFiltered";
 
 export async function getServerSideProps({ params, query }) {
-  const category = params.category || '';
-  const subcategory = params.subcategory || '';
-  const userId = query.userId || '';
+  const brand = params.brand || "";
+  const category = params.category || "";
+  const subcategory = params.subcategory || "";
+  const userId = query.userId || "";
 
   if (!category) {
     return { notFound: true };
   }
 
-  const products = await getProductsByCatSubCat({ category, subcategory, userId });
+  const products = await getProductsByCatSubCat({
+    brand,
+    category,
+    subcategory,
+    userId,
+  });
   const productsFiltered = getProductsFiltered(products, query);
   const filters = getFiltersFromProducts(productsFiltered);
 
   return {
     props: {
       products: productsFiltered,
+      brand,
       category,
-      subcategory, // Ajout de subcategory ici
+      subcategory,
       filters,
     },
   };
 }
 
-const Page = ({ products, category, subcategory, filters }) => {
+const Page = ({ products, brand, category, subcategory, filters }) => {
   return (
     <Products
       products={products}
+      brand={brand}
       category={category}
-      subcategory={subcategory} // Ajout de subcategory ici
+      subcategory={subcategory}
       filters={filters}
     />
   );
