@@ -288,7 +288,7 @@ export default function Product({ product, id, suggestions }) {
                 ) : (
                   <p>
                     <i className="fa-solid fa-truck-fast"></i> Livraison sous 2
-                    à 3 semaines via DHL
+                    à 4 semaines via DHL
                   </p>
                 )}
                 {product.category !== "Logiciels" && (

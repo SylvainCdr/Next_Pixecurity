@@ -20,7 +20,7 @@ export const logos = [
     logo: "/assets/shop/shopLogos/briefcam.jpg",
   },
   {
-    name: "til",
+    name: "til technologies",
     logo: "/assets/shop/shopLogos/til.png",
   },
   {

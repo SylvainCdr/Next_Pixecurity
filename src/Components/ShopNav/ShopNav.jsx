@@ -54,17 +54,17 @@ function ShopNav() {
   useEffect(() => {
     const fetchSubcategories = async () => {
       const subcategoriesObj = {};
-      
+
       for (const brand of brands) {
         if (!categoriesMap[brand]) continue; // Évite les erreurs si categoriesMap[brand] est undefined
-  
+
         for (const category of categoriesMap[brand]) {
           try {
             const res = await fetch(
               `${BASE_URL}/subcategories?brand=${brand}&category=${category}`
             );
             const data = await res.json();
-  
+
             // Stocke les sous-catégories en les associant à la marque et à la catégorie
             if (!subcategoriesObj[brand]) {
               subcategoriesObj[brand] = {};
@@ -80,16 +80,11 @@ function ShopNav() {
       }
       setSubcategoriesMap(subcategoriesObj);
     };
-  
+
     if (Object.keys(categoriesMap).length > 0) {
       fetchSubcategories();
     }
   }, [categoriesMap]);
-  
-
-
-
-
 
   // Gérer le clic en dehors du menu
   useEffect(() => {
@@ -144,24 +139,25 @@ function ShopNav() {
                     </li> */}
                     {console.log(
                       "Subcategories for",
+                      brand,
                       category,
                       ":",
-                      subcategoriesMap[category]
+                      subcategoriesMap[brand]?.[category]
                     )}
-                  {(subcategoriesMap[brand] &&
-  subcategoriesMap[brand][category] &&
-  Array.isArray(subcategoriesMap[brand][category])) 
-    ? subcategoriesMap[brand][category].map((subcategory) => (
-        <li key={subcategory}>
-          <Link
-            href={`/boutique/${brand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
-          >
-            {subcategory}
-          </Link>
-        </li>
-      ))
-    : null}
 
+                    {subcategoriesMap[brand] &&
+                    subcategoriesMap[brand][category] &&
+                    Array.isArray(subcategoriesMap[brand][category])
+                      ? subcategoriesMap[brand][category].map((subcategory) => (
+                          <li key={subcategory}>
+                            <Link
+                              href={`/boutique/${brand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
+                            >
+                              {subcategory}
+                            </Link>
+                          </li>
+                        ))
+                      : null}
                   </ul>
                 </li>
               ))}
