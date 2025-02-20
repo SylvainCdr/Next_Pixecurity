@@ -1,120 +1,103 @@
-.shopNav-container {
-  // margin-top: 5rem;
+.shopNavContainer {
+  position: relative;
   width: 100%;
-  background-color: var(--sunset1);
+  background-color: var(--sunset1); // Couleur de fond principale
   height: 2.4rem;
   display: flex;
-  position: fixed;
+  align-items: center;
   z-index: 1000;
+  position: fixed;
 
-  ul {
-    margin: 0;
-    padding: 0;
+  .brandList {
+    display: flex;
+    width: 100%;
     list-style: none;
+    padding: 10px 20px;
+    gap : 40px;
 
-    li:hover {
-      .dropdown-menu {
-        display: block;
-        max-height: 9999px;
-      }
-    }
-  }
-
-  .dropdown {
-    float: left;
-    position: relative;
-    width: 10em;
-
-    label {
-      background-color: var(--sunset1);
-      color: #ffffff;
-      display: block;
-      font-size: 1.1em;
-      font-weight: 500;
-      padding: 0.6rem 0.7rem;
-      text-align: center;
-      text-decoration: none;
+    li {
       cursor: pointer;
-      transition: background 0.25s ease;
-
-      &:before {
-        // content: "\25BC";
-        font-size: 0.7em;
-        margin-right: 0.8em;
-        transition: transform 0.25s ease;
-      }
+      padding: 8px 30px;
+      color: white;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: background 0.3s;
+      font-size: 1.1rem;
 
       &:hover {
-        background: #6c1b74;
+        background-color: #760498;
       }
-    }
-
-    input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-
-      &:checked ~ .dropdown-menu {
-        display: block;
-        max-height: 9999px;
-      }
-
-      &:checked + label:before {
-        transform: rotate(-180deg);
-      }
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: gray;
-      list-style: none;
-      max-height: 0;
-      width: 10em;
-      overflow: hidden;
-      transition: max-height 0.6s ease-out;
-      margin-left: 0em;
-      -webkit-transition: max-height 0.6s ease-out;
-      -moz-transition: max-height 0.6s ease-out;
-      -ms-transition: max-height 0.6s ease-out;
-      -o-transition: max-height 0.6s ease-out;
-    }
-  }
-
-  .dropdown a {
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 0.5rem 0.1rem;
-    position: relative;
-    z-index: 100;
-    text-align: center;
-    background-color: #343434;
-    transition: background-color 0.25s ease;
-
-    &:hover {
-      background: #6c1b74;
     }
   }
 }
 
-@media (max-width: 768px) {
-  .shopNav-container {
-    .dropdown {
-      width: 6.6em;
-      font-size: 0.8em;
-      .dropdown-menu {
-        width: 6.5em;
-        min-width: 6.5em;
+.fullWidthMenu {
+  position: fixed;
+  top: 7.8rem;
+  left: 0;
+  width: 100%;
+  min-height: 45vh;
+  background: rgb(255, 254, 248); // Fond beige
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1100; // Assure que le menu est bien au-dessus
+}
+
+.categoryColumns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // text-align: center;
+  max-width: auto;
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #6c1b74; 
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  li {
+    padding: 3px;
+
+    a {
+      text-decoration: none;
+      color: #5d5c5c;
+      font-weight: 500;
+      font-size: 16px;
+
+      &:hover {
+        color: #9c27b0;
       }
     }
 
-    ul.dropdown-menu {
-      li {
-        width: 6.5em;
-      }
+    &:hover {
+      transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      -o-transform: scale(1.05);
     }
   }
 }
