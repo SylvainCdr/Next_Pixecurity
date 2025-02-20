@@ -5,7 +5,7 @@ import ShopAside from "@/Components/ShopAside/ShopAside";
 import styles from "./style.module.scss";
 import { PropagateLoader } from "react-spinners";
 import { useState, useEffect } from "react";
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 import Head from "next/head";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
@@ -40,11 +40,14 @@ const Products = ({ products, category, subcategory, filters }) => {
   const loadMoreProducts = () => {
     if (!loading && hasMore) {
       setLoading(true);
-      const nextProducts = products.slice(displayedProducts.length, displayedProducts.length + 8);
+      const nextProducts = products.slice(
+        displayedProducts.length,
+        displayedProducts.length + 8
+      );
 
       if (nextProducts.length > 0) {
         setTimeout(() => {
-          setDisplayedProducts(prev => [...prev, ...nextProducts]);
+          setDisplayedProducts((prev) => [...prev, ...nextProducts]);
           setLoading(false);
         }, 1000);
       } else {
@@ -62,13 +65,12 @@ const Products = ({ products, category, subcategory, filters }) => {
 
   useEffect(() => {
     setIsCategoryLoading(true);
-    
+
     // Réinitialiser displayedProducts lors du changement de catégorie
     setDisplayedProducts(products.slice(0, 20));
-    
+
     setIsCategoryLoading(false);
   }, [category, subcategory, filters, products]);
-  
 
   return (
     <div className={styles["products-container"]}>
@@ -105,16 +107,22 @@ const Products = ({ products, category, subcategory, filters }) => {
 
       {searchResults.length === 0 && (
         <div className={styles["aside-products"]}>
-          <ShopAside subcategory={subcategory} category={category} filters={filters} />
+          <ShopAside
+            subcategory={subcategory}
+            category={category}
+            filters={filters}
+          />
           <div className={styles["products-grid"]}>
-            {displayedProducts.map(product => (
+            {displayedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       )}
-      <div ref={ref} style={{ height: '6rem' }} className={styles.ref}>
-        {loading && <PropagateLoader color={color} loading={loading} size={20} />}
+      <div ref={ref} style={{ height: "6rem" }} className={styles.ref}>
+        {loading && (
+          <PropagateLoader color={color} loading={loading} size={20} />
+        )}
       </div>
     </div>
   );

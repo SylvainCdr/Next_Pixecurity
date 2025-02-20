@@ -18,7 +18,9 @@ function ShopNav() {
     fetch(`${BASE_URL}/brands`)
       .then((res) => res.json())
       .then((data) => setBrands(data))
-      .catch((error) => console.error("Erreur chargement des marques :", error));
+      .catch((error) =>
+        console.error("Erreur chargement des marques :", error)
+      );
   }, []);
 
   useEffect(() => {
@@ -30,7 +32,10 @@ function ShopNav() {
           const data = await res.json();
           categoriesObj[brand] = data;
         } catch (error) {
-          console.error(`Erreur chargement des catégories pour ${brand} :`, error);
+          console.error(
+            `Erreur chargement des catégories pour ${brand} :`,
+            error
+          );
         }
       }
       setCategoriesMap(categoriesObj);
@@ -48,12 +53,17 @@ function ShopNav() {
         if (!categoriesMap[brand]) continue;
         for (const category of categoriesMap[brand]) {
           try {
-            const res = await fetch(`${BASE_URL}/subcategories?brand=${brand}&category=${category}`);
+            const res = await fetch(
+              `${BASE_URL}/subcategories?brand=${brand}&category=${category}`
+            );
             const data = await res.json();
             if (!subcategoriesObj[brand]) subcategoriesObj[brand] = {};
             subcategoriesObj[brand][category] = data;
           } catch (error) {
-            console.error(`Erreur chargement des sous-catégories pour ${category} de ${brand} :`, error);
+            console.error(
+              `Erreur chargement des sous-catégories pour ${category} de ${brand} :`,
+              error
+            );
           }
         }
       }
@@ -85,7 +95,10 @@ function ShopNav() {
     <div className={styles.shopNavContainer}>
       <ul className={styles.brandList}>
         {brands.map((brand) => (
-          <li key={brand} onClick={() => setActiveBrand(activeBrand === brand ? null : brand)}>
+          <li
+            key={brand}
+            onClick={() => setActiveBrand(activeBrand === brand ? null : brand)}
+          >
             {brand}
           </li>
         ))}
@@ -106,16 +119,18 @@ function ShopNav() {
                 <div key={category} className={styles.categorySection}>
                   <h2>{category}</h2>
                   <ul>
-                    {subcategoriesMap[activeBrand]?.[category]?.map((subcategory) => (
-                      <li key={subcategory}>
-                        <Link
-                          href={`/boutique/${activeBrand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
-                          onClick={() => setActiveBrand(null)} // Ferme le menu au clic sur un lien
-                        >
-                          {subcategory}
-                        </Link>
-                      </li>
-                    ))}
+                    {subcategoriesMap[activeBrand]?.[category]?.map(
+                      (subcategory) => (
+                        <li key={subcategory}>
+                          <Link
+                            href={`/boutique/${activeBrand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
+                            onClick={() => setActiveBrand(null)} // Ferme le menu au clic sur un lien
+                          >
+                            {subcategory}
+                          </Link>
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               ))}
