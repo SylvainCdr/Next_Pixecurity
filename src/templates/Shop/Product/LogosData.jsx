@@ -12,7 +12,7 @@ export const logos = [
     logo: "/assets/shop/shopLogos/bosch.png",
   },
   {
-    name: "milestone",
+    name: "Milestone systems",
     logo: "/assets/shop/shopLogos/milestone.png",
   },
   {

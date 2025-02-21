@@ -50,9 +50,7 @@
     text-decoration: none;
     color: var(--sunset1);
 
-    &:hover {
-      color: #0053a0;
-    }
+   
   }
 
   .imgContainer { 
@@ -177,6 +175,10 @@
       }
     }
   }
+  &:hover {
+    box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem rgba(202, 202, 202, 0.798);
+    scale: 1.01;
+  }
 
   //media queries
   @media (max-width: 768px) {
@@ -188,3 +190,6 @@
     }
   }
 }
+
+
+
