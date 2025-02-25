@@ -21,7 +21,7 @@ const Products = ({ products, category, subcategory, filters }) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [isCategoryLoading, setIsCategoryLoading] = useState(false); // Gérer l'état de chargement des catégories
+  const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
 
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -37,25 +37,38 @@ const Products = ({ products, category, subcategory, filters }) => {
     setDisplayedProducts(results.slice(0, 20));
   };
 
+  useEffect(() => {
+    // Assurez-vous d'activer le chargement uniquement quand nécessaire
+    setIsSubcategoryLoading(true);
+  
+    // Réinitialisation des produits affichés lors du changement de catégorie
+    setDisplayedProducts(products.slice(0, 20));
+  
+    // Ajoutez une logique ici pour mettre à jour 'isSubcategoryLoading' à false une fois les produits chargés
+    setIsSubcategoryLoading(false); // Arrêter le chargement dès que les produits sont prêts
+  }, [category, subcategory, filters, products]);
+  
+  // Fonction pour charger les produits supplémentaires
   const loadMoreProducts = () => {
     if (!loading && hasMore) {
       setLoading(true);
+      
       const nextProducts = products.slice(
         displayedProducts.length,
         displayedProducts.length + 8
       );
-
+  
       if (nextProducts.length > 0) {
-        setTimeout(() => {
-          setDisplayedProducts((prev) => [...prev, ...nextProducts]);
-          setLoading(false);
-        }, 1000);
+        // Utilisez un délai réaliste ou éliminez le setTimeout pour éviter des comportements inattendus
+        setDisplayedProducts((prev) => [...prev, ...nextProducts]);
+        setLoading(false);
       } else {
         setHasMore(false);
         setLoading(false);
       }
     }
   };
+  
 
   useEffect(() => {
     if (inView) {
@@ -64,13 +77,14 @@ const Products = ({ products, category, subcategory, filters }) => {
   }, [inView]);
 
   useEffect(() => {
-    setIsCategoryLoading(true);
-
+    setIsSubcategoryLoading(true);
+  
     // Réinitialiser displayedProducts lors du changement de catégorie
     setDisplayedProducts(products.slice(0, 20));
-
-    setIsCategoryLoading(false);
+  
+    setIsSubcategoryLoading(false); // Arrêter le chargement une fois les produits chargés
   }, [category, subcategory, filters, products]);
+  
 
   return (
     <div className={styles["products-container"]}>
@@ -89,21 +103,25 @@ const Products = ({ products, category, subcategory, filters }) => {
 
       <RegisterPopup />
 
-      <ShopNav />
+      <ShopNav setIsSubcategoryLoading={setIsSubcategoryLoading} />
+
       <ShopSearch isHero={false} onSearchResults={handleSearchResults} />
 
       <div className={styles["sweet-loading"]}>
-        {(loading || isCategoryLoading) && (
-          <PropagateLoader
-            color={color}
-            loading={loading || isCategoryLoading} // Afficher le loader si catégorie ou produits sont en chargement
-            cssOverride={override}
-            size={20}
-            aria-label="Grid Loader"
-            data-testid="loader"
-          />
-        )}
-      </div>
+  {(loading || isSubcategoryLoading) && (
+    <PropagateLoader
+      color={color}
+      loading={loading || isSubcategoryLoading}
+      cssOverride={override}
+      size={20}
+      aria-label="Grid Loader"
+      data-testid="loader"
+    />
+  )}
+</div>
+
+
+
 
       {searchResults.length === 0 && (
         <div className={styles["aside-products"]}>

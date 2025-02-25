@@ -45,6 +45,13 @@
 @media screen and (max-width: 1024px) {
   .shopAside_container {
     width: 10%;
+
+  }
+}
+@media screen and (max-width: 768px) {
+  .shopAside_container {
+    width: 10%;
+    display : none;
   }
 }
 

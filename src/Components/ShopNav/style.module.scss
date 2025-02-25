@@ -1,103 +1,201 @@
 .shopNavContainer {
-  position: relative;
-  width: 100%;
-  background-color: var(--sunset1); // Couleur de fond principale
-  height: 2.4rem;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
   position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10; /* S'assurer que la nav ne passe pas sous d'autres éléments */
+  padding-top: 5.5rem;
+}
 
-  .brandList {
-    display: flex;
-    width: 100%;
-    list-style: none;
-    padding: 10px 20px;
-    gap: 20px;
+.burgerMenu {
+  background-color: purple;
+  padding: 10px 20px;
 
-    li {
-      cursor: pointer;
-      padding: 8px 15px;
-      color: white;
-      font-weight: 600;
-      border-radius: 5px;
-      font-size: 1.1rem;
-
-      &:hover {
-        background-color: #760498;
-      }
-    }
+  &:hover {
+    background-color: rgb(101, 1, 101);
   }
 }
-
-.fullWidthMenu {
-  position: fixed;
-  top: 7.8rem;
-  left: 0;
+.desktopMenu {
   width: 100%;
-  min-height: 45vh;
-  background: rgb(255, 254, 248); // Fond beige
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1100; // Assure que le menu est bien au-dessus
 }
 
-.categoryColumns {
+.brandBar {
+  background-color: var(--sunset1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+
+.brandList {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.brandList li {
+  cursor: pointer;
+  padding: 15px;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 600;
+
+  &:hover {
+    background-color: purple;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
+  }
+}
+.categoryList {
+  margin-top: 0rem;
+  padding: 20px;
+  background-color: #fffcf5;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding : 10px;
-  gap: 30px;
-  width: 100%;
   justify-content: space-evenly;
+  align-content: center;
+  gap: 30px;
+  padding-top: 7rem;
+  min-height: 60vh;
+  max-height: 120vh; /* Limiter la hauteur pour permettre le scroll */
+  overflow-y: auto; /* Permettre le défilement vertical */
 }
 
-.categorySection {
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-  // text-align: center;
+.categoryList.active {
+  display: block; /* Afficher quand active */
+}
+
+.categoryList h2 {
+  font-size: 20px;
+  color: purple;
+  margin-bottom: 10px;
+  font-weight: 600;
   max-width: 20rem;
+  text-align: left;
+  text-transform: uppercase;
+}
 
-  h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #6c1b74;
-    text-transform: uppercase;
-  }
+.categoryList ul {
+  list-style: none;
+  max-width: 20rem;
+}
 
-  ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.categoryList ul li {
+  font-size: 16px;
+  padding: 5px 0px;
+  cursor: pointer;
+  max-width: 20rem;
+  a {
+    text-decoration: none;
+    color: black;
   }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffcf5;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1500;
+  padding: 20px 5px;
+  color: black;
+  overflow-y: auto; /* Permettre le défilement vertical */
+  padding-top: 5.5rem;
+}
+
+.closeMenu {
+  background-color: purple;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: rgb(101, 1, 101);
+  }
+}
+
+.mobileBrandList {
+  list-style: none;
+  padding-top: 2rem;
+  margin: 0;
+}
+
+.mobileBrandListLi {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 10px 0;
+  padding-left : 2rem;
+  cursor: pointer;
+  color: purple;
+  font-size: 1.2rem;
+}
+
+.mobileCategoryList,
+.mobileSubcategoryList {
+  /* Limite la hauteur des listes mobiles */
+  overflow-y: auto; /* Permettre le scroll vertical dans les sous-catégories */
+  
+}
+
+.mobileCategoryList {
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  color: black;
 
   li {
-    padding: 3px;
+    font-size: 1rem;
+    padding: 10px 0px;
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.mobileSubcategoryList {
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  color: black;
+
+  li {
+    font-size: 1rem;
+    padding: 10px 0px;
+    cursor: pointer;
+    color: black;
 
     a {
       text-decoration: none;
-      color: #5d5c5c;
-      font-weight: 500;
-      font-size: 16px;
-
-      &:hover {
-        color: #9c27b0;
-      }
+      color: rgb(88, 88, 88);
     }
+  }
+}
 
-    &:hover {
-      transform: scale(1.05);
-      -webkit-transform: scale(1.05);
-      -moz-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-      -o-transform: scale(1.05);
-    }
+.burgerMenu {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .brandBar {
+    display: none;
+  }
+
+  .burgerMenu {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mobileMenu {
+    display: none;
   }
 }

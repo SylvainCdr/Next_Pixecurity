@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
@@ -10,9 +10,11 @@ function ShopNav() {
   const [categoriesMap, setCategoriesMap] = useState({});
   const [subcategoriesMap, setSubcategoriesMap] = useState({});
   const [activeBrand, setActiveBrand] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
   const user = useGetUser();
   const userId = user?._id;
-  const menuRef = useRef(null);
 
   useEffect(() => {
     fetch(`${BASE_URL}/brands`)
@@ -69,75 +71,188 @@ function ShopNav() {
       }
       setSubcategoriesMap(subcategoriesObj);
     };
+
     if (Object.keys(categoriesMap).length > 0) {
       fetchSubcategories();
     }
   }, [categoriesMap]);
 
-  // Fermer le menu si on clique en dehors
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setActiveBrand(null);
-      }
-    };
+  const handleBrandClick = (brand) => {
+    setActiveBrand(activeBrand === brand ? null : brand);
+    setActiveCategory(null); // Reset active category when changing brand
+  };
 
-    if (activeBrand) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+  const handleCategoryClick = (category) => {
+    setActiveCategory(activeCategory === category ? null : category);
+  };
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [activeBrand]);
+  const handleSubcategoryClick = () => {
+    setActiveBrand(null); // Ferme la navigation principale après avoir sélectionné une sous-catégorie
+    setActiveCategory(null); // Ferme la catégorie active
+    setIsMobileMenuOpen(false); // Ferme le menu mobile
+    setIsSubcategoryLoading(true);
+  };
 
   return (
     <div className={styles.shopNavContainer}>
-      <ul className={styles.brandList}>
+      <button
+        className={styles.burgerMenu}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        ☰
+      </button>
+
+      {/* Menu Desktop - Large bande pour les marques */}
+      <div className={styles.desktopMenu}>
+  <div className={styles.brandBar}>
+    <ul className={styles.brandList}>
+      {brands.map((brand) => (
+        <li
+          key={brand}
+          onClick={() => handleBrandClick(brand)}
+          className={activeBrand === brand ? "active" : ""}
+        >
+          {brand}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {activeBrand && (
+    <motion.div
+      className={styles.categoryList}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {categoriesMap[activeBrand]?.map((category) => (
+        <div key={category}>
+          <motion.h2
+            initial={{ x: -20 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {category}
+          </motion.h2>
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {subcategoriesMap[activeBrand]?.[category]?.map((subcategory) => (
+              <motion.li
+                key={subcategory}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Link
+                  href={`/boutique/${activeBrand}/${category}/${subcategory}`}
+                  onClick={handleSubcategoryClick}
+                >
+                  {subcategory}
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      ))}
+    </motion.div>
+  )}
+</div>
+
+
+      {/* Menu Mobile */}
+      <AnimatePresence>
+  {isMobileMenuOpen && (
+    <motion.div
+      className={styles.mobileMenu}
+      initial={{ x: "-100%", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: "-100%", opacity: 0 }}
+      transition={{
+        duration: 0.4,
+        ease: "easeInOut",
+      }}
+    >
+      <button
+        className={styles.closeMenu}
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        ✖
+      </button>
+
+      <ul className={styles.mobileBrandList}>
         {brands.map((brand) => (
           <li
             key={brand}
-            onClick={() => setActiveBrand(activeBrand === brand ? null : brand)}
+            onClick={() => handleBrandClick(brand)}
+            className={styles.mobileBrandListLi}
           >
             {brand}
+            {activeBrand === brand && (
+              <motion.ul
+                className={styles.mobileCategoryList}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {categoriesMap[brand]?.map((category) => (
+                  <motion.li
+                    key={category}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleCategoryClick(category);
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {category}
+                    {activeCategory === category && (
+                      <motion.ul
+                        className={styles.mobileSubcategoryList}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {subcategoriesMap[brand]?.[category]?.map(
+                          (subcategory) => (
+                            <motion.li
+                              key={subcategory}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <Link
+                                href={`/boutique/${brand}/${category}/${subcategory}`}
+                                onClick={handleSubcategoryClick}
+                              >
+                                {subcategory}
+                              </Link>
+                            </motion.li>
+                          )
+                        )}
+                      </motion.ul>
+                    )}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            )}
           </li>
         ))}
       </ul>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-      <AnimatePresence>
-        {activeBrand && (
-          <motion.div
-            className={styles.fullWidthMenu}
-            ref={menuRef}
-            initial={{ opacity: 0, y: -150 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -150 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-          >
-            <div className={styles.categoryColumns}>
-              {categoriesMap[activeBrand]?.map((category) => (
-                <div key={category} className={styles.categorySection}>
-                  <h2>{category}</h2>
-                  <ul>
-                    {subcategoriesMap[activeBrand]?.[category]?.map(
-                      (subcategory) => (
-                        <li key={subcategory}>
-                          <Link
-                            href={`/boutique/${activeBrand}/${category}/${subcategory}${userId ? `?userId=${userId}` : ""}`}
-                            onClick={() => setActiveBrand(null)} // Ferme le menu au clic sur un lien
-                          >
-                            {subcategory}
-                          </Link>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
