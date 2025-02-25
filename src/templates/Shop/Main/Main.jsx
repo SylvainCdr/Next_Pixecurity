@@ -20,12 +20,12 @@ function Catalogue({ products }) {
   }
 
   const filteredProducts1 = products?.filter(
-    (product) => product.category === "Camera"
+    (product) => product.category === "Cameras"
   );
   const carouselProducts1 = getRandomProducts(filteredProducts1, 10);
 
   const filteredProducts3 = products?.filter(
-    (product) => product.brand === "i-PRO"
+    (product) => product.brand === "Milestone Systems"
   );
   const carouselProducts3 = getRandomProducts(filteredProducts3, 10);
 
