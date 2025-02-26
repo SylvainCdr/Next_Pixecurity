@@ -12,7 +12,7 @@ export const logos = [
     logo: "/assets/shop/shopLogos/bosch.png",
   },
   {
-    name: "milestone",
+    name: "Milestone systems",
     logo: "/assets/shop/shopLogos/milestone.png",
   },
   {
@@ -20,7 +20,7 @@ export const logos = [
     logo: "/assets/shop/shopLogos/briefcam.jpg",
   },
   {
-    name: "til",
+    name: "til technologies",
     logo: "/assets/shop/shopLogos/til.png",
   },
   {

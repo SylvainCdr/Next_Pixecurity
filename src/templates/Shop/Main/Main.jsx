@@ -19,15 +19,20 @@ function Catalogue({ products }) {
     return shuffledProducts.slice(0, limit);
   }
 
-  const filteredProducts1 = products?.filter(
-    (product) => product.category === "Caméras"
+  const filteredProductsiPro = products?.filter(
+    (product) => product.brand === "i-PRO" || product.brand === "Vivotek" && product.category === "Cameras"
   );
-  const carouselProducts1 = getRandomProducts(filteredProducts1, 10);
+  const carouselProductsiPro = getRandomProducts(filteredProductsiPro, 10);
 
-  const filteredProducts3 = products?.filter(
-    (product) => product.brand === "Milestone"
+  const filteredProductsZyxel = products?.filter(
+    (product) => product.brand === "Zyxel"
   );
-  const carouselProducts3 = getRandomProducts(filteredProducts3, 10);
+  const carouselProductsZyxel = getRandomProducts(filteredProductsZyxel, 10);
+
+  const filteredProductsMilestone = products?.filter(
+    (product) => product.brand === "Milestone Systems"
+  );
+  const carouselProductsMilestone = getRandomProducts(filteredProductsMilestone, 10);
 
   const user = useGetUser();
 
@@ -43,8 +48,7 @@ function Catalogue({ products }) {
     <div className={styles["shop-container"]}>
       <Head>
         <title>
-          Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle
-          d'accès, réseaux/stockage des données, hypervision...{" "}
+        <title>Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...</title>
         </title>
         <meta
           name="description"
@@ -84,7 +88,7 @@ function Catalogue({ products }) {
           type="image/jpg"
         />
 
-        <link
+        {/* <link
           rel="preload"
           href="/assets/shop/cameras.webp"
           as="image"
@@ -110,7 +114,7 @@ function Catalogue({ products }) {
           href="/assets/shop/autres.webp"
           as="image"
           type="image/webp"
-        />
+        /> */}
       </Head>
 
       <ShopNav />
@@ -123,7 +127,7 @@ function Catalogue({ products }) {
 
       {searchResults.length === 0 && (
         <>
-          <div data-aos="fade-up" className={styles["shop-categories"]}>
+          {/* <div data-aos="fade-up" className={styles["shop-categories"]}>
             <Link
               href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}
             >
@@ -183,7 +187,7 @@ function Catalogue({ products }) {
                 />
               </div>
             </Link>
-          </div>
+          </div> */}
 
           <div className={styles["products-carousel"]}>
             <h2>
@@ -205,16 +209,18 @@ function Catalogue({ products }) {
                 width={150}
                 height={150}
               />
-              <Image
+              {/* <Image
                 src="/assets/partners/partnersLogo/bosch.png"
                 alt="Bosch-logo"
                 loading="lazy"
                 width={150}
                 height={150}
-              />
+              /> */}
             </div>
-            <ShopProductsCarousel carouselProducts={carouselProducts1} />
+            <ShopProductsCarousel carouselProducts={carouselProductsiPro} />
           </div>
+
+        
 
           <div className={styles["products-carousel"]}>
             <h2>
@@ -228,8 +234,24 @@ function Catalogue({ products }) {
               width={150}
               height={150}
             />
-            <ShopProductsCarousel carouselProducts={carouselProducts3} />
+            <ShopProductsCarousel carouselProducts={carouselProductsMilestone} />
           </div>
+
+          <div className={styles["products-carousel"]}>
+            <h2>
+              Connectez-vous avec Zyxel : Des solutions réseau pour tous les
+              besoins
+            </h2>
+            <Image
+              src="/assets/shop/shopLogos/zyxel.png"
+              alt="Zyxel-logo"
+              loading="lazy"
+              width={150}
+              height={150}
+            />
+            <ShopProductsCarousel carouselProducts={carouselProductsZyxel} />
+          </div>
+
         </>
       )}
     </div>

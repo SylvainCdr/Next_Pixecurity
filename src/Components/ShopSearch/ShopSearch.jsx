@@ -4,7 +4,6 @@ import ProductCard from "../ProductCard/ProductCard";
 import useFavorites from "../useFavorites";
 import { useCartContext } from "../cartContext";
 import { BASE_URL } from "../../url";
-import ShopHeroCarousel from "../ShopHeroCarousel/ShopHeroCarousel";
 import { PropagateLoader } from "react-spinners";
 
 const color = "#ff9c3fc0";

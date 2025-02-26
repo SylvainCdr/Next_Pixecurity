@@ -1,13 +1,14 @@
 import { BASE_URL } from "@/url";
 
 export async function getProductsByCatSubCat({
+  brand,
   category,
   subcategory,
   userId = "",
 }) {
   const apiUrl = subcategory
-    ? `${BASE_URL}/products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
-    : `${BASE_URL}/products?category=${encodeURIComponent(category)}&userId=${userId}`;
+    ? `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
+    : `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&products?category=${encodeURIComponent(category)}&userId=${userId}`;
 
   const response = await fetch(apiUrl);
   const data = await response.json();

@@ -5,7 +5,7 @@ import ShopAside from "@/Components/ShopAside/ShopAside";
 import styles from "./style.module.scss";
 import { PropagateLoader } from "react-spinners";
 import { useState, useEffect } from "react";
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 import Head from "next/head";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
@@ -21,7 +21,7 @@ const Products = ({ products, category, subcategory, filters }) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [isCategoryLoading, setIsCategoryLoading] = useState(false); // Gérer l'état de chargement des catégories
+  const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
 
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -37,22 +37,38 @@ const Products = ({ products, category, subcategory, filters }) => {
     setDisplayedProducts(results.slice(0, 20));
   };
 
+  useEffect(() => {
+    // Assurez-vous d'activer le chargement uniquement quand nécessaire
+    setIsSubcategoryLoading(true);
+  
+    // Réinitialisation des produits affichés lors du changement de catégorie
+    setDisplayedProducts(products.slice(0, 20));
+  
+    // Ajoutez une logique ici pour mettre à jour 'isSubcategoryLoading' à false une fois les produits chargés
+    setIsSubcategoryLoading(false); // Arrêter le chargement dès que les produits sont prêts
+  }, [category, subcategory, filters, products]);
+  
+  // Fonction pour charger les produits supplémentaires
   const loadMoreProducts = () => {
     if (!loading && hasMore) {
       setLoading(true);
-      const nextProducts = products.slice(displayedProducts.length, displayedProducts.length + 8);
-
+      
+      const nextProducts = products.slice(
+        displayedProducts.length,
+        displayedProducts.length + 8
+      );
+  
       if (nextProducts.length > 0) {
-        setTimeout(() => {
-          setDisplayedProducts(prev => [...prev, ...nextProducts]);
-          setLoading(false);
-        }, 1000);
+        // Utilisez un délai réaliste ou éliminez le setTimeout pour éviter des comportements inattendus
+        setDisplayedProducts((prev) => [...prev, ...nextProducts]);
+        setLoading(false);
       } else {
         setHasMore(false);
         setLoading(false);
       }
     }
   };
+  
 
   useEffect(() => {
     if (inView) {
@@ -61,12 +77,12 @@ const Products = ({ products, category, subcategory, filters }) => {
   }, [inView]);
 
   useEffect(() => {
-    setIsCategoryLoading(true);
-    
+    setIsSubcategoryLoading(true);
+  
     // Réinitialiser displayedProducts lors du changement de catégorie
     setDisplayedProducts(products.slice(0, 20));
-    
-    setIsCategoryLoading(false);
+  
+    setIsSubcategoryLoading(false); // Arrêter le chargement une fois les produits chargés
   }, [category, subcategory, filters, products]);
   
 
@@ -87,34 +103,44 @@ const Products = ({ products, category, subcategory, filters }) => {
 
       <RegisterPopup />
 
-      <ShopNav />
+      <ShopNav setIsSubcategoryLoading={setIsSubcategoryLoading} />
+
       <ShopSearch isHero={false} onSearchResults={handleSearchResults} />
 
       <div className={styles["sweet-loading"]}>
-        {(loading || isCategoryLoading) && (
-          <PropagateLoader
-            color={color}
-            loading={loading || isCategoryLoading} // Afficher le loader si catégorie ou produits sont en chargement
-            cssOverride={override}
-            size={20}
-            aria-label="Grid Loader"
-            data-testid="loader"
-          />
-        )}
-      </div>
+  {(loading || isSubcategoryLoading) && (
+    <PropagateLoader
+      color={color}
+      loading={loading || isSubcategoryLoading}
+      cssOverride={override}
+      size={20}
+      aria-label="Grid Loader"
+      data-testid="loader"
+    />
+  )}
+</div>
+
+
+
 
       {searchResults.length === 0 && (
         <div className={styles["aside-products"]}>
-          <ShopAside subcategory={subcategory} category={category} filters={filters} />
+          <ShopAside
+            subcategory={subcategory}
+            category={category}
+            filters={filters}
+          />
           <div className={styles["products-grid"]}>
-            {displayedProducts.map(product => (
+            {displayedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       )}
-      <div ref={ref} style={{ height: '6rem' }} className={styles.ref}>
-        {loading && <PropagateLoader color={color} loading={loading} size={20} />}
+      <div ref={ref} style={{ height: "6rem" }} className={styles.ref}>
+        {loading && (
+          <PropagateLoader color={color} loading={loading} size={20} />
+        )}
       </div>
     </div>
   );

@@ -9,7 +9,18 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "files.pixecurity.com", // Add your authorized host here
+        hostname: "uploads.pixecurity.com", // Add your authorized host here
+      },
+      // localhost
+      {
+        protocol: "http",
+        hostname: "localhost",
+
+      },
+      // i-pro.com
+      {
+        protocol: "https",
+        hostname: "i-pro.com",
       },
     ],
   },
