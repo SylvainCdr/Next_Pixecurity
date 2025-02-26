@@ -29,7 +29,7 @@ function ProductCard({ product }) {
   }, []);
 
   return (
-    <div className={styles["product-card"]} data-aos="zoom-in">
+    <div className={styles["product-card"]}>
       <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />

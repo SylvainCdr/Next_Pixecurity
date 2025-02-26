@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import ShopNav from "@/Components/ShopNav/ShopNav";
@@ -11,29 +11,18 @@ import { useGetUser } from "@/Components/useGetUser";
 import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 import Image from "next/image";
 
+// Fonction de mélange Fisher-Yates pour un tri aléatoire performant
+const shuffleArray = (array, limit) => {
+  let shuffled = array.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, limit);
+};
+
 function Catalogue({ products }) {
   const [searchResults, setSearchResults] = useState([]);
-
-  function getRandomProducts(products, limit) {
-    const shuffledProducts = products.sort(() => 0.5 - Math.random());
-    return shuffledProducts.slice(0, limit);
-  }
-
-  const filteredProductsiPro = products?.filter(
-    (product) => product.brand === "i-PRO" || product.brand === "Vivotek" && product.category === "Cameras"
-  );
-  const carouselProductsiPro = getRandomProducts(filteredProductsiPro, 10);
-
-  const filteredProductsZyxel = products?.filter(
-    (product) => product.brand === "Zyxel"
-  );
-  const carouselProductsZyxel = getRandomProducts(filteredProductsZyxel, 10);
-
-  const filteredProductsMilestone = products?.filter(
-    (product) => product.brand === "Milestone Systems"
-  );
-  const carouselProductsMilestone = getRandomProducts(filteredProductsMilestone, 10);
-
   const user = useGetUser();
 
   useEffect(() => {
@@ -44,214 +33,90 @@ function Catalogue({ products }) {
     setSearchResults(results);
   };
 
+  // Filtrer les produits une seule fois avec useMemo
+  const filteredProducts = useMemo(() => ({
+    iPro: shuffleArray(
+      products?.filter(
+        (p) =>
+          p.brand === "i-PRO" ||
+          (p.brand === "Vivotek" && p.category === "Cameras")
+      ),
+      10
+    ),
+    // Zyxel: shuffleArray(products?.filter((p) => p.brand === "Zyxel"), 10),
+    Milestone: shuffleArray(
+      products?.filter((p) => p.brand === "Milestone Systems"),
+      10
+    ),
+  }), [products]);
+
   return (
     <div className={styles["shop-container"]}>
       <Head>
-        <title>
-        <title>Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...</title>
-        </title>
+        <title>Pixecurity Boutique : Vidéosurveillance et Sécurité</title>
         <meta
           name="description"
-          content="Découvrez notre catalogue de produits chez Pixecurity Boutique. Nous offrons des caméras de surveillance, des équipements réseau, des logiciels et plus encore pour répondre à vos besoins en sécurité."
+          content="Découvrez notre catalogue de produits chez Pixecurity Boutique : caméras de surveillance, équipements réseau, logiciels et plus."
         />
         <meta
           name="keywords"
-          content="catalogue, boutique, produits, caméras, surveillance, videosurveillance, sûreté, sécurité, Paris, France, videoprotection, équipements réseau, logiciels, sécurité, Vivotek, Bosch, Zyxel, I-Pro, Milestone, Til Technologies, Cisco, Comnet, Vuwall, Briefcam, Technoaware, bullet, ptz, dôme, angle, fisheye, multicapteur, fixe, switch, firewall"
+          content="vidéosurveillance, sécurité, caméras, réseaux, stockage, analyse d'image, contrôle d'accès, logiciels, Paris, France"
         />
         <meta name="author" content="Pixecurity" />
-
-        <link
-          rel="preload"
-          href="/assets/shop/banners/banner1.webp"
-          as="image"
-          type="image/webp"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/banners/banner2.png"
-          as="image"
-          type="image/png"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/banners/banner3.jpg"
-          as="image"
-          type="image/jpg"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/banners/banner4.jpg"
-          as="image"
-          type="image/jpg"
-        />
-
-        {/* <link
-          rel="preload"
-          href="/assets/shop/cameras.webp"
-          as="image"
-          type="image/webp"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/reseaux.webp"
-          as="image"
-          type="image/webp"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/logiciels.webp"
-          as="image"
-          type="image/webp"
-        />
-
-        <link
-          rel="preload"
-          href="/assets/shop/autres.webp"
-          as="image"
-          type="image/webp"
-        /> */}
       </Head>
 
       <ShopNav />
       <ShopSearch onSearchResults={handleSearchResults} />
       <ShopHeroCarousel />
 
-      {searchResults.length > 0 && (
+      {searchResults.length > 0 ? (
         <div className={styles["search-results"]}></div>
-      )}
-
-      {searchResults.length === 0 && (
+      ) : (
         <>
-          {/* <div data-aos="fade-up" className={styles["shop-categories"]}>
-            <Link
-              href={`/boutique/Caméras${user?._id ? `?userId=${user?._id}` : ""}`}
-            >
-              <div className={styles.category}>
-                <h1>Caméras</h1>
-                <Image
-                  src="/assets/shop/cameras.webp"
-                  alt="Caméras"
-                  loading="lazy"
-                  width={300}
-                  height={300}
-                />
-              </div>
-            </Link>
-
-            <Link
-              href={`/boutique/Réseau${user?._id ? `?userId=${user?._id}` : ""}`}
-            >
-              <div className={styles.category}>
-                <h1>Réseaux</h1>
-                <Image
-                  src="/assets/shop/reseaux.webp"
-                  alt="Réseaux"
-                  loading="lazy"
-                  width={300}
-                  height={300}
-                />
-              </div>
-            </Link>
-
-            <Link
-              href={`/boutique/Logiciels${user?._id ? `?userId=${user?._id}` : ""}`}
-            >
-              <div className={styles.category}>
-                <h1>Logiciels</h1>
-                <Image
-                  src="/assets/shop/logiciels.webp"
-                  alt="Logiciels"
-                  loading="lazy"
-                  width={300}
-                  height={300}
-                />
-              </div>
-            </Link>
-
-            <Link
-              href={`/boutique/Autres${user?._id ? `?userId=${user?._id}` : ""}`}
-            >
-              <div className={styles.category}>
-                <h1>Autres</h1>
-                <Image
-                  src="/assets/shop/autres.webp"
-                  alt="Autres"
-                  loading="lazy"
-                  width={300}
-                  height={300}
-                />
-              </div>
-            </Link>
-          </div> */}
-
           <div className={styles["products-carousel"]}>
-            <h2>
-              Explorez notre gamme complète de caméras : Dômes, Bullet, Fisheye
-              et plus
-            </h2>
+            <h2>Explorez notre gamme complète de caméras</h2>
             <div className={styles.logos}>
               <Image
                 src="/assets/partners/partnersLogo/vivotek.png"
-                alt="Vivotek-logo"
+                alt="Vivotek"
                 loading="lazy"
                 width={150}
                 height={150}
               />
               <Image
                 src="/assets/shop/shopLogos/i-pro.png"
-                alt="i-Pro-logo"
+                alt="i-Pro"
                 loading="lazy"
                 width={150}
                 height={150}
               />
-              {/* <Image
-                src="/assets/partners/partnersLogo/bosch.png"
-                alt="Bosch-logo"
-                loading="lazy"
-                width={150}
-                height={150}
-              /> */}
             </div>
-            <ShopProductsCarousel carouselProducts={carouselProductsiPro} />
+            <ShopProductsCarousel carouselProducts={filteredProducts.iPro} />
           </div>
 
-        
-
           <div className={styles["products-carousel"]}>
-            <h2>
-              Maîtrisez la gestion vidéo avec Milestone : Notre expertise au
-              service de vos besoins
-            </h2>
+            <h2>Gestion vidéo avec Milestone</h2>
             <Image
               src="/assets/partners/partnersLogo/milestone.png"
-              alt="Milestone-logo"
+              alt="Milestone"
               loading="lazy"
               width={150}
               height={150}
             />
-            <ShopProductsCarousel carouselProducts={carouselProductsMilestone} />
+            <ShopProductsCarousel carouselProducts={filteredProducts.Milestone} />
           </div>
 
-          <div className={styles["products-carousel"]}>
-            <h2>
-              Connectez-vous avec Zyxel : Des solutions réseau pour tous les
-              besoins
-            </h2>
+          {/* <div className={styles["products-carousel"]}>
+            <h2>Connectez-vous avec Zyxel</h2>
             <Image
               src="/assets/shop/shopLogos/zyxel.png"
-              alt="Zyxel-logo"
+              alt="Zyxel"
               loading="lazy"
               width={150}
               height={150}
             />
-            <ShopProductsCarousel carouselProducts={carouselProductsZyxel} />
-          </div>
-
+            <ShopProductsCarousel carouselProducts={filteredProducts.Zyxel} />
+          </div> */}
         </>
       )}
     </div>
