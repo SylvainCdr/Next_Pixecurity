@@ -15,3 +15,6 @@ export async function getServerSideProps({ query }) {
 export default function Page({ products }) {
   return <Catalogue products={products} />;
 }
+
+
+
