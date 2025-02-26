@@ -1,17 +1,22 @@
-import { getProductsByCatSubCat } from "@/api/products";
-import Products from "@/templates/Shop/Products/Products";
+import React from "react";
+import Products from "@/templates/Shop/Products/Products"; // Assurez-vous que le chemin est correct
 import {
   getProductsFiltered,
   getFiltersFromProducts,
 } from "@/utils/getProductsFiltered";
+import { getProductsByCatSubCat } from "@/api/products";
 
 export async function getServerSideProps({ params, query }) {
+  console.log("Params récupérés :", params);
+  console.log("Query récupérée :", query);
+
   const brand = params.brand || "";
   const category = params.category || "";
   const subcategory = params.subcategory || "";
   const userId = query.userId || "";
 
   if (!category) {
+    console.log("Category est vide → 404 forcée");
     return { notFound: true };
   }
 
@@ -21,6 +26,9 @@ export async function getServerSideProps({ params, query }) {
     subcategory,
     userId,
   });
+
+  console.log("Produits récupérés :", products);
+
   const productsFiltered = getProductsFiltered(products, query);
   const filters = getFiltersFromProducts(productsFiltered);
 
@@ -34,6 +42,7 @@ export async function getServerSideProps({ params, query }) {
     },
   };
 }
+
 
 const Page = ({ products, brand, category, subcategory, filters }) => {
   return (
