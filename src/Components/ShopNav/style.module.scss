@@ -1,9 +1,21 @@
+/* Désactiver le scroll du body lorsque le menu est actif */
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+
 .shopNavContainer {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10; /* S'assurer que la nav ne passe pas sous d'autres éléments */
   padding-top: 5.5rem;
+
+
+  
+
+
 }
 
 .burgerMenu {
@@ -16,6 +28,7 @@
 }
 .desktopMenu {
   width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .brandBar {
@@ -60,13 +73,32 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-content: center;
+  align-content: flex-start; /* Garde les éléments en haut */
+  align-items: flex-start; /* Évite l'étirement des items */
   gap: 30px;
   padding-top: 7rem;
+  max-height: 60vh; /* Ajuste la hauteur pour éviter un menu trop grand */
   min-height: 60vh;
-  max-height: 120vh; /* Limiter la hauteur pour permettre le scroll */
-  overflow-y: auto; /* Permettre le défilement vertical */
+  overflow-y: auto; /* Permet le scroll si nécessaire */
+
+  // position: absolute; /* Assurer que ça ne perturbe pas la mise en page */
+  top: 100%; /* Place sous la barre de navigation */
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
+
+// .categoryList {
+//   overflow-y: auto; /* Permet de scroller */
+//   max-height: 80vh; /* Ajuste la hauteur pour éviter un menu trop grand */
+//   min-height: 60vh;
+//
+//   left: 0;
+//   right: 0;
+//   background-color: #fffcf5;
+//
+//   padding: 20px;
+// }
 
 .categoryList.active {
   display: block; /* Afficher quand active */
@@ -97,6 +129,28 @@
     color: black;
   }
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Assombrit légèrement */
+  backdrop-filter: blur(8px); /* Applique un flou */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilité Safari */
+  z-index: 1000; /* Assurez-vous qu'il est au-dessus du menu */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Activer l'overlay quand le menu est ouvert */
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .mobileMenu {
   position: fixed;
@@ -132,7 +186,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   padding: 10px 0;
-  padding-left : 2rem;
+  padding-left: 2rem;
   cursor: pointer;
   color: purple;
   font-size: 1.2rem;
@@ -142,7 +196,6 @@
 .mobileSubcategoryList {
   /* Limite la hauteur des listes mobiles */
   overflow-y: auto; /* Permettre le scroll vertical dans les sous-catégories */
-  
 }
 
 .mobileCategoryList {

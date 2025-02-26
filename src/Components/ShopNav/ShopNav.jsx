@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
@@ -13,88 +13,122 @@ function ShopNav() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
+  const menuRef = useRef(null);
   const user = useGetUser();
   const userId = user?._id;
+  
+  
 
   useEffect(() => {
     fetch(`${BASE_URL}/brands`)
       .then((res) => res.json())
       .then((data) => setBrands(data))
-      .catch((error) =>
-        console.error("Erreur chargement des marques :", error)
-      );
+      .catch((error) => console.error("Erreur chargement des marques :", error));
   }, []);
 
   useEffect(() => {
+    if (brands.length === 0) return;
+
     const fetchCategories = async () => {
-      const categoriesObj = {};
-      for (const brand of brands) {
-        try {
-          const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
-          const data = await res.json();
-          categoriesObj[brand] = data;
-        } catch (error) {
-          console.error(
-            `Erreur chargement des catégories pour ${brand} :`,
-            error
-          );
-        }
+      try {
+        const results = await Promise.all(
+          brands.map(async (brand) => {
+            const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
+            return { brand, categories: await res.json() };
+          })
+        );
+        const categoriesObj = results.reduce((acc, { brand, categories }) => {
+          acc[brand] = categories;
+          return acc;
+        }, {});
+        setCategoriesMap(categoriesObj);
+      } catch (error) {
+        console.error("Erreur chargement des catégories :", error);
       }
-      setCategoriesMap(categoriesObj);
     };
 
-    if (brands.length > 0) {
-      fetchCategories();
-    }
+    fetchCategories();
   }, [brands]);
 
   useEffect(() => {
+    if (Object.keys(categoriesMap).length === 0) return;
+
     const fetchSubcategories = async () => {
-      const subcategoriesObj = {};
-      for (const brand of brands) {
-        if (!categoriesMap[brand]) continue;
-        for (const category of categoriesMap[brand]) {
-          try {
-            const res = await fetch(
-              `${BASE_URL}/subcategories?brand=${brand}&category=${category}`
-            );
-            const data = await res.json();
-            if (!subcategoriesObj[brand]) subcategoriesObj[brand] = {};
-            subcategoriesObj[brand][category] = data;
-          } catch (error) {
-            console.error(
-              `Erreur chargement des sous-catégories pour ${category} de ${brand} :`,
-              error
-            );
-          }
-        }
+      try {
+        const results = await Promise.all(
+          Object.entries(categoriesMap).flatMap(([brand, categories]) =>
+            categories.map(async (category) => {
+              const res = await fetch(
+                `${BASE_URL}/subcategories?brand=${brand}&category=${category}`
+              );
+              return { brand, category, subcategories: await res.json() };
+            })
+          )
+        );
+
+        const subcategoriesObj = results.reduce((acc, { brand, category, subcategories }) => {
+          if (!acc[brand]) acc[brand] = {};
+          acc[brand][category] = subcategories;
+          return acc;
+        }, {});
+        setSubcategoriesMap(subcategoriesObj);
+      } catch (error) {
+        console.error("Erreur chargement des sous-catégories :", error);
       }
-      setSubcategoriesMap(subcategoriesObj);
     };
 
-    if (Object.keys(categoriesMap).length > 0) {
-      fetchSubcategories();
-    }
+    fetchSubcategories();
   }, [categoriesMap]);
 
   const handleBrandClick = (brand) => {
-    setActiveBrand(activeBrand === brand ? null : brand);
-    setActiveCategory(null); // Reset active category when changing brand
+    setActiveBrand((prevBrand) => (prevBrand === brand ? null : brand));
+    setActiveCategory(null);
   };
 
   const handleCategoryClick = (category) => {
-    setActiveCategory(activeCategory === category ? null : category);
+    setActiveCategory((prevCategory) => (prevCategory === category ? null : category));
   };
 
   const handleSubcategoryClick = () => {
-    setActiveBrand(null); // Ferme la navigation principale après avoir sélectionné une sous-catégorie
-    setActiveCategory(null); // Ferme la catégorie active
-    setIsMobileMenuOpen(false); // Ferme le menu mobile
+    setActiveBrand(null);
+    setActiveCategory(null);
+    setIsMobileMenuOpen(false);
     setIsSubcategoryLoading(true);
   };
 
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setActiveBrand(null);
+        setActiveCategory(null);
+      }
+    };
+  
+    document.addEventListener("mousemove", handleMouseMove);
+    
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const overlay = document.querySelector(".overlay");
+    if (!overlay) return; // Évite l'erreur si l'élément n'est pas trouvé
+  
+    if (isMobileMenuOpen) {
+      overlay.classList.add("active");
+    } else {
+      overlay.classList.remove("active");
+    }
+  }, [isMobileMenuOpen]);
+  
+
   return (
-    <div className={styles.shopNavContainer}>
+
+
+
+    <div className={styles.shopNavContainer} ref= {menuRef}>
+       
       <button
         className={styles.burgerMenu}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -164,10 +198,15 @@ function ShopNav() {
   )}
 </div>
 
+<div className="overlay"></div>
+
+<div className={`${styles.overlay} ${isMobileMenuOpen ? styles.active : ""}`} onClick={() => setIsMobileMenuOpen(false)}></div>
 
       {/* Menu Mobile */}
       <AnimatePresence>
   {isMobileMenuOpen && (
+
+
     <motion.div
       className={styles.mobileMenu}
       initial={{ x: "-100%", opacity: 0 }}

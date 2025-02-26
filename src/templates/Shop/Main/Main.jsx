@@ -48,8 +48,7 @@ function Catalogue({ products }) {
     <div className={styles["shop-container"]}>
       <Head>
         <title>
-          Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle
-          d'accès, réseaux/stockage des données, hypervision...{" "}
+        <title>Pixecurity Boutique : Vidéosurveillance, analyse d'image, contrôle d'accès, réseaux/stockage des données, hypervision...</title>
         </title>
         <meta
           name="description"
