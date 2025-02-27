@@ -35,7 +35,6 @@ export async function getProducts(
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
-
     return await response.json();
   } catch (error) {
     console.error("Error fetching products:", error);
