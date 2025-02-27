@@ -15,7 +15,7 @@ import Link from "next/link";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
 export default function Product({ product, id, suggestions }) {
-  console.log("Suggestions:", suggestions);
+  // console.log("Suggestions:", suggestions);
 
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
     useFavorites();

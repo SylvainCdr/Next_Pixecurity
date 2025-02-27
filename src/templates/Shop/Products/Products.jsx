@@ -98,6 +98,7 @@ const Products = ({ products, category, subcategory, filters }) => {
           <ShopAside subcategory={subcategory} category={category} filters={filters} />
           <div className={styles["products-grid"]}>
             {displayedProducts.map((product) => (
+          <div key={product._id}>
            <ProductCard
            product={product}
            discountedPrice={calculateDiscount(product.price, discount)} // Assure-toi que le discount est bien appliqué ici
@@ -107,6 +108,7 @@ const Products = ({ products, category, subcategory, filters }) => {
            checkFavorite={checkFavorite}
            addToCart={addToCart}
          />
+         </div>
          
             ))}
           </div>
