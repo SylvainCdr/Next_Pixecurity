@@ -3,27 +3,20 @@ body.no-scroll {
   overflow: hidden;
 }
 
-
-
 .shopNavContainer {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10; /* S'assurer que la nav ne passe pas sous d'autres éléments */
   padding-top: 5.5rem;
-
-
-  
-
-
 }
 
 .burgerMenu {
-  background-color: purple;
+  background-color: #760498;
   padding: 10px 20px;
 
   &:hover {
-    background-color: rgb(101, 1, 101);
+    background-color: rgb(83, 1, 83);
   }
 }
 .desktopMenu {
@@ -32,7 +25,7 @@ body.no-scroll {
 }
 
 .brandBar {
-  background-color: var(--sunset1);
+  background-color: #6c1b74;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-evenly;
@@ -58,7 +51,8 @@ body.no-scroll {
   font-weight: 600;
 
   &:hover {
-    background-color: purple;
+    background-color: white;
+    color: #760498;
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
     -moz-border-radius: 0.3rem;
@@ -87,18 +81,6 @@ body.no-scroll {
   right: 0;
   z-index: 100;
 }
-
-// .categoryList {
-//   overflow-y: auto; /* Permet de scroller */
-//   max-height: 80vh; /* Ajuste la hauteur pour éviter un menu trop grand */
-//   min-height: 60vh;
-//
-//   left: 0;
-//   right: 0;
-//   background-color: #fffcf5;
-//
-//   padding: 20px;
-// }
 
 .categoryList.active {
   display: block; /* Afficher quand active */
@@ -142,7 +124,9 @@ body.no-scroll {
   z-index: 1000; /* Assurez-vous qu'il est au-dessus du menu */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 }
 
 /* Activer l'overlay quand le menu est ouvert */
@@ -150,7 +134,6 @@ body.no-scroll {
   opacity: 1;
   visibility: visible;
 }
-
 
 .mobileMenu {
   position: fixed;
@@ -168,11 +151,11 @@ body.no-scroll {
 }
 
 .closeMenu {
-  background-color: purple;
+  background-color: #760498;
   padding: 10px 20px;
 
   &:hover {
-    background-color: rgb(101, 1, 101);
+    background-color: rgb(85, 1, 85);
   }
 }
 

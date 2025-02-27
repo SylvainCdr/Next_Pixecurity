@@ -7,16 +7,16 @@ import styles from "./style.module.scss";
 const heroImages = [
   {
  
-    url: "/assets/shop/banners/banner3.jpg",
+    url: "/assets/shop/banners/banner3.webp",
   },
   {
     url: "/assets/shop/banners/banner1.webp",
   },
   {
-    url: "/assets/shop/banners/banner2.png",
+    url: "/assets/shop/banners/banner2.webp",
   },
   {
-    url: "/assets/shop/banners/banner4.jpg",
+    url: "/assets/shop/banners/banner4.webp",
   },
 ];
 

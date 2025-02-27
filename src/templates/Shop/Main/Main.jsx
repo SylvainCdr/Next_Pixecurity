@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import styles from "./style.module.scss";
 import ShopNav from "@/Components/ShopNav/ShopNav";
 import ShopSearch from "@/Components/ShopSearch/ShopSearch";
@@ -11,8 +10,8 @@ import { useGetUser } from "@/Components/useGetUser";
 import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
 import Image from "next/image";
 
-// Fonction de mélange Fisher-Yates pour un tri aléatoire performant
 const shuffleArray = (array, limit) => {
+  if (!array || array.length === 0) return [];
   let shuffled = array.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -21,7 +20,7 @@ const shuffleArray = (array, limit) => {
   return shuffled.slice(0, limit);
 };
 
-function Catalogue({ products }) {
+function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
   const [searchResults, setSearchResults] = useState([]);
   const user = useGetUser();
 
@@ -29,26 +28,23 @@ function Catalogue({ products }) {
     Aos.init({ duration: 1500 });
   }, []);
 
-  const handleSearchResults = (results) => {
+  const handleSearchResults = useCallback((results) => {
     setSearchResults(results);
-  };
+  }, []);
 
-  // Filtrer les produits une seule fois avec useMemo
-  const filteredProducts = useMemo(() => ({
-    iPro: shuffleArray(
-      products?.filter(
-        (p) =>
-          p.brand === "i-PRO" ||
-          (p.brand === "Vivotek" && p.category === "Cameras")
-      ),
-      10
-    ),
-    // Zyxel: shuffleArray(products?.filter((p) => p.brand === "Zyxel"), 10),
-    Milestone: shuffleArray(
-      products?.filter((p) => p.brand === "Milestone Systems"),
-      10
-    ),
-  }), [products]);
+  // Mélange les produits avant affichage
+  const shuffledIProProducts = useMemo(
+    () => shuffleArray(iProProducts, 10),
+    [iProProducts]
+  );
+  const shuffledMilestoneProducts = useMemo(
+    () => shuffleArray(milestoneProducts, 10),
+    [milestoneProducts]
+  );
+  const shuffledZyxelProducts = useMemo(
+    () => shuffleArray(zyxelProducts, 10),
+    [zyxelProducts]
+  );
 
   return (
     <div className={styles["shop-container"]}>
@@ -56,7 +52,7 @@ function Catalogue({ products }) {
         <title>Pixecurity Boutique : Vidéosurveillance et Sécurité</title>
         <meta
           name="description"
-          content="Découvrez notre catalogue de produits chez Pixecurity Boutique : caméras de surveillance, équipements réseau, logiciels et plus."
+          content="Découvrez notre catalogue de produits chez Pixecurity Boutique : caméras de surveillance, contrôle d'accès, équipements réseau, logiciels et plus."
         />
         <meta
           name="keywords"
@@ -91,7 +87,7 @@ function Catalogue({ products }) {
                 height={150}
               />
             </div>
-            <ShopProductsCarousel carouselProducts={filteredProducts.iPro} />
+            <ShopProductsCarousel carouselProducts={shuffledIProProducts} />
           </div>
 
           <div className={styles["products-carousel"]}>
@@ -103,20 +99,22 @@ function Catalogue({ products }) {
               width={150}
               height={150}
             />
-            <ShopProductsCarousel carouselProducts={filteredProducts.Milestone} />
+            <ShopProductsCarousel
+              carouselProducts={shuffledMilestoneProducts}
+            />
           </div>
 
-          {/* <div className={styles["products-carousel"]}>
-            <h2>Connectez-vous avec Zyxel</h2>
+          <div className={styles["products-carousel"]}>
+            <h2> Restez connecté avec Zyxel</h2>
             <Image
               src="/assets/shop/shopLogos/zyxel.png"
-              alt="Zyxel"
+              alt="Milestone"
               loading="lazy"
               width={150}
               height={150}
             />
-            <ShopProductsCarousel carouselProducts={filteredProducts.Zyxel} />
-          </div> */}
+            <ShopProductsCarousel carouselProducts={shuffledZyxelProducts} />
+          </div>
         </>
       )}
     </div>

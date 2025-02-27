@@ -44,10 +44,12 @@ function ProductCard({ product }) {
         <div className={styles.imgContainer}>
           {product && product.image ? (
             product.image.startsWith("http") ? (
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
                 className={styles["product-img"]}
+                width={130}
+                height={130}
                 loading="lazy"
               />
             ) : (
@@ -55,16 +57,19 @@ function ProductCard({ product }) {
                 src={`${BASE_URL}${product.image}`}
                 alt={product.name}
                 className={styles["product-img"]}
-                width={150}
-                height={150}
+                width={130}
+                height={130}
                 loading="lazy"
               />
             )
           ) : (
-            <img
+            <Image
               src="/assets/shop/nopicavailable.webp"
               alt={product.name}
               className={styles["product-img"]}
+              width={130}
+              height={130}
+              loading="lazy"
             />
           )}
         </div>
