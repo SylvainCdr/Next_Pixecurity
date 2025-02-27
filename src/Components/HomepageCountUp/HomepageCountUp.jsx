@@ -14,7 +14,7 @@ export default function HomepageCountUp() {
     const countTo = parseInt(el.getAttribute("data-count-to"), 10);
     el.innerHTML = "0"; // Initialiser à zéro au début
 
-    // console.log(`Animating count up to: ${countTo}`);
+    console.log(`Animating count up to: ${countTo}`);
 
     const counter = setInterval(() => {
       frame++;
@@ -48,7 +48,7 @@ export default function HomepageCountUp() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const countupEls = entry.target.querySelectorAll(`.${styles.timer}`);
-          // console.log(`Found ${countupEls.length} elements to animate.`);
+          console.log(`Found ${countupEls.length} elements to animate.`);
           countupEls.forEach(animateCountUp);
           observer.unobserve(entry.target); // arrêter d'observer après l'animation
         }
