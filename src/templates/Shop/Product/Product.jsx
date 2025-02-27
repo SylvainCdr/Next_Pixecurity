@@ -13,6 +13,7 @@ import ProductCard from "@/Components/ProductCard/ProductCard";
 import Head from "next/head";
 import Link from "next/link";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+import Image from "next/image";
 
 export default function Product({ product, id, suggestions }) {
   // console.log("Suggestions:", suggestions);
@@ -218,7 +219,7 @@ export default function Product({ product, id, suggestions }) {
                 </p>
               )}
 
-              <img
+              <Image
                 src={
                   product.image && product.image.startsWith("http")
                     ? product.image
@@ -226,6 +227,8 @@ export default function Product({ product, id, suggestions }) {
                 }
                 alt={product.name}
                 loading="lazy"
+                width={400}
+                height={400}
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "/assets/shop/nopicavailable.webp";
@@ -247,11 +250,14 @@ export default function Product({ product, id, suggestions }) {
               <h1>{product.name}</h1>
 
               {brandLogo ? (
-                <img
+                <Image
                   src={brandLogo.logo}
                   alt={product.brand}
                   className={styles["brand-logo"]}
                   loading="lazy"
+                  width={150}
+                  height={35}
+                 
                 />
               ) : (
                 <p className={styles["brand-logo"]}>{product.brand}</p>
