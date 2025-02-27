@@ -15,6 +15,8 @@ import Link from "next/link";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 
 export default function Product({ product, id, suggestions }) {
+  console.log("Suggestions:", suggestions);
+
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
     useFavorites();
   const { addToCart } = useCartContext();
@@ -216,19 +218,19 @@ export default function Product({ product, id, suggestions }) {
                 </p>
               )}
 
-            <img
-              src={
-                product.image && product.image.startsWith("http")
-                  ? product.image
-                  : `${BASE_URL}${product.image}`
-              }
-              alt={product.name}
-              loading="lazy"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "/assets/shop/nopicavailable.webp";
-              }}
-            />
+              <img
+                src={
+                  product.image && product.image.startsWith("http")
+                    ? product.image
+                    : `${BASE_URL}${product.image}`
+                }
+                alt={product.name}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/assets/shop/nopicavailable.webp";
+                }}
+              />
               <p
                 className={styles.like}
                 data-aos="zoom-in-left"
@@ -332,20 +334,38 @@ export default function Product({ product, id, suggestions }) {
             <div className={styles["product-details"]}>
               <h3>Détails du produit</h3>
               <p>{product.description}</p>
-              <table>
-                <tbody>
-                  {product.details &&
-                    Object.keys(product.details).map(
-                      (key) =>
-                        product.details[key] !== "" && (
-                          <tr key={key}>
-                            <td>{labelsMapping[key] || key}</td>
-                            <td>{product.details[key]}</td>
-                          </tr>
-                        )
-                    )}
-                </tbody>
-              </table>
+
+              <ul className={styles["product-specs"]}>
+                {product.megapixels && (
+                  <li>
+                    <strong>Mégapixels :</strong>{" "}
+                    <span>{product.megapixels}</span>
+                  </li>
+                )}
+                {product.category === "Cameras" &&
+                  product.infrarouge !== undefined && (
+                    <li>
+                      <strong>Infrarouge :</strong>{" "}
+                      <span>{product.infrarouge ? "Oui" : "Non"}</span>
+                    </li>
+                  )}
+                {product.distanceInfrarouge && (
+                  <li>
+                    <strong>Distance infrarouge :</strong>{" "}
+                    <span>{product.distanceInfrarouge}</span>
+                  </li>
+                )}
+                {product.couleur && (
+                  <li>
+                    <strong>Couleur :</strong> <span>{product.couleur}</span>
+                  </li>
+                )}
+                {product.garantie && (
+                  <li>
+                    <strong>Garantie :</strong> <span>{product.garantie}</span>
+                  </li>
+                )}
+              </ul>
 
               {product.pdf &&
                 (product.category === "Logiciels" ? (

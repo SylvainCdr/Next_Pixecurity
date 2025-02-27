@@ -16,14 +16,15 @@ function ShopNav() {
   const menuRef = useRef(null);
   const user = useGetUser();
   const userId = user?._id;
-  
-  
+  const userIdParam = userId ? `?userId=${userId}` : "";
 
   useEffect(() => {
     fetch(`${BASE_URL}/brands`)
       .then((res) => res.json())
       .then((data) => setBrands(data))
-      .catch((error) => console.error("Erreur chargement des marques :", error));
+      .catch((error) =>
+        console.error("Erreur chargement des marques :", error)
+      );
   }, []);
 
   useEffect(() => {
@@ -66,11 +67,14 @@ function ShopNav() {
           )
         );
 
-        const subcategoriesObj = results.reduce((acc, { brand, category, subcategories }) => {
-          if (!acc[brand]) acc[brand] = {};
-          acc[brand][category] = subcategories;
-          return acc;
-        }, {});
+        const subcategoriesObj = results.reduce(
+          (acc, { brand, category, subcategories }) => {
+            if (!acc[brand]) acc[brand] = {};
+            acc[brand][category] = subcategories;
+            return acc;
+          },
+          {}
+        );
         setSubcategoriesMap(subcategoriesObj);
       } catch (error) {
         console.error("Erreur chargement des sous-catégories :", error);
@@ -86,7 +90,9 @@ function ShopNav() {
   };
 
   const handleCategoryClick = (category) => {
-    setActiveCategory((prevCategory) => (prevCategory === category ? null : category));
+    setActiveCategory((prevCategory) =>
+      prevCategory === category ? null : category
+    );
   };
 
   const handleSubcategoryClick = () => {
@@ -103,9 +109,9 @@ function ShopNav() {
         setActiveCategory(null);
       }
     };
-  
+
     document.addEventListener("mousemove", handleMouseMove);
-    
+
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
@@ -114,21 +120,16 @@ function ShopNav() {
   useEffect(() => {
     const overlay = document.querySelector(".overlay");
     if (!overlay) return; // Évite l'erreur si l'élément n'est pas trouvé
-  
+
     if (isMobileMenuOpen) {
       overlay.classList.add("active");
     } else {
       overlay.classList.remove("active");
     }
   }, [isMobileMenuOpen]);
-  
 
   return (
-
-
-
-    <div className={styles.shopNavContainer} ref= {menuRef}>
-       
+    <div className={styles.shopNavContainer} ref={menuRef}>
       <button
         className={styles.burgerMenu}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -138,160 +139,162 @@ function ShopNav() {
 
       {/* Menu Desktop - Large bande pour les marques */}
       <div className={styles.desktopMenu}>
-  <div className={styles.brandBar}>
-    <ul className={styles.brandList}>
-      {brands.map((brand) => (
-        <li
-          key={brand}
-          onClick={() => handleBrandClick(brand)}
-          className={activeBrand === brand ? "active" : ""}
-        >
-          {brand}
-        </li>
-      ))}
-    </ul>
-  </div>
+        <div className={styles.brandBar}>
+          <ul className={styles.brandList}>
+            {brands.map((brand) => (
+              <li
+                key={brand}
+                onClick={() => handleBrandClick(brand)}
+                className={activeBrand === brand ? "active" : ""}
+              >
+                {brand}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-  {activeBrand && (
-    <motion.div
-      className={styles.categoryList}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      {categoriesMap[activeBrand]?.map((category) => (
-        <div key={category}>
-          <motion.h2
-            initial={{ x: -20 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {category}
-          </motion.h2>
-          <motion.ul
+        {activeBrand && (
+          <motion.div
+            className={styles.categoryList}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
           >
-            {subcategoriesMap[activeBrand]?.[category]?.map((subcategory) => (
-              <motion.li
-                key={subcategory}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Link
-                  href={`/boutique/${activeBrand}/${category}/${subcategory}`}
-                  onClick={handleSubcategoryClick}
+            {categoriesMap[activeBrand]?.map((category) => (
+              <div key={category}>
+                <motion.h2
+                  initial={{ x: -20 }}
+                  animate={{ x: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {subcategory}
-                </Link>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      ))}
-    </motion.div>
-  )}
-</div>
-
-<div className="overlay"></div>
-
-<div className={`${styles.overlay} ${isMobileMenuOpen ? styles.active : ""}`} onClick={() => setIsMobileMenuOpen(false)}></div>
-
-      {/* Menu Mobile */}
-      <AnimatePresence>
-  {isMobileMenuOpen && (
-
-
-    <motion.div
-      className={styles.mobileMenu}
-      initial={{ x: "-100%", opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: "-100%", opacity: 0 }}
-      transition={{
-        duration: 0.4,
-        ease: "easeInOut",
-      }}
-    >
-      <button
-        className={styles.closeMenu}
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        ✖
-      </button>
-
-      <ul className={styles.mobileBrandList}>
-        {brands.map((brand) => (
-          <li
-            key={brand}
-            onClick={() => handleBrandClick(brand)}
-            className={styles.mobileBrandListLi}
-          >
-            {brand}
-            {activeBrand === brand && (
-              <motion.ul
-                className={styles.mobileCategoryList}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {categoriesMap[brand]?.map((category) => (
-                  <motion.li
-                    key={category}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCategoryClick(category);
-                    }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {category}
-                    {activeCategory === category && (
-                      <motion.ul
-                        className={styles.mobileSubcategoryList}
+                  {category}
+                </motion.h2>
+                <motion.ul
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {subcategoriesMap[activeBrand]?.[category]?.map(
+                    (subcategory) => (
+                      <motion.li
+                        key={subcategory}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        {subcategoriesMap[brand]?.[category]?.map(
-                          (subcategory) => (
-                            <motion.li
-                              key={subcategory}
+                        <Link
+                          href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
+                          onClick={handleSubcategoryClick}
+                        >
+                          {subcategory}
+                        </Link>
+                      </motion.li>
+                    )
+                  )}
+                </motion.ul>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </div>
+
+      <div className="overlay"></div>
+
+      <div
+        className={`${styles.overlay} ${isMobileMenuOpen ? styles.active : ""}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
+
+      {/* Menu Mobile */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className={styles.mobileMenu}
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0 }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
+            }}
+          >
+            <button
+              className={styles.closeMenu}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              ✖
+            </button>
+
+            <ul className={styles.mobileBrandList}>
+              {brands.map((brand) => (
+                <li
+                  key={brand}
+                  onClick={() => handleBrandClick(brand)}
+                  className={styles.mobileBrandListLi}
+                >
+                  {brand}
+                  {activeBrand === brand && (
+                    <motion.ul
+                      className={styles.mobileCategoryList}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {categoriesMap[brand]?.map((category) => (
+                        <motion.li
+                          key={category}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleCategoryClick(category);
+                          }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {category}
+                          {activeCategory === category && (
+                            <motion.ul
+                              className={styles.mobileSubcategoryList}
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.3 }}
                             >
-                              <Link
-                                href={`/boutique/${brand}/${category}/${subcategory}`}
-                                onClick={handleSubcategoryClick}
-                              >
-                                {subcategory}
-                              </Link>
-                            </motion.li>
-                          )
-                        )}
-                      </motion.ul>
-                    )}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+                              {subcategoriesMap[brand]?.[category]?.map(
+                                (subcategory) => (
+                                  <motion.li
+                                    key={subcategory}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                  >
+                                    <Link
+                                      href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
+                                      onClick={handleSubcategoryClick}
+                                    >
+                                      {subcategory}
+                                    </Link>
+                                  </motion.li>
+                                )
+                              )}
+                            </motion.ul>
+                          )}
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

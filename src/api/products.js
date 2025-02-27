@@ -1,51 +1,24 @@
 import { BASE_URL } from "@/url";
 
 export async function getProductsByCatSubCat({
+  userId = "",
   brand,
   category,
   subcategory,
-  userId = "",
 }) {
   const apiUrl = subcategory
-    ? `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&products?category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
-    : `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&products?category=${encodeURIComponent(category)}&userId=${userId}`;
+    ? `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&category=${encodeURIComponent(category)}&subcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
+    : `${BASE_URL}/products?brand=${encodeURIComponent(brand)}&category=${encodeURIComponent(category)}&userId=${userId}`;
 
   const response = await fetch(apiUrl);
   const data = await response.json();
   return data;
 }
 
-// export async function getProducts(userId = "") {
-//   const response = await fetch(
-//     `${BASE_URL}/products${userId ? `?userId=${userId}` : ""}`
-//   );
-//   const data = await response.json();
-//   return data;
-// }
-
-// export async function getProducts(userId = "") {
-//   try {
-//     const apiUrl = `${BASE_URL}/products${userId ? `?userId=${userId}` : ""}`;
-//     console.log("Fetching:", apiUrl);
-
-//     const response = await fetch(apiUrl);
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP Error! Status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// }
-
 export async function getProducts(
   userId = "",
   brand = "",
-  limit = 50,
+  limit = "100",
   category = ""
 ) {
   try {

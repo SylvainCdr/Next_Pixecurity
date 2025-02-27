@@ -19,6 +19,8 @@ export default function Cart({ carouselProducts }) {
 
   const user = useGetUser();
   const userId = user?._id;
+  
+  
   const router = useRouter();
 
   const createOrder = async () => {
@@ -103,6 +105,9 @@ function CartItem({ cart }) {
   const { addToCart, removeFromCart } = useCartContext();
 
   const totalPrice = (cart.quantity * product.discountPrice).toFixed(2);
+  const user = useGetUser();
+  const userId = user?._id;
+  const userIdParam = userId ? `?userId=${userId}` : "";
 
   const handleQuantityChange = (event) => {
     const newQuantity = parseInt(event.target.value);
@@ -131,7 +136,7 @@ function CartItem({ cart }) {
       </div>
       <div className={styles["product-details"]}>
         <div className={styles["product-title"]}>
-          {product.name}
+          <Link href={`boutique/produit/${product._id}/${userIdParam}`} > {product.name} </Link>
           <p>Réf : {product.ref}</p>
         </div>
       </div>
@@ -202,7 +207,7 @@ function Totals({ carts }) {
   return (
     <div className={styles["totals"]}>
       <div className={styles["totals-item"]}>
-        <p>Sous-total</p>
+        <p>Sous-total HT</p>
         <div className={styles["totals-value"]} id="cart-subtotal">
           {calculatedSubTotal.toFixed(2)} €
         </div>
@@ -223,7 +228,7 @@ function Totals({ carts }) {
         className={`${styles["totals-item"]} ${styles["totals-item-total"]}`}
         id="cart-total"
       >
-        <p>Total</p>
+        <p>Total TTC</p>
         <div className={styles["totals-value"]} id="cart-total">
           {totalAmount.toFixed(2)} €
         </div>

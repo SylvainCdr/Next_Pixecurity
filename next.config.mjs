@@ -11,6 +11,7 @@ const nextConfig = {
       { protocol: "https", hostname: "*.til-technologies.fr" }, // Til Technologies
       { protocol: "https", hostname: "*.herokuapp.com8" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
       { protocol: "https", hostname: "i.ytimg.com" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
+      { protocol: "https", hostname: "static.vivotek.vn" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
     ],
   },
 };

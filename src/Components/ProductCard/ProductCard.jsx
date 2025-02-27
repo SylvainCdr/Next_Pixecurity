@@ -24,9 +24,6 @@ function ProductCard({ product }) {
   const user = useGetUser();
   const userId = user?._id;
 
-  useEffect(() => {
-    Aos.init({ duration: 500 });
-  }, []);
 
   return (
     <div className={styles["product-card"]}>

@@ -144,18 +144,29 @@
 
       .product-image {
         text-align: center;
+        object-fit: cover;
 
         img {
-          width: 8em;
-          height: 8em;
+          width: 5em;
+          height: 5em;
           background-color: #fff;
           object-fit: cover;
+          border-radius: 5px;
         }
       }
 
       .product-details {
         .product-title {
           margin-right: 20px;
+
+          a {
+            color: rgb(64, 64, 64);
+            text-decoration: none;
+            font-weight: 500;
+            &:hover {
+              color: var(--sunset1);
+            }
+          }
 
           p {
             margin: 15px 0;

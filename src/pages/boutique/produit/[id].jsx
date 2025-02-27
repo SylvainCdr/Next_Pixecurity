@@ -1,19 +1,32 @@
-import { getProductById, getProducts } from "@/api/products";
+import { getProductById, getProductsByCatSubCat } from "@/api/products";
 import Product from "@/templates/Shop/Product/Product";
 
 export async function getServerSideProps({ params, query }) {
   const id = params.id;
-  const userId = query.userId || null; // Provide a default value of null if userId is not present
+  const userId = query.userId || "";
 
+  // Récupération du produit en question
   const product = await getProductById(id, userId);
-  const products = await getProducts(userId);
 
+  if (!product) {
+    return {
+      notFound: true, // Gérer le cas où le produit n'existe pas
+    };
+  }
+
+  // Récupération des produits de la même catégorie et sous-catégorie
+  const products = await getProductsByCatSubCat({
+    userId,
+    brand: product.brand,
+    category: product.category,
+    subcategory: product.subcategory,
+  });
+
+  // Filtrer pour exclure le produit actuel et limiter à 4 suggestions
   const suggestions = products
-    .filter(
-      (item) =>
-        item.subcategory === product.subcategory && item.brand === product.brand
-    )
-    .slice(0, 4);
+  .filter((item) => String(item._id) !== String(product._id)) // Vérification stricte avec _id
+  .slice(0, 8);
+
 
   return {
     props: {
@@ -26,5 +39,12 @@ export async function getServerSideProps({ params, query }) {
 }
 
 export default function Page({ product, id, suggestions, userId }) {
-  return <Product product={product} id={id} suggestions={suggestions} userId={userId} />;
+  return (
+    <Product
+      product={product}
+      id={id}
+      suggestions={suggestions}
+      userId={userId}
+    />
+  );
 }
