@@ -100,11 +100,11 @@ export default function AboutUs() {
       src: "/assets/team/YASMINA.jpg",
     },
 
-    {
-      name: "Vincent ROCHETTE",
-      role: "Responsable Commercial Sud-Est",
-      src: "/assets/team/VINCENT.webp",
-    },
+    // {
+    //   name: "Vincent ROCHETTE",
+    //   role: "Responsable Commercial Sud-Est",
+    //   src: "/assets/team/VINCENT.webp",
+    // },
     {
       name: "Antoine COUDERT",
       role: "Commercial",
@@ -120,11 +120,11 @@ export default function AboutUs() {
       role: "Technicien de Mise en Service",
       src: "/assets/team/HECTOR.webp",
     },
-    {
-      name: "Stecie RAZA",
-      role: "Chargée de Communication & Marketing",
-      src: "/assets/team/STECIE_.webp",
-    },
+    // {
+    //   name: "Stecie RAZA",
+    //   role: "Chargée de Communication & Marketing",
+    //   src: "/assets/team/STECIE_.webp",
+    // },
     {
       name: "Hiba BOUREZG",
       role: "Alternante Ingénieur Réseaux & CyberSécurité",
