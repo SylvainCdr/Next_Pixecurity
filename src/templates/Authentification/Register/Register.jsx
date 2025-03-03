@@ -64,10 +64,10 @@ export default function Register() {
     );
   };
 
-  const handleSalespersonChange = (e) => {
-    const value = e.target.value;
-    setSalesperson(value);
-  };
+  // const handleSalespersonChange = (e) => {
+  //   const value = e.target.value;
+  //   setSalesperson(value);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -177,7 +177,7 @@ export default function Register() {
               id="company"
               onChange={(e) => setCompany(e.target.value)}
             />
-            {/* // select pour le choix du commercial */}
+            {/* // select pour le choix du commercial
             <label htmlFor="salesperson">Commercial(e) référent(e)</label>
             <select
               name="salesperson"
@@ -190,7 +190,7 @@ export default function Register() {
               <option value="Fabrice VALLEE">Fabrice VALLEE</option>
               <option value="Yanis MEBARKI">Yanis MEBARKI</option>
               <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
-            </select>
+            </select> */}
 
             <label htmlFor="email">Email</label>
             <input
