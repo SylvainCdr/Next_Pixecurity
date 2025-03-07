@@ -288,7 +288,7 @@ export default function Product({ product, id, suggestions }) {
                 <p className={styles.securePayment}>
                   <i className="fa-solid fa-lock"></i> Paiement sécurisé
                 </p>
-                {product.category === "Logiciels" ? (
+                {product.productType === "soft" ? (
                   <p>
                     <i className="fa-solid fa-envelope"></i> Activation sous 48
                     à 72 heures
@@ -299,7 +299,7 @@ export default function Product({ product, id, suggestions }) {
                     à 4 semaines via DHL
                   </p>
                 )}
-                {product.category !== "Logiciels" && (
+                {product.productType !== "soft" && (
                   <img
                     src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg"
                     alt="DHL-logo"
@@ -348,6 +348,19 @@ export default function Product({ product, id, suggestions }) {
                     <span>{product.megapixels}</span>
                   </li>
                 )}
+                {product.imgSec && (
+                  <li>
+                    <strong>Images par seconde :</strong>{" "}
+                    <span>{product.imgSec}</span>
+                  </li>
+                )}
+                {product.category === "Cameras" &&
+                  product.installationExt !== undefined && (
+                    <li>
+                      <strong>Installation extérieure :</strong>{" "}
+                      <span>{product.infrarouge ? "Oui" : "Non"}</span>
+                    </li>
+                  )}
                 {product.category === "Cameras" &&
                   product.infrarouge !== undefined && (
                     <li>
@@ -368,13 +381,13 @@ export default function Product({ product, id, suggestions }) {
                 )}
                 {product.garantie && (
                   <li>
-                    <strong>Garantie :</strong> <span>{product.garantie}</span>
+                    <strong>Garantie (années) :</strong> <span>{product.garantie}</span>
                   </li>
                 )}
               </ul>
 
               {product.pdf &&
-                (product.category === "Logiciels" ? (
+                (product.productType === "soft" ? (
                   <Link
                     href={product.pdf}
                     target="_blank"

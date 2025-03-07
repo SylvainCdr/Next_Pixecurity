@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   // on compte le nombre de catégories et subcatégories existantes dans la collection products
   useEffect(() => {
-    fetch(`${BASE_URL}/products`)
+    fetch(`${BASE_URL}/products/all`)
       .then((res) => res.json())
       .then((data) => {
         let categories = [];

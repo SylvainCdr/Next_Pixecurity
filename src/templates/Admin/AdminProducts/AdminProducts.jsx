@@ -14,7 +14,7 @@ export default function AdminProducts() {
   const [brandFilter, setBrandFilter] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/products`)
+    fetch(`${BASE_URL}/products/all`)
       .then((res) => res.json())
       .then((data) => setProducts(data.reverse()));
   }, []);
@@ -145,6 +145,21 @@ export default function AdminProducts() {
 
       <div className={styles["admin-products-dashboard"]}>
         <div className={styles["admin-products-aside"]}>
+
+        <h3>Filtrer par Marque</h3>
+          {Array.from(new Set(products.map((product) => product.brand))).map(
+            (brand) => (
+              <div key={brand}>
+                <input
+                  type="checkbox"
+                  id={`brand-${brand}`}
+                  checked={brandFilter.includes(brand)}
+                  onChange={() => handleBrandFilterChange(brand)}
+                />
+                <label htmlFor={`brand-${brand}`}>{brand}</label>
+              </div>
+            )
+          )}
           <h3>Filtrer par Catégorie</h3>
           {Array.from(new Set(products.map((product) => product.category))).map(
             (category) => (
@@ -185,20 +200,7 @@ export default function AdminProducts() {
             </div>
           ))}
 
-          <h3>Filtrer par Marque</h3>
-          {Array.from(new Set(products.map((product) => product.brand))).map(
-            (brand) => (
-              <div key={brand}>
-                <input
-                  type="checkbox"
-                  id={`brand-${brand}`}
-                  checked={brandFilter.includes(brand)}
-                  onChange={() => handleBrandFilterChange(brand)}
-                />
-                <label htmlFor={`brand-${brand}`}>{brand}</label>
-              </div>
-            )
-          )}
+       
         </div>
 
         <div className={styles["admin-products-display"]}>

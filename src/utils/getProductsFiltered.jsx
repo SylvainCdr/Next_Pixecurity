@@ -1,9 +1,16 @@
 const normalizeValue = (value) => {
+  if ( value === "TRUE") {
+    return value ? "Oui" : "Non"; // Convertir true en "Oui" et false en "Non"
+  }
+  if ( value === "FALSE") {
+    return value ? "Non" : "Oui"; // Convertir true en "Oui" et false en "Non"
+  }
   if (typeof value === "string") {
-    return value.trim().toLowerCase().replace(/\s+/g, ""); // Supprimer tous les espaces
+    return value.trim().replace(/\s+/g, " "); // Supprimer tous les espaces
   }
   return String(value); // Valeur par défaut si ce n'est pas une chaîne
 };
+
 
 const getUniqueValues = (products, key, parser = (x) => x) => {
   // Extract unique values and normalize them

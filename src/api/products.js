@@ -49,3 +49,11 @@ export async function getProductById(id, userId = "") {
   const data = await response.json();
   return data;
 }
+
+// router.get("/products/all", getAllProducts);
+export async function getAllProducts() {
+  const response = await fetch(`${BASE_URL}/products/all`);
+  const data = await response.json();
+  return data;
+}
+
