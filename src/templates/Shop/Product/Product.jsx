@@ -136,7 +136,7 @@ export default function Product({ product, id, suggestions }) {
       "@context": "https://schema.org/",
       "@type": "Product",
       name: product.name,
-      description: product.presentation,
+      description: product.description,
       image: product.image.startsWith("http")
         ? product.image
         : `${BASE_URL}${product.image}`,
@@ -149,7 +149,7 @@ export default function Product({ product, id, suggestions }) {
         "@type": "Offer",
         priceCurrency: "EUR",
         price: product.price.toFixed(2),
-        priceValidUntil: "2024-12-31",
+        priceValidUntil: "2025-12-31",
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
       },
@@ -196,7 +196,7 @@ export default function Product({ product, id, suggestions }) {
                 "@type": "Offer",
                 priceCurrency: "EUR",
                 price: product.price.toFixed(2),
-                priceValidUntil: "2024-12-31",
+                priceValidUntil: "2025-12-31",
                 itemCondition: "https://schema.org/NewCondition",
                 availability: "https://schema.org/InStock",
               },
