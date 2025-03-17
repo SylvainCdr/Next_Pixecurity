@@ -12,6 +12,11 @@ const nextConfig = {
       { protocol: "https", hostname: "*.herokuapp.com8" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
       { protocol: "https", hostname: "i.ytimg.com" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
       { protocol: "https", hostname: "static.vivotek.vn" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
+      {
+        protocol: "https",
+        hostname:
+          "resources-boschescurity-cdn-hre9eue8h0fefmcd.a02.azurefd.net",
+      },
     ],
   },
 };
