@@ -24,7 +24,7 @@ export const partners = [
     image1:
       "https://content.storefront7.co.za/stores/za.co.storefront7.rectroncms/pictures/638206811616177811/webbanner-01-(2471x1237).jpg?cache=always",
     video: "https://www.youtube.com/embed/AAovU2fE2nw",
-    products: "https://www.pixecurity.com//boutique/Caméras?brand=vivotek",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "Vivotek, caméras, vidéosurveillance, sécurité, IoT, surveillance IP, enregistreurs vidéo, logiciels de gestion, R&D, distribution, alliances, VIVOTEK Academy",
   },
@@ -55,7 +55,7 @@ export const partners = [
     image2:
       "https://media.boschsecurity.com/fs/media/pb/images/products/conference_solutions/topimage_DICENTISWireless_res_800x450.webp",
     video: "https://www.youtube.com/embed/gcrnSUPUktM",
-    products: "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=bosch",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "Bosch, sécurité, communication, technologies, infrastructures, bâtiments, vidéosurveillance, alarmes incendie, contrôle d'accès, communication, durabilité, environnement, aéroports, systèmes de transport, hôpitaux, établissements éducatifs, énergie, ressources naturelles, technologies de construction, centres des congrès, bureaux, magasins, tunnels, hôpitaux, établissements de santé, aéroports, gares, flux de passagers, infrastructures modernes",
   },
@@ -83,7 +83,7 @@ export const partners = [
     image2:
       "https://www.actuia.com/wp-content/uploads/2023/05/Milestone-Systems-comment-IA-et-technologie-video-transforment-hopital-vie-soignants-patients-1200x600.png",
     video: "https://www.youtube.com/embed/0l-z7Im820w",
-    products: "https://www.pixecurity.com/boutique/Logiciels?brand=milestone",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "Milestone Systems, logiciels, gestion vidéo, IP, VMS, XProtect, sécurité, surveillance vidéo, temps réel, sécurité publique, commerce de détail, transports, éducation, infrastructures critiques, innovation, collaboration, partenaires technologiques, solutions complètes, personnalisées, responsabilité, centration sur l'humain, technologie vidéo, données, intégration, caméras, capteurs, plateforme ouverte, informations exploitables, prise de décision, interface utilisateur, analyses avancées, intelligence artificielle, surveillance proactive, réactive, centralisation, flexibilité, efficacité opérationnelle",
   },
@@ -113,7 +113,7 @@ export const partners = [
     image2:
       "https://media.licdn.com/dms/image/sync/v2/D4E27AQH1K1pXkJdvMQ/articleshare-shrink_800/articleshare-shrink_800/0/1727340745666?e=2147483647&v=beta&t=T_yEb5782i6OabPjSDsKVlPSzwORU6Q3gRRQEFM2FEA",
     video: "https://www.youtube.com/embed/LzXRGBMky2E",
-    products: "https://www.pixecurity.com/boutique/Cam%C3%A9ras?brand=i-pro",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       'i-PRO, Panasonic Security Solutions, Panasonic Corporation, sécurité, surveillance, analyse vidéo, qualité, performance, caméras de surveillance, systèmes de gestion vidéo, VMS, intelligence artificielle, détection, analyse des comportements, sécurité publique, infrastructures critiques, entreprises, institutions gouvernementales, protection, fiabilité, efficacité, société en sécurité, imagerie avancée, confiance, fabricant de confiance, décisions critiques, qualité, innovation, responsabilité, surveillance de sécurité, vision médicale, caméras modulaires, moduca, durabilité, "Politique Ouverte", intégrateurs de systèmes, maisons d\'IA, OEM, architecture modulaire, technologie, éthique, conformité',
   },
@@ -141,7 +141,7 @@ export const partners = [
       "https://www.briefcam.com/wp-content/uploads/2023/07/BriefCam-Video-Analytics-for-Retail-Business-Intelligence-Thumbnail.png",
     image2: "https://www.briefcam.com/wp-content/uploads/2018/04/Screen-6.png",
     video: "https://www.youtube.com/embed/5d6VbcUwQco",
-    products: "https://www.pixecurity.com/boutique/Logiciels/Briefcam",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "BriefCam, vidéo intelligente, vidéosurveillance, analyse vidéo, technologie, recherche, analyse, données vidéo, VIDEO SYNOPSIS®, apprentissage profond, sécurité, opérations, ciblage, villes intelligentes, commerce de détail, santé, forces de l'ordre, alerte en temps réel, reconnaissance faciale, aperçus vidéo quantitatifs, forces de l'ordre, villes intelligentes, commerce de détail, santé, architecture flexible, cloud, BriefCam Nexus, gestion des alertes, informations commerciales, visibilité holistique, sécurité, efficacité opérationnelle",
   },
@@ -197,7 +197,7 @@ export const partners = [
     image2:
       "https://www.zyxel.com/sites/zyxel/files/library/assets/newsroom/About_Zyxel_for_business_600x350.jpg",
     video: "https://www.youtube.com/embed/LOxW5DCeUbw",
-    products: "https://www.pixecurity.com/boutique/R%C3%A9seau?brand=zyxel",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "Zyxel Communications, solutions réseau, connectivité, sécurité, technologies de l'information, communication, routeurs, commutateurs, points d'accès sans fil, solutions de sécurité réseau, systèmes de gestion de réseau, cloud, entreprises, particuliers, performances, fiabilité, petites et moyennes entreprises, grandes entreprises, fournisseurs de services, expertise technologique, innovation, transformation numérique, pare-feu, détection, prévention des intrusions, VPN, support client, recherche, développement, réseaux, connectivité, assistance technique",
   },
@@ -326,7 +326,7 @@ export const partners = [
     image2:
       "https://technoaware.org/wp-content/uploads/2018/07/technoaware-quote.jpg",
     video: "https://www.youtube.com/embed/Fv1Whak4GVo",
-    products: "https://www.pixecurity.com/boutique/Logiciels/Technoaware",
+    products: "https://www.pixecurity.com/boutique",
     keywords:
       "TechnoAware, vidéosurveillance intelligente, technologies avancées, détection, analyse, gestion des données vidéo, intelligence artificielle, apprentissage automatique, traitement d'images, reconnaissance faciale, suivi d'objets, détection d'anomalies, analyse comportementale, opérateurs de sécurité, décideurs, logiciels puissants, matériel de pointe, incidents de sécurité, flux de travail, prise de décision, sécurité intelligente, vision artificielle, événements de sécurité, réactivité, efficacité, protection proactive, menaces potentielles, applications, secteurs publics, privés, sécurité urbaine, infrastructures critiques, espaces commerciaux, industriels, résidentiels, intégration, caméras, dispositifs intelligents, alertes en temps réel, analyse précise, automatisée, qualité, innovation, avancées technologiques, vision par ordinateur, recherche, développement, normes internationales, sécurité, produits robustes, performants, évolutifs, partenariat, sécurité intelligente",
   },
