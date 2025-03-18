@@ -12,6 +12,29 @@ import Head from "next/head";
 import Image from "next/image";
 import aos from "aos";
 
+
+const ProductImage = ({ product }) => {
+  const [imgSrc, setImgSrc] = useState(
+    product?.image?.startsWith("http") ? product.image : `${BASE_URL}${product.image}`
+  );
+
+  return (
+    <div className={styles.imgContainer}>
+      <Image
+        src={imgSrc || "/assets/shop/nopicavailable.webp"}
+        alt={product.name}
+        className={styles["product-img"]}
+        width={130}
+        height={130}
+        loading="lazy"
+        onError={() => setImgSrc("/assets/shop/nopicavailable.webp")}
+        style={{ opacity: 0, transition: "opacity 0.5s" }}
+        onLoad={(e) => (e.target.style.opacity = 1)}
+      />
+    </div>
+  );
+};
+
 function ProductCard({ product }) {
   useEffect(() => {
     Aos.init({ duration: 1500 });
@@ -38,38 +61,8 @@ function ProductCard({ product }) {
         style={{ textDecoration: "none" }}
       >
         <DiscountBadge product={product} />
-        <div className={styles.imgContainer}>
-          {product && product.image ? (
-            product.image.startsWith("http") ? (
-              <Image
-                src={product.image}
-                alt={product.name}
-                className={styles["product-img"]}
-                width={130}
-                height={130}
-                loading="lazy"
-              />
-            ) : (
-              <Image
-                src={`${BASE_URL}${product.image}`}
-                alt={product.name}
-                className={styles["product-img"]}
-                width={130}
-                height={130}
-                loading="lazy"
-              />
-            )
-          ) : (
-            <Image
-              src="/assets/shop/nopicavailable.webp"
-              alt={product.name}
-              className={styles["product-img"]}
-              width={130}
-              height={130}
-              loading="lazy"
-            />
-          )}
-        </div>
+        <ProductImage product={product} />
+
 
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>

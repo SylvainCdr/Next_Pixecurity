@@ -17,6 +17,11 @@ const nextConfig = {
         hostname:
           "resources-boschescurity-cdn-hre9eue8h0fefmcd.a02.azurefd.net",
       },
+      {
+        protocol: "https",
+        hostname: "agile-brushlands-56076-16e3e6016b28.herokuapp.com",
+      }, // Heroku
+      { protocol: "https", hostname: "localhost" }, // Pour le développement local
     ],
   },
 };
