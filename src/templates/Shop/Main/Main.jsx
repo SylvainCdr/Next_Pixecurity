@@ -80,6 +80,13 @@ function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
                 height={150}
               />
               <Image
+                src="/assets/shop/shopLogos/bosch.png"
+                alt="i-Pro"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
+              <Image
                 src="/assets/shop/shopLogos/i-pro.png"
                 alt="i-Pro"
                 loading="lazy"

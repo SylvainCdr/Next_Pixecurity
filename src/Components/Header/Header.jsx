@@ -81,15 +81,17 @@ function Header() {
         </div>
 
         <ul>
-          <li className={pathname === "/boutique" ? styles.active : ""}>
-            <Link
-              href={`/boutique${user?._id ? `?userId=${user?._id}` : ""}`}
-              className={styles.shop}
-              onClick={handleLinkClick}
-            >
-              {t("header.Shop")} {/* Boutique */}
-            </Link>
-          </li>
+        <li className={pathname === "/boutique" }>
+  <Link
+    href={`/boutique${user?._id ? `?userId=${user?._id}` : ""}`}
+    className={`${styles.shop} ${pathname === "/boutique" ? styles.active : ""}`}
+    onClick={handleLinkClick}
+  >
+    {t("header.Shop")}
+  </Link>
+</li>
+
+
           <li
             className={
               pathname === "/notre-expertise-en-solutions-de-surete"

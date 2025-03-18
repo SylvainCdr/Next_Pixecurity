@@ -161,7 +161,7 @@ export default function Home() {
             width="100%"
             height="440"
             src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC"
-            frameborder="0"
+            frameBorder="0"
             title="pixecurity linkedin feed"
           ></iframe>
         </div>

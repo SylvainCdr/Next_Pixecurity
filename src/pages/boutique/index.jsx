@@ -5,17 +5,18 @@ export async function getServerSideProps({ query }) {
   const userId = query.userId;
 
   // Appels API distincts
-  const [iProProducts, vivotekCameras, milestoneProducts, zyxelProducts] =
+  const [iProProducts, vivotekCameras, boschCameras, milestoneProducts, zyxelProducts] =
     await Promise.all([
       getProducts(userId, "i-PRO", 15, "Cameras"), // Ajout de iPro Cameras
       getProducts(userId, "Vivotek", 15, "Cameras"), // Ajout de Vivotek Cameras
+      getProducts(userId, "Bosch", 20, "Cameras"), // Ajout de Bosch Cameras
       getProducts(userId, "Milestone Systems", 20),
       getProducts(userId, "Zyxel", 20),
     ]);
 
   return {
     props: {
-      iProProducts: [...iProProducts, ...vivotekCameras], // Fusion des produits iPro et Vivotek Cameras
+      iProProducts: [...iProProducts, ...vivotekCameras, ...boschCameras], // Fusion des produits iPro et Vivotek Cameras
       milestoneProducts,
       zyxelProducts,
     },

@@ -1,3 +1,20 @@
+// keyframe zoom
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .header_container {
   width: 100%;
   background: rgb(44, 44, 44);
@@ -105,6 +122,7 @@
       a {
         color: white;
         text-decoration: none;
+
         img {
           margin: 0.3rem;
           width: 2.5rem;
@@ -112,19 +130,18 @@
       }
 
       .shop {
+        display: inline-block;
         background-color: #760498;
-        // background-color: rgb(234, 130, 11);
         color: white;
         font-weight: 500;
         font-size: 1.35rem;
-        padding: 0.3em 0.9em;
-        box-shadow: 0 0 2px rgba(255, 254, 254, 0.5);
+        padding: 0.5em 1.2em;
+        box-shadow: 0 0 6px rgba(255, 254, 254, 0.5);
         border-radius: 0.3rem;
-        -webkit-border-radius: 0.3rem;
-        -moz-border-radius: 0.3rem;
-        -ms-border-radius: 0.3rem;
-        -o-border-radius: 0.3rem;
-      }
+        text-decoration: none;
+        animation: zoom 2s infinite;
+        -webkit-animation: zoom 2s infinite;
+}
     }
   }
 
