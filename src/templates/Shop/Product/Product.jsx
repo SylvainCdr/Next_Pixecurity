@@ -226,13 +226,13 @@ export default function Product({ product, id, suggestions }) {
                     : `${BASE_URL}${product.image}`
                 }
                 alt={product.name}
-                loading="lazy"
                 width={400}
                 height={400}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/assets/shop/nopicavailable.webp";
-                }}
+
+                onError={() => setImgSrc("/assets/shop/nopicavailable.webp")}
+                style={{ opacity: 0, transition: "opacity 0.5s" }}
+                onLoad={(e) => (e.target.style.opacity = 1)}
+
               />
               <p
                 className={styles.like}
