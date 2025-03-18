@@ -17,9 +17,9 @@ const color = "#ff9c3fc0";
 const Products = ({ products, category, subcategory, filters }) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
-
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true); // Ajoute cet état
   const user = useGetUser();
   const userId = user?._id;
   const discount = user?.discount || 0;
@@ -27,10 +27,26 @@ const Products = ({ products, category, subcategory, filters }) => {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 1 });
+  
+  
+
+  useEffect(() => {
+    setIsLoadingProducts(true); // Active le loader avant de mettre à jour les produits
+    setIsSubcategoryLoading(true);
+  
+    setTimeout(() => { // Simule le chargement des données
+      setDisplayedProducts(sortedProducts.slice(0, 20));
+      setHasMore(products.length > 20);
+      setIsLoadingProducts(false); // Désactive le loader une fois les produits chargés
+      setIsSubcategoryLoading(false);
+    }, 1000); // Tu peux ajuster ce délai en fonction de l'API
+  }, [category, subcategory, filters, products]);
+  
+
 
   // Fonction de calcul du prix avec remise
   const calculateDiscount = (price) => price - (price * discount) / 100;
-
+  
   // Trier les produits par ordre alphabétique
   const sortedProducts = [...products].sort((a, b) => 
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
@@ -65,13 +81,6 @@ const Products = ({ products, category, subcategory, filters }) => {
     }
   }, [inView, hasMore]);
 
-  // Mise à jour lors du changement de catégorie/sous-catégorie
-  useEffect(() => {
-    setIsSubcategoryLoading(true);
-    setDisplayedProducts(sortedProducts.slice(0, 20));
-    setHasMore(products.length > 20);
-    setIsSubcategoryLoading(false);
-  }, [category, subcategory, filters, products]);
 
   return (
     <div className={styles["products-container"]}>
