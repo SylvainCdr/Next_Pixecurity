@@ -228,11 +228,9 @@ export default function Product({ product, id, suggestions }) {
                 alt={product.name}
                 width={400}
                 height={400}
-
                 onError={() => setImgSrc("/assets/shop/nopicavailable.webp")}
                 style={{ opacity: 0, transition: "opacity 0.5s" }}
                 onLoad={(e) => (e.target.style.opacity = 1)}
-
               />
               <p
                 className={styles.like}
@@ -257,7 +255,6 @@ export default function Product({ product, id, suggestions }) {
                   loading="lazy"
                   width={100}
                   height={100}
-                 
                 />
               ) : (
                 <p className={styles["brand-logo"]}>{product.brand}</p>
@@ -381,7 +378,8 @@ export default function Product({ product, id, suggestions }) {
                 )}
                 {product.garantie && (
                   <li>
-                    <strong>Garantie (années) :</strong> <span>{product.garantie}</span>
+                    <strong>Garantie (années) :</strong>{" "}
+                    <span>{product.garantie}</span>
                   </li>
                 )}
               </ul>

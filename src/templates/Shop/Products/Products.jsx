@@ -13,7 +13,6 @@ import useFavorites from "@/Components/useFavorites";
 import { useCartContext } from "@/Components/cartContext";
 import { useRouter } from "next/router";
 
-
 const color = "#ff9c3fc0";
 
 const Products = ({ brand, products, category, subcategory, filters }) => {
@@ -29,28 +28,25 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 1 });
-  
-  
 
   useEffect(() => {
     setIsLoadingProducts(true); // Active le loader avant de mettre à jour les produits
     setIsSubcategoryLoading(true);
-  
-    setTimeout(() => { // Simule le chargement des données
+
+    setTimeout(() => {
+      // Simule le chargement des données
       setDisplayedProducts(sortedProducts.slice(0, 20));
       setHasMore(products.length > 20);
       setIsLoadingProducts(false); // Désactive le loader une fois les produits chargés
       setIsSubcategoryLoading(false);
     }, 1000); // Tu peux ajuster ce délai en fonction de l'API
   }, [category, subcategory, filters, products, brand]);
-  
-
 
   // Fonction de calcul du prix avec remise
   const calculateDiscount = (price) => price - (price * discount) / 100;
-  
+
   // Trier les produits par ordre alphabétique
-  const sortedProducts = [...products].sort((a, b) => 
+  const sortedProducts = [...products].sort((a, b) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
 
@@ -70,7 +66,9 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
         );
 
         setDisplayedProducts((prev) => [...prev, ...nextProducts]);
-        setHasMore(displayedProducts.length + nextProducts.length < products.length);
+        setHasMore(
+          displayedProducts.length + nextProducts.length < products.length
+        );
         setLoading(false);
       }, 1000);
     }
@@ -85,19 +83,22 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
 
   const router = useRouter();
 
-
   const pageDescription = `Découvrez notre sélection de produits ${category} / ${subcategory} de la marque ${brand}`;
-
-
 
   return (
     <div className={styles["products-container"]}>
-   <Head>
+      <Head>
         <title>{`${brand} /  ${category} / ${subcategory} - Pixecurity`}</title>
         <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={`${brand} /  ${category} / ${subcategory} - Pixecurity`} />
+        <meta
+          property="og:title"
+          content={`${brand} /  ${category} / ${subcategory} - Pixecurity`}
+        />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={`https://www.pixecurity.com${router.asPath}`} />
+        <meta
+          property="og:url"
+          content={`https://www.pixecurity.com${router.asPath}`}
+        />
         <meta property="og:type" content="website" />
       </Head>
 
@@ -113,21 +114,24 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
 
       {!isSubcategoryLoading && (
         <div className={styles["aside-products"]}>
-          <ShopAside subcategory={subcategory} category={category} filters={filters} />
+          <ShopAside
+            subcategory={subcategory}
+            category={category}
+            filters={filters}
+          />
           <div className={styles["products-grid"]}>
             {displayedProducts.map((product) => (
-          <div key={product._id}>
-           <ProductCard
-           product={product}
-           discountedPrice={calculateDiscount(product.price, discount)} // Assure-toi que le discount est bien appliqué ici
-           userId={userId}
-           addToFavorites={addToFavorites}
-           removeFromFavorites={removeFromFavorites}
-           checkFavorite={checkFavorite}
-           addToCart={addToCart}
-         />
-         </div>
-         
+              <div key={product._id}>
+                <ProductCard
+                  product={product}
+                  discountedPrice={calculateDiscount(product.price, discount)} // Assure-toi que le discount est bien appliqué ici
+                  userId={userId}
+                  addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
+                  checkFavorite={checkFavorite}
+                  addToCart={addToCart}
+                />
+              </div>
             ))}
           </div>
         </div>
