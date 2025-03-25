@@ -167,13 +167,13 @@ export default function Product({ product, id, suggestions }) {
     <div className={styles["product-container"]}>
       <Head>
         <title>{product.name} - Pixecurity</title>
-        <meta name="description" content={product.description} />
+        <meta name="description" content={product.presentation} />
         <meta
           name="keywords"
           content="caméra, caméras, surveillance, sécurité, sûreté, vidéo, protection videoprotection, videosurveillance, analyse d'image, intelligente, IA, IP, HD, 4K, bosch, vivotek, i-pro, zyxel, vms, milestone, til techonologies, i-pro, zyxel, cisco, comnet, vuwall, briefcam, technoaware, ptz, bullet, dôme, multicapteur, switch, firewall, licence, license"
         />
         <meta property="og:title" content={product.name} />
-        <meta property="og:description" content={product.description} />
+        <meta property="og:description" content={product.presentation} />
         <meta property="og:image" content={product.image} />
 
         <script
@@ -183,7 +183,7 @@ export default function Product({ product, id, suggestions }) {
               "@context": "https://schema.org/",
               "@type": "Product",
               name: product.name,
-              description: product.description,
+              description: product.presentation,
               image: product.image.startsWith("http")
                 ? product.image
                 : `${BASE_URL}${product.image}`,
@@ -255,8 +255,8 @@ export default function Product({ product, id, suggestions }) {
                   alt={product.brand}
                   className={styles["brand-logo"]}
                   loading="lazy"
-                  width={150}
-                  height={35}
+                  width={100}
+                  height={100}
                  
                 />
               ) : (

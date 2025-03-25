@@ -52,7 +52,7 @@ function ProductCard({ product }) {
     <div className={styles["product-card"]}>
       <Head>
         <meta property="og:title" content={product.name} />
-        <meta property="og:description" content={product.description} />
+        <meta property="og:description" content={product.presentation} />
         <meta property="og:image" content={product.image} />
         {/* Add more OG meta tags as needed */}
       </Head>
