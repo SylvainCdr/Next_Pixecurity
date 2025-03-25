@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 
 const color = "#ff9c3fc0";
 
-const Products = ({ products, category, subcategory, filters }) => {
+const Products = ({ brand, products, category, subcategory, filters }) => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
@@ -42,7 +42,7 @@ const Products = ({ products, category, subcategory, filters }) => {
       setIsLoadingProducts(false); // Désactive le loader une fois les produits chargés
       setIsSubcategoryLoading(false);
     }, 1000); // Tu peux ajuster ce délai en fonction de l'API
-  }, [category, subcategory, filters, products]);
+  }, [category, subcategory, filters, products, brand]);
   
 
 
@@ -84,19 +84,18 @@ const Products = ({ products, category, subcategory, filters }) => {
   }, [inView, hasMore]);
 
   const router = useRouter();
-  const { slug } = router.query;
 
-  const pageTitle = slug ? slug.replace(/%20/g, ' ').replace(/\//g, ' - ') : 'Produits';
-  const pageDescription = `Découvrez notre sélection de produits de la catégorie ${pageTitle} chez Pixecurity.`;
+
+  const pageDescription = `Découvrez notre sélection de produits ${category} / ${subcategory} de la marque ${brand}`;
 
 
 
   return (
     <div className={styles["products-container"]}>
    <Head>
-        <title>{`${pageTitle} - Pixecurity`}</title>
+        <title>{`${brand} /  ${category} / ${subcategory} - Pixecurity`}</title>
         <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={`${pageTitle} - Pixecurity`} />
+        <meta property="og:title" content={`${brand} /  ${category} / ${subcategory} - Pixecurity`} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={`https://www.pixecurity.com${router.asPath}`} />
         <meta property="og:type" content="website" />
