@@ -11,6 +11,8 @@ import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import { useGetUser } from "@/Components/useGetUser";
 import useFavorites from "@/Components/useFavorites";
 import { useCartContext } from "@/Components/cartContext";
+import { useRouter } from "next/router";
+
 
 const color = "#ff9c3fc0";
 
@@ -81,15 +83,23 @@ const Products = ({ products, category, subcategory, filters }) => {
     }
   }, [inView, hasMore]);
 
+  const router = useRouter();
+  const { slug } = router.query;
+
+  const pageTitle = slug ? slug.replace(/%20/g, ' ').replace(/\//g, ' - ') : 'Produits';
+  const pageDescription = `Découvrez notre sélection de produits de la catégorie ${pageTitle} chez Pixecurity.`;
+
+
 
   return (
     <div className={styles["products-container"]}>
-      <Head>
-        <title>Produits</title>
-        <meta
-          name="description"
-          content="Découvrez notre catalogue de produits chez Pixecurity Boutique."
-        />
+   <Head>
+        <title>{`${pageTitle} - Pixecurity`}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={`${pageTitle} - Pixecurity`} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`https://www.pixecurity.com${router.asPath}`} />
+        <meta property="og:type" content="website" />
       </Head>
 
       <RegisterPopup />

@@ -50,12 +50,14 @@ function ProductCard({ product }) {
 
   return (
     <div className={styles["product-card"]}>
-      <Head>
+
+      {/* On enleve les meta pour prvilégier la page product.js afin de ne pas avoir de conflit avec les meta de la page  */}
+      {/* <Head>
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.presentation} />
         <meta property="og:image" content={product.image} />
-        {/* Add more OG meta tags as needed */}
-      </Head>
+      </Head> */}
+
       <Link
         href={`/boutique/produit/${product._id}${userId ? `?userId=${userId}` : ""}`}
         style={{ textDecoration: "none" }}
