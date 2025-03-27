@@ -55,8 +55,10 @@
   margin-bottom: 1rem;
   color: var(--sunset1);
 
-  display: -webkit-box;
+ 
+  display: box;
   -webkit-line-clamp: 3; // Limite à 2 lignes
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
