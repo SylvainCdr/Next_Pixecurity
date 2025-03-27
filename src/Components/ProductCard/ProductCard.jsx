@@ -81,7 +81,7 @@ function ProductCard({ product }) {
       <div className={styles["card-bottom"]}>
         <Prices product={product} />
         <div className={styles.CTA}>
-          <ButtonAddToFavorite product={product} />
+          {/* <ButtonAddToFavorite product={product} /> */}
           <ButtonAddToCart product={product} />
         </div>
       </div>

@@ -23,7 +23,7 @@
   border-radius: 0.3rem;
   box-shadow: 0.1rem 0.1rem 0.2rem 0rem rgba(217, 217, 217, 0.798);
   min-height: 25em;
-  max-height: 26em;
+  max-height: 28em;
   max-width: 22rem;
   padding: 0.5rem;
   margin-right: 0.3em;
@@ -31,6 +31,11 @@
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  height: auto; // Supprime la contrainte de hauteur
+  min-height: 20em; // Optionnel, selon tes besoins
+  max-width: 22rem;
 
   .discount-badge {
     position: absolute;
@@ -43,13 +48,19 @@
   }
 
   .card-title {
-    // height: 3.8rem;
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    color: var(--sunset1);
+    height: 4rem; // Hauteur fixe pour aligner les cartes
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--sunset1);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // Limite à 2 lignes
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word; // Coupe proprement les mots longs
   }
 
   .imgContainer {
@@ -64,7 +75,7 @@
 
   .card-brand {
     border-bottom: 0.1rem solid #d9d9d9;
-    padding-bottom: 0.5rem;
+ 
     height: 2.5rem;
 
     .brand-logo {
@@ -83,6 +94,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    height : 3rem;
 
     .card-price {
       width: 50%;
@@ -129,7 +141,7 @@
     }
 
     .CTA {
-      width: 50%;
+      width: 20%;
       display: flex;
       justify-content: flex-end;
       gap: 12px;
