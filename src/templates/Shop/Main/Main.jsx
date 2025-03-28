@@ -20,7 +20,7 @@ const shuffleArray = (array, limit) => {
   return shuffled.slice(0, limit);
 };
 
-function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
+function Catalogue({ iProProducts, vmsProducts, zyxelProducts }) {
   const [searchResults, setSearchResults] = useState([]);
   const user = useGetUser();
 
@@ -37,9 +37,9 @@ function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
     () => shuffleArray(iProProducts, 10),
     [iProProducts]
   );
-  const shuffledMilestoneProducts = useMemo(
-    () => shuffleArray(milestoneProducts, 10),
-    [milestoneProducts]
+  const shuffledVmsProducts = useMemo(
+    () => shuffleArray(vmsProducts, 10),
+    [vmsProducts]
   );
   const shuffledZyxelProducts = useMemo(
     () => shuffleArray(zyxelProducts, 10),
@@ -98,7 +98,8 @@ function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
           </div>
 
           <div className={styles["products-carousel"]}>
-            <h2>Gestion vidéo avec Milestone</h2>
+            <h2>Gestion vidéo avec Milestone & Genetec</h2>
+            <div className={styles.logos}>
             <Image
               src="/assets/partners/partnersLogo/milestone.png"
               alt="Milestone"
@@ -106,13 +107,22 @@ function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
               width={150}
               height={150}
             />
+            <Image
+              src="/assets/partners/partnersLogo/genetec.png"
+              alt="Milestone"
+              loading="lazy"
+              width={150}
+              height={150}
+            />
+            </div>
             <ShopProductsCarousel
-              carouselProducts={shuffledMilestoneProducts}
+              carouselProducts={shuffledVmsProducts}
             />
           </div>
 
           <div className={styles["products-carousel"]}>
             <h2> Restez connecté avec Zyxel</h2>
+            <div className={styles.logos}>
             <Image
               src="/assets/shop/shopLogos/zyxel.png"
               alt="Milestone"
@@ -120,6 +130,7 @@ function Catalogue({ iProProducts, milestoneProducts, zyxelProducts }) {
               width={150}
               height={150}
             />
+            </div>
             <ShopProductsCarousel carouselProducts={shuffledZyxelProducts} />
           </div>
         </>

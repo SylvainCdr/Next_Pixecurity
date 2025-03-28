@@ -18,7 +18,7 @@ export async function getProductsByCatSubCat({
 export async function getProducts(
   userId = "",
   brand = "",
-  limit = "100",
+  limit = "150",
   category = ""
 ) {
   try {

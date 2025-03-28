@@ -43,4 +43,8 @@ export const logos = [
     name: "technoAware",
     logo: "/assets/shop/shopLogos/technoAware.png",
   },
+  {
+    name: "genetec",
+    logo: "/assets/shop/shopLogos/genetec.png",
+  },
 ];
