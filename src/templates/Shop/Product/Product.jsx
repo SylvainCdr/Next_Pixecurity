@@ -262,7 +262,7 @@ export default function Product({ product, id, suggestions }) {
 
               <p className={styles.presentation}>{product.presentation}</p>
 
-              {product.category === "Logiciels" ? (
+              {product.productType === "soft" ? (
                 <p className={styles.stock}>
                   <i className="fa-solid fa-check"></i> En stock
                 </p>
