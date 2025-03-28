@@ -19,13 +19,12 @@ export default function Cart({ carouselProducts }) {
 
   const user = useGetUser();
   const userId = user?._id;
-  
-  
+
   const router = useRouter();
 
   const createOrder = async () => {
     const cartId = getCartId();
-    const allDigital = carts.every((c) => c.product.category === "Logiciels");
+    const allDigital = carts.every((c) => c.product.productType === "soft");
     const shippingCost = allDigital ? 0 : 20;
     const shippingMethod = allDigital ? "email" : "dhl";
 
@@ -35,6 +34,21 @@ export default function Cart({ carouselProducts }) {
 
   if (!carts || carts?.length === 0)
     return <EmptyCart carouselProducts={carouselProducts} />;
+
+  // Calculer le total de la commande
+  const calculatedSubTotal = carts?.reduce((acc, c) => {
+    const product = c.product;
+    const discountedPrice = product.discountPrice;
+    return acc + c.quantity * discountedPrice;
+  }, 0) ?? 0;
+  
+  const tax = calculatedSubTotal * 0.2;
+  const allDigital = carts.every((c) => c.product.productType === "soft");
+  const shippingCost = allDigital ? 0 : 20;
+  const totalAmount = calculatedSubTotal + tax + shippingCost;
+
+  // Vérifier si le total est inférieur à 300 €
+  const isAmountValid = totalAmount >= 300;
 
   return (
     <div className={styles["cart-container"]}>
@@ -74,13 +88,20 @@ export default function Cart({ carouselProducts }) {
 
           <Totals carts={carts} />
 
-          {/* <button className={styles["checkout"]} onClick={createOrder}>
-            Commander
-          </button> */}
+          {/* Affichage du message si le montant est inférieur à 400 € */}
+          {!isAmountValid && (
+            <div className={styles["minimum-order-message"]}>
+              <p  >Le montant minimum de commande est de 300 €.</p>
+            </div>
+          )}
 
-          {/* si l'utilisateur est connecté, on affiche le bouton commander sinon on lui demande de se connecter ou de s'inscrire */}
+          {/* Bouton commander */}
           {userId ? (
-            <button className={styles["checkout"]} onClick={createOrder}>
+            <button
+              className={styles["checkout"]}
+              onClick={isAmountValid ? createOrder : null}
+              disabled={!isAmountValid}
+            >
               Commander
             </button>
           ) : (
@@ -93,12 +114,13 @@ export default function Cart({ carouselProducts }) {
           )}
 
           <CartRequestQuoteModal />
-
         </div>
       </div>
     </div>
   );
 }
+
+
 
 function CartItem({ cart }) {
   const product = cart.product;
@@ -138,6 +160,7 @@ function CartItem({ cart }) {
         <div className={styles["product-title"]}>
           <Link href={`boutique/produit/${product._id}/${userIdParam}`} > {product.name} </Link>
           <p>Réf : {product.ref}</p>
+          {/* <p>Réf : {product.productType}</p> */}
         </div>
       </div>
       {product.pourcentageDiscount > 0 && (
@@ -198,7 +221,7 @@ function Totals({ carts }) {
   
   const tax = calculatedSubTotal * 0.2;
   
-  const allDigital = carts.every((c) => c.product.category === "Logiciels");
+  const allDigital = carts.every((c) => c.product.productType === "soft");
   const shippingCost = allDigital ? 0 : 20;
   
 

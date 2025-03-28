@@ -11,7 +11,7 @@ export default function RegisterPopup() {
   useEffect(() => {
     if (user) return; // Si l'utilisateur est déjà connecté, ne pas afficher le pop-up
 
-    const maxDisplaysPerHour = 1;
+    const maxDisplaysPerHour = 0;
     const displayCount =
       parseInt(localStorage.getItem("popupDisplayCount")) || 0;
     const lastDisplayTime =

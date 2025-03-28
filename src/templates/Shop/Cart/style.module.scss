@@ -245,9 +245,16 @@
           text-align: right;
         }
       }
-
+      
       .totals-item-total {
       }
+    }
+    .minimum-order-message {
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+      color: rgb(254, 56, 56);
+      font-weight: 500;
     }
 
     .checkout {
