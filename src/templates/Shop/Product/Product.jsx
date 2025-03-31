@@ -384,7 +384,21 @@ export default function Product({ product, id, suggestions }) {
                 )}
               </ul>
 
-              {product.pdf &&
+
+              {product.pdf && (
+                <div>
+                  <Link
+                    href={product.pdf}
+                    target="_blank"
+                    className={styles["pdf-link"]}
+                  >
+                    En savoir plus{" "}
+                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                  </Link>
+                </div>
+              )}
+
+              {/* {product.pdf &&
                 (product.productType === "soft" ? (
                   <Link
                     href={product.pdf}
@@ -403,7 +417,7 @@ export default function Product({ product, id, suggestions }) {
                   >
                     Fiche technique <i className="fa-solid fa-file-pdf"></i>
                   </Link>
-                ))}
+                ))} */}
             </div>
 
             <div className={styles["product-suggestions"]}>

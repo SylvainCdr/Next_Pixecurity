@@ -285,7 +285,7 @@
         font-size: 1rem;
         font-weight: 400;
         margin-top: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
         line-height: 1.7rem;
         list-style: none;
         border-radius: 8px;
@@ -318,12 +318,15 @@
 
     .pdf-link {
       text-decoration: none;
+
       display: flex;
       align-items: center;
+      float : right;
       height: 2rem;
       font-size: 1.1em;
       font-weight: 500;
-      margin-top: 2.5rem;
+      margin-top: 1rem;
+      padding-left : 1rem;
 
       i {
         font-size: 1.7rem;
@@ -338,6 +341,7 @@
     }
 
     .product-suggestions {
+      margin-top: 8em;
       margin-bottom: 2em;
 
       h3 {
