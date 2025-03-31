@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+// fonction pour gérer les erreurs 404 et 500
+// et rediriger vers la page boutique
+
 function CustomErrorPage({ statusCode }) {
   const router = useRouter();
 
