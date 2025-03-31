@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-
-// fonction pour gérer les erreurs 404 et 500
-// et rediriger vers la page boutique
+import Link from 'next/link';
 
 function CustomErrorPage({ statusCode }) {
   const router = useRouter();
@@ -14,13 +12,13 @@ function CustomErrorPage({ statusCode }) {
   }, [statusCode, router]);
 
   if (statusCode === 500 || statusCode === 404) {
-    return null; // Empêche l'affichage si on redirige
+    return null;
   }
 
   return (
     <div style={{ textAlign: 'center', padding: '50px' }}>
       <h1>Erreur {statusCode}</h1>
-      <p>Retour à la <a href="/">page d'accueil</a>.</p>
+      <p>Retour à la <Link href="/">page d'accueil</Link>.</p>
     </div>
   );
 }
@@ -28,7 +26,6 @@ function CustomErrorPage({ statusCode }) {
 CustomErrorPage.getInitialProps = async ({ res, err }) => {
   const statusCode = res?.statusCode || err?.statusCode || 404;
 
-  // Redirection serveur pour 404 et 500
   if (res && (statusCode === 500 || statusCode === 404)) {
     res.writeHead(302, { Location: '/boutique' });
     res.end();
