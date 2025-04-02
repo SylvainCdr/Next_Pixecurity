@@ -40,7 +40,7 @@ export default function Register() {
     setPasswordError(
       isValidPassword(value)
         ? ""
-        : "Mot de passe invalide (au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial)"
+        : "Mot de passe invalide (au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial (?=.*[@$!%*?&))"
     );
   };
 
