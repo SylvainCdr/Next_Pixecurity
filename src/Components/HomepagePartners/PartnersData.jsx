@@ -384,7 +384,7 @@ export const partners = [
       "Diviniti incarne une nouvelle vision de la sûreté, pensée pour les défis de la ville de demain. À travers une approche centrée sur l'utilisateur, l'entreprise transforme la sécurité en une expérience immersive, intuitive et pro-active. En combinant IA, XR et les codes du jeu vidéo, Diviniti offre aux opérateurs de sécurité les moyens de mieux comprendre, anticiper et réagir face aux menaces. Cet engagement vers l'innovation positionne Diviniti comme un acteur majeur de la smart city, de la cybersécurité terrain et de la protection intelligente.",
   
     image1: "https://uploads.pixecurity.com/files/Image23.webp",
-    image2: "https://uploads.pixecurity.com/files/Image12-1.webp",
+    image2: "https://uploads.pixecurity.com/files/Image12.webp",
     video: "https://www.youtube.com/embed/WR8Izjm4JF8", // À remplacer si vidéo officielle disponible
   
     keywords:
