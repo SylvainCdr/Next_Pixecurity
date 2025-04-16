@@ -3,6 +3,7 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 import { partners } from "../../Components/HomepagePartners/PartnersData";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 export default function HomepagePartners() {
   const { t } = useTranslation();
@@ -17,7 +18,13 @@ export default function HomepagePartners() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={partner.logo} alt={partner.name} loading="lazy" />
+            <Image
+              src={partner.logo}
+              alt={partner.name}
+              loading="lazy"
+              width={200}
+              height={200}
+            />
           </a>
         ))}
       </div>
