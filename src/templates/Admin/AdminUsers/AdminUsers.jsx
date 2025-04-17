@@ -47,7 +47,17 @@ export default function AdminUsers() {
       console.error("ID is undefined or null");
       return;
     }
-
+  
+    const token = document.cookie.split(";").find(cookie => cookie.trim().startsWith("token="));
+    const user = JSON.parse(localStorage.getItem("user"));
+  
+    if (!token || !user || user.role !== "admin") {
+      alert("Action interdite : vous devez être un admin connecté.");
+      return;
+    }
+  
+    const tokenValue = token.split("=")[1];
+  
     Swal.fire({
       title: "Êtes-vous sûr?",
       text: "Vous ne pourrez pas récupérer cet utilisateur!",
@@ -61,14 +71,19 @@ export default function AdminUsers() {
       if (result.isConfirmed) {
         fetch(`${BASE_URL}/users/${id}`, {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${tokenValue}`,
+          },
         })
-          .then(() => {
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Erreur lors de la suppression");
+            }
             setUsers((prevUsers) =>
               prevUsers.filter((user) => user._id !== id)
             );
           })
           .then(() => {
-            // Ajoute une alerte SweetAlert2 pour indiquer que la suppression a réussi
             Swal.fire({
               title: "Supprimé!",
               text: "L'utilisateur a été supprimé avec succès.",
@@ -84,6 +99,7 @@ export default function AdminUsers() {
       }
     });
   };
+  
 
   return (
     <div className={styles["admin-users"]}>

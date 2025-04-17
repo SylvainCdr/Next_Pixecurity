@@ -26,11 +26,22 @@ export default function EditUser() {
   }, []);
 
   const handleEditUser = async (user) => {
+    const token = document.cookie.split(";").find(cookie => cookie.trim().startsWith("token="));
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!token || !loggedUser || loggedUser.role !== "admin") {
+      alert("Action interdite : vous devez être un admin connecté.");
+      return;
+    }
+
+    const tokenValue = token.split("=")[1];
+
     try {
       const response = await fetch(`${BASE_URL}/users/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenValue}`,
         },
         body: JSON.stringify(user),
       });
