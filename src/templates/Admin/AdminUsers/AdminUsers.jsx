@@ -8,16 +8,39 @@ import { BASE_URL } from "@/url";
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Récupère la liste des utilisateurs pour les afficher dans le tableau
-
+  // Vérification du rôle admin + token au montage du composant
   useEffect(() => {
-    fetch(`${BASE_URL}/users`)
-      .then((response) => response.json())
-      .then((data) => setUsers(data.reverse()));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = document.cookie.split(";").find(cookie => cookie.trim().startsWith("token="));
+
+    if (user && user.role === "admin" && token) {
+      setIsAdmin(true);
+    } else {
+      alert("Accès interdit : Vous devez être admin et connecté.");
+      window.location.href = "/"; // Rediriger vers la page d'accueil
+    }
   }, []);
 
-  const [discounts, setDiscounts] = useState({});
+  // Chargement des utilisateurs une fois la vérification admin faite
+  useEffect(() => {
+    if (!isAdmin) return;
+
+    const token = document.cookie
+      .split(";")
+      .find(cookie => cookie.trim().startsWith("token="))
+      ?.split("=")[1];
+
+    fetch(`${BASE_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setUsers(data.reverse()))
+      .catch((error) => console.error("Erreur lors de la récupération des utilisateurs :", error));
+  }, [isAdmin]);
 
   const deleteUser = (id) => {
     if (!id) {

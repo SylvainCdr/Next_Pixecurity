@@ -16,15 +16,39 @@ export default function Dashboard() {
   const [, setUserFavorites] = useState([]);
   const [, setTopFavorites] = useState([]);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
-    fetch(`${BASE_URL}/users`)
+    // Vérifier si l'utilisateur est authentifié via le token dans les cookies et son rôle dans le localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
+
+    if (user && user.role === "admin" && token) {
+      setIsAdmin(true);  // L'utilisateur est admin et a un token valide
+    } else {
+      // Rediriger ou afficher un message d'erreur si non-admin ou sans token
+      alert("Accès interdit : Vous devez être admin et connecté.");
+      window.location.href = "/";  // Rediriger vers la page d'accueil (ou une autre page)
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isAdmin) return;  // Ne pas faire les requêtes si l'utilisateur n'est pas admin
+
+    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token=')).split('=')[1];
+
+    fetch(`${BASE_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const reversedData = data.reverse();
         setNewUsers(reversedData.slice(0, 6));
         setTotalUsers(data.length);
       });
-  }, []);
+  }, [isAdmin]);
 
   // on compte le nombre de catégories et subcatégories existantes dans la collection products
   useEffect(() => {
@@ -78,39 +102,51 @@ export default function Dashboard() {
       });
   }, [totalUsers]);
 
-  useEffect(() => {
-    fetch(`${BASE_URL}/users`)
-      .then((res) => res.json())
-      .then((data) => {
-        let favorites = [];
-        data.forEach((user) => {
-          user.favorites.forEach((favorite) => {
-            favorites.push(favorite);
-          });
-        });
+  
+// fonction pour récupérer les favoris des utilisateurs (non utilisée)
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/users`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (Array.isArray(data)) {
+  //         let favorites = [];
+  //         data.forEach((user) => {
+  //           if (user.favorites && Array.isArray(user.favorites)) {
+  //             user.favorites.forEach((favorite) => {
+  //               favorites.push(favorite);
+  //             });
+  //           }
+  //         });
+  
+  //         setUserFavorites(favorites);
+  
+  //         // Grouping favorites by name
+  //         const groupedFavorites = favorites.reduce((acc, favorite) => {
+  //           if (!acc[favorite.name]) {
+  //             acc[favorite.name] = 1;
+  //           } else {
+  //             acc[favorite.name]++;
+  //           }
+  //           return acc;
+  //         }, {});
+  
+  //         // Sorting favorites by count
+  //         const sortedFavorites = Object.entries(groupedFavorites).sort(
+  //           (a, b) => b[1] - a[1]
+  //         );
+  
+  //         setTopFavorites(sortedFavorites.slice(0, 6));
+  //       } else {
+  //         console.error("La réponse de l'API n'est pas un tableau.");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Erreur lors de la récupération des utilisateurs:", error);
+  //     });
+  // }, []);
+  
 
-        setUserFavorites(favorites);
 
-        // si plusieurs objects on le meme Name on les regroupe
-        const groupedFavorites = favorites.reduce((acc, favorite) => {
-          if (!acc[favorite.name]) {
-            acc[favorite.name] = 1;
-          } else {
-            acc[favorite.name]++;
-          }
-          return acc;
-        }, {});
-
-
-        // on trie les produits par nombre de likes
-        const sortedFavorites = Object.entries(groupedFavorites).sort(
-          (a, b) => b[1] - a[1]
-        );
-
-
-        setTopFavorites(sortedFavorites.slice(0, 6));
-      });
-  }, []);
   return (
     <div className={styles["admin-dashboard-container"]}>
       <div className={styles["admin-nav"]}>
