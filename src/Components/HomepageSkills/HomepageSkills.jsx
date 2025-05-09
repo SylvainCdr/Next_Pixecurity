@@ -9,33 +9,7 @@ export default function HomepageSkills() {
   return (
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        {/* "skills": {
-    "videoprotection": {
-      "title": "Vidéoprotection",
-      "description": "L'analyse d'image doit permettre de gagner du temps et de simplifier l'expérience utilisateur sans être une usine à gaz. Notre savoir-faire nous permet de vous proposer les meilleurs produits."
-    },
-    "analyseImage": {
-      "title": "Analyse d'image",
-      "description": "Protection des biens et des personnes, levée de doutes et bien plus encore... Pixecurity sélectionne pour vous les meilleures solutions du marché : Caméras visibles, thermiques, mobiles, fish-eye..."
-    },
-    "controleAcces": {
-      "title": "Contrôle d'accès",
-      "description": "Suivi, gestion, traçabilité, protection des personnes. Pixecurity complète son offre pour vous proposer une solution globale avec les leaders du marché."
-    },
-    "cloudObjetsConnectes": {
-      "title": "Cloud et objets connectés",
-      "description": "Tout objet connecté est aujourd'hui un capteur de sûreté devient exploitable depuis n'importe quelle interface utilisateur. Pixecurity vous propose des solutions innovantes et intelligentes permettant de les traiter."
-    },
-    "reseauxStockage": {
-      "title": "Réseaux SI / Stockage",
-      "description": "Le traitement, le transport et l'exploitation doivent être garantis par une expertise métier. Les ingénieurs Pixecurity vous assurent un dimensionnement optimal des réseaux, du stockage, des ressources informatiques."
-    },
-    "ingenierie": {
-      "title": "Ingénierie",
-      "description": "Notre équipe d'ingénieurs geeks vous propose un accompagnement Niveau 2-Niveau 3 sur vos systèmes de sûreté. Avant-vente, suivi de projet, mise en service, maintenance, livrables documentaires..."
-    }
-  },
-  "learnMore": "En savoir plus", */}
+      
         <img
           src="/assets/homepage/skills1.webp"
           alt={t("skills.videoprotection.title")}

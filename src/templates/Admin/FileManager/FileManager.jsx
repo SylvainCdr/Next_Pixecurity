@@ -171,7 +171,7 @@ export default function FileManager() {
       {/* Zone de sélection de fichiers */}
       <input type="file" onChange={handleFileChange} multiple={true} />
       <button onClick={uploadFiles} className={styles.uploadBtn}>
-        <i class="fa-solid fa-upload"></i> Upload
+        <i class="fa-solid fa-upload"></i> Upload (Max 64Mo)
       </button>
       {uploadStatus && <p>{uploadStatus}</p>}
    
