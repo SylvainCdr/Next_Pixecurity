@@ -70,7 +70,7 @@
           animation: wheel 1.3s infinite;
           -webkit-animation: wheel 1.3s infinite;
         }
-        
+
         // animation for the wheel
         @keyframes wheel {
           0% {
@@ -226,7 +226,7 @@
 
   .section3 {
     background-color: #d3d4ce;
-    height: 45rem;
+    height: 50rem;
     background-image: url(https://uploads.pixecurity.com/files/AdobeStock_542883558.jpeg);
     background-size: cover;
     background-position: center;
@@ -280,7 +280,6 @@
 
   .section4 {
     height: 40rem;
-
     display: flex;
     flex-direction: column;
     justify-content: center;

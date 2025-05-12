@@ -128,11 +128,10 @@ export default function Home() {
                   <strong>Paris</strong> – Siège - Etude, Conseil et
                   accompagnement
                 </li>
-            
+
                 <li>
                   <i class="fa-solid fa-location-dot"></i>{" "}
-                  <strong>Lille</strong> – Antenne - Conseil et
-                  accompagnement
+                  <strong>Lille</strong> – Antenne - Conseil et accompagnement
                 </li>
                 <li>
                   <i class="fa-solid fa-location-dot"></i>{" "}

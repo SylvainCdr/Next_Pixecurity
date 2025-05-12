@@ -2,17 +2,14 @@ import styles from "./style.module.scss";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 
-
 export default function Rse() {
   const { t } = useTranslation();
-
-
 
   return (
     <div className={styles.rseContainer}>
       <div className={styles.section1}>
         <div className={styles.section1content}>
-          <h1 >Notre engagement pour un avenir durable</h1>
+          <h1>Notre engagement pour un avenir durable</h1>
           <p>
             Chez Pixecurity, nous croyons qu’une entreprise performante se doit
             aussi d’être responsable. C’est pourquoi nous intégrons les enjeux
@@ -32,13 +29,9 @@ export default function Rse() {
             <span>Yann Duchet, CEO </span>
           </p> */}
 
-
-        <div className={styles.mouseScrollCont}>
-        <div className={styles.mouse}></div>
-       
-      </div>
-       
-      
+          {/* <div className={styles.mouseScrollCont}>
+            <div className={styles.mouse}></div>
+          </div> */}
         </div>
       </div>
       <div className={styles.section2}>
@@ -132,7 +125,14 @@ export default function Rse() {
               Sensibilisation aux éco-gestes et formations internes ponctuelles
               sur les enjeux environnementaux.
             </li>
-            <li>Participation à des initiatives locales solidaires ??</li>
+            <li>
+              Soutien à l’égalité des chances : recrutement basé sur les
+              compétences, sans discrimination.
+            </li>
+            <li>
+              Accompagnement professionnel : accès à la formation continue pour
+              tous les collaborateurs.
+            </li>
           </ul>
         </div>
       </div>
