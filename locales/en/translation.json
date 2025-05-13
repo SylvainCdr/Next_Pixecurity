@@ -4,6 +4,8 @@
     "Shop": "Shop",
     "ourPartners": "Our Partners",
     "about": "About Us",
+"aboutUs": "Who we are",
+"rse": "Our CSR approach",
     "login": "Login",
     "myAccount": "My Account",
     "admin": "Administration",
@@ -257,5 +259,58 @@
     "description": "Discover the latest news and important announcements from our trusted partners. Their innovations and advanced solutions strengthen our mission: to provide you with top-notch security. Stay updated with the leaders in the industry.",
     "shopBtn": "Visit the Shop",
     "contactBtn": "Got a Project? Contact Us"
+  
+
+},
+
+  "rse": {
+    "title": "Our commitment to a sustainable future",
+    "intro1": "At Pixecurity, we believe a successful business must also lead by example in ethics and environmental responsibility. That’s why Corporate Social Responsibility (CSR) is a key pillar of our strategy.",
+    "intro2": "Our approach is one of continuous improvement, driven by the positive impact we aim to have on the environment, our team, and society as a whole.",
+
+    "environmentTitle": "Our environmental actions",
+    "environmentIntro": "We believe every action counts. That’s why we’ve implemented practical steps to reduce our ecological footprint both in daily operations and long-term planning.",
+
+    "waste": {
+      "title": "Waste Reduction",
+      "point1": "Elimination of disposable paper cups.",
+      "point2": "Introduction of a bean-to-cup coffee machine to reduce polluting capsule waste.",
+      "point3": "Encouragement of reusable mugs and cups for employees.",
+      "point4": "Active recycling: separate bins are provided for plastic, cardboard, glass, etc."
+    },
+
+    "plastic": {
+      "title": "Reducing Plastic Consumption",
+      "point1": "Installation of a water filtration station connected to the municipal supply.",
+      "point2": "No more plastic bottles: all employees have reusable bottles or containers."
+    },
+
+    "mobility": {
+      "title": "Responsible Mobility",
+      "point1": "Gradual transition to a 100% electric vehicle fleet.",
+      "point2": "Tracking of CO₂ emissions avoided to quantify our positive environmental impact."
+    },
+
+    "socialTitle": "Well-being, Inclusion, and Social Commitment",
+    "socialIntro": "People are at the heart of our business. A healthy, inclusive, and inspiring work environment is essential to collective performance.",
+
+    "wellbeing": {
+      "title": "Workplace Well-being",
+      "point1": "Designated relaxation and break areas.",
+      "point2": "Flexible hours and remote work options.",
+      "point3": "Continuous training opportunities for career growth."
+    },
+
+    "inclusion": {
+      "title": "Diversity and Inclusion",
+      "point1": "Skills-based recruitment and equal opportunity policies.",
+      "point2": "Internal awareness programs on unconscious bias and discrimination.",
+      "point3": "Zero tolerance for discrimination.",
+      "point4": "Celebrating diversity and individual paths."
+    },
+
+    "commitmentTitle": "A continuously evolving commitment",
+    "commitmentText": "We understand CSR is not an endpoint, but a journey. That’s why we keep identifying new ways to improve and reduce our footprint while acting more responsibly."
   }
+
 }

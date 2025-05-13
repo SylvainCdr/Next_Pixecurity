@@ -31,15 +31,14 @@ export default function AboutUs() {
       src: "/assets/team/ANAELLE.jpg",
     },
     {
-      name: "Kenza GAUTIAM",
-      role: "Commerciale Grands Comptes",
-      src: "/assets/team/KENZA.jpeg",
-    },
-
-    {
       name: "Abdulrhaman SHOUGRI",
       role: "Commercial",
       src: "/assets/team/ABDULRAHMAN.jpg",
+    },
+    {
+      name: "Kenza GAUTIAM",
+      role: "Commerciale Grands Comptes",
+      src: "/assets/team/KENZA.jpeg",
     },
     {
       name: "Adrien JOANNY",
@@ -47,14 +46,15 @@ export default function AboutUs() {
       src: "/assets/team/ADRIEN_J.jpg",
     },
     {
-      name: "Dyhia LAGA",
-      role: "Chargée d'Etude Avant-Vente",
-      src: "/assets/team/DYHIA.jpg",
-    },
-    {
       name: "Mathieu PACREAU",
       role: "Technicien Supérieur Systèmes & Réseaux",
       src: "/assets/team/MATHIEU_P.jpg",
+    },
+    
+    {
+      name: "Dyhia LAGA",
+      role: "Chargée d'Etude Avant-Vente",
+      src: "/assets/team/DYHIA.jpg",
     },
     {
       name: "David LEPAGE",
@@ -62,14 +62,14 @@ export default function AboutUs() {
       src: "/assets/team/DAVID.jpg",
     },
     {
-      name: "Nathalie JANNOT",
-      role: "Assistante de Direction",
-      src: "/assets/team/NATHALIE.jpg",
-    },
-    {
       name: "Michael GONFIER",
       role: "Technicien de Mise en Service",
       src: "/assets/team/MICHAEL_.webp",
+    },
+    {
+      name: "Nathalie JANNOT",
+      role: "Assistante de Direction",
+      src: "/assets/team/NATHALIE.jpg",
     },
 
     {
@@ -126,14 +126,24 @@ export default function AboutUs() {
     //   src: "/assets/team/STECIE_.webp",
     // },
     {
+      name: "Eric SWORNOWSKI",
+      role: "Commercial Sud-Ouest",
+      src: "/assets/team/ERIC_.webp",
+    },
+    {
       name: "Hiba BOUREZG",
       role: "Alternante Ingénieur Réseaux & CyberSécurité",
       src: "/assets/team/HIBA_.jpg",
     },
     {
-      name: "Eric SWORNOWSKI",
-      role: "Commercial Sud-Ouest",
-      src: "/assets/team/ERIC_.webp",
+      name: "Arnaud ROBIC",
+      role: "Directeur Commercial",
+      src: "/assets/team/ARNAUD_.webp",
+    },
+    {
+      name: "Fabien PONTIER",
+      role: "Commercial Nord / Nord-Ouest",
+      src: "/assets/team/FABIEN2_.webp",
     },
   ];
 

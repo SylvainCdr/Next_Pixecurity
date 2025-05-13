@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import Swal from "sweetalert2";
@@ -52,6 +53,13 @@ function Header() {
     }, 2000);
   };
 
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+const toggleAboutDropdown = () => {
+  setIsAboutOpen((prev) => !prev);
+};
+
+
   // Vérifiez que pathname est défini avant d'utiliser startsWith
   const shouldDisplayLanguageSelector =
     pathname &&
@@ -81,16 +89,15 @@ function Header() {
         </div>
 
         <ul>
-        <li className={pathname === "/boutique" }>
-  <Link
-    href={`/boutique${user?._id ? `?userId=${user?._id}` : ""}`}
-    className={`${styles.shop} ${pathname === "/boutique" ? styles.active : ""}`}
-    onClick={handleLinkClick}
-  >
-    {t("header.Shop")}
-  </Link>
-</li>
-
+          <li className={pathname === "/boutique"}>
+            <Link
+              href={`/boutique${user?._id ? `?userId=${user?._id}` : ""}`}
+              className={`${styles.shop} ${pathname === "/boutique" ? styles.active : ""}`}
+              onClick={handleLinkClick}
+            >
+              {t("header.Shop")}
+            </Link>
+          </li>
 
           <li
             className={
@@ -120,11 +127,34 @@ function Header() {
               {t("header.ourPartners")} {/* Nos partenaires */}
             </Link>
           </li>
-          <li className={pathname === "/qui-sommes-nous" ? styles.active : ""}>
-            <Link href="/qui-sommes-nous" onClick={handleLinkClick}>
-              {t("header.about")} {/* Qui sommes-nous ? */}
-            </Link>
-          </li>
+
+<li
+  className={`${styles.dropdown} ${isAboutOpen ? styles.open : ""}`}
+  onMouseEnter={() => setIsAboutOpen(true)}
+  onMouseLeave={() => setIsAboutOpen(false)}
+>
+  <span
+    className={styles.dropdownToggle}
+    onClick={toggleAboutDropdown}
+  >
+    {t("header.about")} <i className="fa-solid fa-chevron-down"></i>
+  </span>
+
+  <ul className={styles.dropdownMenu}>
+    <li className={pathname === "/qui-sommes-nous" ? styles.active : ""}>
+      <Link href="/qui-sommes-nous" onClick={handleLinkClick}>
+        {t("header.aboutUs")}
+      </Link>
+    </li>
+    <li className={pathname === "/notre-demarche-rse" ? styles.active : ""}>
+      <Link href="/notre-demarche-rse" onClick={handleLinkClick}>
+        {t("header.rse")}
+      </Link>
+    </li>
+  </ul>
+</li>
+
+
           {!user && (
             <li
               className={
