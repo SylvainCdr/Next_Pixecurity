@@ -1,22 +1,31 @@
 import styles from "./style.module.scss";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import AOS from "aos";
+import { useEffect } from "react";
 
 export default function Rse() {
   const { t } = useTranslation();
 
+    useEffect(() => {
+      AOS.init({
+        duration: 2000,
+      });
+    }, []);
+
   return (
     <div className={styles.rseContainer}>
       <div className={styles.section1}>
-        <div className={styles.section1content}>
+        <div data-aos="fade-up-right" className={styles.section1content}>
           <h1>Notre engagement pour un avenir durable</h1>
           <p>
-            Chez Pixecurity, nous croyons qu’une entreprise performante se doit
-            aussi d’être responsable. C’est pourquoi nous intégrons les enjeux
-            environnementaux et sociétaux dans nos choix quotidiens. Notre
-            politique RSE s’inscrit dans une volonté de progrès continu, en
-            cohérence avec nos valeurs et nos missions.
+              Chez Pixecurity, nous sommes convaincus qu’une entreprise performante doit aussi être exemplaire sur le plan éthique et environnemental. 
+  C’est pourquoi nous avons fait de la Responsabilité Sociétale des Entreprises (RSE) un pilier de notre stratégie. 
+  Chaque décision, chaque action est pensée pour contribuer à un avenir plus durable, en accord avec nos valeurs d'intégrité, d'innovation et de respect.
           </p>
+          <p>
+  Notre démarche s’inscrit dans une logique d’amélioration continue, guidée par l’impact que nous souhaitons avoir sur notre environnement, nos collaborateurs et la société dans son ensemble.
+</p>
           {/* <p className={styles.quote}>
             "Lorem ipsum dolor sit amet consectetur adipisicing elit.ue.
             Commodi, quidem." <br />
@@ -45,7 +54,7 @@ export default function Rse() {
         </div>
 
         <div className={styles.ourActions}>
-          <div className={styles.actionCards}>
+          <div data-aos="fade-up" className={styles.actionCards}>
             <img
               src="https://t3.ftcdn.net/jpg/03/98/50/44/240_F_398504440_8mgFm6ZDIIjBL7wa7GUA9WkmoEQ03bb2.jpg"
               alt=""
@@ -69,7 +78,7 @@ export default function Rse() {
             </ul>
           </div>
 
-          <div className={styles.actionCards}>
+          <div data-aos="fade-up" className={styles.actionCards}>
             <img
               src="https://as1.ftcdn.net/v2/jpg/14/09/32/26/1000_F_1409322651_KETG9UN36kTObUNo3lXHtdFd3hSWYSKt.jpg"
               alt=""
@@ -91,7 +100,7 @@ export default function Rse() {
             </p>
           </div>
 
-          <div className={styles.actionCards}>
+          <div data-aos="fade-up" className={styles.actionCards}>
             <img
               src="https://t4.ftcdn.net/jpg/14/61/49/55/240_F_1461495576_aQonkrkctxjWDXx7MPlDNje9iOLS5jpu.jpg"
               alt=""
@@ -117,28 +126,48 @@ export default function Rse() {
 
       <div className={styles.section3}>
         <div className={styles.section3content}>
-          <h2> Engagement social et bien-être des collaborateurs</h2>
+          <h2>Bien-être, inclusion et engagement social</h2>
+          <p>
+            Nous plaçons l’humain au cœur de notre projet d’entreprise. Un
+            environnement sain, inclusif et motivant est essentiel à la
+            performance collective.
+          </p>
+          <div className={styles.section3grid}>
+            <div className={styles.section3left}>
+              <h3>Bien-être au travail</h3>
+              <ul>
+                <li>Espaces de pause et de détente aménagés.</li>
+                <li>Horaires flexibles et possibilité de télétravail.</li>
+                <li>
+                  Accès à la formation continue pour favoriser l’évolution
+                  professionnelle.
+                </li>
+              </ul>
+            </div>
 
-          <ul>
-            <li> Environnement de travail sain et respectueux.</li>
-            <li>
-              Sensibilisation aux éco-gestes et formations internes ponctuelles
-              sur les enjeux environnementaux.
-            </li>
-            <li>
-              Soutien à l’égalité des chances : recrutement basé sur les
-              compétences, sans discrimination.
-            </li>
-            <li>
-              Accompagnement professionnel : accès à la formation continue pour
-              tous les collaborateurs.
-            </li>
-          </ul>
+            <div className={styles.section3right}>
+              <h3>Diversité et inclusion</h3>
+
+              <ul>
+                <li>
+                  Recrutement fondé sur les compétences et l’égalité des
+                  chances.
+                </li>
+                <li>
+                  Sensibilisation interne aux biais et comportements
+                  discriminants.
+                </li>
+                <li>Zéro tolérance face aux discriminations.</li>
+                <li>Valorisation des différences et des parcours.</li>
+              </ul>
+            </div>
+          </div>
+         
         </div>
       </div>
 
       <div className={styles.section4}>
-        <div className={styles.section4content}>
+        <div data-aos="flip-left" className={styles.section4content}>
           <h2>Une démarche en constante évolution</h2>
           <p>
             Nous savons que la RSE n’est pas une finalité mais un chemin. C’est
