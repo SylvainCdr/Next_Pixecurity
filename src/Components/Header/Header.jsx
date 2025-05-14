@@ -151,6 +151,11 @@ const toggleAboutDropdown = () => {
         {t("header.rse")}
       </Link>
     </li>
+    <li className={pathname === "/contact" ? styles.active : ""}>
+      <Link href="/contact" onClick={handleLinkClick}>
+        {t("header.contact")}
+      </Link>
+    </li>
   </ul>
 </li>
 
