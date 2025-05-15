@@ -234,9 +234,9 @@
     }
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Let's Get In Touch",
-    "description": "Tell us who you are and describe your issue in a few words. We will contact you as soon as possible to start the project.",
+    "title": "Contact us",
+    "subtitle": "A need ? A project ?",
+    "description": "Looking for a specific product or tailored support? Our team is here to listen, understand your needs, and offer the best solutions.",
     "name": "Last Name",
     "firstname": "First Name",
     "company": "Company (optional)",
