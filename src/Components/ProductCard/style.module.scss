@@ -77,7 +77,6 @@
 
   .card-brand {
     border-bottom: 0.1rem solid #d9d9d9;
- 
     height: 2.5rem;
 
     .brand-logo {
@@ -173,9 +172,10 @@
         padding: 0;
         box-shadow: none;
         i {
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           color: #838485;
           cursor: pointer;
+           color: #00c742;
 
           &:active {
             animation: clickAnimation 0.3s ease;
@@ -184,7 +184,7 @@
         }
 
         i:hover {
-          color: #03b43e;
+          color: #01e34c;
           scale: 1.2;
         }
       }

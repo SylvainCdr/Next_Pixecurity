@@ -17,6 +17,7 @@ export const CartRequestQuoteModal = () => {
        name: formData.get("name"),
         company: formData.get("company"),
         email: formData.get("email"),
+        message : formData.get("message"),
         cartItems: carts.map((cart) => ({
           productId: cart.product._id,
           name: cart.product.name,
@@ -110,8 +111,13 @@ function QuoteRequestForm({ onSubmit }) {
         <label htmlFor="email">Email</label>
         <input type="email" name="email" id="email" required />
       </div>
+      <div className={styles["form-group"]}>
+        <label htmlFor="message">Message (optionnel)</label>
+        <textarea name="message" id="message" rows="4"></textarea>
+      </div>
       <button type="submit" className={styles["submit-button"]}>
         Envoyer ma demande
+        
       </button>
     </form>
   );

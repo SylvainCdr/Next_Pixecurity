@@ -328,6 +328,9 @@ export default function Product({ product, id, suggestions }) {
                 <button onClick={handleAddToCartClick}>
                   Ajouter au panier
                 </button>
+                {/* <button >
+                  Demander un devis personnalisé
+                </button> */}
               </div>
               <p className={styles.ref}>Référence : {product.ref}</p>
             </div>
