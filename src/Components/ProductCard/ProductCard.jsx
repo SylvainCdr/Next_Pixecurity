@@ -109,15 +109,17 @@ function Prices({ product }) {
       <div className={styles["card-prices"]}>
         <p className={styles["original-price"]}>
           {product.price.toFixed(2)} €{" "}
-        </p>
+        </p > 
         <p className={styles["discounted-price"]}>
           {product.discountPrice.toFixed(2)} € <span>HT</span>{" "}
         </p>
+        
       </div>
     );
   }
 
   return (
+    
     <p className={styles["card-price"]}>
       {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
     </p>
@@ -237,7 +239,7 @@ function ButtonAddToCart({ product }) {
 
   return (
     <button className={styles.cart} onClick={handleAddToCart}>
-      <i className="fa-solid fa-cart-plus" data-aos="zoom-in" />
+      <i className="fa-solid fa-cart-plus"  /> Ajouter
     </button>
   );
 }

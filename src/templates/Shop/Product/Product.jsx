@@ -14,62 +14,19 @@ import Head from "next/head";
 import Link from "next/link";
 import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import Image from "next/image";
+import { ProductRequestQuoteModal } from "@/Components/ProductRequestQuoteModal/ProductRequestQuoteModal";
 
 export default function Product({ product, id, suggestions }) {
-  // console.log("Suggestions:", suggestions);
-
   const { addToFavorites, removeFromFavorites, checkFavorite, getFavorites } =
     useFavorites();
   const { addToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
-
   const user = useGetUser();
   const userId = user?._id;
-
   const brandLogo = logos.find(
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
   );
-
   const [searchResults, setSearchResults] = useState([]);
-
-  const labelsMapping = {
-    dimensions: "Dimensions",
-    poids: "Poids",
-    temp: "Température de fonctionnement",
-    megapixels: "Mégapixels",
-    distanceFocale: "Distance focale",
-    ouverture: "Ouverture",
-    angleVue: "Angle de vue",
-    imgSec: "Images par seconde",
-    capteur: "Capteur",
-    resolution: "Résolution",
-    couleur: "Couleur",
-    infrarouge: "Infrarouge",
-    distanceInfrarouge: "Distance infrarouge",
-    indiceProtection: "Indice de protection",
-    puissance: "Puissance",
-    installationExt: "Installation extérieure",
-    nbrePorts: "Nombre de ports",
-    rackable: "Rackable",
-    manageable: "Manageable",
-    poe: "PoE",
-    poePlus: "PoE+",
-    poePlusPlus: "PoE++",
-    consommation: "Consommation max",
-    garantie: "Garantie",
-    interface: "Interface",
-    usb: "USB",
-    portConsole: "Port console",
-    debitVpn: "Débit VPN",
-    maxTcp: "Max TCP",
-    debitFirewall: "Débit Firewall",
-    vitesse: "Vitesse",
-    typeWifi: "Type de WiFi",
-    antenne: "Antenne",
-    lan: "LAN",
-    nebula: "Nebula",
-  };
-
   const [isInFavorites, setIsInFavorites] = useState(false);
 
   useEffect(() => {
@@ -209,6 +166,7 @@ export default function Product({ product, id, suggestions }) {
       <RegisterPopup />
       <ShopNav />
       <ShopSearch onSearchResults={handleSearchResults} />
+      <ProductRequestQuoteModal product={product} />
       {searchResults.length === 0 && (
         <div className={styles["product-page"]}>
           <div className={styles["product-section1"]}>
@@ -308,6 +266,7 @@ export default function Product({ product, id, suggestions }) {
                 <div className={styles.price}>
                   <DiscountedPrice product={product} />
                 </div>
+
                 <div className={styles.quantity}>
                   <button
                     onClick={() => setQuantity(quantity - 1)}
@@ -325,12 +284,12 @@ export default function Product({ product, id, suggestions }) {
                   </button>
                 </div>
 
-                <button onClick={handleAddToCartClick}>
-                  Ajouter au panier
+                <button
+                  onClick={handleAddToCartClick}
+                  className={styles.addBtn}
+                >
+                  <i className="fa-solid fa-cart-plus" /> Ajouter au panier
                 </button>
-                {/* <button >
-                  Demander un devis personnalisé
-                </button> */}
               </div>
               <p className={styles.ref}>Référence : {product.ref}</p>
             </div>
@@ -386,7 +345,6 @@ export default function Product({ product, id, suggestions }) {
                   </li>
                 )}
               </ul>
-
 
               {product.pdf && (
                 <div>

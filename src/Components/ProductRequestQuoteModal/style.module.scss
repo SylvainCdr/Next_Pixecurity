@@ -1,14 +1,39 @@
-.request-quote-button {
-  float : right;
-  margin : 1.3rem 0;
-  font-size: 1.2rem;
+// keyframe pulse
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
+.request-quote-button {
+  position: fixed;
+  z-index: 2000;
+  top: 20%;
+  left: 2%;
+  font-size: 1.2rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
 .request-quote-button:hover {
-  background-color: #45a049;
+  background-color: #00c742;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -106,6 +131,7 @@
     font-weight: 600;
     margin-bottom: 5px;
   }
+
   input {
     padding: 10px;
     border: 1px solid #ddd;
@@ -120,14 +146,12 @@
   }
 
   .submit-button {
-
-    margin-top: 2rem;
+    margin-top: 1rem;
     color: white;
     border: none;
-  
+
     cursor: pointer;
     transition: background-color 0.3s ease;
-
   }
 
   .submit-button:hover {
@@ -136,8 +160,7 @@
 }
 
 @media (max-width: 1024px) {
-  .modal-content {
-    width: 90%;
-    height: auto;
+  .request-quote-button {
+    display: none;
   }
 }
