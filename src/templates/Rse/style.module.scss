@@ -226,7 +226,7 @@
 
   .section3 {
     background-color: #d3d4ce;
-    height: 40rem;
+    height: 42rem;
     background-image: url(https://uploads.pixecurity.com/files/CSR_unity.webp);
     background-size: cover;
     background-position: center;
@@ -277,6 +277,7 @@
         .section3right {
           width: 50%;
           height: 100%;
+          
 
           h3 {
             font-size: 1.5rem;
@@ -292,10 +293,16 @@
           }
 
           ul {
-            margin-top: 3rem;
+          
+            height : 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+         
           }
           li {
-            margin-bottom: 2em;
+            margin-bottom: 1.2em;
             font-size: 1.3rem;
             line-height: 1.5rem;
             list-style: none;
@@ -425,7 +432,7 @@
           font-weight: 700;
         }
         ul {
-          margin-top: 3rem;
+         
         }
         li {
           margin-bottom: 2em;

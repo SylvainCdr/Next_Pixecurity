@@ -143,6 +143,7 @@ export default function Rse() {
                   <li>{t("rse.inclusion.point2")}</li>
                   <li>{t("rse.inclusion.point3")}</li>
                   <li>{t("rse.inclusion.point4")}</li>
+                  <li>{t("rse.inclusion.point5")}</li>
                 </ul>
               </div>
             </div>
