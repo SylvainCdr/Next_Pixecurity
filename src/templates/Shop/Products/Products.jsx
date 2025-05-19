@@ -55,14 +55,26 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
 
   return (
     <div className={styles["products-container"]}>
-      <Head>
-        <title>{`${brand} / ${category} / ${subcategory} - Pixecurity`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={`${brand} / ${category} / ${subcategory} - Pixecurity`} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={`https://www.pixecurity.com${router.asPath}`} />
-        <meta property="og:type" content="website" />
-      </Head>
+   <Head>
+  <title>{`${brand} / ${category} / ${subcategory} - Pixecurity`}</title>
+  <meta name="description" content={pageDescription} />
+
+  {/* Canonical URL */}
+  <link rel="canonical" href={`https://www.pixecurity.com${router.asPath}`} />
+
+  {/* Open Graph tags */}
+  <meta property="og:title" content={`${brand} / ${category} / ${subcategory} - Pixecurity`} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:url" content={`https://www.pixecurity.com${router.asPath}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://uploads.pixecurity.com/files/fav-pix-shop_1.png" /> 
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${brand} / ${category} / ${subcategory} - Pixecurity`} />
+  <meta name="twitter:description" content={pageDescription} />
+  <meta name="twitter:image" content="https://uploads.pixecurity.com/files/fav-pix-shop_1.png" /> 
+</Head>
 
       <RegisterPopup />
       <ShopNav setIsSubcategoryLoading={setIsSubcategoryLoading} />
