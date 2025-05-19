@@ -193,7 +193,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
 @media (max-width: 600px) {
   .cookie-buttons {
-   margin-top : -rem;
+   margin-top : -9rem;
     gap:-0px;
   }
   .cookie-buttons button {
