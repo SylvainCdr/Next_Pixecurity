@@ -54,6 +54,8 @@ import Head from "next/head";
 import "../../i18n";
 import { appWithTranslation } from "next-i18next";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 function App({ Component, pageProps }) {
   useEffect(() => {
@@ -167,12 +169,12 @@ function App({ Component, pageProps }) {
             >
               Ce site utilise des cookies pour le suivi statistique et
               marketing.{" "}
-              <a
+              <Link
                 href="/rgpd"
                 style={{ color: "#009fe3", textDecoration: "underline" }}
               >
                 En savoir plus
-              </a>
+              </Link>
             </CookieConsent>
           </Template>
         </CartProvider>
