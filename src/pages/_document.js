@@ -95,6 +95,11 @@ export default function Document() {
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
+        
+        {/* Albacross Tracking Code */}
+        <script dangerouslySetInnerHTML={{ __html: `window._nQc="89724931";` }} />
+        <script async src="https://serve.albacross.com/track.js"></script>
+
         <Main />
         <NextScript />
       </body>
