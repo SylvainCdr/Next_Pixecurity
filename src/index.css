@@ -182,3 +182,22 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     --sunset5: #f7fcfb;
     --sunset6: #ffffff;
   }
+
+  /* Dans ton fichier CSS global ou module */
+.cookie-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap; /* Permet aux boutons de passer à la ligne */
+}
+
+@media (max-width: 600px) {
+  .cookie-buttons {
+   margin-top : -rem;
+    gap:-0px;
+  }
+  .cookie-buttons button {
+    width: 100%; /* boutons prennent toute la largeur dispo */
+    min-width: unset;
+  }
+}
