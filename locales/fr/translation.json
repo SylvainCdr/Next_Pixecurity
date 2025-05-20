@@ -24,23 +24,23 @@
     "partnersLink": "Nos partenaires",
     "quotationLink": "Demande de devis",
     "contactLink": "Contact",
+    "privacyLink" : "Politique de confidentialité",
     "partnersActus": "Actualités de nos partenaires",
     "email": "pixecurity@pixecurity.com",
     "phone": "(+33) 1 39 60 98 82",
     "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
     "linkedin": "Linkedin",
-    "copyright": "© 2024 Pixecurity. Tous droits réservés."
+    "copyright": "© 2025 Pixecurity. Tous droits réservés."
   },
   "popup": {
-    "title": "Inscrivez-vous et obtenez",
-    "discount": "-10%",
-    "description": "Rejoignez notre communauté et profitez d'offres exclusives et de réductions immédiates sur la Boutique en ligne.",
-    "signupButton": "Inscrivez-vous maintenant",
-    "contactTitle": "Vous êtes un professionnel ?",
-    "contactDescription": "Contactez-nous et bénéficiez de remises supplémentaires",
-    "contactButton": "Nous Contacter",
-    "closeButton": "Fermer"
-  },
+  "title1": "Besoin d’un accompagnement personnalisé ?",
+  "desc1": "Vous parcourez nos produits ? Nous pouvons vous conseiller ou vous faire une offre sur-mesure.",
+  "contactBtn": "Contactez notre équipe",
+  "title2": "Votre sélection est prête ?",
+  "desc2": "Ajoutez vos produits au panier, puis envoyez-nous une demande de devis. Nous reviendrons vers vous rapidement avec une proposition adaptée.",
+  "shopBtn": "Composer mon panier"
+}
+,
   "homepageHero": {
     "heroTitle": "Solutions Intelligentes pour la Sécurité et la Vidéosurveillance",
     "heroDescription": "Caméras de surveillance, analyse vidéo, contrôle d'accès, systèmes de stockage réseau, hypervision et plus encore",

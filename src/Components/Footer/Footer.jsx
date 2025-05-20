@@ -57,6 +57,9 @@ function Footer() {
           <li>
             <Link href="/contact">{t("footer.contactLink")}</Link>
           </li>
+          <li>
+            <Link href="/politique-de-confidentialite">{t("footer.privacyLink")}</Link>
+          </li>
         </ul>
       </div>
 

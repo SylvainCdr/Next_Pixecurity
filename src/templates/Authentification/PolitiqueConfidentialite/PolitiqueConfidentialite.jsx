@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./style.module.scss";
 
-export default function Rgpd() {
+export default function PolitiqueConfidentialite() {
   return (
     <div className={styles["rgpd-container"]}>
       <h1>Politique de Confidentialité</h1>
@@ -59,6 +59,26 @@ export default function Rgpd() {
         de Confidentialité, veuillez nous contacter à pixecurity@pixecurity.com
         . Dernière mise à jour : 06-05-2024
       </p>
+      <h2>Outils d’analyse et de marketing </h2>
+      <h3>Google Analytics</h3>
+      <p>
+        Nous utilisons Google Analytics pour collecter des données anonymes sur
+        l’utilisation du site (pages visitées, durée de visite, etc.), afin
+        d’améliorer nos services. Ces données sont transmises à Google et
+        peuvent être stockées en dehors de l’Union européenne. Vous pouvez
+        désactiver ce suivi à tout moment en modifiant vos préférences dans le
+        bandeau de consentement ou via votre navigateur.
+      </p>
+      <h3> Albacross</h3>
+      <p>
+        Ce site utilise également un service fourni par Albacross Nordic AB
+        (“Albacross”). Albacross permet d’identifier les entreprises qui
+        visitent notre site à des fins de marketing B2B. Pour cela, une
+        identification basée sur l’adresse IP est effectuée. Les données
+        collectées sont traitées conformément à la politique de confidentialité
+        d’Albacross, que vous pouvez consulter ici :
+        https://albacross.com/privacy-policy/.
+      </p>{" "}
     </div>
   );
 }

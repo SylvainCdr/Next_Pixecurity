@@ -24,23 +24,23 @@
     "partnersLink": "Our Partners",
     "quotationLink": "Request a quote",
     "contactLink": "Contact",
+    "privacyLink": "Privacy policy",
     "partnersActus": "News from Our Partners",
     "email": "pixecurity@pixecurity.com",
     "phone": "(+33) 1 39 60 98 82",
     "address": "38 Rue Jean Mermoz, 78600 Maisons-Laffitte",
     "linkedin": "Linkedin",
-    "copyright": "© 2024 Pixecurity. All rights reserved."
+    "copyright": "© 2025 Pixecurity. All rights reserved."
   },
   "popup": {
-    "title": "Sign up and get",
-    "discount": "-10%",
-    "description": "Join our community and enjoy exclusive offers and immediate discounts on our Online Store.",
-    "signupButton": "Sign up now",
-    "contactTitle": "Are you a professional?",
-    "contactDescription": "Contact us and receive additional discounts",
-    "contactButton": "Contact Us",
-    "closeButton": "Close"
-  },
+  "title1": "Need personalized support?",
+  "desc1": "Browsing our products? We can advise you or provide a custom offer.",
+  "contactBtn": "Contact our team",
+  "title2": "Ready with your selection?",
+  "desc2": "Add your products to the cart, then send us a quote request. We’ll get back to you shortly with a tailored proposal.",
+  "shopBtn": "Build my cart"
+}
+,
   "homepageHero": {
     "heroTitle": "Intelligent Solutions for Security and Video Surveillance",
     "heroDescription": "Surveillance cameras, video analytics, access control, network storage systems, hypervision, and more.",

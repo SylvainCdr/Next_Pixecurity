@@ -1,0 +1,3 @@
+import PolitiqueConfidentialite from "@/templates/Authentification/PolitiqueConfidentialite/PolitiqueConfidentialite";
+
+export default PolitiqueConfidentialite

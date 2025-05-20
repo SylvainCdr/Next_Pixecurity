@@ -177,20 +177,6 @@ export default function Register() {
               id="company"
               onChange={(e) => setCompany(e.target.value)}
             />
-            {/* // select pour le choix du commercial
-            <label htmlFor="salesperson">Commercial(e) référent(e)</label>
-            <select
-              name="salesperson"
-              id="salesperson"
-              defaultValue="Aucun"
-              onChange={(e) => setSalesperson(e.target.value)}
-            >
-              <option value="Aucun">Aucun</option>
-              <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
-              <option value="Fabrice VALLEE">Fabrice VALLEE</option>
-              <option value="Yanis MEBARKI">Yanis MEBARKI</option>
-              <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
-            </select> */}
 
             <label htmlFor="email">Email</label>
             <input
@@ -227,7 +213,7 @@ export default function Register() {
                   CGV
                 </Link>
                 et la
-                <Link href="/rgpd" target="_blank">
+                <Link href="/politique-de-confidentialite" target="_blank">
                   politique de confidentialité
                 </Link>
               </label>

@@ -45,33 +45,37 @@ export default function RegisterPopup() {
     setShow(false);
   }
 
-  function redirectToSignup() {
-    window.location.href = "/inscription";
-  }
+ 
   function redirectToContact() {
     window.location.href = "/contact";
+  }
+
+  function redirectToShop() {
+    window.location.href = "/boutique";
   }
 
   if (!show) return null;
 
   return (
-    <div id="signup-popup" className={styles.popup}>
-      <div className={styles["popup-content"]}>
-        <span className={styles["close-btn"]} onClick={closePopup}>
-          &times;
-        </span>
-        <h2>
-          {t("popup.title")} <br />
-          <span>{t("popup.discount")}</span>
-        </h2>
-        <p>{t("popup.description")}</p>
-        <button onClick={redirectToSignup}>{t("popup.signupButton")}</button>
+ <div id="signup-popup" className={styles.popup}>
+  <div className={styles["popup-content"]}>
+    <span className={styles["close-btn"]} onClick={closePopup}>
+      &times;
+    </span>
 
-        <p>--------------</p>
-        <h2>{t("popup.contactTitle")}</h2>
-        <p>{t("popup.contactDescription")}</p>
-        <button onClick={redirectToContact}>{t("popup.contactButton")}</button>
-      </div>
-    </div>
+    <h2>{t("popup.title1")}</h2>
+    <p>{t("popup.desc1")}</p>
+    <button onClick={redirectToContact}>{t("popup.contactBtn")}</button>
+
+    <p>--------------</p>
+
+    <h2>{t("popup.title2")}</h2>
+    <p>{t("popup.desc2")}</p>
+    <button onClick={redirectToShop}>
+      {t("popup.shopBtn")}
+    </button>
+  </div>
+</div>
+
   );
 }
