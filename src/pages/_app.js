@@ -61,6 +61,10 @@ function App({ Component, pageProps }) {
   useEffect(() => {
     // Chargement direct de GTM + GA
     loadGtmAndGa();
+    // Chargement direct Umami
+    loadUmami();
+
+
 
     // Chargement conditionnel Albacross selon consentement
     const consent = getCookieConsentValue("pixecurityCookieConsent");
@@ -68,6 +72,18 @@ function App({ Component, pageProps }) {
       loadAlbacross();
     }
   }, []);
+
+  const loadUmami = () => {
+  if (!window.umamiLoaded) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = "http://localhost:3000/script.js"; // Remplace par l'URL publique si déployé
+    script.setAttribute("data-website-id", "65d60149-6fad-4181-8a40-ce680cbb0d2e");
+    document.head.appendChild(script);
+    window.umamiLoaded = true;
+  }
+};
+
 
   const loadGtmAndGa = () => {
     // Google Tag Manager
@@ -150,7 +166,7 @@ function App({ Component, pageProps }) {
               }}
               buttonWrapperClasses="cookie-buttons"
               buttonStyle={{
-                background: "##009fe3",
+                background: "#009fe3",
                 color: "#fff",
                 fontSize: "15px",
                 borderRadius: "5px",
