@@ -73,16 +73,18 @@ function App({ Component, pageProps }) {
     }
   }, []);
 
-  const loadUmami = () => {
-  if (!window.umamiLoaded) {
+const umamiWebsiteId = "65d60149-6fad-4181-8a40-ce680cbb0d2e"; 
+const umamiScriptUrl = "https://umami-analytics-navy-nu.vercel.app/script.js";
+
+function loadUmami() {
+  if (!window.umami) {
     const script = document.createElement("script");
     script.defer = true;
-    script.src = "http://localhost:3000/script.js"; // Remplace par l'URL publique si déployé
-    script.setAttribute("data-website-id", "65d60149-6fad-4181-8a40-ce680cbb0d2e");
+    script.setAttribute("data-website-id", umamiWebsiteId);
+    script.src = umamiScriptUrl;
     document.head.appendChild(script);
-    window.umamiLoaded = true;
   }
-};
+}
 
 
   const loadGtmAndGa = () => {
