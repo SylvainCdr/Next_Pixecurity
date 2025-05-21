@@ -188,7 +188,7 @@ function loadUmami() {
               Ce site utilise des cookies pour le suivi statistique et
               marketing.{" "}
               <Link
-                href="/rgpd"
+                href="/politique-de-confidentialite"
                 style={{ color: "#009fe3", textDecoration: "underline" }}
               >
                 En savoir plus
