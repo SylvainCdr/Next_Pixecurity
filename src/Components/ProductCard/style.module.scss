@@ -168,14 +168,15 @@
         }
       }
 
-      .cart {
+      .cartBtn {
         background: none;
         padding: 0;
         box-shadow: none;
         background-color:  #00c742;
         padding: 0.5rem;
+        font-size: 1.1rem;
         i {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           padding-right : 0.1rem;
           color: #838485;
           cursor: pointer;
@@ -205,6 +206,11 @@
       width: 12rem;
     }
     .card-title {
+      font-size: 1rem;
+    }
+    .cartBtn {
+     
+      padding: 0.3rem;
       font-size: 1rem;
     }
   }

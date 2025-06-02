@@ -238,7 +238,7 @@ function ButtonAddToCart({ product }) {
   };
 
   return (
-    <button className={styles.cart} onClick={handleAddToCart}>
+    <button className={styles.cartBtn} onClick={handleAddToCart}>
       <i className="fa-solid fa-cart-plus"  /> Ajouter
     </button>
   );
