@@ -7,7 +7,7 @@ import styles from "./style.module.scss";
 const heroImages = [
   {
  
-    url: "/assets/shop/banners/banner3a.webp",
+    url: "/assets/shop/banners/banner3.webp",
   },
   {
     url: "/assets/shop/banners/banner1.webp",
