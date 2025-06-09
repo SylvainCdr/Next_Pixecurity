@@ -144,8 +144,9 @@ function ShopNav() {
             {brands.map((brand) => (
               <li
                 key={brand}
-                onClick={() => handleBrandClick(brand)}
-                className={activeBrand === brand ? "active" : ""}
+  onClick={() => handleBrandClick(brand)}
+  onMouseEnter={() => handleBrandClick(brand)}
+  className={activeBrand === brand ? "active" : ""}
               >
                 {brand}
               </li>

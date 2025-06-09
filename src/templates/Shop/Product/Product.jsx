@@ -29,6 +29,7 @@ export default function Product({ product, id, suggestions }) {
   const [searchResults, setSearchResults] = useState([]);
   const [isInFavorites, setIsInFavorites] = useState(false);
 
+  console.log("Product component rendered with product:", product);
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
       if (userId && id) {
@@ -165,6 +166,14 @@ export default function Product({ product, id, suggestions }) {
 
       <RegisterPopup />
       <ShopNav />
+      <div className={styles.breadcrumbs}>
+        {product.brand} {">"} {product.category} {">"}{" "}
+        <Link
+          href={`/boutique/${encodeURIComponent(product.brand)}/${encodeURIComponent(product.category)}/${encodeURIComponent(product.subcategory)}`}
+        >
+          {product.subcategory}
+        </Link>
+      </div>
       <ShopSearch onSearchResults={handleSearchResults} />
       <ProductRequestQuoteModal product={product} />
       {searchResults.length === 0 && (
