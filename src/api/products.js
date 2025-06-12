@@ -56,4 +56,3 @@ export async function getAllProducts() {
   const data = await response.json();
   return data;
 }
-

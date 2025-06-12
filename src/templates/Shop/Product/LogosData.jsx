@@ -47,4 +47,8 @@ export const logos = [
     name: "genetec",
     logo: "/assets/shop/shopLogos/genetec.png",
   },
+  {
+    name: "Diviniti",
+    logo: "/assets/shop/shopLogos/diviniti-purple.png",
+  },
 ];

@@ -6,7 +6,9 @@ import styles from "./style.module.scss";
 
 const heroImages = [
   {
- 
+    url: "/assets/shop/banners/banner5.webp",
+  },
+  {
     url: "/assets/shop/banners/banner3.webp",
   },
   {
@@ -15,9 +17,7 @@ const heroImages = [
   {
     url: "/assets/shop/banners/banner2.webp",
   },
-  {
-    url: "/assets/shop/banners/banner4.webp",
-  },
+
 ];
 
 const ShopHeroCarousel = () => {
@@ -37,7 +37,7 @@ const ShopHeroCarousel = () => {
       <Slider {...settings}>
         {heroImages.map((image, index) => (
           <div key={index}>
-            <img src={image.url} alt="hero" loading="lazy"  />
+            <img src={image.url} alt="hero" loading="lazy" />
           </div>
         ))}
       </Slider>

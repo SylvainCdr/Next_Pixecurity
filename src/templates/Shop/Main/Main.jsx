@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import styles from "./style.module.scss";
-import ShopNav from "@/Components/ShopNav/ShopNav";
-import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
-import Head from "next/head";
-import { useGetUser } from "@/Components/useGetUser";
+import ShopNav from "@/Components/ShopNav/ShopNav";
+import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ShopHeroCarousel from "@/Components/ShopHeroCarousel/ShopHeroCarousel";
+import ShopProductsCarousel from "@/Components/ShopProductsCarousel/ShopProductsCarousel";
+import { useGetUser } from "@/Components/useGetUser";
+import Head from "next/head";
 import Image from "next/image";
 
 const shuffleArray = (array, limit) => {
@@ -20,7 +20,7 @@ const shuffleArray = (array, limit) => {
   return shuffled.slice(0, limit);
 };
 
-function Catalogue({ iProProducts, vmsProducts, zyxelProducts }) {
+function Catalogue({ iProProducts, vmsProducts, divinitiProducts }) {
   const [searchResults, setSearchResults] = useState([]);
   const user = useGetUser();
 
@@ -41,9 +41,13 @@ function Catalogue({ iProProducts, vmsProducts, zyxelProducts }) {
     () => shuffleArray(vmsProducts, 10),
     [vmsProducts]
   );
-  const shuffledZyxelProducts = useMemo(
-    () => shuffleArray(zyxelProducts, 10),
-    [zyxelProducts]
+  // const shuffledZyxelProducts = useMemo(
+  //   () => shuffleArray(zyxelProducts, 10),
+  //   [zyxelProducts]
+  // );
+  const shuffledDivinitiProducts = useMemo(
+    () => shuffleArray(divinitiProducts, 10),
+    [divinitiProducts]
   );
 
   return (
@@ -98,40 +102,38 @@ function Catalogue({ iProProducts, vmsProducts, zyxelProducts }) {
           </div>
 
           <div className={styles["products-carousel"]}>
-            <h2>Gestion vidéo avec Milestone & Genetec</h2>
+            <h2> Pilotez la sûreté de demain avec DIVINITI</h2>
             <div className={styles.logos}>
-            <Image
-              src="/assets/partners/partnersLogo/milestone.png"
-              alt="Milestone"
-              loading="lazy"
-              width={150}
-              height={150}
-            />
-            <Image
-              src="/assets/partners/partnersLogo/genetec.png"
-              alt="Milestone"
-              loading="lazy"
-              width={150}
-              height={150}
-            />
+              <Image
+                src="/assets/shop/shopLogos/diviniti-purple.png"
+                alt="Milestone"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
             </div>
-            <ShopProductsCarousel
-              carouselProducts={shuffledVmsProducts}
-            />
+            <ShopProductsCarousel carouselProducts={shuffledDivinitiProducts} />
           </div>
 
           <div className={styles["products-carousel"]}>
-            <h2> Restez connecté avec Zyxel</h2>
+            <h2>Gestion vidéo avec Milestone & Genetec</h2>
             <div className={styles.logos}>
-            <Image
-              src="/assets/shop/shopLogos/zyxel.png"
-              alt="Milestone"
-              loading="lazy"
-              width={150}
-              height={150}
-            />
+              <Image
+                src="/assets/partners/partnersLogo/milestone.png"
+                alt="Milestone"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
+              <Image
+                src="/assets/partners/partnersLogo/genetec.png"
+                alt="Milestone"
+                loading="lazy"
+                width={150}
+                height={150}
+              />
             </div>
-            <ShopProductsCarousel carouselProducts={shuffledZyxelProducts} />
+            <ShopProductsCarousel carouselProducts={shuffledVmsProducts} />
           </div>
         </>
       )}

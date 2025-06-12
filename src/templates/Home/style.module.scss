@@ -88,6 +88,24 @@
       -webkit-filter: grayscale(0.8);
     }
   }
+  .newPartner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin-bottom: 2rem;
+
+    
+    .newPartnerImg {
+      max-width: 1440px;
+      width: 100%;
+    }
+    a:hover {
+      scale : 1.01;
+      transition: scale 0.3s ease-in-out;
+    }
+  }
 
   .learnMore {
     background-image: url("/assets/homepage/wave3.webp");
@@ -203,6 +221,7 @@
         width: 100%;
       }
     }
+
     .learnMore {
       .learnMoreMap {
         flex-direction: column;
@@ -277,6 +296,9 @@
           margin-bottom: 1em;
         }
       }
+    }
+    .newPartner {
+      display: none;
     }
 
     .learnMore {

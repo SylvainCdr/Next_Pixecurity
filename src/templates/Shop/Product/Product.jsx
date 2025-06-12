@@ -167,7 +167,7 @@ export default function Product({ product, id, suggestions }) {
       <RegisterPopup />
       <ShopNav />
       <div className={styles.breadcrumbs}>
-        {product.brand} {">"} {product.category} {">"}{" "}
+        {product.brand} {"  "}{" > "}{"  "} {product.category}{"  "} {" > "}{"  "}
         <Link
           href={`/boutique/${encodeURIComponent(product.brand)}/${encodeURIComponent(product.category)}/${encodeURIComponent(product.subcategory)}`}
         >

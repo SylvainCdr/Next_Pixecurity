@@ -98,6 +98,12 @@ export default function Home() {
 
         <HomepagePartners />
 
+        <div className={styles.newPartner}>
+          <a href="https://diviniti.tech">
+          <img className={styles.newPartnerImg} src="/assets/shop/banners/banner5.webp" alt="" />
+          </a>
+        </div>
+
         <HomepageCountUp />
 
         <HomepageCustomersSlider />
