@@ -390,5 +390,32 @@ export const partners = [
     keywords:
       "Diviniti, sûreté augmentée, hypervision 3D, IA, XR, réalité mixte, gaming, Soron, ATNa, Raven, Befrost, sécurité proactive, analyse prédictive, immersion, intervention virtuelle, infrastructures critiques, espaces publics, détection en temps réel, ville intelligente, smart city, sécurité urbaine, vidéoprotection, contrôle d'accès, interopérabilité, opérateurs de sécurité, gaming for reality, système d'exploitation de sûreté, technologies immersives, sécurité connectée, innovation sécurité, réactivité opérationnelle, prévision des risques, interfaces intuitives"
   },
-  
+  {
+    name: "Teledyne FLIR",
+    slug: "teledyne-flir",
+    logo: "/assets/partners/partnersLogo/flir.png",
+    domain: "Caméras",
+    website: "https://www.flir.fr/",
+    description:
+      "Teledyne FLIR est un leader mondial dans le domaine des technologies d'imagerie thermique et de détection, offrant des solutions innovantes pour la sécurité, la surveillance, l'inspection industrielle et la recherche scientifique. Fondée en 1978, l'entreprise est reconnue pour ses caméras thermiques de haute performance qui permettent de détecter les variations de température invisibles à l'œil nu. Teledyne FLIR propose une large gamme de produits allant des caméras portables aux systèmes de surveillance fixes, en passant par les drones équipés de capteurs thermiques. Grâce à son expertise en imagerie thermique, Teledyne FLIR aide les professionnels à améliorer la sécurité, à optimiser les opérations industrielles et à protéger les infrastructures critiques.",
+    title1: "Imagerie Thermique Avancée pour la Sécurité et la Surveillance",
+    text1:
+      "Teledyne FLIR est à la pointe de l'innovation en matière d'imagerie thermique, offrant des solutions qui transforment la manière dont les professionnels abordent la sécurité et la surveillance. Nos caméras thermiques de haute performance permettent de détecter les menaces invisibles, d'identifier les points chauds et de surveiller les infrastructures critiques, garantissant ainsi une protection optimale dans divers environnements. Que ce soit pour la sécurité publique, la surveillance des frontières ou la protection des sites industriels, Teledyne FLIR fournit des outils fiables et efficaces pour une surveillance proactive.",
+
+    title2: "Solutions d'Inspection et de Maintenance Industrielle",
+    text2:
+      "En plus de la sécurité, Teledyne FLIR propose des solutions d'inspection et de maintenance industrielle qui aident les entreprises à détecter les problèmes avant qu'ils ne deviennent critiques. Nos caméras thermiques sont utilisées pour surveiller les équipements électriques, mécaniques et de plomberie, permettant ainsi une maintenance prédictive et une réduction des temps d'arrêt. Grâce à notre technologie d'imagerie thermique, les professionnels peuvent identifier les anomalies de température, prévenir les pannes et optimiser l'efficacité opérationnelle.",
+
+    title3: "Engagement envers l'Innovation et la Durabilité",
+    text3:
+      "Teledyne FLIR s'engage à innover en permanence pour répondre aux besoins en constante évolution de ses clients. Nous investissons dans la recherche et le développement pour garantir que nos produits restent à la pointe de la technologie. De plus, nous nous engageons à promouvoir des pratiques durables dans toutes nos opérations, contribuant ainsi à un avenir plus sûr et plus durable. En collaborant avec des partenaires stratégiques et en intégrant les dernières avancées technologiques, Teledyne FLIR continue de repousser les limites de l'imagerie thermique et de la détection, offrant des solutions qui améliorent la sécurité et l'efficacité dans le monde entier.",
+    image1:
+      "https://www.flir.fr/globalassets/industrial/security/170316_flir_vms_dualmonitor_ez_client-web.jpg",
+    image2:
+      "https://www.flir.fr/globalassets/news/news-center/security/elara-r_fh-series_thumbnail_1200x628.jpg",
+    video: "https://www.youtube.com/embed/WfA9eJ4ne1M",
+    keywords:
+      "Teledyne FLIR, imagerie thermique, détection, sécurité, surveillance, inspection industrielle, recherche scientifique, caméras thermiques, haute performance, variations de température, solutions innovantes, sécurité publique, surveillance des frontières, protection des infrastructures critiques, maintenance prédictive, efficacité opérationnelle, anomalies de température, innovation, durabilité, recherche et développement, pratiques durables",
+  },
+
 ];
