@@ -370,25 +370,25 @@ export const partners = [
     website: "https://diviniti.tech/",
     description:
       "Diviniti réinvente la sécurité en fusionnant intelligence artificielle, réalité étendue (XR) et interfaces inspirées du gaming. Spécialisée dans les environnements urbains, industriels et les infrastructures critiques, l’entreprise propose un écosystème de solutions immersives et proactives pour une supervision intelligente, prédictive et connectée. Grâce à une approche centrée sur l'utilisateur et à une technologie de pointe, Diviniti transforme la sûreté en une expérience augmentée, intuitive et réactive.",
-  
+
     title1: "Un Nouveau Système d’Exploitation pour la Sûreté",
     text1:
       "Diviniti développe un véritable système d’exploitation dédié à la sûreté, combinant analyse vidéo en temps réel, IA prédictive et interfaces immersives en 3D. Inspirée du gaming, cette plateforme permet aux opérateurs de se projeter dans des environnements complexes grâce à la XR (réalité étendue) et de gérer à distance des situations critiques comme s’ils y étaient physiquement. L’objectif : offrir un contrôle renforcé, une meilleure réactivité et une anticipation des risques pour tous types de sites sensibles, transports ou villes intelligentes.",
-  
+
     title2: "Un Écosystème de Solutions Interconnectées",
     text2:
       "L’offre de Diviniti repose sur quatre solutions clés et complémentaires : Soron, une hypervision immersive en 3D ; ATNa, une IA d’analyse vidéo pour la détection et l’anticipation ; Raven, une solution de réalité mixte pour l'entraînement et l’intervention ; et Befrost, un middleware garantissant l’interopérabilité entre systèmes. Ensemble, ces outils forment une suite cohérente pour la supervision, la formation et la gestion des incidents dans les environnements complexes, tout en améliorant l'efficacité opérationnelle.",
-  
+
     title3: "Une Vision de la Ville Augmentée et Connectée",
     text3:
       "Diviniti incarne une nouvelle vision de la sûreté, pensée pour les défis de la ville de demain. À travers une approche centrée sur l'utilisateur, l'entreprise transforme la sécurité en une expérience immersive, intuitive et pro-active. En combinant IA, XR et les codes du jeu vidéo, Diviniti offre aux opérateurs de sécurité les moyens de mieux comprendre, anticiper et réagir face aux menaces. Cet engagement vers l'innovation positionne Diviniti comme un acteur majeur de la smart city, de la cybersécurité terrain et de la protection intelligente.",
-  
+
     image1: "https://uploads.pixecurity.com/files/Image23.webp",
     image2: "https://uploads.pixecurity.com/files/Image12.webp",
     video: "https://www.youtube.com/embed/WR8Izjm4JF8", // À remplacer si vidéo officielle disponible
-  
+
     keywords:
-      "Diviniti, sûreté augmentée, hypervision 3D, IA, XR, réalité mixte, gaming, Soron, ATNa, Raven, Befrost, sécurité proactive, analyse prédictive, immersion, intervention virtuelle, infrastructures critiques, espaces publics, détection en temps réel, ville intelligente, smart city, sécurité urbaine, vidéoprotection, contrôle d'accès, interopérabilité, opérateurs de sécurité, gaming for reality, système d'exploitation de sûreté, technologies immersives, sécurité connectée, innovation sécurité, réactivité opérationnelle, prévision des risques, interfaces intuitives"
+      "Diviniti, sûreté augmentée, hypervision 3D, IA, XR, réalité mixte, gaming, Soron, ATNa, Raven, Befrost, sécurité proactive, analyse prédictive, immersion, intervention virtuelle, infrastructures critiques, espaces publics, détection en temps réel, ville intelligente, smart city, sécurité urbaine, vidéoprotection, contrôle d'accès, interopérabilité, opérateurs de sécurité, gaming for reality, système d'exploitation de sûreté, technologies immersives, sécurité connectée, innovation sécurité, réactivité opérationnelle, prévision des risques, interfaces intuitives",
   },
   {
     name: "Teledyne FLIR",
@@ -417,5 +417,4 @@ export const partners = [
     keywords:
       "Teledyne FLIR, imagerie thermique, détection, sécurité, surveillance, inspection industrielle, recherche scientifique, caméras thermiques, haute performance, variations de température, solutions innovantes, sécurité publique, surveillance des frontières, protection des infrastructures critiques, maintenance prédictive, efficacité opérationnelle, anomalies de température, innovation, durabilité, recherche et développement, pratiques durables",
   },
-
 ];
