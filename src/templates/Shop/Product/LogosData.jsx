@@ -51,4 +51,8 @@ export const logos = [
     name: "Diviniti",
     logo: "/assets/shop/shopLogos/diviniti-purple.png",
   },
+  {
+    name: "teledyne flir",
+    logo: "/assets/shop/shopLogos/flir.svg",
+  },
 ];

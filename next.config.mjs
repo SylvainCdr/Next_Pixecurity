@@ -9,6 +9,7 @@ const nextConfig = {
       { protocol: "https", hostname: "*.vivotek.com" }, // Gère vivotek.com et blob.vivotek.com
       { protocol: "https", hostname: "*.zyxel.com" }, // Zyxel et ses sous-domaines
       { protocol: "https", hostname: "*.til-technologies.fr" }, // Til Technologies
+      { protocol: "https", hostname: "*.flir.*" }, // Flir
       { protocol: "https", hostname: "*.herokuapp.com8" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
       { protocol: "https", hostname: "i.ytimg.com" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
       { protocol: "https", hostname: "static.vivotek.vn" }, // Pour Heroku (évite d'ajouter un sous-domaine spécifique)
