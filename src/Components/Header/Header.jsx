@@ -113,7 +113,7 @@ const toggleAboutDropdown = () => {
               {t("header.Expertise")} {/* Notre expertise */}
             </Link>
           </li>
-          <li
+                      <li
             className={
               pathname === "/partenaires-leaders-en-securite-et-surveillance"
                 ? styles.active
@@ -127,8 +127,7 @@ const toggleAboutDropdown = () => {
               {t("header.ourPartners")} {/* Nos partenaires */}
             </Link>
           </li>
-
-<li
+          <li
   className={`${styles.dropdown} ${isAboutOpen ? styles.open : ""}`}
   onMouseEnter={() => setIsAboutOpen(true)}
   onMouseLeave={() => setIsAboutOpen(false)}
@@ -146,18 +145,23 @@ const toggleAboutDropdown = () => {
         {t("header.aboutUs")}
       </Link>
     </li>
+
     <li className={pathname === "/notre-demarche-rse" ? styles.active : ""}>
       <Link href="/notre-demarche-rse" onClick={handleLinkClick}>
         {t("header.rse")}
       </Link>
     </li>
-    <li className={pathname === "/contact" ? styles.active : ""}>
+
+  </ul>
+</li>
+              <li className={pathname === "/contact" ? styles.active : ""}>
       <Link href="/contact" onClick={handleLinkClick}>
         {t("header.contact")}
       </Link>
     </li>
-  </ul>
-</li>
+  
+
+
 
 
           {!user && (
