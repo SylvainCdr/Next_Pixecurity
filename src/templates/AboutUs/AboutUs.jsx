@@ -145,6 +145,11 @@ export default function AboutUs() {
       role: "Commercial Nord / Nord-Ouest",
       src: "/assets/team/FABIEN2_.webp",
     },
+    {
+      name: "Aurélien LALLIER",
+      role: "Chargé d'Etude",
+      src: "/assets/team/AURELIEN.webp",
+    },
   ];
 
   return (
