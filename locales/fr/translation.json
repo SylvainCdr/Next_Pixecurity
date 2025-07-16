@@ -24,7 +24,7 @@
     "partnersLink": "Nos partenaires",
     "quotationLink": "Demande de devis",
     "contactLink": "Contact",
-    "privacyLink" : "Politique de confidentialité",
+    "privacyLink": "Politique de confidentialité",
     "partnersActus": "Actualités de nos partenaires",
     "email": "pixecurity@pixecurity.com",
     "phone": "(+33) 1 39 60 98 82",
@@ -33,14 +33,13 @@
     "copyright": "© 2025 Pixecurity. Tous droits réservés."
   },
   "popup": {
-  "title1": "Besoin d’un accompagnement personnalisé ?",
-  "desc1": "Vous parcourez nos produits ? Nous pouvons vous conseiller ou vous faire une offre sur-mesure.",
-  "contactBtn": "Contactez notre équipe",
-  "title2": "Votre sélection est prête ?",
-  "desc2": "Ajoutez vos produits au panier, puis envoyez-nous une demande de devis. Nous reviendrons vers vous rapidement avec une proposition adaptée.",
-  "shopBtn": "Composer mon panier"
-}
-,
+    "title1": "Besoin d’un accompagnement personnalisé ?",
+    "desc1": "Vous parcourez nos produits ? Nous pouvons vous conseiller ou vous faire une offre sur-mesure.",
+    "contactBtn": "Contactez notre équipe",
+    "title2": "Votre sélection est prête ?",
+    "desc2": "Ajoutez vos produits au panier, puis envoyez-nous une demande de devis. Nous reviendrons vers vous rapidement avec une proposition adaptée.",
+    "shopBtn": "Composer mon panier"
+  },
   "homepageHero": {
     "heroTitle": "Solutions Intelligentes pour la Sécurité et la Vidéosurveillance",
     "heroDescription": "Caméras de surveillance, analyse vidéo, contrôle d'accès, systèmes de stockage réseau, hypervision et plus encore",
@@ -240,6 +239,7 @@
     "name": "Nom",
     "firstname": "Prénom",
     "company": "Entreprise (optionnel)",
+    "phoneForm": "Téléphone (optionnel)",
     "email": "Email",
     "message": "Message",
     "submit": "Envoyer",
@@ -249,6 +249,7 @@
     "nameError": "Nom invalide (minimum 2 lettres)",
     "firstnameError": "Prénom invalide (minimum 2 lettres)",
     "companyError": "Le nom de l'entreprise ne doit pas dépasser 30 caractères",
+    "phoneError": "Numéro de téléphone invalide",
     "emailError": "Email invalide",
     "messageError": "Message invalide (au moins 50 caractères)",
     "success": "Message envoyé avec succès",

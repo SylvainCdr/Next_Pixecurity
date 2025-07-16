@@ -33,14 +33,13 @@
     "copyright": "© 2025 Pixecurity. All rights reserved."
   },
   "popup": {
-  "title1": "Need personalized support?",
-  "desc1": "Browsing our products? We can advise you or provide a custom offer.",
-  "contactBtn": "Contact our team",
-  "title2": "Ready with your selection?",
-  "desc2": "Add your products to the cart, then send us a quote request. We’ll get back to you shortly with a tailored proposal.",
-  "shopBtn": "Build my cart"
-}
-,
+    "title1": "Need personalized support?",
+    "desc1": "Browsing our products? We can advise you or provide a custom offer.",
+    "contactBtn": "Contact our team",
+    "title2": "Ready with your selection?",
+    "desc2": "Add your products to the cart, then send us a quote request. We’ll get back to you shortly with a tailored proposal.",
+    "shopBtn": "Build my cart"
+  },
   "homepageHero": {
     "heroTitle": "Intelligent Solutions for Security and Video Surveillance",
     "heroDescription": "Surveillance cameras, video analytics, access control, network storage systems, hypervision, and more.",
@@ -233,6 +232,7 @@
       "subtitle": "Qualified specialists who bring their expertise to provide optimal protection."
     }
   },
+  
   "contact": {
     "title": "Contact us",
     "subtitle": "A need ? A project ?",
@@ -240,6 +240,7 @@
     "name": "Last Name",
     "firstname": "First Name",
     "company": "Company (optional)",
+    "phoneForm": "Phone (optional)",
     "email": "Email",
     "message": "Message",
     "submit": "Send",
@@ -249,6 +250,7 @@
     "nameError": "Invalid last name (minimum 2 letters)",
     "firstnameError": "Invalid first name (minimum 2 letters)",
     "companyError": "Company name must not exceed 30 characters",
+    "phoneError": "Invalid phone number",
     "emailError": "Invalid email",
     "messageError": "Invalid message (at least 50 characters)",
     "success": "Message sent successfully",

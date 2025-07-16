@@ -12,12 +12,14 @@ function Contact() {
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [company, setCompany] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const [lastnameError, setLastnameError] = useState("");
   const [firstnameError, setFirstnameError] = useState("");
   const [companyError, setCompanyError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [messageError, setMessageError] = useState("");
 
@@ -26,6 +28,8 @@ function Contact() {
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isValidMessage = (message) => message.length >= 50;
   const isValidCompanyLength = (name) => name.length <= 30;
+  // phone peut etre entre 10 ou 15 chiffre et on autorise le +
+  const isValidPhone = (phone) => /^(\+?\d{10,15})$/.test(phone);
 
   const handleLastnameChange = (e) => {
     const value = e.target.value;
@@ -50,6 +54,11 @@ function Contact() {
       setCompanyError(t("contact.companyError"));
     }
   };
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    setPhone(value);
+    setPhoneError(isValidPhone(value) ? "" : t("contact.phoneError"));
+  };
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -71,7 +80,8 @@ function Contact() {
       !isValidFirstname(firstname) ||
       !isValidEmail(email) ||
       !isValidMessage(message) ||
-      (company && !isValidCompanyLength(company))
+      (company && !isValidCompanyLength(company)) ||
+      (phone && !isValidPhone(phone))
     ) {
       Swal.fire({
         title: "Erreur",
@@ -85,7 +95,14 @@ function Contact() {
     const response = await fetch(`${BASE_URL}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lastname, firstname, company, email, message }),
+      body: JSON.stringify({
+        lastname,
+        firstname,
+        company,
+        email,
+        phone,
+        message,
+      }),
     });
 
     if (response.ok) {
@@ -100,11 +117,13 @@ function Contact() {
       setLastname("");
       setFirstname("");
       setCompany("");
+      setPhone("");
       setEmail("");
       setMessage("");
       setLastnameError("");
       setFirstnameError("");
       setCompanyError("");
+      setPhoneError("");
       setEmailError("");
       setMessageError("");
     } else {
@@ -218,6 +237,18 @@ function Contact() {
             />
             {companyError && (
               <span className={styles["error-message"]}>{companyError}</span>
+            )}
+
+            <label htmlFor="phone">{t("contact.phoneForm")}:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+            {phoneError && (
+              <span className={styles["error-message"]}>{phoneError}</span>
             )}
 
             <label htmlFor="email">{t("contact.email")}:</label>
