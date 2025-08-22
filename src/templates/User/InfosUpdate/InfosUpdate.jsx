@@ -124,13 +124,21 @@ export default function InfosUpdate() {
       <form onSubmit={handleSubmit}>
         <div className={styles["update-form"]}>
           <div className={styles["form-group"]}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={user.email}
+              readOnly
+            />
             <label htmlFor="firstName">Prénom</label>
             <input
               type="text"
               id="firstName"
               name="firstName"
               value={user.firstName}
-              onChange={handleChange}
+              readOnly
             />
             {errors.firstName && (
               <span className={styles.error}>{errors.firstName}</span>
@@ -142,7 +150,7 @@ export default function InfosUpdate() {
               id="lastName"
               name="lastName"
               value={user.lastName}
-              onChange={handleChange}
+              readOnly
             />
             {errors.lastName && (
               <span className={styles.error}>{errors.lastName}</span>
@@ -160,17 +168,6 @@ export default function InfosUpdate() {
               <span className={styles.error}>{errors.company}</span>
             )}
 
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
-              readOnly
-            />
-
-
             <label htmlFor="phone">Téléphone</label>
             <input
               type="tel"
@@ -182,8 +179,8 @@ export default function InfosUpdate() {
             {errors.phone && (
               <span className={styles.error}>{errors.phone}</span>
             )}
-            
-            <label htmlFor="salesperson">Commercial(e) référent(e)</label>
+
+            {/* <label htmlFor="salesperson">Commercial(e) référent(e)</label>
             <select
               name="salesperson"
               id="salesperson"
@@ -193,9 +190,10 @@ export default function InfosUpdate() {
               <option value="Aucun">Aucun</option>
               <option value="Kenza GAUTIAM">Kenza GAUTIAM</option>
               <option value="Fabrice VALLEE">Fabrice VALLEE</option>
-              <option value="Yanis MEBARKI">Yanis MEBARKI</option>
+              <option value="Fabien PONTIER">Fabien PONTIER</option>
               <option value="Abdulrhaman SHOUGRI">Abdulrhaman SHOUGRI</option>
-            </select>
+
+            </select> */}
           </div>
         </div>
         <button type="submit">Enregistrer les modifications</button>
