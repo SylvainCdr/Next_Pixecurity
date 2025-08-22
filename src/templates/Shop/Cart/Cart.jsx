@@ -47,8 +47,8 @@ export default function Cart({ carouselProducts }) {
   const shippingCost = allDigital ? 0 : 20;
   const totalAmount = calculatedSubTotal + tax + shippingCost;
 
-  // Vérifier si le total est inférieur à 300 €
-  const isAmountValid = totalAmount >= 300;
+  // Vérifier si le total est inférieur à 500 €
+  const isAmountValid = totalAmount >= 500;
 
   return (
     <div className={styles["cart-container"]}>
@@ -91,7 +91,7 @@ export default function Cart({ carouselProducts }) {
           {/* Affichage du message si le montant est inférieur à 400 € */}
           {!isAmountValid && (
             <div className={styles["minimum-order-message"]}>
-              <p  >Le montant minimum de commande est de 300 €.</p>
+              <p  >Le montant minimum de commande est de 500 €.</p>
             </div>
           )}
 
