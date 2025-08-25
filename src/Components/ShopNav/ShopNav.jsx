@@ -4,6 +4,7 @@ import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "../useGetUser";
 import { motion, AnimatePresence } from "framer-motion";
+import { PropagateLoader } from "react-spinners";
 
 function ShopNav() {
   const [brands, setBrands] = useState([]);
@@ -17,6 +18,7 @@ function ShopNav() {
   const user = useGetUser();
   const userId = user?._id;
   const userIdParam = userId ? `?userId=${userId}` : "";
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch(`${BASE_URL}/brands`)
@@ -56,6 +58,7 @@ function ShopNav() {
 
     const fetchSubcategories = async () => {
       try {
+        setIsLoading(true);
         const results = await Promise.all(
           Object.entries(categoriesMap).flatMap(([brand, categories]) =>
             categories.map(async (category) => {
@@ -78,6 +81,8 @@ function ShopNav() {
         setSubcategoriesMap(subcategoriesObj);
       } catch (error) {
         console.error("Erreur chargement des sous-catégories :", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -144,9 +149,9 @@ function ShopNav() {
             {brands.map((brand) => (
               <li
                 key={brand}
-  onClick={() => handleBrandClick(brand)}
-  onMouseEnter={() => handleBrandClick(brand)}
-  className={activeBrand === brand ? "active" : ""}
+                onClick={() => handleBrandClick(brand)}
+                onMouseEnter={() => handleBrandClick(brand)}
+                className={activeBrand === brand ? "active" : ""}
               >
                 {brand}
               </li>
@@ -162,42 +167,42 @@ function ShopNav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            {categoriesMap[activeBrand]?.map((category) => (
-              <div key={category}>
-                <motion.h2
-                  initial={{ x: -20 }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {category}
-                </motion.h2>
-                <motion.ul
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {subcategoriesMap[activeBrand]?.[category]?.map(
-                    (subcategory) => (
-                      <motion.li
-                        key={subcategory}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Link
-                          href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
-                          onClick={handleSubcategoryClick}
-                        >
-                          {subcategory}
-                        </Link>
-                      </motion.li>
-                    )
-                  )}
-                </motion.ul>
+            {isLoading ? (
+              <div className={styles.loaderContainer}>
+                <PropagateLoader color="#0070f3" size={10} />
               </div>
-            ))}
+            ) : (
+              categoriesMap[activeBrand]?.map((category) => (
+                <div key={category}>
+                  <motion.h2
+                    initial={{ x: -20 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {category}
+                  </motion.h2>
+                  <motion.ul
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {subcategoriesMap[activeBrand]?.[category]?.map(
+                      (subcategory) => (
+                        <motion.li key={subcategory}>
+                          <Link
+                            href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
+                            onClick={handleSubcategoryClick}
+                          >
+                            {subcategory}
+                          </Link>
+                        </motion.li>
+                      )
+                    )}
+                  </motion.ul>
+                </div>
+              ))
+            )}
           </motion.div>
         )}
       </div>
@@ -258,34 +263,33 @@ function ShopNav() {
                           transition={{ duration: 0.3 }}
                         >
                           {category}
-                          {activeCategory === category && (
-                            <motion.ul
-                              className={styles.mobileSubcategoryList}
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              {subcategoriesMap[brand]?.[category]?.map(
-                                (subcategory) => (
-                                  <motion.li
-                                    key={subcategory}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                  >
-                                    <Link
-                                      href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
-                                      onClick={handleSubcategoryClick}
-                                    >
-                                      {subcategory}
-                                    </Link>
-                                  </motion.li>
-                                )
-                              )}
-                            </motion.ul>
-                          )}
+                          {activeCategory === category &&
+                            (isLoading ? (
+                              <div className={styles.loaderContainer}>
+                                <PropagateLoader color="#0070f3" size={10} />
+                              </div>
+                            ) : (
+                              <motion.ul
+                                className={styles.mobileSubcategoryList}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {subcategoriesMap[brand]?.[category]?.map(
+                                  (subcategory) => (
+                                    <motion.li key={subcategory}>
+                                      <Link
+                                        href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
+                                        onClick={handleSubcategoryClick}
+                                      >
+                                        {subcategory}
+                                      </Link>
+                                    </motion.li>
+                                  )
+                                )}
+                              </motion.ul>
+                            ))}
                         </motion.li>
                       ))}
                     </motion.ul>
