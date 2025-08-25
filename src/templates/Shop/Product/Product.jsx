@@ -424,7 +424,7 @@ const DiscountedPrice = ({ product }) => {
         </span>{" "}
         <br />
         <span className={styles["discounted-price"]}>
-          {discountPrice.toFixed(2)} € <span>HT</span>
+          {discountPrice.toFixed(2)} € HT <br /><span>(prix public)</span> 
         </span>
       </p>
     );
@@ -432,7 +432,7 @@ const DiscountedPrice = ({ product }) => {
 
   return (
     <p className={styles.price}>
-      {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
+      {product.price ? product.price.toFixed(2) : "00.00"} € HT <br /> <span>(prix public)</span> 
     </p>
   );
 };

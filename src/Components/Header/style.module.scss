@@ -46,8 +46,8 @@
   .lang_button {
     display: flex;
     text-decoration: none;
-    padding: 10px 10px;
-    background-color: inherit;
+    padding: 3px 5px;
+    background-color: transparent;
     color: white;
     border: none;
     cursor: pointer;
@@ -264,7 +264,7 @@
     ul {
       position: fixed;
       left: -110%;
-      top: 4em;
+      top: 4.55em;
       flex-direction: column;
       transition: 0.25s;
       background-color: rgb(57, 57, 57);

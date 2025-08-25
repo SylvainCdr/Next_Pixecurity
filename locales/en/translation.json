@@ -49,14 +49,26 @@
     "section2Text2": "Our mission: to support you with the best products and tailor-made solutions, rethinking security according to your needs."
   },
   "home": {
-    "offerTitle": "A Revolutionary Offering for Security and Safety",
-    "offerDescription1": "Pixecurity ensures the protection of your personal data with advanced solutions: cutting-edge electronic equipment, an innovative project management platform for seamless interaction with our experts, custom developments tailored to your needs, and robust cybersecurity integrations.",
-    "offerDescription2": "In terms of compliance, our certified consultants deliver certifications aligned with the most demanding standards. With comprehensive coverage of the value chain, Pixecurity positions itself as the leader in next-generation security and video surveillance solutions, combining innovation and expertise.",
+    "offerTitle": "A Revolutionary Offer for Security and Safety",
+    "offerDescription1": "Pixecurity guarantees the protection of your personal data through advanced solutions: providing cutting-edge electronic equipment, an innovative project management platform for smooth interaction with our experts, customized developments tailored to your needs, and robust cybersecurity solutions integration.",
+    "offerDescription2": "In terms of compliance, our certified consultants provide certifications that meet the highest standards. With full coverage of the value chain, Pixecurity positions itself as the leader in next-generation security and video surveillance solutions, combining innovation and expertise.",
     "aboutUsTitle": "About Pixecurity",
-    "aboutUsDescription": "Visionary engineers and 3.0 experts, born in the digital era, combining expertise in construction, network infrastructure, and cutting-edge building technologies. Always staying ahead of technological advancements, our teams are true security artisans, dedicated to crafting tailor-made solutions perfectly aligned with the specific needs of our clients.",
-    "ourTeam": "Our team",
-    "ourExpertise": "Our expertise",
-    "contactUs": "Contact Us"
+    "aboutUsDescription": "Visionary engineers and 3.0 experts, digital natives, combining expertise in civil engineering, network infrastructures, and innovative technologies for connected buildings. Always at the forefront of technological advancements, our teams are true safety artisans, committed to designing bespoke solutions perfectly tailored to our clients' specific needs.",
+    "ourTeam": "Our Team",
+    "ourExpertise": "Our Expertise",
+    "contactUs": "Contact Us",
+    "pixecurityPresence": "Pixecurity, present throughout France and internationally to support you",
+    "pixecurityExpertise": "Pixecurity offers local expertise with a national and international presence. Our offices are located in Paris, the strategic heart of our activity, while our sales teams are also based in Bordeaux and Lyon to be closer to our clients. We serve clients around the world, offering global security solutions.",
+    "pixecurityRegions": "Whether you are in Île-de-France, the North, South-East, or South-West of France, or anywhere across the globe, our experts are here to advise and support you in your security and safety projects.",
+    "paris": "Paris",
+    "parisDescription": "Headquarters - Study, Consulting, and Support",
+    "lille": "Lille",
+    "lilleDescription": "Branch - Consulting and Support",
+    "bordeaux": "Bordeaux",
+    "bordeauxDescription": "Branch - Consulting and Support",
+    "lyon": "Lyon",
+    "lyonDescription": "Branch - Consulting and Support",
+    "mapAltText": "Activity map"
   },
   "skills": {
     "videoprotection": {
@@ -232,7 +244,6 @@
       "subtitle": "Qualified specialists who bring their expertise to provide optimal protection."
     }
   },
-  
   "contact": {
     "title": "Contact us",
     "subtitle": "A need ? A project ?",

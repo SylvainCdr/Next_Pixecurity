@@ -225,6 +225,12 @@ function Header() {
             >
               <img src="/assets/icons/english-logo.png" alt="English" />
             </button>
+            <button
+              onClick={() => changeLanguage("ar")}
+              className={styles.lang_button}
+            >
+              <img src="/assets/icons/uae-logo.png" alt="Arabic" />
+            </button>
           </div>
         )}
       </nav>

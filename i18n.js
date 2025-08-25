@@ -2,6 +2,8 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslations from './locales/en/translation.json';
 import frTranslations from './locales/fr/translation.json';
+import arTranslations from './locales/ar/translation.json';
+
 
 i18next
   .use(initReactI18next)
@@ -9,6 +11,7 @@ i18next
     resources: {
       en: { translation: enTranslations },
       fr: { translation: frTranslations },
+      ar: { translation: arTranslations },
     },
     lng: 'fr', // Langue par défaut définie sur 'fr'
     fallbackLng: 'fr', // Langue de repli définie sur 'fr'

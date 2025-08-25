@@ -100,7 +100,11 @@ export default function Home() {
 
         <div className={styles.newPartner}>
           <a href="https://diviniti.tech">
-          <img className={styles.newPartnerImg} src="/assets/shop/banners/banner5.webp" alt="" />
+            <img
+              className={styles.newPartnerImg}
+              src="/assets/shop/banners/banner5.webp"
+              alt=""
+            />
           </a>
         </div>
 
@@ -111,52 +115,37 @@ export default function Home() {
         <div className={styles.learnMore}>
           <div className={styles.learnMoreMap}>
             <div className={styles.mapLeft}>
-              <h3>
-                Pixecurity, présent partout en France pour vous accompagner
-              </h3>
-              <p>
-                Pixecurity, c’est une expertise locale avec une présence
-                nationale. Nos bureaux sont situés à Paris, cœur stratégique de
-                notre activité, tandis que nos équipes commerciales sont
-                également implantées à Bordeaux et Lyon pour être au plus proche
-                de nos clients.
-              </p>
-
-              <p>
-                Que vous soyez en Île-de-France, dans le Sud-Est ou dans le
-                Sud-Ouest, nos experts sont là pour vous conseiller et vous
-                accompagner dans vos projets de sécurité et de sûreté.
-              </p>
+              <h3>{t("home.pixecurityPresence")}</h3>
+              <p>{t("home.pixecurityExpertise")}</p>
+              <p>{t("home.pixecurityRegions")}</p>
 
               <ul>
                 <li>
-                  <i class="fa-solid fa-location-dot"></i>{" "}
-                  <strong>Paris</strong> – Siège - Etude, Conseil et
-                  accompagnement
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  <strong>{t("home.paris")}</strong> –{" "}
+                  {t("home.parisDescription")}
                 </li>
 
                 <li>
-                  <i class="fa-solid fa-location-dot"></i>{" "}
-                  <strong>Lille</strong> – Antenne - Conseil et accompagnement
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  <strong>{t("home.lille")}</strong> –{" "}
+                  {t("home.lilleDescription")}
                 </li>
                 <li>
-                  <i class="fa-solid fa-location-dot"></i>{" "}
-                  <strong>Bordeaux</strong> – Antenne - Conseil et
-                  accompagnement
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  <strong>{t("home.bordeaux")}</strong> –{" "}
+                  {t("home.bordeauxDescription")}
                 </li>
                 <li>
-                  <i class="fa-solid fa-location-dot"></i> <strong>Lyon</strong>{" "}
-                  – Antenne- Conseil et accompagnement
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  <strong>{t("home.lyon")}</strong> –{" "}
+                  {t("home.lyonDescription")}
                 </li>
               </ul>
-              {/* <p>
-              Besoin d’un accompagnement personnalisé ? Contactez nos experts
-              dès aujourd’hui !
-            </p> */}
             </div>
 
             <div className={styles.mapRight}>
-              <img src="/assets/homepage/map2.png" alt="carte activité" />
+              <img src="/assets/homepage/map2.png" alt={t("home.mapAltText")} />
             </div>
           </div>
 

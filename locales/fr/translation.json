@@ -50,13 +50,25 @@
   },
   "home": {
     "offerTitle": "Une Offre Révolutionnaire pour la Sécurité et la Sûreté",
-    "offerDescription1": "Pixecurity garantit la protection de vos données personnelles grâce à des solutions avancées : fourniture d'équipements électroniques de pointe, plateforme innovante de gestion de projets pour une interaction fluide avec nos experts, développements spécifiques adaptés à vos besoins, et intégration de solutions de cybersécurité robustes. ",
+    "offerDescription1": "Pixecurity garantit la protection de vos données personnelles grâce à des solutions avancées : fourniture d'équipements électroniques de pointe, plateforme innovante de gestion de projets pour une interaction fluide avec nos experts, développements spécifiques adaptés à vos besoins, et intégration de solutions de cybersécurité robustes.",
     "offerDescription2": "En matière de conformité, nos consultants certifiés délivrent des certifications adaptées aux normes les plus exigeantes. Avec une couverture complète de la chaîne de valeur, Pixecurity se positionne comme le leader des solutions de sécurité et de vidéosurveillance de nouvelle génération, combinant innovation et expertise.",
     "aboutUsTitle": "À propos de Pixecurity",
     "aboutUsDescription": "Des ingénieurs visionnaires et experts 3.0, natifs du numérique, combinant expertise dans le BTP, les infrastructures réseaux, et les technologies innovantes pour les bâtiments connectés. Toujours à la pointe des avancées technologiques, nos équipes sont de véritables artisans de la sûreté, engagés à concevoir des solutions sur-mesure, parfaitement adaptées aux besoins spécifiques de nos clients.",
     "ourTeam": "Notre équipe",
     "ourExpertise": "Notre expertise",
-    "contactUs": "Contactez-nous"
+    "contactUs": "Contactez-nous",
+    "pixecurityPresence": "Pixecurity, présent partout en France pour vous accompagner",
+    "pixecurityExpertise": "Pixecurity, c’est une expertise locale avec une présence nationale. Nos bureaux sont situés à Paris, cœur stratégique de notre activité, tandis que nos équipes commerciales sont également implantées à Bordeaux et Lyon pour être au plus proche de nos clients.",
+    "pixecurityRegions": "Que vous soyez en Île-de-France, dans le Nord, dans le Sud-Est ou dans le Sud-Ouest, nos experts sont là pour vous conseiller et vous accompagner dans vos projets de sécurité et de sûreté.",
+    "paris": "Paris",
+    "parisDescription": "Siège - Etude, Conseil et accompagnement",
+    "lille": "Lille",
+    "lilleDescription": "Antenne - Conseil et accompagnement",
+    "bordeaux": "Bordeaux",
+    "bordeauxDescription": "Antenne - Conseil et accompagnement",
+    "lyon": "Lyon",
+    "lyonDescription": "Antenne- Conseil et accompagnement",
+    "mapAltText": "carte activité"
   },
   "skills": {
     "videoprotection": {

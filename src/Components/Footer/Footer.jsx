@@ -12,14 +12,14 @@ function Footer() {
         <img src="/assets/logo-dark.svg" alt="Logo Pixecurity" loading="lazy" />
         <p>{t("footer.description")}</p>
       </div>
-      <div className={styles["section-2"]}>
+      {/* <div className={styles["section-2"]}>
         <img
           className={styles.mase}
           src="/assets/icons/mase.png"
           alt="Logo MASE"
           loading="lazy"
         />
-      </div>
+      </div> */}
       <div className={styles["section-3"]}>
         <h4>{t("footer.siteMap")}</h4>
         <ul>

@@ -50,7 +50,7 @@ export default function AboutUs() {
       role: "Technicien Supérieur Systèmes & Réseaux",
       src: "/assets/team/MATHIEU_P.jpg",
     },
-    
+
     {
       name: "Dyhia LAGA",
       role: "Chargée d'Etude Avant-Vente",
@@ -71,7 +71,6 @@ export default function AboutUs() {
       role: "Assistante de Direction",
       src: "/assets/team/NATHALIE.jpg",
     },
-
     {
       name: "Adrien DESDOITS",
       role: "Technicien de Mise en Service",
@@ -82,7 +81,6 @@ export default function AboutUs() {
       role: "Assistante de Direction",
       src: "/assets/team/JESSICA.jpg",
     },
-
     {
       name: "Aziz ARJDAL",
       role: "Technicien de Mise en Service Supérieur ",
@@ -93,38 +91,21 @@ export default function AboutUs() {
       role: "Développeur",
       src: "/assets/team/SYLVAIN.jpg",
     },
-
     {
       name: "Yasmina AOUAM",
       role: "Chargée d'Etude Avant-Vente",
       src: "/assets/team/YASMINA.jpg",
     },
-
-    // {
-    //   name: "Vincent ROCHETTE",
-    //   role: "Responsable Commercial Sud-Est",
-    //   src: "/assets/team/VINCENT.webp",
-    // },
     {
       name: "Antoine COUDERT",
       role: "Commercial",
       src: "/assets/team/ANTOINE.webp",
     },
     {
-      name: "Morgane PEREIRA",
-      role: "Assistante Administrative",
-      src: "/assets/team/MORGANE_.webp",
-    },
-    {
       name: "Hector RICHARD",
       role: "Technicien de Mise en Service",
       src: "/assets/team/HECTOR.webp",
     },
-    // {
-    //   name: "Stecie RAZA",
-    //   role: "Chargée de Communication & Marketing",
-    //   src: "/assets/team/STECIE_.webp",
-    // },
     {
       name: "Eric SWORNOWSKI",
       role: "Commercial Sud-Ouest",

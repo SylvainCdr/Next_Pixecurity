@@ -9,15 +9,14 @@ const heroImages = [
     url: "/assets/shop/banners/banner5.webp",
   },
   {
-    url: "/assets/shop/banners/banner3.webp",
-  },
-  {
     url: "/assets/shop/banners/banner1.webp",
   },
   {
     url: "/assets/shop/banners/banner2.webp",
   },
-
+  {
+    url: "/assets/shop/banners/banner4.webp",
+  },
 ];
 
 const ShopHeroCarousel = () => {
