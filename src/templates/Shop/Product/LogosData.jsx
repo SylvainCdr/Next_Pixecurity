@@ -55,4 +55,5 @@ export const logos = [
     name: "teledyne flir",
     logo: "/assets/shop/shopLogos/flir.svg",
   },
+  { name: "6SS", logo: "/assets/shop/shopLogos/6SS.png" },
 ];
