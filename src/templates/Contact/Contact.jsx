@@ -138,11 +138,11 @@ function Contact() {
     }
   };
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1700,
-    });
-  }, []);
+useEffect(() => {
+  if (window.innerWidth > 768) {
+    import("aos").then((AOS) => AOS.init({ duration: 2300 }));
+  }
+}, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,6 +161,8 @@ function Contact() {
       <Head>
         <title>{t("contact.title")} - Pixecurity</title>
         <meta name="description" content={t("contact.description")} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <meta
           name="keywords"
           content="contact, nous contacter, projet, sécurité, solutions de sûreté, surveillance, Pixecurity, france, paris, vidéoprotection, contrôle d'accès, analyse d'image, hypervision, réseau, caméra, switch, bullet, ptz, dôme, bosch, vivotek, i-pro, zyxel, vms, milestone, til"

@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // ✅ Active la compression Gzip/Brotli
+  compress: true,
+
+  // ✅ Optimise les polices Google automatiquement
+  optimizeFonts: true,
+
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
