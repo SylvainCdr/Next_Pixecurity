@@ -6,9 +6,11 @@ import { BASE_URL } from "../../url";
 import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 function Contact() {
   const { t } = useTranslation();
+  const [showMap, setShowMap] = useState(false);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [company, setCompany] = useState("");
@@ -138,8 +140,20 @@ function Contact() {
 
   useEffect(() => {
     AOS.init({
-      duration: 2300,
+      duration: 1700,
     });
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setShowMap(true);
+      },
+      { threshold: 0.1 }
+    );
+    const el = document.getElementById("map-container");
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -157,14 +171,24 @@ function Contact() {
 
       <div className={styles["contact-container"]}>
         <div className={styles["contact-section"]}>
-          <div data-aos="flip-down" className={styles["visit-card"]}>
+          <div className={styles["visit-card"]}>
             <h2>{t("contact.title")}</h2>
             <h1>{t("contact.subtitle")}</h1>
             <h3>{t("contact.description")}</h3>
 
             <p>
-              <img src="/assets/logo-dark.svg" alt="Pixecurity Logo" />
+              <Image
+                src="/assets/logo-dark.svg"
+                alt="Pixecurity Logo"
+                width={200}
+                height={80}
+              />
+              <p>
+                {" "}
+                <i className="fa-solid fa-building"></i>Pixecurity
+              </p>
             </p>
+
             <p>
               <i className="fa-solid fa-phone"></i>
               {t("contact.phone")}
@@ -187,19 +211,23 @@ function Contact() {
             </p>
           </div>
 
-          <div data-aos="flip-up" className={styles.map}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.3192053317075!2d2.1426642!3d48.9474075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e661bf4bc8b7a5%3A0x530ca1d69735aaaf!2sPixecurity!5e0!3m2!1sen!2sfr!4v1707475449842!5m2!1sen!2sfr"
-              width="600"
-              height="450"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className={styles.map}>
+            <div id="map-container" className={styles.map}>
+              {showMap && (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.3192053317075!2d2.1426642!3d48.9474075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e661bf4bc8b7a5%3A0x530ca1d69735aaaf!2sPixecurity!5e0!3m2!1sen!2sfr!4v1707475449842!5m2!1sen!2sfr"
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              )}
+            </div>
           </div>
         </div>
 
-        <div data-aos="flip-right" className={styles["contact-form"]}>
+        <div data-aos="flip-left" className={styles["contact-form"]}>
           <form onSubmit={handleFormSubmit}>
             <label htmlFor="lastname">{t("contact.name")}:</label>
             <input
