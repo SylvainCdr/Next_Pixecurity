@@ -1,5 +1,5 @@
 .homepageHeroContainer {
-  height: 110vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -124,8 +124,6 @@
   }
 
   @media screen and (max-width: 1000px) {
-    height: 100vh;
-
     h4 {
       font-size: 2rem;
       font-weight: 600;
@@ -162,6 +160,7 @@
       }
     }
   }
+
   @media screen and (max-width: 800px) {
     .imageWrapper {
       .heroImage {
@@ -174,7 +173,7 @@
       left: 15%;
       position: absolute;
       width: 70%;
-      background-color: #ffffff49;
+      background-color: #ffffff2f;
 
       h1 {
         font-size: 2.3rem;
@@ -199,49 +198,59 @@
   }
 
   @media screen and (max-width: 600px) {
-    .titles {
-      top: 35%;
-      left: 3%;
-      position: absolute;
-      width: 80%;
-      background-color: #ffffff49;
+    .homepageHeroContainer {
+      height: 80vh; /* OK */
 
-      h1 {
-        font-size: 2.3rem;
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.2rem;
-        margin-bottom: 0.5em;
+      .imageWrapper {
+        height: 80vh; /* Mettre la même hauteur que le parent */
       }
 
-      h2 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: 0.05rem;
-        line-height: 1.2;
+      .heroImage {
+        object-position: 45% 0%;
       }
 
-      .homepageHeroCta {
-        display: flex;
+      .titles {
+        top: 30%;
+        left: 7%;
+        position: absolute;
+        width: 80%;
+        background-color: #ffffff4f;
 
-        align-items: center;
-        button {
-          padding: 0.6rem 1rem;
+        h1 {
+          font-size: 2.3rem;
+          font-family: "Barlow Condensed", sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.2rem;
+          margin-bottom: 0.5em;
+        }
+
+        h2 {
+          font-size: 1.2rem;
+          font-weight: 600;
+          letter-spacing: 0.05rem;
+          line-height: 1.2;
+        }
+
+        .homepageHeroCta {
+          display: flex;
+
+          align-items: center;
+          button {
+            padding: 0.6rem 1rem;
+          }
         }
       }
     }
   }
 
   @media screen and (max-width: 450px) {
-    height: 90vh;
-
     h4 {
       font-size: 1.8rem;
       font-weight: 600;
     }
 
     .titles {
-      top: 35%;
+      top: 30%;
       left: 3%;
       position: absolute;
       width: 80%;
