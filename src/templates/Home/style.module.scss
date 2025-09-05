@@ -96,94 +96,13 @@
     width: 100%;
     margin-bottom: 2rem;
 
-    
     .newPartnerImg {
       max-width: 1440px;
       width: 100%;
     }
     a:hover {
-      scale : 1.01;
+      scale: 1.01;
       transition: scale 0.3s ease-in-out;
-    }
-  }
-
-  .learnMore {
-    background-image: url("/assets/homepage/wave3.webp");
-    background-size: cover;
-    padding: 1rem;
-    margin-bottom: 1rem;
-
-    .learnMoreMap {
-      display: flex;
-      width: 100%;
-
-      .mapLeft {
-        width: 60%;
-        color: rgb(255, 255, 255);
-        padding-left: 6rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-weight: 400;
-
-        p {
-          font-size: 1.2rem;
-          line-height: 1.6rem;
-          margin-bottom: 1.2rem;
-        }
-
-        ul {
-          margin-top: 2rem;
-          list-style-type: none;
-
-          li {
-            i {
-              margin-right: 0.5em;
-              color: #760498;
-              text-shadow: 1px 1px 4px #ffffff;
-            }
-            strong {
-              font-weight: 600;
-            }
-            margin-bottom: 0.5em;
-            font-size: 1.4rem;
-            line-height: 1.5rem;
-          }
-        }
-      }
-
-      .mapRight {
-        width: 40%;
-
-        img {
-          width: 100%;
-        }
-      }
-    }
-
-    .learnMoreCTA {
-      display: flex;
-      margin-bottom: 5rem;
-      margin-top: 3rem;
-
-      h4 {
-        font-size: 3.3rem;
-        font-weight: 700;
-        padding-left: 6rem;
-        width: 60%;
-        text-transform: uppercase;
-        text-shadow: #760498 2px 2px 10px;
-      }
-
-      a {
-        text-decoration: none;
-        margin: auto;
-      }
-
-      button {
-        width: 15rem;
-        background-color: #760498;
-      }
     }
   }
 
@@ -219,45 +138,6 @@
       }
       .section4-img {
         width: 100%;
-      }
-    }
-
-    .learnMore {
-      .learnMoreMap {
-        flex-direction: column;
-        .mapLeft {
-          width: 100%;
-          padding-left: 1rem;
-
-          p {
-            font-size: 1.1rem;
-            line-height: 1.5rem;
-          }
-          ul {
-            li {
-              font-size: 1.2rem;
-              line-height: 1.4rem;
-            }
-          }
-        }
-        .mapRight {
-          width: 100%;
-          text-align: center;
-
-          img {
-            width: 50%;
-          }
-        }
-      }
-
-      .learnMoreCTA {
-        h4 {
-          font-size: 2.5rem;
-          padding-left: 2rem;
-        }
-        button {
-          width: 12rem;
-        }
       }
     }
   }
@@ -299,50 +179,6 @@
     }
     .newPartner {
       display: none;
-    }
-
-    .learnMore {
-      padding: 0.5rem;
-
-      .learnMoreMap {
-        padding-top: 2rem;
-        .mapLeft {
-          padding-left: 0rem;
-          p {
-            font-size: 1rem;
-            line-height: 1.5rem;
-          }
-          ul {
-            li {
-              font-size: 0.9rem;
-              line-height: 1.4rem;
-            }
-          }
-        }
-        .mapRight {
-          img {
-            width: 70%;
-          }
-        }
-      }
-      .learnMoreCTA {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin-top: 0;
-
-        h4 {
-          padding-top: 0rem;
-          font-size: 1.8rem;
-          width: 100%;
-          padding: 0 0;
-        }
-
-        button {
-          margin-top: 1rem;
-          width: 12rem;
-        }
-      }
     }
   }
 }

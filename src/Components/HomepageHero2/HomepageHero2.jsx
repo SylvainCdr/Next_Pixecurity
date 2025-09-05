@@ -11,16 +11,15 @@ export default function HomepageHero2() {
 
   return (
     <div className={styles.homepageHeroContainer}>
-
-<div className={styles.imageWrapper}>
-<Image
-  src="/assets/homepage/homepage-hero.webp"
-  alt="Hero Image"
-  layout="fill"
-  objectFit="cover"
-  priority // Chargement instantané
-/>
-</div>
+      <div className={styles.imageWrapper}>
+        <Image
+          src="/assets/homepage/homepage-hero.webp"
+          alt="Hero Image"
+          fill // ✅ Utilise `fill` (booléen)
+          priority // ✅ Nécessaire pour LCP
+          className={styles.heroImage}
+        />
+      </div>
 
       <h4>
         Smarter. <br /> Safer.

@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import styles from "./style.module.scss";
 import { useTranslation } from "next-i18next";
-
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Head from "next/head";
-import Hero from "@/Components/HomepageHero/HomepageHero";
 import HomepageSkills from "@/Components/HomepageSkills/HomepageSkills";
 import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
 import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
-import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import HomepageHero2 from "@/Components/HomepageHero2/HomepageHero2";
+import HompepageLearnMoreMap from "@/Components/HomepageLearnMoreMap/HomepageLearnMoreMap";
 
 export default function Home() {
   useEffect(() => {
@@ -64,16 +62,13 @@ export default function Home() {
       </Head>
 
       <div className={styles["homepage-container"]}>
-        <RegisterPopup />
-        {/* <Hero /> */}
+      
         <HomepageHero2 />
         <div className={styles["section2-offer"]}>
           <h3>{t("home.offerTitle")}</h3>
           <p>{t("home.offerDescription1")}</p>
           <p>{t("home.offerDescription2")}</p>
-          {/* "offerTitle": "Une offre pensée autrement",
-     "offerDescription": "La protection de vos données personnelles certifiée Pixecurity c'est : la fourniture d'outils électroniques, une plateforme de gestion de projets réalisée en propre pour faciliter l'interaction avec nos experts, des développements spécifiques et sur mesure, la mise en place de solutions cyber. Des certifications de conformités délivrées par nos consultants sur du compliance : Pixecurity couvre toute la haute chaîne de valeur de la sûreté. Pixecurity est le fournisseur de solutions de sûreté 3.0.",
-     */}
+         
         </div>
 
         <HomepageSkills />
@@ -112,7 +107,7 @@ export default function Home() {
 
         <HomepageCustomersSlider />
 
-        <div className={styles.learnMore}>
+        {/* <div className={styles.learnMore}>
           <div className={styles.learnMoreMap}>
             <div className={styles.mapLeft}>
               <h3>{t("home.pixecurityPresence")}</h3>
@@ -145,7 +140,7 @@ export default function Home() {
             </div>
 
             <div className={styles.mapRight}>
-              <img src="/assets/homepage/map2.png" alt={t("home.mapAltText")} />
+              <img src="/assets/homepage/map2.webp" alt={t("home.mapAltText")} />
             </div>
           </div>
 
@@ -155,7 +150,8 @@ export default function Home() {
               <button> {t("home.contactUs")}</button>
             </Link>
           </div>
-        </div>
+        </div> */}
+        <HompepageLearnMoreMap />
         <div className={styles.linkedinFeedCarousel}>
           <iframe
             width="100%"

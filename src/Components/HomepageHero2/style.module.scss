@@ -5,10 +5,10 @@
 
   /* Conteneur de l'image */
   .imageWrapper {
-    position: absolute;
+    position: relative; // ✅ essentiel pour <Image fill />
     width: 100%;
     height: 100%;
-    z-index: -1; // Derrière le texte
+    z-index: -1;
 
     /* Pseudo-élément pour le filtre */
     &::after {
@@ -23,6 +23,10 @@
         rgba(122, 122, 122, 0) 60%
       );
     }
+    .heroImage {
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   h4 {
@@ -30,6 +34,7 @@
     font-weight: 600;
     letter-spacing: 0rem;
     margin-bottom: 0rem;
+    position: absolute;
     margin-top: 2%;
     margin-left: 2%;
     color: var(--sunset1);
@@ -76,7 +81,7 @@
 
   @media screen and (max-width: 1300px) {
     .imageWrapper {
-      img {
+      .heroImage {
         object-position: 35% 0%;
       }
     }
@@ -158,6 +163,12 @@
     }
   }
   @media screen and (max-width: 800px) {
+    .imageWrapper {
+      .heroImage {
+        object-position: 40% 0%;
+      }
+    }
+
     .titles {
       top: 35%;
       left: 15%;
