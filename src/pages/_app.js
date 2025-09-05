@@ -1,49 +1,3 @@
-// import "@/index.css";
-// import "aos/dist/aos.css";
-// import { useEffect } from "react";
-// import { AppProvider } from "@/Components/appContext";
-// import { CartProvider } from "@/Components/cartContext";
-// import Template from "@/Components/Template/Template";
-// import Head from "next/head";
-// import '../../i18n';
-// import { appWithTranslation } from 'next-i18next';
-
-//  function App({ Component, pageProps }) {
-//   useEffect(() => {
-//     // Charger le script Google Analytics
-//     const script = document.createElement("script");
-//     script.src = `https://www.googletagmanager.com/gtag/js?id=G-JVBQQF1007`;
-//     script.async = true;
-//     document.head.appendChild(script);
-
-//     // Initialiser Google Analytics
-//     window.dataLayer = window.dataLayer || [];
-//     function gtag() {
-//       window.dataLayer.push(arguments);
-//     }
-//     gtag("js", new Date());
-//     gtag("config", "G-JVBQQF1007");
-//   }, []);
-
-//   return (
-//     <>
-//       <Head>
-//         {/* Viewport Meta Tag for Mobile Optimization */}
-//         <meta name="viewport" content="width=device-width, initial-scale=1" />
-//       </Head>
-//       <AppProvider>
-//         <CartProvider>
-//           <Template>
-//             <Component {...pageProps} />
-//           </Template>
-//         </CartProvider>
-//       </AppProvider>
-//     </>
-//   );
-// }
-
-// export default appWithTranslation(App);
-
 import "@/index.css";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -55,37 +9,38 @@ import "../../i18n";
 import { appWithTranslation } from "next-i18next";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 
 function App({ Component, pageProps }) {
   useEffect(() => {
-    // Chargement direct de GTM + GA
     loadGtmAndGa();
-    // Chargement direct Umami
     loadUmami();
 
+    // Charger Font Awesome CSS dynamiquement
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";
+    link.crossOrigin = "anonymous";
+    document.head.appendChild(link);
 
-
-    // Chargement conditionnel Albacross selon consentement
     const consent = getCookieConsentValue("pixecurityCookieConsent");
     if (consent === "true") {
       loadAlbacross();
     }
   }, []);
 
-const umamiWebsiteId = "65d60149-6fad-4181-8a40-ce680cbb0d2e"; 
-const umamiScriptUrl = "https://umami-analytics-navy-nu.vercel.app/script.js";
+  const umamiWebsiteId = "65d60149-6fad-4181-8a40-ce680cbb0d2e";
+  const umamiScriptUrl = "https://umami-analytics-navy-nu.vercel.app/script.js";
 
-function loadUmami() {
-  if (!window.umami) {
-    const script = document.createElement("script");
-    script.defer = true;
-    script.setAttribute("data-website-id", umamiWebsiteId);
-    script.src = umamiScriptUrl;
-    document.head.appendChild(script);
+  function loadUmami() {
+    if (!window.umami) {
+      const script = document.createElement("script");
+      script.defer = true;
+      script.setAttribute("data-website-id", umamiWebsiteId);
+      script.src = umamiScriptUrl;
+      document.head.appendChild(script);
+    }
   }
-}
-
 
   const loadGtmAndGa = () => {
     // Google Tag Manager
