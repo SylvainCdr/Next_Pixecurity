@@ -156,6 +156,15 @@ function Header() {
                   {t("header.rse")}
                 </Link>
               </li>
+              <li
+                className={
+                  pathname === "/whats-up-pixecurity" ? styles.active : ""
+                }
+              >
+                <Link href="/whats-up-pixecurity" onClick={handleLinkClick}>
+                  {t("header.whatsUpPixecurity")}
+                </Link>
+              </li>
             </ul>
           </li>
           <li className={pathname === "/contact" ? styles.active : ""}>
