@@ -44,7 +44,6 @@ export default function Quotation() {
       projectDetails: formData.get("projectDetails"),
     };
 
-
     try {
       const response = await fetch(`${BASE_URL}/quotation`, {
         method: "POST",
@@ -72,7 +71,6 @@ export default function Quotation() {
           icon: "error",
         });
       }
-      
     } catch (error) {
       Swal.fire({
         title: "Erreur",
@@ -88,7 +86,8 @@ export default function Quotation() {
     <div className={styles.quotationContainer}>
       <h1>Demandez Votre Devis Gratuit et Personnalisé</h1>
       <h3>
-      Des Solutions Personnalisées pour la Vidéosurveillance, l'Analyse d'Images, le Contrôle d'Accès, et Plus Encore
+        Des Solutions Personnalisées pour la Vidéosurveillance, l'Analyse
+        d'Images, le Contrôle d'Accès, et Plus Encore
       </h3>
       <form onSubmit={handleFormSubmit}>
         {/* Informations de Contact */}
@@ -177,9 +176,7 @@ export default function Quotation() {
               <option value="no">Non</option>
             </select>
 
-            <label htmlFor="existingVideoSystemDetails">
-              Si oui, lequel ?
-            </label>
+            <label htmlFor="existingVideoSystemDetails">Si oui, lequel ?</label>
             <input
               type="text"
               id="existingVideoSystemDetails"
@@ -267,11 +264,7 @@ export default function Quotation() {
             <label htmlFor="currentStorage">
               Si oui, quelle est la capacité de stockage actuelle ?
             </label>
-            <input
-              type="text"
-              id="currentStorage"
-              name="currentStorage"
-            />
+            <input type="text" id="currentStorage" name="currentStorage" />
 
             <label htmlFor="expansion">
               Prévision de croissance du réseau/stockage?

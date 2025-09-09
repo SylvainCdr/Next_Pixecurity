@@ -156,6 +156,8 @@
       }
 
       .product-details {
+             margin-top : 1rem;
+   
         .product-title {
           margin-right: 20px;
 
@@ -181,6 +183,7 @@
 
       .product-price {
         font-weight: 500;
+             margin-top : 1rem;
 
         .original-price {
           text-decoration: line-through;
@@ -199,8 +202,9 @@
       }
 
       .product-quantity {
+             margin-top : 0.6rem;
         input {
-          width: 3em;
+          width: 4em;
           height: 1.8em;
           border-radius: 5px;
           -webkit-border-radius: 5px;
@@ -213,14 +217,20 @@
       .remove-product {
         color: rgb(26, 85, 234);
         font-size: 0.8em;
+      
         cursor: pointer;
+      }
+      .product-line-price {
+        margin-top : 1rem;
       }
     }
 
     /* Totals section */
     .totals {
+     
       font-size: 1.1em;
       .totals-item {
+        
         float: right;
         clear: both;
         width: 100%;

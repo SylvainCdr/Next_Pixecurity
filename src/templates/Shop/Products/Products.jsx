@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 import { PropagateLoader } from "react-spinners";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+// import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import { useGetUser } from "@/Components/useGetUser";
 import useFavorites from "@/Components/useFavorites";
 import { useCartContext } from "@/Components/cartContext";
@@ -76,7 +76,7 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
   <meta name="twitter:image" content="https://uploads.pixecurity.com/files/fav-pix-shop_1.png" /> 
 </Head>
 
-      <RegisterPopup />
+      {/* <RegisterPopup /> */}
       <ShopNav setIsSubcategoryLoading={setIsSubcategoryLoading} />
       <ShopSearch isHero={false} onSearchResults={handleSearchResults} />
 

@@ -1,14 +1,12 @@
 .request-quote-button {
-  float : right;
-  margin : 1.3rem 0;
+  float: right;
+  margin: 1.3rem 0;
   font-size: 1.2rem;
-
 }
 
 .request-quote-button:hover {
   background-color: #45a049;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -26,7 +24,7 @@
 
 .modal-content {
   background: #fff;
-  padding: 15px;
+  padding: 30px;
   border-radius: 10px;
   width: 70%;
   height: auto;
@@ -120,14 +118,12 @@
   }
 
   .submit-button {
-
     margin-top: 2rem;
     color: white;
     border: none;
-  
+
     cursor: pointer;
     transition: background-color 0.3s ease;
-
   }
 
   .submit-button:hover {
@@ -139,5 +135,6 @@
   .modal-content {
     width: 90%;
     height: auto;
+    padding: 15px;
   }
 }

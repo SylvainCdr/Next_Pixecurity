@@ -12,7 +12,7 @@ import ShopSearch from "@/Components/ShopSearch/ShopSearch";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import Head from "next/head";
 import Link from "next/link";
-import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
+// import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import Image from "next/image";
 import { ProductRequestQuoteModal } from "@/Components/ProductRequestQuoteModal/ProductRequestQuoteModal";
 
@@ -164,7 +164,7 @@ export default function Product({ product, id, suggestions }) {
         />
       </Head>
 
-      <RegisterPopup />
+      {/* <RegisterPopup /> */}
       <ShopNav />
       <div className={styles.breadcrumbs}>
         {product.brand} {"  "}
