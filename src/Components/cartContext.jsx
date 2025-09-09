@@ -153,13 +153,19 @@ const useCart = () => {
   const handleVisitorSubmit = () => {
     if (pendingProduct) {
       // Sauvegarder l'email dans le localStorage
-      if (visitorEmail) {
-        localStorage.setItem("visitorEmail", visitorEmail);
-      }
+      if (visitorEmail) localStorage.setItem("visitorEmail", visitorEmail);
 
-      addToCart(pendingProduct.product, pendingProduct.quantity, visitorEmail);
+      // 🔹 Au lieu d'ajouter le produit à nouveau, on met à jour le visitorEmail dans les carts existants
+      setCarts((cs) =>
+        cs.map((c) => ({
+          ...c,
+          visitorEmail: visitorEmail || c.visitorEmail || null,
+        }))
+      );
+
       setPendingProduct(null);
     }
+
     setVisitorChoiceMade(true);
     localStorage.setItem("visitorChoiceMade", "true");
     setShowEmailPopup(false);
@@ -167,13 +173,10 @@ const useCart = () => {
 
   const handleVisitorSkip = () => {
     if (pendingProduct) {
-      addToCart(
-        pendingProduct.product,
-        pendingProduct.quantity,
-        visitorEmail || localStorage.getItem("visitorEmail") || null
-      );
+      // On avait déjà ajouté le produit, pas besoin de le ré-ajouter
       setPendingProduct(null);
     }
+
     setVisitorChoiceMade(true);
     localStorage.setItem("visitorChoiceMade", "true");
     setShowEmailPopup(false);
