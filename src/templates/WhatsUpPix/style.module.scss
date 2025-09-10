@@ -1,12 +1,21 @@
 .whatsUpcontainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   height: auto;
   font-size: 2rem;
   padding-top: 8rem;
   padding-bottom: 2rem;
+  min-height: 100vh;
+
+  .loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // ou ce que tu veux selon la taille du widget
+}
+
 
   h1 {
     font-size: 2.3rem;
