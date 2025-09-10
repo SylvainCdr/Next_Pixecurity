@@ -81,50 +81,56 @@ const useCart = () => {
     }
   }, []);
 
-  const addToCart = async (product, quantity = 1, email = null) => {
-    try {
-      const cartId = getCartId();
-      const body = {
-        cartId,
-        user: userId || null,
-        visitorEmail: email || localStorage.getItem("visitorEmail") || null,
-        product: product._id,
-        name: product.name,
-        ref: product.ref,
-        quantity,
-      };
+const addToCart = async (product, quantity = 1, email = null) => {
+  try {
+    const cartId = getCartId();
+    const body = {
+      cartId,
+      user: userId || null,
+      visitorEmail: email || localStorage.getItem("visitorEmail") || null,
+      product: product._id,
+      name: product.name,
+      ref: product.ref,
+      quantity,
+    };
 
-      // Optimistic update
-      // Optimistic update : on met directement la nouvelle quantité
-      setCarts((cs) => {
-        const cartFound = cs.find((c) => c.product._id === product._id);
-        if (cartFound) {
-          return cs.map((c) => {
-            if (c.product._id === product._id) {
-              return { ...c, quantity }; // mettre exactement la quantité souhaitée
-            }
-            return c;
-          });
-        }
-        return [...cs, body];
-      });
+    // Optimistic update (quantité exacte, pas cumulée)
+setCarts((cs) => {
+  const cartFound = cs.find(
+    (c) => c.product._id === product._id && c.cartId === cartId
+  );
 
-      const response = await fetch(`${BASE_URL}/cart`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+  if (cartFound) {
+    // on écrase la ligne existante, peu importe le visitorEmail
+    return cs.map((c) =>
+      c.product._id === product._id && c.cartId === cartId
+        ? { ...c, quantity, visitorEmail: body.visitorEmail }
+        : c
+    );
+  }
 
-      if (!response.ok) {
-        console.error("Erreur lors de l'ajout du produit au panier");
-      }
+  return [...cs, body];
+});
 
-      const _carts = await response.json();
-      setCarts(_carts);
-    } catch (error) {
-      console.error("Erreur réseau:", error);
+
+    // Envoi au backend
+    const response = await fetch(`${BASE_URL}/cart`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      console.error("Erreur lors de l'ajout du produit au panier");
     }
-  };
+
+    const _carts = await response.json();
+    setCarts(_carts);
+  } catch (error) {
+    console.error("Erreur réseau:", error);
+  }
+};
+
 
   // Wrapper qui gère l'ouverture du popup
 

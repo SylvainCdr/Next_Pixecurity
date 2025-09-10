@@ -89,7 +89,7 @@ export default function Cart({ carouselProducts }) {
           </div>
 
           {carts?.map((cart) => (
-            <CartItem key={cart._id} cart={cart} />
+            <CartItem key={`${cart.cartId}-${cart.product._id}`} cart={cart} />
           ))}
 
           <Totals carts={carts} />
