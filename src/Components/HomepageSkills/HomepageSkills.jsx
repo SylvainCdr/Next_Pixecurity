@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 export default function HomepageSkills() {
   const { t } = useTranslation();
@@ -10,10 +11,12 @@ export default function HomepageSkills() {
     <div className={styles["skills-container"]}>
       <div data-aos="fade-up" className={styles["skills-card"]}>
       
-        <img
+        <Image
           src="/assets/homepage/skills1.webp"
           alt={t("skills.videoprotection.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.videoprotection.title")}</h3>
         <p>{t("skills.videoprotection.description")}</p>
@@ -25,10 +28,12 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
+        <Image
           src="/assets/homepage/skills2.webp"
           alt={t("skills.analyseImage.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.analyseImage.title")}</h3>
         <p>{t("skills.analyseImage.description")}</p>
@@ -40,10 +45,12 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
+        <Image
           src="/assets/homepage/skills3.webp"
           alt={t("skills.controleAcces.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.controleAcces.title")}</h3>
         <p>{t("skills.controleAcces.description")}</p>
@@ -55,10 +62,12 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
+        <Image
           src="/assets/homepage/skills4.webp"
           alt={t("skills.cloudObjetsConnectes.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.cloudObjetsConnectes.title")}</h3>
         <p>{t("skills.cloudObjetsConnectes.description")}</p>
@@ -70,10 +79,12 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
+        <Image
           src="/assets/homepage/skills5.webp"
           alt={t("skills.reseauxStockage.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.reseauxStockage.title")}</h3>
         <p>{t("skills.reseauxStockage.description")}</p>
@@ -85,10 +96,12 @@ export default function HomepageSkills() {
       </div>
 
       <div data-aos="fade-up" className={styles["skills-card"]}>
-        <img
+        <Image
           src="/assets/homepage/skills6.webp"
           alt={t("skills.ingenierie.title")}
           loading="lazy"
+          width={400}
+          height={300}
         />
         <h3>{t("skills.ingenierie.title")}</h3>
         <p>{t("skills.ingenierie.description")}</p>

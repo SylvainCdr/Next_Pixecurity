@@ -10,14 +10,17 @@ export default function HomepageHero2() {
   return (
     <div className={styles.homepageHeroContainer}>
       <div className={styles.imageWrapper}>
-        <Image
-          src="/assets/homepage/homepage-hero.webp"
-          alt="Hero Image"
-          fill
-          priority
-          sizes="(max-width: 600px) 100vw, 50vw"
-          className={styles.heroImage}
-        />
+       <Image
+  src="/assets/homepage/homepage-hero.webp"
+  alt="Hero Image"
+  fill
+  priority
+  sizes="(max-width: 600px) 100vw, 50vw"
+  placeholder="blur"
+  blurDataURL="/assets/homepage/homepage-hero-blur.webp"
+  className={styles.heroImage}
+/>
+
       </div>
 
       <h4>
