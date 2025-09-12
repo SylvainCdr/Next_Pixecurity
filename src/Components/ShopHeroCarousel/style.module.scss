@@ -2,29 +2,31 @@
   width: 95%;
   margin: 0 auto;
   max-width: 1440px;
-  padding-bottom: 3em;
-  
 
-  img {
+  .hero_slide {
+    position: relative;
     width: 100%;
-    object-fit: cover;
-    display : flex;
-   margin :auto;  
+    height: 400px; // hauteur fixe pour éviter CLS (layout shift)
 
+    @media (max-width: 1200px) {
+      height: 280px;
+    }
+    @media (max-width: 800px) {
+      height: 220px;
+    }
+    @media (max-width: 500px) {
+      height: 150px;
+    }
   }
-}
-// media queries
 
-@media (max-width: 900px) {
-  .shop_hero_carousel_container {
-    width: 90%;
-    margin: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .shop_hero_carousel_container {
-    width: 82%;
-    margin: auto;
+  :global(.slick-dots) {
+    bottom: 15px;
+    li button:before {
+      color: #ff9c3f;
+      font-size: 12px;
+    }
+    li.slick-active button:before {
+      color: #ff6a00;
+    }
   }
 }

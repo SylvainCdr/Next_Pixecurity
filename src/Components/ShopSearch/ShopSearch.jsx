@@ -22,30 +22,33 @@ function ShopSearch({ isHero = true, onSearchResults }) {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true); // Marque que la recherche a été soumise
+ const handleSearch = (e) => {
+  e.preventDefault();
+  setIsSubmitted(true);
 
-    if (search.length > 0) {
-      setSearching(true);
+  // Vider les produits affichés dans le parent dès qu'on commence la recherche
+  onSearchResults([]);
 
-      fetch(`${BASE_URL}/search?query=${search}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setSearchResults(data);
-          setSearching(false);
-          onSearchResults(data);
-          setSelectedProduct(null);
-        })
-        .catch((error) => {
-          console.error("Erreur lors de la recherche de produits :", error);
-          setSearching(false);
-        });
-    } else {
-      setSearchResults([]);
-      onSearchResults([]);
-    }
-  };
+  if (search.length > 0) {
+    setSearching(true);
+    fetch(`${BASE_URL}/search?query=${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSearchResults(data);
+        setSearching(false);
+        onSearchResults(data); // afficher les résultats
+        setSelectedProduct(null);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la recherche de produits :", error);
+        setSearching(false);
+      });
+  } else {
+    setSearchResults([]);
+    onSearchResults([]);
+  }
+};
+
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -100,7 +103,7 @@ function ShopSearch({ isHero = true, onSearchResults }) {
             <p>Aucun résultat pour "{search}"</p>
           </div>
         )}
-      {!selectedProduct && (
+      {/* {!selectedProduct && (
         <div className={styles["search-grid"]}>
           {searchResults?.map((result) => (
             <ProductCard
@@ -114,7 +117,8 @@ function ShopSearch({ isHero = true, onSearchResults }) {
             />
           ))}
         </div>
-      )}
+      )} */}
+      
 
       {/* Afficher le produit sélectionné */}
       {selectedProduct && (

@@ -15,9 +15,10 @@ import { useRouter } from "next/router";
 const color = "#ff9c3fc0";
 
 const Products = ({ brand, products, category, subcategory, filters }) => {
-  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [isSubcategoryLoading, setIsSubcategoryLoading] = useState(false);
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [isSearching, setIsSearching] = useState(false); // ← nouvel état
 
   const user = useGetUser();
   const userId = user?._id;
@@ -25,17 +26,6 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
 
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
-
-  useEffect(() => {
-    setIsLoadingProducts(true);
-    setIsSubcategoryLoading(true);
-
-    setTimeout(() => {
-      setDisplayedProducts(sortedProducts); // On affiche directement tous les produits triés
-      setIsLoadingProducts(false);
-      setIsSubcategoryLoading(false);
-    }, 1000);
-  }, [category, subcategory, filters, products, brand]);
 
   // Fonction de calcul du prix avec remise
   const calculateDiscount = (price) => price - (price * discount) / 100;
@@ -46,9 +36,31 @@ const Products = ({ brand, products, category, subcategory, filters }) => {
   );
 
   // Gérer les résultats de la recherche
+
   const handleSearchResults = (results) => {
-    setDisplayedProducts(results);
+    if (results.length > 0) {
+      setIsSearching(true);
+      setDisplayedProducts(results);
+    } else {
+      // Si aucun résultat, on peut rester en mode recherche vide
+      setIsSearching(true);
+      setDisplayedProducts([]);
+    }
   };
+
+  useEffect(() => {
+    if (!isSearching) {
+      // n'affiche les produits de catégorie que si on ne recherche pas
+      setIsLoadingProducts(true);
+      setIsSubcategoryLoading(true);
+
+      setTimeout(() => {
+        setDisplayedProducts(sortedProducts);
+        setIsLoadingProducts(false);
+        setIsSubcategoryLoading(false);
+      }, 1000);
+    }
+  }, [category, subcategory, filters, products, brand, isSearching]);
 
   const router = useRouter();
   const pageDescription = `Découvrez notre sélection de produits ${category} / ${subcategory} de la marque ${brand}`;

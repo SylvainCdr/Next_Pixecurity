@@ -28,6 +28,8 @@ export default function Product({ product, id, suggestions }) {
   );
   const [searchResults, setSearchResults] = useState([]);
   const [isInFavorites, setIsInFavorites] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+
 
   console.log("Product component rendered with product:", product);
   useEffect(() => {
@@ -85,9 +87,10 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const handleSearchResults = (results) => {
-    setSearchResults(results);
-  };
+const handleSearchResults = (results) => {
+  setSearchResults(results);
+  setIsSearching(true); // on est en mode recherche
+};
 
   useEffect(() => {
     const jsonLdData = {
@@ -180,6 +183,25 @@ export default function Product({ product, id, suggestions }) {
       </div>
       <ShopSearch onSearchResults={handleSearchResults} />
       <ProductRequestQuoteModal product={product} />
+
+
+      {isSearching && searchResults.length > 0 && (
+  <div className={styles["search-grid"]}>
+    {searchResults.map((prod) => (
+      <ProductCard
+        key={prod._id}
+        product={prod}
+        addToFavorites={addToFavorites}
+        removeFromFavorites={removeFromFavorites}
+        checkFavorite={checkFavorite}
+        addToCart={addToCart}
+      />
+    ))}
+  </div>
+)}
+
+
+
       {searchResults.length === 0 && (
         <div className={styles["product-page"]}>
           <div className={styles["product-section1"]}>

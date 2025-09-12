@@ -403,6 +403,37 @@
       }
     }
   }
+
+  .search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin :  auto 0.5em;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  // RESPONSIVE
+
+  @media (max-width: 1024px) {
+    .search-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  // @media screen and (max-width: 900px)
+
+  @media (max-width: 768px) {
+    .search-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .search-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 //media queries

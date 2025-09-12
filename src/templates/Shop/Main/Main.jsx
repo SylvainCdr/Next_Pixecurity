@@ -5,6 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
+import ProductCard from "@/Components/ProductCard/ProductCard";
 // Dynamic imports pour réduire le JS initial
 const ShopHeroCarousel = dynamic(() => import("@/Components/ShopHeroCarousel/ShopHeroCarousel"), {
   ssr: false,
@@ -49,77 +50,77 @@ export default function Catalogue({ iProProducts, vmsProducts, divinitiProducts 
         />
       </Head>
 
-      <Suspense fallback={<div>Chargement du menu...</div>}>
-        <ShopNav />
-        <ShopSearch onSearchResults={handleSearchResults} />
-        <ShopHeroCarousel />
-      </Suspense>
+    <Suspense fallback={<div>Chargement du menu...</div>}>
+  <ShopNav />
+  <ShopSearch onSearchResults={handleSearchResults} isHero={true} />
+</Suspense>
 
-      {searchResults.length > 0 ? (
-        <div className={styles["search-results"]}></div>
-      ) : (
-        <>
-          {/* I-Pro Products */}
-          <div className={styles["products-carousel"]}>
-            <h2>Explorez notre gamme complète de caméras</h2>
-            <div className={styles.logos}>
-              {[
-                { src: "/assets/partners/partnersLogo/vivotek.png", alt: "Vivotek" },
-                { src: "/assets/shop/shopLogos/bosch.png", alt: "Bosch" },
-                { src: "/assets/shop/shopLogos/i-pro.png", alt: "i-Pro" },
-              ].map((logo, idx) => (
-                <Image
-                  key={idx}
-                  src={logo.src}
-                  alt={logo.alt}
-                  loading="lazy"
-                  width={150}
-                  height={150}
-                
-                />
-              ))}
-            </div>
-            <ShopProductsCarousel carouselProducts={shuffledIProProducts} />
-          </div>
+{/* Affichage conditionnel selon la recherche */}
+{searchResults.length > 0 ? (
+  <div className={styles["search-grid"]}>
+    <div className={styles["products-grid"]}>
+      {searchResults.map((prod) => (
+        <ProductCard
+          key={prod._id}
+          product={prod}
+          addToFavorites={() => {}}
+          removeFromFavorites={() => {}}
+          checkFavorite={() => {}}
+          addToCart={() => {}}
+        />
+      ))}
+    </div>
+  </div>
+) : (
+  <>
+    {/* Hero Carousel masqué quand recherche */}
+    <ShopHeroCarousel />
 
-          {/* Diviniti Products */}
-          <div className={styles["products-carousel"]}>
-            <h2>Pilotez la sûreté de demain avec DIVINITI</h2>
-            <div className={styles.logos}>
-              <Image
-                src="/assets/shop/shopLogos/diviniti-purple.png"
-                alt="DIVINITI"
-                loading="lazy"
-                width={150}
-                height={150}
-            
-              />
-            </div>
-            <ShopProductsCarousel carouselProducts={shuffledDivinitiProducts} />
-          </div>
+    {/* I-Pro Products */}
+    <div className={styles["products-carousel"]}>
+      <h2>Explorez notre gamme complète de caméras</h2>
+      <div className={styles.logos}>
+        {[
+          { src: "/assets/partners/partnersLogo/vivotek.png", alt: "Vivotek" },
+          { src: "/assets/shop/shopLogos/bosch.png", alt: "Bosch" },
+          { src: "/assets/shop/shopLogos/i-pro.png", alt: "i-Pro" },
+        ].map((logo, idx) => (
+          <Image key={idx} src={logo.src} alt={logo.alt} width={150} height={150} />
+        ))}
+      </div>
+      <ShopProductsCarousel carouselProducts={shuffledIProProducts} />
+    </div>
 
-          {/* VMS Products */}
-          <div className={styles["products-carousel"]}>
-            <h2>Gestion vidéo avec Milestone & Genetec</h2>
-            <div className={styles.logos}>
-              {[
-                { src: "/assets/partners/partnersLogo/milestone.png", alt: "Milestone" },
-                { src: "/assets/partners/partnersLogo/genetec.png", alt: "Genetec" },
-              ].map((logo, idx) => (
-                <Image
-                  key={idx}
-                  src={logo.src}
-                  alt={logo.alt}
-                  loading="lazy"
-                  width={150}
-                  height={150}
-                />
-              ))}
-            </div>
-            <ShopProductsCarousel carouselProducts={shuffledVmsProducts} />
-          </div>
-        </>
-      )}
+    {/* Diviniti Products */}
+    <div className={styles["products-carousel"]}>
+      <h2>Pilotez la sûreté de demain avec DIVINITI</h2>
+      <div className={styles.logos}>
+        <Image
+          src="/assets/shop/shopLogos/diviniti-purple.png"
+          alt="DIVINITI"
+          width={150}
+          height={150}
+        />
+      </div>
+      <ShopProductsCarousel carouselProducts={shuffledDivinitiProducts} />
+    </div>
+
+    {/* VMS Products */}
+    <div className={styles["products-carousel"]}>
+      <h2>Gestion vidéo avec Milestone & Genetec</h2>
+      <div className={styles.logos}>
+        {[
+          { src: "/assets/partners/partnersLogo/milestone.png", alt: "Milestone" },
+          { src: "/assets/partners/partnersLogo/genetec.png", alt: "Genetec" },
+        ].map((logo, idx) => (
+          <Image key={idx} src={logo.src} alt={logo.alt} width={150} height={150} />
+        ))}
+      </div>
+      <ShopProductsCarousel carouselProducts={shuffledVmsProducts} />
+    </div>
+  </>
+)}
+
     </div>
   );
 }
