@@ -13,17 +13,18 @@ export default function HomepagePartners() {
       <div className={styles["partners-logo"]}>
         {partners.map((partner, index) => (
           <a
-            key={index}
+            key={partner.slug}
             href={`/partenaires-leaders-en-securite-et-surveillance/${partner.slug}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label={partner.name}
           >
             <Image
               src={partner.logo}
-              alt={partner.name}
+              alt={`${partner.name} logo`}
               loading="lazy"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
             />
           </a>
         ))}

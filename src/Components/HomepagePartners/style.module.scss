@@ -1,5 +1,4 @@
 .homepagePartners-container {
-  // margin: 10em auto;
   max-width: 1600px;
   padding: 5em 0em;
   margin: 0 auto;
@@ -23,17 +22,8 @@
       transition: transform 0.5s;
       cursor: pointer;
 
-      -webkit-transition: transform 0.5s;
-      -moz-transition: transform 0.5s;
-      -ms-transition: transform 0.5s;
-      -o-transition: transform 0.5s;
-
       &:hover {
         transform: scale(1.1);
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        -o-transform: scale(1.1);
       }
     }
   }
@@ -95,6 +85,10 @@
       width: 80%;
       margin-bottom: 2em;
 
+      h2 {
+        font-size: 2.3em;
+      }
+
       h3 {
         font-size: 1.1rem;
         font-weight: 500;
@@ -111,13 +105,6 @@
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    .partners-text {
-      h2 {
-        font-size: 2.3em;
-      }
-    }
-  }
   @media screen and (max-width: 768px) {
     .partners-text {
       h2 {
