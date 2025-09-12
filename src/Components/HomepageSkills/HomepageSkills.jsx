@@ -7,110 +7,61 @@ import Image from "next/image";
 export default function HomepageSkills() {
   const { t } = useTranslation();
 
+  const skillsData = [
+    {
+      key: "videoprotection",
+      img: "/assets/homepage/skills1.webp",
+      link: "/notre-expertise-en-solutions-de-surete#videoprotection",
+    },
+    {
+      key: "analyseImage",
+      img: "/assets/homepage/skills2.webp",
+      link: "/notre-expertise-en-solutions-de-surete#analyse",
+    },
+    {
+      key: "controleAcces",
+      img: "/assets/homepage/skills3.webp",
+      link: "/notre-expertise-en-solutions-de-surete#access",
+    },
+    {
+      key: "cloudObjetsConnectes",
+      img: "/assets/homepage/skills4.webp",
+      link: "/notre-expertise-en-solutions-de-surete#cloud",
+    },
+    {
+      key: "reseauxStockage",
+      img: "/assets/homepage/skills5.webp",
+      link: "/notre-expertise-en-solutions-de-surete#network",
+    },
+    {
+      key: "ingenierie",
+      img: "/assets/homepage/skills6.webp",
+      link: "/qui-sommes-nous",
+    },
+  ];
+
   return (
     <div className={styles["skills-container"]}>
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-      
-        <Image
-          src="/assets/homepage/skills1.webp"
-          alt={t("skills.videoprotection.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.videoprotection.title")}</h3>
-        <p>{t("skills.videoprotection.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/notre-expertise-en-solutions-de-surete#videoprotection">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-        <Image
-          src="/assets/homepage/skills2.webp"
-          alt={t("skills.analyseImage.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.analyseImage.title")}</h3>
-        <p>{t("skills.analyseImage.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/notre-expertise-en-solutions-de-surete#analyse">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-        <Image
-          src="/assets/homepage/skills3.webp"
-          alt={t("skills.controleAcces.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.controleAcces.title")}</h3>
-        <p>{t("skills.controleAcces.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/notre-expertise-en-solutions-de-surete#access">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-        <Image
-          src="/assets/homepage/skills4.webp"
-          alt={t("skills.cloudObjetsConnectes.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.cloudObjetsConnectes.title")}</h3>
-        <p>{t("skills.cloudObjetsConnectes.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/notre-expertise-en-solutions-de-surete#cloud">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-        <Image
-          src="/assets/homepage/skills5.webp"
-          alt={t("skills.reseauxStockage.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.reseauxStockage.title")}</h3>
-        <p>{t("skills.reseauxStockage.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/notre-expertise-en-solutions-de-surete#network">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" className={styles["skills-card"]}>
-        <Image
-          src="/assets/homepage/skills6.webp"
-          alt={t("skills.ingenierie.title")}
-          loading="lazy"
-          width={400}
-          height={300}
-        />
-        <h3>{t("skills.ingenierie.title")}</h3>
-        <p>{t("skills.ingenierie.description")}</p>
-        <div className={styles["bottom"]}>
-          <Link href="/qui-sommes-nous">
-            {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
-          </Link>
-        </div>
-      </div>
+      {skillsData.map(({ key, img, link }) => (
+        <figure className={styles["skills-card"]} data-aos="fade-up">
+          <Image
+            src={img}
+            alt={t(`skills.${key}.title`)}
+            loading="lazy"
+            width={400}
+            height={300}
+          />
+          <figcaption>
+            <h2>{t(`skills.${key}.title`)}</h2>
+            <p>{t(`skills.${key}.description`)}</p>
+            <div className={styles.bottom}>
+              <Link href={link}>
+                {t("learnMore")} <i className="fa-solid fa-arrow-right"></i>
+              </Link>
+            </div>
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
