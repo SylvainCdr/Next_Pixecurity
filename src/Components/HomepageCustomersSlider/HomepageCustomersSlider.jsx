@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./style.module.scss";
 import { useTranslation } from "next-i18next";
-
-
+import Image from "next/image";
 
 const images = [
   "aphp.png",
@@ -24,23 +23,25 @@ const images = [
   "terideal.png",
 ];
 
-
-
-
 export default function HomepageCustomersSlider() {
-
   const { t } = useTranslation();
 
   return (
-    <div className={styles.slider}>
-      <h1>{t('trustedBy')}</h1>
+    <section className={styles.slider} aria-label={t("trustedBy")}>
+      <h2>{t("trustedBy")}</h2>
       <div className={styles.slide_track}>
-        {images.map((image, index) => (
-          <div className={styles.slide} key={index}>
-            <img src={`assets/customersSlider/${image}`} alt="" />
+        {images.map((image) => (
+          <div className={styles.slide} key={image}>
+            <Image
+              src={`/assets/customersSlider/${image}`}
+              alt={`Logo client ${image.replace(".png", "")}`}
+              width={200}
+              height={130}
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

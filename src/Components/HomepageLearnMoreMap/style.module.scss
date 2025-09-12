@@ -71,9 +71,22 @@
       margin: auto;
     }
 
-    button {
+    .ctaButton {
+      display: inline-block;
       width: 15rem;
       background-color: #760498;
+      text-align: center;
+      padding: 0.8rem 1rem;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: #5a0375;
+      }
     }
   }
 }
@@ -110,10 +123,10 @@
 
     .learnMoreCTA {
       h4 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         padding-left: 2rem;
       }
-      button {
+      .ctaButton {
         width: 12rem;
       }
     }
@@ -162,9 +175,9 @@
         padding: 0 0;
       }
 
-      button {
+      .ctaButton {
         margin-top: 1rem;
-        width: 12rem;
+        width: 14rem;
       }
     }
   }
