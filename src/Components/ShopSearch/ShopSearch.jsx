@@ -4,7 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import useFavorites from "../useFavorites";
 import { useCartContext } from "../cartContext";
 import { BASE_URL } from "../../url";
-import { PropagateLoader } from "react-spinners";
+import dynamic from "next/dynamic";
 
 const color = "#ff9c3fc0";
 const override = {
@@ -22,14 +22,13 @@ function ShopSearch({ isHero = true, onSearchResults }) {
   const { addToFavorites, removeFromFavorites, checkFavorite } = useFavorites();
   const { addToCart } = useCartContext();
 
-
   const handleSearch = (e) => {
     e.preventDefault();
     setIsSubmitted(true); // Marque que la recherche a été soumise
-  
+
     if (search.length > 0) {
       setSearching(true);
-  
+
       fetch(`${BASE_URL}/search?query=${search}`)
         .then((res) => res.json())
         .then((data) => {
@@ -52,6 +51,11 @@ function ShopSearch({ isHero = true, onSearchResults }) {
     setSelectedProduct(product);
     setSearchResults([]); // Réinitialiser les résultats de recherche
   };
+
+  const PropagateLoader = dynamic(
+    () => import("react-spinners").then((mod) => mod.PropagateLoader),
+    { ssr: false }
+  );
 
   return (
     <div className={styles["search-container"]}>
@@ -87,12 +91,15 @@ function ShopSearch({ isHero = true, onSearchResults }) {
         </div>
       )}
 
-  {/* Afficher le message uniquement après soumission et si aucun résultat n'a été trouvé */}
-{isSubmitted && !searching && search.length > 0 && searchResults.length === 0 && (
-  <div className={styles["search-msg"]}>
-    <p>Aucun résultat pour "{search}"</p>
-  </div>
-)}
+      {/* Afficher le message uniquement après soumission et si aucun résultat n'a été trouvé */}
+      {isSubmitted &&
+        !searching &&
+        search.length > 0 &&
+        searchResults.length === 0 && (
+          <div className={styles["search-msg"]}>
+            <p>Aucun résultat pour "{search}"</p>
+          </div>
+        )}
       {!selectedProduct && (
         <div className={styles["search-grid"]}>
           {searchResults?.map((result) => (

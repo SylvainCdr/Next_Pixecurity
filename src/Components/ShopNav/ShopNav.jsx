@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import { BASE_URL } from "@/url";
 import { useGetUser } from "../useGetUser";
 import { motion, AnimatePresence } from "framer-motion";
-import { PropagateLoader } from "react-spinners";
+import dynamic from "next/dynamic";
 
 function ShopNav() {
   const [brands, setBrands] = useState([]);
@@ -89,16 +89,46 @@ function ShopNav() {
     fetchSubcategories();
   }, [categoriesMap]);
 
-  const handleBrandClick = (brand) => {
-    setActiveBrand((prevBrand) => (prevBrand === brand ? null : brand));
-    setActiveCategory(null);
-  };
+ const handleBrandClick = async (brand) => {
+  setActiveBrand((prev) => (prev === brand ? null : brand));
+  setActiveCategory(null);
 
-  const handleCategoryClick = (category) => {
-    setActiveCategory((prevCategory) =>
-      prevCategory === category ? null : category
-    );
-  };
+  if (!categoriesMap[brand]) {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
+      const categories = await res.json();
+      setCategoriesMap((prev) => ({ ...prev, [brand]: categories }));
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+};
+
+const handleCategoryClick = async (category) => {
+  setActiveCategory((prevCategory) => (prevCategory === category ? null : category));
+
+  if (!subcategoriesMap[activeBrand]?.[category]) {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${BASE_URL}/subcategories?brand=${activeBrand}&category=${category}`);
+      const subs = await res.json();
+      setSubcategoriesMap((prev) => ({
+        ...prev,
+        [activeBrand]: {
+          ...prev[activeBrand],
+          [category]: subs,
+        },
+      }));
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+};
 
   const handleSubcategoryClick = () => {
     setActiveBrand(null);
@@ -132,6 +162,9 @@ function ShopNav() {
       overlay.classList.remove("active");
     }
   }, [isMobileMenuOpen]);
+
+  const PropagateLoader = dynamic(() => import("react-spinners").then(mod => mod.PropagateLoader), { ssr: false });
+
 
   return (
     <div className={styles.shopNavContainer} ref={menuRef}>
@@ -169,7 +202,7 @@ function ShopNav() {
           >
             {isLoading ? (
               <div className={styles.loaderContainer}>
-                <PropagateLoader color="#0070f3" size={10} />
+                <PropagateLoader color="#ff9c3fc0" size={20} />
               </div>
             ) : (
               categoriesMap[activeBrand]?.map((category) => (

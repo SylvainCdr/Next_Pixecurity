@@ -29,6 +29,8 @@ const nextConfig = {
         hostname: "agile-brushlands-56076-16e3e6016b28.herokuapp.com",
       }, // Heroku
       { protocol: "https", hostname: "localhost" }, // Pour le développement local
+      // flir.netx.net
+     { protocol: "https", hostname: "flir.netx.net", pathname: "/**" },
     ],
   },
 };
