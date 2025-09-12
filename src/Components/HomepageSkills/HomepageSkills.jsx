@@ -43,7 +43,7 @@ export default function HomepageSkills() {
   return (
     <div className={styles["skills-container"]}>
       {skillsData.map(({ key, img, link }) => (
-        <figure className={styles["skills-card"]} data-aos="fade-up">
+        <figure key={key} className={styles["skills-card"]} data-aos="fade-up">
           <Image
             src={img}
             alt={t(`skills.${key}.title`)}
