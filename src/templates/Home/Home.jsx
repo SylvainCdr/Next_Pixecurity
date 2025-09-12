@@ -1,25 +1,54 @@
 import React, { useEffect } from "react";
 import styles from "./style.module.scss";
+import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Head from "next/head";
 import HomepageSkills from "@/Components/HomepageSkills/HomepageSkills";
 import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
-import HomepageCountUp from "@/Components/HomepageCountUp/HomepageCountUp";
-import HomepageCustomersSlider from "@/Components/HomepageCustomersSlider/HomepageCustomersSlider";
 import HomepageHero2 from "@/Components/HomepageHero2/HomepageHero2";
 import HompepageLearnMoreMap from "@/Components/HomepageLearnMoreMap/HomepageLearnMoreMap";
 
 export default function Home() {
+  // on importe AOS dynamiquement pour éviter les problèmes de SSR
   useEffect(() => {
-    AOS.init({
-      duration: 1500,
-    });
+    (async () => {
+      const AOS = (await import("aos")).default;
+      await import("aos/dist/aos.css");
+      AOS.init({ duration: 1500 });
+    })();
   }, []);
 
   const { t } = useTranslation();
+
+  // imports dynamiques des composants pour le SSR et performance
+  const HomepageCustomersSlider = dynamic(
+    () =>
+      import("@/Components/HomepageCustomersSlider/HomepageCustomersSlider"),
+    { ssr: false }
+  );
+
+  const HomepageCountUp = dynamic(
+    () => import("@/Components/HomepageCountUp/HomepageCountUp"),
+    { ssr: false }
+  );
+
+  const LinkedInFeed = dynamic(
+    () =>
+      Promise.resolve(() => (
+        <div style={{ width: "100%", height: 440 }}>
+          <iframe
+            width="100%"
+            height="440"
+            src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC"
+            frameBorder="0"
+            title="pixecurity linkedin feed"
+            loading="lazy"
+          />
+        </div>
+      )),
+    { ssr: false }
+  );
 
   return (
     <>
@@ -32,7 +61,7 @@ export default function Home() {
 
         <meta
           name="description"
-          content="Découvrez Pixecurity, leader dans la sûreté 3.0. Experts en BTP, réseaux, et technologies du bâtiment."
+          content="Découvrez Pixecurity, leader dans la sûreté 3.0. Nous proposons des solutions intelligentes de vidéosurveillance, contrôle d'accès, analyse d'image et hypervision pour protéger vos biens et assurer votre sécurité."
         />
         <meta
           name="keywords"
@@ -45,30 +74,14 @@ export default function Home() {
           as="image"
           type="image/webp"
         />
-
-        <link
-          rel="preload"
-          href="/assets/homepage/cube3(1).webp"
-          as="image"
-          type="image/webp"
-        />
-
-        <link
-          rel="preload"
-          href="https://images.unsplash.com/photo-1581091877018-dac6a371d50f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          as="image"
-        />
-        <link rel="preload" href="/assets/homepage/wave3.webp" as="image" />
       </Head>
 
       <div className={styles["homepage-container"]}>
-      
         <HomepageHero2 />
         <div className={styles["section2-offer"]}>
           <h3>{t("home.offerTitle")}</h3>
           <p>{t("home.offerDescription1")}</p>
           <p>{t("home.offerDescription2")}</p>
-         
         </div>
 
         <HomepageSkills />
@@ -107,59 +120,9 @@ export default function Home() {
 
         <HomepageCustomersSlider />
 
-        {/* <div className={styles.learnMore}>
-          <div className={styles.learnMoreMap}>
-            <div className={styles.mapLeft}>
-              <h3>{t("home.pixecurityPresence")}</h3>
-              <p>{t("home.pixecurityExpertise")}</p>
-              <p>{t("home.pixecurityRegions")}</p>
-
-              <ul>
-                <li>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  <strong>{t("home.paris")}</strong> –{" "}
-                  {t("home.parisDescription")}
-                </li>
-
-                <li>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  <strong>{t("home.lille")}</strong> –{" "}
-                  {t("home.lilleDescription")}
-                </li>
-                <li>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  <strong>{t("home.bordeaux")}</strong> –{" "}
-                  {t("home.bordeauxDescription")}
-                </li>
-                <li>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  <strong>{t("home.lyon")}</strong> –{" "}
-                  {t("home.lyonDescription")}
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.mapRight}>
-              <img src="/assets/homepage/map2.webp" alt={t("home.mapAltText")} />
-            </div>
-          </div>
-
-          <div className={styles.learnMoreCTA}>
-            <h4> Ready to learn more ? </h4>
-            <Link href="/contact">
-              <button> {t("home.contactUs")}</button>
-            </Link>
-          </div>
-        </div> */}
         <HompepageLearnMoreMap />
         <div className={styles.linkedinFeedCarousel}>
-          <iframe
-            width="100%"
-            height="440"
-            src="https://rss.app/embed/v1/carousel/HvV50piN6NgpW3kC"
-            frameBorder="0"
-            title="pixecurity linkedin feed"
-          ></iframe>
+          <LinkedInFeed />
         </div>
       </div>
     </>
