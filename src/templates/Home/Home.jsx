@@ -8,6 +8,7 @@ import HomepageSkills from "@/Components/HomepageSkills/HomepageSkills";
 import HomepagePartners from "@/Components/HomepagePartners/HomepagePartners";
 import HomepageHero2 from "@/Components/HomepageHero2/HomepageHero2";
 import HompepageLearnMoreMap from "@/Components/HomepageLearnMoreMap/HomepageLearnMoreMap";
+import Image from "next/image";
 
 export default function Home() {
   // on importe AOS dynamiquement pour éviter les problèmes de SSR
@@ -108,10 +109,13 @@ export default function Home() {
 
         <div className={styles.newPartner}>
           <a href="https://diviniti.tech">
-            <img
+            <Image
               className={styles.newPartnerImg}
               src="/assets/shop/banners/banner5.webp"
-              alt=""
+              alt="Diviniti partner"
+              width={1400}
+              height={400}
+              loading="lazy"
             />
           </a>
         </div>

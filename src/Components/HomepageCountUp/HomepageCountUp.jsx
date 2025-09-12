@@ -10,27 +10,21 @@ export default function HomepageCountUp() {
   const easeOutQuad = (t) => t * (2 - t);
 
   const animateCountUp = (el) => {
-    let frame = 0;
+    let start;
     const countTo = parseInt(el.getAttribute("data-count-to"), 10);
-    el.innerHTML = "0"; // Initialiser à zéro au début
 
-    console.log(`Animating count up to: ${countTo}`);
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / animationDuration, 1);
+      const eased = easeOutQuad(progress);
+      el.textContent = Math.floor(countTo * eased);
 
-    const counter = setInterval(() => {
-      frame++;
-
-      const progress = easeOutQuad(frame / totalFrames);
-
-      const currentCount = Math.round(countTo * progress);
-
-      if (parseInt(el.innerHTML, 10) !== currentCount) {
-        el.innerHTML = currentCount;
+      if (progress < 1) {
+        requestAnimationFrame(step);
       }
+    };
 
-      if (frame === totalFrames) {
-        clearInterval(counter);
-      }
-    }, frameDuration);
+    requestAnimationFrame(step);
   };
 
   const containerRef = useRef(null);
@@ -55,7 +49,10 @@ export default function HomepageCountUp() {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
@@ -75,25 +72,34 @@ export default function HomepageCountUp() {
           <div className={styles.col}>
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={`${styles.timer}`} data-count-to="20">0</span>+
+                <span className={`${styles.timer}`} data-count-to="20">
+                  0
+                </span>
+                +
               </h3>
-              <h4>{t('homepageCountup.partners')}</h4>
+              <h4>{t("homepageCountup.partners")}</h4>
             </div>
           </div>
           <div className={styles.col}>
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={`${styles.timer}`} data-count-to="110">0</span>+
+                <span className={`${styles.timer}`} data-count-to="130">
+                  0
+                </span>
+                +
               </h3>
-              <h4>{t('homepageCountup.clients')}</h4>
+              <h4>{t("homepageCountup.clients")}</h4>
             </div>
           </div>
           <div className={styles.col}>
             <div className={`${styles.count_box} ${styles.box_hover}`}>
               <h3>
-                <span className={`${styles.timer}`} data-count-to="600">0</span>+
+                <span className={`${styles.timer}`} data-count-to="700">
+                  0
+                </span>
+                +
               </h3>
-              <h4>{t('homepageCountup.projects')}</h4>
+              <h4>{t("homepageCountup.projects")}</h4>
             </div>
           </div>
         </div>
