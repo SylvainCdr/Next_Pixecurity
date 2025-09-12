@@ -1,7 +1,5 @@
 import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import styles from "./style.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 import useFavorites from "../useFavorites";
@@ -10,49 +8,19 @@ import { useGetUser } from "../useGetUser";
 
 const ShopProductsCarousel = ({ carouselProducts }) => {
   const settings = {
-    // dots: true,
     infinite: true,
-    speed: 600,
+    speed: 500,
     autoplay: true,
-    autoplaySpeed: 2500,
+
+    autoplaySpeed: 4000,
     slidesToShow: 5,
     slidesToScroll: 1,
-  
-
+    lazyLoad: "ondemand", // ⚡ optimise le chargement
     responsive: [
-      {
-        breakpoint: 1480,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-         
-        },
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      { breakpoint: 1480, settings: { slidesToShow: 4 } },
+      { breakpoint: 1124, settings: { slidesToShow: 3 } },
+      { breakpoint: 800, settings: { slidesToShow: 2, initialSlide: 0 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
     ],
   };
 
@@ -61,28 +29,25 @@ const ShopProductsCarousel = ({ carouselProducts }) => {
 
   const user = useGetUser();
   const userId = user?._id;
+  const discount = user?.discount || 0;
 
-  // Retrieve discount from user data
-  const discount = user ? user?.discount : 0;
-
-  const calculateDiscount = (price, discount) => {
-    return price - (price * discount) / 100;
-  };
+  const calculateDiscount = (price, discount) =>
+    price - (price * discount) / 100;
 
   return (
-    <div className={styles["shopCarousel-container"]}>
-      {/* integration du composant ProductCard dans le composant ShopProductsCarousel */}
-
+    <div
+      className={styles["shopCarousel-container"]}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Produits en promotion"
+    >
       <Slider {...settings}>
-        {carouselProducts?.map((carouselProduct, index) => {
-          const discountedPrice = calculateDiscount(
-            carouselProduct.price,
-            discount
-          );
+        {carouselProducts?.map((product, index) => {
+          const discountedPrice = calculateDiscount(product.price, discount);
           return (
-            <div className={styles["product-item"]} key={index}>
+            <div className={styles["product-item"]} key={product._id || index}>
               <ProductCard
-                product={carouselProduct}
+                product={product}
                 discountedPrice={discountedPrice}
                 userId={userId}
                 addToFavorites={addToFavorites}
