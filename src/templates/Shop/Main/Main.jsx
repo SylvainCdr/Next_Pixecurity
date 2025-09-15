@@ -14,8 +14,9 @@ const ShopProductsCarousel = dynamic(
   () => import("@/Components/ShopProductsCarousel/ShopProductsCarousel"),
   { ssr: false }
 );
-const ShopNav = dynamic(() => import("@/Components/ShopNav/ShopNav"), { ssr: false });
-const ShopSearch = dynamic(() => import("@/Components/ShopSearch/ShopSearch"), { ssr: false });
+const ShopNav = dynamic(() => import("@/Components/ShopNav/ShopNav"), { ssr: true });
+const ShopSearch = dynamic(() => import("@/Components/ShopSearch/ShopSearch"), { ssr: true });
+
 
 // Shuffle côté client ou build-time
 const shuffleArray = (array, limit) => {
@@ -85,7 +86,7 @@ export default function Catalogue({ iProProducts, vmsProducts, divinitiProducts 
           { src: "/assets/shop/shopLogos/bosch.png", alt: "Bosch" },
           { src: "/assets/shop/shopLogos/i-pro.png", alt: "i-Pro" },
         ].map((logo, idx) => (
-          <Image key={idx} src={logo.src} alt={logo.alt} width={150} height={150} />
+          <Image key={idx} src={logo.src} alt={logo.alt} width={150} height={150} loading="lazy" />
         ))}
       </div>
       <ShopProductsCarousel carouselProducts={shuffledIProProducts} />
@@ -113,7 +114,7 @@ export default function Catalogue({ iProProducts, vmsProducts, divinitiProducts 
           { src: "/assets/partners/partnersLogo/milestone.png", alt: "Milestone" },
           { src: "/assets/partners/partnersLogo/genetec.png", alt: "Genetec" },
         ].map((logo, idx) => (
-          <Image key={idx} src={logo.src} alt={logo.alt} width={150} height={150} />
+          <Image key={idx} src={logo.src} alt={logo.alt} width={100} height={100} />
         ))}
       </div>
       <ShopProductsCarousel carouselProducts={shuffledVmsProducts} />

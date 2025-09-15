@@ -7,9 +7,7 @@ import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
 import useFavorites from "../useFavorites";
 import { useCartContext } from "@/Components/cartContext";
-import Head from "next/head";
 import Image from "next/image";
-import Aos from "aos";
 
 const ProductImage = ({ product }) => {
   const [imgSrc, setImgSrc] = useState(
@@ -34,23 +32,12 @@ const ProductImage = ({ product }) => {
 };
 
 function ProductCard({ product }) {
-  useEffect(() => {
-    Aos.init({ duration: 1500 });
-  }, []);
-
   const brandLogo = logos.find(
     (logo) => logo.name.toLowerCase() === product.brand?.toLowerCase()
   );
 
   const user = useGetUser();
   const userId = user?._id;
-
-  useEffect(() => {
-    (async () => {
-      const AOS = await import("aos");
-      AOS.init({ duration: 1500 });
-    })();
-  }, []);
 
   return (
     <div className={styles["product-card"]}>
@@ -97,9 +84,7 @@ function DiscountBadge({ product }) {
   if (!product?.pourcentageDiscount) return null;
 
   return (
-    <p className={styles["discount-badge"]} data-aos="zoom-in-up">
-      -{product.pourcentageDiscount}%
-    </p>
+    <p className={styles["discount-badge"]}>-{product.pourcentageDiscount}%</p>
   );
 }
 
@@ -185,7 +170,6 @@ function ButtonAddToFavorite({ product }) {
       <i
         className="fa-solid fa-heart"
         style={{ color: isInFavorites ? "#ed3f3f" : "#838485" }}
-        data-aos="zoom-in"
       />
     </button>
   );
