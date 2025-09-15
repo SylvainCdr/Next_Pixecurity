@@ -1,50 +1,107 @@
-import React from "react";
-import Slider from "react-slick";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import styles from "./style.module.scss";
+import Head from "next/head";
 
 const heroImages = [
-  { url: "/assets/shop/banners/banner5.webp", alt: "Sécurité réseau avancée" },
-  { url: "/assets/shop/banners/banner1.webp", alt: "Solutions de vidéosurveillance" },
-  { url: "/assets/shop/banners/banner2.webp", alt: "Contrôle d'accès intelligent" },
-  { url: "/assets/shop/banners/banner4.webp", alt: "Technologie de sûreté moderne" },
+  { url: "/assets/shop/banners/banner-diviniti.webp", alt: "DIVINITI" },
+  {
+    url: "/assets/shop/banners/banner-milestone.webp",
+    alt: "Milestone systems",
+  },
+  { url: "/assets/shop/banners/banner-ipro.webp", alt: "i-Pro" },
+  { url: "/assets/shop/banners/banner-zyxel.webp", alt: "Zyxel" },
 ];
 
 const ShopHeroCarousel = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
-    autoplay: true,
-    autoplaySpeed: 4000, // durée avant changement
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    cssEase: "linear",
-    pauseOnHover: true,
-    pauseOnFocus: true,
-  };
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      loop: true,
+      renderMode: "performance",
+      slides: { perView: 1 },
+      defaultAnimation: { duration: 700 },
+      slideChanged(s) {
+        setCurrentSlide(s.track.details.rel);
+      },
+    },
+    [
+      (slider) => {
+        let timeout;
+        let mouseOver = false;
+
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (mouseOver) return;
+          timeout = setTimeout(() => slider.next(), 4000);
+        }
+
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
 
   return (
-    <div className={styles.shop_hero_carousel_container}>
-      <Slider {...settings}>
-        {heroImages.map((image, index) => (
-          <div key={index} className={styles.hero_slide}>
-            <Image
-              src={image.url}
-              alt={image.alt}
-              layout="responsive"
-              width={1440}
-              height={500}
-              priority={index === 0} // seule la 1ère image est prioritaire
-            
+    <>
+      <Head>
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/shop/banners/banner-diviniti.webp"
+        />
+      </Head>
+
+      <div className={styles.shop_hero_carousel_container}>
+        <div ref={sliderRef} className="keen-slider">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`keen-slider__slide ${styles.hero_slide}`}
+            >
+              <Image
+                src={image.url}
+                alt={image.alt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Dots */}
+        <div className={styles.dots}>
+          {heroImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => instanceRef.current?.moveToIdx(idx)}
+              className={idx === currentSlide ? styles.activeDot : ""}
             />
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

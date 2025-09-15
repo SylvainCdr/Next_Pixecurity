@@ -1,28 +1,17 @@
-.shopCarousel-container {
-  width: 90%;
+.carousel-container {
   max-width: 1440px;
-
   margin: 0 auto;
 
-  .product-item {
-    padding: 0.5em;
-    margin-bottom: 2em;
-    text-align: center;
-    padding : 0 auto;
-    margin: 0 auto;
-
-    .product-card {
-      padding: 0.5em;
-    }
-    .card-brand {
-      padding-top: 1rem;
-    }
+  .keen-slider {
+    display: flex;
+    overflow: hidden;
   }
-  
-}
 
-@media (max-width: 768px) {
-  .shopCarousel-container {
-    width: 80%;
+  .keen-slider__slide {
+    padding: 0 5px; // spacing léger
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-content: center;
   }
 }

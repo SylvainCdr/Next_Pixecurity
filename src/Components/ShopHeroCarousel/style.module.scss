@@ -1,32 +1,44 @@
 .shop_hero_carousel_container {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   max-width: 1440px;
+  position: relative;
 
   .hero_slide {
     position: relative;
     width: 100%;
-    height: 400px; // hauteur fixe pour éviter CLS (layout shift)
+    height: 400px;
 
-    @media (max-width: 1200px) {
-      height: 280px;
+    @media (max-width: 1250px) {
+      height: 260px;
     }
     @media (max-width: 800px) {
-      height: 220px;
+      height: 150px;
     }
     @media (max-width: 500px) {
-      height: 150px;
+      height: 120px;
     }
   }
 
-  :global(.slick-dots) {
-    bottom: 15px;
-    li button:before {
-      color: #ff9c3f;
-      font-size: 12px;
-    }
-    li.slick-active button:before {
-      color: #ff6a00;
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s;
+      padding : 0;
+
+      &.activeDot {
+        background: #ff6a0075;
+      }
     }
   }
 }
