@@ -19,6 +19,83 @@
 }
 
 .product-card {
+  position: relative; // nécessaire pour le badge
+  background-color: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(217, 217, 217, 0.798);
+  display: flex;
+  flex-direction: column;
+  max-width: 22rem;
+  min-height: 25em; // cohérent et constant
+  padding: 0.5rem;
+  margin-right: 0.3em;
+
+  // ✅ Badge toujours réservé
+  .discount-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+    background-color: #6c1b74;
+    padding: 0.4rem 0.6rem;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    min-width: 3rem; // réserve toujours un espace
+    text-align: center;
+  }
+
+  // ✅ Conteneur image avec dimensions fixes → plus de CLS
+  .imgContainer {
+    width: 100%;
+    height: 15em; // réserve la place
+    position: relative; // pour next/image fill
+    overflow: hidden;
+
+    .product-img {
+      object-fit: contain;
+    }
+  }
+
+  // ✅ Place réservée pour le logo
+  .card-brand {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+
+    .brand-logo {
+      width: auto;
+      height: 2rem; // fixe pour éviter le shift
+      object-fit: contain;
+    }
+  }
+
+  .card-title {
+    height: 4rem;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--sunset1);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  .card-bottom {
+    margin-top: auto; // pousse en bas
+    min-height: 3rem; // réserve toujours un espace
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.product-card {
   background-color: #fff;
   border-radius: 0.3rem;
   box-shadow: 0.1rem 0.1rem 0.2rem 0rem rgba(217, 217, 217, 0.798);
@@ -49,20 +126,19 @@
 
   .card-title {
     height: 4rem; // Hauteur fixe pour aligner les cartes
-  font-size: 1.1rem;
-  line-height: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: var(--sunset1);
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--sunset1);
 
- 
-  display: box;
-  -webkit-line-clamp: 3; // Limite à 2 lignes
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word; // Coupe proprement les mots longs
+    display: box;
+    -webkit-line-clamp: 3; // Limite à 2 lignes
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word; // Coupe proprement les mots longs
   }
 
   .imgContainer {
@@ -95,7 +171,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    height : 3rem;
+    height: 3rem;
 
     .card-price {
       width: 50%;
@@ -172,15 +248,15 @@
         background: none;
         padding: 0;
         box-shadow: none;
-        background-color:  #00c742;
+        background-color: #00c742;
         padding: 0.5rem;
         font-size: 1.1rem;
         i {
           font-size: 1.1rem;
-          padding-right : 0.1rem;
+          padding-right: 0.1rem;
           color: #838485;
           cursor: pointer;
-           color: white;
+          color: white;
 
           &:active {
             animation: clickAnimation 0.3s ease;
@@ -190,7 +266,6 @@
 
         .cart:hover {
           color: #01e34c;
-          
         }
       }
     }
@@ -209,7 +284,6 @@
       font-size: 1rem;
     }
     .cartBtn {
-     
       padding: 0.3rem;
       font-size: 1rem;
     }

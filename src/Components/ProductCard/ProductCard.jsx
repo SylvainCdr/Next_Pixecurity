@@ -2,7 +2,6 @@ import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import Swal from "sweetalert2";
-import Aos from "aos";
 import { logos } from "../../templates/Shop/Product/LogosData";
 import { BASE_URL } from "../../url";
 import { useGetUser } from "../useGetUser";
@@ -10,12 +9,13 @@ import useFavorites from "../useFavorites";
 import { useCartContext } from "@/Components/cartContext";
 import Head from "next/head";
 import Image from "next/image";
-import aos from "aos";
-
+import Aos from "aos";
 
 const ProductImage = ({ product }) => {
   const [imgSrc, setImgSrc] = useState(
-    product?.image?.startsWith("http") ? product.image : `${BASE_URL}${product.image}`
+    product?.image?.startsWith("http")
+      ? product.image
+      : `${BASE_URL}${product.image}`
   );
 
   return (
@@ -23,13 +23,11 @@ const ProductImage = ({ product }) => {
       <Image
         src={imgSrc || "/assets/shop/nopicavailable.webp"}
         alt={product.name}
+        fill
+        sizes="(max-width: 768px) 150px, 170px"
         className={styles["product-img"]}
-        width={130}
-        height={130}
-        loading="lazy"
+        priority={false}
         onError={() => setImgSrc("/assets/shop/nopicavailable.webp")}
-        style={{ opacity: 0, transition: "opacity 0.5s" }}
-        onLoad={(e) => (e.target.style.opacity = 1)}
       />
     </div>
   );
@@ -47,10 +45,15 @@ function ProductCard({ product }) {
   const user = useGetUser();
   const userId = user?._id;
 
+  useEffect(() => {
+    (async () => {
+      const AOS = await import("aos");
+      AOS.init({ duration: 1500 });
+    })();
+  }, []);
 
   return (
     <div className={styles["product-card"]}>
-
       {/* On enleve les meta pour prvilégier la page product.js afin de ne pas avoir de conflit avec les meta de la page  */}
       {/* <Head>
         <meta property="og:title" content={product.name} />
@@ -65,13 +68,14 @@ function ProductCard({ product }) {
         <DiscountBadge product={product} />
         <ProductImage product={product} />
 
-
         <h1 className={styles["card-title"]}>{product.name}</h1>
         <div className={styles["card-brand"]}>
           {brandLogo && (
-            <img
+            <Image
               src={brandLogo.logo}
               alt={brandLogo.name}
+              width={80}
+              height={40}
               className={styles["brand-logo"]}
               loading="lazy"
             />
@@ -109,17 +113,15 @@ function Prices({ product }) {
       <div className={styles["card-prices"]}>
         <p className={styles["original-price"]}>
           {product.price.toFixed(2)} €{" "}
-        </p > 
+        </p>
         <p className={styles["discounted-price"]}>
           {product.discountPrice.toFixed(2)} € <span>HT</span>{" "}
         </p>
-        
       </div>
     );
   }
 
   return (
-    
     <p className={styles["card-price"]}>
       {product.price ? product.price.toFixed(2) : "00.00"} €<span> HT</span>
     </p>
@@ -239,7 +241,7 @@ function ButtonAddToCart({ product }) {
 
   return (
     <button className={styles.cartBtn} onClick={handleAddToCart}>
-      <i className="fa-solid fa-cart-plus"  /> Ajouter
+      <i className="fa-solid fa-cart-plus" /> Ajouter
     </button>
   );
 }
