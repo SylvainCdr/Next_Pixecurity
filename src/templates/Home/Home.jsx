@@ -16,7 +16,7 @@ export default function Home() {
     (async () => {
       const AOS = (await import("aos")).default;
       await import("aos/dist/aos.css");
-      AOS.init({ duration: 1500 });
+      AOS.init({ duration: 1200 });
     })();
   }, []);
 
