@@ -17,30 +17,27 @@
     width: 100%;
     background-attachment: fixed;
 
-     /* Conteneur de l'image */
-  .imageWrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1; // Derrière le texte
-
-
-
-    /* Pseudo-élément pour le filtre */
-    &::after {
-      content: "";
+    /* Conteneur de l'image */
+    .imageWrapper {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        360deg,
-        #000000fb 5%,
-        rgba(22, 24, 26, 0.346) 20%,
-        rgba(31, 50, 87, 0.065) 40%,
-        rgba(122, 122, 122, 0) 60%
-      );
+      width: 100%;
+      height: 100%;
+      z-index: -1; // Derrière le texte
+
+      /* Pseudo-élément pour le filtre */
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          360deg,
+          #000000fb 5%,
+          rgba(22, 24, 26, 0.346) 20%,
+          rgba(31, 50, 87, 0.065) 40%,
+          rgba(122, 122, 122, 0) 60%
+        );
+      }
     }
-  }
-  
 
     .title {
       width: 42%;
@@ -184,7 +181,7 @@
         }
 
         h3 {
-          font-family: "Barlow Condensed", sans-serif;
+          font-family: var(--font-barlow-condensed), sans-serif;
           font-size: 2rem;
           font-weight: 500;
           margin-top: 1rem;
@@ -192,7 +189,7 @@
         }
 
         h4 {
-          font-family: "Barlow Condensed", sans-serif;
+          font-family: var(--font-barlow-condensed), sans-serif;
           font-size: 1.5rem;
           font-weight: 400;
           margin-top: 1rem;

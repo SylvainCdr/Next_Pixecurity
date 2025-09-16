@@ -40,7 +40,7 @@
       margin-bottom: 3rem;
       font-weight: 500;
       color: var(--sunset1);
-      font-family: "Barlow Condensed", sans-serif;
+      font-family: var(--font-barlow-condensed), sans-serif;
     }
 
     .empty-cart-btn {
@@ -156,8 +156,8 @@
       }
 
       .product-details {
-             margin-top : 1rem;
-   
+        margin-top: 1rem;
+
         .product-title {
           margin-right: 20px;
 
@@ -183,7 +183,7 @@
 
       .product-price {
         font-weight: 500;
-             margin-top : 1rem;
+        margin-top: 1rem;
 
         .original-price {
           text-decoration: line-through;
@@ -202,7 +202,7 @@
       }
 
       .product-quantity {
-             margin-top : 0.6rem;
+        margin-top: 0.6rem;
         input {
           width: 4em;
           height: 1.8em;
@@ -217,20 +217,18 @@
       .remove-product {
         color: rgb(26, 85, 234);
         font-size: 0.8em;
-      
+
         cursor: pointer;
       }
       .product-line-price {
-        margin-top : 1rem;
+        margin-top: 1rem;
       }
     }
 
     /* Totals section */
     .totals {
-     
       font-size: 1.1em;
       .totals-item {
-        
         float: right;
         clear: both;
         width: 100%;
@@ -255,7 +253,7 @@
           text-align: right;
         }
       }
-      
+
       .totals-item-total {
       }
     }

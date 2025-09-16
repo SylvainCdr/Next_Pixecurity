@@ -49,7 +49,7 @@ export default function Document() {
           href="https://uploads.pixecurity.com/files/fav-pix-shop_1.png"
         />
 
-        {/* Google Fonts */}
+        {/* Google Fonts
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -59,7 +59,7 @@ export default function Document() {
         <link
           href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
       <body>
         {/* Optionnel : tu peux laisser ce bloc si tu veux que GTM fonctionne aussi si JS est désactivé */}

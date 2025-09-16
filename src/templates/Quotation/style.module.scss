@@ -8,7 +8,7 @@
   text-align: center;
 
   h1 {
-    // font-family: "Barlow Condensed", sans-serif;
+    //font-family: var(--font-barlow-condensed), sans-serif;
     font-size: 3rem;
     color: var(--sunset1);
     font-weight: 700;
@@ -17,7 +17,7 @@
   }
 
   h3 {
-    // font-family: "Barlow Condensed", sans-serif;
+    //font-family: var(--font-barlow-condensed), sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 2rem;
@@ -76,7 +76,6 @@
       margin-bottom: 20px;
     }
 
-
     .serviceDetails {
       margin-top: 20px;
       padding: 15px;
@@ -103,21 +102,18 @@
     }
 
     form {
-    .checkboxContainer{
-    flex-direction: column;
-    text-align: left;
+      .checkboxContainer {
+        flex-direction: column;
+        text-align: left;
 
-    label {
-      margin: 5px 0;
-      width: 90%;
-    }
-    input {
-      width: 10%;
-
-
-    }
-      
-    }
+        label {
+          margin: 5px 0;
+          width: 90%;
+        }
+        input {
+          width: 10%;
+        }
+      }
     }
   }
 }

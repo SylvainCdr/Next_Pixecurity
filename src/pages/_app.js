@@ -9,6 +9,22 @@ import "../../i18n";
 import { appWithTranslation } from "next-i18next";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 import Link from "next/link";
+import { Barlow, Barlow_Condensed } from "next/font/google";
+
+// Déclaration avec variables CSS
+const barlow = Barlow({
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-barlow",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-barlow-condensed",
+});
 
 function App({ Component, pageProps }) {
   useEffect(() => {
@@ -99,57 +115,60 @@ function App({ Component, pageProps }) {
       </Head>
       <AppProvider>
         <CartProvider>
-          <Template>
-            <Component {...pageProps} />
-            <CookieConsent
-              location="bottom" // on override plus bas avec style, donc location n'a plus d'effet
-              buttonText="J'accepte"
-              declineButtonText="Refuser"
-              enableDeclineButton
-              cookieName="pixecurityCookieConsent"
-              onAccept={loadAlbacross}
-              style={{
-                position: "fixed",
-                top: "50%", // milieu verticalement (à 50% de la hauteur)
-                left: "50%", // milieu horizontalement
-                transform: "translate(-50%, 50%)", // centre exact (légère correction sur Y pour être visible)
-                background: "#2B373B",
-                fontSize: "16px",
-                padding: "15px 25px",
-                borderRadius: "10px",
-                maxWidth: "90%",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-                zIndex: 9999,
-              }}
-              buttonWrapperClasses="cookie-buttons"
-              buttonStyle={{
-                background: "#009fe3",
-                color: "#fff",
-                fontSize: "15px",
-                borderRadius: "5px",
-                marginLeft: "10px",
-                padding: "8px 16px",
-              }}
-              declineButtonStyle={{
-                background: "#ccc",
-                color: "#000",
-                fontSize: "13px",
-                borderRadius: "5px",
-                marginLeft: "10px",
-                padding: "8px 16px",
-              }}
-              expires={150}
-            >
-              Ce site utilise des cookies pour le suivi statistique et
-              marketing.{" "}
-              <Link
-                href="/politique-de-confidentialite"
-                style={{ color: "#009fe3", textDecoration: "underline" }}
+          <main className={`${barlow.variable} ${barlowCondensed.variable}`}>
+            <Template>
+              <Component {...pageProps} />
+
+              <CookieConsent
+                location="bottom" // on override plus bas avec style, donc location n'a plus d'effet
+                buttonText="J'accepte"
+                declineButtonText="Refuser"
+                enableDeclineButton
+                cookieName="pixecurityCookieConsent"
+                onAccept={loadAlbacross}
+                style={{
+                  position: "fixed",
+                  top: "50%", // milieu verticalement (à 50% de la hauteur)
+                  left: "50%", // milieu horizontalement
+                  transform: "translate(-50%, 50%)", // centre exact (légère correction sur Y pour être visible)
+                  background: "#2B373B",
+                  fontSize: "16px",
+                  padding: "15px 25px",
+                  borderRadius: "10px",
+                  maxWidth: "90%",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                  zIndex: 9999,
+                }}
+                buttonWrapperClasses="cookie-buttons"
+                buttonStyle={{
+                  background: "#009fe3",
+                  color: "#fff",
+                  fontSize: "15px",
+                  borderRadius: "5px",
+                  marginLeft: "10px",
+                  padding: "8px 16px",
+                }}
+                declineButtonStyle={{
+                  background: "#ccc",
+                  color: "#000",
+                  fontSize: "13px",
+                  borderRadius: "5px",
+                  marginLeft: "10px",
+                  padding: "8px 16px",
+                }}
+                expires={150}
               >
-                En savoir plus
-              </Link>
-            </CookieConsent>
-          </Template>
+                Ce site utilise des cookies pour le suivi statistique et
+                marketing.{" "}
+                <Link
+                  href="/politique-de-confidentialite"
+                  style={{ color: "#009fe3", textDecoration: "underline" }}
+                >
+                  En savoir plus
+                </Link>
+              </CookieConsent>
+            </Template>
+          </main>
         </CartProvider>
       </AppProvider>
     </>

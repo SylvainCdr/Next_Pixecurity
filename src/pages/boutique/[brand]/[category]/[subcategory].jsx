@@ -43,7 +43,6 @@ export async function getServerSideProps({ params, query }) {
   };
 }
 
-
 const Page = ({ products, brand, category, subcategory, filters }) => {
   return (
     <Products

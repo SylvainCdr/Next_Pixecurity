@@ -58,6 +58,22 @@
       object-fit: contain;
     }
   }
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    .card-title {
+      height: 4rem;
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--sunset1);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+  }
 
   // ✅ Place réservée pour le logo
   .card-brand {
@@ -75,21 +91,6 @@
       max-width: 7rem;
       max-height: 2rem;
     }
-  }
-
-  .card-title {
-    height: 4rem;
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: var(--sunset1);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
   }
 
   .card-bottom {
@@ -141,6 +142,11 @@
         color: #016e22;
         font-weight: 600;
       }
+    }
+    .base-price {
+      font-size: 1.1rem;
+      color: #5e5e5e;
+      font-weight: 600;
     }
 
     .CTA {
@@ -195,6 +201,7 @@
       }
     }
   }
+
   &:hover {
     box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem rgba(202, 202, 202, 0.798);
     scale: 1.01;
