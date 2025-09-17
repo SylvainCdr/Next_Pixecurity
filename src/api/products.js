@@ -1,27 +1,27 @@
 import { BASE_URL } from "@/url";
 
-// export async function getProductsByCatSubCat({
-//   userId = "",
-//   brand,
-//   category,
-//   subcategory,
-// }) {
-//   const apiUrl = subcategory
-//     ? `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&slugSubcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
-//     : `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&userId=${userId}`;
+export async function getProductsByCatSubCat({
+  userId = "",
+  brand,
+  category,
+  subcategory,
+}) {
+  const apiUrl = subcategory
+    ? `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&slugSubcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
+    : `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&userId=${userId}`;
 
-//   const response = await fetch(apiUrl);
-//   if (!response.ok) {
-//     console.error(
-//       "Erreur fetch getProductsByCatSubCat:",
-//       apiUrl,
-//       response.status
-//     );
-//     return [];
-//   }
-//   const data = await response.json();
-//   return data;
-// }
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    console.error(
+      "Erreur fetch getProductsByCatSubCat:",
+      apiUrl,
+      response.status
+    );
+    return [];
+  }
+  const data = await response.json();
+  return data;
+}
 
 export async function getProductsBySlug({
   slugBrand,
