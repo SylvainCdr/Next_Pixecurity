@@ -1,0 +1,145 @@
+.projectsPage {
+  padding: 2rem;
+  padding-top: 8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: var(--sunset1);
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+  }
+
+  .projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .projectCard {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .imageWrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover .overlay {
+        opacity: 1;
+      }
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 1rem;
+      color: #222;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0 1rem 1rem 1rem;
+      color: #555;
+    }
+
+    span {
+      display: block;
+      font-size: 0.9rem;
+      margin: 0 1rem 1rem 1rem;
+      color: #888;
+    }
+
+    .projectTags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 1rem 1rem 1rem;
+
+      .tag {
+        background-color: #f0f0f0;
+        color: #333;
+        padding: 0.3rem 0.6rem;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+    }
+
+    .projectLink {
+      display: block;
+      margin: 0 1rem 1rem 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #0070f3;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: #005bb5;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .projectsGrid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .projectCard .imageWrapper {
+      height: 150px;
+    }
+  }
+}
