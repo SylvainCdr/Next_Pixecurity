@@ -89,46 +89,50 @@ function ShopNav() {
     fetchSubcategories();
   }, [categoriesMap]);
 
- const handleBrandClick = async (brand) => {
-  setActiveBrand((prev) => (prev === brand ? null : brand));
-  setActiveCategory(null);
+  const handleBrandClick = async (brand) => {
+    setActiveBrand((prev) => (prev === brand ? null : brand));
+    setActiveCategory(null);
 
-  if (!categoriesMap[brand]) {
-    setIsLoading(true);
-    try {
-      const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
-      const categories = await res.json();
-      setCategoriesMap((prev) => ({ ...prev, [brand]: categories }));
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
+    if (!categoriesMap[brand]) {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`${BASE_URL}/categories?brand=${brand}`);
+        const categories = await res.json();
+        setCategoriesMap((prev) => ({ ...prev, [brand]: categories }));
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
-};
+  };
 
-const handleCategoryClick = async (category) => {
-  setActiveCategory((prevCategory) => (prevCategory === category ? null : category));
+  const handleCategoryClick = async (category) => {
+    setActiveCategory((prevCategory) =>
+      prevCategory === category ? null : category
+    );
 
-  if (!subcategoriesMap[activeBrand]?.[category]) {
-    setIsLoading(true);
-    try {
-      const res = await fetch(`${BASE_URL}/subcategories?brand=${activeBrand}&category=${category}`);
-      const subs = await res.json();
-      setSubcategoriesMap((prev) => ({
-        ...prev,
-        [activeBrand]: {
-          ...prev[activeBrand],
-          [category]: subs,
-        },
-      }));
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
+    if (!subcategoriesMap[activeBrand]?.[category]) {
+      setIsLoading(true);
+      try {
+        const res = await fetch(
+          `${BASE_URL}/subcategories?brand=${activeBrand}&category=${category}`
+        );
+        const subs = await res.json();
+        setSubcategoriesMap((prev) => ({
+          ...prev,
+          [activeBrand]: {
+            ...prev[activeBrand],
+            [category]: subs,
+          },
+        }));
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
-};
+  };
 
   const handleSubcategoryClick = () => {
     setActiveBrand(null);
@@ -154,7 +158,7 @@ const handleCategoryClick = async (category) => {
 
   useEffect(() => {
     const overlay = document.querySelector(".overlay");
-    if (!overlay) return; // Évite l'erreur si l'élément n'est pas trouvé
+    if (!overlay) return;
 
     if (isMobileMenuOpen) {
       overlay.classList.add("active");
@@ -163,8 +167,10 @@ const handleCategoryClick = async (category) => {
     }
   }, [isMobileMenuOpen]);
 
-  const PropagateLoader = dynamic(() => import("react-spinners").then(mod => mod.PropagateLoader), { ssr: false });
-
+  const PropagateLoader = dynamic(
+    () => import("react-spinners").then((mod) => mod.PropagateLoader),
+    { ssr: false }
+  );
 
   return (
     <div className={styles.shopNavContainer} ref={menuRef}>
@@ -175,7 +181,7 @@ const handleCategoryClick = async (category) => {
         ☰
       </button>
 
-      {/* Menu Desktop - Large bande pour les marques */}
+      {/* Menu Desktop */}
       <div className={styles.desktopMenu}>
         <div className={styles.brandBar}>
           <ul className={styles.brandList}>
@@ -207,31 +213,18 @@ const handleCategoryClick = async (category) => {
             ) : (
               categoriesMap[activeBrand]?.map((category) => (
                 <div key={category}>
-                  <motion.h2
-                    initial={{ x: -20 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {category}
-                  </motion.h2>
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {subcategoriesMap[activeBrand]?.[category]?.map(
-                      (subcategory) => (
-                        <motion.li key={subcategory}>
-                          <Link
-                            href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
-                            onClick={handleSubcategoryClick}
-                          >
-                            {subcategory}
-                          </Link>
-                        </motion.li>
-                      )
-                    )}
+                  <motion.h2>{category}</motion.h2>
+                  <motion.ul>
+                    {subcategoriesMap[activeBrand]?.[category]?.map((sub) => (
+                      <motion.li key={sub.slugSubcategory}>
+                        <Link
+                          href={`/boutique/${sub.slugBrand}/${sub.slugCategory}/${sub.slugSubcategory}${userIdParam}`}
+                          onClick={handleSubcategoryClick}
+                        >
+                          {sub.name}
+                        </Link>
+                      </motion.li>
+                    ))}
                   </motion.ul>
                 </div>
               ))
@@ -310,13 +303,13 @@ const handleCategoryClick = async (category) => {
                                 transition={{ duration: 0.3 }}
                               >
                                 {subcategoriesMap[brand]?.[category]?.map(
-                                  (subcategory) => (
-                                    <motion.li key={subcategory}>
+                                  (sub) => (
+                                    <motion.li key={sub.slugSubcategory}>
                                       <Link
-                                        href={`/boutique/${activeBrand}/${category}/${subcategory}${userIdParam}`}
+                                        href={`/boutique/${sub.slugBrand}/${sub.slugCategory}/${sub.slugSubcategory}${userIdParam}`}
                                         onClick={handleSubcategoryClick}
                                       >
-                                        {subcategory}
+                                        {sub.name}
                                       </Link>
                                     </motion.li>
                                   )

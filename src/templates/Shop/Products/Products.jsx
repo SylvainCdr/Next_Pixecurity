@@ -6,7 +6,6 @@ import styles from "./style.module.scss";
 import { PropagateLoader } from "react-spinners";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-// import RegisterPopup from "@/Components/RegisterPopup/RegisterPopup";
 import { useGetUser } from "@/Components/useGetUser";
 import useFavorites from "@/Components/useFavorites";
 import { useCartContext } from "@/Components/cartContext";
