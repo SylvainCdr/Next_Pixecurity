@@ -2,25 +2,43 @@ import { BASE_URL } from "@/url";
 
 export async function getProductsByCatSubCat({
   userId = "",
-  brand,
-  category,
-  subcategory,
+  brand = "",
+  category = "",
+  subcategory = "",
+  excludeId = null, // ID du produit à exclure
 }) {
-  const apiUrl = subcategory
-    ? `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&slugSubcategory=${encodeURIComponent(subcategory)}&userId=${userId}`
-    : `${BASE_URL}/products?slugBrand=${encodeURIComponent(brand)}&slugCategory=${encodeURIComponent(category)}&userId=${userId}`;
+  // Construire l'URL en ajoutant uniquement ce qui existe
+  let apiUrl = `${BASE_URL}/products?categorySlug=${encodeURIComponent(category)}`;
+  if (subcategory)
+    apiUrl += `&subcategorySlug=${encodeURIComponent(subcategory)}`;
+  if (brand) apiUrl += `&brandSlug=${encodeURIComponent(brand)}`;
 
-  const response = await fetch(apiUrl);
-  if (!response.ok) {
-    console.error(
-      "Erreur fetch getProductsByCatSubCat:",
-      apiUrl,
-      response.status
-    );
+  if (userId) apiUrl += `&userId=${userId}`;
+
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      console.error(
+        "Erreur fetch getProductsByCatSubCat:",
+        apiUrl,
+        response.status
+      );
+      return [];
+    }
+
+    let data = await response.json();
+
+    // Exclure le produit actuel si nécessaire
+    if (excludeId) {
+      data = data.filter((item) => String(item._id) !== String(excludeId));
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Erreur getProductsByCatSubCat:", error);
     return [];
   }
-  const data = await response.json();
-  return data;
 }
 
 export async function getProductsBySlug({

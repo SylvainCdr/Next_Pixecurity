@@ -30,7 +30,6 @@ export default function Product({ product, id, suggestions }) {
   const [isInFavorites, setIsInFavorites] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-
   console.log("Product component rendered with product:", product);
   useEffect(() => {
     const fetchFavoriteStatus = async () => {
@@ -87,10 +86,10 @@ export default function Product({ product, id, suggestions }) {
     AOS.init({ duration: 1000 });
   }, []);
 
-const handleSearchResults = (results) => {
-  setSearchResults(results);
-  setIsSearching(true); // on est en mode recherche
-};
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+    setIsSearching(true); // on est en mode recherche
+  };
 
   useEffect(() => {
     const jsonLdData = {
@@ -184,23 +183,20 @@ const handleSearchResults = (results) => {
       <ShopSearch onSearchResults={handleSearchResults} />
       <ProductRequestQuoteModal product={product} />
 
-
       {isSearching && searchResults.length > 0 && (
-  <div className={styles["search-grid"]}>
-    {searchResults.map((prod) => (
-      <ProductCard
-        key={prod._id}
-        product={prod}
-        addToFavorites={addToFavorites}
-        removeFromFavorites={removeFromFavorites}
-        checkFavorite={checkFavorite}
-        addToCart={addToCart}
-      />
-    ))}
-  </div>
-)}
-
-
+        <div className={styles["search-grid"]}>
+          {searchResults.map((prod) => (
+            <ProductCard
+              key={prod._id}
+              product={prod}
+              addToFavorites={addToFavorites}
+              removeFromFavorites={removeFromFavorites}
+              checkFavorite={checkFavorite}
+              addToCart={addToCart}
+            />
+          ))}
+        </div>
+      )}
 
       {searchResults.length === 0 && (
         <div className={styles["product-page"]}>
@@ -423,7 +419,6 @@ const handleSearchResults = (results) => {
                   <ProductCard
                     key={item._id}
                     product={item}
-                    isInFavorites={isInFavorites}
                     addToFavorites={addToFavorites}
                     removeFromFavorites={removeFromFavorites}
                     checkFavorite={checkFavorite}
