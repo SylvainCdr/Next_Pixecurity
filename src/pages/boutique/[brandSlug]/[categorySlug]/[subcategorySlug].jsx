@@ -16,30 +16,54 @@ export async function getServerSideProps({ params, query }) {
     return { notFound: true };
   }
 
-  const products = await getProductsBySlug({
-    slugBrand: brandSlug,
-    slugCategory: categorySlug,
-    slugSubcategory: subcategorySlug,
-    userId,
-  });
+  try {
+    const products = await getProductsBySlug({
+      slugBrand: brandSlug,
+      slugCategory: categorySlug,
+      slugSubcategory: subcategorySlug,
+      userId,
+    });
 
-  if (!products || products.length === 0) {
-    return { notFound: true };
+    // ⚡ Ici, on renvoie une page vide plutôt que de planter
+    if (!products || products.length === 0) {
+      return {
+        props: {
+          products: [],
+          brandSlug,
+          categorySlug,
+          subcategorySlug,
+          filters: [],
+        },
+      };
+    }
+
+    const productsFiltered = getProductsFiltered(products, query);
+    const filters = getFiltersFromProducts(productsFiltered);
+
+    return {
+      props: {
+        products: productsFiltered,
+        brandSlug,
+        categorySlug,
+        subcategorySlug,
+        filters,
+      },
+    };
+  } catch (error) {
+    console.error("❌ Erreur dans getServerSideProps:", error);
+    // fallback propre : pas de 5xx
+    return {
+      props: {
+        products: [],
+        brandSlug,
+        categorySlug,
+        subcategorySlug,
+        filters: [],
+      },
+    };
   }
-
-  const productsFiltered = getProductsFiltered(products, query);
-  const filters = getFiltersFromProducts(productsFiltered);
-
-  return {
-    props: {
-      products: productsFiltered,
-      brandSlug,
-      categorySlug,
-      subcategorySlug,
-      filters,
-    },
-  };
 }
+
 
 const Page = ({
   products,
