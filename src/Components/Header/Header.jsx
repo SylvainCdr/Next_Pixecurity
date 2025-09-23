@@ -15,6 +15,8 @@ function Header() {
   const pathname = usePathname();
   const { t } = useTranslation();
   const router = useRouter(); // Obtenir la route actuelle
+  const [openLang, setOpenLang] = useState(false);
+  const [currentLang, setCurrentLang] = useState("fr");
 
   function burgerToggle() {
     const nav = document.querySelector(`.${styles.header__nav}`);
@@ -220,26 +222,50 @@ function Header() {
         <CartLink />
 
         {/* Sélecteur de langue */}
+
         {shouldDisplayLanguageSelector && (
-          <div className={styles.language_selector}>
+          <div
+            className={styles.language_selector}
+            style={{ position: "relative" }}
+          >
             <button
-              onClick={() => changeLanguage("fr")}
               className={styles.lang_button}
+              onClick={() => setOpenLang(!openLang)}
             >
-              <img src="/assets/icons/french-logo.png" alt="French" />
+              <i className="fa-solid fa-globe"></i> {currentLang.toUpperCase()}{" "}
+              <span style={{ fontSize: "0.7em", marginLeft: "3px" }}>▼</span>
             </button>
-            <button
-              onClick={() => changeLanguage("en")}
-              className={styles.lang_button}
-            >
-              <img src="/assets/icons/english-logo.png" alt="English" />
-            </button>
-            <button
-              onClick={() => changeLanguage("ar")}
-              className={styles.lang_button}
-            >
-              <img src="/assets/icons/uae-logo.png" alt="Arabic" />
-            </button>
+
+            {openLang && (
+              <div
+                className={styles.dropdown_menu}
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  right: 0,
+                  backgroundColor: "#2c2c2c",
+                  borderRadius: "2px",
+                  marginTop: "4px",
+                  display: "flex",
+                  flexDirection: "column",
+                  zIndex: 1000,
+                }}
+              >
+                {["fr", "en", "ar"].map((lang) => (
+                  <button
+                    key={lang}
+                    className={styles.lang_button}
+                    onClick={() => {
+                      setCurrentLang(lang);
+                      changeLanguage(lang);
+                      setOpenLang(false);
+                    }}
+                  >
+                    {lang.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </nav>
