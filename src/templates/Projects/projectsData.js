@@ -1,14 +1,15 @@
 export const projects = [
   {
-    name: "Contrôle d’accès multi-sites – CAF 93",
+    name: "Contrôle d’accès multi-sites",
+    subname: "CAF 93",
     slug: "controle-acces-caf93",
     logo: "/assets/projects/caf93/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQG14pf1suY4fg/feedshare-shrink_800/B4EZUoSFeWGYAg-/0/1740137585299?e=1761782400&v=beta&t=uA20iBdOd7C12BFY9jnerUy5UXO31f0byaqKv40VYZw",
+      "https://images.unsplash.com/photo-1481253127861-534498168948?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnVpbGRpbmd8ZW58MHwwfDB8fHwy",
     ],
     description:
       "Pixecurity a déployé, aux côtés de Terideal, un système de contrôle d’accès sur 6 sites de la CAF de la Seine-Saint-Denis. Le projet comprend 113 lecteurs (classiques, biométriques, UHF et mécatroniques), 2500 badges distribués pour un accès fluide et sécurisé, et une solution complète TIL Technologies by Hirsch certifiée ANSSI pour une gestion multi-sites centralisée. Grâce à cette technologie et au savoir-faire Pixecurity, la transition s’est faite sans accroc, assurant sérénité et sécurité aux usagers et au personnel.",
-    client: "CAF 93 (Seine-Saint-Denis)",
+    client: "CAF 93 (Seine-Saint-Denis) / Terideal",
     year: 2024,
     category: "Contrôle d'accès",
     website: "#",
@@ -21,38 +22,41 @@ export const projects = [
       "SmarterSafer",
     ],
   },
+  // {
+  //   name: "Sécurisation de l’Hôpital ",
+  //   subname : "Contrôle d’accès & Vidéosurveillance",
+  //   slug: "securite-hopital",
+  //   logo: "/assets/projects/hopital/logo.png",
+  //   images: [
+  //     "https://media.licdn.com/dms/image/v2/D4E22AQGD5TIinnlvhg/feedshare-shrink_1280/B4EZSth0eSGYAo-/0/1738078113268?e=2147483647&v=beta&t=oF9IJj_jRd84I4Wyf3sk5qPIUxlwXBFOZ-KXT0rkoO8",
+  //   ],
+  //   description:
+  //     "Pixecurity renforce la sécurité d’un établissement hospitalier stratégique en déployant une solution complète mêlant contrôle d’accès et vidéosurveillance. Le projet comprend l’installation de 450 lecteurs TIL Technologies, la reprise et l’optimisation du système Genetec avec l’ajout de 11 caméras, la mise en place d’un réseau indépendant dédié à la sûreté, et l’intégration future d’un système d’interphonie sur mesure. Objectif : protéger patients, personnel et infrastructures grâce à une technologie fiable et adaptée aux contraintes du secteur médical.",
+  //   client: "Établissement Hospitalier",
+  //   year: 2024,
+  //   category: "Sécurité hospitalière",
+  //   website: "#",
+  //   tags: [
+  //     "Contrôle d’accès",
+  //     "Vidéosurveillance",
+  //     "TIL Technologies",
+  //     "Genetec",
+  //     "Sécurité hospitalière",
+  //     "Innovation santé",
+  //   ],
+  // },
   {
-    name: "Sécurisation de l’Hôpital – Contrôle d’accès & Vidéosurveillance",
-    slug: "securite-hopital",
-    logo: "/assets/projects/hopital/logo.png",
-    images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQGD5TIinnlvhg/feedshare-shrink_1280/B4EZSth0eSGYAo-/0/1738078113268?e=2147483647&v=beta&t=oF9IJj_jRd84I4Wyf3sk5qPIUxlwXBFOZ-KXT0rkoO8",
-    ],
-    description:
-      "Pixecurity renforce la sécurité d’un établissement hospitalier stratégique en déployant une solution complète mêlant contrôle d’accès et vidéosurveillance. Le projet comprend l’installation de 450 lecteurs TIL Technologies, la reprise et l’optimisation du système Genetec avec l’ajout de 11 caméras, la mise en place d’un réseau indépendant dédié à la sûreté, et l’intégration future d’un système d’interphonie sur mesure. Objectif : protéger patients, personnel et infrastructures grâce à une technologie fiable et adaptée aux contraintes du secteur médical.",
-    client: "Établissement Hospitalier",
-    year: 2024,
-    category: "Sécurité hospitalière",
-    website: "#",
-    tags: [
-      "Contrôle d’accès",
-      "Vidéosurveillance",
-      "TIL Technologies",
-      "Genetec",
-      "Sécurité hospitalière",
-      "Innovation santé",
-    ],
-  },
-  {
-    name: "Sécurisation d’un site de production – Cosmétique de luxe",
+    name: "Sécurisation d’un site de production",
+    subname: "",
     slug: "securite-cosmetique-luxe",
     logo: "/assets/projects/cosmetique/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQEBy84Gmy7CIA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1729603471713?e=2147483647&v=beta&t=QtJqyMMS63knC0wvD9uSQnGeuNOXyYavTb8bWLt9ksk",
+      "https://images.unsplash.com/photo-1623051786552-e46ef84e6c07?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGJ1aWxkaW5nfGVufDB8MHwwfHx8Mg%3D%3D",
     ],
+
     description:
       "Pour le Groupe BALAS, Pixecurity a déployé une solution de sécurité élégante et performante dans un site de production d’une grande marque française de cosmétique et parfumerie haut de gamme. Le projet inclut près de 50 caméras Vivotek (fisheye et multi-capteurs) pilotées par le VMS Milestone Systems, un contrôle d’accès TIL Technologies certifié ANSSI, ainsi qu’une interphonie Commend. Une combinaison alliant innovation technologique et exigence esthétique, au service de la protection d’un univers prestigieux.",
-    client: "Groupe BALAS",
+    client: "Cosmétique & Parfumerie de luxe / Groupe BALAS",
     year: 2024,
     category: "Vidéoprotection & Contrôle d'accès",
     website: "#",
@@ -69,39 +73,16 @@ export const projects = [
     ],
   },
   {
-    name: "Sécurisation d’un site sensible – Ville de Paris",
-    slug: "securite-ville-paris",
-    logo: "/assets/projects/paris/logo.png",
-    images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQGqcJkOzV4oaQ/feedshare-shrink_800/feedshare-shrink_800/0/1726585165514?e=1761782400&v=beta&t=_13OK0yKQs3_p2Iu8BVwr6vy-BxZRTwLnFPMVsh2Qwc",
-    ],
-    description:
-      "Aux côtés de SPIE Facilities, Pixecurity a été choisi pour sécuriser un site sensible de la Ville de Paris. Ce projet à 360° associe vidéoprotection et contrôle d’accès de dernière génération. Les installations comprennent des caméras i-PRO pilotées par le VMS Milestone Systems, ainsi qu’un contrôle d’accès signé Synchronic. Conforme aux standards de l’ANSSI, ce dispositif garantit une protection optimale au cœur de la capitale. Une belle vitrine du savoir-faire Pixecurity appliqué aux sites stratégiques municipaux.",
-    client: "Ville de Paris",
-    year: 2024,
-    category: "Vidéoprotection & Contrôle d'accès",
-    website: "#",
-    tags: [
-      "Paris",
-      "Vidéoprotection",
-      "Contrôle d’accès",
-      "i-PRO",
-      "Milestone Systems",
-      "Synchronic",
-      "ANSSI",
-      "Site sensible",
-    ],
-  },
-  {
-    name: "Sécurisation complète – Fabricant européen d’engins de chantier",
+    name: "Sécurisation complète d’un site industriel",
+    subname: "Fabricant d’engins de chantier",
     slug: "securite-engins-chantier",
     logo: "/assets/projects/chantier/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQFA8u5bi413Eg/feedshare-shrink_800/feedshare-shrink_800/0/1712319200301?e=1761782400&v=beta&t=tlanHByZXNI2qAzaFrNPgp6ro1EExq-OASex-lWsCxw",
+      "https://images.unsplash.com/photo-1730584475949-a01e4663003a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "En collaboration avec Securitas France, Pixecurity a déployé un système de sûreté à 360° pour un fabricant européen majeur d’engins de chantier. Le projet inclut des caméras bullet, PTZ et thermiques connectées à un VMS Milestone Systems, un radar, des haut-parleurs, une centrale d’intrusion avec 60 points de contrôle, ainsi qu’une interphonie IP. Pixecurity a accompagné le client de l’étude initiale à la mise en service et la formation, garantissant une sécurité optimale et complète sur tout le site.",
-    client: "Securitas France / Fabricant d’engins de chantier",
+    client: "Fabricant d’engins de chantier / Securitas France",
     year: 2024,
     category: "Sécurité industrielle",
     website: "#",
@@ -117,15 +98,42 @@ export const projects = [
     ],
   },
   {
-    name: "Infrastructures réseau & sécurité – Site automobile",
+    name: "Sécurisation d’un site sensible",
+    subname: "Ville de Paris",
+    slug: "securite-ville-paris",
+    logo: "/assets/projects/paris/logo.png",
+    images: [
+      "https://images.unsplash.com/photo-1591076787947-aaa4dec435d8?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
+    description:
+      "Aux côtés de SPIE Facilities, Pixecurity a été choisi pour sécuriser un site sensible de la Ville de Paris. Ce projet à 360° associe vidéoprotection et contrôle d’accès de dernière génération. Les installations comprennent des caméras i-PRO pilotées par le VMS Milestone Systems, ainsi qu’un contrôle d’accès signé Synchronic. Conforme aux standards de l’ANSSI, ce dispositif garantit une protection optimale au cœur de la capitale. Une belle vitrine du savoir-faire Pixecurity appliqué aux sites stratégiques municipaux.",
+    client: "Ville de Paris / SPIE Facilities",
+    year: 2024,
+    category: "Vidéoprotection & Contrôle d'accès",
+    website: "#",
+    tags: [
+      "Paris",
+      "Vidéoprotection",
+      "Contrôle d’accès",
+      "i-PRO",
+      "Milestone Systems",
+      "Synchronic",
+      "ANSSI",
+      "Site sensible",
+    ],
+  },
+
+  {
+    name: "Infrastructures réseau & sécurité industrielle",
+    subname: "Site automobile",
     slug: "reseaux-automobile",
     logo: "/assets/projects/automobile/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/D4E22AQGbbFgPS48oIw/feedshare-shrink_800/feedshare-shrink_800/0/1717160272301?e=1761782400&v=beta&t=-kJz0BvWWmKLUgl-QrnWprd5gA3c1DztyhIAZrV8jnQ",
+      "https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "Pixecurity a accompagné Ertie & Fils dans la modernisation d’un site industriel automobile de grande envergure. Le projet comprend le déploiement de plus de 130 bornes Wi-Fi Zyxel Networks et d’une quinzaine de switchs pour garantir une couverture optimale et fiable sur l’ensemble du site. En parallèle, un VMS Milestone Systems a été mis en place pour assurer une surveillance performante et renforcer la sécurité. Pixecurity a également pris en charge l’ensemble des études et du paramétrage afin d’assurer un démarrage fluide et sans accroc.",
-    client: "Ertie & Fils",
+    client: "Site automobile / Ertie & Fils",
     year: 2024,
     category: "Réseaux & Sécurité",
     website: "#",
@@ -144,11 +152,11 @@ export const projects = [
     slug: "datacenter-financier-idf",
     logo: "/assets/projects/datacenter/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/C4E22AQHdXsx_CC6ayQ/feedshare-shrink_800/feedshare-shrink_800/0/1678808837140?e=1761782400&v=beta&t=Y16tsQWchAfYjH6Kr8yTMAW61ORorscZYREC_RfIX3I",
+      "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "Dans un contexte de renforcement européen de la protection des infrastructures critiques, Pixecurity a accompagné un établissement financier d’Île-de-France dans la modernisation de son datacenter. Le projet comprend la refonte complète du PC sûreté : postes clients, serveurs, mur d’image et matériel Dell Technologies. En parallèle, une mise à jour du VMS Milestone Systems a été réalisée pour garantir une gestion optimale de la vidéosurveillance. Ce dispositif offre une résilience accrue face aux menaces physiques et assure la protection des actifs stratégiques sur le long terme.",
-    client: "Établissement financier français",
+    client: "Établissement financier français / Phibor",
     year: 2023,
     category: "Infrastructures critiques",
     website: "#",
@@ -163,15 +171,16 @@ export const projects = [
     ],
   },
   {
-    name: "Contrôle d’accès – Site ministériel",
+    name: "Contrôle d’accès",
+    subname: "Site ministériel",
     slug: "controle-acces-ministere",
     logo: "/assets/projects/ministere/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/C4E22AQEhbpWVuQ1xwg/feedshare-shrink_800/feedshare-shrink_800/0/1672934515240?e=1761782400&v=beta&t=zSyiixIIAezndPBwgYKj0mwKPkd_TohxBN4IMrGCIR8",
+      "https://images.unsplash.com/photo-1615071873932-7788c4df8a26?q=80&w=1154&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "Pixecurity assure la migration du système de contrôle d’accès d’un important site ministériel en France. Le projet comprend le remplacement de 320 lecteurs de badges par la solution Microsesame Cube de TIL Technologies by Hirsch, certifiée par l’ANSSI. Cette architecture complète, du badge au serveur, intègre des protections électroniques, informatiques et électriques pour prévenir les pannes, erreurs humaines, actes de malveillance et cyberattaques. Une solution française, robuste et de haut niveau, garantissant la sûreté et la résilience d’un site stratégique.",
-    client: "Site ministériel (France)",
+    client: "Site ministériel / DPS",
     year: 2023,
     category: "Contrôle d'accès",
     website: "#",
@@ -186,15 +195,16 @@ export const projects = [
     ],
   },
   {
-    name: "Vidéoprotection haut de gamme – Fonds d’investissement américain",
+    name: "Vidéoprotection haut de gamme",
+    subname: "Fonds d’investissement américain",
     slug: "videoprotection-fond-investissement",
     logo: "/assets/projects/fonds/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/C4E22AQEunbrh6N8mCQ/feedshare-shrink_800/feedshare-shrink_800/0/1651064360455?e=1761782400&v=beta&t=TnIZQNYM6sYeJMNB7saYuVXsrL0BuHv4eux1CQ967n8",
+      "https://images.unsplash.com/photo-1624388621606-9f837720c14c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "Pixecurity a équipé les bureaux parisiens d’un grand fonds d’investissement américain avec une solution de vidéoprotection de pointe. En collaboration avec Genelec, le site bénéficie de caméras Bosch Security and Safety Systems dernière génération, dont la Flexidome IP Indoor 8000I 8MP avec IA intégrée, la Flexidome Panoramic 5100I 360° 12MP et la Flexidome Panoramic 6000IC encastrée au plafond. Un dispositif haut de gamme qui combine précision, intelligence artificielle et couverture panoramique, garantissant une sécurité optimale sans angles morts.",
-    client: "Fonds d’investissement américain",
+    client: "Fonds d’investissement américain / Genelec",
     year: 2022,
     category: "Vidéoprotection",
     website: "#",
@@ -209,11 +219,12 @@ export const projects = [
     ],
   },
   {
-    name: "Vidéoprotection – Centre pénitentiaire francilien",
+    name: "Vidéoprotection d’un centre pénitentiaire",
+    subname: "Ministère de la Justice",
     slug: "videoprotection-prison-idf",
     logo: "/assets/projects/prison/logo.png",
     images: [
-      "https://media.licdn.com/dms/image/v2/C4E22AQFuLTX3wYwZbA/feedshare-shrink_800/feedshare-shrink_800/0/1658497581457?e=1761782400&v=beta&t=hiztbZNtw0gG3mBTTqDlvx6gXO2di4fBBTef48SuhbY",
+      "https://images.unsplash.com/photo-1692644712458-fcce8ef5c259?q=80&w=1644&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     description:
       "Dans le cadre de son premier projet pour le Ministère de la Justice, Pixecurity a accompagné Terideal dans la sécurisation d’un centre pénitentiaire francilien. Le dispositif comprend l’installation de près de 50 caméras couvrant l’entrée principale, les cours de promenade et l’espace familles. Un projet qui contribue au renforcement de la sécurité des personnels et des visiteurs, tout en améliorant les conditions de détention. Une réalisation au service de l’État et de la protection des citoyens.",

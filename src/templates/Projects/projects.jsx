@@ -28,11 +28,13 @@ export default function ProjectsPage() {
                   <span>{p.category}</span>
                 </div>
               </div>
-              <h3>{p.name}</h3>
-              <p>{p.description}</p>
-              <span>
+              <h2>{p.name}</h2>
+              <h3>
                 {p.client} - {p.year}
-              </span>
+              </h3>
+              {/* <h3>{p.subname}</h3> */}
+              <p>{p.description}</p>
+
               <div className={styles.projectTags}>
                 {p.tags.map((tag) => (
                   <span key={tag} className={styles.tag}>

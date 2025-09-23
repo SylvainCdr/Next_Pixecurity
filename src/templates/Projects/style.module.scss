@@ -3,18 +3,19 @@
   padding-top: 8rem;
   max-width: 1440px;
   margin: 0 auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
+    font-size: 3.2rem;
     color: var(--sunset1);
+    font-weight: 700;
+    line-height: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   p {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
     color: #ffffff;
   }
@@ -27,7 +28,8 @@
 
   .projectsCard {
     position: relative;
-    background: #fff;
+    // background gradient
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -79,34 +81,43 @@
       }
     }
 
+    h2 {
+      font-size: 1.1rem;
+      margin: rem 0rem 0.5rem 0rem;
+      color: white;
+      background-color: var(--sunset1);
+      padding: 0.5rem 1rem;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      min-height: 3rem;
+      font-weight: 600;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
     h3 {
-      font-size: 1.5rem;
-      margin: 1rem;
-      color: #222;
-      font-weight: 500;
-      line-height: 2rem;
+      display: block;
+      font-size: 0.9rem;
+      margin: 01rem 1rem 1.5rem 1rem;
+      color: #888;
+      text-align: center;
     }
 
     p {
       font-size: 1rem;
-      margin: 0 1rem 1rem 1rem;
-      color: #555;
+      margin: 0rem 1rem 1rem 1rem;
+      color: rgb(29, 29, 29);
       line-height: 1.5;
-    }
-
-    span {
-      display: block;
-      font-size: 0.9rem;
-      margin: 0 0rem 0.5rem 1rem;
-      color: #888;
+      text-align: justify;
     }
 
     .projectTags {
       margin-top: auto; // pousse les tags tout en bas de la carte
       display: flex;
       flex-wrap: wrap;
-      gap: 0.1rem;
-      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+      gap: 1rem;
+      padding: 0.5rem 0.5rem 1rem 0.5rem;
       justify-content: center;
 
       .tag {
