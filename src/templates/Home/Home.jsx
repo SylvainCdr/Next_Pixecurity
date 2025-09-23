@@ -111,7 +111,7 @@ export default function Home() {
           <a href="https://diviniti.tech">
             <Image
               className={styles.newPartnerImg}
-              src="/assets/shop/banners/banner5.webp"
+              src="/assets/shop/banners/banner-diviniti.webp"
               alt="Diviniti partner"
               width={1400}
               height={400}
