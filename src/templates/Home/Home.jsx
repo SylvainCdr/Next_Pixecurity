@@ -23,9 +23,9 @@ export default function Home() {
   const { t } = useTranslation();
 
   // imports dynamiques des composants pour le SSR et performance
-  const HomepageCustomersSlider = dynamic(
+  const HomepageCustomersSlider2 = dynamic(
     () =>
-      import("@/Components/HomepageCustomersSlider/HomepageCustomersSlider"),
+      import("@/Components/HomepageCustomersSlider2/HomepageCustomersSlider2"),
     { ssr: false }
   );
 
@@ -122,7 +122,7 @@ export default function Home() {
 
         <HomepageCountUp />
 
-        <HomepageCustomersSlider />
+        <HomepageCustomersSlider2 />
 
         <HompepageLearnMoreMap />
         <div className={styles.linkedinFeedCarousel}>
