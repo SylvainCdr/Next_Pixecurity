@@ -134,7 +134,7 @@ table {
 /** FIN RESET CSS **/
 
 body {
-  font-family: var(--font-barlow);
+  font-family: "Barlow", sans-serif;
   margin: auto;
   color: white;
   background-color: #000000;
@@ -144,7 +144,7 @@ body {
     margin : 0.1em;
     text-transform: uppercase;
     font-size: 1.3em;
-    font-family: var(--font-barlow-condensed);
+    font-family: "Barlow", sans-serif;
     transition: 0.5s;
     color: white;
     border: 0px;

@@ -9,22 +9,7 @@ import "../../i18n";
 import { appWithTranslation } from "next-i18next";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 import Link from "next/link";
-import { Barlow, Barlow_Condensed } from "next/font/google";
 
-// Déclaration avec variables CSS
-const barlow = Barlow({
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-barlow",
-});
-
-const barlowCondensed = Barlow_Condensed({
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-barlow-condensed",
-});
 
 function App({ Component, pageProps }) {
   useEffect(() => {
@@ -115,7 +100,7 @@ function App({ Component, pageProps }) {
       </Head>
       <AppProvider>
         <CartProvider>
-          <main className={`${barlow.variable} ${barlowCondensed.variable}`}>
+          <main >
             <Template>
               <Component {...pageProps} />
 

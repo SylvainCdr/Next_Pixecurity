@@ -46,12 +46,12 @@
     border: none;
     cursor: pointer;
     // font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
     i {
       margin-right: 5px;
-      padding-top: 4px;
-      font-size: 1rem;
+      padding-top: 3px;
+      font-size: 0.9rem;
     }
   }
 
@@ -85,9 +85,9 @@
     ul {
       width: 100%;
       display: flex;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 500;
-      font-family: var(--font-barlow-condensed);
+   
       text-transform: uppercase;
 
       li.active a {
@@ -112,7 +112,7 @@
           position: absolute;
           text-transform: capitalize;
           font-weight: 400;
-          font-size: 1.1rem;
+          font-size: 1rem;
           top: 100%;
           left: 0;
           background-color: #2c2c2c;
@@ -170,7 +170,7 @@
         background-color: #760498;
         color: white;
         font-weight: 500;
-        font-size: 1.35rem;
+        font-size: 1.1rem;
         padding: 0.5em 1.2em;
         box-shadow: 0 0 6px rgba(255, 254, 254, 0.5);
         border-radius: 0.3rem;
@@ -211,11 +211,11 @@
     position: relative;
 
     a {
-      font-size: 1.3rem;
+      font-size: 1rem;
       color: white;
     }
     i {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     &:hover {
@@ -244,7 +244,7 @@
     .header__burgerMenu {
       display: flex;
       margin-left: auto;
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       cursor: pointer;
       right: 0;
     }
@@ -277,7 +277,7 @@
     }
 
     .header__burgerMenu {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       cursor: pointer;
       padding-right: 5%;
     }

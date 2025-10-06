@@ -20,7 +20,6 @@ const images = [
   "ineo.png",
   "amica.png",
   "genelec.png",
-  
 ];
 
 export default function HomepageCustomersSlider2() {
